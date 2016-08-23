@@ -8,5 +8,5 @@ install:
 - npm rebuild node-sass
 - pip install -r requirements_for_test.txt
 script:
-- npm run build 
+# - npm run build 
 - ./scripts/run_tests.sh
