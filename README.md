@@ -27,7 +27,8 @@ Install virtualenvwrapper
 Create a local environment.sh file containing the following:
 ```shell
 echo "
-export DATABASE_URL='postgres://@localhost/navigator'
+export DJANGO_SETTINGS_MODULE='navigator.settings.dev'
+export DATABASE_URL='postgres://localhost/navigator'
 "> environment.sh
 ```
 
