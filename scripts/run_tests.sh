@@ -27,4 +27,4 @@ display_result $? 1 "Code style check"
 
 ## Code coverage
 coverage run --source='.' manage.py test
-display_result $? 3 "Code coverage"
+display_result $? 2 "Code coverage"
