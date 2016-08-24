@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn enav_alpha.wsgi
+web: python manage.py migrate && gunicorn navigator.wsgi
