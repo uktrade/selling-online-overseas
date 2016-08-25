@@ -91,3 +91,7 @@ ENV/
 *.DS_Store
 
 environment.sh
+
+# static files
+staticfiles/
+
