@@ -25,6 +25,9 @@ function display_result {
 pep8 .
 display_result $? 1 "Code style check"
 
+npm test
+display_result $? 2 "Front end code tested and style check"
+
 ## Code coverage
 coverage run --source='.' manage.py test
 display_result $? 2 "Code coverage"

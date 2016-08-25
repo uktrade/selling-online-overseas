@@ -1,0 +1,60 @@
+$base-spacing-unit: 20px;
+$half-spacing-unit: $base-spacing-unit / 2;
+
+$button-start-bg-color: $link-colour !default;
+$button-start-bg-image: '/static/images/icon-pointer.png' !default;
+$button-start-bg-color--visited: $link-colour !default;
+$button-start-bg-color--hover: $link-colour !default;
+$button-start-color: $white !default;
+$button-start-color-hover: $white !default;
+
+$button-blue-bg-color: $link-colour;
+$button-blue-bg-color--visited: $link-colour;
+$button-blue-bg-color--hover: $link-hover-colour;
+$button-blue-color: $white;
+$button-blue-color-hover: $white;
+$button-blue-outline: 1px solid $link-colour;
+
+$button-transparent-bg-color: $link-colour;
+$button-transparent-bg-color--visited: transparent;
+$button-transparent-bg-color--hover: transparent;
+$button-transparent-color: $link-colour;
+$button-transparent-color-hover: $link-colour;
+$button-transparent-outline: 1px solid $link-colour;
+
+$button-white-bg-color: $white;
+$button-white-bg-color--visited: $white;
+$button-white-bg-color--hover: $white;
+$button-white-color: $link-colour;
+$button-white-color-hover: $link-colour;
+$button-white-outline: 1px solid $white;
+
+$button-grey-bg-color: $grey-3;
+$button-grey-bg-color--visited: $white;
+$button-grey-bg-color--hover: $white;
+$button-grey-color: $link-colour;
+$button-grey-color-hover: $link-colour;
+$button-grey-outline: 1px solid $grey-3;
+
+$button-border-bg-color: transparent;
+$button-border-bg-color--visited: transparent;
+$button-border-bg-color--hover: transparent;
+$button-border-color: $black;
+$button-border-color-hover: $black;
+$button-border-outline: 1px solid $black;
+
+
+$backgrounds: (
+  'grey' $grey-3,
+  'grey-dark' $grey-2,
+  'blue' $link-colour
+);
+
+$button: (
+  'start' $button-start-bg-color $button-start-bg-color--visited $button-start-bg-color--hover $button-start-color $button-start-color-hover $button-start-bg-image,
+  'blue' $button-blue-bg-color $button-blue-bg-color--visited $button-blue-bg-color--hover $button-blue-color $button-blue-color-hover null $button-blue-outline,
+  'transparent' $button-transparent-bg-color $button-transparent-bg-color--visited $button-transparent-bg-color--hover $button-transparent-color $button-transparent-color-hover null $button-transparent-outline,
+  'white' $button-white-bg-color $button-white-bg-color--visited $button-white-bg-color--hover $button-white-color $button-white-color-hover null $button-white-outline,
+  'grey' $button-grey-bg-color $button-grey-bg-color--visited $button-grey-bg-color--hover $button-grey-color $button-grey-color-hover null $button-grey-outline,
+  'border' $button-border-bg-color $button-border-bg-color--visited $button-border-bg-color--hover $button-border-color $button-border-color-hover null $button-border-outline
+)

@@ -1,0 +1,26 @@
+@each $name, $bg-color, $hover, $visited, $color, $color-hover, $bg-image, $outline in $button {
+  .button {
+    box-shadow: none;
+    font-weight: 900;
+
+    &-#{$name} {
+      background-color: $bg-color;
+      @if $bg-image != null {
+        background-image: url($bg-image);
+      }
+      color: $color;
+      outline: $outline;
+
+      &:link,
+      &:visited {
+        background-color: $visited;
+        color: $color-hover;
+      }
+
+      &:hover {
+        background-color: $hover;
+        color: $color-hover;
+      }
+    }
+  }
+}

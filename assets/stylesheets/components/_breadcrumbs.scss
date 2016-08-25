@@ -1,0 +1,10 @@
+.breadcrumbs {
+  li {
+    background-image: url('/static/images/separator-2x.png');
+    background-size: 6px 11px;
+
+    &:last-child {
+      color: $grey-1;
+    }
+  }
+}
