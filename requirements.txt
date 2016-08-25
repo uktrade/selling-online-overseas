@@ -1,8 +1,7 @@
-coverage==4.1
 dj-database-url==0.4.1
 Django==1.9.7
 django-ckeditor==5.0.3
 gunicorn==19.6.0
-pep8==1.7.0
 psycopg2==2.6.2
 whitenoise==3.2.1
+Pillow==3.3.0

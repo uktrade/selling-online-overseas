@@ -128,7 +128,7 @@ class Market(models.Model):
 
     product_details_upload = models.ManyToManyField(UploadMethod, verbose_name="Product Details upload process")
 
-    payment_terms_days = models.IntegerField()
+    payment_terms_days = models.IntegerField(null=True, blank=True)
     payment_terms_days_notes = models.CharField(max_length=200, blank=True, null=True, verbose_name='notes')
 
     currency_of_payments = models.ManyToManyField(Currency)
@@ -181,7 +181,7 @@ class Market(models.Model):
     local_return_address_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
 
     def __str__(self):
-        return "{0} {1}".format(self.country, self.name)
+        return "{0}".format(self.name)
 
     class Meta:
         ordering = ('-name',)

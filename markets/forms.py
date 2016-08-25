@@ -22,6 +22,9 @@ class ModelFilterForm(forms.ModelForm):
 
 
 class FilteringForm(ModelFilterForm):
+    """
+    Form for initial filtering of markets on the first page of the journey
+    """
 
     class Meta:
         model = Market
@@ -36,6 +39,9 @@ class FilteringForm(ModelFilterForm):
 
 
 class MarketFilterForm(FilteringForm):
+    """
+    The filters that appear on the results listing page, for furhter filtering of Markets
+    """
 
     class Meta:
         model = Market

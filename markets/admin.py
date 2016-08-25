@@ -47,7 +47,6 @@ class MarketAdmin(admin.ModelAdmin):
         ('Finance', {
             'fields': (
                 ('currency_of_payments', 'payment_terms_days', 'payment_terms_days_notes',),
-                # ('payment_terms_rate_fixed', 'payment_terms_rate_fixed_notes',),
                 ('commission', 'commission_notes',),
                 ('registration_fees', 'registration_fees_notes',),
                 ('membership_fees', 'membership_fees_notes',),
