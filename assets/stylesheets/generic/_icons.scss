@@ -1,0 +1,20 @@
+.icon {
+
+  &-information {
+    background-image: url('/static/images/icon-information.png');
+  }
+
+  &-next {
+    position: relative;
+
+    &::after {
+      content: '\203A';
+      font-size: 35px;
+      font-weight: 900;
+      position: absolute;
+      right: -20px;
+      top: -15px;
+    }
+  }
+
+}

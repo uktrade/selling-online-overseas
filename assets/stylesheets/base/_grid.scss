@@ -1,0 +1,51 @@
+// Extend the Govuk grid
+
+.column {
+
+  &-one {
+
+    &-whole {
+      padding: 0 15px;
+      width: 100%;
+    }
+
+    &-fifth {
+      float: left;
+      width: 20%;
+    }
+  }
+
+  &-two {
+
+    &-fifths {
+      float: left;
+      width: 40%;
+    }
+
+  }
+
+  &-three {
+
+    &-fifths {
+      float: left;
+      width: 60%;
+    }
+
+    &-quarters {
+      float: left;
+      width: 75%;
+    }
+
+  }
+
+}
+
+.section {
+  @extend %site-width-container;
+  @extend %contain-floats;
+  padding-bottom: $gutter;
+
+  @include media(desktop) {
+    padding-bottom: $gutter * 3;
+  }
+}

@@ -95,3 +95,11 @@ environment.sh
 # static files
 staticfiles/
 
+# nodes #
+node_modules/
+
+# webstorm
+.idea/
+
+# Js test coverage
+assets/test/unit/coverage/

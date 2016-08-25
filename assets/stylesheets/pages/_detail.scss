@@ -1,0 +1,113 @@
+.detail-intro {
+  img {
+    display: block;
+    float: left;
+    margin-right: 30px;
+  }
+
+  dl {
+    float: left;
+  }
+
+  dt {
+    display: inline;
+
+    &:before {
+      clear: both;
+      content: '';
+      display: block;
+    }
+  }
+
+  dd {
+    display: inline;
+  }
+
+  p {
+    clear: left;
+    padding-top: 1em;
+  }
+}
+
+.detail-ukti-terms {
+  background: $grey-2;
+  padding: 30px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.detail-row {
+  h3 {
+    @include bold-24;
+    border-bottom: 1px solid $grey-1;
+    margin-bottom: 20px;
+    padding: 0 $gutter-half;
+  }
+
+  dl > li {
+    @include grid-column(1/3);
+    list-style: none;
+
+    &.wider {
+      @include grid-column(2/3);
+    }
+
+    &.breaker {
+      clear: left;
+    }
+  }
+
+  dl > hr {
+    background: none;
+    border: dashed $grey-1;
+    border-width: 1px 0 0;
+    clear: both;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin-bottom: 1em;
+  }
+}
+
+.next-steps {
+  background: $grey-2;
+  margin-top: 30px;
+  padding: 30px;
+
+  h2 {
+    border-bottom: 1px solid $white;
+    margin-bottom: 30px;
+  }
+}
+
+.consider-row {
+  border: 1px dashed $grey-1;
+  padding: 15px 25px;
+
+  h3 {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  h4 {
+    font-weight: bold;
+  }
+}
+
+
+.details3 {
+  #footer {
+    .footer-wrapper {
+      padding-bottom: 30px;
+      padding-top: 0;
+    }
+  }
+}
+
