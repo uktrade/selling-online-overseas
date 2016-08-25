@@ -1,0 +1,5 @@
+{% for radio in field %}
+<label class="block-label" for="{{ radio.id_for_label }}">
+  <input id="{{ radio.id_for_label }}" type="radio" name="{{ field.name }}" value="{{ radio.choice_value }}" />{{ radio.choice_label }}
+</label>
+{% endfor %}

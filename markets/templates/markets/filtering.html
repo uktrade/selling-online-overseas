@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% load field_type %}
+
+{% block content %}
+
+  <h1 class="heading-large">Find ecommerce marketplaces overseas</h1>
+
+  <p class="sub-heading">Please use the filters to narrow down your results</p>
+
+  <div class="grid-row">
+    <div class="filters">
+      <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}'>
+        <li class="push-half--bottom cf">
+          <div class="column-one-third hard--left soft-half--right">
+            <div class="background--grey filters-container soft">
+              <h3 class="filters-header push--bottom">Where you’d like to sell online?</h3>
+              <div class="form-section cf">
+                <div class="form-group ">
+                  {% with form.countries_served__name as field and 'Choose Country' as default %}
+                    {% include "markets/includes/selectbox.html" %}
+                  {% endwith %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column-two-thirds hard--left soft-half--right">
+            <div class="background--grey filters-container soft">
+              <h3 class="filters-header push--bottom">What platform type is suitable for your product?</h3>
+              <fieldset class="inline">
+                <legend class="visuallyhidden">Do you already have a personal user account?</legend>
+                {% with form.platform_type as field %}
+                  {% include "markets/includes/multiplecheckbox.html" %}
+                {% endwith %}
+              </fieldset>
+              <i class="icon icon-information"></i>
+            </div>
+          </div>
+        </li>
+        <li class="push-half--bottom cf">
+          <div class="column-one-third hard--left soft-half--right">
+            <div class="background--grey filters-container soft">
+              <h3 class="filters-header push--bottom">What kind of products you’d like to sell?</h3>
+              <div class="form-section cf">
+                <div class="form-group ">
+                  {% with form.product_type as field and 'Choose Product Type' as default %}
+                    {% include "markets/includes/selectbox.html" %}
+                  {% endwith %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column-two-thirds hard--left soft-half--right">
+            <div id='results-count' class="background--blue filters-container soft filters-result">
+              <h5 class="heading-xlarge flush">{{results_count}}</h5>
+              <p>Ecommerce websites listed</p>
+              <button class='button button-result' type='submit'>See results</button>
+            </div>
+          </div>
+        </li>
+        <li class="push-half--bottom cf">
+          <div class="column-one-third hard--left soft-half--right">
+            <div class="background--grey filters-container soft">
+              <h3 class="filters-header push--bottom">Do you need local customer service?</h3>
+              <fieldset class="inline">
+                <legend class="visuallyhidden">Do you already have a personal user account?</legend>
+                {% with form.local_customer_service as field %}
+                  {% include "markets/includes/radio.html" %}
+                {% endwith %}
+              </fieldset>
+              <i class="icon icon-information"></i>
+            </div>
+          </div>
+          <div class="column-two-thirds hard--left soft-half--right">
+            <div class="background--grey filters-container soft">
+              <h3 class="filters-header push--bottom">What logistics model is suitable for you business?</h3>
+              <fieldset class="inline">
+                <legend class="visuallyhidden">What logistics model is suitable for you business?</legend>
+                {% with form.logistics_structure as field %}
+                  {% include "markets/includes/multiplecheckbox.html" %}
+                {% endwith %}
+              </fieldset>
+              <i class="icon icon-information"></i>
+            </div>
+          </div>
+        </li>
+
+      </form>
+    </div>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,7 @@
+{% for radio in field %}
+  <label for="{{ radio.id_for_label }}" class='block-label'>
+    {{ radio.choice_label }}
+    <span class="radio">{{ radio.tag }}</span>
+  </label>
+{% endfor %}
+
