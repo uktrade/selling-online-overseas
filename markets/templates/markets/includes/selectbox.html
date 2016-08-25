@@ -1,0 +1,7 @@
+<select class="form-control" id="{{ field.id_for_label }}" name="{{ field.name }}">
+    <option value="*">{{ default }}</option>
+    {% for value in field.field.choices %}
+        <option value="{{ value.0 }}">{{ value.1 }}</option>
+    {% endfor %}
+</select>
+<i class="icon icon-information"></i>

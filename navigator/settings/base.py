@@ -32,7 +32,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'ckeditor'
+    'ckeditor',
+    'core',
+    'contact',
+    'markets',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -116,6 +119,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'staticfiles'),
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
+FEEDBACK_TO = os.environ.get('FEEDBACK_TO')
+FEEDBACK_FROM = os.environ.get('FEEDBACK_FROM')
+SMTP_USER = os.environ.get('AWS_SMTP_USER')
+SMTP_PWD = os.environ.get('AWS_SMTP_PASSWORD')
+SMTP_SERVER = os.environ.get('AWS_SMTP_SERVER')
