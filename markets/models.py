@@ -73,6 +73,7 @@ class Country(models.Model):
         return "{0}".format(self.name)
 
     class Meta:
+        verbose_name_plural = "Countries"
         ordering = ('-name',)
 
 
@@ -104,6 +105,7 @@ class Currency(models.Model):
         return "{0} {1}".format(self.name, self.symbol)
 
     class Meta:
+        verbose_name_plural = "Currencies"
         ordering = ('-name',)
 
 
