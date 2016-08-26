@@ -1,12 +1,15 @@
 from django.contrib import admin
 
-from .models import (Market, ProductCategory, Logo, Region, Country)
+from .models import (Market, ProductCategory, Logo, Region, Country, SupportChannel, UploadMethod, Currency)
 from .forms import LogoAdminForm
 
 
 admin.site.register(Region)
 admin.site.register(Country)
 admin.site.register(ProductCategory)
+admin.site.register(SupportChannel)
+admin.site.register(UploadMethod)
+admin.site.register(Currency)
 
 
 class MarketAdmin(admin.ModelAdmin):
