@@ -16,3 +16,6 @@ createdb navigator
 # Upgrade databases
 source environment.sh
 python manage.py migrate
+
+# build front end assets
+npm install && npm run build
