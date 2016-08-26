@@ -121,27 +121,28 @@ class Market(models.Model):
 
     web_traffic = models.CharField(max_length=30, null=True, blank=True)
 
-    customer_support_channels = models.ManyToManyField(SupportChannel,
+    customer_support_channels = models.ManyToManyField(SupportChannel, blank=True,
                                                        related_name="%(app_label)s_%(class)s_customer_related")
-    seller_support_channels = models.ManyToManyField(SupportChannel,
+    seller_support_channels = models.ManyToManyField(SupportChannel, blank=True,
                                                      related_name="%(app_label)s_%(class)s_seller_related")
 
     customer_demographics = RichTextField(null=True, blank=True)
 
-    product_details_upload = models.ManyToManyField(UploadMethod, verbose_name="Product Details upload process")
+    product_details_upload = models.ManyToManyField(UploadMethod, blank=True,
+                                                    verbose_name="Product Details upload process")
 
     payment_terms_days = models.IntegerField(null=True, blank=True)
     payment_terms_days_notes = models.CharField(max_length=200, blank=True, null=True, verbose_name='notes')
 
-    currency_of_payments = models.ManyToManyField(Currency)
+    currency_of_payments = models.ManyToManyField(Currency, blank=True)
 
     logistics_structure = models.CharField(choices=LOGISTICS_MODELS, max_length=1, null=True, blank=True)
     logistics_structure_notes = models.CharField(max_length=200, blank=True, null=True, verbose_name='notes')
     platform_type = models.CharField(max_length=255, null=True, blank=True)
     product_type = models.CharField(choices=PLATFORM_BRAND_POSITION, max_length=1, null=True, blank=True)
 
-    commission = models.CharField(max_length=10)
-    commission_notes = models.CharField(max_length=255)
+    commission = models.CharField(max_length=10, null=True, blank=True)
+    commission_notes = models.CharField(max_length=255, null=True, blank=True)
 
     ukti_terms = RichTextField(null=True, blank=True)
 
