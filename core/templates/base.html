@@ -21,6 +21,7 @@
       <link rel="icon" type="image/png" href="{% static "images/favicon.ico" %}">
     {% endblock head_favicon %}
     {% block head_css %}
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <link href="{% static "stylesheets/govuk-template.css" %}" rel="stylesheet" media="screen">
       <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
     {% endblock head_css %}
@@ -29,14 +30,37 @@
     <header role="banner" id="global-header" class="">
       {% block header %}
       <div class="header-wrapper">
-        <div class="header-global">
+        <div class="section">
+          <div class="grid-row">
+            <div class="column-one-half">
+              <div class="header-global">
+                <div class="header-logo">
+                  <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="" class="">
+                    <img src="/static/images/EiG-logo.png" alt="" class="header-main-logo">
+                  </a>
+                </div>
+              </div>
+              <a href="" class="header-nav-toggle" title="">menu</a>
+            </div>
+            <div class="column-one-half">
+              <nav>
+                <ul class="header-nav">
+                  <li class="header-nav-link"><a title="" href="" class="active">home</a></li>
+                  <li class="header-nav-link"><a title="" href="">opportunities</a></li>
+                  <li class="header-nav-link"><a title="" href="">online exports</a></li>
+                  <li class="header-nav-link"><a title="" href="">support</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
       {% endblock header %}
     </header>
+
     <main role="main">
-      <div id="content">
-        {% block breadcrumbs %}
+      {% block breadcrumbs %}
+        <div class="section">
           <div class="grid-row">
             <div class="column-one-whole">
               <div class="breadcrumbs">
@@ -51,19 +75,66 @@
               </div>
             </div>
           </div>
-        {% endblock breadcrumbs %}
-
-        {% block content %}{% endblock content %}
-      </div>
-      {% block feedback %}
-        <div class="section">
-          <a href="{% url 'contact:feedback_submit' %}">Tell us what you think?</a>
         </div>
+      {% endblock breadcrumbs %}
+
+      {% block content %}{% endblock content %}
+
+      {% block feedback %}
+      <section>
+        <div class="section">
+          <div class="grid-row">
+            <div class="column-one-whole push--ends">
+              <a href="{% url 'contact:feedback_submit' %}">Tell us what you think?</a>
+            </div>
+          </div>
+        </div>
+      </section>
       {% endblock %}
     </main>
+
+
     <footer class="group js-footer" id="footer" role="contentinfo">
       {% block footer %}
       <div class="footer-wrapper">
+          <div class="grid-row">
+            <div class="column-one-third logo">
+              <div class="footer-section">
+              <a href="https://www.gov.uk" title="Go to the GOV.UK homepage">
+                <img src="/static/images/footer_logo.png" alt="" class="footer-img footer-img--top">
+              </a>
+              <a href="https://www.gov.uk" title="Go to the GOV.UK homepage">
+                <img src="/static/images/EiG-logo.png" alt="" class="footer-img">
+              </a>
+            </div>
+          </div>
+
+          <div class="column-one-third links">
+            <div class="footer-section">
+              <ul class="footer-links">
+                <li><a href="" title="">opportunities</a></li>
+                <li><a href="" title="">online export</a></li>
+                <li><a href="" title="">support</a></li>
+                <li><a href="" title="">contact us</a></li>
+                <li><a href="" title="">privacy and cookies</a></li>
+                <li><a href="" title="">terms &amp; conditions</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="column-one-third subscribe">
+            <div class="footer-section">
+              <h3>get your guide to exporting</h3>
+              <form>
+                <label class="form-label" for="full-name-f1">enter your email address</label>
+                <input class="form-control" id="full-name-f1" type="text">
+                <button class="button button-red" type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
       </div>
       {% endblock footer %}
     </footer>

@@ -1,6 +1,26 @@
 $base-spacing-unit: 20px;
 $half-spacing-unit: $base-spacing-unit / 2;
 
+// BRAND COLOURS
+$great-primary: #1e1348;
+$great-secondary: #e41f13;
+$flag-red: #b00d23;
+$stone: #dfd5c5;
+$light-stone: #f6f4f1;
+$grey: #4a4a4a;
+$light-grey: #777;
+$purple: #4f0b7b;
+$mid-blue: #00549f;
+$aqua: #007ea3;
+
+// FONTS
+$brand-font-family: 'Roboto', sans-serif;
+
+// HEADER
+$logo-width: 300px;
+
+
+
 $button-start-bg-color: $link-colour !default;
 $button-start-bg-image: '/static/images/icon-pointer.png' !default;
 $button-start-bg-color--visited: $link-colour !default;
@@ -43,6 +63,13 @@ $button-border-color: $black;
 $button-border-color-hover: $black;
 $button-border-outline: 1px solid $black;
 
+$button-red-bg-color: $great-secondary;
+$button-red-bg-color--visited: $great-secondary;
+$button-red-bg-color--hover: $great-secondary;
+$button-red-color: $white;
+$button-red-color-hover: $white;
+$button-red-outline: 0;
+
 
 $backgrounds: (
   'grey' $grey-3,
@@ -56,5 +83,6 @@ $button: (
   'transparent' $button-transparent-bg-color $button-transparent-bg-color--visited $button-transparent-bg-color--hover $button-transparent-color $button-transparent-color-hover null $button-transparent-outline,
   'white' $button-white-bg-color $button-white-bg-color--visited $button-white-bg-color--hover $button-white-color $button-white-color-hover null $button-white-outline,
   'grey' $button-grey-bg-color $button-grey-bg-color--visited $button-grey-bg-color--hover $button-grey-color $button-grey-color-hover null $button-grey-outline,
-  'border' $button-border-bg-color $button-border-bg-color--visited $button-border-bg-color--hover $button-border-color $button-border-color-hover null $button-border-outline
+  'border' $button-border-bg-color $button-border-bg-color--visited $button-border-bg-color--hover $button-border-color $button-border-color-hover null $button-border-outline,
+  'red' $button-red-bg-color $button-red-bg-color--visited $button-red-bg-color--hover $button-red-color $button-red-color-hover null $button-red-outline
 )

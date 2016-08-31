@@ -3,6 +3,7 @@ $path: '/static/images/';
 
 @import 'govuk_elements/govuk-elements';
 @import 'govuk_elements/govuk-frontend-toolkit';
+@import 'govuk_elements/gutter';
 
 @import 'vars';
 
@@ -11,6 +12,7 @@ $path: '/static/images/';
 @import 'base/grid';
 @import 'base/list';
 @import 'base/typography';
+@import 'base/headings';
 
 @import 'generic/helpers';
 @import 'generic/icons';
@@ -18,6 +20,8 @@ $path: '/static/images/';
 @import 'components/breadcrumbs';
 @import 'components/buttons';
 @import 'components/filters';
+@import 'components/header';
+@import 'components/footer';
 
 @import 'pages/detail';
 @import 'pages/list';

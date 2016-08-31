@@ -1,0 +1,130 @@
+#global-header {
+  background-color: $great-primary;
+
+  .header-wrapper {
+    background-color: $great-primary;
+    padding-bottom: 15px;
+    padding-top: 20px;
+  }
+
+  .header-main-logo {
+    width: $logo-width;
+
+    @include media (mobile) {
+      width: 70%;
+    }
+  }
+
+  .header-nav {
+    padding-top: 15px;
+
+    @include media (mobile) {
+      display: none;
+      padding: 10px 0;
+    }
+
+    &.open {
+      @include media (mobile) {
+        display: block;
+      }
+    }
+
+    &-link {
+      display: inline-block;
+      font-weight: bold;
+      list-style-type: none;
+      padding-left: 22px;
+      text-transform: uppercase;
+
+      @include media (mobile) {
+        border-bottom: 1px solid $white;
+        display: block;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 10px 0;
+        position: relative;
+
+        @include media (mobile) {
+          width: 65%;
+        }
+
+        &:last-child {
+          border-bottom: 0;
+          padding-bottom: 0;
+        }
+
+      }
+
+      a {
+        color: $white;
+        padding-bottom: 4px;
+        text-decoration: none;
+
+        &:hover,
+        &.active {
+          border-bottom: 4px solid $great-secondary;
+
+          @include media (mobile) {
+            border-bottom: 0;
+
+            &:before {
+              border: 6px solid $great-secondary;
+              content: '';
+              height: 10px;
+              left: -20px;
+              position: absolute;
+            }
+          }
+        }
+
+        @include media (mobile) {
+          border-bottom: 0;
+        }
+
+      }
+
+      &:last-child {
+        margin-left: 0;
+        @include media (mobile) {
+          margin-left: 20px;
+        }
+      }
+    }
+
+    &-toggle {
+      color: $white;
+      display: none;
+      font-weight: bold;
+      position: absolute;
+      right: 25px;
+      text-decoration: none;
+      text-transform: uppercase;
+      top: 33px;
+
+      &:after {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 8px solid $great-secondary;
+        content: '';
+        height: 0;
+        position: absolute;
+        right: -15px;
+        top: 9px;
+        width: 0;
+      }
+
+      &--open {
+
+        &:after {
+          border-bottom: 8px solid $great-secondary;
+          border-top: 0;
+          top: 5px;
+        }
+      }
+
+      @include media (mobile) {
+        display: block;
+      }
+    }
+  }
+}

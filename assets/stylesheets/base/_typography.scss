@@ -1,22 +1,22 @@
-.heading {
-  position: relative;
-
-  &-large {
-    margin-top: 10px;
-  }
-
-  &-last-updated {
-    color: $grey-1;
-    position: absolute;
-    right: 45px;
-    top: 53px;
-  }
+body,
+main {
+  font-family: $brand-font-family;
 }
+
 
 .font {
 
   &-xxsmall {
     font-size: 15px;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
 }
 
