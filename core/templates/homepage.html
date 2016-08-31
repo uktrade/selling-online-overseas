@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-  
-  <h1 class='heading-xlarge'>
-    Landing Page
-  </h1>
-
-  <a href="{% url 'markets:home' %}">Go</a>
-
+<section>
+  <div class="section">
+    <div class="grid-row">
+      <div class="column-one-whole">
+      <h1 class='heading-xlarge'>
+        Landing Page
+        <a href="{% url 'markets:home' %}">Go</a>
+      </h1>
+    </div>
+  </div>
+</section>
 {% endblock content %}

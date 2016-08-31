@@ -1,0 +1,14 @@
+// Overriding Gutter
+
+%padding-gutter-override {
+  padding: 0 10px;
+}
+
+.column {
+  &-one {
+    &-half,
+    &-third {
+      @extend %padding-gutter-override;
+    }
+  }
+}

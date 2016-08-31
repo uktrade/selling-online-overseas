@@ -1,0 +1,18 @@
+.heading {
+  position: relative;
+
+  &-xlarge {
+    font-family: $brand-font-family;
+  }
+
+  &-large {
+    margin-top: 10px;
+  }
+
+  &-last-updated {
+    color: $grey-1;
+    position: absolute;
+    right: 45px;
+    top: 53px;
+  }
+}

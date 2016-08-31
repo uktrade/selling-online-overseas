@@ -1,25 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-  
-  <h1 class='heading-xlarge'>
-    Find ecommerce marketplaces overseas
-  </h1>
+  <div class="section">
+    <div class="grid-row">
+      <div class="column-one-whole">
+        <h1 class='heading-xlarge'>
+          Find ecommerce marketplaces overseas
+        </h1>
 
-  <p>Find out:</p>
-  <ul class="list list-bullet">
-    <li>if there is a suitable e-commerce platform for your product overseas</li>
-    <li>more information about e-marketplaces and how to get onto them</li>
-  </ul>
+        <p>Find out:</p>
+        <ul class="list list-bullet">
+          <li>if there is a suitable e-commerce platform for your product overseas</li>
+          <li>more information about e-marketplaces and how to get onto them</li>
+        </ul>
 
-  <h2 class='heading-medium'>Before you start</h2>
-  <p>You'll need to know:</p>
+        <h2 class='heading-medium'>Before you start</h2>
+        <p>You'll need to know:</p>
 
-  <ul class="list list-bullet">
-    <li>what products you want to sell online</li>
-    <li>where in the world you'd like to sell them</li>
-  </ul>
+        <ul class="list list-bullet">
+          <li>what products you want to sell online</li>
+          <li>where in the world you'd like to sell them</li>
+        </ul>
 
-  <a class='button button-start' href='{% url 'markets:filtering' %}'>Start now</a>
-
+        <a class='button button-start' href='{% url 'markets:filtering' %}'>Start now</a>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
