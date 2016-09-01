@@ -3,13 +3,13 @@ describe('Filter', function() {
     var category, clickItem, activeTab, e, closeButton,
         html ='<div class="filter">' +
                 '<ul>' +
-                    '<li><a href="#" class="filters-tab--item" data-group="product_categories__name"></a></li>' +
+                    '<li><a href="#" class="filters-tab--item" data-group="product_categories"></a></li>' +
                     '<li><a href="#" class="filters-tab--item" data-group="product_categories__price"></a></li>' +
                 '</ul>' +
                 '<form>' +
-                    '<div class="filters-options" data-field="product_categories__name" style="display: none">' +
-                        '<input checked="checked" id="id_product_categories__name_0" name="product_categories__name" type="checkbox" value="Accessories"></div>' +
-                        '<input checked="checked" id="id_product_categories__name_0" name="product_categories__name" type="checkbox" value="books"></div>' +
+                    '<div class="filters-options" data-field="product_categories" style="display: none">' +
+                        '<input checked="checked" id="id_product_categories_0" name="product_categories" type="checkbox" value="Accessories"></div>' +
+                        '<input checked="checked" id="id_product_categories_0" name="product_categories" type="checkbox" value="books"></div>' +
                     '<div class="filters-options" data-field="product_categories__price" style="display: none"></div>' +
                 '</form>' +
               '</div>';
@@ -38,7 +38,7 @@ describe('Filter', function() {
 
         it('Should activate clicked tab', function () {
 
-            init('product_categories__name');
+            init('product_categories');
 
             filter.toggle.call(clickItem, e);
 
@@ -49,7 +49,7 @@ describe('Filter', function() {
 
         it('Should deactivate clicked tab', function () {
 
-            init('product_categories__name');
+            init('product_categories');
 
             filter.toggle.call(clickItem, e);
 
@@ -63,7 +63,7 @@ describe('Filter', function() {
 
         it('Should activate first tab', function () {
 
-            init('product_categories__name');
+            init('product_categories');
 
             filter.toggle.call(clickItem, e);
 
@@ -88,7 +88,7 @@ describe('Filter', function() {
 
         it('Should close the filter form', function () {
 
-            init('product_categories__name');
+            init('product_categories');
 
             filter.toggle.call(clickItem, e);
 

@@ -16,14 +16,14 @@
   <div class="grid-row">
     <div class="filters cf push--bottom">
       <ul class="background--grey cf">
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="product_categories__name">Product</a></li>
+        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="product_categories">Product</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 2</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 3</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 4</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 5</a></li>
       </ul>
       <form method="get" action="{% url 'markets:list' %}" class="filters-form">
-        {% with form.product_categories__name as field %}
+        {% with form.product_categories as field %}
           <div class="cf filters-section filters-options" data-field="{{field.name}}">
             <p>Product Categories</p>
             {{ field }}
@@ -35,7 +35,7 @@
         {% endwith %}
         <div style="display:none">
           {% for field in form %}
-            {% if field.name != "product_categories__name" %}
+            {% if field.name != "product_categories" %}
               {{ field }}
             {% endif %}
           {% endfor %}

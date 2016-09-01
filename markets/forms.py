@@ -1,27 +1,12 @@
 import base64
 from django import forms
-from core.forms import QueryChoiceField, QueryMultipleCheckboxField, QueryRadioField, QueryMultipleChoiceField
+from core.forms import (
+    QueryChoiceField, QueryMultipleCheckboxField, QueryRadioField, QueryMultipleChoiceField, ModelQueryForm
+)
 from .models import Market, Logo, Region
 
 
-class ModelFilterForm(forms.ModelForm):
-    """
-    A Model form that can have a specified list of query_fields, and it will automatically convert these into
-    QueryMultipleCheckboxFields
-    """
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        try:
-            query_fields = self.Meta.query_fields
-        except AttributeError:
-            query_fields = []
-
-        for field_name, field_type in query_fields:
-            self.fields[field_name] = field_type(self.Meta.model, field_name)
-
-
-class FilteringForm(ModelFilterForm):
+class FilteringForm(ModelQueryForm):
     """
     Form for initial filtering of markets on the first page of the journey
     """
@@ -30,15 +15,15 @@ class FilteringForm(ModelFilterForm):
         model = Market
         fields = []
         query_fields = [
-            ('platform_type', QueryMultipleCheckboxField),
-            ('product_type', QueryChoiceField),
-            ('logistics_structure', QueryMultipleCheckboxField),
-            ('countries_served__name', QueryChoiceField),
-            ('product_categories__name', QueryMultipleChoiceField),
+            ('platform_type', QueryMultipleCheckboxField, 'platform_type'),
+            ('product_type', QueryChoiceField, 'product_type'),
+            ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure'),
+            ('countries_served', QueryChoiceField, 'countries_served__name'),
+            ('product_categories', QueryMultipleChoiceField, 'product_categories__name'),
         ]
 
 
-class MarketFilterForm(FilteringForm):
+class MarketFilterForm(ModelQueryForm):
     """
     The filters that appear on the results listing page, for furhter filtering of Markets
     """
@@ -47,12 +32,12 @@ class MarketFilterForm(FilteringForm):
         model = Market
         fields = []
         query_fields = [
-            ('platform_type', QueryMultipleCheckboxField),
-            ('product_type', QueryMultipleCheckboxField),
-            ('logistics_structure', QueryMultipleCheckboxField),
-            ('countries_served__name', QueryMultipleCheckboxField),
-            ('product_categories__name', QueryMultipleCheckboxField),
-            ('countries_served__region__name', QueryMultipleCheckboxField),
+            ('platform_type', QueryMultipleCheckboxField, 'platform_type'),
+            ('product_type', QueryMultipleCheckboxField, 'product_type'),
+            ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure'),
+            ('countries_served', QueryMultipleCheckboxField, 'countries_served__name'),
+            ('product_categories', QueryMultipleCheckboxField, 'product_categories__name'),
+            ('region', QueryMultipleCheckboxField, 'countries_served__region__name'),
         ]
 
 
