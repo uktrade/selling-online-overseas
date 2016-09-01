@@ -17,7 +17,7 @@
 					  <h3 class="filters-header push--bottom">Where you’d like to sell online?</h3>
 					  <div class="form-section cf">
 						<div class="form-group ">
-						  {% with form.countries_served__name as field and 'Choose Country' as default %}
+						  {% with form.countries_served as field and 'Choose Country' as default %}
 							{% include "markets/includes/selectbox.html" %}
 						  {% endwith %}
 						</div>
