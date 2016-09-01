@@ -35,7 +35,7 @@
   .footer-links {
 
     li {
-      margin-bottom: 5px;
+      margin-bottom: 6px;
 
       a {
         border-bottom: 1px solid $white;
@@ -50,6 +50,10 @@
         }
       }
     }
+
+    @include media (mobile) {
+      column-count: 2;
+    }
   }
 
   .footer {
@@ -58,7 +62,11 @@
       width: 250px;
 
       &--top {
-        margin-bottom: 40px;
+        margin-bottom: 5px;
+      }
+
+      &--bottom {
+        margin-top: 10px;
       }
     }
 
@@ -76,17 +84,16 @@
   h3 {
     color: $white;
     font-size: 24px;
-    text-transform: capitalize;
   }
 
   .form-label {
+    @extend %font-xxsmall;
     color: $white;
-    font-size: 12px;
   }
 
   .form-control {
     border: 0;
-    margin: 10px 0;
+    margin: 10px 0 20px;
     width: 100%;
   }
 

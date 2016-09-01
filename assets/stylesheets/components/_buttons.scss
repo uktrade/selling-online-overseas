@@ -24,3 +24,10 @@
     }
   }
 }
+
+.button {
+  &-large {
+    @extend %font-regular;
+    padding: 18px 45px;
+  }
+}

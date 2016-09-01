@@ -3,11 +3,30 @@ main {
   font-family: $brand-font-family;
 }
 
+%font-regular {
+  font-size: 18px;
+}
+
+%font-xxsmall {
+  font-size: 15px;
+}
+
+%font-xxxsmall {
+  font-size: 14px;
+}
 
 .font {
 
   &-xxsmall {
-    font-size: 15px;
+    @extend %font-xxsmall;
+  }
+
+  &-xxxsmall {
+    @extend %font-xxxsmall;
+  }
+
+  &-white {
+    color: $white;
   }
 }
 
@@ -20,3 +39,9 @@ h6 {
   font-weight: bold;
 }
 
+a {
+  &:focus {
+    background-color: $aqua;
+    outline: 3px solid $aqua;
+  }
+}
