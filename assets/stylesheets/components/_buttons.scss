@@ -1,4 +1,4 @@
-@each $name, $bg-color, $hover, $visited, $color, $color-hover, $bg-image, $outline in $button {
+@each $name, $bg-color, $visited, $hover, $color, $color-hover, $bg-image, $outline in $button {
   .button {
     box-shadow: none;
     font-weight: 900;
@@ -21,13 +21,19 @@
         background-color: $hover;
         color: $color-hover;
       }
+
+      &:focus,
+      &:active {
+        background-color: $aqua;
+        outline: 0;
+      }
     }
   }
 }
 
 .button {
   &-large {
-    @extend %font-regular;
+    @extend %lede;
     padding: 18px 45px;
   }
 }

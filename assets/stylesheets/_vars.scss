@@ -9,9 +9,12 @@ $stone: #dfd5c5;
 $light-stone: #f6f4f1;
 $grey: #4a4a4a;
 $light-grey: #777;
+$lighter-grey: #dce0df;
 $purple: #4f0b7b;
 $mid-blue: #00549f;
 $aqua: #007ea3;
+
+$lighter-grey-opacity: rgba(220, 224, 223, .5);
 
 // FONTS
 $brand-font-family: 'Roboto', sans-serif;
@@ -65,7 +68,7 @@ $button-border-outline: 1px solid $black;
 
 $button-red-bg-color: $great-secondary;
 $button-red-bg-color--visited: $great-secondary;
-$button-red-bg-color--hover: $great-secondary;
+$button-red-bg-color--hover: $flag-red;
 $button-red-color: $white;
 $button-red-color-hover: $white;
 $button-red-outline: 0;
@@ -85,4 +88,8 @@ $button: (
   'grey' $button-grey-bg-color $button-grey-bg-color--visited $button-grey-bg-color--hover $button-grey-color $button-grey-color-hover null $button-grey-outline,
   'border' $button-border-bg-color $button-border-bg-color--visited $button-border-bg-color--hover $button-border-color $button-border-color-hover null $button-border-outline,
   'red' $button-red-bg-color $button-red-bg-color--visited $button-red-bg-color--hover $button-red-color $button-red-color-hover null $button-red-outline
-)
+);
+
+
+//FORMS
+$form-field-height: 50px;
