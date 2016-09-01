@@ -24,8 +24,6 @@ class ContactFormTests(TestCase):
 class ContactView(TestCase):
 
     def test_contact_get(self):
-        # XXX: Commented out broken test for now
-        return
         response = self.client.get(reverse('contact:feedback_submit'))
         self.assertContains(response, "Feedback", status_code=200)
 
