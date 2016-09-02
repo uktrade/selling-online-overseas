@@ -8,7 +8,7 @@ class QueryChoiceMixin(object):
     attribute from the database, and uses that to generate the choices of the field
     """
 
-    def __init__(self, model, attr, *args, **kwargs):
+    def __init__(self, model, attribute, *args, **kwargs):
         """
         Get and set up the choices for the field from the database.
         Take a model to query, and the standard djagno '__' delimited syntax for related models.
@@ -21,16 +21,17 @@ class QueryChoiceMixin(object):
         # NOTE: form.  See tests for examples.
 
         # Split the attr into it's components
-        components = attr.split('__')
-        # Get the last part of the attr, which is the ultimate attribute we're after
-        attr = components.pop()
+        self.attribute = attribute
+        components = self.attribute.split('__')
+        # Get the last part of the attribute, which is the ultimate attribute we're after
+        attr_name = components.pop()
 
         for component in components:
             # Progessively get the related models that are in the components
             model = model._meta.get_field(component).related_model
 
         # Now get the field of the model
-        model_field = model._meta.get_field(attr)
+        model_field = model._meta.get_field(attr_name)
 
         if len(model_field.choices) > 0:
             # The field has predefined choices, use those
@@ -41,7 +42,7 @@ class QueryChoiceMixin(object):
             choices = [(model.pk, "{0}".format(model)) for model in related_model.objects.all()]
         else:
             # Get distinct values for attribute of the model from the database, and build choices like [(val, val) ...]
-            choices = model.objects.all().values_list(attr, attr).distinct().order_by(attr)
+            choices = model.objects.all().values_list(attr_name, attr_name).distinct().order_by(attr_name)
 
         return super().__init__(choices=choices, required=False, *args, **kwargs)
 
