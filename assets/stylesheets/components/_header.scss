@@ -37,7 +37,8 @@
       text-transform: uppercase;
 
       @include media (mobile) {
-        border-bottom: 1px solid $white;
+        border-bottom: 1px solid $light-grey;
+        border-bottom-color: $lighter-grey-opacity;
         display: block;
         margin-left: 20px;
         margin-right: 20px;
@@ -125,7 +126,7 @@
       }
 
       &--open {
-        background-color: $aqua;
+        border-bottom: 4px solid $lighter-grey;
         color: $white;
 
         &:after {
@@ -137,6 +138,7 @@
 
       &:focus {
         color: $white;
+        outline: 0;
       }
 
       @include media (mobile) {

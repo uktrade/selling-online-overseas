@@ -34,21 +34,23 @@
 
   .footer-links {
 
-    li {
-      margin-bottom: 6px;
+    margin-bottom: 6px;
 
-      a {
-        border-bottom: 1px solid $light-grey;
-        border-bottom: 1px solid $lighter-grey-opacity;
-        color: $white;
-        margin-left: 50px;
-        padding-bottom: 2px;
-        text-decoration: none;
-        text-transform: capitalize;
+    a {
+      border-bottom: 1px solid $light-grey;
+      border-bottom-color: $lighter-grey-opacity;
+      color: $white;
+      margin-left: 50px;
+      padding-bottom: 2px;
+      text-decoration: none;
+      text-transform: capitalize;
 
-        @include media (mobile) {
-          margin-left: 0;
-        }
+      &:hover {
+        border-bottom: 1px dashed $white;
+      }
+
+      @include media (mobile) {
+        margin-left: 0;
       }
     }
 
@@ -74,7 +76,7 @@
     &-section {
       @include media (mobile) {
         border-top: 1px solid $light-grey;
-        border-top: 1px solid $lighter-grey-opacity;
+        border-top-color: $lighter-grey-opacity;
         padding: 30px 0;
       }
 
