@@ -48,7 +48,7 @@ main {
   }
 
   &-lighter-grey {
-    color: $light-grey;
+    color: $lighter-grey;
   }
 
   &-light {
@@ -66,6 +66,9 @@ h6 {
 }
 
 a {
+
+  @include prefix((tap-highlight-color: transparent), webkit);
+
   &:focus {
     background-color: $aqua;
     outline: 3px solid $aqua;

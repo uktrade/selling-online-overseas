@@ -6,5 +6,9 @@
 
   &-control {
     height: $form-field-height;
+
+    &:focus {
+      outline: 3px solid $aqua;
+    }
   }
 }
