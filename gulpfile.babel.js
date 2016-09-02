@@ -117,7 +117,8 @@ gulp.task('lint:sass', () => gulp
             'no-mergeable-selectors': 1, // Severity 1 (warning)
             'pseudo-element': 0,
             'no-ids': 0,
-            'mixins-before-declarations': 0
+            'mixins-before-declarations': 0,
+            'no-duplicate-properties': 0
         }
     }))
     .pipe(plugins.sassLint.format(stylish))

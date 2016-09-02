@@ -21,7 +21,7 @@
       <link rel="icon" type="image/png" href="{% static "images/favicon.ico" %}">
     {% endblock head_favicon %}
     {% block head_css %}
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
       <link href="{% static "stylesheets/govuk-template.css" %}" rel="stylesheet" media="screen">
       <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
     {% endblock head_css %}
@@ -103,7 +103,7 @@
               <a href="https://www.gov.uk" title="Go to the GOV.UK homepage">
                 <img src="/static/images/footer_logo.png" alt="" class="footer-img footer-img--top">
               </a>
-              <p class="font-white font-xxxsmall">&copy; Crown Copyright {% now 'Y' %}</p>
+              <p class="font-white font-xxxsmall font-lighter-grey font-light">&copy; Crown Copyright {% now 'Y' %}</p>
               <a href="https://www.gov.uk" title="Go to the GOV.UK homepage">
                 <img src="/static/images/EiG-logo.png" alt="" class="footer-img footer-img--bottom">
               </a>
@@ -127,7 +127,7 @@
             <div class="footer-section">
               <h3>Get your guide to exporting</h3>
               <form>
-                <label class="form-label" for="full-name-f1">Enter your email address</label>
+                <label class="form-label font-light" for="full-name-f1">Enter your email address</label>
                 <input class="form-control" id="full-name-f1" type="text">
                 <button class="button button-red button-large" type="submit">Submit</button>
               </form>

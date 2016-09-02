@@ -16,7 +16,7 @@
   }
 
   .header-nav {
-    padding-top: 15px;
+    padding-top: 18px;
 
     @include media (mobile) {
       display: none;
@@ -30,8 +30,8 @@
     }
 
     &-link {
+      @extend %medium;
       display: inline-block;
-      font-weight: bold;
       list-style-type: none;
       padding-left: 22px;
       text-transform: uppercase;
@@ -60,6 +60,7 @@
         padding-bottom: 4px;
         text-decoration: none;
 
+
         &:hover,
         &.active {
           border-bottom: 4px solid $great-secondary;
@@ -73,6 +74,16 @@
               height: 10px;
               left: -20px;
               position: absolute;
+            }
+          }
+        }
+
+        &:hover {
+          border-color: $lighter-grey;
+
+          @include media (mobile) {
+            &:before {
+              border-color: $lighter-grey;
             }
           }
         }
@@ -114,12 +125,18 @@
       }
 
       &--open {
+        background-color: $aqua;
+        color: $white;
 
         &:after {
           border-bottom: 8px solid $great-secondary;
           border-top: 0;
           top: 5px;
         }
+      }
+
+      &:focus {
+        color: $white;
       }
 
       @include media (mobile) {

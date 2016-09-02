@@ -3,6 +3,24 @@ main {
   font-family: $brand-font-family;
 }
 
+// FONT WEIGHT
+%light {
+  font-weight: 300;
+}
+
+%regular {
+  font-weight: 400;
+}
+
+%medium {
+  font-weight: 500;
+}
+
+// FONT SIZES
+%lede {
+  font-size: 24px;
+}
+
 %font-regular {
   font-size: 18px;
 }
@@ -28,6 +46,14 @@ main {
   &-white {
     color: $white;
   }
+
+  &-lighter-grey {
+    color: $light-grey;
+  }
+
+  &-light {
+    @extend %light;
+  }
 }
 
 h1,
@@ -36,7 +62,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: bold;
+  @extend %medium;
 }
 
 a {

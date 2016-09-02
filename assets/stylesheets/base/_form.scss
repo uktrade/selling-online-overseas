@@ -1,0 +1,10 @@
+.form {
+  &-label {
+    @extend %font-regular;
+    font-family: $brand-font-family;
+  }
+
+  &-control {
+    height: $form-field-height;
+  }
+}
