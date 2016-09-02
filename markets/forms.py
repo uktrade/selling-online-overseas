@@ -25,7 +25,8 @@ class FilteringForm(ModelQueryForm):
 
 class MarketFilterForm(ModelQueryForm):
     """
-    The filters that appear on the results listing page, for furhter filtering of Markets
+    The filters that appear on the results listing page, for furhter filtering of Markets.
+    NOTE: The query_fields on this form must be a superset of those on the FitleringForm class
     """
 
     class Meta:

@@ -33,17 +33,17 @@ class MarketListTests(TestCase):
         ebay = create_market(name="Ebay", countries_served=[uk, fr])
 
         # Filter the list of markets on country is uk, and check we get both markets
-        response = self.client.get(reverse('markets:list'), {'countries_served__name': 'uk'})
+        response = self.client.get(reverse('markets:list'), {'countries_served': 'uk'})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
         # Filter on country name is france, and check we get ebay, but not amazon
-        response = self.client.get(reverse('markets:list'), {'countries_served__name': 'france'})
+        response = self.client.get(reverse('markets:list'), {'countries_served': 'france'})
         self.assertNotContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
         # Filter on an incorrect country name, we should get neither market
-        response = self.client.get(reverse('markets:list'), {'countries_served__name': 'us'})
+        response = self.client.get(reverse('markets:list'), {'countries_served': 'us'})
         self.assertNotContains(response, amazon.name, status_code=200)
         self.assertNotContains(response, ebay.name, status_code=200)
 
@@ -61,7 +61,7 @@ class MarketListTests(TestCase):
 
         # Filter on a property of a related model, to a related model of the Market
         # Filter for Europe region, we should get both markets
-        response = self.client.get(reverse('markets:list'), {'countries_served__region__name': 'Europe'})
+        response = self.client.get(reverse('markets:list'), {'region': 'Europe'})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
@@ -71,7 +71,7 @@ class MarketListTests(TestCase):
         self.assertContains(response, ebay.name, status_code=200)
 
         # Filter for both countries, and make sure we don't get duplicates
-        response = self.client.get(reverse('markets:list'), {'countries_served__name': ['uk', 'france']})
+        response = self.client.get(reverse('markets:list'), {'countries_served': ['uk', 'france']})
         markets = response.context_data['object_list']
         self.assertEqual(len(markets), 2)
         self.assertIn(amazon, markets)

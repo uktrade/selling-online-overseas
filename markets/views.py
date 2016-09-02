@@ -63,7 +63,28 @@ class MarketListView(ListView):
 
         _filter = {}
 
+        # Initialise a form with the GET data
+        form = MarketFilterForm(self.request.GET)
+
+        for bound_field in form:
+            # Strip the '*'s from the submitted values
+            values = bound_field.value()
+            if values is None:
+                continue
+
+            stripped_items = [x for x in values if x != '*']
+
+            if not stripped_items:
+                # No values left after stripping '*'s, so skip this one
+                continue
+
+            _filter["{}__in".format(bound_field.field.attribute)] = stripped_items
+
         for key, items in self.request.GET.lists():
+            if key in form.fields:
+                # This is a form field, already dealt with above
+                continue
+
             # Get all get params to make into filters, ignoring '*'
             stripped_items = [x for x in items if x != '*']
             if not stripped_items:
