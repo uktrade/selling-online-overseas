@@ -189,15 +189,42 @@
         </dl>
       </div>
 
-      <div class='grid-row detail-row consider-row'>
-        <h3>Things you need to consider</h3>
+      <div class='grid-row detail-row consider-row push--bottom'>
+        <h3>Things you need to consider before you start selling in {{market|countries}}</h3>
         <p>{{ market.things_to_consider|safe }}</p>
       </div>
 
-      <div class='grid-row next-steps'>
-        <h2>Next steps</h2>
-        <p>To register interest and start the process please fill out this form.</p>
-        <a href='#TODO' class='button'>Register your interest</a>
+      <div class='grid-row detail-row'>
+        <h3>Next steps</h3>
+        <ul>
+          <li class='column-one-third'>
+            <div class='background--grey-dark soft'>
+              <p>To start the application process, fill out this form on the {{ market.name }} website.</p>
+              <p class="font-xxsmall soft--bottom">{{ market.name }} usually contact sellers within 5 business days.</p>
+              <div class="text--center soft--bottom">
+                <a href='#TODO' class='button button-blue'>Go to Amazon</a>
+              </div>
+            </div>
+          </li>
+          <li class='column-one-third'>
+            <div class='background--grey-dark soft'>
+              <p>If you have any outstanding questions and need further assitance contact UKTI.</p>
+              <p class="font-xxsmall soft--bottom">UKTI has a long waiting list, we usually get back to you within 14 days</p>
+              <div class="text--center soft--bottom">
+                <a href='#TODO' class='button button-blue'>Contact UKTI</a>
+              </div>
+            </div>
+          </li>
+          <li class='column-one-third'>
+            <div class='background--grey-dark soft'>
+              <p>Get a list of trusted aggregator companies who can do the hard work for you.</p>
+              <p class="font-xxsmall soft--bottom">Most aggregators will contact you within 2 business days.</p>
+              <div class="text--center soft--bottom">
+                <a href='#TODO' class='button button-blue'>Get an aggregator</a>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
 
     {% endblock content %}
