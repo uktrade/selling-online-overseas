@@ -17,6 +17,13 @@
 
         .links {
           order: 2;
+
+          .footer-section {
+
+            @include media (mobile) {
+              column-count: 2;
+            }
+          }
         }
 
         .subscribe   {
@@ -52,10 +59,6 @@
       @include media (mobile) {
         margin-left: 0;
       }
-    }
-
-    @include media (mobile) {
-      column-count: 2;
     }
   }
 
