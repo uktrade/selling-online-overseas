@@ -1,7 +1,9 @@
+var url = process.env.TRAVIS ? 'http://ukti-navigator-staging.herokuapp.com' : 'http://localhost:8000';
+
 module.exports = {
     navigate: {
-        home: 'http://localhost:8000/3/',
-        filtering: 'http://localhost:8000/3/filter/',
-        list: 'http://localhost:8000/3/markets/'
+        home: url+'/markets/',
+        filtering: url+'/markets/filter/',
+        list: url+'/markets/search'
     }
 };
