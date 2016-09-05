@@ -1,11 +1,17 @@
 var menu = (function ($) {
-    var toogleButtom = $('.header-nav-toggle'),
+    var toggleButton = $('.header-nav-toggle'),
         menu = $('.header-nav');
 
-    toogleButtom.click(function(event) {
+    toggleButton.click({ button: toggleButton, menu: menu }, toggle);
+
+    function toggle (event){
         event.preventDefault();
-        $(this).toggleClass('header-nav-toggle--open');
-        menu.toggleClass( "open");
-    });
+        $(event.data.button).toggleClass('header-nav-toggle--open');
+        $(event.data.menu).toggleClass( "open");
+    }
+
+    return {
+        toggle: toggle
+    };
 
 })(jQuery);

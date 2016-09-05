@@ -32,13 +32,12 @@ describe('Filter', function() {
 
     before(function() {
         $('body').append(html);
+        init('product_categories');
     });
 
     describe('Click on the same tab', function () {
 
         it('Should activate clicked tab', function () {
-
-            init('product_categories');
 
             filter.toggle.call(clickItem, e);
 
@@ -48,8 +47,6 @@ describe('Filter', function() {
         });
 
         it('Should deactivate clicked tab', function () {
-
-            init('product_categories');
 
             filter.toggle.call(clickItem, e);
 
@@ -62,8 +59,6 @@ describe('Filter', function() {
     describe('Click on different tabs', function () {
 
         it('Should activate first tab', function () {
-
-            init('product_categories');
 
             filter.toggle.call(clickItem, e);
 
@@ -88,10 +83,8 @@ describe('Filter', function() {
 
         it('Should close the filter form', function () {
 
-            init('product_categories');
 
             filter.toggle.call(clickItem, e);
-
 
             filter.closeForm.call(closeButton, e);
 
