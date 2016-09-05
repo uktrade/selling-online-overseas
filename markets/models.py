@@ -97,6 +97,7 @@ class Market(models.Model):
     product_categories = models.ManyToManyField(ProductCategory)
 
     web_traffic = models.CharField(max_length=30, null=True, blank=True)
+    famous_brands_on_marketplace = models.ManyToManyField(Brand, blank=True)
 
     customer_support_channels = models.ManyToManyField(SupportChannel, blank=True,
                                                        related_name="%(app_label)s_%(class)s_customer_related")
@@ -104,6 +105,8 @@ class Market(models.Model):
                                                      related_name="%(app_label)s_%(class)s_seller_related")
 
     customer_demographics = RichTextField(null=True, blank=True)
+
+    marketing_merchandising = RichTextField(null=True, blank=True)
 
     product_details_upload = models.ManyToManyField(UploadMethod, blank=True,
                                                     verbose_name="Product Details upload process")

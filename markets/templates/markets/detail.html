@@ -17,14 +17,12 @@
         <div class='column-one-half'>
           <img src='{{ market.logo.base64_logo }}' width='100' height='100' alt=''>
           <dl>
-            <dt>Region:</dt>
-            <dd>{{market|regions}}</dd>
-            <dt>Countries served:</dt>
-            <dd>{{market|countries}}</dd>
+            <dt>Countries:</dt>
+            <dd>{{ market | csl:'countries_served' }}</dd>
             <dt>Website:</dt>
-            <dd><a href='{{market.web_address}}'>{{market.web_address}}</a></dd>
+            <dd><a href='{{market.web_address}}'>{{ market.web_address }}</a></dd>
           </dl>
-          <p>{{ market.description|safe }}</p>
+          <p>{{ market.description }}</p>
         </div>
         <div class='column-one-half'>
           <div class='detail-ukti-terms'>
@@ -35,13 +33,13 @@
                 <p class="font-xxsmall flush--bottom flush--top">unique visitors / month</p>
               </li>
               <li class="list list-market--extra">
-                <div class="font-xxsmall flush--bottom flush--top">{{ market.misc11|safe }}</div>
+                <div class="font-xxsmall flush--bottom flush--top"></div>
               </li>
               <li class="list list-market--extra">
-                <div class="font-xxsmall flush--bottom flush--top">{{ market.misc12|safe }}</div>
+                <div class="font-xxsmall flush--bottom flush--top"></div>
               </li>
               <li class="list list-market--extra">
-                <div class="font-xxsmall flush--bottom flush--top">{{ market.misc13|safe }}</div>
+                <div class="font-xxsmall flush--bottom flush--top"></div>
               </li>
             </ul>
           </div>
@@ -52,16 +50,12 @@
         <h3>Site</h3>
         <dl>
           <li>
-            <dt>Site traffic</dt>
+            <dt>Customer Base</dt>
             <dd>{{ market.web_traffic }} unique visitors / month</dd>
           </li>
-          <li>
-            <dt>Platform type</dt>
-            <dd>{{ market.platform_type }}</dd>
-          </li>
-          <li>
-            <dt>Demographic profile</dt>
-            <dd>{{ market.misc14|safe }}</dd>
+          <li class='wider'>
+            <dt>Customer profile</dt>
+            <dd>{{ market.customer_demographics|safe }}</dd>
           </li>
         </dl>
       </div>
@@ -70,37 +64,25 @@
         <h3>Products</h3>
         <dl>
           <li>
-            <dt>Product categories</dt>
-            <dd>{% for category in market.product_categories.all %}{{ category }}{% if not forloop.last %}, {% endif %}{% endfor %}</dd>
+            <dt>Seller model</dt>
+            <dd>{{ market.get_logistics_structure_display }}</dd>
           </li>
           <li>
             <dt>Positioning</dt>
             <dd>{{ market.get_product_type_display }}</dd>
           </li>
           <li>
-            <dt>Product upload process</dt>
-            <dd>{{ market.misc15|safe }}</dd>
+            <dt>Well-known brands on platform</dt>
+            <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
           </li>
           <hr>
-          <li class='wider breaker'>
-            <dt>Customer Service &amp; Returns</dt>
-            <dd>{{ market.buyers_customer_service|safe }}</dd>
-          </li>
           <li>
             <dt>Customer Support</dt>
-            <dd>{{ market.misc16|safe }}</dd>
+            <dd>{{ market | csl:'customer_support_channels' }}</dd>
           </li>
-          <li class='breaker'>
-            <dt>Local return address</dt>
-            <dd>{{ market.misc17|safe }}</dd>
-          </li>
-          <li>
-            <dt>Return rates</dt>
-            <dd>{{ market.misc18|safe }}</dd>
-          </li>
-          <li>
+          <li class='wider'>
             <dt>Marketing &amp; Merchandising</dt>
-            <dd>{{ market.misc19|safe }}</dd>
+            <dd>{{ market.marketing_merchandising | safe }}</dd>
           </li>
         </dl>
       </div>
@@ -109,24 +91,40 @@
         <h3>On Boarding</h3>
         <dl>
           <li>
-            <dt>Local incorporation</dt>
-            <dd>{{ market.misc20|safe }}</dd>
+            <dt>Local back account required</dt>
+            <dd>{{ market.local_bank_account_needed }}</dd>
           </li>
           <li>
-            <dt>Local back account</dt>
-            <dd>{{ market.misc21|safe }}</dd>
+            <dt>Local incorporation</dt>
+            <dd>{{ market.local_incorporation_needed }}</dd>
           </li>
           <li>
             <dt>Exclusivity</dt>
-            <dd>{{ market.misc22|safe }}</dd>
+            <dd>{{ market.exclusivity_required }}</dd>
           </li>
           <li class='breaker'>
             <dt>Logistics structure</dt>
             <dd>{{ market.get_logistics_structure_display }}</dd>
           </li>
           <li>
-            <dt>Transalation</dt>
-            <dd>{{ market.misc23|safe }}</dd>
+            <dt>Shipping tracking</dt>
+            <dd>{{ market.shipping_tracking_required }}</dd>
+          </li>
+          <li>
+            <dt>Local return address</dt>
+            <dd>{{ market.local_return_address_required }}</dd>
+          </li>
+          <li class='breaker'>
+            <dt>Product details upload process</dt>
+            <dd>{{ market | csl:'product_details_upload' }}</dd>
+          </li>
+          <li>
+            <dt>Translation</dt>
+            <dd></dd>
+          </li>
+          <li>
+            <dt>Seller support</dt>
+            <dd>{{ market | csl:'seller_support_channels' }}</dd>
           </li>
         </dl>
       </div>
@@ -136,15 +134,11 @@
         <dl>
           <li>
             <dt>Payment time</dt>
-            <dd>{{ market.misc24|safe }}</dd>
+            <dd>{{ market.payment_terms_days }}</dd>
           </li>
-          <li>
-            <dt>Exchange rate</dt>
-            <dd>{{ market.misc25|safe }}</dd>
-          </li>
-          <li>
-            <dt>Lifetime</dt>
-            <dd>{{ market.misc26|safe }}</dd>
+          <li class='wider'>
+            <dt>Currency of payment</dt>
+            <dd>{{ market | csl:'currency_of_payments' }}</dd>
           </li>
         </dl>
       </div>
@@ -154,23 +148,27 @@
         <dl>
           <li>
             <dt>Registration fee</dt>
-            <dd>{{ market.registration_fees|safe }}</dd>
+            <dd>{{ market.registration_fees }}</dd>
           </li>
-          <li class='wider'>
-            <dt>Commision</dt>
-            <dd>{{ market.referral_fees|safe }}</dd>
+          <li>
+            <dt>Membership fee</dt>
+            <dd>{{ market.membership_fees }}</dd>
           </li>
-          <li class='breaker'>
-            <dt>Bond required</dt>
-            <dd>{{ market.misc26|safe }}</dd>
-          </li>
-          <li class='wider'>
-            <dt>Additional fees</dt>
-            <dd>{{ market.additional_fees|safe }}</dd>
+          <li>
+            <dt>Listing fee</dt>
+            <dd>{{ market.fee_per_listing }}</dd>
           </li>
           <li class='ukti-terms breaker'>
             <dt>UKTI Terms</dt>
             <dd>{{ market.ukti_terms|safe }}</dd>
+          </li>
+          <li>
+            <dt>Deposit</dt>
+            <dd></dd>
+          </li>
+          <li>
+            <dt>Commision</dt>
+            <dd>{{ market.commission }}</dd>
           </li>
         </dl>
       </div>
@@ -190,7 +188,7 @@
       </div>
 
       <div class='grid-row detail-row consider-row push--bottom'>
-        <h3>Things you need to consider before you start selling in {{market|countries}}</h3>
+        <h3>Things you need to consider before you start selling in {{ market | csl:'countries_served' }}</h3>
         <p>{{ market.things_to_consider|safe }}</p>
       </div>
 
@@ -226,22 +224,21 @@
           </li>
         </ul>
       </div>
-
-    {% endblock content %}
-
-    {% block feedback %}{# deliberately blank #}{% endblock %}
-
-    {% block footer %}
-      <div class="footer-wrapper">
-        <div class="grid-row background--grey push--top soft">
-          <div class="soft-half">
-            <p class="float--left soft-half--top flush--ends push--right">Was this page helpful?</p>
-            <button class="button button-border push-half--right">Yes</button>
-            <button class="button button-border">No</button>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
+{% endblock content %}
+
+{% block feedback %}{# deliberately blank #}{% endblock %}
+
+{% block footer %}
+  <div class="footer-wrapper">
+    <div class="grid-row background--grey push--top soft">
+      <div class="soft-half">
+        <p class="float--left soft-half--top flush--ends push--right">Was this page helpful?</p>
+        <button class="button button-border push-half--right">Yes</button>
+        <button class="button button-border">No</button>
+      </div>
+    </div>
+  </div>
 {% endblock footer %}
