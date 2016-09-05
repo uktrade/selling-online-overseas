@@ -3,7 +3,8 @@ from django import forms
 from core.forms import (
     QueryChoiceField, QueryMultipleCheckboxField, QueryRadioField, QueryMultipleChoiceField, ModelQueryForm
 )
-from .models import Market, Logo, Region
+from geography.models import Region
+from .models import Market, Logo
 
 
 class FilteringForm(ModelQueryForm):
