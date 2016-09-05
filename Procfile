@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn navigator.wsgi
+web: python manage.py migrate --noinput && gunicorn navigator.wsgi
