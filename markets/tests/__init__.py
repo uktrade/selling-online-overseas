@@ -1,5 +1,6 @@
 import os
-from markets.models import Market, Logo, Country, Region
+from markets.models import Market, Logo
+from geography.models import Country, Region
 
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))

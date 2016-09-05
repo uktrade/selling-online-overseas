@@ -7,6 +7,8 @@ from django.utils import timezone
 
 from ckeditor.fields import RichTextField
 
+from geography.models import Country
+
 # SAMPLE DATA
 PLATFORM_BRAND_POSITION = (
     ('0', 'Luxury'),
@@ -18,19 +20,6 @@ LOGISTICS_MODELS = (
     ('0', 'Dropshipping'),
     ('1', 'Warehousing'),
     ('2', 'Other')
-)
-
-# SAMPLE DATA
-# Pulled from https://en.wikipedia.org/wiki/ISO_639
-LISTING_LANGUAGES = (
-    ('0', 'English (eng)'),
-    ('1', 'Spanish (spa)'),
-    ('2', 'Chinese', ('cdo'))
-)
-
-BOOLEAN = (
-    ('0', 'No'),
-    ('1', 'Yes')
 )
 
 
@@ -53,28 +42,6 @@ class Logo(models.Model):
 
     def __str__(self):
         return "{0}".format(self.name)
-
-
-class Region(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return "{0}".format(self.name)
-
-    class Meta:
-        ordering = ('-name',)
-
-
-class Country(models.Model):
-    name = models.CharField(max_length=200)
-    region = models.ForeignKey(Region)
-
-    def __str__(self):
-        return "{0}".format(self.name)
-
-    class Meta:
-        verbose_name_plural = "Countries"
-        ordering = ('-name',)
 
 
 class SupportChannel(models.Model):
@@ -106,6 +73,16 @@ class Currency(models.Model):
 
     class Meta:
         verbose_name_plural = "Currencies"
+        ordering = ('-name',)
+
+
+class Brand(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return "{0}".format(self.name)
+
+    class Meta:
         ordering = ('-name',)
 
 
