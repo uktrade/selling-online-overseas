@@ -1,5 +1,5 @@
 {% load staticfiles %}
-{% load utils %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -65,14 +65,7 @@
           <div class="grid-row">
             <div class="column-one-whole">
               <div class="breadcrumbs">
-                <ol>
-                  {% breadcrumblink request.GET.urlencode 'region' as categories %}
-                  {% breadcrumblink request.GET.urlencode 'product_categories' as market %}
-                  {% breadcrumblink request.GET.urlencode 'region' 'product_categories'   as markets %}
-                  <li><a href="/">Home</a></li>
-                  {% if categories %}<li><a href="/step-two?{{ categories }}">Categories</a></li>{% endif %}
-                  {% if market %}<li><a href="/markets?{{ markets }}">Markets</a></li>{% endif %}
-                </ol>
+                {# Left blank until we know the user journey #}
               </div>
             </div>
           </div>
