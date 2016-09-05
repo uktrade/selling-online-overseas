@@ -3,8 +3,8 @@
 
   .header-wrapper {
     background-color: $great-primary;
-    padding-bottom: 15px;
-    padding-top: 20px;
+    padding-bottom: 7px;
+    padding-top: 10px;
   }
 
   .header-main-logo {
@@ -15,8 +15,14 @@
     }
   }
 
+  .header-hm-logo {
+    @include media (mobile) {
+      display: none;
+    }
+  }
+
   .header-nav {
-    padding-top: 18px;
+    padding-top: 35px;
 
     @include media (mobile) {
       display: none;
@@ -111,7 +117,7 @@
       right: 25px;
       text-decoration: none;
       text-transform: uppercase;
-      top: 33px;
+      top: 21px;
 
       &:after {
         border-left: 5px solid transparent;
