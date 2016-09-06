@@ -60,7 +60,7 @@
                     <div class="push--left">
                       <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
                       <ul>
-                        <li class="list-market--info">Country: {{ market|countries }}</li>
+                        <li class="list-market--info">Country: {{ market|csl:'countries_served' }}</li>
                         <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a></li>
                       </ul>
                     </div>

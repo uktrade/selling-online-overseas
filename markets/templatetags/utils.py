@@ -5,21 +5,6 @@ from django import template
 register = template.Library()
 
 
-@register.simple_tag
-def breadcrumblink(query, *params):
-    """
-    Format query string, according passed paramseters
-    """
-    par = urllib.parse.parse_qs(query)
-    queryparams = ''
-    for param in params:
-        if param in par:
-            for value in par[param]:
-                queryparams += "{0}={1}&".format(param, value)
-
-    return queryparams[:-1].replace(' ', '+')
-
-
 @register.filter(name='regions')
 def get_regions(market):
     """
@@ -35,12 +20,17 @@ def get_regions(market):
     return ", ".join(region_list)
 
 
-@register.filter(name='countries')
-def get_countries(market):
+@register.filter(name='csl')
+def comma_separated_list(obj, attr):
     """
-    Get a comma-separated list of countries the Market's serves
+    Get a command-separated list of values from a ManyToMany field
     """
 
-    country_list = list(set([str(country) for country in market.countries_served.all()]))
-    country_list.sort(key=lambda country: country)
-    return ", ".join(set(country_list))
+    field = getattr(obj, attr)
+    all_method = getattr(field, 'all', None)
+    if all_method is None:
+        return None
+
+    value_list = list(set([str(item) for item in all_method()]))
+    value_list.sort(key=lambda item: item)
+    return ", ".join(set(value_list))

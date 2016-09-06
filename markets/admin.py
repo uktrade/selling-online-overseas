@@ -32,6 +32,8 @@ class MarketAdmin(admin.ModelAdmin):
                 ('platform_type', 'product_type'),
                 ('customer_support_channels', 'seller_support_channels'),
                 'customer_demographics',
+                'famous_brands_on_marketplace',
+                'marketing_merchandising',
             )
         }),
         ('On-Boarding/Application', {
