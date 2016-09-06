@@ -1,9 +1,13 @@
 import json
+import ast
 
 from django.http import JsonResponse
 from django.views.generic import ListView, DetailView, FormView, TemplateView
+from django.forms import TypedChoiceField
+
 from .models import Market
-from .forms import MarketFilterForm, FilteringForm
+from .forms import MarketListFilterForm, InitialFilteringForm
+from core.forms import QueryChoiceMixin
 
 
 class HomepageView(TemplateView):
@@ -19,7 +23,7 @@ class FilteringView(FormView):
     The first step in the tool, used to pre-filter the marketplaces
     """
 
-    form_class = FilteringForm
+    form_class = InitialFilteringForm
     template_name = 'markets/filtering.html'
 
     def get_context_data(self, *args, **kwargs):
@@ -46,8 +50,34 @@ class MarketListView(ListView):
         """
 
         context = super().get_context_data(*args, **kwargs)
-        context['form'] = MarketFilterForm(self.request.GET)
+        context['form'] = MarketListFilterForm(self.request.GET)
         return context
+
+    def _clean_params(self):
+        """
+        Clean up the GET params, discarding empty values, values = '*', and try to infer the correct type of each
+        """
+
+        get_params = {}
+
+        for key, items in self.request.GET.lists():
+            # For each submitted item, clean up the values
+            cleaned_items = []
+            for item in items:
+                # We don't want '' or '*'
+                if item != '*' and item != '':
+                    try:
+                        # Try and convert to true types, e.g. 'True' to True, and '1' to 1
+                        cleaned_items.append(ast.literal_eval(item))
+                    except (ValueError, SyntaxError):
+                        # Failed to get a literal, just use the supplied string
+                        cleaned_items.append(item)
+
+            # Discard any attributes that had no valid values submitted
+            if len(cleaned_items) > 0:
+                get_params[key] = cleaned_items
+
+        return get_params
 
     def get_queryset(self):
         """
@@ -56,38 +86,33 @@ class MarketListView(ListView):
         into __in selectors
 
         eg. URL args of:
-                ?name=Foo&countries_served__name=uk&invalid_property=blah
+                ?name=Foo&countries_served__name=uk&boolen_field=True&invalid_property=blah
             will be result in:
-                Market.objects.filter(name__in=['Foo'], countries_served__name=['uk'])
+                Market.objects.filter(name__in=['Foo'], countries_served__name=['uk'], boolen_field__in=[True])
         """
 
+        # Get the cleaned get parameters
+        get_params = self._clean_params()
+
+        # Initialise a form with the cleaned GET data
+        form = MarketListFilterForm(get_params)
+
+        # Create a filter dictionary to store the requested filters
         _filter = {}
 
-        # Initialise a form with the GET data
-        form = MarketFilterForm(self.request.GET)
-
         for bound_field in form:
-            # Strip the '*'s from the submitted values
-            values = bound_field.value()
-            if values is None:
-                continue
+            if isinstance(bound_field.field, QueryChoiceMixin):
+                attr = bound_field.field.attribute
+            else:
+                attr = bound_field.name
 
-            stripped_items = [x for x in values if x != '*']
+            value = bound_field.value()
+            if value is not None:
+                _filter["{}__in".format(attr)] = value
 
-            if not stripped_items:
-                # No values left after stripping '*'s, so skip this one
-                continue
-
-            _filter["{}__in".format(bound_field.field.attribute)] = stripped_items
-
-        for key, items in self.request.GET.lists():
+        for key, items in get_params.items():
             if key in form.fields:
                 # This is a form field, already dealt with above
-                continue
-
-            # Get all get params to make into filters, ignoring '*'
-            stripped_items = [x for x in items if x != '*']
-            if not stripped_items:
                 continue
 
             attr = key.split('__')[0]
@@ -96,7 +121,7 @@ class MarketListView(ListView):
                 Market._meta.get_field(attr)
 
                 # Turn the property into a filter selector, need to use __in since it's a list of values
-                _filter["{}__in".format(key)] = stripped_items
+                _filter["{}__in".format(key)] = items
             except:
                 # Ignore GET params that aren't on the model
                 pass
