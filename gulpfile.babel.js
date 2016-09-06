@@ -139,7 +139,7 @@ gulp.task('lint',
 gulp.task('protractor:e2e', ['webdriver_update'], (callback) => gulp
     .src(['example_spec.js'])
     .pipe(protractor({
-        'configFile': './apps/test/e2e/conf.js',
+        'configFile': 'assets/test/e2e/conf.js',
         'debug': false,
         'autoStartStopServer': true
     })).on('error', function(e) {

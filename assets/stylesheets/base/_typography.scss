@@ -67,7 +67,7 @@ h6 {
 
 a {
 
-  @include prefix((tap-highlight-color: transparent), webkit);
+  @include prefix((tap-highlight-color: $aqua), webkit);
 
   &:focus {
     background-color: $aqua;
