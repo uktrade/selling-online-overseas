@@ -60,16 +60,14 @@
                     <div class="push--left">
                       <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
                       <ul>
-                        <li class="list-market--info">Country: {{ market|csl:'countries_served' }}</li>
-                        <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a></li>
+                        <li class="list-market--info">Countries: {{ market|csl:'countries_served' }}</li>
+                        <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address }}</a></li>
                       </ul>
                     </div>
                   </div>
                 </div>
-                <p class="soft--top column-one-whole hard--left">{{ market.description|safe }}</p>
-                <a class="button button-blue push-half--right" href="{% url 'markets:detail' market.id %}">More details</a>
-                <a class="button button-transparent" href="{% url 'markets:detail' market.id %}">Shortlist</a>
-
+                <p class="soft--top column-one-whole hard--left">{{ market.description }}</p>
+                <a class="button button-blue push-half--right" href="{% url 'markets:detail' market.id %}">Full Profile</a>
               </div>
             </div>
             <div class="column-two-fifths background--grey">
@@ -81,13 +79,10 @@
                   <p class="font-xxsmall flush--bottom flush--top">unique visitors / month</p>
                 </li>
                 <li class="list list-market--extra">
-                  <div class="font-xxsmall flush--bottom flush--top">{{ market.misc11|safe }}</div>
+                  <div class="font-xxsmall flush--bottom flush--top"><!-- TODO --></div>
                 </li>
                 <li class="list list-market--extra">
-                  <div class="font-xxsmall flush--bottom flush--top">{{ market.misc12|safe }}</div>
-                </li>
-                <li class="list list-market--extra">
-                  <div class="font-xxsmall flush--bottom flush--top">{{ market.misc13|safe }}</div>
+                  <div class="font-xxsmall flush--bottom flush--top"><!-- TODO --></div>
                 </li>
               </ul>
             </div>
