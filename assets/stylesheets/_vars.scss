@@ -10,6 +10,7 @@ $light-stone: #f6f4f1;
 $grey: #4a4a4a;
 $light-grey: #777;
 $lighter-grey: #dce0df;
+$bright-grey: #fafafa;
 $purple: #4f0b7b;
 $mid-blue: #00549f;
 $aqua: #007ea3;
@@ -18,6 +19,9 @@ $lighter-grey-opacity: rgba(220, 224, 223, .5);
 
 // FONTS
 $brand-font-family: 'Roboto', sans-serif;
+
+//BODY
+$body-background-color: $bright-grey;
 
 // HEADER
 $logo-width: 300px;
