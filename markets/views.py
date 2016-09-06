@@ -1,9 +1,13 @@
 import json
+import ast
 
 from django.http import JsonResponse
 from django.views.generic import ListView, DetailView, FormView, TemplateView
+from django.forms import TypedChoiceField
+
 from .models import Market
 from .forms import MarketFilterForm, FilteringForm
+from core.forms import QueryChoiceMixin
 
 
 class HomepageView(TemplateView):
@@ -49,6 +53,37 @@ class MarketListView(ListView):
         context['form'] = MarketFilterForm(self.request.GET)
         return context
 
+    def _get_field_filter(self, field):
+        value = field.value()
+
+        if value is None:
+            return (None, None)
+
+        if isinstance(field.field, QueryChoiceMixin):
+            attr = field.field.attribute
+        else:
+            attr = field.name
+
+        if type(value) is not list:
+            value = [value]
+
+        # Strip the '*'s from the submitted values
+        cleaned_values = []
+        for val in value:
+            if val != '*' and val != '':
+                try:
+                    cleaned_value = ast.literal_eval(val)
+                except:
+                    cleaned_value = val
+
+                cleaned_values.append(cleaned_value)
+
+        if not cleaned_values:
+            # No values left after stripping '*'s, so skip this one
+            return (None, None)
+
+        return (attr, cleaned_values,)
+
     def get_queryset(self):
         """
         Filter the Markets based on GET parameters.  Parameters of '*' are ignored, as we need a way to pass certain
@@ -60,25 +95,15 @@ class MarketListView(ListView):
             will be result in:
                 Market.objects.filter(name__in=['Foo'], countries_served__name=['uk'])
         """
-
         _filter = {}
 
         # Initialise a form with the GET data
         form = MarketFilterForm(self.request.GET)
 
         for bound_field in form:
-            # Strip the '*'s from the submitted values
-            values = bound_field.value()
-            if values is None:
-                continue
-
-            stripped_items = [x for x in values if x != '*']
-
-            if not stripped_items:
-                # No values left after stripping '*'s, so skip this one
-                continue
-
-            _filter["{}__in".format(bound_field.field.attribute)] = stripped_items
+            attr, value = self._get_field_filter(bound_field)
+            if attr is not None:
+                _filter["{}__in".format(attr)] = value
 
         for key, items in self.request.GET.lists():
             if key in form.fields:
