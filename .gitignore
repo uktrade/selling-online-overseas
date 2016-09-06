@@ -107,3 +107,6 @@ assets/test/unit/coverage/
 
 # Whoosh search index
 whoosh_index*
+
+# nohup output
+nohup.out

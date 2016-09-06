@@ -28,7 +28,10 @@ display_result $? 1 "Code style check"
 npm test
 display_result $? 2 "Front end code tested and style check"
 
+./scripts/e2e.sh
+display_result $? 3 "End-to-end check"
+
 ## Code coverage
 python manage.py collectstatic --noinput
 coverage run --source='.' manage.py test
-display_result $? 2 "Code coverage"
+display_result $? 4 "Code coverage"
