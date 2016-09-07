@@ -61,11 +61,11 @@
 				<li class="push-half--bottom cf">
 				  <div class="column-one-third hard--left soft-half--right">
 					<div class="background--grey filters-container soft">
-					  <h3 class="filters-header push--bottom">Do you need local customer service?</h3>
+					  <h3 class="filters-header push--bottom">Product Category</h3>
 					  <fieldset class="inline">
 						<legend class="visuallyhidden">Do you already have a personal user account?</legend>
-						{% with form.local_customer_service as field %}
-						  {% include "markets/includes/radio.html" %}
+						{% with form.product_categories as field %}
+						  {% include "markets/includes/selectbox.html" %}
 						{% endwith %}
 					  </fieldset>
 					  <i class="icon icon-information"></i>
