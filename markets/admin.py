@@ -1,14 +1,17 @@
 from django.contrib import admin
 
-from .models import (Market, ProductCategory, Logo, SupportChannel, UploadMethod, Currency, Brand)
+from .models import (
+    Market, Logo, SupportChannel, UploadMethod, Currency, Brand, LogisticsModel, SellerModel
+)
 from .forms import LogoAdminForm
 
 
-admin.site.register(ProductCategory)
 admin.site.register(SupportChannel)
 admin.site.register(UploadMethod)
 admin.site.register(Currency)
 admin.site.register(Brand)
+admin.site.register(LogisticsModel)
+admin.site.register(SellerModel)
 
 
 class MarketAdmin(admin.ModelAdmin):
@@ -26,14 +29,14 @@ class MarketAdmin(admin.ModelAdmin):
         }),
         ('Platform Details', {
             'fields': (
-                'countries_served',
-                'product_categories',
-                'web_traffic',
-                ('platform_type', 'product_type'),
+                ('countries_served', 'web_traffic',),
+                ('product_categories', 'prohibited_items',),
+                ('seller_model', 'product_type'),
                 ('customer_support_channels', 'seller_support_channels'),
+                ('customer_support_hours', 'seller_support_hours'),
                 'customer_demographics',
-                'famous_brands_on_marketplace',
                 'marketing_merchandising',
+                'famous_brands_on_marketplace',
             )
         }),
         ('On-Boarding/Application', {
@@ -43,17 +46,18 @@ class MarketAdmin(admin.ModelAdmin):
                 ('translation_verbal', 'translation_verbal_notes',),
                 ('translation_application_process', 'translation_application_process_notes',),
                 ('translation_product_content', 'translation_product_content_notes',),
-                ('translation_customer_service', 'translation_customer_service_notes',),
+                ('translation_seller_support', 'translation_seller_support_notes',),
                 ('exclusivity_required', 'exclusivity_required_notes',),
-                'product_details_upload',
+                ('product_details_upload', 'product_details_upload_notes',),
             )
         }),
         ('Finance', {
             'fields': (
-                ('currency_of_payments', 'payment_terms_days', 'payment_terms_days_notes',),
-                ('commission', 'commission_notes',),
+                ('payment_terms_days', 'currency_of_payments',),
                 ('registration_fees', 'registration_fees_notes',),
-                ('membership_fees', 'membership_fees_notes',),
+                ('deposit_needed', 'deposit_amount',),
+                ('commission', 'commission_notes',),
+                ('membership_fees', 'membership_fees_frequency',),
                 ('fee_per_listing', 'fee_per_listing_notes',),
                 'ukti_terms',
             )
