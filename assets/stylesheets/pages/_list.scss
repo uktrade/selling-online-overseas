@@ -1,6 +1,5 @@
 li {
   &.list-market {
-
     &--item {
       border: 1px solid $grey-1;
       margin: 0 0 20px;
@@ -39,7 +38,11 @@ li {
 
 ul {
   &.list-market {
-    padding: 15px;
+    padding: 12px;
+
+    .list-left {
+      padding-left: 0;
+    }
   }
 }
 
