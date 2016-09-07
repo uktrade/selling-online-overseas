@@ -16,9 +16,9 @@ class FilteringForm(ModelQueryForm):
         model = Market
         fields = []
         query_fields = [
-            ('platform_type', QueryMultipleCheckboxField, 'platform_type'),
-            ('product_type', QueryChoiceField, 'product_type'),
-            ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure'),
+            ('seller_model', QueryMultipleCheckboxField, 'seller_model__name'),
+            ('product_type', QueryMultipleCheckboxField, 'product_type__name'),
+            ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure__name'),
             ('countries_served', QueryChoiceField, 'countries_served__name'),
             ('product_categories', QueryMultipleChoiceField, 'product_categories__name'),
         ]
@@ -34,9 +34,9 @@ class MarketFilterForm(ModelQueryForm):
         model = Market
         fields = []
         query_fields = [
-            ('platform_type', QueryMultipleCheckboxField, 'platform_type'),
-            ('product_type', QueryMultipleCheckboxField, 'product_type'),
-            ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure'),
+            ('seller_model', QueryMultipleCheckboxField, 'seller_model__name'),
+            ('product_type', QueryMultipleCheckboxField, 'product_type__name'),
+            ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure__name'),
             ('countries_served', QueryMultipleCheckboxField, 'countries_served__name'),
             ('product_categories', QueryMultipleCheckboxField, 'product_categories__name'),
             ('region', QueryMultipleCheckboxField, 'countries_served__region__name'),

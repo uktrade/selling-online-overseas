@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'contact',
     'markets',
     'geography',
+    'products',
 ]
 
 MIDDLEWARE_CLASSES = [
