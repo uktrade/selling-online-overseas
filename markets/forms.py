@@ -32,7 +32,12 @@ class MarketFilterForm(ModelQueryForm):
 
     class Meta:
         model = Market
-        fields = []
+        fields = ['local_bank_account_needed', 'local_incorporation_needed']
+        widgets = {
+            'local_bank_account_needed': forms.CheckboxSelectMultiple,
+            'local_incorporation_needed': forms.CheckboxSelectMultiple,
+        }
+
         query_fields = [
             ('seller_model', QueryMultipleCheckboxField, 'seller_model__name'),
             ('product_type', QueryMultipleCheckboxField, 'product_type__name'),
@@ -40,6 +45,8 @@ class MarketFilterForm(ModelQueryForm):
             ('countries_served', QueryMultipleCheckboxField, 'countries_served__name'),
             ('product_categories', QueryMultipleCheckboxField, 'product_categories__name'),
             ('region', QueryMultipleCheckboxField, 'countries_served__region__name'),
+            ('customer_support_channels', QueryMultipleCheckboxField, 'customer_support_channels'),
+            ('seller_support_channels', QueryMultipleCheckboxField, 'seller_support_channels'),
         ]
 
 
