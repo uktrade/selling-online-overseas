@@ -11,6 +11,8 @@
     }
 
     &-fifth {
+      @extend %padding-gutter-override;
+      box-sizing: border-box;
       float: left;
       width: 20%;
     }
@@ -19,6 +21,8 @@
   &-two {
 
     &-fifths {
+      @extend %padding-gutter-override;
+      box-sizing: border-box;
       float: left;
       width: 40%;
     }
@@ -28,6 +32,8 @@
   &-three {
 
     &-fifths {
+      @extend %padding-gutter-override;
+      box-sizing: border-box;
       float: left;
       width: 60%;
     }

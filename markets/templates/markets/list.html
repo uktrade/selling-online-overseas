@@ -12,48 +12,19 @@
       </h1>
     </div>
   </div>
+</div>
 
-  <div class="grid-row">
-    <div class="filters cf push--bottom">
-      <ul class="background--grey cf">
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="product_categories">Product</a></li>
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 2</a></li>
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 3</a></li>
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 4</a></li>
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 5</a></li>
-      </ul>
-      <form method="get" action="{% url 'markets:list' %}" class="filters-form">
-        {% with form.product_categories as field %}
-          <div class="cf filters-section filters-options" data-field="{{field.name}}">
-            <p>Product Categories</p>
-            {{ field }}
-            <div class="filters-button-group push--top">
-              <button class="button button-grey button-close">Cancel</button>
-              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
-            </div>
-          </div>
-        {% endwith %}
-        <div style="display:none">
-          {% for field in form %}
-            {% if field.name != "product_categories" %}
-              {{ field }}
-            {% endif %}
-          {% endfor %}
-        </div>
-      </form>
-    </div>
-  </div>
-
+<div class="section">
   <div class="grid-row">
 
       {% if markets_list %}
       <ul class="list list-market">
         {% for market in markets_list %}
           <li class="list-market--item cf">
-            <div class="column-three-fifths">
+            <div class="column-three-fifths list-left">
               <div class="push--right">
                 <div class="cf">
-                  <div class="column-one-quarter hard--left">
+                  <div class="column-one-quarter">
                     <img src="{{ market.logo.base64_logo }}" class="image-full">
                   </div>
                   <div class="column-three-quarters">
@@ -66,23 +37,32 @@
                     </div>
                   </div>
                 </div>
-                <p class="soft--top column-one-whole hard--left">{{ market.description }}</p>
+                <p class="soft--top hard--left">{{ market.description }}</p>
                 <a class="button button-blue push-half--right" href="{% url 'markets:detail' market.id %}">Full Profile</a>
               </div>
             </div>
             <div class="column-two-fifths background--grey">
               <ul class="soft">
                 <li class="list list-market--extra">
-
-                  <h4 class="font-xxsmall">Website traffic</h4>
-                  <p class="flush--bottom">{{ market.web_traffic }}</p>
-                  <p class="font-xxsmall flush--bottom flush--top">unique visitors / month</p>
+                  <h4>5.2 million</h4>
+                  <p class="font-xxsmall flush--bottom flush--top">registered users</p>
                 </li>
                 <li class="list list-market--extra">
-                  <div class="font-xxsmall flush--bottom flush--top"><!-- TODO --></div>
+                  <div class="font-xxsmall flush--bottom flush--top">
+                    <h4>Logistic support</h4>
+                    <ul class="list list-bullet flush--bottom">
+                      <li>Seller to UK hub</li>
+                      <li>Seller to local hub</li>
+                    </ul>
+                  </div>
                 </li>
                 <li class="list list-market--extra">
-                  <div class="font-xxsmall flush--bottom flush--top"><!-- TODO --></div>
+                  <div class="font-xxsmall flush--bottom flush--top">
+                    <h4>Receive payments to</h4>
+                    <ul class="list list-bullet flush--bottom">
+                      <li>Uk bank account</li>
+                    </ul>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -92,7 +72,6 @@
       {% else %}
       <p>No market options are available.</p>
       {% endif %}
-    </div>
   </div>
 </div>
 
