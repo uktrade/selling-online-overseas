@@ -51,8 +51,9 @@
                   <div class="font-xxsmall flush--bottom flush--top">
                     <h4>Logistic support</h4>
                     <ul class="list list-bullet flush--bottom">
-                      <li>Seller to UK hub</li>
-                      <li>Seller to local hub</li>
+                      {% for model in market.logistics_structure.all %}
+                        <li>{{ model.name }}</li>
+                      {% endfor %}
                     </ul>
                   </div>
                 </li>
@@ -60,7 +61,7 @@
                   <div class="font-xxsmall flush--bottom flush--top">
                     <h4>Receive payments to</h4>
                     <ul class="list list-bullet flush--bottom">
-                      <li>Uk bank account</li>
+                      <li>{% if market.local_bank_account_needed %}Non-UK{% else %}UK{% endif %} bank account</li>
                     </ul>
                   </div>
                 </li>
