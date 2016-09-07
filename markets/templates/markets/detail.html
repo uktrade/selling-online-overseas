@@ -58,11 +58,11 @@
         <h3>Site</h3>
         <dl>
           <li>
-            <dt>Customer Base</dt>
+            <dt>Number of registered users</dt>
             <dd>{{ market.web_traffic }} unique visitors / month</dd>
           </li>
           <li class='wider'>
-            <dt>Customer profile</dt>
+            <dt>Customer demographics</dt>
             <dd>{{ market.customer_demographics|safe }}</dd>
           </li>
         </dl>
@@ -76,20 +76,24 @@
             <dd>{{ market.get_logistics_structure_display }}</dd>
           </li>
           <li>
-            <dt>Positioning</dt>
+            <dt>Product positioning</dt>
             <dd>{{ market.get_product_type_display }}</dd>
           </li>
           <li>
-            <dt>Well-known brands on platform</dt>
+            <dt>Well-known brands</dt>
             <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
           </li>
           <hr>
           <li>
-            <dt>Customer Support</dt>
+            <dt>Customer support channels</dt>
             <dd>{{ market | csl:'customer_support_channels' }}</dd>
           </li>
+          <li>
+            <dt>Customer support hours</dt>
+            <dd>{{ market | csl:'customer_support_hours' }}</dd>
+          </li>
           <li class='wider'>
-            <dt>Marketing &amp; Merchandising</dt>
+            <dt>Marketing and merchandising</dt>
             <dd>{{ market.marketing_merchandising | safe }}</dd>
           </li>
         </dl>
@@ -99,11 +103,11 @@
         <h3>On Boarding</h3>
         <dl>
           <li>
-            <dt>Local back account required</dt>
+            <dt>Local bank account needed</dt>
             <dd>{{ market.local_bank_account_needed }}</dd>
           </li>
           <li>
-            <dt>Local incorporation</dt>
+            <dt>Local incorporation needed</dt>
             <dd>{{ market.local_incorporation_needed }}</dd>
           </li>
           <li>
@@ -111,15 +115,15 @@
             <dd>{{ market.exclusivity_required }}</dd>
           </li>
           <li class='breaker'>
-            <dt>Logistics structure</dt>
+            <dt>Logistics model</dt>
             <dd>{{ market.get_logistics_structure_display }}</dd>
           </li>
           <li>
-            <dt>Shipping tracking</dt>
+            <dt>Shipping tracking required</dt>
             <dd>{{ market.shipping_tracking_required }}</dd>
           </li>
           <li>
-            <dt>Local return address</dt>
+            <dt>Local return address required</dt>
             <dd>{{ market.local_return_address_required }}</dd>
           </li>
           <li class='breaker'>
@@ -128,42 +132,49 @@
           </li>
           <li>
             <dt>Translation</dt>
-            <dd></dd>
+            <dd>{{ market.translation_verbal }}</dd>
+            <dd>{{ market.translation_application_process }}</dd>
+            <dd>{{ market.translation_product_content }}</dd>
+            <dd>{{ market.translation_seller_support }}</dd>
           </li>
           <li>
-            <dt>Seller support</dt>
-            <dd>{{ market | csl:'seller_support_channels' }}</dd>
+            <dt>Seller support type</dt>
+            <dd>{{ market.seller_support_channels }}</dd>
+          </li>
+          <li>
+            <dt>Seller support hours</dt>
+            <dd>{{ market.seller_support_hours }}</dd>
           </li>
         </dl>
       </div>
 
       <div class='grid-row detail-row'>
-        <h3>Payment terms</h3>
+        <h3>Payment</h3>
         <dl>
           <li>
-            <dt>Payment time</dt>
+            <dt>Sale to payment duration</dt>
             <dd>{{ market.payment_terms_days }}</dd>
           </li>
           <li class='wider'>
-            <dt>Currency of payment</dt>
+            <dt>Currency</dt>
             <dd>{{ market | csl:'currency_of_payments' }}</dd>
           </li>
         </dl>
       </div>
 
       <div class='grid-row detail-row'>
-        <h3>Fees &amp; Pricing structure</h3>
+        <h3>Fees and pricing</h3>
         <dl>
           <li>
-            <dt>Registration fee</dt>
+            <dt>Registration</dt>
             <dd>{{ market.registration_fees }}</dd>
           </li>
           <li>
-            <dt>Membership fee</dt>
+            <dt>Membership</dt>
             <dd>{{ market.membership_fees }}</dd>
           </li>
           <li>
-            <dt>Listing fee</dt>
+            <dt>Fee per listing</dt>
             <dd>{{ market.fee_per_listing }}</dd>
           </li>
           <li class='ukti-terms breaker'>
@@ -175,29 +186,15 @@
             <dd></dd>
           </li>
           <li>
-            <dt>Commision</dt>
+            <dt>Commission</dt>
             <dd>{{ market.commission }}</dd>
           </li>
-        </dl>
-      </div>
-
-      <div class='grid-row detail-row'>
-        <h3>Legal requirements</h3>
-        <dl>
           <li>
-            <dt>Prohibited items</dt>
-            <dd><!-- TODO --></dd>
-          </li>
-          <li class='wider'>
-            <dt>Local laws</dt>
-            <dd><!-- TODO --></dd>
+            <dt>Bond</dt>
+              <dd>{{ market.deposit_needed }}</dd>
+              <dd>{{ market.deposit_amount }}</dd>
           </li>
         </dl>
-      </div>
-
-      <div class='grid-row detail-row consider-row push--bottom'>
-        <h3>Things you need to consider before you start selling in {{ market | csl:'countries_served' }}</h3>
-        <p><!-- TODO --></p>
       </div>
 
       <div class='grid-row detail-row'>

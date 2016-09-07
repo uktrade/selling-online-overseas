@@ -22,18 +22,10 @@ $brand-font-family: 'Roboto', sans-serif;
 
 //BODY
 $body-background-color: $bright-grey;
+$tap-highlight-color: rgba(0, 126, 163, .5);
 
 // HEADER
 $logo-width: 300px;
-
-
-
-$button-start-bg-color: $link-colour !default;
-$button-start-bg-image: '/static/images/icon-pointer.png' !default;
-$button-start-bg-color--visited: $link-colour !default;
-$button-start-bg-color--hover: $link-colour !default;
-$button-start-color: $white !default;
-$button-start-color-hover: $white !default;
 
 $button-blue-bg-color: $link-colour;
 $button-blue-bg-color--visited: $link-colour;
@@ -85,7 +77,6 @@ $backgrounds: (
 );
 
 $button: (
-  'start' $button-start-bg-color $button-start-bg-color--visited $button-start-bg-color--hover $button-start-color $button-start-color-hover $button-start-bg-image,
   'blue' $button-blue-bg-color $button-blue-bg-color--visited $button-blue-bg-color--hover $button-blue-color $button-blue-color-hover null $button-blue-outline,
   'transparent' $button-transparent-bg-color $button-transparent-bg-color--visited $button-transparent-bg-color--hover $button-transparent-color $button-transparent-color-hover null $button-transparent-outline,
   'white' $button-white-bg-color $button-white-bg-color--visited $button-white-bg-color--hover $button-white-color $button-white-color-hover null $button-white-outline,

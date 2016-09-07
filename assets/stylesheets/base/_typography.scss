@@ -1,6 +1,7 @@
 body,
 main {
   background-color: $body-background-color;
+  color: $grey;
   font-family: $brand-font-family;
 }
 
@@ -34,6 +35,15 @@ main {
   font-size: 14px;
 }
 
+// HEADERS
+%h1 {
+  font-size: 48px;
+}
+
+%h2 {
+  font-size: 36px;
+}
+
 .font {
 
   &-xxsmall {
@@ -57,6 +67,14 @@ main {
   }
 }
 
+.h1 {
+  @extend %h1;
+}
+
+.h2 {
+  @extend %h2;
+}
+
 h1,
 h2,
 h3,
@@ -68,7 +86,7 @@ h6 {
 
 a {
 
-  @include prefix((tap-highlight-color: $aqua), webkit);
+  @include prefix((tap-highlight-color: $tap-highlight-color), webkit);
 
   &:focus {
     background-color: $aqua;
