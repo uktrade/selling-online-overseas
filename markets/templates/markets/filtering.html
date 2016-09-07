@@ -64,7 +64,7 @@
 					  <h3 class="filters-header push--bottom">Product Category</h3>
 					  <fieldset class="inline">
 						<legend class="visuallyhidden">Do you already have a personal user account?</legend>
-						{% with form.product_categories as field %}
+						{% with form.product_categories as field and 'Choose Product Category' as default %}
 						  {% include "markets/includes/selectbox.html" %}
 						{% endwith %}
 					  </fieldset>
