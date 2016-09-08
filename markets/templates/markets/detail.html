@@ -73,11 +73,15 @@
         <dl>
           <li>
             <dt>Seller model</dt>
-            <dd>{{ market.get_logistics_structure_display }}</dd>
+            {% for model in market.seller_model.all %}
+              <dd>{{ model.name }}</dd>
+            {% endfor %}
           </li>
           <li>
             <dt>Product positioning</dt>
-            <dd>{{ market.get_product_type_display }}</dd>
+            {% for type in market.product_type.all %}
+              <dd>{{ type.name }}</dd>
+            {% endfor %}
           </li>
           <li>
             <dt>Well-known brands</dt>
@@ -104,15 +108,27 @@
         <dl>
           <li>
             <dt>Local bank account needed</dt>
-            <dd>{{ market.local_bank_account_needed }}</dd>
+            {% if market.local_bank_account_needed %}
+              <dd>&#10004; Required</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
           </li>
           <li>
             <dt>Local incorporation needed</dt>
-            <dd>{{ market.local_incorporation_needed }}</dd>
+            {% if market.local_incorporation_needed %}
+              <dd>&#10004; Required</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
           </li>
           <li>
             <dt>Exclusivity</dt>
-            <dd>{{ market.exclusivity_required }}</dd>
+            {% if market.exclusivity_required %}
+              <dd>&#10004; Required</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
           </li>
           <li class='breaker'>
             <dt>Logistics model</dt>
@@ -120,11 +136,19 @@
           </li>
           <li>
             <dt>Shipping tracking required</dt>
-            <dd>{{ market.shipping_tracking_required }}</dd>
+            {% if market.shipping_tracking_required %}
+              <dd>&#10004; Required</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
           </li>
           <li>
             <dt>Local return address required</dt>
-            <dd>{{ market.local_return_address_required }}</dd>
+            {% if market.local_return_address_required %}
+              <dd>&#10004; Required</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
           </li>
           <li class='breaker'>
             <dt>Product details upload process</dt>
@@ -132,14 +156,30 @@
           </li>
           <li>
             <dt>Translation</dt>
-            <dd>{{ market.translation_verbal }}</dd>
-            <dd>{{ market.translation_application_process }}</dd>
-            <dd>{{ market.translation_product_content }}</dd>
-            <dd>{{ market.translation_seller_support }}</dd>
+            {% if market.translation_verbal %}
+              <dd>&#10004; Required</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
+            {% if market.translation_application_process %}
+              <dd>&#10004; Required</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
+            {% if market.translation_product_content %}
+              <dd>&#10004; Required</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
+            {% if market.translation_seller_support %}
+              <dd>&#10004; Required</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
           </li>
           <li>
             <dt>Seller support type</dt>
-            <dd>{{ market.seller_support_channels }}</dd>
+            <dd>{{ market | csl:'seller_support_channels' }}</dd>
           </li>
           <li>
             <dt>Seller support hours</dt>
@@ -167,32 +207,43 @@
         <dl>
           <li>
             <dt>Registration</dt>
-            <dd>{{ market.registration_fees }}</dd>
+            {% if market.registration_fees %}
+              <dd>&#10004; Required</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
           </li>
           <li>
             <dt>Membership</dt>
-            <dd>{{ market.membership_fees }}</dd>
+            {% if market.membership_fees > 0 %}
+              <dd>£{{ market.membership_fees }} {{ market.membership_fees_frequency }}</dd>
+            {% else %}
+              <dd>&#10007; Not required</dd>
+            {% endif %}
           </li>
           <li>
             <dt>Fee per listing</dt>
-            <dd>{{ market.fee_per_listing }}</dd>
+            {% if market.fee_per_listing %}
+              <dd>&#10004; Yes</dd>
+            {% else %}
+              <dd>&#10007; No</dd>
+            {% endif %}
           </li>
           <li class='ukti-terms breaker'>
             <dt>UKTI Terms</dt>
             <dd>{{ market.ukti_terms|safe }}</dd>
           </li>
           <li>
-            <dt>Deposit</dt>
-            <dd></dd>
+            <dt>Bond</dt>
+              {% if market.deposit_needed > 0 %}
+                <dd>£{{ market.deposit_amount }}</dd>
+              {% else %}
+                <dd>&#10007; Not required</dd>
+              {% endif %}
           </li>
           <li>
             <dt>Commission</dt>
             <dd>{{ market.commission }}</dd>
-          </li>
-          <li>
-            <dt>Bond</dt>
-              <dd>{{ market.deposit_needed }}</dd>
-              <dd>{{ market.deposit_amount }}</dd>
           </li>
         </dl>
       </div>
