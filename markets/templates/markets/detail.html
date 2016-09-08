@@ -59,7 +59,7 @@
         <dl>
           <li>
             <dt>Number of registered users</dt>
-            <dd>{{ market.web_traffic }} unique visitors / month</dd>
+            <dd>{{ market.web_traffic }} million</dd>
           </li>
           <li class='wider'>
             <dt>Customer demographics</dt>
@@ -156,26 +156,10 @@
           </li>
           <li>
             <dt>Translation</dt>
-            {% if market.translation_verbal %}
-              <dd>&#10004; Required</dd>
-            {% else %}
-              <dd>&#10007; Not required</dd>
-            {% endif %}
-            {% if market.translation_application_process %}
-              <dd>&#10004; Required</dd>
-            {% else %}
-              <dd>&#10007; Not required</dd>
-            {% endif %}
-            {% if market.translation_product_content %}
-              <dd>&#10004; Required</dd>
-            {% else %}
-              <dd>&#10007; Not required</dd>
-            {% endif %}
-            {% if market.translation_seller_support %}
-              <dd>&#10004; Required</dd>
-            {% else %}
-              <dd>&#10007; Not required</dd>
-            {% endif %}
+              <dd>{% if market.translation_verbal %} &#10004; {% else %} &#10007; {% endif %} Translation needed for negotiation</dd>
+              <dd>{% if market.translation_application_process %} &#10004; {% else %} &#10007; {% endif %} Translation needed for application process</dd>
+              <dd>{% if market.translation_product_content %} &#10004; {% else %} &#10007; {% endif %} Translation needed for product content</dd>
+              <dd>{% if market.translation_seller_support %} &#10004; {% else %} &#10007; {% endif %} Translation needed for seller support</dd>
           </li>
           <li>
             <dt>Seller support type</dt>
