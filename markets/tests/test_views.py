@@ -81,3 +81,41 @@ class MarketListTests(TestCase):
         response = self.client.get(reverse('markets:list'), {'name': ['*', 'Amazon']})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertNotContains(response, ebay.name, status_code=200)
+
+    def test_filter_market_list_non_string_types(self):
+        """
+        The form filtering should correctly infer the types of arguments passed, converting to ints, booleans, etc
+        as necessary
+        """
+
+        amazon = create_market(name="Amazon", local_bank_account_needed=True, payment_terms_days=15)
+        ebay = create_market(name="Ebay", local_bank_account_needed=False, payment_terms_days=30)
+
+        # Filter for local_bank_account_needed True, we shoudl get back only Amazon
+        response = self.client.get(reverse('markets:list'), {'local_bank_account_needed': True})
+        self.assertContains(response, amazon.name, status_code=200)
+        self.assertNotContains(response, ebay.name, status_code=200)
+
+        # Filtering using a string shoudl work the same, since True/False would be converted to 'True'/'False' in the
+        # get request anyway, check that 'False' therefore only returns ebay
+        response = self.client.get(reverse('markets:list'), {'local_bank_account_needed': 'False'})
+        self.assertNotContains(response, amazon.name, status_code=200)
+        self.assertContains(response, ebay.name, status_code=200)
+
+        # We should be able to pass a list of these values, and get back both
+        response = self.client.get(reverse('markets:list'), {'local_bank_account_needed': ['True', 'False']})
+        self.assertContains(response, amazon.name, status_code=200)
+        self.assertContains(response, ebay.name, status_code=200)
+
+        # Perform the same tests with numbers
+        response = self.client.get(reverse('markets:list'), {'payment_terms_days': 15})
+        self.assertContains(response, amazon.name, status_code=200)
+        self.assertNotContains(response, ebay.name, status_code=200)
+
+        response = self.client.get(reverse('markets:list'), {'payment_terms_days': '30'})
+        self.assertNotContains(response, amazon.name, status_code=200)
+        self.assertContains(response, ebay.name, status_code=200)
+
+        response = self.client.get(reverse('markets:list'), {'payment_terms_days': ['15', 30]})
+        self.assertContains(response, amazon.name, status_code=200)
+        self.assertContains(response, ebay.name, status_code=200)

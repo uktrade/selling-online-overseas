@@ -7,17 +7,9 @@ from django.utils import timezone
 
 from ckeditor.fields import RichTextField
 
+from . import PAYMENT_FREQUENCIES, BOOL_CHOICES
 from geography.models import Country
 from products.models import Type, Category, ProhibitedItem
-
-
-PAYMENT_FREQUENCIES = (
-    ('D', 'Daily'),
-    ('W', 'Weekly'),
-    ('M', 'Monthly'),
-    ('Q', 'Quarterly'),
-    ('Y', 'Yearly'),
-)
 
 
 class SellerModel(models.Model):
@@ -141,45 +133,54 @@ class Market(models.Model):
 
     ukti_terms = RichTextField(null=True, blank=True, verbose_name="UKTI Special Terms")
 
-    local_bank_account_needed = models.BooleanField(default=False, verbose_name="Local Bank Account Needed")
+    local_bank_account_needed = models.BooleanField(choices=BOOL_CHOICES, default=False,
+                                                    verbose_name="Local Bank Account Needed")
     local_bank_account_needed_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    local_incorporation_needed = models.BooleanField(default=False, verbose_name="Local Incorporation Needed")
+    local_incorporation_needed = models.BooleanField(choices=BOOL_CHOICES, default=False,
+                                                     verbose_name="Local Incorporation Needed")
     local_incorporation_needed_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
 
-    exclusivity_required = models.BooleanField(default=False, verbose_name="Exclusivity required")
+    exclusivity_required = models.BooleanField(choices=BOOL_CHOICES, default=False, verbose_name="Exclusivity required")
     exclusivity_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
 
-    translation_verbal = models.BooleanField(default=False, verbose_name="Translation Needed - Negotiation")
+    translation_verbal = models.BooleanField(choices=BOOL_CHOICES, default=False,
+                                             verbose_name="Translation Needed - Negotiation")
     translation_verbal_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    translation_application_process = models.BooleanField(default=False,
+    translation_application_process = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                                           verbose_name="Translation Needed - Application process")
     translation_application_process_notes = models.CharField(max_length=255, null=True, blank=True,
                                                              verbose_name="Notes")
 
-    translation_product_content = models.BooleanField(default=False,
+    translation_product_content = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                                       verbose_name="Translation Needed - Product content")
 
     translation_product_content_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    translation_seller_support = models.BooleanField(default=False,
+    translation_seller_support = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                                      verbose_name="Translation Needed - Seller support")
     translation_seller_support_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
 
-    payment_terms_rate_fixed = models.BooleanField(default=False, verbose_name="Payment Terms - Exchange rate fixed")
+    payment_terms_rate_fixed = models.BooleanField(choices=BOOL_CHOICES, default=False,
+                                                   verbose_name="Payment Terms - Exchange rate fixed")
     payment_terms_rate_fixed_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    registration_fees = models.BooleanField(default=False, verbose_name="Pricing/Fees - Registration")
+    registration_fees = models.BooleanField(choices=BOOL_CHOICES, default=False,
+                                            verbose_name="Pricing/Fees - Registration")
     registration_fees_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    fee_per_listing = models.BooleanField(default=False, verbose_name="Pricing/Fees - Fee per Listing")
+    fee_per_listing = models.BooleanField(choices=BOOL_CHOICES, default=False,
+                                          verbose_name="Pricing/Fees - Fee per Listing")
     fee_per_listing_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
     membership_fees = models.FloatField(default=0, null=True, blank=True, help_text="Converted to GBP",
                                         verbose_name="Pricing/Fees - Membership fees")
     membership_fees_frequency = models.CharField(choices=PAYMENT_FREQUENCIES, max_length=1, null=True, blank=True)
 
-    deposit_needed = models.BooleanField(default=False, verbose_name="Pricing Fees - Deposit/Bond Needed")
+    deposit_needed = models.BooleanField(choices=BOOL_CHOICES, default=False,
+                                         verbose_name="Pricing Fees - Deposit/Bond Needed")
     deposit_amount = models.FloatField(default=0, null=True, blank=True)
 
-    shipping_tracking_required = models.BooleanField(default=False, verbose_name="Shipping Tracking Required")
+    shipping_tracking_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
+                                                     verbose_name="Shipping Tracking Required")
     shipping_tracking_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    local_return_address_required = models.BooleanField(default=False, verbose_name="Local return address required?")
+    local_return_address_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
+                                                        verbose_name="Local return address required?")
     local_return_address_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
 
     def __str__(self):
