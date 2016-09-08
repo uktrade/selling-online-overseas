@@ -130,9 +130,11 @@
               <dd>&#10007; Not required</dd>
             {% endif %}
           </li>
-          <li class='breaker'>
+          <li>
             <dt>Logistics model</dt>
-            <dd>{{ market.get_logistics_structure_display }}</dd>
+            {% for model in market.logistics_structure.all %}
+              <dd>{{ model.name }}</dd>
+            {% endfor %}
           </li>
           <li>
             <dt>Shipping tracking required</dt>
