@@ -11,4 +11,10 @@
       @extend %padding-gutter-override;
     }
   }
+
+  &-two {
+    &-thirds {
+      @extend %padding-gutter-override;
+    }
+  }
 }

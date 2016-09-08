@@ -3,7 +3,7 @@
 {% block content %}
   <div class="section">
     <div class="grid-row">
-      <div class="column-one-whole">
+      <div class="column-two-thirds">
         <h1 class='heading-xlarge'>Find online marketplaces</h1>
 
         <p class="push--bottom">Use this service to help choose a suitable online marketplace to sell your products overseas.</p>
@@ -16,7 +16,10 @@
           <li>how to proceed and join a marketplace</li>
           <li>special terms negotiated by DIT (Department for International Trade)</li>
         </ul>
-        <a class='button button-blue button-large push--ends' href='{% url 'markets:filtering' %}'>Start now</a>
+        <a class='button button-blue button-large push--ends button-start' href='{% url 'markets:filtering' %}'>Start now</a>
+      </div>
+      <div class="column-one-third">
+        &nbsp;
       </div>
     </div>
   </div>
