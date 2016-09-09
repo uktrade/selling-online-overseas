@@ -36,7 +36,7 @@
         <dl>
           <li>
             <dt>Number of registered users</dt>
-            <dd>{{ market.web_traffic }} million</dd>
+            <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
           </li>
           <li class='wider'>
             <dt>Customer demographics</dt>
@@ -136,7 +136,7 @@
         <dl>
           <li>
             <dt>Sale to payment duration</dt>
-            <dd>{{ market.payment_terms_days }}</dd>
+            <dd>{{ market.payment_terms_days }} days</dd>
           </li>
           <li class='wider'>
             <dt>Currency</dt>
