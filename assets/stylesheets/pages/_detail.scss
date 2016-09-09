@@ -1,4 +1,6 @@
 .detail-intro {
+  margin-bottom: 20px;
+
   img {
     display: block;
     float: left;
@@ -39,6 +41,8 @@
 }
 
 .detail-row {
+  margin-bottom: 20px;
+
   h3 {
     @include bold-24;
     border-bottom: 1px solid $grey-1;
