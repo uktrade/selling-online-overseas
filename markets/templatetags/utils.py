@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import urllib
 from django import template
 
@@ -34,3 +35,36 @@ def comma_separated_list(obj, attr):
     value_list = list(set([str(item) for item in all_method()]))
     value_list.sort(key=lambda item: item)
     return ", ".join(set(value_list))
+
+
+@register.filter(name='formatvalue')
+def format_value(value, style):
+    if style == 'required':
+        return required_or_not_format_field(value)
+    elif style == 'yesno':
+        return yes_or_no_format_field(value)
+    elif style == 'tick':
+        return tick_cross_format_field(value)
+    else:
+        return value
+
+
+def yes_or_no_format_field(value):
+    if value:
+        return "✔ Yes"
+    else:
+        return "✗ No"
+
+
+def required_or_not_format_field(value):
+    if value:
+        return "✔ Required"
+    else:
+        return "✗ Not required"
+
+
+def tick_cross_format_field(value):
+    if value:
+        return "✔"
+    else:
+        return "✗"
