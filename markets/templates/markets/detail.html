@@ -85,27 +85,15 @@
         <dl>
           <li>
             <dt>Local bank account needed</dt>
-            {% if market.local_bank_account_needed %}
-              <dd>&#10004; Required</dd>
-            {% else %}
-              <dd>&#10007; Not required</dd>
-            {% endif %}
+            <dd>{{ market.local_bank_account_needed | formatvalue:'required' }}</dd>
           </li>
           <li>
             <dt>Local incorporation needed</dt>
-            {% if market.local_incorporation_needed %}
-              <dd>&#10004; Required</dd>
-            {% else %}
-              <dd>&#10007; Not required</dd>
-            {% endif %}
+            <dd>{{ market.local_incorporation_needed | formatvalue:'required' }}</dd>
           </li>
           <li>
             <dt>Exclusivity</dt>
-            {% if market.exclusivity_required %}
-              <dd>&#10004; Required</dd>
-            {% else %}
-              <dd>&#10007; Not required</dd>
-            {% endif %}
+            <dd>{{ market.exclusivity_required | formatvalue:'required' }}</dd>
           </li>
           <li>
             <dt>Logistics model</dt>
@@ -115,19 +103,11 @@
           </li>
           <li>
             <dt>Shipping tracking required</dt>
-            {% if market.shipping_tracking_required %}
-              <dd>&#10004; Required</dd>
-            {% else %}
-              <dd>&#10007; Not required</dd>
-            {% endif %}
+            <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
           </li>
           <li>
             <dt>Local return address required</dt>
-            {% if market.local_return_address_required %}
-              <dd>&#10004; Required</dd>
-            {% else %}
-              <dd>&#10007; Not required</dd>
-            {% endif %}
+            <dd>{{ market.local_return_address_required | formatvalue:'required' }}</dd>
           </li>
           <li class='breaker'>
             <dt>Product details upload process</dt>
@@ -135,10 +115,10 @@
           </li>
           <li>
             <dt>Translation</dt>
-              <dd>{% if market.translation_verbal %} &#10004; {% else %} &#10007; {% endif %} Translation needed for negotiation</dd>
-              <dd>{% if market.translation_application_process %} &#10004; {% else %} &#10007; {% endif %} Translation needed for application process</dd>
-              <dd>{% if market.translation_product_content %} &#10004; {% else %} &#10007; {% endif %} Translation needed for product content</dd>
-              <dd>{% if market.translation_seller_support %} &#10004; {% else %} &#10007; {% endif %} Translation needed for seller support</dd>
+              <dd>{{ market.translation_verbal | formatvalue:'tick' }} Translation needed for negotiation</dd>
+              <dd>{{ market.translation_application_process | formatvalue:'tick' }} Translation needed for application process</dd>
+              <dd>{{ market.translation_product_content | formatvalue:'tick' }} Translation needed for product content</dd>
+              <dd>{{ market.translation_seller_support | formatvalue:'tick' }} Translation needed for seller support</dd>
           </li>
           <li>
             <dt>Seller support type</dt>
@@ -170,11 +150,7 @@
         <dl>
           <li>
             <dt>Registration</dt>
-            {% if market.registration_fees %}
-              <dd>&#10004; Required</dd>
-            {% else %}
-              <dd>&#10007; Not required</dd>
-            {% endif %}
+            <dd>{{ market.registration_fees | formatvalue:'required' }}</dd>
           </li>
           <li>
             <dt>Membership</dt>
@@ -186,11 +162,7 @@
           </li>
           <li>
             <dt>Fee per listing</dt>
-            {% if market.fee_per_listing %}
-              <dd>&#10004; Yes</dd>
-            {% else %}
-              <dd>&#10007; No</dd>
-            {% endif %}
+            <dd>{{ market.fee_per_listing | formatvalue:'yesno' }}</dd>
           </li>
           <li class='ukti-terms breaker'>
             <dt>UKTI Terms</dt>
