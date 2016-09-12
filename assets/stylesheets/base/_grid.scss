@@ -5,8 +5,8 @@
   &-one {
 
     &-whole {
+      @extend %padding-gutter-override;
       box-sizing: border-box;
-      padding: 0 10px;
       width: 100%;
     }
 

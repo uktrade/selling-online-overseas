@@ -3,115 +3,124 @@
 {% load static utils %}
 
 {% block content %}
-<div class="section">
-  <div class="grid-row">
-    <div class="column-one-whole heading">
-      <h1 class="heading-large">
-        <span class="heading-secondary">Find online marketplaces overseas</span>
-        <span class="heading-results">{{ markets_list.count }} option{{markets_list|pluralize}} found</span>
-      </h1>
+  <div class="section">
+    <div class="grid-row">
+      <div class="column-one-whole heading">
+        <h1 class="heading-large">
+          <span class="heading-secondary">Find online marketplaces overseas</span>
+          <span class="heading-results">{{ markets_list.count }} option{{markets_list|pluralize}} found</span>
+        </h1>
+      </div>
     </div>
   </div>
 
-  <div class="grid-row">
-    <div class="filters cf push--bottom">
-      <ul class="background--grey cf">
+  <div class="filters background--grey">
+    <div class="section">
+      <ul class="filters-tab background--grey cf">
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="product_categories">Product</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="platform">Platform</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="finance">Finance</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="geography">Countries/Regions</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="misc">Other</a></li>
       </ul>
-      <form method="get" action="{% url 'markets:list' %}" class="filters-form">
-        <div class="cf filters-section filters-options third" data-field="product_categories">
-          <p>Product Categories</p>
-          {{ form.product_categories }}
-          <p>Product Type</p>
-          {{ form.product_type }}
-          <div class="filters-button-group push--top">
-            <button class="button button-grey button-close">Cancel</button>
-            <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+    </div>
+
+    <div class="background--grey-darker">
+      <div class="section">
+        <form method="get" action="{% url 'markets:list' %}" class="filters-form">
+          <div class="cf filters-section filters-options" data-field="product_categories">
+            <p>Product Categories</p>
+            {{ form.product_categories }}
+            <p>Product Type</p>
+            {{ form.product_type }}
+            <div class="filters-button-group push--top">
+              <button class="button button-grey button-close">Cancel</button>
+              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+            </div>
           </div>
-        </div>
-        <div class="cf filters-section filters-options" data-field="platform">
-          <p>Seller Model</p>
-          {{ form.seller_model }}
-          <p>Logistics Structure</p>
-          {{ form.logistics_structure }}
-          <div class="filters-button-group push--top">
-            <button class="button button-grey button-close">Cancel</button>
-            <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+          <div class="cf filters-section filters-options" data-field="platform">
+            <p>Seller Model</p>
+            {{ form.seller_model }}
+            <p>Logistics Structure</p>
+            {{ form.logistics_structure }}
+            <div class="filters-button-group push--top">
+              <button class="button button-grey button-close">Cancel</button>
+              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+            </div>
           </div>
-        </div>
-        <div class="cf filters-section filters-options" data-field="finance">
-          <p>Local bank account needed</p>
-          {{ form.local_bank_account_needed }}
-          <p>Local incorporation needed</p>
-          {{ form.local_incorporation_needed }}
-          <div class="filters-button-group push--top">
-            <button class="button button-grey button-close">Cancel</button>
-            <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+          <div class="cf filters-section filters-options" data-field="finance">
+            <p>Local bank account needed</p>
+            {{ form.local_bank_account_needed }}
+            <p>Local incorporation needed</p>
+            {{ form.local_incorporation_needed }}
+            <div class="filters-button-group push--top">
+              <button class="button button-grey button-close">Cancel</button>
+              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+            </div>
           </div>
-        </div>
-        <div class="cf filters-section filters-options third" data-field="geography">
-          <p>Countries</p>
-          {{ form.countries_served }}
-          <p>Region</p>
-          {{ form.region }}
-          <div class="filters-button-group push--top">
-            <button class="button button-grey button-close">Cancel</button>
-            <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+          <div class="cf filters-section filters-options" data-field="geography">
+            <p>Countries</p>
+            {{ form.countries_served }}
+            <p>Region</p>
+            {{ form.region }}
+            <div class="filters-button-group push--top">
+              <button class="button button-grey button-close">Cancel</button>
+              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+            </div>
           </div>
-        </div>
-        <div class="cf filters-section filters-options" data-field="misc">
-          <p>Customer Support Channels</p>
-          {{ form.customer_support_channels }}
-          <p>Seller Support Channels</p>
-          {{ form.seller_support_channels }}
-          <div class="filters-button-group push--top">
-            <button class="button button-grey button-close">Cancel</button>
-            <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+          <div class="cf filters-section filters-options" data-field="misc">
+            <p>Customer Support Channels</p>
+            {{ form.customer_support_channels }}
+            <p>Seller Support Channels</p>
+            {{ form.seller_support_channels }}
+            <div class="filters-button-group push--top">
+              <button class="button button-grey button-close">Cancel</button>
+              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 
-  <div class="grid-row">
-    {% if markets_list %}
-      <ul class="list list-market">
-        {% for market in markets_list %}
-          <li class="list-market--item cf">
-            <div class="column-three-fifths list-left">
-              <div class="push--right">
-                <div class="cf">
-                  <div class="column-one-quarter">
-                    <img src="{{ market.logo.base64_logo }}" class="image-full">
-                  </div>
-                  <div class="column-three-quarters">
-                    <div class="push--left">
-                      <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
-                      <ul>
-                        <li class="list-market--info">Markets: {{ market|csl:'countries_served' }}</li>
-                        <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address }}</a></li>
-                      </ul>
+  <div class="section">
+    <div class="grid-row">
+      {% if markets_list %}
+        <ul class="list list-market">
+          {% for market in markets_list %}
+            <li class="list-market--item cf">
+              <div class="column-three-fifths list-left">
+                <div class="push--right">
+                  <div class="cf">
+                    <div class="column-one-quarter">
+                      <img src="{{ market.logo.base64_logo }}" class="image-full">
+                    </div>
+                    <div class="column-three-quarters">
+                      <div class="push--left">
+                        <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
+                        <ul>
+                          <li class="list-market--info">Markets: {{ market|csl:'countries_served' }}</li>
+                          <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address }}</a></li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
+                  <p class="soft--top hard--left">{{ market.description }}</p>
+                  <a class="button button-blue push-half--right" href="{% url 'markets:detail' market.id %}">Full Profile</a>
                 </div>
-                <p class="soft--top hard--left">{{ market.description }}</p>
-                <a class="button button-blue push-half--right" href="{% url 'markets:detail' market.id %}">Full Profile</a>
               </div>
-            </div>
-            <div class="column-two-fifths background--grey">
-              {% include "markets/includes/market_summary.html" %}
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>No market options are available.</p>
-    {% endif %}
+              <div class="column-two-fifths background--grey">
+                {% include "markets/includes/market_summary.html" %}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+      <div class="column-one-whole">
+        <p>No market options are available.</p>
+      </div>
+      {% endif %}
+    </div>
   </div>
-</div>
 
 {% endblock content %}

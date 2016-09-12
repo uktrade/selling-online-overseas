@@ -114,16 +114,17 @@
   &-options {
     display: none;
 
-    &.third {
-      ul {
-        float: left;
-        margin-bottom: 30px;
-        width: 100%;
+    ul {
+      @include prefix((flex-wrap: 'wrap'), webkit);
+      display: flex;
+      float: left;
+      margin-bottom: 30px;
+      width: 100%;
 
-        li {
-          float: left;
-          width: 33.3%;
-        }
+      li {
+        float: left;
+        padding-bottom: 10px;
+        width: 33%;
       }
     }
 
@@ -132,8 +133,8 @@
     }
 
     p {
+      margin-bottom: .4em;
       margin-top: 1.4em;
-      margin-bottom: 0.4em;
     }
   }
 
