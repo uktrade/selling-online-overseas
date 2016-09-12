@@ -3,7 +3,7 @@ var resultCount = (function ($) {
     function update_count() {
       var $form = $('#results-form'),
           action = $form.data('count-action'),
-          $count = $('#results-count > h5');
+          $count = $('#results-count > h4');
 
       $.ajax({
           url: action,

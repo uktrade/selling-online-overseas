@@ -4,7 +4,7 @@ describe('result counts', function () {
                 '<input checked="checked" id="id_product_categories_0" name="product_categories" type="checkbox" value="Accessories">' +
                 '<input checked="checked" id="id_product_categories_0" name="product_categories" type="checkbox" value="books">' +
                 '<div id="results-count" class="background--blue filters-container soft filters-result">' +
-                    '<h5>1</h5>' +
+                    '<h4>1</h4>' +
                 '</div>' +
               '</form>';
 
@@ -21,7 +21,7 @@ describe('result counts', function () {
         resultCount.update_count();
 
         expect($.ajax.calledOnce).to.be.true;
-        expect($('#results-count h5').text()).to.equal('2');
+        expect($('#results-count h4').text()).to.equal('2');
 
         $.ajax.restore();
 

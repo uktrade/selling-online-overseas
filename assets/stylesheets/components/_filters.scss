@@ -1,8 +1,10 @@
 .filters {
 
-  &-header {
+  &-header,
+  label {
+    display: block;
     font-size: 18px;
-    font-weight: 900;
+    margin-bottom: 20px;
   }
 
   .block-label {
