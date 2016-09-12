@@ -105,3 +105,14 @@
   }
 }
 
+.detail-row-column {
+  height: 250px;
+  position: relative;
+
+  .button-section {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+}
