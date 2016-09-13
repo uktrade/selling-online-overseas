@@ -1,7 +1,7 @@
 .icon {
 
   &-information {
-    background-image: url('/static/images/icon-information.png');
+    background-image: url('#{$image-path}icon-information.png');
   }
 
   &-next {
@@ -15,6 +15,13 @@
       right: -20px;
       top: -15px;
     }
+  }
+
+  &-ok {
+    background-image: url('#{$image-path}icons/tick_yes.svg');
+    background-position: center;
+    height: 12px;
+    width: 15px;
   }
 
 }

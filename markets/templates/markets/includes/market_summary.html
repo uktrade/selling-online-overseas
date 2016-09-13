@@ -1,24 +1,30 @@
-<ul class="soft">
-  <li class="list list-market--extra">
-    <h4>{{ market.web_traffic|floatformat:"-1" }} million</h4>
-    <p class="font-xxsmall flush--bottom flush--top">registered users</p>
+<ul class="soft--sides">
+  <li class="list markets-item--highlight--section background-image--users">
+    <dl>
+      <dt>registered users</dt>
+      <dd class="heading-large flush--ends">{{ market.web_traffic|floatformat:"-1" }} m</dd>
+    </dl>
   </li>
-  <li class="list list-market--extra">
-    <div class="font-xxsmall flush--bottom flush--top">
-      <h4>Logistic support</h4>
-      <ul class="list list-bullet flush--bottom">
-        {% for model in market.logistics_structure.all %}
-          <li>{{ model.name }}</li>
-        {% endfor %}
-      </ul>
-    </div>
+  <li class="list markets-item--highlight--section background-image--logistics">
+    <dl>
+      <dt>Logistic support</dt>
+      {% for model in market.logistics_structure.all %}
+        <dd>
+          <i class="icon icon-ok">
+            <span class="visuallyhidden">ok</span>
+          </i>
+          <strong>{{ model.name }}</strong></dd>
+      {% endfor %}
+    </dl>
   </li>
-  <li class="list list-market--extra">
-    <div class="font-xxsmall flush--bottom flush--top">
-      <h4>Receive payments to</h4>
-      <ul class="list list-bullet flush--bottom">
-        <li>{% if market.local_bank_account_needed %}Non-UK{% else %}UK{% endif %} bank account</li>
-      </ul>
-    </div>
+  <li class="list markets-item--highlight--section background-image--bank-account">
+    <dl>
+      <dt>Receive payments</dt>
+      <dd>
+        <i class="icon icon-ok">
+          <span class="visuallyhidden">ok</span>
+        </i>
+        <strong>{% if market.local_bank_account_needed %}Non-UK{% else %}UK{% endif %} bank account</strong></dd>
+    </dl>
   </li>
 </ul>
