@@ -1,6 +1,8 @@
 $base-spacing-unit: 20px;
 $half-spacing-unit: $base-spacing-unit / 2;
 
+$image-path: '/static/images/';
+
 // BRAND COLOURS
 $great-primary: #1e1348;
 $great-secondary: #e41f13;
@@ -74,7 +76,14 @@ $backgrounds: (
   'grey' $grey-3,
   'grey-dark' $grey-2,
   'grey-darker' $secondary-text-colour,
-  'blue' $link-colour
+  'blue' $link-colour,
+  'stone' $stone
+);
+
+$backgrounds-image: (
+  'bank-account' 'icons/bank_account.svg',
+  'logistics' 'icons/logistics.svg',
+  'users' 'icons/registered_users.svg'
 );
 
 $button: (

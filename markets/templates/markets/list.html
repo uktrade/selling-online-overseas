@@ -86,30 +86,35 @@
   <div class="section">
     <div class="grid-row">
       {% if markets_list %}
-        <ul class="list list-market">
+        <ul class="list markets">
           {% for market in markets_list %}
-            <li class="list-market--item cf">
-              <div class="column-three-fifths list-left">
+            <li class="markets-item cf">
+              <div class="column-three-fifths markets-info--left">
                 <div class="push--right">
                   <div class="cf">
-                    <div class="column-one-quarter">
+                    <div class="column-one-quarter markets-item--logo">
                       <img src="{{ market.logo.base64_logo }}" class="image-full">
                     </div>
                     <div class="column-three-quarters">
                       <div class="push--left">
-                        <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
+                        <h3 class="heading-medium flush--ends">{{ market.name }}</h3>
                         <ul>
-                          <li class="list-market--info">Markets: {{ market|csl:'countries_served' }}</li>
-                          <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address }}</a></li>
+                          <li class="push-half--ends"><a href="{{ market.web_address }}" class="markets-item--url">{{ market.web_address }}</a></li>
+                          <li class="push--ends">
+                            <dl>
+                              <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
+                              <dd>{{ market | csl:'countries_served' }}</dd>
+                            </dl>
+                          </li>
                         </ul>
                       </div>
                     </div>
                   </div>
-                  <p class="soft--top hard--left">{{ market.description }}</p>
-                  <a class="button button-blue push-half--right" href="{% url 'markets:detail' market.id %}">Full Profile</a>
+                  <p class="soft-half--ends hard--left">{{ market.description }}</p>
+                  <a class="button button-blue button-medium" href="{% url 'markets:detail' market.id %}">Full profile</a>
                 </div>
               </div>
-              <div class="column-two-fifths background--grey">
+              <div class="column-two-fifths background--stone markets-item--highlight">
                 {% include "markets/includes/market_summary.html" %}
               </div>
             </li>

@@ -5,3 +5,13 @@
     }
   }
 }
+
+@each $name, $url in $backgrounds-image {
+  .background {
+    &-image--#{$name} {
+      background-image: url('#{$image-path}#{$url}');
+      background-repeat: no-repeat;
+    }
+  }
+}
+

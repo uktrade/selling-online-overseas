@@ -1,8 +1,10 @@
 body,
 main {
+  @extend %light;
   background-color: $body-background-color;
   color: $grey;
   font-family: $brand-font-family;
+  font-size: 15px;
 }
 
 // FONT WEIGHT
@@ -71,17 +73,18 @@ main {
   @extend %h1;
 }
 
-.h2 {
-  @extend %h2;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+strong {
   @extend %medium;
+}
+
+p {
+  @extend %light;
 }
 
 a {
