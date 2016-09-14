@@ -4,6 +4,7 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 
 from ckeditor.fields import RichTextField
 
@@ -184,6 +185,12 @@ class Market(models.Model):
     local_return_address_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                                         verbose_name="Local return address required?")
     local_return_address_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return "{0}".format(self.name)

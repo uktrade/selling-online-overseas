@@ -18,7 +18,7 @@ class MarketAdmin(admin.ModelAdmin):
 
     list_display = ['name', 'web_address']
     ordering = ['name']
-    prepopulated_fields = {'slug': ('name',)}
+    readonly_fields = ['slug']
 
     fieldsets = (
         ('Platform Basics', {
