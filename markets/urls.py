@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^filter/$', views.FilteringView.as_view(), name='filtering'),
     url(r'^search/$', views.MarketListView.as_view(), name='list'),
     url(r'^count\.json$', views.MarketCountView.as_view(), name='count'),
-    url(r'^details/(?P<pk>[0-9]+)/$', views.MarketDetailView.as_view(), name='detail'),
+    url(r'^details/(?P<slug>[\w-]+)/$', views.MarketDetailView.as_view(), name='detail'),
 ]

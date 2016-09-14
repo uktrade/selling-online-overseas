@@ -88,7 +88,9 @@ class Brand(models.Model):
 class Market(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
 
-    name = models.CharField(max_length=200, null=True, blank=True)
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200)
+
     logo = models.ForeignKey('Logo', null=True, blank=True)
     description = models.CharField(max_length=200, null=True, blank=True, verbose_name="e-Marketplace Description")
     web_address = models.URLField(max_length=200, blank=True, null=True)
