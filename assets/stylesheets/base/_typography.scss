@@ -64,8 +64,16 @@ main {
     color: $lighter-grey;
   }
 
-  &-light {
+  &-lig {
     @extend %light;
+  }
+
+  &-reg {
+    @extend %regular;
+  }
+
+  &-med {
+    @extend %medium;
   }
 }
 

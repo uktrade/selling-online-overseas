@@ -21,7 +21,7 @@ describe('Filtering Page', function() {
         it('Should update number of ecommerce site listed', function () {
 
             var initialResult = filtering.results.getText();
-            filtering.catalogueOption.click();
+            filtering.sellerModelOption.click();
             browser.sleep(1000);
             expect(filtering.results.getText()).not.toEqual(initialResult);
         });

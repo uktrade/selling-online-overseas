@@ -2,10 +2,13 @@
   position: relative;
 
   &-xlarge {
+    @extend %medium;
     font-family: $brand-font-family;
   }
 
   &-large {
+    @extend %medium;
+    font-family: $brand-font-family;
     margin-top: 10px;
   }
 
