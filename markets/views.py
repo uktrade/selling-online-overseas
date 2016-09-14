@@ -149,3 +149,4 @@ class MarketDetailView(DetailView):
 
     model = Market
     template_name = 'markets/detail.html'
+    slug_field = 'slug'
