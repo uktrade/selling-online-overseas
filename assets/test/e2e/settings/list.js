@@ -1,4 +1,4 @@
 module.exports = {
-    resultsList: element.all(by.css('.list-market--item')),
+    resultsList: element.all(by.css('.markets-item')),
     firstMarketPlaceButton: element.all(by.css('.button-blue')),
 };
