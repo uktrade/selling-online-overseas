@@ -8,213 +8,217 @@
   <div class="grid-row">
     <div class="column-one-whole">
 
-      <div class='grid-row'>
-        <h1 class='heading-xlarge column-three-quarters'>{{ market.name }}</h1>
-        <p class='column-one-quarter heading-last-updated font-xxsmall'>Last updated: {{ market.last_modified|date:"d/m/Y" }}</p>
-      </div>
+      <h1 class='heading-large'>{{ market.name }}</h1>
 
-      <div class='grid-row detail-intro'>
-        <div class='column-one-half'>
-          <img src='{{ market.logo.base64_logo }}' width='100' height='100' alt=''>
-          <dl>
-            <dt>Markets:</dt>
-            <dd>{{ market | csl:'countries_served' }}</dd>
-            <dt>Website:</dt>
-            <dd><a href='{{market.web_address}}'>{{ market.web_address }}</a></dd>
-          </dl>
-          <p>{{ market.description }}</p>
-        </div>
-        <div class='column-one-half'>
-          <div class='detail-ukti-terms'>
-            {% include "markets/includes/market_summary.html" %}
+      <div class="column-five-eights markets-info--left">
+        <div class="push--right">
+          <div class="cf">
+            <div class="column-two-fifths hard--sides">
+              <img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo">
+            </div>
+            <div class="column-three-fifths hard--left">
+              <ul>
+                <li class="push-half--bottom"><a href="{{ market.web_address }}" class="link">{{ market.web_address }}</a></li>
+                <li class="push--ends">
+                  <dl>
+                    <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
+                    <dd>{{ market | csl:'countries_served' }}</dd>
+                  </dl>
+                </li>
+              </ul>
+            </div>
           </div>
+          <p class="soft-half--ends hard--left">{{ market.description }}</p>
         </div>
       </div>
-
-      <div class='grid-row detail-row'>
-        <h3>Site</h3>
-        <dl>
-          <li>
-            <dt>Number of registered users</dt>
-            <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
-          </li>
-          <li class='wider'>
-            <dt>Customer demographics</dt>
-            <dd>{{ market.customer_demographics|safe }}</dd>
-          </li>
-        </dl>
+      <div class="column-three-eighths">
+        {% include "markets/includes/market_summary.html" %}
       </div>
+    </div>
 
-      <div class='grid-row detail-row'>
-        <h3>Products</h3>
-        <dl>
-          <li>
-            <dt>Seller model</dt>
-            {% for model in market.seller_model.all %}
-              <dd>{{ model.name }}</dd>
-            {% endfor %}
-          </li>
-          <li>
-            <dt>Product positioning</dt>
-            {% for type in market.product_type.all %}
-              <dd>{{ type.name }}</dd>
-            {% endfor %}
-          </li>
-          <li>
-            <dt>Well-known brands</dt>
-            <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
-          </li>
-          <hr>
-          <li>
-            <dt>Customer support channels</dt>
-            <dd>{{ market | csl:'customer_support_channels' }}</dd>
-          </li>
-          <li>
-            <dt>Customer support hours</dt>
-            <dd>{{ market | csl:'customer_support_hours' }}</dd>
-          </li>
-          <li class='wider'>
-            <dt>Marketing and merchandising</dt>
-            <dd>{{ market.marketing_merchandising | safe }}</dd>
-          </li>
-        </dl>
-      </div>
+    <div class='grid-row detail-row'>
+      <h3>Site</h3>
+      <dl>
+        <li>
+          <dt>Number of registered users</dt>
+          <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
+        </li>
+        <li class='wider'>
+          <dt>Customer demographics</dt>
+          <dd>{{ market.customer_demographics|safe }}</dd>
+        </li>
+      </dl>
+    </div>
 
-      <div class='grid-row detail-row'>
-        <h3>On Boarding</h3>
-        <dl>
-          <li>
-            <dt>Local bank account needed</dt>
-            <dd>{{ market.local_bank_account_needed | formatvalue:'required' }}</dd>
-          </li>
-          <li>
-            <dt>Local incorporation needed</dt>
-            <dd>{{ market.local_incorporation_needed | formatvalue:'required' }}</dd>
-          </li>
-          <li>
-            <dt>Exclusivity</dt>
-            <dd>{{ market.exclusivity_required | formatvalue:'required' }}</dd>
-          </li>
-          <li>
-            <dt>Logistics model</dt>
-            {% for model in market.logistics_structure.all %}
-              <dd>{{ model.name }}</dd>
-            {% endfor %}
-          </li>
-          <li>
-            <dt>Shipping tracking required</dt>
-            <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
-          </li>
-          <li>
-            <dt>Local return address required</dt>
-            <dd>{{ market.local_return_address_required | formatvalue:'required' }}</dd>
-          </li>
-          <li class='breaker'>
-            <dt>Product details upload process</dt>
-            <dd>{{ market | csl:'product_details_upload' }}</dd>
-          </li>
-          <li>
-            <dt>Translation</dt>
-              <dd>{{ market.translation_verbal | formatvalue:'tick' }} Translation needed for negotiation</dd>
-              <dd>{{ market.translation_application_process | formatvalue:'tick' }} Translation needed for application process</dd>
-              <dd>{{ market.translation_product_content | formatvalue:'tick' }} Translation needed for product content</dd>
-              <dd>{{ market.translation_seller_support | formatvalue:'tick' }} Translation needed for seller support</dd>
-          </li>
-          <li>
-            <dt>Seller support type</dt>
-            <dd>{{ market | csl:'seller_support_channels' }}</dd>
-          </li>
-          <li>
-            <dt>Seller support hours</dt>
-            <dd>{{ market.seller_support_hours }}</dd>
-          </li>
-        </dl>
-      </div>
+    <div class='grid-row detail-row'>
+      <h3>Products</h3>
+      <dl>
+        <li>
+          <dt>Seller model</dt>
+          {% for model in market.seller_model.all %}
+            <dd>{{ model.name }}</dd>
+          {% endfor %}
+        </li>
+        <li>
+          <dt>Product positioning</dt>
+          {% for type in market.product_type.all %}
+            <dd>{{ type.name }}</dd>
+          {% endfor %}
+        </li>
+        <li>
+          <dt>Well-known brands</dt>
+          <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
+        </li>
+        <hr>
+        <li>
+          <dt>Customer support channels</dt>
+          <dd>{{ market | csl:'customer_support_channels' }}</dd>
+        </li>
+        <li>
+          <dt>Customer support hours</dt>
+          <dd>{{ market | csl:'customer_support_hours' }}</dd>
+        </li>
+        <li class='wider'>
+          <dt>Marketing and merchandising</dt>
+          <dd>{{ market.marketing_merchandising | safe }}</dd>
+        </li>
+      </dl>
+    </div>
 
-      <div class='grid-row detail-row'>
-        <h3>Payment</h3>
-        <dl>
-          <li>
-            <dt>Sale to payment duration</dt>
-            <dd>{{ market.payment_terms_days }} days</dd>
-          </li>
-          <li class='wider'>
-            <dt>Currency</dt>
-            <dd>{{ market | csl:'currency_of_payments' }}</dd>
-          </li>
-        </dl>
-      </div>
+    <div class='grid-row detail-row'>
+      <h3>On Boarding</h3>
+      <dl>
+        <li>
+          <dt>Local bank account needed</dt>
+          <dd>{{ market.local_bank_account_needed | formatvalue:'required' }}</dd>
+        </li>
+        <li>
+          <dt>Local incorporation needed</dt>
+          <dd>{{ market.local_incorporation_needed | formatvalue:'required' }}</dd>
+        </li>
+        <li>
+          <dt>Exclusivity</dt>
+          <dd>{{ market.exclusivity_required | formatvalue:'required' }}</dd>
+        </li>
+        <li>
+          <dt>Logistics model</dt>
+          {% for model in market.logistics_structure.all %}
+            <dd>{{ model.name }}</dd>
+          {% endfor %}
+        </li>
+        <li>
+          <dt>Shipping tracking required</dt>
+          <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
+        </li>
+        <li>
+          <dt>Local return address required</dt>
+          <dd>{{ market.local_return_address_required | formatvalue:'required' }}</dd>
+        </li>
+        <li class='breaker'>
+          <dt>Product details upload process</dt>
+          <dd>{{ market | csl:'product_details_upload' }}</dd>
+        </li>
+        <li>
+          <dt>Translation</dt>
+            <dd>{{ market.translation_verbal | formatvalue:'tick' }} Translation needed for negotiation</dd>
+            <dd>{{ market.translation_application_process | formatvalue:'tick' }} Translation needed for application process</dd>
+            <dd>{{ market.translation_product_content | formatvalue:'tick' }} Translation needed for product content</dd>
+            <dd>{{ market.translation_seller_support | formatvalue:'tick' }} Translation needed for seller support</dd>
+        </li>
+        <li>
+          <dt>Seller support type</dt>
+          <dd>{{ market | csl:'seller_support_channels' }}</dd>
+        </li>
+        <li>
+          <dt>Seller support hours</dt>
+          <dd>{{ market.seller_support_hours }}</dd>
+        </li>
+      </dl>
+    </div>
 
-      <div class='grid-row detail-row'>
-        <h3>Fees and pricing</h3>
-        <dl>
-          <li>
-            <dt>Registration</dt>
-            <dd>{{ market.registration_fees | formatvalue:'required' }}</dd>
-          </li>
-          <li>
-            <dt>Membership</dt>
-            {% if market.membership_fees > 0 %}
-              <dd>£{{ market.membership_fees|floatformat:0|intcomma }} {{ market.get_membership_fees_frequency_display }}</dd>
+    <div class='grid-row detail-row'>
+      <h3>Payment</h3>
+      <dl>
+        <li>
+          <dt>Sale to payment duration</dt>
+          <dd>{{ market.payment_terms_days }} days</dd>
+        </li>
+        <li class='wider'>
+          <dt>Currency</dt>
+          <dd>{{ market | csl:'currency_of_payments' }}</dd>
+        </li>
+      </dl>
+    </div>
+
+    <div class='grid-row detail-row'>
+      <h3>Fees and pricing</h3>
+      <dl>
+        <li>
+          <dt>Registration</dt>
+          <dd>{{ market.registration_fees | formatvalue:'required' }}</dd>
+        </li>
+        <li>
+          <dt>Membership</dt>
+          {% if market.membership_fees > 0 %}
+            <dd>£{{ market.membership_fees|floatformat:0|intcomma }} {{ market.get_membership_fees_frequency_display }}</dd>
+          {% else %}
+            <dd>&#10007; Not required</dd>
+          {% endif %}
+        </li>
+        <li>
+          <dt>Fee per listing</dt>
+          <dd>{{ market.fee_per_listing | formatvalue:'yesno' }}</dd>
+        </li>
+        <li class='ukti-terms breaker'>
+          <dt>DIT Terms</dt>
+          <dd>{{ market.ukti_terms|safe }}</dd>
+        </li>
+        <li>
+          <dt>Bond</dt>
+            {% if market.deposit_needed > 0 %}
+              <dd>£{{ market.deposit_amount|floatformat:0|intcomma }}</dd>
             {% else %}
               <dd>&#10007; Not required</dd>
             {% endif %}
-          </li>
-          <li>
-            <dt>Fee per listing</dt>
-            <dd>{{ market.fee_per_listing | formatvalue:'yesno' }}</dd>
-          </li>
-          <li class='ukti-terms breaker'>
-            <dt>DIT Terms</dt>
-            <dd>{{ market.ukti_terms|safe }}</dd>
-          </li>
-          <li>
-            <dt>Bond</dt>
-              {% if market.deposit_needed > 0 %}
-                <dd>£{{ market.deposit_amount|floatformat:0|intcomma }}</dd>
-              {% else %}
-                <dd>&#10007; Not required</dd>
-              {% endif %}
-          </li>
-          <li>
-            <dt>Commission</dt>
-            <dd>{{ market.commission }}</dd>
-          </li>
-        </dl>
-      </div>
+        </li>
+        <li>
+          <dt>Commission</dt>
+          <dd>{{ market.commission }}</dd>
+        </li>
+      </dl>
+    </div>
 
-      <div class='grid-row detail-row'>
-        <h3>Next steps</h3>
-        <ul>
-          <li class='column-one-third'>
-            <div class='background--grey-dark soft detail-row-column'>
-              <p>To start the application process and access DIT preferential terms follow this link to the marketplace.</p>
-              <p class="font-xxsmall soft--bottom">Please be aware that the site you are visiting may be in a foreign language.</p>
-              <div class="text--center soft--bottom button-section">
-                <a href='#TODO' class='button button-blue'>Go to {{ market.name }}</a>
-              </div>
+    <div class='grid-row detail-row'>
+      <h3>Next steps</h3>
+      <ul>
+        <li class='column-one-third'>
+          <div class='background--grey-dark soft detail-row-column'>
+            <p>To start the application process and access DIT preferential terms follow this link to the marketplace.</p>
+            <p class="font-xxsmall soft--bottom">Please be aware that the site you are visiting may be in a foreign language.</p>
+            <div class="text--center soft--bottom button-section">
+              <a href='#TODO' class='button button-blue'>Go to {{ market.name }}</a>
             </div>
-          </li>
-          <li class='column-one-third'>
-            <div class='background--grey-dark soft detail-row-column'>
-              <p>Need more help?</p>
-              <p class="font-xxsmall soft--bottom">Get more information on how to sell online overseas.</p>
-              <div class="text--center soft--bottom button-section">
-                <a href='#TODO' class='button button-blue'>Get Support</a>
-              </div
+          </div>
+        </li>
+        <li class='column-one-third'>
+          <div class='background--grey-dark soft detail-row-column'>
+            <p>Need more help?</p>
+            <p class="font-xxsmall soft--bottom">Get more information on how to sell online overseas.</p>
+            <div class="text--center soft--bottom button-section">
+              <a href='#TODO' class='button button-blue'>Get Support</a>
             </div>
-          </li>
-          <li class='column-one-third'>
-            <div class='background--grey-dark soft detail-row-column'>
-              <p>Use an aggregator to manage and optimise your sales across many marketplaces from a single platform.</p>
-              <p class="font-xxsmall soft--bottom">Aggregators streamline your product and sales data so you can focus on growing your business.</p>
-              <div class="text--center soft--bottom button-section">
-                <a href='#TODO' class='button button-blue'>See Aggregators</a>
-              </div>
+          </div>
+        </li>
+        <li class='column-one-third'>
+          <div class='background--grey-dark soft detail-row-column'>
+            <p>Use an aggregator to manage and optimise your sales across many marketplaces from a single platform.</p>
+            <p class="font-xxsmall soft--bottom">Aggregators streamline your product and sales data so you can focus on growing your business.</p>
+            <div class="text--center soft--bottom button-section">
+              <a href='#TODO' class='button button-blue'>See Aggregators</a>
             </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

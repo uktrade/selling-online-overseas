@@ -17,6 +17,15 @@ class HomepageView(TemplateView):
 
     template_name = 'markets/homepage.html'
 
+    def get_context_data(self, *args, **kwargs):
+        """
+        Include the count of markets in the context data for showing on the homepage
+        """
+
+        context = super().get_context_data(*args, **kwargs)
+        context['market_count'] = Market.objects.count()
+        return context
+
 
 class FilteringView(FormView):
     """
