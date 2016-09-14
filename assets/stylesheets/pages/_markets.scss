@@ -5,19 +5,22 @@
     border-top: 1px solid $great-primary;
     padding: 30px 0;
 
-    &--logo {
-      padding-left: 0;
+    &-logo {
+      border: 1px solid $lighter-grey;
+      height: 140px;
+      width: 185px;
     }
 
-    &--url {
-      border-bottom: 1px solid;
-      text-decoration: none;
+    &:last-child {
+      border-bottom: 1px solid $great-primary;;
     }
   }
 
   &-item--highlight {
+    margin-left: 5px;
     padding: 20px 0;
     position: relative;
+    width: 345px;
 
     &:after {
       background-color: $body-background-color;

@@ -38,6 +38,7 @@
   }
 
   &-medium {
-    padding: 10px 30px;
+    @extend %font-regular;
+    padding: 13px 38px;
   }
 }

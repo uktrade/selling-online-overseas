@@ -43,6 +43,22 @@
       width: 75%;
     }
 
+    &-eighths {
+      @extend %padding-gutter-override;
+      box-sizing: border-box;
+      float: left;
+      width: 37.5%;
+    }
+
+  }
+
+  &-five {
+    &-eights {
+      @extend %padding-gutter-override;
+      box-sizing: border-box;
+      float: left;
+      width: 62.5%;
+    }
   }
 
 }
