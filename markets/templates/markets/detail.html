@@ -9,6 +9,7 @@
     <div class="column-one-whole">
 
       <h1 class='heading-large'>{{ market.name }}</h1>
+      <p class='heading-last-updated font-xxsmall text--right'>Last updated: {{ market.last_modified|date:"d/m/Y" }}</p>
 
       <div class="column-five-eights markets-info--left">
         <div class="push--right">

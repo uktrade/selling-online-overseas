@@ -1,0 +1,7 @@
+.home {
+  padding-right: 70px;
+
+  @include media (mobile) {
+    padding-right: 10px;
+  }
+}
