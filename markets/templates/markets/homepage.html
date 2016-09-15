@@ -3,12 +3,13 @@
 {% block content %}
   <div class="section">
     <div class="grid-row">
-      <div class="column-two-thirds">
-        <h1 class='heading-xlarge'>Find online marketplaces</h1>
+      <div class="column-two-thirds home">
+        <h1 class='heading-xlarge flush--ends'>Find online marketplaces</h1>
 
-        <p class="push--bottom">Use this service to help choose a suitable online marketplace to sell your products overseas.</p>
+        <p class="heading-sub push--bottom">Use this service to help choose a suitable online marketplace to sell your products overseas.</p>
 
-        <h2 class="push--ends">Find out:</h2>
+        <h2 class="heading-small push--bottom">Find out:</h2>
+
         <ul class="list list-bullet push--bottom">
           <li>which are the major online markets in overseas countries</li>
           <li>if there is a suitable e-commerce website to sell your products</li>
@@ -18,8 +19,24 @@
         </ul>
         <a class='button button-blue button-large push--ends button-start' href='{% url 'markets:filtering' %}'>Start now</a>
       </div>
+
       <div class="column-one-third">
-        &nbsp;
+        <aside>
+          <div class="background--grey-darkest font-white soft">
+            <h4 class="heading-small push-half--top">Essential information</h4>
+            <dl class="soft--bottom">
+
+              <dt class="soft--top">Marketplaces in our databases:</dt>
+              <dd>{{ market_count }}</dd>
+
+              <dt class="soft--top">Last updated:</dt>
+              <dd>31 Aug 2016</dd>
+
+              <dt class="soft--top">How to export online:</dt>
+              <dd class="soft--bottom"><a href="" title="Guide to online export" class="link link--white font-med">Guide to online export</a></dd>
+            </dl>
+          </div>
+        </aside>
       </div>
     </div>
   </div>

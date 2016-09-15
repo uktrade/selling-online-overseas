@@ -109,4 +109,13 @@ a {
 .link {
   border-bottom: 1px solid;
   text-decoration: none;
+
+  &--white {
+    color: $white;
+
+    &:visited {
+      color: $lighter-grey;
+    }
+  }
 }
+
