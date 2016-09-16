@@ -49,6 +49,40 @@
           <span class="visuallyhidden">DIT adviser tip</span>
         </i>
         <h3>DIT adviser tip</h3>
+        <blockquote class="detail-section-content font-lig font-brand">This is a useful tip or summary about the marketplace what the ECA advisors think worth to highlight. Cupcake ipsum dolor sit amet sweet chocolate biscuit. Liquorice cotton candy marshmallow candy canes sesame snaps chupa chups apple pie.</blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class='grid-row detail-section'>
+    <div class="column-one-whole">
+      <div class="detail-section-header">
+        <i class="icon icon-users">
+          <span class="visuallyhidden">site</span>
+        </i>
+        <h3>Site</h3>
+      </div>
+    </div>
+    <dl class="column-one-third">
+        <dt>Registered users</dt>
+        <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
+    </dl>
+    <dl class="column-two-thirds">
+      <dt>Customer profile</dt>
+      <dd>{{ market.customer_demographics|safe }}</dd>
+    </dl>
+  </div>
+</div>
+<div class="section">
+  <div class='grid-row detail-section'>
+    <div class="column-one-whole">
+      <div class="detail-section-header detail-section-header--dotted">
+        <i class="icon icon-adviser icon-left">
+          <span class="visuallyhidden">DIT adviser tip</span>
+        </i>
+        <h3>DIT adviser tip</h3>
         <p class="detail-section-content heading-small font-lig font-brand">This is a useful tip or summary about the marketplace what the ECA advisors think worth to highlight. Cupcake ipsum dolor sit amet sweet chocolate biscuit. Liquorice cotton candy marshmallow candy canes sesame snaps chupa chups apple pie.</p>
       </div>
     </div>
@@ -243,6 +277,85 @@
   </div>
 </div>
 
+<div class="section">
+  <div class='grid-row detail-section detail-section--format'>
+    <div class="column-one-whole">
+      <div class="detail-section-header detail-section-header--dotted cf">
+        <i class="icon icon-consider icon-left">
+          <span class="visuallyhidden">Things you need to consider</span>
+        </i>
+        <h3>Things you need to consider</h3>
+        <div class="detail-section-content">
+          <div class="column-two-thirds">
+            <div class="detail-section-consider">
+              <h4 class="heading-small font-med">Legal considerations</h4>
+              <p>The Japan External Trade Organisation (JETRO) produces a guide on <a href="">‘Laws and regulations on setting up business in Japan’.</a></p>
+
+              <h4 class="heading-small font-med">Tax in Japan</h4>
+              <p>You can find information on tax in Japan for businesses in JETRO’s <a href="">‘Taxes in Japan guide’.</a></p>
+
+              <h4 class="heading-small font-med">Culture</h4>
+              <p>See the <a href="">Guardian Small Business Network article</a> on Cultural considerations when exporting to Japan</p>
+            </div>
+          </div>
+          <div class="column-one-third">
+
+            <div class="background--light-stone soft">
+              <h4 class="heading-small font-med flush--top">Useful links</h4>
+              <dl class="soft--bottom">
+                <dt>Find out more about the countries you plan to export:</dt>
+                <dd><a href="" class="link">Exporting country guides</a></dd>
+
+                <dt>How to export online:</dt>
+                <dd><a href="" class="link">Guide to online export</a></dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class='grid-row detail-section'>
+    <div class="column-one-whole">
+      <div class="detail-section-header">
+        <i class="icon icon-next-step">
+          <span class="visuallyhidden">next steps</span>
+        </i>
+        <h3>Next steps</h3>
+      </div>
+    </div>
+    <ul class="cf">
+      <li class='column-one-third'>
+        <div class='background--stone soft detail-row-column'>
+          <h4 class="font-small font-lig push--bottom flush--top">To start the application process and access DIT preferential terms follow this link to the marketplace.</h4>
+          <p class="font-xxsmall soft--bottom">Please be aware that the site you are visiting may be in a foreign language.</p>
+          <div class="text--center soft--bottom button-section">
+            <a href='{{ market.web_address }}' class='button button-blue button-medium'>Go to {{ market.name }}</a>
+          </div>
+        </div>
+      </li>
+      <li class='column-one-third'>
+        <div class='background--stone soft detail-row-column'>
+          <h4 class="font-small font-lig  push--bottom flush--top">Need more help?</h4>
+          <p class="font-xxsmall soft--bottom">Get more information on how to sell online overseas.</p>
+          <div class="text--center soft--bottom button-section">
+            <a href='#TODO' class='button button-blue button-medium'>Get Support</a>
+          </div>
+        </div>
+      </li>
+      <li class='column-one-third'>
+        <div class='background--stone soft detail-row-column'>
+          <h4 class="font-small font-lig push--bottom flush--top">Use an aggregator to manage and optimise your sales across many marketplaces from a single platform.</h4>
+          <p class="font-xxsmall soft--bottom">Aggregators streamline your product and sales data so you can focus on growing your business.</p>
+          <div class="text--center soft--bottom button-section">
+            <a href='#TODO' class='button button-blue button-medium'>See Aggregators</a>
+          </div>
+        </div>
+      </li>
+    </ul>
 <div class="section">
   <div class='grid-row detail-section detail-section--format'>
     <div class="column-one-whole">

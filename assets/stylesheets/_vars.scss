@@ -16,6 +16,7 @@ $bright-grey: #fafafa;
 $purple: #4f0b7b;
 $mid-blue: #00549f;
 $aqua: #007ea3;
+$navy: #003666;
 
 $lighter-grey-opacity: rgba(220, 224, 223, .5);
 
@@ -29,9 +30,9 @@ $tap-highlight-color: rgba(0, 126, 163, .5);
 // HEADER
 $logo-width: 300px;
 
-$button-blue-bg-color: $link-colour;
-$button-blue-bg-color--visited: $link-colour;
-$button-blue-bg-color--hover: $link-hover-colour;
+$button-blue-bg-color: $mid-blue;
+$button-blue-bg-color--visited: $navy;
+$button-blue-bg-color--hover: $navy;
 $button-blue-color: $white;
 $button-blue-color-hover: $white;
 $button-blue-outline: 1px solid $link-colour;

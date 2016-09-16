@@ -1,20 +1,28 @@
 .heading {
-  position: relative;
 
   &-xlarge {
-    @extend %medium;
+    @extend %regular;
     font-family: $brand-font-family;
+    letter-spacing: -1px;
   }
 
   &-small {
+    @extend %regular;
+    @extend %lede;
     font-family: $brand-font-family;
-    font-size: 18px;
+    letter-spacing: -.4px;
+
   }
 
   &-large {
     @extend %medium;
     font-family: $brand-font-family;
+    letter-spacing: -1px;
     margin-top: 10px;
+  }
+
+  &-last-updated {
+    color: $grey-1;
   }
 
   &-sub {

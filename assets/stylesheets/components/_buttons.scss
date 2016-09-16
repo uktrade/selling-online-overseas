@@ -1,6 +1,7 @@
 @each $name, $bg-color, $visited, $hover, $color, $color-hover, $bg-image, $outline in $button {
   .button {
     box-shadow: none;
+    font-family: $brand-font-family;
     font-weight: 900;
 
     &-#{$name} {
@@ -11,7 +12,6 @@
       color: $color;
       outline: $outline;
 
-      &:link,
       &:visited {
         background-color: $visited;
         color: $color-hover;

@@ -35,6 +35,7 @@
     padding-left: 0;
 
     li {
+      @extend %font-regular;
       margin-bottom: 13px;
 
       &:before {
@@ -44,5 +45,9 @@
         margin-right: 10px;
       }
     }
+  }
+
+  &-user--amount {
+    font-size: 19px;
   }
 }

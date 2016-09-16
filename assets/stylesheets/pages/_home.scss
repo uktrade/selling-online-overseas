@@ -4,4 +4,9 @@
   @include media (mobile) {
     padding-right: 10px;
   }
+
+  &-info {
+    @extend %font-regular;
+    width: 265px;
+  }
 }
