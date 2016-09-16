@@ -24,4 +24,31 @@
     width: 15px;
   }
 
+  &-users {
+    background-image: url('#{$image-path}icons/registered_users.svg');
+  }
+
+  &-products {
+    background-image: url('#{$image-path}icons/product.svg');
+  }
+
+  &-on-boarding {
+    background-image: url('#{$image-path}icons/onboarding.svg');
+  }
+
+  &-fees {
+    background-image: url('#{$image-path}icons/fees.svg');
+  }
+
+  &-next-step {
+    background-image: url('#{$image-path}icons/nextsteps.svg');
+  }
+
+  &-consider {
+    background-image: url('#{$image-path}icons/consideration.svg');
+  }
+
+  &-adviser {
+    background-image: url('#{$image-path}icons/adviser_tip.svg');
+  }
 }

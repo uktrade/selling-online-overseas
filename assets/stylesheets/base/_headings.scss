@@ -7,6 +7,7 @@
   }
 
   &-small {
+    font-family: $brand-font-family;
     font-size: 18px;
   }
 
@@ -14,10 +15,6 @@
     @extend %medium;
     font-family: $brand-font-family;
     margin-top: 10px;
-  }
-
-  &-last-updated {
-    color: $grey-1;
   }
 
   &-sub {
