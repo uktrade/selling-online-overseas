@@ -1,38 +1,79 @@
-.detail-row {
-  margin-bottom: 20px;
+.detail-section {
+
+  &-header {
+    border-top: 1px solid;
+    color: $great-primary;
+    margin-top: 55px;
+    padding-bottom: 30px;
+    position: relative;
+
+    &--dotted {
+      border: 1px dotted;
+    }
+  }
+
+  &-content {
+    margin: 0;
+    padding: 50px 50px 25px;
+  }
 
   h3 {
-    @include bold-24;
-    border-bottom: 1px solid $grey-1;
+    @extend %medium;
+    background: $bright-grey;
+    font-size: 24px;
     margin-bottom: 20px;
-    padding: 0 $gutter-half;
+    padding: 0 10px 0 70px;
+    position: absolute;
+    top: -15px;
   }
 
-  dl > li {
-    @include grid-column(1/3);
-    list-style: none;
-
-    &.wider {
-      @include grid-column(2/3);
-    }
-
-    &.breaker {
-      clear: left;
+  &.detail-section--format {
+    dt,
+    dd {
+      @extend %font-xxsmall;
     }
   }
-
 
   dt {
-    font-weight: bold;
+    @extend %regular;
+    font-size: 19px;
+    padding: 20px 0 10px;
   }
 
+
   dd {
-    margin-bottom: 1em;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+
+
+
+  i {
+    background-size: contain;
+    height: 45px;
+    position: absolute;
+    top: -18px;
+    width: 45px;
+    z-index: 1;
+
+    &.icon-left {
+      background-color: $bright-grey;
+      left: -1px;
+      padding-bottom: 5px;
+      width: 55px;
+    }
+  }
+
+  &-consider {
+    margin-right: 70px;
   }
 }
 
 .detail-row-column {
   height: 250px;
+  margin-top: 20px;
   position: relative;
 
   .button-section {

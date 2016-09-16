@@ -1,5 +1,4 @@
 .markets {
-  padding: 15px;
 
   &-item {
     border-top: 1px solid $great-primary;
@@ -75,10 +74,4 @@
 
   }
 
-
-  &-info {
-    &--left {
-      padding-left: 0;
-    }
-  }
 }
