@@ -48,6 +48,11 @@ main {
 
 .font {
 
+  &-small {
+    @extend %font-regular;
+    font-family: $brand-font-family;
+  }
+
   &-xxsmall {
     @extend %font-xxsmall;
   }
@@ -95,8 +100,13 @@ strong {
   @extend %medium;
 }
 
+blockquote {
+  @extend %font-regular;
+}
+
 p {
   @extend %light;
+  line-height: 23px;
 }
 
 a {
@@ -111,6 +121,7 @@ a {
 
 
 .link {
+  @extend %regular;
   border-bottom: 1px solid;
   text-decoration: none;
 
@@ -120,6 +131,15 @@ a {
     &:visited {
       color: $lighter-grey;
     }
+  }
+
+  &:hover {
+    border-bottom: 1px dotted;
+    color: $aqua;
+  }
+
+  &--regular {
+    @extend %font-regular;
   }
 }
 

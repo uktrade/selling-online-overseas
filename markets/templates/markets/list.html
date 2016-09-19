@@ -6,79 +6,80 @@
   <div class="section">
     <div class="grid-row">
       <div class="column-one-whole heading">
-        <h1 class="heading-large">
-          <span class="heading-secondary">Find online marketplaces overseas</span>
-          <span class="heading-results">{{ markets_list.count }} option{{markets_list|pluralize}} found</span>
-        </h1>
+        <h1 class="heading-xlarge push--ends">{{ markets_list.count }} marketplace{{markets_list|pluralize}} found</h1>
       </div>
     </div>
   </div>
 
-  <div class="filters background--grey">
+  <div class="filters">
     <div class="section">
-      <ul class="filters-tab background--grey cf">
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="product_categories">Product</a></li>
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="platform">Platform</a></li>
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="finance">Finance</a></li>
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="geography">Countries/Regions</a></li>
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="misc">Other</a></li>
-      </ul>
+      <div class="grid-row">
+        <ul class="filters-tab background--grey cf">
+          <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="product_categories">Product</a></li>
+          <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="platform">Platform</a></li>
+          <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="finance">Finance</a></li>
+          <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="geography">Countries/Regions</a></li>
+          <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="misc">Other</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="background--grey-darker">
+    <div class="">
       <div class="section">
-        <form method="get" action="{% url 'markets:list' %}" class="filters-form">
-          <div class="cf filters-section filters-options" data-field="product_categories">
-            <p>Product Categories</p>
-            {{ form.product_categories }}
-            <p>Product Type</p>
-            {{ form.product_type }}
-            <div class="filters-button-group push--top">
-              <button class="button button-grey button-close">Cancel</button>
-              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+        <div class="grid-row">
+          <form method="get" action="{% url 'markets:list' %}" class="filters-form">
+            <div class="cf filters-section filters-options" data-field="product_categories">
+              <p>Product Categories</p>
+              {{ form.product_categories }}
+              <p>Product Type</p>
+              {{ form.product_type }}
+              <div class="filters-button-group push--top">
+                <button class="button button-grey button-close">Cancel</button>
+                <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+              </div>
             </div>
-          </div>
-          <div class="cf filters-section filters-options" data-field="platform">
-            <p>Seller Model</p>
-            {{ form.seller_model }}
-            <p>Logistics Structure</p>
-            {{ form.logistics_structure }}
-            <div class="filters-button-group push--top">
-              <button class="button button-grey button-close">Cancel</button>
-              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+            <div class="cf filters-section filters-options" data-field="platform">
+              <p>Seller Model</p>
+              {{ form.seller_model }}
+              <p>Logistics Structure</p>
+              {{ form.logistics_structure }}
+              <div class="filters-button-group push--top">
+                <button class="button button-grey button-close">Cancel</button>
+                <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+              </div>
             </div>
-          </div>
-          <div class="cf filters-section filters-options" data-field="finance">
-            <p>Local bank account needed</p>
-            {{ form.local_bank_account_needed }}
-            <p>Local incorporation needed</p>
-            {{ form.local_incorporation_needed }}
-            <div class="filters-button-group push--top">
-              <button class="button button-grey button-close">Cancel</button>
-              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+            <div class="cf filters-section filters-options" data-field="finance">
+              <p>Local bank account needed</p>
+              {{ form.local_bank_account_needed }}
+              <p>Local incorporation needed</p>
+              {{ form.local_incorporation_needed }}
+              <div class="filters-button-group push--top">
+                <button class="button button-grey button-close">Cancel</button>
+                <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+              </div>
             </div>
-          </div>
-          <div class="cf filters-section filters-options" data-field="geography">
-            <p>Countries</p>
-            {{ form.countries_served }}
-            <p>Region</p>
-            {{ form.region }}
-            <div class="filters-button-group push--top">
-              <button class="button button-grey button-close">Cancel</button>
-              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+            <div class="cf filters-section filters-options" data-field="geography">
+              <p>Countries</p>
+              {{ form.countries_served }}
+              <p>Region</p>
+              {{ form.region }}
+              <div class="filters-button-group push--top">
+                <button class="button button-grey button-close">Cancel</button>
+                <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+              </div>
             </div>
-          </div>
-          <div class="cf filters-section filters-options" data-field="misc">
-            <p>Customer Support Channels</p>
-            {{ form.customer_support_channels }}
-            <p>Seller Support Channels</p>
-            {{ form.seller_support_channels }}
-            <div class="filters-button-group push--top">
-              <button class="button button-grey button-close">Cancel</button>
-              <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+            <div class="cf filters-section filters-options" data-field="misc">
+              <p>Customer Support Channels</p>
+              {{ form.customer_support_channels }}
+              <p>Seller Support Channels</p>
+              {{ form.seller_support_channels }}
+              <div class="filters-button-group push--top">
+                <button class="button button-grey button-close">Cancel</button>
+                <button id="apply_filters" class="button button-white" type="submit" value="submit">Apply Filters</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
