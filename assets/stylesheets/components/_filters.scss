@@ -73,6 +73,10 @@
     position: absolute;
   }
 
+  &-tab {
+    margin: 0 10px;
+  }
+
   &-tab--item {
     border-right: 1px solid $white;
     display: block;
@@ -87,16 +91,17 @@
     &.active,
     &:hover,
     &:focus  {
-      background-color: $secondary-text-colour;
+      background-color: $great-primary;
       color: $white;
       outline: 0;
     }
   }
 
   &-section {
-    background-color: $secondary-text-colour;
+    background-color: $great-primary;
     color: $white;
-    padding: 10px 10px 30px;
+    margin: 0 10px;
+    padding: 30px;
   }
 
   .block-label--top {

@@ -1,17 +1,13 @@
 .markets {
 
   &-item {
-    border-top: 1px solid $great-primary;
+    border-bottom: 1px solid $great-primary;
     padding: 30px 0;
 
     &-logo {
       border: 1px solid $lighter-grey;
       height: 140px;
       width: 185px;
-    }
-
-    &:last-child {
-      border-bottom: 1px solid $great-primary;;
     }
   }
 
