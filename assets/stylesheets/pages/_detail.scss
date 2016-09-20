@@ -1,20 +1,27 @@
 .detail-section {
 
   &-header {
+    border-color: $great-primary;
     border-top: 1px solid;
     color: $great-primary;
-    margin-top: 55px;
+    margin-top: 65px;
     padding-bottom: 30px;
     position: relative;
 
     &--dotted {
-      border: 1px dotted;
+      border: 1px dotted $great-primary;
     }
+  }
+
+  &--terms {
+    border-left: 10px solid $stone;
+    margin-top: 20px;
+    padding-left: 20px;
   }
 
   &-content {
     margin: 0;
-    padding: 50px 50px 25px;
+    padding: 40px 20px 25px 50px;
   }
 
   h3 {
@@ -30,24 +37,26 @@
   &.detail-section--format {
     dt,
     dd {
-      @extend %font-xxsmall;
+      @extend %font-regular;
     }
   }
 
   dt {
-    @extend %regular;
     font-size: 19px;
     padding: 20px 0 10px;
+
+    &.terms {
+      padding-top: 0;
+    }
   }
 
-
   dd {
+    line-height: 23px;
+
     p {
       margin-bottom: 0;
     }
   }
-
-
 
 
   i {
@@ -72,12 +81,12 @@
 }
 
 .detail-row-column {
-  height: 250px;
+  height: 280px;
   margin-top: 20px;
   position: relative;
 
   .button-section {
-    bottom: 0;
+    bottom: 20px;
     left: 0;
     position: absolute;
     right: 0;

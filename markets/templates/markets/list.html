@@ -29,9 +29,9 @@
         <div class="grid-row">
           <form method="get" action="{% url 'markets:list' %}" class="filters-form">
             <div class="cf filters-section filters-options" data-field="product_categories">
-              <p>Product Categories</p>
+              <h4 class="font-small push-half--bottom">Product Categories</h4>
               {{ form.product_categories }}
-              <p>Product Type</p>
+              <h4 class="font-small push-half--bottom">Product Type</h4>
               {{ form.product_type }}
               <div class="filters-button-group push--top">
                 <button class="button button-grey button-close">Cancel</button>
@@ -39,9 +39,9 @@
               </div>
             </div>
             <div class="cf filters-section filters-options" data-field="platform">
-              <p>Seller Model</p>
+              <h4 class="font-small push-half--bottom">Seller Model</h4>
               {{ form.seller_model }}
-              <p>Logistics Structure</p>
+              <h4 class="font-small push-half--bottom">Logistics Structure</h4>
               {{ form.logistics_structure }}
               <div class="filters-button-group push--top">
                 <button class="button button-grey button-close">Cancel</button>
@@ -49,9 +49,9 @@
               </div>
             </div>
             <div class="cf filters-section filters-options" data-field="finance">
-              <p>Local bank account needed</p>
+              <h4 class="font-small push-half--bottom">Local bank account needed</h4>
               {{ form.local_bank_account_needed }}
-              <p>Local incorporation needed</p>
+              <h4 class="font-small push-half--bottom">Local incorporation needed</h4>
               {{ form.local_incorporation_needed }}
               <div class="filters-button-group push--top">
                 <button class="button button-grey button-close">Cancel</button>
@@ -59,9 +59,9 @@
               </div>
             </div>
             <div class="cf filters-section filters-options" data-field="geography">
-              <p>Countries</p>
+              <h4 class="font-small push-half--bottom">Countries</h4>
               {{ form.countries_served }}
-              <p>Region</p>
+              <h4 class="font-small push-half--bottom">Region</h4>
               {{ form.region }}
               <div class="filters-button-group push--top">
                 <button class="button button-grey button-close">Cancel</button>
@@ -69,9 +69,9 @@
               </div>
             </div>
             <div class="cf filters-section filters-options" data-field="misc">
-              <p>Customer Support Channels</p>
+              <h4 class="font-small push-half--bottom">Customer Support Channels</h4>
               {{ form.customer_support_channels }}
-              <p>Seller Support Channels</p>
+              <h4 class="font-small push-half--bottom">Seller Support Channels</h4>
               {{ form.seller_support_channels }}
               <div class="filters-button-group push--top">
                 <button class="button button-grey button-close">Cancel</button>

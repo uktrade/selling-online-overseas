@@ -8,10 +8,10 @@
 <div class="section">
   <div class="grid-row">
     <div class="column-one-half">
-      <h1 class='heading-large'>{{ market.name }}</h1>
+      <h1 class='heading-xlarge push--ends'>{{ market.name }}</h1>
     </div>
     <div class="column-one-half text--right">
-      <a href="javascript:history.go(-1)">< Go back to listing</a>
+      <a href="javascript:history.go(-1)" class="link link--back">< Go back to listing</a>
     </div>
 
     <div class="column-five-eights markets-info--left">
@@ -48,7 +48,7 @@
         <i class="icon icon-adviser icon-left">
           <span class="visuallyhidden">DIT adviser tip</span>
         </i>
-        <h3>DIT adviser tip</h3>
+        <h3 class="font-brand">DIT adviser tip</h3>
         <blockquote class="detail-section-content font-lig font-brand">This is a useful tip or summary about the marketplace what the ECA advisors think worth to highlight. Cupcake ipsum dolor sit amet sweet chocolate biscuit. Liquorice cotton candy marshmallow candy canes sesame snaps chupa chups apple pie.</blockquote>
       </div>
     </div>
@@ -62,15 +62,15 @@
         <i class="icon icon-users">
           <span class="visuallyhidden">site</span>
         </i>
-        <h3>Site</h3>
+        <h3 class="font-brand">Site</h3>
       </div>
     </div>
     <dl class="column-one-third">
-        <dt>Registered users</dt>
+        <dt class="font-reg">Registered users</dt>
         <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
     </dl>
     <dl class="column-two-thirds">
-      <dt>Customer profile</dt>
+      <dt class="font-reg">Customer profile</dt>
       <dd>{{ market.customer_demographics|safe }}</dd>
     </dl>
   </div>
@@ -83,39 +83,39 @@
         <i class="icon icon-products">
           <span class="visuallyhidden">products</span>
         </i>
-        <h3>Products</h3>
+        <h3 class="font-brand">Products</h3>
       </div>
     </div>
-    <div class="cf">
+    <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt>Seller model</dt>
+        <dt class="font-reg">Seller model</dt>
         {% for model in market.seller_model.all %}
           <dd>{{ model.name }}</dd>
         {% endfor %}
       </dl>
       <dl class="column-one-third">
-        <dt>Product positioning</dt>
+        <dt class="font-reg">Product positioning</dt>
         {% for type in market.product_type.all %}
           <dd>{{ type.name }}</dd>
         {% endfor %}
       </dl>
       <dl class="column-one-third">
-        <dt>Well-known brands</dt>
+        <dt class="font-reg">Well-known brands</dt>
         <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
       </dl>
     </div>
     <div class="cf">
       <dl class="column-one-third">
-        <dt>Customer support</dt>
+        <dt class="font-reg">Customer support</dt>
         <dd>{{ market | csl:'customer_support_channels' }}</dd>
       </dl>
       <dl class="column-two-thirds">
-        <dt>Marketing and merchandising</dt>
+        <dt class="font-reg">Marketing and merchandising</dt>
         <dd>{{ market.marketing_merchandising | safe }}</dd>
       </dl>
     </div>
     <dl class="column-one-whole">
-      <dt>Hours</dt>
+      <dt class="font-reg">Hours</dt>
       <dd>{{ market | csl:'customer_support_hours' }}</dd>
     </dl>
     </div>
@@ -129,65 +129,65 @@
         <i class="icon icon-on-boarding">
           <span class="visuallyhidden">on boarding</span>
         </i>
-        <h3>On Boarding</h3>
+        <h3 class="font-brand">On Boarding</h3>
       </div>
     </div>
-    <div class="cf">
+    <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt>Local bank account needed</dt>
+        <dt class="font-reg">Local bank account needed</dt>
         <dd>{{ market.local_bank_account_needed | formatvalue:'required' }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt>Local incorporation needed</dt>
+        <dt class="font-reg">Local incorporation needed</dt>
         <dd>{{ market.local_incorporation_needed | formatvalue:'required' }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt>Exclusivity</dt>
+        <dt class="font-reg">Exclusivity</dt>
         <dd>{{ market.exclusivity_required | formatvalue:'required' }}</dd>
       </dl>
     </div>
-    <div class="cf">
+    <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt>Sale to payment duration</dt>
+        <dt class="font-reg">Sale to payment duration</dt>
         <dd>{{ market.payment_terms_days }} days</dd>
       </dl>
       <dl class="column-two-thirds">
-        <dt>Currency</dt>
+        <dt class="font-reg">Currency</dt>
         <dd>{{ market | csl:'currency_of_payments' }}</dd>
       </dl>
     </div>
-    <div class="cf">
+    <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt>Logistics model</dt>
+        <dt class="font-reg">Logistics model</dt>
         {% for model in market.logistics_structure.all %}
           <dd>{{ model.name }}</dd>
         {% endfor %}
       </dl>
       <dl class="column-one-third">
-        <dt>Shipping tracking required</dt>
+        <dt class="font-reg">Shipping tracking required</dt>
         <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt>Local return address required</dt>
+        <dt class="font-reg">Local return address required</dt>
         <dd>{{ market.local_return_address_required | formatvalue:'required' }}</dd>
       </dl>
     </div>
     <div class="cf">
       <dl class="column-one-third">
-        <dt>Product details upload process</dt>
+        <dt class="font-reg">Product details upload process</dt>
         <dd>{{ market | csl:'product_details_upload' }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt>Translation</dt>
+        <dt class="font-reg">Translation</dt>
         <dd>{{ market.translation_verbal | formatvalue:'tick' }} Translation needed for negotiation</dd>
         <dd>{{ market.translation_application_process | formatvalue:'tick' }} Translation needed for application process</dd>
         <dd>{{ market.translation_product_content | formatvalue:'tick' }} Translation needed for product content</dd>
         <dd>{{ market.translation_seller_support | formatvalue:'tick' }} Translation needed for seller support</dd>
       </dl>
       <dl class="column-one-third">
-        <dt>Seller support type</dt>
-        <dd>{{ market | csl:'seller_support_channels' }}</dd>
-        <dt>Seller support hours</dt>
+        <dt class="font-reg">Seller support type</dt>
+        <dd class="push--bottom">{{ market | csl:'seller_support_channels' }}</dd>
+        <dt class="font-reg">Seller support hours</dt>
         <dd>{{ market.seller_support_hours }}</dd>
       </dl>
     </div>
@@ -201,16 +201,16 @@
         <i class="icon icon-fees">
           <span class="visuallyhidden">fees and pricing</span>
         </i>
-        <h3>Fees and pricing</h3>
+        <h3 class="font-brand">Fees and pricing</h3>
       </div>
     </div>
-    <div class="cf">
+    <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt>Registration</dt>
+        <dt class="font-reg">Registration</dt>
         <dd>{{ market.registration_fees | formatvalue:'required' }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt>Membership</dt>
+        <dt class="font-reg">Membership</dt>
         {% if market.membership_fees > 0 %}
           <dd>£{{ market.membership_fees|floatformat:0|intcomma }} {{ market.get_membership_fees_frequency_display }}</dd>
         {% else %}
@@ -218,17 +218,19 @@
         {% endif %}
       </dl>
       <dl class="column-one-third">
-        <dt>Fee per listing</dt>
+        <dt class="font-reg">Fee per listing</dt>
         <dd>{{ market.fee_per_listing | formatvalue:'yesno' }}</dd>
       </dl>
     </div>
-    <div class="cf">
+    <div class="cf push--bottom">
+      <div class="column-one-third">
+        <dl class="detail-section--terms">
+          <dt class="terms font-reg">DIT Terms</dt>
+          <dd>{{ market.ukti_terms|safe }}</dd>
+        </dl>
+      </div>
       <dl class="column-one-third">
-        <dt>DIT Terms</dt>
-        <dd>{{ market.ukti_terms|safe }}</dd>
-      </dl>
-      <dl class="column-one-third">
-        <dt>Bond</dt>
+        <dt class="font-reg">Bond</dt>
         {% if market.deposit_needed > 0 %}
           <dd>£{{ market.deposit_amount|floatformat:0|intcomma }}</dd>
         {% else %}
@@ -236,7 +238,7 @@
         {% endif %}
       </dl>
       <dl class="column-one-third">
-        <dt>Commission</dt>
+        <dt class="font-reg">Commission</dt>
         <dd>{{ market.commission }}</dd>
       </dl>
     </div>
@@ -250,31 +252,33 @@
         <i class="icon icon-consider icon-left">
           <span class="visuallyhidden">Things you need to consider</span>
         </i>
-        <h3>Things you need to consider</h3>
+        <h3 class="font-brand">Things you need to consider</h3>
         <div class="detail-section-content">
           <div class="column-two-thirds">
-            <div class="detail-section-consider">
-              <h4 class="heading-small font-med">Legal considerations</h4>
+            <div class="detail-section-consider font-brand push-half--left push--top">
+              <h4 class="font-small font-med">Legal considerations</h4>
               <p>The Japan External Trade Organisation (JETRO) produces a guide on <a href="">‘Laws and regulations on setting up business in Japan’.</a></p>
 
-              <h4 class="heading-small font-med">Tax in Japan</h4>
+              <h4 class="font-small font-med">Tax in Japan</h4>
               <p>You can find information on tax in Japan for businesses in JETRO’s <a href="">‘Taxes in Japan guide’.</a></p>
 
-              <h4 class="heading-small font-med">Culture</h4>
+              <h4 class="font-small font-med">Culture</h4>
               <p>See the <a href="">Guardian Small Business Network article</a> on Cultural considerations when exporting to Japan</p>
             </div>
           </div>
           <div class="column-one-third">
 
-            <div class="background--light-stone soft">
-              <h4 class="heading-small font-med flush--top">Useful links</h4>
-              <dl class="soft--bottom">
-                <dt>Find out more about the countries you plan to export:</dt>
-                <dd><a href="" class="link">Exporting country guides</a></dd>
+            <div class="background--stone soft">
+              <div class="soft">
+                <h4 class="heading-small font-lig flush--top">Useful links</h4>
+                <dl class="soft--bottom">
+                  <dt>Find out more about the countries you plan to export:</dt>
+                  <dd><a href="" class="link">Exporting country guides</a></dd>
 
-                <dt>How to export online:</dt>
-                <dd><a href="" class="link">Guide to online export</a></dd>
-              </dl>
+                  <dt>How to export online:</dt>
+                  <dd><a href="" class="link">Guide to online export</a></dd>
+                </dl>
+              </div>
             </div>
           </div>
         </div>
@@ -290,7 +294,7 @@
         <i class="icon icon-next-step">
           <span class="visuallyhidden">next steps</span>
         </i>
-        <h3>Next steps</h3>
+        <h3 class="font-brand">Next steps</h3>
       </div>
     </div>
     <ul class="cf">
@@ -299,7 +303,7 @@
           <h4 class="font-small font-lig push--bottom flush--top">To start the application process and access DIT preferential terms follow this link to the marketplace.</h4>
           <p class="font-xxsmall soft--bottom">Please be aware that the site you are visiting may be in a foreign language.</p>
           <div class="text--center soft--bottom button-section">
-            <a href='{{ market.web_address }}' class='button button-blue button-medium'>Go to {{ market.name }}</a>
+            <a href='{{ market.web_address }}' class='button button-blue button-large'>Go to {{ market.name }}</a>
           </div>
         </div>
       </li>
@@ -308,7 +312,7 @@
           <h4 class="font-small font-lig push--bottom flush--top">Need more help?</h4>
           <p class="font-xxsmall soft--bottom">Get more information on how to sell online overseas.</p>
           <div class="text--center soft--bottom button-section">
-            <a href='#TODO' class='button button-blue button-medium'>Get Support</a>
+            <a href='#TODO' class='button button-blue button-large'>Get Support</a>
           </div>
         </div>
       </li>
@@ -317,7 +321,7 @@
           <h4 class="font-small font-lig push--bottom flush--top">Use an aggregator to manage and optimise your sales across many marketplaces from a single platform.</h4>
           <p class="font-xxsmall soft--bottom">Aggregators streamline your product and sales data so you can focus on growing your business.</p>
           <div class="text--center soft--bottom button-section">
-            <a href='#TODO' class='button button-blue button-medium'>See Aggregators</a>
+            <a href='#TODO' class='button button-blue button-large'>See Aggregators</a>
           </div>
         </div>
       </li>
