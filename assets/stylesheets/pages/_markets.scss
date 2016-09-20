@@ -2,6 +2,7 @@
 
   &-item {
     border-bottom: 1px solid $great-primary;
+    margin: 0 10px;
     padding: 30px 0;
 
     &-logo {
@@ -12,7 +13,7 @@
   }
 
   &-item--highlight {
-    margin-left: 5px;
+    margin-left: 9px;
     padding: 20px 0;
     position: relative;
     width: 345px;
