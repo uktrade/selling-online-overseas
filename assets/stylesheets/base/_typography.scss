@@ -114,7 +114,7 @@ a {
   @include prefix((tap-highlight-color: $tap-highlight-color), webkit);
 
   &:focus {
-    background-color: $aqua;
+    background-color: transparent;
     outline: 3px solid $aqua;
   }
 }
