@@ -102,6 +102,7 @@ strong {
 
 blockquote {
   @extend %font-regular;
+  line-height: 25px;
 }
 
 p {
@@ -134,11 +135,16 @@ a {
   }
 
   &:hover {
-    border-bottom: 1px dotted;
+    border-bottom: 1px dashed;
     color: $aqua;
   }
 
   &--regular {
     @extend %font-regular;
+  }
+
+  &--back {
+    display: inline-block;
+    margin-top: 41px;
   }
 }
