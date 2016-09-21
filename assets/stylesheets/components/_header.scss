@@ -70,13 +70,13 @@
 
         &:hover,
         &.active {
-          border-bottom: 4px solid $great-secondary;
+          border-bottom: 4px solid $flag-red;
 
           @include media (mobile) {
             border-bottom: 0;
 
             &:before {
-              border: 6px solid $great-secondary;
+              border: 6px solid $flag-red;
               content: '';
               height: 10px;
               left: -20px;
@@ -122,7 +122,7 @@
       &:after {
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
-        border-top: 8px solid $great-secondary;
+        border-top: 8px solid $flag-red;
         content: '';
         height: 0;
         position: absolute;
@@ -136,7 +136,7 @@
         color: $white;
 
         &:after {
-          border-bottom: 8px solid $great-secondary;
+          border-bottom: 8px solid $flag-red;
           border-top: 0;
           top: 5px;
         }

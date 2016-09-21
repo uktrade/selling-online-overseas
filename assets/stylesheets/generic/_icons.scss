@@ -56,11 +56,6 @@
     background-image: url('#{$image-path}icons/tick_no.svg');
   }
 
-  &-ok {
-    background-image: url('#{$image-path}icons/tick_yes.svg');
-  }
-
-
   &-header {
     background-size: contain;
     height: 45px;
