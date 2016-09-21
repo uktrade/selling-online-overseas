@@ -45,8 +45,12 @@
     font-size: 19px;
     padding: 20px 0 10px;
 
-    &.terms {
+    &.hard--top {
       padding-top: 0;
+    }
+
+    &.hard--bottom {
+      padding-bottom: 0;
     }
   }
 

@@ -126,17 +126,21 @@ a {
   border-bottom: 1px solid;
   text-decoration: none;
 
+  &:hover {
+    border-bottom: 1px dashed;
+    color: $aqua;
+  }
+
   &--white {
     color: $white;
 
     &:visited {
       color: $lighter-grey;
     }
-  }
 
-  &:hover {
-    border-bottom: 1px dashed;
-    color: $aqua;
+    &:hover {
+      color: $turquoise;
+    }
   }
 
   &--regular {
