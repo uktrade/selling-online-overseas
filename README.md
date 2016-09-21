@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/uktrade/navigator.svg?branch=master)](https://travis-ci.org/uktrade/navigator)
+
 # navigator
 
 Department of International Trade marketplace navigator.
