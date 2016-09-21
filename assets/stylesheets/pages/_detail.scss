@@ -63,22 +63,6 @@
   }
 
 
-  i {
-    background-size: contain;
-    height: 45px;
-    position: absolute;
-    top: -18px;
-    width: 45px;
-    z-index: 1;
-
-    &.icon-left {
-      background-color: $bright-grey;
-      left: -1px;
-      padding-bottom: 5px;
-      width: 55px;
-    }
-  }
-
   &-consider {
     margin-right: 70px;
   }
