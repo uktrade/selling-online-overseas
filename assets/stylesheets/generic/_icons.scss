@@ -51,4 +51,30 @@
   &-adviser {
     background-image: url('#{$image-path}icons/adviser_tip.svg');
   }
+
+  &-cross {
+    background-image: url('#{$image-path}icons/tick_no.svg');
+  }
+
+  &-ok {
+    background-image: url('#{$image-path}icons/tick_yes.svg');
+  }
+
+
+  &-header {
+    background-size: contain;
+    height: 45px;
+    position: absolute;
+    top: -18px;
+    width: 45px;
+    z-index: 1;
+
+    &--left {
+      background-color: $bright-grey;
+      left: -1px;
+      padding-bottom: 5px;
+      width: 55px;
+    }
+  }
+
 }
