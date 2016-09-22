@@ -13,15 +13,18 @@
     }
   }
 
+  &--info {
+    height: 200px;
+  }
+
   &--terms {
-    border-left: 10px solid $stone;
-    margin-top: 20px;
-    padding-left: 20px;
+    margin-top: 65px;
+    padding-bottom: 30px;
   }
 
   &-content {
     margin: 0;
-    padding: 40px 20px 25px 50px;
+    padding: 40px 50px 25px;
   }
 
   h3 {
@@ -41,9 +44,16 @@
     }
   }
 
-  dt {
+  dt,
+  &-title {
     font-size: 19px;
     padding: 20px 0 10px;
+
+    &.subtitle {
+      @extend %font-xxsmall;
+      @extend %medium;
+      padding-top: 10px;
+    }
 
     &.hard--top {
       padding-top: 0;
