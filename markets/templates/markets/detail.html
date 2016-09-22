@@ -43,14 +43,22 @@
 
 <div class="section">
   <div class='grid-row detail-section'>
-    <div class="column-one-whole">
-      <div class="detail-section-header detail-section-header--dotted">
+    <div class="column-three-fifths">
+      <div class="detail-section-header detail-section-header--dotted detail-section--info push--right">
         <i class="icon icon-header icon-header--left icon-adviser">
           <span class="visuallyhidden">DIT adviser tip</span>
         </i>
         <h3 class="font-brand">DIT adviser tip</h3>
         <blockquote class="detail-section-content font-lig font-brand">This is a useful tip or summary about the marketplace what the ECA advisors think worth to highlight. Cupcake ipsum dolor sit amet sweet chocolate biscuit. Liquorice cotton candy marshmallow candy canes sesame snaps chupa chups apple pie.</blockquote>
       </div>
+    </div>
+    <div class="column-two-fifths hard--left">
+      <div class="detail-section--terms detail-section--info back background--great-primary font-white">
+          <div class="detail-section-content">
+            <h4 class="detail-section-title font-reg hard--top">Department for International Trade (DIT) special terms</h4>
+            {{ market.ukti_terms|safe }}
+          </div>
+        </div>
     </div>
   </div>
 </div>
@@ -105,18 +113,23 @@
       </dl>
     </div>
     <div class="cf">
-      <dl class="column-one-third">
-        <dt class="font-reg">Customer support</dt>
-        <dd>{{ market | csl:'customer_support_channels' }}</dd>
-      </dl>
+      <div class="column-one-third">
+        <h4 class="detail-section-title font-reg">Customer support</h4>
+        <dl>
+          <dt class="subtitle">Channels:</dt>
+          <dd>{{ market | csl:'customer_support_channels' }}</dd>
+
+          <dt class="subtitle push--top">Hours:</dt>
+          <dd>{{ market | csl:'customer_support_hours' }}</dd>
+        </dl>
+      </div>
       <dl class="column-two-thirds">
         <dt class="font-reg">Marketing and merchandising</dt>
         <dd>{{ market.marketing_merchandising | safe }}</dd>
       </dl>
     </div>
     <dl class="column-one-whole">
-      <dt class="font-reg">Hours</dt>
-      <dd>{{ market | csl:'customer_support_hours' }}</dd>
+
     </dl>
     </div>
   </div>
@@ -134,11 +147,11 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Local bank account needed</dt>
+        <dt class="font-reg">Local bank account</dt>
         <dd>{{ market.local_bank_account_needed | formatvalue:'required' }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Local incorporation needed</dt>
+        <dt class="font-reg">Local incorporation</dt>
         <dd>{{ market.local_incorporation_needed | formatvalue:'required' }}</dd>
       </dl>
       <dl class="column-one-third">
@@ -148,7 +161,7 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Sale to payment duration</dt>
+        <dt class="font-reg">Payments terms</dt>
         <dd>{{ market.payment_terms_days }} days</dd>
       </dl>
       <dl class="column-two-thirds">
@@ -158,17 +171,17 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Logistics model</dt>
+        <dt class="font-reg">Logistics structure</dt>
         {% for model in market.logistics_structure.all %}
           <dd>{{ model.name }}</dd>
         {% endfor %}
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Shipping tracking required</dt>
+        <dt class="font-reg">Shipping tracking</dt>
         <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Local return address required</dt>
+        <dt class="font-reg">Local return address</dt>
         <dd>{{ market.local_return_address_required | formatvalue:'required' }}</dd>
       </dl>
     </div>
@@ -184,12 +197,15 @@
         <dd>{{ market.translation_product_content | formatvalue:'tick' }} Translation needed for product content</dd>
         <dd>{{ market.translation_seller_support | formatvalue:'tick' }} Translation needed for seller support</dd>
       </dl>
-      <dl class="column-one-third">
-        <dt class="font-reg">Seller support type</dt>
-        <dd class="push--bottom">{{ market | csl:'seller_support_channels' }}</dd>
-        <dt class="font-reg">Seller support hours</dt>
-        <dd>{{ market.seller_support_hours }}</dd>
-      </dl>
+      <div class="column-one-third">
+        <h4 class="detail-section-title font-reg">Seller support type</h4>
+        <dl>
+          <dt class="subtitle ">Channels:</dt>
+          <dd class="push--bottom">{{ market | csl:'seller_support_channels' }}</dd>
+          <dt class="subtitle">Opening times:</dt>
+          <dd>{{ market.seller_support_hours }}</dd>
+        </dl>
+      </div>
     </div>
   </div>
 </div>
@@ -206,11 +222,11 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Registration</dt>
+        <dt class="font-reg">Registration fee</dt>
         <dd>{{ market.registration_fees | formatvalue:'required' }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Membership</dt>
+        <dt class="font-reg">Membership fee</dt>
         {% if market.membership_fees > 0 %}
           <dd>£{{ market.membership_fees|floatformat:0|intcomma }} {{ market.get_membership_fees_frequency_display }}</dd>
         {% else %}
@@ -218,19 +234,13 @@
         {% endif %}
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Fee per listing</dt>
+        <dt class="font-reg">listing fee</dt>
         <dd>{{ market.fee_per_listing | formatvalue:'yesno' }}</dd>
       </dl>
     </div>
     <div class="cf push--bottom">
-      <div class="column-one-third">
-        <dl class="detail-section--terms">
-          <dt class="hard--top font-reg">DIT Terms</dt>
-          <dd>{{ market.ukti_terms|safe }}</dd>
-        </dl>
-      </div>
       <dl class="column-one-third">
-        <dt class="font-reg">Bond</dt>
+        <dt class="font-reg">Deposit</dt>
         {% if market.deposit_needed > 0 %}
           <dd>£{{ market.deposit_amount|floatformat:0|intcomma }}</dd>
         {% else %}
