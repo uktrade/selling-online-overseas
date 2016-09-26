@@ -14,31 +14,9 @@
       <a href="javascript:history.go(-1)" class="link link--back">< Go back to listing</a>
     </div>
 
-    <div class="column-five-eights markets-info--left">
-      <div class="push--right">
-        <div class="cf">
-          <div class="column-two-fifths hard--sides">
-            <img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo">
-          </div>
-          <div class="column-three-fifths hard--left">
-            <ul>
-              <li class="push-half--bottom"><a href="{{ market.web_address }}" class="link">{{ market.web_address }}</a></li>
-              <li class="push--ends">
-                <dl>
-                  <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
-                  <dd>{{ market | csl:'countries_served' }}</dd>
-                </dl>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <p class="soft-half--ends hard--left">{{ market.description }}</p>
-      </div>
-    </div>
-    <div class="column-three-eighths">
+    <ul class="list markets markets-details">
       {% include "markets/includes/market_summary.html" %}
-    </div>
-  </div>
+    </ul>
 </div>
 
 <div class="section">

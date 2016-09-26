@@ -1,0 +1,9 @@
+@include keyframes(spin) {
+  0% {
+    @include prefix((transform: rotate(0deg)), webkit ms);
+  }
+
+  100% {
+    @include prefix((transform: rotate(360deg)), webkit ms);
+  }
+}

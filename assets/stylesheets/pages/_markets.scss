@@ -1,5 +1,12 @@
 .markets {
 
+  &-details {
+    h3,
+    .button {
+      display: none;
+    }
+  }
+
   &-item {
     border-bottom: 1px solid $great-primary;
     margin: 0 10px;

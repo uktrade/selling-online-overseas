@@ -129,3 +129,26 @@
 .float--right   { float: right; }
 .float--left    { float: left; }
 .float--none    { float: none; }
+
+.loader {
+  background-color: $loader-background;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+
+  &:after {
+    @include prefix((animation: spin 1s linear infinite), webkit);
+    border: 5px solid $body-background-color;
+    border-radius: 50%;
+    border-top: 5px solid $mid-blue;
+    content: '';
+    display: block;
+    height: 50px;
+    margin: 20% auto;
+    width: 50px;
+  }
+
+}

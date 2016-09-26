@@ -4,6 +4,17 @@
     display: block;
   }
 
+  &-form {
+    display: none;
+    position: relative;
+
+    .button-close {
+      position: absolute;
+      right: 40px;
+      top: 20px;
+    }
+  }
+
   .block-label {
     background: $grey-4;
   }
@@ -39,14 +50,6 @@
       }
     }
 
-  }
-
-  &-button-group {
-    text-align: right;
-
-    .button {
-      padding: 10px 30px;
-    }
   }
 
   .button-result {
