@@ -19,6 +19,9 @@ const plugins = loadPlugins(),
 gulp.task('webdriver_update', webdriver_update);
 gulp.task('webdriver_standalone', webdriver_standalone);
 
+// set debugMode to true to use non uglified and compressed js versions
+let debugMode = false ? { mangle: false, compress: false, output: { beautify: true } } : null;
+
 // TASKS
 // - - - - - - - - - - - - - - -
 
@@ -50,22 +53,12 @@ gulp.task('copy:govuk_template:images', () => gulp.src(paths.template + 'assets/
 
 gulp.task('javascripts', () => gulp
   .src([
-    paths.toolkit + 'javascripts/govuk/modules.js',
-    paths.toolkit + 'javascripts/govuk/selection-buttons.js',
-    paths.src + 'javascripts/detailsPolyfill.js',
-    paths.src + 'javascripts/apiKey.js',
-    paths.src + 'javascripts/autofocus.js',
-    paths.src + 'javascripts/highlightTags.js',
-    paths.src + 'javascripts/fileUpload.js',
-    paths.src + 'javascripts/updateContent.js',
-    paths.src + 'javascripts/expandCollapse.js',
-    paths.src + 'javascripts/**/*.js',
-
+    paths.src + 'javascripts/**/*.js'
   ])
   .pipe(plugins.babel({
     presets: ['es2015']
   }))
-  .pipe(plugins.uglify())
+  .pipe(plugins.uglify(debugMode))
   .pipe(plugins.addSrc.prepend([
     paths.npm + 'jquery/dist/jquery.min.js',
     paths.npm + 'query-command-supported/dist/queryCommandSupported.min.js',
