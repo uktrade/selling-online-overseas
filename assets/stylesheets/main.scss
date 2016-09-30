@@ -7,9 +7,10 @@ $path: '/static/images/';
 
 @import 'vars';
 
+@import 'generic/mixins';
+@import 'generic/animation';
 @import 'generic/helpers';
 @import 'generic/icons';
-@import 'generic/mixins';
 
 @import 'base/background';
 @import 'base/choices';

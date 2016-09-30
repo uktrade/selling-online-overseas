@@ -1,0 +1,6 @@
+{% if not markets_list %}
+  <li class="markets-item cf">No market options are available.</li>
+{% endif %}
+{% for market in markets_list %}
+  {% include "markets/includes/market_summary.html" %}
+{% endfor %}

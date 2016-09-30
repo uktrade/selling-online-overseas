@@ -151,6 +151,14 @@ class MarketCountView(MarketListView):
         )
 
 
+class MarketAPIView(MarketListView):
+    """
+    API view for rendering just the markets list, that can be embedded into the page asynchronously
+    """
+
+    template_name = 'markets/includes/market_list.html'
+
+
 class MarketDetailView(DetailView):
     """
     The simple view for the details page for individual Markets

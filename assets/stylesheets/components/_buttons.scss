@@ -41,4 +41,23 @@
     @extend %font-regular;
     padding: 13px 38px;
   }
+
+  &-close {
+    background-color: transparent;
+    font-weight: 300;
+    padding: 0;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &:before {
+      @extend %font-regular;
+      color: $flag-red;
+      content: 'X';
+      font-size: 24px;
+      left: -35px;
+      top: -5px;
+    }
+  }
 }

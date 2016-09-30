@@ -1,33 +1,63 @@
-<div class="background--stone markets-item--highlight">
-  <ul class="soft--sides">
-    <li class="list markets-item--highlight--section background-image--users">
-      <dl>
-        <dt>Registered users</dt>
-        <dd class="heading-large flush--ends">{{ market.web_traffic|floatformat:"-1" }} <span class="list-user--amount ">million</span></dd>
-      </dl>
-    </li>
-    <li class="list markets-item--highlight--section background-image--logistics">
-      <dl>
-        <dt>Logistic support</dt>
-        {% for model in market.logistics_structure.all %}
-          <dd>
-            <i class="icon icon-ok">
-              <span class="visuallyhidden">ok</span>
-            </i>
-            <strong>{{ model.name }}</strong></dd>
-        {% endfor %}
-      </dl>
-    </li>
-    <li class="list markets-item--highlight--section background-image--bank-account">
-      <dl>
-        <dt>Receive payments</dt>
-        <dd>
-          <i class="icon icon-ok">
-            <span class="visuallyhidden">ok</span>
-          </i>
-          <strong>{% if market.local_bank_account_needed %}Non-UK{% else %}UK{% endif %} bank account</strong></dd>
-      </dl>
-    </li>
-  </ul>
-</div>
+{% load static utils %}
+
+<li class="markets-item cf">
+  <div class="column-five-eights markets-info--left hard--left">
+    <div class="push--right">
+      <div class="cf">
+        <div class="column-two-fifths hard--sides">
+          <img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo">
+        </div>
+        <div class="column-three-fifths hard--left">
+          <h3 class="heading-medium flush--ends soft-half--bottom">{{ market.name }}</h3>
+          <ul>
+            <li class="push-half--bottom"><a href="{{ market.web_address }}" class="link">{{ market.web_address }}</a></li>
+            <li class="push--ends">
+              <dl>
+                <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
+                <dd>{{ market | csl:'countries_served' }}</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="soft-half--ends hard--left">{{ market.description }}</p>
+      <a class="button button-blue button-medium push--top" href="{% url 'markets:detail' market.slug %}">Full profile</a>
+    </div>
+  </div>
+  <div class="column-three-eighths">
+    <div class="background--stone markets-item--highlight">
+      <ul class="soft--sides">
+        <li class="list markets-item--highlight--section background-image--users">
+          <dl>
+            <dt>Registered users</dt>
+            <dd class="heading-large flush--ends">{{ market.web_traffic|floatformat:"-1" }} <span class="list-user--amount ">million</span></dd>
+          </dl>
+        </li>
+        <li class="list markets-item--highlight--section background-image--logistics">
+          <dl>
+            <dt>Logistic support</dt>
+            {% for model in market.logistics_structure.all %}
+            <dd>
+              <i class="icon icon-ok">
+                <span class="visuallyhidden">ok</span>
+              </i>
+              <strong>{{ model.name }}</strong></dd>
+            {% endfor %}
+          </dl>
+        </li>
+        <li class="list markets-item--highlight--section background-image--bank-account">
+          <dl>
+            <dt>Receive payments</dt>
+            <dd>
+              <i class="icon icon-ok">
+                <span class="visuallyhidden">ok</span>
+              </i>
+              <strong>{% if market.local_bank_account_needed %}Non-UK{% else %}UK{% endif %} bank account</strong></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+</li>
+
 
