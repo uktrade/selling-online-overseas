@@ -27,38 +27,40 @@
     <div class="section">
       <div class="grid-row">
         <form method="get" action="{% url 'markets:list' %}" class="filters-form">
-          <div class="cf filters-section filters-options" data-field="product_categories">
-            <h4 class="font-small push-half--bottom">Product Categories</h4>
-            {{ form.product_categories }}
-            <h4 class="font-small push-half--bottom">Product Type</h4>
-            {{ form.product_type }}
-          </div>
-          <div class="cf filters-section filters-options" data-field="platform">
-            <h4 class="font-small push-half--bottom">Seller Model</h4>
-            {{ form.seller_model }}
-            <h4 class="font-small push-half--bottom">Logistics Structure</h4>
-            {{ form.logistics_structure }}
-          </div>
-          <div class="cf filters-section filters-options" data-field="finance">
-            <h4 class="font-small push-half--bottom">Local bank account needed</h4>
-            {{ form.local_bank_account_needed }}
-            <h4 class="font-small push-half--bottom">Local incorporation needed</h4>
-            {{ form.local_incorporation_needed }}
-          </div>
-          <div class="cf filters-section filters-options" data-field="geography">
-            <h4 class="font-small push-half--bottom">Countries</h4>
-            {{ form.countries_served }}
-            <h4 class="font-small push-half--bottom">Region</h4>
-            {{ form.region }}
-          </div>
-          <div class="cf filters-section filters-options" data-field="misc">
-            <h4 class="font-small push-half--bottom">Customer Support Channels</h4>
-            {{ form.customer_support_channels }}
-            <h4 class="font-small push-half--bottom">Seller Support Channels</h4>
-            {{ form.seller_support_channels }}
-          </div>
-          <button class="button button-close link">Close</button>
-          <button id="apply_filters" class="button button-white hide" type="submit" value="submit">Apply Filters</button>
+          <fieldset>
+            <div class="cf filters-section filters-options" data-field="product_categories">
+              <h4 class="font-small push-half--bottom">Product Categories</h4>
+              {{ form.product_categories }}
+              <h4 class="font-small push-half--bottom">Product Type</h4>
+              {{ form.product_type }}
+            </div>
+            <div class="cf filters-section filters-options" data-field="platform">
+              <h4 class="font-small push-half--bottom">Seller Model</h4>
+              {{ form.seller_model }}
+              <h4 class="font-small push-half--bottom">Logistics Structure</h4>
+              {{ form.logistics_structure }}
+            </div>
+            <div class="cf filters-section filters-options" data-field="finance">
+              <h4 class="font-small push-half--bottom">Local bank account needed</h4>
+              {{ form.local_bank_account_needed }}
+              <h4 class="font-small push-half--bottom">Local incorporation needed</h4>
+              {{ form.local_incorporation_needed }}
+            </div>
+            <div class="cf filters-section filters-options" data-field="geography">
+              <h4 class="font-small push-half--bottom">Countries</h4>
+              {{ form.countries_served }}
+              <h4 class="font-small push-half--bottom">Region</h4>
+              {{ form.region }}
+            </div>
+            <div class="cf filters-section filters-options" data-field="misc">
+              <h4 class="font-small push-half--bottom">Customer Support Channels</h4>
+              {{ form.customer_support_channels }}
+              <h4 class="font-small push-half--bottom">Seller Support Channels</h4>
+              {{ form.seller_support_channels }}
+            </div>
+            <button class="button button-close link">Close</button>
+            <button id="apply_filters" class="button button-white hide" type="submit" value="submit">Apply Filters</button>
+          </fieldset>
         </form>
       </div>
     </div>
