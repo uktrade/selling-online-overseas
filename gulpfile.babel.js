@@ -69,7 +69,7 @@ gulp.task('javascripts', () => gulp
 );
 
 gulp.task('sass', () => gulp
-  .src(paths.src + 'stylesheets/main*.scss')
+  .src(paths.src + 'stylesheets/*.scss')
   .pipe(plugins.sass({
     outputStyle: 'compressed',
     includePaths: [
