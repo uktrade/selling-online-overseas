@@ -95,7 +95,7 @@
         <h4 class="detail-section-title font-reg">Customer support</h4>
         <dl>
           <dt class="subtitle">Channels:</dt>
-          <dd>{{ market | csl:'customer_support_channels' }}</dd>
+          {{ market | field_dd:'customer_support_channels' }}
 
           <dt class="subtitle push--top">Hours:</dt>
           <dd>{{ market | csl:'customer_support_hours' }}</dd>
@@ -170,10 +170,10 @@
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Translation</dt>
-        <dd>{{ market.translation_verbal | formatvalue:'tick' }} Translation needed for negotiation</dd>
-        <dd>{{ market.translation_application_process | formatvalue:'tick' }} Translation needed for application process</dd>
-        <dd>{{ market.translation_product_content | formatvalue:'tick' }} Translation needed for product content</dd>
-        <dd>{{ market.translation_seller_support | formatvalue:'tick' }} Translation needed for seller support</dd>
+        <dd>{{ market.translation_verbal | formatvalue:'requiredtick' }} for negotiation</dd>
+        <dd>{{ market.translation_application_process | formatvalue:'requiredtick' }} for application process</dd>
+        <dd>{{ market.translation_product_content | formatvalue:'requiredtick' }} for product content</dd>
+        <dd>{{ market.translation_seller_support | formatvalue:'requiredtick' }} for seller support</dd>
       </dl>
       <div class="column-one-third">
         <h4 class="detail-section-title font-reg">Seller support type</h4>
@@ -201,29 +201,24 @@
     <div class="cf push--bottom">
       <dl class="column-one-third">
         <dt class="font-reg">Registration fee</dt>
-        <dd>{{ market.registration_fees | formatvalue:'required' }}</dd>
+        <dd>{{ market.registration_fees | formatvalue:'fee' }}</dd>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Membership fee</dt>
-        {% if market.membership_fees > 0 %}
-          <dd>£{{ market.membership_fees|floatformat:0|intcomma }} {{ market.get_membership_fees_frequency_display }}</dd>
-        {% else %}
-          <dd>&#10007; Not required</dd>
-        {% endif %}
+        <dd>
+          {{ market.membership_fees | formatvalue:'fee' }}
+          {% if market.membership_fees > 0 %}{{market.get_membership_fees_frequency_display }}{% endif %}
+        </dd>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">listing fee</dt>
-        <dd>{{ market.fee_per_listing | formatvalue:'yesno' }}</dd>
+        <dd>{{ market.fee_per_listing | formatvalue:'fee' }}</dd>
       </dl>
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
         <dt class="font-reg">Deposit</dt>
-        {% if market.deposit_needed > 0 %}
-          <dd>£{{ market.deposit_amount|floatformat:0|intcomma }}</dd>
-        {% else %}
-          <dd>&#10007; Not required</dd>
-        {% endif %}
+        <dd>{{ market.deposit_needed | formatvalue:'fee' }}</dd>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Commission</dt>
