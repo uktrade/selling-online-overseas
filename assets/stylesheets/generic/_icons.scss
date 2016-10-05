@@ -19,9 +19,6 @@
 
   &-ok {
     background-image: url('#{$image-path}icons/tick_yes.svg');
-    background-position: center;
-    height: 12px;
-    width: 15px;
   }
 
   &-users {
@@ -70,6 +67,21 @@
       padding-bottom: 5px;
       width: 55px;
     }
+  }
+
+  &-small {
+    background-position: center;
+    height: 12px;
+    width: 15px;
+  }
+
+  &-details {
+    background-position: left bottom;
+    background-size: contain;
+    display: inline-block;
+    height: 15px;
+    margin-right: 5px;
+    width: 13px;
   }
 
 }
