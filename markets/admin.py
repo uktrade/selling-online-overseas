@@ -26,6 +26,7 @@ class MarketAdmin(admin.ModelAdmin):
                 ('name', 'slug', 'logo'),
                 'description',
                 'web_address',
+                'dit_advisor_tip',
             )
         }),
         ('Platform Details', {
