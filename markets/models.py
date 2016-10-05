@@ -93,7 +93,7 @@ class Market(models.Model):
     slug = models.SlugField(max_length=200)
 
     logo = models.ForeignKey('Logo', null=True, blank=True)
-    description = models.CharField(max_length=200, null=True, blank=True, verbose_name="e-Marketplace Description")
+    description = models.TextField(null=True, blank=True, verbose_name="e-Marketplace Description")
     web_address = models.URLField(max_length=200, blank=True, null=True)
     countries_served = models.ManyToManyField(Country, verbose_name="Operating Countries")
     product_categories = models.ManyToManyField(Category)
@@ -185,6 +185,8 @@ class Market(models.Model):
     local_return_address_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                                         verbose_name="Local return address required?")
     local_return_address_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+
+    dit_advisor_tip = models.TextField(null=True, blank=True, verbose_name="DIT Advisor tip")
 
     def save(self, *args, **kwargs):
         if not self.slug:
