@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import urllib
-from django import template
 
+from django import template
+from django.utils.safestring import mark_safe
+from django.utils.numberformat import format
 
 register = template.Library()
 
@@ -24,7 +26,7 @@ def get_regions(market):
 @register.filter(name='csl')
 def comma_separated_list(obj, attr):
     """
-    Get a command-separated list of values from a ManyToMany field
+    Get a comma-separated list of values from a ManyToMany field
     """
 
     field = getattr(obj, attr)
@@ -37,34 +39,64 @@ def comma_separated_list(obj, attr):
     return ", ".join(set(value_list))
 
 
+@register.filter(name='field_dd')
+def render_field_options(obj, attr):
+    """
+    Render the dd elements for a related_model field with ticks/crosses for
+    each item indicating if it's selected or not
+    """
+
+    field = getattr(obj, attr)
+    resp = ""
+    possible_vals = field.model.objects.all()
+    actual_vals = field.all()
+    for val in possible_vals:
+        icon = tick_cross_format_field(val in actual_vals)
+        resp += "<dd>{0} {1}</dd>".format(icon, val)
+
+    return mark_safe(resp)
+
+
 @register.filter(name='formatvalue')
 def format_value(value, style):
     if style == 'required':
-        return required_or_not_format_field(value)
-    elif style == 'yesno':
-        return yes_or_no_format_field(value)
+        resp = required_or_not_format_field(value)
     elif style == 'tick':
-        return tick_cross_format_field(value)
+        resp = tick_cross_format_field(value)
+    elif style == 'requiredtick':
+        resp = required_tick_format_field(value)
+    elif style == 'fee':
+        resp = fee_format_field(value)
     else:
-        return value
+        resp = value
+
+    return mark_safe(resp)
 
 
-def yes_or_no_format_field(value):
-    if value:
-        return "✔ Yes"
+def fee_format_field(value):
+    if value > 0:
+        return "£{0}".format(format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True))
     else:
-        return "✗ No"
+        return required_or_not_format_field(False)
+
+
+def required_tick_format_field(value):
+    return "{0} {1}".format(tick_cross_format_field(value), required_or_not_format_field(value))
 
 
 def required_or_not_format_field(value):
     if value:
-        return "✔ Required"
+        return "Required"
     else:
-        return "✗ Not required"
+        return "Not required"
 
 
 def tick_cross_format_field(value):
     if value:
-        return "✔"
+        return icon_format_field('ok', 'ok')
     else:
-        return "✗"
+        return icon_format_field('cross', 'cross')
+
+
+def icon_format_field(icon, text='ok'):
+    return '<i class="icon icon-details icon-' + icon + '"><span class="visuallyhidden">' + text + '</span></i>'
