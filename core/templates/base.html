@@ -58,17 +58,21 @@
 
     <main role="main">
       <div class="main">
-        {% block breadcrumbs %}
-          <div class="section">
-            <div class="grid-row">
-              <div class="column-one-whole">
-                <div class="breadcrumbs">
-                  {# Left blank until we know the user journey #}
-                </div>
+        <div class="section">
+          <div class="grid-row">
+            <div class="column-one-whole">
+              <div class="breadcrumbs">
+                {% block breadcrumbs %}
+                <ol>
+                  <li><a href="/">Home</a></li>
+                  {% if categories %}<li><a href="/step-two?{{ categories }}">Categories</a></li>{% endif %}
+                  {% if market %}<li><a href="/markets?{{ markets }}">Markets</a></li>{% endif %}
+                </ol>
+                {% endblock breadcrumbs %}
               </div>
             </div>
           </div>
-        {% endblock breadcrumbs %}
+        </div>
 
         {% block content %}{% endblock content %}
 
