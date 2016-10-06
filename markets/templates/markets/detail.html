@@ -3,12 +3,21 @@
 {% block body_class %}details3{% endblock %}
 {% load static utils humanize %}
 
+{% block breadcrumbs %}
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/markets/filter/">Filter</a></li>
+    <li><a href="/markets/search/">Markets</a></li>
+    <li><a href="{{ request.path | urlencode  }}">{{ market.name }}</a></li>
+  </ol>
+{% endblock breadcrumbs %}
+
 {% block content %}
 
 <div class="section">
   <div class="grid-row">
     <div class="column-one-half">
-      <h1 class='heading-xlarge push--ends'>{{ market.name }}</h1>
+      <h1 class='heading-xlarge push--bottom flush--top'>{{ market.name }}</h1>
     </div>
     <div class="column-one-half text--right">
       <a href="#" class="link link--back" title="go back to listing">&lt; Go back to listing</a>
@@ -75,9 +84,7 @@
     <div class="cf push--bottom">
       <dl class="column-one-third">
         <dt class="font-reg">Seller model</dt>
-        {% for model in market.seller_model.all %}
-          <dd>{{ model.name }}</dd>
-        {% endfor %}
+        {{ market | field_dd:'seller_model' }}
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Product positioning</dt>
@@ -166,7 +173,7 @@
     <div class="cf">
       <dl class="column-one-third">
         <dt class="font-reg">Product details upload process</dt>
-        <dd>{{ market | csl:'product_details_upload' }}</dd>
+        {{ market | field_dd:'product_details_upload' }}
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Translation</dt>
@@ -179,8 +186,8 @@
         <h4 class="detail-section-title font-reg">Seller support type</h4>
         <dl>
           <dt class="subtitle ">Channels:</dt>
-          <dd class="push--bottom">{{ market | csl:'seller_support_channels' }}</dd>
-          <dt class="subtitle">Opening times:</dt>
+          {{ market | field_dd:'seller_support_channels' }}
+          <dt class="subtitle push--top">Opening times:</dt>
           <dd>{{ market.seller_support_hours }}</dd>
         </dl>
       </div>
