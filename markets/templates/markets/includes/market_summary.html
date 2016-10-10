@@ -10,8 +10,7 @@
         <div class="column-three-fifths hard--left">
           <h3 class="heading-medium flush--ends soft-half--bottom">{{ market.name }}</h3>
           <ul>
-            <li class="push-half--bottom"><a href="{{ market.web_address }}" class="link">{{ market.web_address }}</a></li>
-            <li class="push--ends">
+            <li>
               <dl>
                 <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
                 <dd>{{ market | csl:'countries_served' }}</dd>
@@ -59,5 +58,3 @@
     </div>
   </div>
 </li>
-
-

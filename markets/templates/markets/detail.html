@@ -42,7 +42,7 @@
     <div class="column-two-fifths hard--left">
       <div class="detail-section--terms detail-section--info back background--great-primary font-white">
           <div class="detail-section-content">
-            <h4 class="detail-section-title font-reg hard--top">Department for International Trade (DIT) special terms</h4>
+            <h4 class="detail-section-title font-reg hard--top">DIT special terms</h4>
             {{ market.ukti_terms|safe }}
           </div>
         </div>
@@ -67,6 +67,14 @@
     <dl class="column-two-thirds">
       <dt class="font-reg">Customer profile</dt>
       <dd>{{ market.customer_demographics|safe }}</dd>
+      <h4 class="detail-section-title font-reg">Customer support</h4>
+      <dl>
+        <dt class="subtitle">Channels:</dt>
+        {{ market | field_dd:'customer_support_channels' }}
+
+        <dt class="subtitle push--top">Hours:</dt>
+        <dd>{{ market | csl:'customer_support_hours' }}</dd>
+      </dl>
     </dl>
   </div>
 </div>
@@ -99,19 +107,11 @@
     </div>
     <div class="cf">
       <div class="column-one-third">
-        <h4 class="detail-section-title font-reg">Customer support</h4>
-        <dl>
-          <dt class="subtitle">Channels:</dt>
-          {{ market | field_dd:'customer_support_channels' }}
-
-          <dt class="subtitle push--top">Hours:</dt>
-          <dd>{{ market | csl:'customer_support_hours' }}</dd>
-        </dl>
-      </div>
-      <dl class="column-two-thirds">
         <dt class="font-reg">Marketing and merchandising</dt>
         <dd>{{ market.marketing_merchandising | safe }}</dd>
-      </dl>
+      </div>
+      <div class="column-two-thirds">
+      </div>
     </div>
     <dl class="column-one-whole">
 
@@ -146,12 +146,19 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Payments terms</dt>
-        <dd>{{ market.payment_terms_days }} days</dd>
+        <dt class="font-reg">Shipping tracking</dt>
+        <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
       </dl>
-      <dl class="column-two-thirds">
-        <dt class="font-reg">Currency</dt>
-        <dd>{{ market | csl:'currency_of_payments' }}</dd>
+      <dl class="column-one-third">
+        <dt class="font-reg">Local return address</dt>
+        <dd>{{ market.local_return_address_required | formatvalue:'required' }}</dd>
+      </dl>
+      <dl class="column-one-third">
+        <dt class="font-reg">Translation</dt>
+        <dd>{{ market.translation_verbal | formatvalue:'requiredtick' }} for negotiation</dd>
+        <dd>{{ market.translation_application_process | formatvalue:'requiredtick' }} for application process</dd>
+        <dd>{{ market.translation_product_content | formatvalue:'requiredtick' }} for product content</dd>
+        <dd>{{ market.translation_seller_support | formatvalue:'requiredtick' }} for seller support</dd>
       </dl>
     </div>
     <div class="cf push--bottom">
@@ -162,12 +169,12 @@
         {% endfor %}
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Shipping tracking</dt>
-        <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
+        <dt class="font-reg">Payments terms</dt>
+        <dd>{{ market.payment_terms_days }} days</dd>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Local return address</dt>
-        <dd>{{ market.local_return_address_required | formatvalue:'required' }}</dd>
+        <dt class="font-reg">Currency</dt>
+        <dd>{{ market | csl:'currency_of_payments' }}</dd>
       </dl>
     </div>
     <div class="cf">
@@ -176,20 +183,14 @@
         {{ market | field_dd:'product_details_upload' }}
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Translation</dt>
-        <dd>{{ market.translation_verbal | formatvalue:'requiredtick' }} for negotiation</dd>
-        <dd>{{ market.translation_application_process | formatvalue:'requiredtick' }} for application process</dd>
-        <dd>{{ market.translation_product_content | formatvalue:'requiredtick' }} for product content</dd>
-        <dd>{{ market.translation_seller_support | formatvalue:'requiredtick' }} for seller support</dd>
-      </dl>
-      <div class="column-one-third">
         <h4 class="detail-section-title font-reg">Seller support type</h4>
         <dl>
           <dt class="subtitle ">Channels:</dt>
           {{ market | field_dd:'seller_support_channels' }}
-          <dt class="subtitle push--top">Opening times:</dt>
+          <dt class="subtitle push--top">Hours:</dt>
           <dd>{{ market.seller_support_hours }}</dd>
         </dl>
+      <div class="column-one-third">
       </div>
     </div>
   </div>
@@ -218,7 +219,7 @@
         </dd>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">listing fee</dt>
+        <dt class="font-reg">Listing fee</dt>
         <dd>{{ market.fee_per_listing | formatvalue:'fee' }}</dd>
       </dl>
     </div>
