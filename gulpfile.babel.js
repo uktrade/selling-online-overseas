@@ -25,12 +25,6 @@ let debugMode = false ? { mangle: false, compress: false, output: { beautify: tr
 // TASKS
 // - - - - - - - - - - - - - - -
 
-// Move template resources
-
-gulp.task('copy:govuk_template:template', () => gulp.src(paths.template + 'views/layouts/govuk_template.html')
-  .pipe(gulp.dest(paths.templates))
-);
-
 gulp.task('copy:govuk_template:css', () => gulp.src(paths.template + 'assets/stylesheets/**/*.css')
   .pipe(plugins.sass({
     outputStyle: 'compressed'
@@ -47,9 +41,6 @@ gulp.task('copy:govuk_template:js', () => gulp.src(paths.template + 'assets/java
   .pipe(gulp.dest(paths.dist + 'javascripts/'))
 );
 
-gulp.task('copy:govuk_template:images', () => gulp.src(paths.template + 'assets/stylesheets/images/**/*')
-  .pipe(gulp.dest(paths.dist + 'images/'))
-);
 
 gulp.task('javascripts', () => gulp
   .src([
@@ -81,23 +72,11 @@ gulp.task('sass', () => gulp
   .pipe(gulp.dest(paths.dist + 'stylesheets/'))
 );
 
-// Copy images
-
-gulp.task('images', () => gulp
-  .src([
-    paths.src + 'images/**/*',
-    paths.toolkit + 'images/**/*',
-    paths.template + 'assets/images/**/*'
-  ])
-  .pipe(gulp.dest(paths.dist + 'images/'))
-);
-
-
 // Watch for changes and re-run tasks
 gulp.task('watchForChanges', function() {
   gulp.watch(paths.src + 'javascripts/**/*', ['javascripts', 'watch-unit-tests']);
   gulp.watch(paths.src + 'stylesheets/**/*.scss', ['sass']);
-  gulp.watch(paths.src + 'images/**/*', ['images']);
+  gulp.watch(paths.src+ 'images/**/*', ['imagemin']);
   gulp.watch('gulpfile.babel.js', ['default']);
 });
 
@@ -160,13 +139,20 @@ gulp.task('watch-unit-tests', () => {
 // Default: compile everything
 gulp.task('default',
   [
-    'copy:govuk_template:images',
     'copy:govuk_template:css',
     'copy:govuk_template:js',
     'javascripts',
     'sass',
-    'images'
+    'imagemin'
   ]
+);
+
+gulp.task('imagemin', () =>
+    gulp.src(paths.src+'images/**/*')
+        .pipe(plugins.imagemin({
+            progressive: true
+        }))
+        .pipe(gulp.dest(paths.images))
 );
 
 // Optional: recompile on changes

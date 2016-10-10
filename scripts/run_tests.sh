@@ -29,5 +29,6 @@ npm test
 display_result $? 2 "Front end code tested and style check"
 
 ## Code coverage
+python manage.py collectstatic --noinput
 coverage run --source='.' manage.py test
 display_result $? 2 "Code coverage"
