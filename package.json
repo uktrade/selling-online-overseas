@@ -39,6 +39,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp-css-url-adjuster": "0.2.3",
+    "gulp-imagemin": "^3.0.3",
     "gulp-jshint": "2.0.0",
     "gulp-protractor": "^3.0.0",
     "gulp-sass-lint": "1.1.1",
