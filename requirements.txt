@@ -5,3 +5,4 @@ gunicorn==19.6.0
 psycopg2==2.6.2
 whitenoise==3.2.1
 Pillow==3.3.0
+Whoosh==2.7.4

@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^', include('core.urls'), name="core"),
     url(r'^contact/', include('contact.urls'), name="contact"),
     url(r'^markets/', include('markets.urls'), name="markets"),
+    url(r'^products/', include('products.urls'), name="products"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

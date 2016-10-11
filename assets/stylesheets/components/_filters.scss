@@ -200,4 +200,44 @@
     }
   }
 
+  &-results {
+    background-color: $white;
+    position: relative;
+    z-index: 1;
+
+    li {
+      padding: 5px 10px;
+
+      a {
+        color: $grey;
+        display: block;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .tags {
+
+    li {
+      background-color: $white;
+      display: inline-block;
+      font-size: 14px;
+      margin: 3px 3px 0 0;
+      padding: 3px;
+    }
+
+    &-close {
+      background-color: $grey;
+      border-radius: 10px;
+      color: $white;
+      display: inline-block;
+      font-size: 12px;
+      height: 15px;
+      line-height: 15px;
+      text-align: center;
+      text-decoration: none;
+      width: 15px;
+    }
+  }
+
 }
