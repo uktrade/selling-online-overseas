@@ -5,7 +5,7 @@
     <div class="push--right">
       <div class="cf">
         <div class="column-two-fifths hard--sides">
-          <img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo">
+          <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}"><img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo"></a>
         </div>
         <div class="column-three-fifths hard--left">
           <h3 class="heading-medium flush--ends soft-half--bottom">{{ market.name }}</h3>

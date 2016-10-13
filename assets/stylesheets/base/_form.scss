@@ -1,14 +1,28 @@
 .form {
+
+  &-group {
+    margin-bottom: 40px;
+  }
+
   &-label {
     @extend %font-regular;
+    @extend %light;
+    color: $grey;
     font-family: $brand-font-family;
+    margin-bottom: 10px;
   }
 
   &-control {
+    background: $light-stone;
+    border: 2px solid $stone;
     height: $form-field-height;
 
     &:focus {
       outline: 3px solid $aqua;
     }
+  }
+
+  &-textarea {
+    height: 100%;
   }
 }
