@@ -1,9 +1,68 @@
 from django.core.urlresolvers import reverse
 from django.test import TestCase
+from django.contrib.auth.models import User
+
 from . import create_market, create_country
 
 
-class MarketListTests(TestCase):
+class MarketPublishingTests(TestCase):
+
+    def setUp(self):
+        self.market = create_market()
+
+    def tearDown(self):
+        self.market.delete()
+
+    def _publish_market(self):
+        self.market.published = True
+        self.market.save()
+
+    def test_list_markets(self):
+        response = self.client.get(reverse('markets:list'))
+        self.assertNotContains(response, self.market.name, status_code=200)
+        markets = response.context_data['object_list']
+        self.assertEqual(len(markets), 0)
+
+        self._publish_market()
+
+        response = self.client.get(reverse('markets:list'))
+        self.assertContains(response, self.market.name, status_code=200)
+        markets = response.context_data['object_list']
+        self.assertEqual(len(markets), 1)
+        self.assertEqual(markets[0], self.market)
+
+    def test_filter_market_list_by_name(self):
+        # Filter the list of markets on it's name, check we get 200 and the market in the response
+        response = self.client.get(reverse('markets:list'), {'name': self.market.name})
+        self.assertNotContains(response, self.market.name, status_code=200)
+
+        self._publish_market()
+
+        # Search for an incorrect name, check we get 200 and NOT the market we created
+        response = self.client.get(reverse('markets:list'), {'name': "Amazing"})
+        self.assertNotContains(response, self.market.name, status_code=200)
+
+
+class MarketTests(TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.username = 'testuser'
+        cls.password = '12345'
+        cls.user = User.objects.create(username=cls.username)
+        cls.user.set_password('12345')
+        cls.user.is_superuser = True
+        cls.user.save()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.user.delete()
+
+    def setUp(self):
+        self.client.login(username=self.user.username, password=self.password)
+
+    def tearDown(self):
+        self.client.logout()
 
     def test_list_markets(self):
         market = create_market()

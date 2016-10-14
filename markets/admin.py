@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (
-    Market, Logo, SupportChannel, UploadMethod, Currency, Brand, LogisticsModel, SellerModel
+    Market, Logo, SupportChannel, UploadMethod, Currency, Brand, LogisticsModel, SellerModel, MarketForSignOff
 )
 from .forms import LogoAdminForm
 
@@ -26,11 +26,11 @@ class MarketAdmin(admin.ModelAdmin):
                 ('name', 'slug', 'logo'),
                 'description',
                 'web_address',
-                'dit_advisor_tip',
             )
         }),
         ('Platform Details', {
             'fields': (
+                'dit_advisor_tip',
                 ('countries_served', 'web_traffic',),
                 ('product_categories', 'prohibited_items',),
                 ('seller_model', 'product_type'),
@@ -57,7 +57,7 @@ class MarketAdmin(admin.ModelAdmin):
             'fields': (
                 ('payment_terms_days', 'currency_of_payments',),
                 ('registration_fees', 'registration_fees_notes',),
-                ('deposit_needed', 'deposit_amount',),
+                ('deposit_amount', 'deposit_notes',),
                 ('commission', 'commission_notes',),
                 ('membership_fees', 'membership_fees_frequency',),
                 ('fee_per_listing', 'fee_per_listing_notes',),
@@ -74,6 +74,18 @@ class MarketAdmin(admin.ModelAdmin):
     )
 
 
+class MarketSignOffAdmin(MarketAdmin):
+    def _flatten(self, data):
+        rdata = []
+        for x in data:
+            rdata += self._flatten(x) if hasattr(x, '__iter__') and not isinstance(x, str) else [x]
+        return rdata
+
+    def get_fieldsets(self, *args, **kwargs):
+        fields = super().get_fieldsets(*args, **kwargs)
+        return fields + (('Admin', {'fields': ('published',)}),)
+
+
 class LogoAdmin(admin.ModelAdmin):
     list_display = ['name']
     ordering = ['name']
@@ -81,4 +93,5 @@ class LogoAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Market, MarketAdmin)
+admin.site.register(MarketForSignOff, MarketSignOffAdmin)
 admin.site.register(Logo, LogoAdmin)
