@@ -13,9 +13,21 @@
     padding: 30px 0;
 
     &-logo {
+      width: 185px;
+      vertical-align: middle;
+    }
+
+    &-logoholder {
       border: 1px solid $lighter-grey;
+      background: #ffffff;
       height: 140px;
       width: 185px;
+    }
+
+    &-helper {
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
     }
   }
 
