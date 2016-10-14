@@ -4,11 +4,23 @@
   <div class="section">
     <div class="grid-row">
       <div class="column-one-whole">
-        <h1>Contact</h1>
+        <h1 class='heading-xlarge push--bottom flush--top'>Contact</h1>
         <form role="form" action="" method="post">
           {% csrf_token %}
-          {{ form.as_p }}
-          <button type="submit">Submit</button>
+
+          {% with form.contact_name as field %}
+            {% include "forms/inputfield.html" %}
+          {% endwith %}
+
+          {% with form.contact_email as field %}
+            {% include "forms/inputfield.html" %}
+          {% endwith %}
+
+          {% with form.content as field %}
+            {% include "forms/textbox.html" %}
+          {% endwith %}
+
+          <button type="submit" class="button button-blue button-large">Submit</button>
         </form>
       </div>
     </div>
