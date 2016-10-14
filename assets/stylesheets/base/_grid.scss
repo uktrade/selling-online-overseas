@@ -16,6 +16,13 @@
       float: left;
       width: 20%;
     }
+
+    &-fourth {
+      @extend %padding-gutter-override;
+      box-sizing: border-box;
+      float: left;
+      width: 25%;
+    }
   }
 
   &-two {

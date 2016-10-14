@@ -12,6 +12,7 @@
         <div class="column-three-fifths hard--left">
           <h3 class="heading-medium flush--ends soft-half--bottom">{{ market.name }}</h3>
           <ul>
+            <li class="soft-half--bottom markets-item--url"><a href="{{ market.web_address }}" class="link">{{ market.web_address }}</a></li>
             <li>
               <dl>
                 <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
@@ -27,33 +28,34 @@
   </div>
   <div class="column-three-eighths">
     <div class="background--stone markets-item--highlight">
-      <ul class="soft--sides">
+      <ul class="markets-item--list">
         <li class="list markets-item--highlight--section background-image--users">
           <dl>
-            <dt>Registered users</dt>
-            <dd class="heading-large flush--ends">{{ market.web_traffic|floatformat:"-1" }} <span class="list-user--amount ">million</span></dd>
+            <dt><strong>Registered users:</strong></dt>
+            <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
+          </dl>
+        </li>
+        <li class="list markets-item--highlight--section background-image--commission">
+          <dl>
+            <dt><strong>Commission:</strong></dt>
+            <dd>{{ market.commission }}</dd>
+          </dl>
+        </li>
+        <li class="list markets-item--highlight--section background-image--fees">
+          <dl>
+            <dt><strong>Membership fee:</strong></dt>
+            <dd>
+              {{ market.membership_fees | formatvalue:'fee' }}
+              {% if market.membership_fees > 0 %}{{market.get_membership_fees_frequency_display }}{% endif %}
+            </dd>
           </dl>
         </li>
         <li class="list markets-item--highlight--section background-image--logistics">
           <dl>
-            <dt>Logistic support</dt>
+            <dt><strong>Logistic support</strong></dt>
             {% for model in market.logistics_structure.all %}
-            <dd>
-              <i class="icon icon-ok icon-small">
-                <span class="visuallyhidden">ok</span>
-              </i>
-              <strong>{{ model.name }}</strong></dd>
+            <dd>{{ model.name }}</dd>
             {% endfor %}
-          </dl>
-        </li>
-        <li class="list markets-item--highlight--section background-image--bank-account">
-          <dl>
-            <dt>Receive payments</dt>
-            <dd>
-              <i class="icon icon-ok icon-small">
-                <span class="visuallyhidden">ok</span>
-              </i>
-              <strong>{% if market.local_bank_account_needed %}Non-UK{% else %}UK{% endif %} bank account</strong></dd>
           </dl>
         </li>
       </ul>

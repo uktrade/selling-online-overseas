@@ -53,6 +53,14 @@
     background-image: url('#{$image-path}icons/tick_no.svg');
   }
 
+  &-countries {
+    background-image: url('#{$image-path}icons/region.svg');
+
+    &--white {
+      background-image: url('#{$image-path}icons/region-white.svg');
+    }
+  }
+
   &-header {
     background-size: contain;
     height: 45px;

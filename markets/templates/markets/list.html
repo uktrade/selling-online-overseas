@@ -23,11 +23,18 @@
     <div class="section">
       <div class="grid-row">
         <ul class="filters-tab background--stone cf">
-          <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="product_categories">Product</a></li>
-          <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="platform">Platform</a></li>
-          <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="finance">Finance</a></li>
-          <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="geography">Countries/Regions</a></li>
-          <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="misc">Other</a></li>
+          <li class="column-one-fourth">
+            <a class="filters-tab--item" href="#" data-group="product_categories"><i class="icon icon-products"></i>Product</a>
+          </li>
+          <li class="column-one-fourth">
+            <a class="filters-tab--item" href="#" data-group="geography"><i class="icon icon-countries"></i>Countries/Regions</a>
+          </li>
+          <li class="column-one-fourth">
+            <a class="filters-tab--item" href="#" data-group="platform"><i class="icon icon-on-boarding"></i>On Boarding</a>
+          </li>
+          <li class="column-one-fourth">
+            <a class="filters-tab--item" href="#" data-group="finance"><i class="icon icon-fees"></i>Fees & Pricing</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -42,13 +49,13 @@
               <h4 class="font-small push-half--bottom">Product Type</h4>
               {{ form.product_type }}
             </div>
-            <div class="cf filters-section filters-options" data-field="platform">
+            <div class="cf filters-section filters-options" data-field="finance">
               <h4 class="font-small push-half--bottom">Seller Model</h4>
               {{ form.seller_model }}
               <h4 class="font-small push-half--bottom">Logistics Structure</h4>
               {{ form.logistics_structure }}
             </div>
-            <div class="cf filters-section filters-options" data-field="finance">
+            <div class="cf filters-section filters-options" data-field="platform">
               <h4 class="font-small push-half--bottom">Local bank account needed</h4>
               {{ form.local_bank_account_needed }}
               <h4 class="font-small push-half--bottom">Local incorporation needed</h4>
@@ -59,12 +66,6 @@
               {{ form.countries_served }}
               <h4 class="font-small push-half--bottom">Region</h4>
               {{ form.region }}
-            </div>
-            <div class="cf filters-section filters-options" data-field="misc">
-              <h4 class="font-small push-half--bottom">Customer Support Channels</h4>
-              {{ form.customer_support_channels }}
-              <h4 class="font-small push-half--bottom">Seller Support Channels</h4>
-              {{ form.seller_support_channels }}
             </div>
             <button class="button button-close link">Close</button>
             <button id="apply_filters" class="button button-white hide" type="submit" value="submit">Apply Filters</button>
