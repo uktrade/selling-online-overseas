@@ -6,8 +6,8 @@
       <div class="cf">
         <div class="column-two-fifths hard--sides">
           <div class="markets-item-logoholder">
-            <span class="markets-item-helper"></span>
             <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
+              <span class="markets-item-helper"></span>
               <img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo">
             </a>
           </div>
