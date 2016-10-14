@@ -5,12 +5,20 @@
     .button {
       display: none;
     }
+
+    .markets-item--url {
+      display: block;
+    }
   }
 
   &-item {
     border-bottom: 1px solid $great-primary;
     margin: 0 10px;
     padding: 30px 0;
+
+    &--list {
+      padding: 5px 35px 15px;
+    }
 
     &-logo {
       width: 185px;
@@ -23,6 +31,11 @@
       height: 140px;
       width: 185px;
     }
+
+    &--url {
+      display: none;
+    }
+
 
     &-helper {
       display: inline-block;
@@ -52,26 +65,19 @@
   }
 
   &-item--highlight--section {
-    background-position: 20px 20px;
+    background-position: 0 10px;
+    background-size: 40px;
     border-bottom: 1px solid $white;
-    color: $great-primary;
     margin: 0;
-    padding-bottom: 45px;
-    padding-top: 20px;
+    padding: 10px 0 15px;
     position: relative;
 
     dl {
-      padding-left: 110px;
+      padding-left: 50px;
 
       .heading-large {
         margin: 0;
       }
-    }
-
-    dt {
-      bottom: 25px;
-      left: 110px;
-      position: absolute;
     }
 
     &:last-child {
@@ -82,10 +88,6 @@
       margin: 0;
       padding: 0;
       width: 80%;
-    }
-
-    .icon {
-      margin-left: -20px;
     }
 
   }
