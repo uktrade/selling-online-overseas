@@ -6,10 +6,7 @@
       <div class="cf">
         <div class="column-two-fifths hard--sides">
           <div class="markets-item-logoholder">
-            <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
-              <span class="markets-item-helper"></span>
-              <img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo">
-            </a>
+            <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}"><span class="markets-item-helper"></span><img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo"></a>
           </div>
         </div>
         <div class="column-three-fifths hard--left">
