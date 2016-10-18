@@ -11,7 +11,25 @@ from .forms import MarketListFilterForm, InitialFilteringForm
 from core.forms import QueryChoiceMixin
 
 
-class HomepageView(TemplateView):
+class MarketFilterMixin(object):
+    """
+    """
+
+    @property
+    def markets(self):
+        if not self.request:
+            authenticated = False
+        else:
+            authenticated = self.request.user.is_authenticated()
+
+        if not authenticated:
+            # Remove the not published Markets for un-authed users
+            return Market.objects.filter(published=True)
+        else:
+            return Market.objects
+
+
+class HomepageView(MarketFilterMixin, TemplateView):
     """
     The landing page for the e-marketplace finding tool, offering advice on it's use
     """
@@ -24,12 +42,12 @@ class HomepageView(TemplateView):
         """
 
         context = super().get_context_data(*args, **kwargs)
-        context['market_count'] = Market.objects.count()
-        context['last_updated'] = Market.objects.all().aggregate(Max('last_modified'))['last_modified__max']
+        context['market_count'] = self.markets.count()
+        context['last_updated'] = self.markets.aggregate(Max('last_modified'))['last_modified__max']
         return context
 
 
-class FilteringView(FormView):
+class FilteringView(MarketFilterMixin, FormView):
     """
     The first step in the tool, used to pre-filter the marketplaces
     """
@@ -43,11 +61,11 @@ class FilteringView(FormView):
         """
 
         context = super().get_context_data(*args, **kwargs)
-        context['results_count'] = Market.objects.count()
+        context['results_count'] = self.markets.count()
         return context
 
 
-class MarketListView(ListView):
+class MarketListView(MarketFilterMixin, ListView):
     """
     View for producing a list of Markets based on some user-selected filtering
     """
@@ -137,7 +155,7 @@ class MarketListView(ListView):
                 # Ignore GET params that aren't on the model
                 pass
 
-        filtered_markets = Market.objects.filter(**_filter).distinct()
+        filtered_markets = self.markets.filter(**_filter).distinct()
         ordered_markets = filtered_markets.annotate(cats=Count('product_categories')).order_by('cats', 'name')
 
         return ordered_markets

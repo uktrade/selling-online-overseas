@@ -5,6 +5,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
+from django.core.exceptions import ValidationError
 
 from ckeditor.fields import RichTextField
 
@@ -86,17 +87,43 @@ class Brand(models.Model):
         ordering = ('-name',)
 
 
-class Market(models.Model):
+class ApprovalModel(models.Model):
+
+    class Meta:
+        abstract = True
+
+    published = models.BooleanField(default=False)
+    approval_fields = []
+
+    def clean(self):
+        """
+        If the published flag is True, then go over all of the fields that must be populated for publishing, and check
+        that they have a value
+        """
+
+        if self.published:
+            errors = {}
+
+            for field in self.approval_fields:
+                value = getattr(self, field, None)
+                if value is None or value == '':
+                    errors[field] = 'This field must be filled in for publishing'
+
+            if errors:
+                raise ValidationError(errors)
+
+
+class Market(ApprovalModel):
     last_modified = models.DateTimeField(auto_now=True)
 
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
 
     logo = models.ForeignKey('Logo', null=True, blank=True)
-    description = models.TextField(null=True, blank=True, verbose_name="e-Marketplace Description")
-    web_address = models.URLField(max_length=200, blank=True, null=True)
-    countries_served = models.ManyToManyField(Country, verbose_name="Operating Countries")
-    product_categories = models.ManyToManyField(Category)
+    description = models.TextField(verbose_name="e-Marketplace Description")
+    web_address = models.URLField(max_length=200)
+    countries_served = models.ManyToManyField(Country, verbose_name="Operating Countries", blank=True)
+    product_categories = models.ManyToManyField(Category, blank=True)
 
     web_traffic = models.FloatField(default=0, null=True, blank=True, help_text="in millions",
                                     verbose_name="Number of registered users")
@@ -104,7 +131,7 @@ class Market(models.Model):
 
     customer_support_channels = models.ManyToManyField(SupportChannel, blank=True,
                                                        related_name="%(app_label)s_%(class)s_customer_related")
-    customer_support_hours = models.CharField(max_length=50, null=True, blank=True)
+    customer_support_hours = models.CharField(blank=True, null=True, max_length=50)
 
     seller_support_channels = models.ManyToManyField(SupportChannel, blank=True,
                                                      related_name="%(app_label)s_%(class)s_seller_related")
@@ -171,13 +198,12 @@ class Market(models.Model):
     fee_per_listing = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                           verbose_name="Pricing/Fees - Fee per Listing")
     fee_per_listing_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    membership_fees = models.FloatField(default=0, null=True, blank=True, help_text="Converted to GBP",
+    membership_fees = models.FloatField(default=0, help_text="Converted to GBP",
                                         verbose_name="Pricing/Fees - Membership fees")
     membership_fees_frequency = models.CharField(choices=PAYMENT_FREQUENCIES, max_length=1, null=True, blank=True)
 
-    deposit_needed = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                         verbose_name="Pricing Fees - Deposit/Bond Needed")
-    deposit_amount = models.FloatField(default=0, null=True, blank=True)
+    deposit_amount = models.FloatField(default=0)
+    deposit_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
 
     shipping_tracking_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                                      verbose_name="Shipping Tracking Required")
@@ -188,7 +214,32 @@ class Market(models.Model):
 
     dit_advisor_tip = models.TextField(null=True, blank=True, verbose_name="DIT Advisor tip")
 
+    approval_fields = [
+        'logo',
+        'countries_served',
+        'product_categories',
+        'web_traffic',
+        'customer_support_channels',
+        'customer_support_hours',
+        'seller_support_channels',
+        'seller_support_hours',
+        'customer_demographics',
+        'marketing_merchandising',
+        'product_details_upload',
+        'payment_terms_days',
+        'currency_of_payments',
+        'logistics_structure',
+        'seller_model',
+        'product_type',
+        'ukti_terms',
+        'dit_advisor_tip',
+    ]
+
     def save(self, *args, **kwargs):
+        """
+        Populate the slug based on the marketplace's name on save
+        """
+
         if not self.slug:
             self.slug = slugify(self.name)
 
@@ -199,3 +250,19 @@ class Market(models.Model):
 
     class Meta:
         ordering = ('-name',)
+
+
+class MarketForSignOff(Market):
+    """
+    A proxy class to our Market that are for an approver to sign off.  We can't register the same Market model in the
+    admin site more than once, so here we create a proxy so that we can, and limit the queryset to only those that
+    published=False
+    """
+
+    class Meta:
+        proxy = True
+        verbose_name = "Market - To Sign Off"
+        verbose_name_plural = "Markets - To Sign Off"
+
+    def queryset(self, request):
+        return self.model.objects.filter(published=False)
