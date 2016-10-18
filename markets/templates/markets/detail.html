@@ -231,7 +231,7 @@
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Commission</dt>
-        <dd>{{ market.commission }}</dd>
+        <dd>{{ market.commission_lower }}{% if market.commission_lower != market.commission_upper and market.commission_upper %} - {{ market.commission_upper }}{% endif %}%</dd>
       </dl>
     </div>
   </div>
