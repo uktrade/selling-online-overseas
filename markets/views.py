@@ -4,6 +4,7 @@ import ast
 from django.http import JsonResponse
 from django.views.generic import ListView, DetailView, FormView, TemplateView
 from django.forms import TypedChoiceField
+from django.db.models import Max, Count
 
 from .models import Market
 from .forms import MarketListFilterForm, InitialFilteringForm
@@ -24,6 +25,7 @@ class HomepageView(TemplateView):
 
         context = super().get_context_data(*args, **kwargs)
         context['market_count'] = Market.objects.count()
+        context['last_updated'] = Market.objects.all().aggregate(Max('last_modified'))['last_modified__max']
         return context
 
 
@@ -135,7 +137,10 @@ class MarketListView(ListView):
                 # Ignore GET params that aren't on the model
                 pass
 
-        return Market.objects.filter(**_filter).distinct()
+        filtered_markets = Market.objects.filter(**_filter).distinct()
+        ordered_markets = filtered_markets.annotate(cats=Count('product_categories')).order_by('cats', 'name')
+
+        return ordered_markets
 
 
 class MarketCountView(MarketListView):
