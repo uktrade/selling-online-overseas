@@ -1,11 +1,7 @@
 #global-header {
   background-color: $great-primary;
-
-  .header-wrapper {
-    background-color: $great-primary;
-    padding-bottom: 7px;
-    padding-top: 10px;
-  }
+  padding-bottom: 9px;
+  padding-top: 15px;
 
   .header-main-logo {
     width: $logo-width;
@@ -22,15 +18,15 @@
   }
 
   .header-nav {
-    padding-top: 35px;
+    padding-top: 30px;
 
-    @include media (mobile) {
+    @include breakpoint (tablet) {
       display: none;
       padding: 10px 0;
     }
 
     &.open {
-      @include media (mobile) {
+      @include breakpoint (tablet) {
         display: block;
       }
     }
@@ -42,16 +38,15 @@
       padding-left: 22px;
       text-transform: uppercase;
 
-      @include media (mobile) {
+      @include breakpoint(tablet) {
         border-bottom: 1px solid $light-grey;
         border-bottom-color: $lighter-grey-opacity;
-        display: block;
         margin-left: 20px;
         margin-right: 20px;
         padding: 10px 0;
         position: relative;
 
-        @include media (mobile) {
+        @include breakpoint(tablet) {
           width: 65%;
         }
 
@@ -72,7 +67,7 @@
         &.active {
           border-bottom: 4px solid $flag-red;
 
-          @include media (mobile) {
+          @include breakpoint(tablet) {
             border-bottom: 0;
 
             &:before {
@@ -88,14 +83,14 @@
         &:hover {
           border-color: $lighter-grey;
 
-          @include media (mobile) {
+          @include breakpoint(tablet) {
             &:before {
               border-color: $lighter-grey;
             }
           }
         }
 
-        @include media (mobile) {
+        @include breakpoint(tablet) {
           border-bottom: 0;
         }
 
@@ -103,7 +98,7 @@
 
       &:last-child {
         margin-left: 0;
-        @include media (mobile) {
+        @include breakpoint(tablet) {
           margin-left: 20px;
         }
       }
@@ -147,7 +142,7 @@
         outline: 0;
       }
 
-      @include media (mobile) {
+      @include breakpoint(tablet) {
         display: block;
       }
     }

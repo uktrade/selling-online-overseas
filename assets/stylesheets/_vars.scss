@@ -37,35 +37,35 @@ $button-blue-bg-color--visited: $mid-blue;
 $button-blue-bg-color--hover: $navy;
 $button-blue-color: $white;
 $button-blue-color-hover: $white;
-$button-blue-outline: 1px solid $link-colour;
+$button-blue-outline: 0;
 
 $button-transparent-bg-color: $link-colour;
 $button-transparent-bg-color--visited: transparent;
 $button-transparent-bg-color--hover: transparent;
 $button-transparent-color: $link-colour;
 $button-transparent-color-hover: $link-colour;
-$button-transparent-outline: 1px solid $link-colour;
+$button-transparent-outline: 0;
 
 $button-white-bg-color: $white;
 $button-white-bg-color--visited: $white;
 $button-white-bg-color--hover: $white;
 $button-white-color: $link-colour;
 $button-white-color-hover: $link-colour;
-$button-white-outline: 1px solid $white;
+$button-white-outline: 0;
 
 $button-grey-bg-color: $grey-3;
 $button-grey-bg-color--visited: $white;
 $button-grey-bg-color--hover: $white;
 $button-grey-color: $link-colour;
 $button-grey-color-hover: $link-colour;
-$button-grey-outline: 1px solid $grey-3;
+$button-grey-outline: 0;
 
 $button-border-bg-color: transparent;
 $button-border-bg-color--visited: transparent;
 $button-border-bg-color--hover: transparent;
 $button-border-color: $black;
 $button-border-color-hover: $black;
-$button-border-outline: 1px solid $black;
+$button-border-outline: 0;
 
 $button-red-bg-color: $flag-red;
 $button-red-bg-color--visited: $flag-red;
@@ -106,3 +106,8 @@ $button: (
 
 //FORMS
 $form-field-height: 50px;
+
+
+// Devices
+$tablet: 960px;
+$mobile: 400px;

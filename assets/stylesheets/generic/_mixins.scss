@@ -28,3 +28,17 @@
     @content;
   }
 }
+
+// Define breakpoint for mobile and tablet
+@mixin breakpoint ($device) {
+
+  @if ($device == tablet) {
+    @media (max-width: $tablet) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $mobile) {
+      @content;
+    }
+  }
+}

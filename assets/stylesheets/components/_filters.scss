@@ -71,6 +71,14 @@
   &-tab {
     margin: 0 10px;
 
+    @include breakpoint(tablet) {
+      margin: 0;
+    }
+
+    @include media(mobile) {
+      display: none;
+    }
+
     i {
       background-position: bottom center;
       background-size: contain;
@@ -111,25 +119,25 @@
       background-color: $great-primary;
       color: $white;
       outline: 0;
-   
+
       .icon-products {
-        background-image: url('#{$image-path}icons/product-white.svg')
+        background-image: url('#{$image-path}icons/product-white.svg');
       }
-      
+
       .icon-fees {
-        background-image: url('#{$image-path}icons/fees-white.svg')
+        background-image: url('#{$image-path}icons/fees-white.svg');
       }
-      
+
       .icon-on-boarding {
-        background-image: url('#{$image-path}icons/onboarding-white.svg')
+        background-image: url('#{$image-path}icons/onboarding-white.svg');
       }
-      
+
       .icon-countries {
-        background-image: url('#{$image-path}icons/region-white.svg')
+        background-image: url('#{$image-path}icons/region-white.svg');
       }
-      
+
     }
-    
+
   }
 
   &-section {
@@ -137,6 +145,11 @@
     color: $white;
     margin: 0 10px;
     padding: 30px;
+
+    @include breakpoint(tablet) {
+      margin: 0;
+    }
+
   }
 
   .block-label--top {
