@@ -158,7 +158,8 @@ class Market(ApprovalModel):
     product_type = models.ManyToManyField(Type, blank=True, verbose_name="Product Positioning")
     prohibited_items = models.ManyToManyField(ProhibitedItem, blank=True)
 
-    commission = models.CharField(max_length=10, null=True, blank=True)
+    commission_lower = models.FloatField(null=True, blank=True)
+    commission_upper = models.FloatField(null=True, blank=True)
     commission_notes = models.CharField(max_length=255, null=True, blank=True)
 
     ukti_terms = RichTextField(null=True, blank=True, verbose_name="UKTI Special Terms")
@@ -233,6 +234,8 @@ class Market(ApprovalModel):
         'product_type',
         'ukti_terms',
         'dit_advisor_tip',
+        'commission_lower',
+        'commission_upper',
     ]
 
     def save(self, *args, **kwargs):
