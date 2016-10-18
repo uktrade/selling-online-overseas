@@ -61,22 +61,28 @@
         <h3 class="font-brand">Site</h3>
       </div>
     </div>
-    <dl class="column-one-third">
-        <dt class="font-reg">Registered users</dt>
-        <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
-    </dl>
-    <dl class="column-two-thirds">
-      <dt class="font-reg">Customer profile</dt>
-      <dd>{{ market.customer_demographics|safe }}</dd>
-      <h4 class="detail-section-title font-reg">Customer support</h4>
-      <dl>
+    <div class="cf push--bottom">
+      <dl class="column-one-third">
+          <dt class="font-reg">Registered users</dt>
+          <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
+      </dl>
+      <dl class="column-two-thirds">
+        <dt class="font-reg">Customer profile</dt>
+        <dd>{{ market.customer_demographics|safe }}</dd>
+      </dl>
+    </div>
+    <div class="cf push--bottom">
+      <dl class="column-one-third">
         <dt class="subtitle">Channels:</dt>
         {{ market | field_dd:'customer_support_channels' }}
-
-        <dt class="subtitle push--top">Hours:</dt>
-        <dd>{{ market.customer_support_hours }}</dd>
       </dl>
-    </dl>
+      <dl class="column-two-thirds">
+        <dl>
+          <dt class="subtitle">Hours:</dt>
+          <dd>{{ market.customer_support_hours }}</dd>
+        </dl>
+      </dl>
+    </div>
   </div>
 </div>
 
@@ -107,11 +113,11 @@
       </dl>
     </div>
     <div class="cf">
-      <div class="column-one-third">
+      <div class="column-two-thirds">
         <dt class="font-reg">Marketing and merchandising</dt>
         <dd>{{ market.marketing_merchandising | safe }}</dd>
       </div>
-      <div class="column-two-thirds">
+      <div class="column-one-third">
       </div>
     </div>
     <dl class="column-one-whole">
@@ -185,14 +191,14 @@
       </dl>
       <dl class="column-one-third">
         <h4 class="detail-section-title font-reg">Seller support type</h4>
-        <dl>
-          <dt class="subtitle ">Channels:</dt>
+          <dt class="subtitle">Channels:</dt>
           {{ market | field_dd:'seller_support_channels' }}
-          <dt class="subtitle push--top">Hours:</dt>
-          <dd>{{ market.seller_support_hours }}</dd>
-        </dl>
-      <div class="column-one-third">
-      </div>
+
+      </dl>
+      <dl class="column-one-third">
+        <dt class="detail-section-title font-reg">Hours:</dt>
+        <dd>{{ market.seller_support_hours }}</dd>
+      </dl>
     </div>
   </div>
 </div>
