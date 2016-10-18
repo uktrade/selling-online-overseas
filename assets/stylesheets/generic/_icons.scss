@@ -53,6 +53,10 @@
     background-image: url('#{$image-path}icons/tick_no.svg');
   }
 
+  &-menu {
+    background-image: url('#{$image-path}icons/menu.svg');
+  }
+
   &-countries {
     background-image: url('#{$image-path}icons/region.svg');
 
