@@ -21,14 +21,14 @@
                 <ul class="inline">
                   <li class="push-half--bottom cf">
                     <div class="column-one-third hard--left soft-half--right">
-                      <div class="background--grey filters-container soft">
+                      <div class="background--stone filters-container soft">
                           {% with form.countries_served as field and 'Choose country' as default and 'Where do you want to sell your products?' as label %}
                             {% include "markets/includes/selectbox.html" %}
                           {% endwith %}
                       </div>
                     </div>
                     <div class="column-two-thirds hard--left soft-half--right">
-                      <div class="background--grey filters-container soft">
+                      <div class="background--stone filters-container soft">
                         <h3 class="filters-header font-med font-small push--bottom">Which of these best describes your products?</h3>
                         <legend class="visuallyhidden">Which of these best describes your products?</legend>
                         {% with form.product_type as field %}
@@ -39,7 +39,7 @@
                   </li>
                   <li class="push-half--bottom cf">
                     <div class="column-one-third hard--left soft-half--right">
-                        <div class="background--grey filters-container soft">
+                        <div class="background--stone filters-container soft">
                           {% with form.product_categories as field and 'Choose product category' as default and 'What products do you sell?' as label  %}
                             {% include "markets/includes/selectbox.html" %}
                           {% endwith %}
