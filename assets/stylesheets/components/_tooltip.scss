@@ -1,0 +1,40 @@
+.tooltip {
+  
+  &-button {
+    background-image: url('#{$image-path}icons/expand.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 0;
+    cursor: pointer;
+    height: 13px;
+    margin-left: 4px;
+    width: 13px;
+    
+    &:hover {
+      background-image: url('#{$image-path}icons/expand-hover.svg');
+    }
+    
+    &--expanded {
+      background-image: url('#{$image-path}icons/collapse.svg');
+  
+      &:hover {
+        background-image: url('#{$image-path}icons/collapse-hover.svg');
+      }
+    }
+  }
+
+  
+  &-text {
+    background: none;
+    border: 0;
+    color: $grey;
+    display: none;
+    margin: 0;
+    padding-left: 0;
+    position: relative;
+    
+    &--active {
+      display: block;
+    }
+  }
+}
