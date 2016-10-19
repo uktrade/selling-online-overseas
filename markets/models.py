@@ -237,7 +237,6 @@ class Market(ApprovalModel):
         'product_type',
         'ukti_terms',
         'dit_advisor_tip',
-        'commission_lower',
     ]
 
     def save(self, *args, **kwargs):
