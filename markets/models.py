@@ -278,12 +278,19 @@ class Market(ApprovalModel):
 
     @property
     def commission(self):
-        if self.commission_upper:
-            upper_str = " - {0}".format(self.commission_upper)
-        else:
-            upper_str = ""
+        if self.commission_lower is None and self.commission_upper is None:
+            return "None"
 
-        return "{0}{1}%".format(self.commission_lower, upper_str)
+        values = [self.commission_lower, self.commission_upper]
+        lower = min(val for val in values if val is not None)
+        upper = max(val for val in values if val is not None)
+
+        if lower == upper:
+            commission = "{0}%".format(lower)
+        else:
+            commission = "{0} - {1}%".format(lower, upper)
+
+        return commission
 
     @property
     def membership_fees_display(self):
