@@ -42,6 +42,27 @@ class MarketPublishingTests(TestCase):
         response = self.client.get(reverse('markets:list'), {'name': "Amazing"})
         self.assertNotContains(response, self.market.name, status_code=200)
 
+    def test_count_markets(self):
+        response = self.client.get(reverse('markets:count'))
+        json = response.json()
+        self.assertEqual(json['count'], 0)
+
+        self._publish_market()
+
+        response = self.client.get(reverse('markets:count'))
+        json = response.json()
+        self.assertEqual(json['count'], 1)
+
+    def test_market_detail_404(self):
+        response = self.client.get(reverse('markets:detail', kwargs={'slug': self.market.slug}))
+        self.assertEquals(response.status_code, 404)
+
+        self._publish_market()
+
+        # Search for an incorrect name, check we get 200 and NOT the market we created
+        response = self.client.get(reverse('markets:detail', kwargs={'slug': self.market.slug}))
+        self.assertContains(response, self.market.name, status_code=200)
+
 
 class MarketTests(TestCase):
 
