@@ -44,10 +44,7 @@
         <li class="list markets-item--highlight--section background-image--fees">
           <dl>
             <dt><strong>Membership fee:</strong></dt>
-            <dd>
-              {{ market.membership_fees | formatvalue:'fee' }}
-              {% if market.membership_fees > 0 %}{{market.get_membership_fees_frequency_display }}{% endif %}
-            </dd>
+            <dd>{{ market.membership_fees_display }}</dd>
           </dl>
         </li>
         <li class="list markets-item--highlight--section background-image--logistics">

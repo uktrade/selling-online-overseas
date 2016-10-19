@@ -6,6 +6,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 from django.core.exceptions import ValidationError
+from django.utils.numberformat import format
 
 from ckeditor.fields import RichTextField
 
@@ -201,9 +202,13 @@ class Market(ApprovalModel):
     fee_per_listing_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
     membership_fees = models.FloatField(default=0, help_text="Converted to GBP",
                                         verbose_name="Pricing/Fees - Membership fees")
+    membership_fees_currency = models.ForeignKey(Currency, null=True, blank=True,
+                                                 related_name="%(app_label)s_%(class)s_membership_fees_currency")
     membership_fees_frequency = models.CharField(choices=PAYMENT_FREQUENCIES, max_length=1, null=True, blank=True)
 
     deposit_amount = models.FloatField(default=0)
+    deposit_currency = models.ForeignKey(Currency, null=True, blank=True,
+                                         related_name="%(app_label)s_%(class)s_deposit_currency")
     deposit_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
 
     shipping_tracking_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
@@ -235,7 +240,6 @@ class Market(ApprovalModel):
         'ukti_terms',
         'dit_advisor_tip',
         'commission_lower',
-        'commission_upper',
     ]
 
     def save(self, *args, **kwargs):
@@ -248,6 +252,29 @@ class Market(ApprovalModel):
 
         super().save(*args, **kwargs)
 
+    def clean(self, *args, **kwargs):
+        """
+        Do some manual error checking for the Market, in particular, that if a amount of money has been specified
+        (e.g. for deposit, or membership_fees), then the currency must also be specified.
+        """
+
+        errors = {}
+
+        if self.deposit_amount > 0 and self.deposit_currency is None:
+            errors['deposit_currency'] = 'You must specify the currency if you specify an amount'
+        if self.membership_fees > 0 and self.membership_fees_currency is None:
+            errors['membership_fees_currency'] = 'You must specify the currency if you specify an amount'
+        if self.membership_fees > 0 and self.membership_fees_frequency is None:
+            errors['membership_fees_frequency'] = 'You must specify the frequency if you specify an amount'
+
+        try:
+            super().clean(*args, **kwargs)
+        except ValidationError as super_errors:
+            errors.update(super_errors)
+
+        if errors:
+            raise ValidationError(errors)
+
     def __str__(self):
         return "{0}".format(self.name)
 
@@ -259,6 +286,29 @@ class Market(ApprovalModel):
             upper_str = ""
 
         return "{0}{1}%".format(self.commission_lower, upper_str)
+
+    @property
+    def membership_fees_display(self):
+        if self.membership_fees > 0:
+            value = format(self.membership_fees, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
+            symbol = self.membership_fees_currency.symbol
+            frequency = self.get_membership_fees_frequency_display()
+            display_str = "{0}{1} {2}".format(symbol, value, frequency)
+        else:
+            display_str = "Not required"
+
+        return display_str
+
+    @property
+    def deposit_display(self):
+        if self.membership_fees > 0:
+            value = format(self.deposit_amount, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
+            symbol = self.deposit_currency.symbol
+            display_str = "{0}{1}".format(symbol, value)
+        else:
+            display_str = "Not required"
+
+        return display_str
 
     class Meta:
         ordering = ('-name',)

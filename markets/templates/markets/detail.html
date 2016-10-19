@@ -220,20 +220,17 @@
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Membership fee</dt>
-        <dd>
-          {{ market.membership_fees | formatvalue:'fee' }}
-          {% if market.membership_fees > 0 %}{{market.get_membership_fees_frequency_display }}{% endif %}
-        </dd>
+        <dd>{{ market.membership_fees_display }}</dd>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Listing fee</dt>
-        <dd>{{ market.fee_per_listing | formatvalue:'fee' }}</dd>
+        <dd>{{ market.fee_per_listing | formatvalue:'required' }}</dd>
       </dl>
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
         <dt class="font-reg">Deposit</dt>
-        <dd>{{ market.deposit_amount | formatvalue:'fee' }}</dd>
+        <dd>{{ market.deposit_display }}</dd>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Commission</dt>
