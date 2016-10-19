@@ -4,26 +4,24 @@ from __future__ import unicode_literals
 
 import os
 
-from django.db import migrations, connections
+from django.db import migrations
 from django.core.management import call_command
+from core.utils import safe_load_fixture
 
 fixture_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../fixtures'))
 
 
 def load_fixture(apps, schema_editor):
-    if connections.databases['default']['NAME'][:4] == 'test':
-        return
-
     fixture_filename = 'initial_0002.json'
-    fixture_file = os.path.join(fixture_dir, fixture_filename)
-    call_command('loaddata', fixture_file)
+    fixture_path = os.path.join(fixture_dir, fixture_filename)
+    safe_load_fixture(apps, fixture_path)
 
 
 def unload_fixture(apps, schema_editor):
     call_command('flush', interactive=False)
     fixture_filename = 'initial_0001.json'
-    fixture_file = os.path.join(fixture_dir, fixture_filename)
-    call_command('loaddata', fixture_file)
+    fixture_path = os.path.join(fixture_dir, fixture_filename)
+    safe_load_fixture(apps, fixture_path)
 
 
 class Migration(migrations.Migration):
