@@ -19,7 +19,6 @@ class InitialFilteringForm(ModelQueryForm):
         model = Market
         fields = []
         query_fields = [
-            ('seller_model', QueryMultipleCheckboxField, 'seller_model__name'),
             ('product_type', QueryMultipleCheckboxField, 'product_type__name'),
             ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure__name'),
             ('countries_served', QueryChoiceField, 'countries_served__name'),
@@ -44,7 +43,6 @@ class MarketListFilterForm(ModelQueryForm):
         model = Market
         fields = []
         query_fields = [
-            ('seller_model', QueryMultipleCheckboxField, 'seller_model__name'),
             ('product_type', QueryMultipleCheckboxField, 'product_type__name'),
             ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure__name'),
             ('countries_served', QueryMultipleCheckboxField, 'countries_served__name'),

@@ -54,14 +54,7 @@ describe('Filtering Page', function() {
         });
     });
 
-    describe('Should filter by seller model ', function () {
-        it('Should update number of online marketplaces listed', function () {
-            var initialResult = filtering.results.getText();
-            filtering.sellerModelOption.click();
-            browser.sleep(1000);
-            expect(filtering.results.getText()).not.toEqual(initialResult);
-        });
-
+    describe('Should navigate to list page', function () {
         it('Should navigate to list page', function () {
             var filteredResult = filtering.results.getText();
             filtering.resultsButton.click();
