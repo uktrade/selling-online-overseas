@@ -299,7 +299,7 @@ class Market(ApprovalModel):
 
     @property
     def deposit_display(self):
-        if self.membership_fees > 0:
+        if self.deposit_amount > 0:
             value = format(self.deposit_amount, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
             symbol = self.deposit_currency.symbol
             display_str = "{0}{1}".format(symbol, value)
