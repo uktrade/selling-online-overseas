@@ -33,7 +33,7 @@ class MarketAdmin(admin.ModelAdmin):
                 'dit_advisor_tip',
                 ('countries_served', 'web_traffic',),
                 ('product_categories', 'prohibited_items',),
-                ('seller_model', 'product_type'),
+                'product_type',
                 ('customer_support_channels', 'seller_support_channels'),
                 ('customer_support_hours', 'seller_support_hours'),
                 'customer_demographics',
