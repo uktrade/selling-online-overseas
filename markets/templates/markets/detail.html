@@ -136,41 +136,77 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Local bank account</dt>
+        <dt class="font-reg">Local bank account <button class="tooltip-button" data-tooltip-text="{{ market.local_bank_account_needed_notes }}" data-tooltip="local-bank"></button></dt>
         <dd>{{ market.local_bank_account_needed | formatvalue:'required' }}</dd>
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="local-bank">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.local_bank_account_needed_notes }}</p>
+          </div>
+        </dialog>
       </dl>
+
       <dl class="column-one-third">
-        <dt class="font-reg">Local incorporation</dt>
+        <dt class="font-reg">Local incorporation <button class="tooltip-button" data-tooltip-text="{{ market.local_incorporation_needed_notes }}" data-tooltip="local-inc"></button></dt>
         <dd>{{ market.local_incorporation_needed | formatvalue:'required' }}</dd>
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="local-inc">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.local_incorporation_needed_notes }}</p>
+          </div>
+        </dialog>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Exclusivity</dt>
+        <dt class="font-reg">Exclusivity <button class="tooltip-button" data-tooltip-text="{{ market.exclusivity_required_notes }}" data-tooltip="exclusivity"></button></dt>
         <dd>{{ market.exclusivity_required | formatvalue:'required' }}</dd>
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="exclusivity">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.exclusivity_required_notes }}</p>
+          </div>
+        </dialog>
       </dl>
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Shipping tracking</dt>
+        <dt class="font-reg">Shipping tracking <button class="tooltip-button" data-tooltip-text="{{ market.shipping_tracking_required_notes }}" data-tooltip="shipping"></button></dt>
         <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="shipping">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.shipping_tracking_required_notes }}</p>
+          </div>
+        </dialog>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Local return address</dt>
+        <dt class="font-reg">Local return address <button class="tooltip-button" data-tooltip-text="{{ market.local_return_address_required_notes }}" data-tooltip="returnadd"></button></dt>
         <dd>{{ market.local_return_address_required | formatvalue:'required' }}</dd>
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="returnadd">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.local_return_address_required_notes }}</p>
+          </div>
+        </dialog>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Translation</dt>
+        <dt class="font-reg">Translation <button class="tooltip-button" data-tooltip-text="{{ market.translation_verbal_notes }}" data-tooltip="translation"></button></dt>
         <dd>{{ market.translation_verbal | formatvalue:'requiredtick' }} for negotiation</dd>
         <dd>{{ market.translation_application_process | formatvalue:'requiredtick' }} for application process</dd>
         <dd>{{ market.translation_product_content | formatvalue:'requiredtick' }} for product content</dd>
         <dd>{{ market.translation_seller_support | formatvalue:'requiredtick' }} for seller support</dd>
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="translation">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.translation_verbal_notes }}</p>
+          </div>
+        </dialog>
       </dl>
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Logistics structure</dt>
+        <dt class="font-reg">Logistics support <button class="tooltip-button" data-tooltip-text="{{ market.logistics_structure_notes }}" data-tooltip="logistics"></button></dt>
         {% for model in market.logistics_structure.all %}
           <dd>{{ model.name }}</dd>
         {% endfor %}
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="logistics">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.logistics_structure_notes }}</p>
+          </div>
+        </dialog>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Payments terms</dt>
@@ -183,11 +219,16 @@
     </div>
     <div class="cf">
       <dl class="column-one-third">
-        <dt class="font-reg">Product details upload process</dt>
+        <dt class="font-reg">Product details upload process <button class="tooltip-button" data-tooltip-text="{{ market.product_details_upload_notes }}" data-tooltip="upload"></button></dt>
         {{ market | field_dd:'product_details_upload' }}
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="upload">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.product_details_upload_notes }}</p>
+          </div>
+        </dialog>
       </dl>
       <div class="column-two-thirds">
-        <h4 class="detail-section-title font-reg">Seller support type</h4>
+        <h4 class="detail-section-title font-reg">Seller support</h4>
         <dl class="column-one-half hard--left">
           <dt class="subtitle">Channels:</dt>
           {{ market | field_dd:'seller_support_channels' }}
@@ -213,8 +254,13 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Registration fee</dt>
+        <dt class="font-reg">Registration fee <button class="tooltip-button" data-tooltip-text="{{ market.registration_fees_notes }}" data-tooltip="regfee"></button></dt>
         <dd>{{ market.registration_fees | formatvalue:'required' }}</dd>
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="regfee">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.registration_fees_notes }}</p>
+          </div>
+        </dialog>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Membership fee</dt>
@@ -223,6 +269,13 @@
       <dl class="column-one-third">
         <dt class="font-reg">Listing fee</dt>
         <dd>{{ market.fee_per_listing | formatvalue:'required' }}</dd>
+        <dt class="font-reg">Listing fee <button class="tooltip-button" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="perlisting"></button></dt>
+        <dd>{{ market.fee_per_listing | formatvalue:'fee' }}</dd>
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="perlisting">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.fee_per_listing_notes }}</p>
+          </div>
+        </dialog>
       </dl>
     </div>
     <div class="cf push--bottom">
@@ -231,8 +284,13 @@
         <dd>{{ market.deposit_display }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Commission</dt>
+        <dt class="font-reg">Commission <button class="tooltip-button" data-tooltip-text="{{ market.commission_notes }}" data-tooltip="commission"></button></dt>
         <dd>{{ market.commission }}</dd>
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="commission">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.commission_notes }}</p>
+          </div>
+        </dialog>
       </dl>
     </div>
   </div>
