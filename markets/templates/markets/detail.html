@@ -72,6 +72,7 @@
       </dl>
     </div>
     <div class="cf push--bottom">
+      <h4 class="detail-section-title font-reg push-half--left">Customer support</h4>
       <dl class="column-one-third">
         <dt class="subtitle">Channels:</dt>
         {{ market | field_dd:'customer_support_channels' }}
@@ -98,16 +99,12 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Seller model</dt>
-        {{ market | field_dd:'seller_model' }}
-      </dl>
-      <dl class="column-one-third">
         <dt class="font-reg">Product positioning</dt>
         {% for type in market.product_type.all %}
           <dd>{{ type.name }}</dd>
         {% endfor %}
       </dl>
-      <dl class="column-one-third">
+      <dl class="column-two-thirds">
         <dt class="font-reg">Well-known brands</dt>
         <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
       </dl>
@@ -189,16 +186,17 @@
         <dt class="font-reg">Product details upload process</dt>
         {{ market | field_dd:'product_details_upload' }}
       </dl>
-      <dl class="column-one-third">
+      <div class="column-two-thirds">
         <h4 class="detail-section-title font-reg">Seller support type</h4>
+        <dl class="column-one-half hard--left">
           <dt class="subtitle">Channels:</dt>
           {{ market | field_dd:'seller_support_channels' }}
-
-      </dl>
-      <dl class="column-one-third">
-        <dt class="detail-section-title font-reg">Hours:</dt>
-        <dd>{{ market.seller_support_hours }}</dd>
-      </dl>
+        </dl>
+        <dl class="column-one-half">
+          <dt class="subtitle">Hours:</dt>
+          <dd>{{ market.seller_support_hours }}</dd>
+        </dl>
+      </div>
     </div>
   </div>
 </div>
