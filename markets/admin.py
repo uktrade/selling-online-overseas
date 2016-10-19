@@ -57,9 +57,9 @@ class MarketAdmin(admin.ModelAdmin):
             'fields': (
                 ('payment_terms_days', 'currency_of_payments',),
                 ('registration_fees', 'registration_fees_notes',),
-                ('deposit_amount', 'deposit_notes',),
+                ('deposit_currency', 'deposit_amount', 'deposit_notes',),
                 ('commission_lower', 'commission_upper', 'commission_notes',),
-                ('membership_fees', 'membership_fees_frequency',),
+                ('membership_fees_currency', 'membership_fees', 'membership_fees_frequency',),
                 ('fee_per_listing', 'fee_per_listing_notes',),
                 'ukti_terms',
             )

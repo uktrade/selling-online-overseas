@@ -65,19 +65,10 @@ def format_value(value, style):
         resp = tick_cross_format_field(value)
     elif style == 'requiredtick':
         resp = required_tick_format_field(value)
-    elif style == 'fee':
-        resp = fee_format_field(value)
     else:
         resp = value
 
     return mark_safe(resp)
-
-
-def fee_format_field(value):
-    if value > 0:
-        return "£{0}".format(format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True))
-    else:
-        return required_or_not_format_field(False)
 
 
 def required_tick_format_field(value):
