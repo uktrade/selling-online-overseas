@@ -155,7 +155,6 @@ class Market(ApprovalModel):
     logistics_structure = models.ManyToManyField(LogisticsModel, blank=True)
     logistics_structure_notes = models.CharField(max_length=200, blank=True, null=True, verbose_name='notes')
 
-    seller_model = models.ManyToManyField(SellerModel, blank=True)
     product_type = models.ManyToManyField(Type, blank=True, verbose_name="Product Positioning")
     prohibited_items = models.ManyToManyField(ProhibitedItem, blank=True)
 
@@ -235,7 +234,6 @@ class Market(ApprovalModel):
         'payment_terms_days',
         'currency_of_payments',
         'logistics_structure',
-        'seller_model',
         'product_type',
         'ukti_terms',
         'dit_advisor_tip',
