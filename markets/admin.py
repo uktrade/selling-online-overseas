@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (
-    Market, Logo, SupportChannel, UploadMethod, Currency, Brand, LogisticsModel, SellerModel, MarketForSignOff
+    Market, Logo, SupportChannel, UploadMethod, Currency, Brand, LogisticsModel, MarketForSignOff
 )
 from .forms import LogoAdminForm
 
@@ -11,7 +11,6 @@ admin.site.register(UploadMethod)
 admin.site.register(Currency)
 admin.site.register(Brand)
 admin.site.register(LogisticsModel)
-admin.site.register(SellerModel)
 
 
 class MarketAdmin(admin.ModelAdmin):
