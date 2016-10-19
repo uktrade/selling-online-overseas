@@ -251,6 +251,15 @@ class Market(ApprovalModel):
     def __str__(self):
         return "{0}".format(self.name)
 
+    @property
+    def commission(self):
+        if self.commission_upper:
+            upper_str = " - {0}".format(self.commission_upper)
+        else:
+            upper_str = ""
+
+        return "{0}{1}%".format(self.commission_lower, upper_str)
+
     class Meta:
         ordering = ('-name',)
 
