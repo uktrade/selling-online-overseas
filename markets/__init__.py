@@ -1,11 +1,11 @@
 default_app_config = 'markets.apps.MarketsConfig'
 
 PAYMENT_FREQUENCIES = (
-    ('D', 'Daily'),
-    ('W', 'Weekly'),
-    ('M', 'Monthly'),
-    ('Q', 'Quarterly'),
-    ('Y', 'Yearly'),
+    ('D', 'daily'),
+    ('W', 'weekly'),
+    ('M', 'monthly'),
+    ('Q', 'quarterly'),
+    ('Y', 'annually'),
 )
 
 BOOL_CHOICES = (
