@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.views.generic import ListView, DetailView, FormView, TemplateView
 from django.forms import TypedChoiceField
 from django.db.models import Max, Count
+from django.http import Http404
 
 from .models import Market
 from .forms import MarketListFilterForm, InitialFilteringForm
@@ -182,7 +183,7 @@ class MarketAPIView(MarketListView):
     template_name = 'markets/includes/market_list.html'
 
 
-class MarketDetailView(DetailView):
+class MarketDetailView(MarketFilterMixin, DetailView):
     """
     The simple view for the details page for individual Markets
     """
@@ -190,3 +191,12 @@ class MarketDetailView(DetailView):
     model = Market
     template_name = 'markets/detail.html'
     slug_field = 'slug'
+
+    def get_object(self, queryset=None):
+        slug = self.kwargs['slug']
+        try:
+            market = self.markets.get(slug=slug)
+        except Market.DoesNotExist:
+            raise Http404('Market does not exist')
+
+        return market
