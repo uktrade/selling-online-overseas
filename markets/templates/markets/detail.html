@@ -267,10 +267,8 @@
         <dd>{{ market.membership_fees_display }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Listing fee</dt>
-        <dd>{{ market.fee_per_listing | formatvalue:'required' }}</dd>
         <dt class="font-reg">Listing fee <button class="tooltip-button" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="perlisting"></button></dt>
-        <dd>{{ market.fee_per_listing | formatvalue:'fee' }}</dd>
+        <dd>{{ market.fee_per_listing | formatvalue:'required' }}</dd>
         <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="perlisting">
           <div role="document">
             <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.fee_per_listing_notes }}</p>
@@ -280,8 +278,13 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Deposit</dt>
+        <dt class="font-reg">Deposit <button class="tooltip-button" data-tooltip-text="{{ market.deposit_notes }}" data-tooltip="deposit"></button></dt>
         <dd>{{ market.deposit_display }}</dd>
+        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="deposit">
+          <div role="document">
+            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.deposit_notes }}</p>
+          </div>
+        </dialog>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Commission <button class="tooltip-button" data-tooltip-text="{{ market.commission_notes }}" data-tooltip="commission"></button></dt>
