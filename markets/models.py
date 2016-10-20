@@ -15,16 +15,6 @@ from geography.models import Country
 from products.models import Type, Category, ProhibitedItem
 
 
-class SellerModel(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return "{0}".format(self.name)
-
-    class Meta:
-        ordering = ('name',)
-
-
 class LogisticsModel(models.Model):
     name = models.CharField(max_length=200)
 
