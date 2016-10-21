@@ -57,6 +57,18 @@
     background-image: url('#{$image-path}icons/menu.svg');
   }
 
+  &-support {
+    background-image: url('#{$image-path}icons/support.svg');
+  }
+
+  &-logistics {
+    background-image: url('#{$image-path}icons/logistics.svg');
+  }
+
+  &-bank {
+    background-image: url('#{$image-path}icons/bank_account.svg');
+  }
+
   &-countries {
     background-image: url('#{$image-path}icons/region.svg');
 
@@ -69,7 +81,7 @@
     background-size: contain;
     height: 45px;
     position: absolute;
-    top: -18px;
+    top: -30px;
     width: 45px;
     z-index: 1;
 
