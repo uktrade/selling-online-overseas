@@ -28,13 +28,9 @@
     background: none;
     border: 0;
     color: $grey;
-    display: none;
+    display: block;
     margin: 0;
     padding-left: 0;
     position: relative;
-
-    &--active {
-      display: block;
-    }
   }
 }

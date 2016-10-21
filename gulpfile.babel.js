@@ -108,7 +108,7 @@ gulp.task('lint',
   ['lint:sass', 'lint:js']
 );
 
-gulp.task('protractor:e2e', ['webdriver_update'], (callback) => gulp
+gulp.task('protractor:e2e', (callback) => gulp
     .src(['example_spec.js'])
     .pipe(protractor({
         'configFile': 'assets/test/e2e/conf.js',

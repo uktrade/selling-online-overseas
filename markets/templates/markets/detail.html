@@ -136,77 +136,49 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Local bank account <button class="tooltip-button" data-tooltip-text="{{ market.local_bank_account_needed_notes }}" data-tooltip="local-bank"></button></dt>
+        <dt class="font-reg">Local bank account {% if market.local_bank_account_needed_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.local_bank_account_needed_notes }}" data-tooltip="local-bank"></button>{% endif %}</dt>
         <dd>{{ market.local_bank_account_needed | formatvalue:'required' }}</dd>
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="local-bank">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.local_bank_account_needed_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="local-bank"></dialog>
       </dl>
 
       <dl class="column-one-third">
-        <dt class="font-reg">Local incorporation <button class="tooltip-button" data-tooltip-text="{{ market.local_incorporation_needed_notes }}" data-tooltip="local-inc"></button></dt>
+        <dt class="font-reg">Local incorporation {% if market.local_incorporation_needed_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.local_incorporation_needed_notes }}" data-tooltip="local-incorporation"></button>{% endif %}</dt>
         <dd>{{ market.local_incorporation_needed | formatvalue:'required' }}</dd>
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="local-inc">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.local_incorporation_needed_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="local-incorporation"></dialog>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Exclusivity <button class="tooltip-button" data-tooltip-text="{{ market.exclusivity_required_notes }}" data-tooltip="exclusivity"></button></dt>
+        <dt class="font-reg">Exclusivity {% if market.exclusivity_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.exclusivity_required_notes }}" data-tooltip="exclusivity"></button>{% endif %}</dt>
         <dd>{{ market.exclusivity_required | formatvalue:'required' }}</dd>
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="exclusivity">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.exclusivity_required_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="exclusivity"></dialog>
       </dl>
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Shipping tracking <button class="tooltip-button" data-tooltip-text="{{ market.shipping_tracking_required_notes }}" data-tooltip="shipping"></button></dt>
+        <dt class="font-reg">Shipping tracking {% if market.shipping_tracking_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.shipping_tracking_required_notes }}" data-tooltip="shipping"></button>{% endif %}</dt>
         <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="shipping">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.shipping_tracking_required_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="shipping"></dialog>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Local return address <button class="tooltip-button" data-tooltip-text="{{ market.local_return_address_required_notes }}" data-tooltip="returnadd"></button></dt>
+        <dt class="font-reg">Local return address {% if market.local_return_address_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.local_return_address_required_notes }}" data-tooltip="return-address"></button>{% endif %}</dt>
         <dd>{{ market.local_return_address_required | formatvalue:'required' }}</dd>
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="returnadd">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.local_return_address_required_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="return-address"></dialog>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Translation <button class="tooltip-button" data-tooltip-text="{{ market.translation_verbal_notes }}" data-tooltip="translation"></button></dt>
+        <dt class="font-reg">Translation {% if market.translation_verbal_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.translation_verbal_notes }}" data-tooltip="translation"></button>{% endif %}</dt>
         <dd>{{ market.translation_verbal | formatvalue:'requiredtick' }} for negotiation</dd>
         <dd>{{ market.translation_application_process | formatvalue:'requiredtick' }} for application process</dd>
         <dd>{{ market.translation_product_content | formatvalue:'requiredtick' }} for product content</dd>
         <dd>{{ market.translation_seller_support | formatvalue:'requiredtick' }} for seller support</dd>
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="translation">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.translation_verbal_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="translation"></dialog>
       </dl>
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Logistics support <button class="tooltip-button" data-tooltip-text="{{ market.logistics_structure_notes }}" data-tooltip="logistics"></button></dt>
+        <dt class="font-reg">Logistics support {% if market.logistics_structure_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.logistics_structure_notes }}" data-tooltip="logistics"></button>{% endif %}</dt>
         {% for model in market.logistics_structure.all %}
           <dd>{{ model.name }}</dd>
         {% endfor %}
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="logistics">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.logistics_structure_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="logistics"></dialog>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Payments terms</dt>
@@ -219,13 +191,9 @@
     </div>
     <div class="cf">
       <dl class="column-one-third">
-        <dt class="font-reg">Product details upload process <button class="tooltip-button" data-tooltip-text="{{ market.product_details_upload_notes }}" data-tooltip="upload"></button></dt>
+        <dt class="font-reg">Product details upload process {% if market.product_details_upload_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.product_details_upload_notes }}" data-tooltip="upload"></button>{% endif %}</dt>
         {{ market | field_dd:'product_details_upload' }}
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="upload">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.product_details_upload_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="upload"></dialog>
       </dl>
       <div class="column-two-thirds">
         <h4 class="detail-section-title font-reg">Seller support</h4>
@@ -254,46 +222,30 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Registration fee <button class="tooltip-button" data-tooltip-text="{{ market.registration_fees_notes }}" data-tooltip="regfee"></button></dt>
+        <dt class="font-reg">Registration fee {% if market.registration_fees_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.registration_fees_notes }}" data-tooltip="registration-fee"></button>{% endif %}</dt>
         <dd>{{ market.registration_fees | formatvalue:'required' }}</dd>
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="regfee">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.registration_fees_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="registration-fee"></dialog>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Membership fee</dt>
         <dd>{{ market.membership_fees_display }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Listing fee <button class="tooltip-button" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="perlisting"></button></dt>
+        <dt class="font-reg">Listing fee {% if market.fee_per_listing_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="listing-fee"></button>{% endif %}</dt>
         <dd>{{ market.fee_per_listing | formatvalue:'required' }}</dd>
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="perlisting">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.fee_per_listing_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="listing-fee"></dialog>
       </dl>
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Deposit <button class="tooltip-button" data-tooltip-text="{{ market.deposit_notes }}" data-tooltip="deposit"></button></dt>
+        <dt class="font-reg">Deposit {% if market.deposit_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.deposit_notes }}" data-tooltip="deposit"></button>{% endif %}</dt>
         <dd>{{ market.deposit_display }}</dd>
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="deposit">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.deposit_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="deposit"></dialog>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Commission <button class="tooltip-button" data-tooltip-text="{{ market.commission_notes }}" data-tooltip="commission"></button></dt>
+        <dt class="font-reg">Commission {% if market.commission_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.commission_notes }}" data-tooltip="commission"></button>{% endif %}</dt>
         <dd>{{ market.commission }}</dd>
-        <dialog role="dialog" aria-labelledby="tooltip-title" class="tooltip-text" data-tooltip="commission">
-          <div role="document">
-            <p id="tooltip-title" class="tooltip-title simple-tooltip-tooltip__title">{{ market.commission_notes }}</p>
-          </div>
-        </dialog>
+        <dialog data-tooltip="commission"></dialog>
       </dl>
     </div>
   </div>
