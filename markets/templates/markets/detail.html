@@ -36,7 +36,7 @@
         <i class="icon icon-header icon-header--left icon-adviser">
           <span class="visuallyhidden">DIT adviser tip</span>
         </i>
-        <h3 class="font-brand">DIT adviser tip</h3>
+        <h3 class="font-brand header-icon">DIT adviser tip</h3>
         <blockquote class="detail-section-content font-lig font-brand">{{ market.dit_advisor_tip }}</blockquote>
       </div>
     </div>
@@ -55,34 +55,52 @@
   <div class='grid-row detail-section'>
     <div class="column-one-whole">
       <div class="detail-section-header">
-        <i class="icon icon-header icon-header--left icon-users">
-          <span class="visuallyhidden">site</span>
-        </i>
-        <h3 class="font-brand">Site</h3>
+        <h3 class="font-brand">Tell me about this marketplace</h3>
+      </div>
+    </div>
+    <div class="cf">
+      <dl class="column-two-fifths">
+        <dt class="font-reg">Registered users</dt>
+        <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
+      </dl>
+      <dl class="column-three-fifths">
+        <dt class="font-reg">Who else sells here?</dt>
+        <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
+      </dl>
+    </div>
+    <div class="cf push--bottom">
+      <dl class="column-two-fifths">
+        <dt class="font-reg">Product positioning</dt>
+        {{ market | field_dd:'product_type' }}
+      </dl>
+      <div class="column-three-fifths"></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class='grid-row detail-section'>
+    <div class="column-one-whole">
+      <div class="detail-section-header">
+        <h3 class="font-brand">Who are the customers?</h3>
       </div>
     </div>
     <div class="cf push--bottom">
-      <dl class="column-one-third">
-          <dt class="font-reg">Registered users</dt>
-          <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
-      </dl>
       <dl class="column-two-thirds">
-        <dt class="font-reg">Customer profile</dt>
-        <dd>{{ market.customer_demographics|safe }}</dd>
+        <dt class="font-reg">About the customers</dt>
+        <dd class="column-three-quarters">{{ market.customer_demographics|safe }}</dd>
       </dl>
-    </div>
-    <div class="cf push--bottom">
-      <h4 class="detail-section-title font-reg push-half--left">Customer support</h4>
-      <dl class="column-one-third">
-        <dt class="subtitle">Channels:</dt>
-        {{ market | field_dd:'customer_support_channels' }}
-      </dl>
-      <dl class="column-two-thirds">
+      <div class="column-one-third">
+        <h4 class="detail-section-title font-reg">Customer support</h4>
+        <dl>
+          <dt class="subtitle">Channels:</dt>
+          {{ market | field_dd:'customer_support_channels' }}
+        </dl>
         <dl>
           <dt class="subtitle">Hours:</dt>
           <dd>{{ market.customer_support_hours }}</dd>
         </dl>
-      </dl>
+      </div>
     </div>
   </div>
 </div>
@@ -91,35 +109,22 @@
   <div class='grid-row detail-section'>
     <div class="column-one-whole">
       <div class="detail-section-header">
-        <i class="icon icon-header icon-header--left icon-products">
-          <span class="visuallyhidden">products</span>
-        </i>
-        <h3 class="font-brand">Products</h3>
+        <h3 class="font-brand">How about fulfilment and delivery?</h3>
       </div>
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Product positioning</dt>
-        {% for type in market.product_type.all %}
-          <dd>{{ type.name }}</dd>
+        <dt class="font-reg">Logistics support {% if market.logistics_structure_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.logistics_structure_notes }}" data-tooltip="logistics"></button>{% endif %}</dt>
+        {% for model in market.logistics_structure.all %}
+        <dd>{{ model.name }}</dd>
         {% endfor %}
+        <dialog data-tooltip="logistics"></dialog>
       </dl>
       <dl class="column-two-thirds">
-        <dt class="font-reg">Well-known brands</dt>
-        <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
+        <dt class="font-reg">Parcel tracking {% if market.shipping_tracking_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.shipping_tracking_required_notes }}" data-tooltip="shipping"></button>{% endif %}</dt>
+        <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
+        <dialog data-tooltip="shipping"></dialog>
       </dl>
-    </div>
-    <div class="cf">
-      <div class="column-two-thirds">
-        <dt class="font-reg">Marketing and merchandising</dt>
-        <dd>{{ market.marketing_merchandising | safe }}</dd>
-      </div>
-      <div class="column-one-third">
-      </div>
-    </div>
-    <dl class="column-one-whole">
-
-    </dl>
     </div>
   </div>
 </div>
@@ -128,10 +133,45 @@
   <div class='grid-row detail-section'>
     <div class="column-one-whole">
       <div class="detail-section-header">
-        <i class="icon icon-header icon-header--left icon-on-boarding">
-          <span class="visuallyhidden">on boarding</span>
-        </i>
-        <h3 class="font-brand">On Boarding</h3>
+        <h3 class="font-brand">What costs will i pay this marketplace?</h3>
+      </div>
+    </div>
+    <div class="cf push--bottom">
+      <dl class="column-one-third">
+        <dt class="font-reg">One-off registration fee {% if market.registration_fees_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.registration_fees_notes }}" data-tooltip="registration-fee"></button>{% endif %}</dt>
+        <dd>{{ market.registration_fees | formatvalue:'required' }}</dd>
+        <dialog data-tooltip="registration-fee"></dialog>
+      </dl>
+      <dl class="column-one-third">
+        <dt class="font-reg">Membership fee</dt>
+        <dd>{{ market.membership_fees_display }}</dd>
+      </dl>
+      <dl class="column-one-third">
+        <dt class="font-reg">Listing fee {% if market.fee_per_listing_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="listing-fee"></button>{% endif %}</dt>
+        <dd>{{ market.fee_per_listing | formatvalue:'required' }}</dd>
+        <dialog data-tooltip="listing-fee"></dialog>
+      </dl>
+    </div>
+    <div class="cf push--bottom">
+      <dl class="column-one-third">
+        <dt class="font-reg">Commission {% if market.commission_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.commission_notes }}" data-tooltip="commission"></button>{% endif %}</dt>
+        <dd>{{ market.commission }}</dd>
+        <dialog data-tooltip="commission"></dialog>
+      </dl>
+      <dl class="column-one-third">
+        <dt class="font-reg">Deposit {% if market.deposit_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.deposit_notes }}" data-tooltip="deposit"></button>{% endif %}</dt>
+        <dd>{{ market.deposit_display }}</dd>
+        <dialog data-tooltip="deposit"></dialog>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class='grid-row detail-section'>
+    <div class="column-one-whole">
+      <div class="detail-section-header">
+        <h3 class="font-brand">What must i do to join the marketplace?</h3>
       </div>
     </div>
     <div class="cf push--bottom">
@@ -154,9 +194,9 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Shipping tracking {% if market.shipping_tracking_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.shipping_tracking_required_notes }}" data-tooltip="shipping"></button>{% endif %}</dt>
-        <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
-        <dialog data-tooltip="shipping"></dialog>
+        <dt class="font-reg">Product details upload process {% if market.product_details_upload_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.product_details_upload_notes }}" data-tooltip="upload"></button>{% endif %}</dt>
+        {{ market | field_dd:'product_details_upload' }}
+        <dialog data-tooltip="upload"></dialog>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Local return address {% if market.local_return_address_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.local_return_address_required_notes }}" data-tooltip="return-address"></button>{% endif %}</dt>
@@ -172,14 +212,17 @@
         <dialog data-tooltip="translation"></dialog>
       </dl>
     </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class='grid-row detail-section'>
+    <div class="column-one-whole">
+      <div class="detail-section-header">
+        <h3 class="font-brand">How will i get paid?</h3>
+      </div>
+    </div>
     <div class="cf push--bottom">
-      <dl class="column-one-third">
-        <dt class="font-reg">Logistics support {% if market.logistics_structure_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.logistics_structure_notes }}" data-tooltip="logistics"></button>{% endif %}</dt>
-        {% for model in market.logistics_structure.all %}
-          <dd>{{ model.name }}</dd>
-        {% endfor %}
-        <dialog data-tooltip="logistics"></dialog>
-      </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Payments terms</dt>
         <dd>{{ market.payment_terms_days }} days</dd>
@@ -188,24 +231,11 @@
         <dt class="font-reg">Currency</dt>
         <dd>{{ market | csl:'currency_of_payments' }}</dd>
       </dl>
-    </div>
-    <div class="cf">
       <dl class="column-one-third">
-        <dt class="font-reg">Product details upload process {% if market.product_details_upload_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.product_details_upload_notes }}" data-tooltip="upload"></button>{% endif %}</dt>
-        {{ market | field_dd:'product_details_upload' }}
-        <dialog data-tooltip="upload"></dialog>
+        <dt class="font-reg">Via UK bank account {% if market.local_bank_account_needed_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.local_bank_account_needed_notes }}" data-tooltip="local-bank"></button>{% endif %}</dt>
+        <dd>{{ market.local_bank_account_needed | formatvalue:'required' }}</dd>
+        <dialog data-tooltip="local-bank"></dialog>
       </dl>
-      <div class="column-two-thirds">
-        <h4 class="detail-section-title font-reg">Seller support</h4>
-        <dl class="column-one-half hard--left">
-          <dt class="subtitle">Channels:</dt>
-          {{ market | field_dd:'seller_support_channels' }}
-        </dl>
-        <dl class="column-one-half">
-          <dt class="subtitle">Hours:</dt>
-          <dd>{{ market.seller_support_hours }}</dd>
-        </dl>
-      </div>
     </div>
   </div>
 </div>
@@ -214,39 +244,38 @@
   <div class='grid-row detail-section'>
     <div class="column-one-whole">
       <div class="detail-section-header">
-        <i class="icon icon-header icon-header--left icon-fees">
-          <span class="visuallyhidden">fees and pricing</span>
-        </i>
-        <h3 class="font-brand">Fees and pricing</h3>
+        <h3 class="font-brand">What help do they give sellers like me?</h3>
       </div>
     </div>
-    <div class="cf push--bottom">
-      <dl class="column-one-third">
-        <dt class="font-reg">Registration fee {% if market.registration_fees_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.registration_fees_notes }}" data-tooltip="registration-fee"></button>{% endif %}</dt>
-        <dd>{{ market.registration_fees | formatvalue:'required' }}</dd>
-        <dialog data-tooltip="registration-fee"></dialog>
-      </dl>
-      <dl class="column-one-third">
-        <dt class="font-reg">Membership fee</dt>
-        <dd>{{ market.membership_fees_display }}</dd>
-      </dl>
-      <dl class="column-one-third">
-        <dt class="font-reg">Listing fee {% if market.fee_per_listing_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="listing-fee"></button>{% endif %}</dt>
-        <dd>{{ market.fee_per_listing | formatvalue:'required' }}</dd>
-        <dialog data-tooltip="listing-fee"></dialog>
+    <div class="cf column-one-whole push--bottom">
+      <h4 class="detail-section-title font-reg">Seller support</h4>
+      <dl>
+        <dl>
+          <dt class="subtitle">Channels:</dt>
+          {{ market | field_dd:'seller_support_channels' }}
+        </dl>
+        <dl>
+          <dt class="subtitle">Hours:</dt>
+          <dd>{{ market.seller_support_hours }}</dd>
+        </dl>
       </dl>
     </div>
-    <div class="cf push--bottom">
-      <dl class="column-one-third">
-        <dt class="font-reg">Deposit {% if market.deposit_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.deposit_notes }}" data-tooltip="deposit"></button>{% endif %}</dt>
-        <dd>{{ market.deposit_display }}</dd>
-        <dialog data-tooltip="deposit"></dialog>
-      </dl>
-      <dl class="column-one-third">
-        <dt class="font-reg">Commission {% if market.commission_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.commission_notes }}" data-tooltip="commission"></button>{% endif %}</dt>
-        <dd>{{ market.commission }}</dd>
-        <dialog data-tooltip="commission"></dialog>
-      </dl>
+  </div>
+</div>
+
+<div class="section">
+  <div class='grid-row detail-section'>
+    <div class="column-one-whole">
+      <div class="detail-section-header">
+        <h3 class="font-brand">Marketing and merchandising</h3>
+      </div>
+    </div>
+    <div class="cf">
+      <div class="column-two-thirds">
+        <dt class="font-reg">Marketing and merchandising</dt>
+        <dd>{{ market.marketing_merchandising | safe }}</dd>
+      </div>
+      <div class="column-one-third"></div>
     </div>
   </div>
 </div>

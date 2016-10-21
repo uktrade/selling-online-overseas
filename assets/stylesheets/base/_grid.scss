@@ -65,6 +65,11 @@
     &-quarters {
       float: left;
       width: 75%;
+
+      @include media (mobile) {
+        float: none;
+        width: 100%;
+      }
     }
 
     &-eighths {

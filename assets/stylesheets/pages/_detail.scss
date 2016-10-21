@@ -32,9 +32,13 @@
     background: $bright-grey;
     font-size: 24px;
     margin-bottom: 20px;
-    padding: 0 10px 0 70px;
+    padding: 0 10px 0 0;
     position: absolute;
     top: -15px;
+
+    &.header-icon {
+      padding-left: 70px;
+    }
   }
 
   &.detail-section--format {
