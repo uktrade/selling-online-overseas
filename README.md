@@ -31,6 +31,7 @@ Create a local environment.sh file containing the following:
 echo "
 export DJANGO_SETTINGS_MODULE='navigator.settings.dev'
 export DATABASE_URL='postgres://localhost/navigator'
+export SECRET_KEY='REPLACE ME WITH AN ACTUAL SECRET KEY'
 "> environment.sh
 ```
 

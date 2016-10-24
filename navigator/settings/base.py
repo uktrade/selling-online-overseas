@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'k8l9^gx&3337f5orp4jm9yhx&99%*$aw-(e@%8u=1r72ym)w=w'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # Application definition
 
@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'ckeditor',
     'core',
-    'contact',
     'markets',
     'geography',
     'products',
@@ -129,9 +128,3 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Index location for Whoosh searching
 WHOOSH_INDEX_DIR = os.path.join(BASE_DIR, 'whoosh_index')
-
-FEEDBACK_TO = os.environ.get('FEEDBACK_TO')
-FEEDBACK_FROM = os.environ.get('FEEDBACK_FROM')
-SMTP_USER = os.environ.get('AWS_SMTP_USER')
-SMTP_PWD = os.environ.get('AWS_SMTP_PASSWORD')
-SMTP_SERVER = os.environ.get('AWS_SMTP_SERVER')
