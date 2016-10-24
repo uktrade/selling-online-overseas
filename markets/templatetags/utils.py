@@ -8,21 +8,6 @@ from django.utils.numberformat import format
 register = template.Library()
 
 
-@register.filter(name='regions')
-def get_regions(market):
-    """
-    Get a comma-separated list of regions the Market's serves
-    """
-
-    region_list = []
-    for country in market.countries_served.all():
-        if str(country.region) not in region_list:
-            region_list.append(str(country.region))
-
-    region_list.sort(key=lambda region: region)
-    return ", ".join(region_list)
-
-
 @register.filter(name='csl')
 def comma_separated_list(obj, attr):
     """
@@ -35,8 +20,8 @@ def comma_separated_list(obj, attr):
         return None
 
     value_list = list(set([str(item) for item in all_method()]))
-    value_list.sort(key=lambda item: item)
-    return ", ".join(set(value_list))
+    value_list.sort()
+    return ", ".join(value_list)
 
 
 @register.filter(name='field_dd')
