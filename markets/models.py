@@ -122,7 +122,7 @@ class Market(ApprovalModel):
 
     customer_support_channels = models.ManyToManyField(SupportChannel, blank=True,
                                                        related_name="%(app_label)s_%(class)s_customer_related")
-    customer_support_hours = models.CharField(blank=True, null=True, max_length=50)
+    customer_support_hours = models.CharField(max_length=150, blank=True, null=True)
 
     seller_support_channels = models.ManyToManyField(SupportChannel, blank=True,
                                                      related_name="%(app_label)s_%(class)s_seller_related")
