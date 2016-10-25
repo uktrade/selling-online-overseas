@@ -94,6 +94,7 @@ environment.sh
 
 # static files
 staticfiles/
+static/
 
 # nodes #
 node_modules/
