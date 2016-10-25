@@ -139,7 +139,7 @@ gulp.task('watch-unit-tests', () => {
 // Default: compile everything
 gulp.task('default',
   [
-    //'copy:govuk_template:css',
+    'copy:govuk_template:css',
     'copy:govuk_template:js',
     'javascripts',
     'sass',
