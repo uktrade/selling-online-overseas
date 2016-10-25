@@ -13,9 +13,12 @@
   }
 
   &-control {
+    @extend %light;
     background: $light-stone;
     border: 2px solid $stone;
+    font-family: $brand-font-family;
     height: $form-field-height;
+    padding: 10px;
 
     &:focus {
       outline: 3px solid $aqua;
