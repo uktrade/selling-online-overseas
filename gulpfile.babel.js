@@ -162,6 +162,7 @@ gulp.task('watch',
 
 gulp.task('test',
     [
+     'default',
      'lint',
      'unit-tests'
     ]
