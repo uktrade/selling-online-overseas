@@ -2,7 +2,7 @@
 
 const paths = {
     src: 'assets/',
-    dist: 'staticfiles/',
+    dist: 'static/',
     templates: 'assets/templates/',
     npm: 'node_modules/',
     template: 'node_modules/govuk_template_jinja/',
