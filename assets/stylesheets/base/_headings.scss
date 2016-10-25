@@ -6,6 +6,12 @@
     letter-spacing: -1px;
   }
 
+  &-xxlarge {
+    font-size: 100px;
+    letter-spacing: -2.4px;
+    line-height: 110px;
+  }
+
   &-small {
     @extend %regular;
     @extend %lede;

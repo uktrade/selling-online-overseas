@@ -1,0 +1,58 @@
+.form-dropdown {
+  position: relative;
+
+  &-results {
+    background-color: $light-stone;
+    border-left: 1px solid $stone;
+    border-right: 1px solid $stone;
+    position: absolute;
+    width: 100%;
+    z-index: 4;
+
+
+    li {
+      border-bottom: 1px solid $stone;
+    }
+  }
+
+  &-option {
+    color: $grey;
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+
+    &:hover {
+      outline: 2px solid $aqua;
+    }
+  }
+
+  &-tags {
+
+    li {
+      background-color: $stone;
+      border-radius: 10px;
+      display: inline-block;
+      font-size: 14px;
+      margin: 10px 3px 0 0;
+      padding: 7px;
+    }
+
+    &--close {
+      background-color: $mid-blue;
+      border: 0;
+      border-radius: 10px;
+      color: $white;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 15px;
+      margin-left: 5px;
+      text-align: center;
+      text-decoration: none;
+
+      &:visited {
+        color: $white;
+      }
+    }
+  }
+
+}

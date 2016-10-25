@@ -75,6 +75,10 @@ main,
     color: $lighter-grey;
   }
 
+  &-purple {
+    color: $purple;
+  }
+
   &-lig {
     @extend %light;
   }

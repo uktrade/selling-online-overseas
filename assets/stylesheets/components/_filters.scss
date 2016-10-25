@@ -1,7 +1,7 @@
 .filters {
 
   &-header {
-    display: block;
+    margin-bottom: 5px;
   }
 
   &-form {
@@ -15,6 +15,7 @@
     }
   }
 
+
   .block-label {
     background: $grey-4;
   }
@@ -25,17 +26,8 @@
     width: 100%;
   }
 
-  h4 {
-    text-transform: capitalize;
-  }
-
   .dropdown {
     margin-top: 21px;
-  }
-
-  &-result {
-    color: $white;
-    text-align: center;
   }
 
   li {
@@ -50,22 +42,6 @@
       }
     }
 
-  }
-
-  .button-result {
-    background-color: $white;
-    box-shadow: none;
-    color: $link-colour;
-    font-weight: 900;
-    padding: 15px 70px;
-  }
-
-
-  @media (min-width: 641px) {
-    &-container {
-      height: 165px;
-      position: relative;
-    }
   }
 
   &-tab {
@@ -201,43 +177,12 @@
   }
 
   &-results {
-    background-color: $white;
-    position: relative;
-    z-index: 1;
-
-    li {
-      padding: 5px 10px;
-
-      a {
-        color: $grey;
-        display: block;
-        text-decoration: none;
-      }
-    }
-  }
-
-  .tags {
-
-    li {
-      background-color: $white;
-      display: inline-block;
-      font-size: 14px;
-      margin: 3px 3px 0 0;
-      padding: 3px;
-    }
-
-    &-close {
-      background-color: $grey;
-      border-radius: 10px;
-      color: $white;
-      display: inline-block;
-      font-size: 12px;
-      height: 15px;
-      line-height: 15px;
-      text-align: center;
-      text-decoration: none;
-      width: 15px;
-    }
+    background-color: $light-stone;
+    border-left: 1px solid $stone;
+    border-right: 1px solid $stone;
+    position: absolute;
+    width: 100%;
+    z-index: 4;
   }
 
 }

@@ -12,56 +12,44 @@
 	  <div class="grid-row">
 		<div class="column-one-whole">
           <h1 class="heading-large flush--top">Find online marketplaces overseas</h1>
-          <p class="sub-heading">Please use the filters to narrow down your results</p>
+        </div>
+        <div class="filters soft--top">
+          <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}'>
+            <fieldset>
+              <legend class="visuallyhidden">Please select countries and products</legend>
+              <ul class="inline">
+                <li class="push-half--bottom cf">
+                  <div class="column-one-third">
+                    <div id='results-count' class="filters-container filters-result">
+                      <p class="flush">Online marketplaces</p>
+                      <h4 class="heading-xxlarge font-purple flush">{{results_count}}</h4>
+                    </div>
+                  </div>
+                  <div class="column-two-thirds">
+                    <div class="filters-container form-dropdown push--bottom soft--bottom">
+                      <h4 class="heading-small font-med flush--top filters-header">What kind of products do you sell?</h4>
+                      <label class="form-label font-small font-brand push--bottom" for="search-product">Product name</label>
+                      <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories">
+                      <ul class="form-dropdown-results"></ul>
+                      <ul class="form-dropdown-tags"></ul>
+                    </div>
 
-          <div class="filters">
-            <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}'>
-              <fieldset>
-                <legend class="visuallyhidden">Please use the filters to narrow down your results</legend>
-                <ul class="inline">
-                  <li class="push-half--bottom cf">
-                    <div class="column-one-third hard--left soft-half--right">
-                      <div class="background--stone filters-container soft">
-                          {% with form.countries_served as field and 'Choose country' as default and 'Where do you want to sell your products?' as label %}
-                            {% include "markets/includes/selectbox.html" %}
-                          {% endwith %}
-                      </div>
+                    <div class="filters-container push--bottom soft--top">
+                      <h4 class="heading-small font-med flush--top filters-header">Where do you want to sell them?</h4>
+                      <label class="form-label font-small font-brand push--bottom" for="search-country">Country name</label>
+                      <input class="form-control form-dropdown-input" id="search-country" type="text">
+                      <ul class="form-dropdown-results"></ul>
+                      <ul class="form-dropdown-tags"></ul>
+                      <ul class="filters-checkbox hide"></ul>
                     </div>
-                    <div class="column-two-thirds hard--left soft-half--right">
-                      <div class="background--stone filters-container soft">
-                        <label class="form-label filters-header font-med font-small font-brand push--bottom" for="search-product">Please Select category</label>
-                        <input class="form-control filters-category-search" id="search-product" type="text">
-                        <ul class="filters-results"></ul>
-                        <ul class="tags"></ul>
-                        <ul class="filters-checkbox hide"></ul>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="push-half--bottom cf">
-                    <div class="column-one-third hard--left soft-half--right">
-                        <div class="background--stone filters-container soft">
-                          {% with form.product_type as field and 'Choose product type' as default and 'Which of these best describes your products?' as label %}
-                            {% include "markets/includes/selectbox.html" %}
-                          {% endwith %}
-                        </div>
-                    </div>
-                    <div class="column-two-thirds hard--left soft-half--right">
-                      <div id='results-count' class="background--blue filters-container soft filters-result">
-                        <h4 class="heading-xlarge flush">{{results_count}}</h4>
-                        <p>Online marketplaces listed</p>
-                        <button class='button button-result' type='submit'>See results</button>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="push-half--bottom cf">
-
-                  </li>
-                </ul>
-              </fieldset>
-            </form>
-          </div>
-		</div>
-	  </div>
-	</div>
+                    <button class='button button-blue button-medium push--top' type='submit'>See results</button>
+                  </div>
+                </li>
+              </ul>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
 
 {% endblock content %}
