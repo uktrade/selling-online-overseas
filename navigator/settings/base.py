@@ -128,3 +128,5 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Index location for Whoosh searching
 WHOOSH_INDEX_DIR = os.path.join(BASE_DIR, 'whoosh_index')
+
+DEBUG = False
