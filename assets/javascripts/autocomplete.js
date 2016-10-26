@@ -13,6 +13,12 @@ var autocomplete =(function ($) {
         }
     });
 
+    $('html').click(function (event) {
+        if(!$(event.target).hasClass('form-dropdown-input')) {
+            closeDropdown();
+        }
+    });
+
     function selectedFirst() {
         addTag.call($('.form-dropdown-option').first());
     }
@@ -29,6 +35,9 @@ var autocomplete =(function ($) {
                 break;
             case 13:
                 event.preventDefault();
+                break;
+            case 27:
+                closeDropdown();
                 break;
             default:
                 getResults(this);
@@ -57,12 +66,20 @@ var autocomplete =(function ($) {
             });
     }
 
-    function createDropDown(data, element) {
+    function createDropDown(request, element) {
         closeDropdown();
-        for(var i = 0; i < data.categories.length; i++) {
-            $(element).next().append('<li><a href="" class="form-dropdown-option" data-option-id="'+data.categories[i][0]+'">' + data.categories[i][0] + ' - <strong>'+data.categories[i][1]+'</strong></li></a></li>');
+
+        var data = request.countries ? request.countries : request.categories;
+
+        if(data) {
+            for (var i = 0; i < data.length; i++) {
+                var content = (typeof(data[i]) === 'string') ? data[i] : data[i][0] + ' - <strong>'+data[i][1]+'</strong>',
+                    option = (typeof(data[i]) === 'string') ? data[i] : data[i][0];
+
+                $(element).next().append('<li><a href="" class="form-dropdown-option" data-option-id="' + option + '">' + content + '</li></a></li>');
+            }
+            $('.form-dropdown-option').on('click', addTag);
         }
-        $('.form-dropdown-option').on('click', addTag);
     }
 
     function addTag() {
