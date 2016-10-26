@@ -20,16 +20,21 @@ class MarketAdmin(admin.ModelAdmin):
     readonly_fields = ['slug']
 
     fieldsets = (
-        ('Platform Basics', {
+        ('Marketplace Description', {
             'fields': (
                 ('name', 'slug', 'logo'),
                 'description',
                 'web_address',
             )
         }),
-        ('Platform Details', {
+        ('Department of International Trade tips and terms', {
             'fields': (
                 'dit_advisor_tip',
+                'ukti_terms',
+            )
+        }),
+        ('Platform Details', {
+            'fields': (
                 ('countries_served', 'web_traffic',),
                 ('product_categories', 'prohibited_items',),
                 'product_type',
@@ -40,16 +45,24 @@ class MarketAdmin(admin.ModelAdmin):
                 'famous_brands_on_marketplace',
             )
         }),
-        ('On-Boarding/Application', {
+        ('Organise Translation', {
             'fields': (
-                ('local_bank_account_needed', 'local_bank_account_needed_notes',),
-                ('local_incorporation_needed', 'local_incorporation_needed_notes',),
                 ('translation_verbal', 'translation_verbal_notes',),
                 ('translation_application_process', 'translation_application_process_notes',),
                 ('translation_product_content', 'translation_product_content_notes',),
                 ('translation_seller_support', 'translation_seller_support_notes',),
-                ('exclusivity_required', 'exclusivity_required_notes',),
+            )
+        }),
+        ('Setup', {
+            'fields': (
+                ('local_bank_account_needed', 'local_bank_account_needed_notes',),
+                ('local_incorporation_needed', 'local_incorporation_needed_notes',),
                 ('product_details_upload', 'product_details_upload_notes',),
+            )
+        }),
+        ('Agree to', {
+            'fields': (
+                ('exclusivity_required', 'exclusivity_required_notes',),
             )
         }),
         ('Finance', {
@@ -60,7 +73,6 @@ class MarketAdmin(admin.ModelAdmin):
                 ('membership_fees_currency', 'membership_fees', 'membership_fees_frequency',),
                 ('commission_lower', 'commission_upper', 'commission_notes',),
                 ('fee_per_listing', 'fee_per_listing_notes',),
-                'ukti_terms',
             )
         }),
         ('Logisitics', {
