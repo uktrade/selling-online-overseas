@@ -183,17 +183,20 @@ class Market(ApprovalModel):
     payment_terms_rate_fixed = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                                    verbose_name="Payment Terms - Exchange rate fixed")
     payment_terms_rate_fixed_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    registration_fees = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                            verbose_name="Pricing/Fees - Registration")
+
+    registration_fees = models.FloatField(default=0, verbose_name="Pricing/Fees - Registration")
     registration_fees_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    registration_fees_currency = models.ForeignKey(Currency, null=True, blank=True,
+                                                   related_name="%(app_label)s_%(class)s_registration_fees_currency")
+
     fee_per_listing = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                           verbose_name="Pricing/Fees - Fee per Listing")
     fee_per_listing_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    membership_fees = models.FloatField(default=0, help_text="Converted to GBP",
-                                        verbose_name="Pricing/Fees - Membership fees")
+
+    membership_fees = models.FloatField(default=0, verbose_name="Pricing/Fees - Membership fees")
+    membership_fees_frequency = models.CharField(choices=PAYMENT_FREQUENCIES, max_length=1, null=True, blank=True)
     membership_fees_currency = models.ForeignKey(Currency, null=True, blank=True,
                                                  related_name="%(app_label)s_%(class)s_membership_fees_currency")
-    membership_fees_frequency = models.CharField(choices=PAYMENT_FREQUENCIES, max_length=1, null=True, blank=True)
 
     deposit_amount = models.FloatField(default=0)
     deposit_currency = models.ForeignKey(Currency, null=True, blank=True,
@@ -253,6 +256,8 @@ class Market(ApprovalModel):
             errors['membership_fees_currency'] = 'You must specify the currency if you specify an amount'
         if self.membership_fees > 0 and self.membership_fees_frequency is None:
             errors['membership_fees_frequency'] = 'You must specify the frequency if you specify an amount'
+        if self.registration_fees > 0 and self.registration_fees_currency is None:
+            errors['registration_fees_currency'] = 'You must specify the currency if you specify an amount'
 
         try:
             super().clean(*args, **kwargs)
