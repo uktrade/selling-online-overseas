@@ -3,12 +3,17 @@
   &-xlarge {
     @extend %regular;
     font-family: $brand-font-family;
-    letter-spacing: -1px;
+
+    @include breakpoint(tablet) {
+      font-size: 36px;
+      font-weight: 500;
+    }
+
   }
 
   &-xxlarge {
     font-size: 100px;
-    letter-spacing: -2.4px;
+    letter-spacing: -2.5px;
     line-height: 110px;
   }
 
@@ -34,10 +39,15 @@
   &-sub {
     @extend %light;
     @extend %lede;
-    border-bottom: 2px solid $flag-red;
+    border-bottom: 2px solid $purple;
     letter-spacing: -.4px;
     line-height: 31px;
     margin: 30px 0;
     padding-bottom: 40px;
+  }
+
+  &-headline {
+    @extend %font-headline;
+    @extend %regular;
   }
 }

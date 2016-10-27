@@ -3,7 +3,7 @@
 {% block content %}
   <div class="section">
     <div class="grid-row">
-      <div class="column-two-thirds home">
+      <div class="column-five-eights home">
         <h1 class='heading-xlarge push--bottom flush--top'>Find online marketplaces</h1>
 
         <p class="heading-sub push--bottom">Use this service to help choose a suitable online marketplace to sell your products overseas.</p>
@@ -20,17 +20,17 @@
         <a class='button button-blue button-large push--ends button-start' href='{% url 'markets:filtering' %}' title="start now">Start now</a>
       </div>
 
-      <div class="column-one-third">
+      <div class="column-three-eighths">
         <aside>
           <div class="home-info background--stone">
             <h4 class="heading-small font-med push-half--top">Essential information</h4>
             <dl class="soft--bottom">
 
-              <dt class="soft--top">Marketplaces in our databases:</dt>
-              <dd>{{ market_count }}</dd>
+              <dt class="soft--top">Marketplaces in database:</dt>
+              <dd><strong>{{ market_count }}</strong></dd>
 
               <dt class="soft--top">Last updated:</dt>
-              <dd>{{ last_updated }}</dd>
+              <dd><strong>{{ last_updated }}</strong></dd>
 
               <dt class="soft--top">How to export online:</dt>
               <dd class="soft--bottom"><a href="" title="Guide to online export" class="link link--regular">Guide to online export</a></dd>
