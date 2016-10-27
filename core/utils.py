@@ -1,5 +1,6 @@
 from django.db import connections
 from django.core import serializers
+from django.db.models import Count
 
 
 def safe_load_fixture(apps, fixture_path):
@@ -29,3 +30,20 @@ def safe_load_fixture(apps, fixture_path):
 
     # Reset the apps back to the original
     serializers.python.apps = original_apps
+
+
+def delete_model_duplicates(Model, unique_attr):
+    """
+    Utility for migrations, if a field of a model is made unique, this will remove any duplicates already in the
+    database.  It is aggressive, and will not re-link any foreign keys, they will be lost.  It simply removes all
+    but one of the models that have clashing unqiue attributes
+    """
+
+    _filter = {"{0}__count__gt".format(unique_attr): 1}
+    duplicates = Model.objects.values(unique_attr).annotate(Count(unique_attr)).order_by().filter(**_filter)
+    for duplicate in duplicates:
+        name = duplicate[unique_attr]
+        count = duplicate["{0}__count".format(unique_attr)]
+        model_to_delete = Model.objects.filter(name=name)[count-1:]
+        for model in model_to_delete:
+            model.delete()
