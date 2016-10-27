@@ -8,7 +8,7 @@ from django.db.models import Max, Count
 from django.http import Http404
 
 from .models import Market
-from .forms import MarketListFilterForm, InitialFilteringForm
+from .forms import MarketListFilterForm
 from core.forms import QueryChoiceMixin
 
 
@@ -48,12 +48,11 @@ class HomepageView(MarketFilterMixin, TemplateView):
         return context
 
 
-class FilteringView(MarketFilterMixin, FormView):
+class FilteringView(MarketFilterMixin, TemplateView):
     """
     The first step in the tool, used to pre-filter the marketplaces
     """
 
-    form_class = InitialFilteringForm
     template_name = 'markets/filtering.html'
 
     def get_context_data(self, *args, **kwargs):

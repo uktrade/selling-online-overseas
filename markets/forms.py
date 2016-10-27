@@ -10,22 +10,6 @@ from core.forms import (
 from geography.models import Region
 
 
-class InitialFilteringForm(ModelQueryForm):
-    """
-    Form for initial filtering of markets on the first page of the journey
-    """
-
-    class Meta:
-        model = Market
-        fields = []
-        query_fields = [
-            ('product_type', QueryMultipleCheckboxField, 'product_type__name'),
-            ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure__name'),
-            ('countries_served', QueryChoiceField, 'countries_served__name'),
-            ('product_categories', QueryMultipleChoiceField, 'product_categories__name'),
-        ]
-
-
 class MarketListFilterForm(ModelQueryForm):
     """
     The filters that appear on the results listing page, for furhter filtering of Markets.
