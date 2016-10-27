@@ -9,7 +9,7 @@ var autocomplete =(function ($) {
         // User press enter
         if (event.which === 13 && $('.form-dropdown-option').length > 0) {
             event.preventDefault();
-            selectedFirst();
+            selectedEnter();
         }
     });
 
@@ -19,19 +19,22 @@ var autocomplete =(function ($) {
         }
     });
 
-    function selectedFirst() {
-        addTag.call($('.form-dropdown-option').first());
+    function selectedEnter() {
+        var option = ($('.form-dropdown-results li.active a').length === 0) ? $('.form-dropdown-option').first() : $('.form-dropdown-results li.active a');
+        addTag.call(option);
     }
 
 
     function catchEvent(event) {
 
+        var nextElement = $(event.target).next();
+
         switch(event.which) {
             case 40:
-                selectOption('down');
+                selectOption('down', nextElement);
                 break;
             case 38:
-                selectOption('up');
+                selectOption('up', nextElement);
                 break;
             case 13:
                 event.preventDefault();
@@ -76,7 +79,7 @@ var autocomplete =(function ($) {
                 var content = (typeof(data[i]) === 'string') ? data[i] : data[i][0] + ' - <strong>'+data[i][1]+'</strong>',
                     option = (typeof(data[i]) === 'string') ? data[i] : data[i][0];
 
-                $(element).next().append('<li><a href="" class="form-dropdown-option" data-option-id="' + option + '">' + content + '</li></a></li>');
+                $(element).next().append('<li class="form-dropdown-list"><a href="" class="form-dropdown-option" data-option-id="' + option + '">' + content + '</li></a></li>');
             }
             $('.form-dropdown-option').on('click', addTag);
         }
@@ -122,11 +125,23 @@ var autocomplete =(function ($) {
         $('input[data-checkbox-id="'+checkboxId+'"]').remove();
     }
 
-    function selectOption(action){
-        console.log(action);
-        // var selector = "#artist-" + index;
-        // $('.highlighted').removeClass('highlighted');
-        // $(selector).addClass('highlighted');
+    function selectOption(action, element){
+
+        var list = (element.children().length - 1),
+            active = $('.form-dropdown-results li.active').index();
+
+        if(!$('.form-dropdown-results li').hasClass('active')) {
+            $($('.form-dropdown-results li')[0]).addClass('active');
+        } else {
+            $($('.form-dropdown-results li')[active]).removeClass('active');
+            if(action === 'up') {
+                $($('.form-dropdown-results li')[active-1]).addClass('active');
+            } else {
+                var option = (active === list) ? 0 : active+1;
+                $($('.form-dropdown-results li')[option]).addClass('active');
+            }
+
+        }
     }
 
 
