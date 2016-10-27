@@ -108,6 +108,11 @@
   @extend %site-width-container;
   @extend %contain-floats;
 
+  @include breakpoint(tablet) {
+    margin: 0 20px;
+  }
+
+
   &-tablet {
     @include breakpoint(tablet) {
       margin: 0;

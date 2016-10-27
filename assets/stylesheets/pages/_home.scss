@@ -1,6 +1,10 @@
 .home {
   padding-right: 70px;
 
+  @include breakpoint(tablet) {
+    padding-right: 30px;
+  }
+
   @include media (mobile) {
     padding-right: 10px;
   }
@@ -12,6 +16,7 @@
     width: 255px;
 
     @include breakpoint(tablet) {
+      padding: 25px 15px;
       width: inherit;
     }
   }
