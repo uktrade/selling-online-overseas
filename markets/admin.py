@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (
-    Market, Logo, SupportChannel, UploadMethod, Currency, Brand, LogisticsModel, MarketForSignOff
+    Market, Logo, SupportChannel, UploadMethod, Currency, Brand, SellerModel, LogisticsModel, MarketForSignOff
 )
 from .forms import LogoAdminForm
 
@@ -10,6 +10,7 @@ admin.site.register(SupportChannel)
 admin.site.register(UploadMethod)
 admin.site.register(Currency)
 admin.site.register(Brand)
+admin.site.register(SellerModel)
 admin.site.register(LogisticsModel)
 
 
@@ -77,6 +78,7 @@ class MarketAdmin(admin.ModelAdmin):
         }),
         ('Logisitics', {
             'fields': (
+                'seller_model',
                 ('logistics_structure', 'logistics_structure_notes'),
                 ('shipping_tracking_required', 'shipping_tracking_required_notes',),
                 ('local_return_address_required', 'local_return_address_required_notes',)

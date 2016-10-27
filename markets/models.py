@@ -36,6 +36,16 @@ class Logo(models.Model):
         return "{0}".format(self.name)
 
 
+class SellerModel(models.Model):
+    name = models.CharField(max_length=200, unique=True,)
+
+    def __str__(self):
+        return "{0}".format(self.name)
+
+    class Meta:
+        ordering = ('-name',)
+
+
 class SupportChannel(models.Model):
     name = models.CharField(max_length=200, unique=True)
 
@@ -119,6 +129,7 @@ class Market(ApprovalModel):
     web_traffic = models.FloatField(default=0, null=True, blank=True, help_text="in millions",
                                     verbose_name="Number of registered users")
     famous_brands_on_marketplace = models.ManyToManyField(Brand, blank=True)
+    seller_model = models.ManyToManyField(SellerModel, blank=True)
 
     customer_support_channels = models.ManyToManyField(SupportChannel, blank=True,
                                                        related_name="%(app_label)s_%(class)s_customer_related")
@@ -232,6 +243,7 @@ class Market(ApprovalModel):
         'product_type',
         'ukti_terms',
         'dit_advisor_tip',
+        'seller_model',
     ]
 
     def save(self, *args, **kwargs):
