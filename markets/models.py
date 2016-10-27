@@ -16,7 +16,7 @@ from products.models import Type, Category, ProhibitedItem
 
 
 class LogisticsModel(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return "{0}".format(self.name)
@@ -37,7 +37,7 @@ class Logo(models.Model):
 
 
 class SupportChannel(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return "{0}".format(self.name)
@@ -47,7 +47,7 @@ class SupportChannel(models.Model):
 
 
 class UploadMethod(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return "{0}".format(self.name)
@@ -57,7 +57,7 @@ class UploadMethod(models.Model):
 
 
 class Currency(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     symbol = models.CharField(max_length=1, blank=True, null=True)
 
     def __str__(self):
@@ -69,7 +69,7 @@ class Currency(models.Model):
 
 
 class Brand(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return "{0}".format(self.name)
