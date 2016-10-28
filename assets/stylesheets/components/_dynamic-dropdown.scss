@@ -54,9 +54,13 @@
       cursor: pointer;
       display: inline-block;
       font-size: 15px;
+      height: 20px;
+      line-height: 20px;
       margin-left: 5px;
       text-align: center;
       text-decoration: none;
+      padding: 0;
+      width: 20px;
 
       &:visited {
         color: $white;
