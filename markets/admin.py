@@ -84,6 +84,11 @@ class MarketAdmin(admin.ModelAdmin):
                 ('local_return_address_required', 'local_return_address_required_notes',)
             )
         }),
+        ('What should I do next?', {
+            'fields': (
+                'signup_address',
+            )
+        }),
     )
 
 

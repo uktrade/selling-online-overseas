@@ -123,6 +123,8 @@ class Market(ApprovalModel):
     logo = models.ForeignKey('Logo', null=True, blank=True)
     description = models.TextField(verbose_name="e-Marketplace Description")
     web_address = models.URLField(max_length=200)
+    signup_address = models.URLField(max_length=200, null=True, blank=True, verbose_name="Explore the marketplace")
+
     countries_served = models.ManyToManyField(Country, verbose_name="Operating Countries", blank=True)
     product_categories = models.ManyToManyField(Category, blank=True)
 
@@ -244,6 +246,7 @@ class Market(ApprovalModel):
         'ukti_terms',
         'dit_advisor_tip',
         'seller_model',
+        'signup_address',
     ]
 
     def save(self, *args, **kwargs):
