@@ -129,9 +129,7 @@
     <div class="cf push--bottom">
       <dl class="column-one-third">
         <dt class="font-reg">Logistics support {% if market.logistics_structure_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.logistics_structure_notes }}" data-tooltip="logistics"></button>{% endif %}</dt>
-        {% for model in market.logistics_structure.all %}
-        <dd>{{ model.name }}</dd>
-        {% endfor %}
+        {{ market | field_dd:'logistics_structure' }}
         <dialog data-tooltip="logistics"></dialog>
       </dl>
       <dl class="column-two-thirds">
