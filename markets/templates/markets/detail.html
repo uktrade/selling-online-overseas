@@ -67,8 +67,8 @@
         <dd>{{ market.web_traffic|floatformat:"-1" }} million</dd>
       </dl>
       <dl class="column-three-fifths">
-        <dt class="font-reg">Who else sells here?</dt>
-        <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
+        <dt class="font-reg">Ways to sell</dt>
+        {{ market | field_dd:'seller_model' }}
       </dl>
     </div>
     <div class="cf push--bottom">
@@ -76,10 +76,12 @@
         <dt class="font-reg">Product positioning</dt>
         {{ market | field_dd:'product_type' }}
       </dl>
-      <dl class="column-three-fifths">
-        <dt class="font-reg">Ways to sell</dt>
-        {{ market | field_dd:'seller_model' }}
-      </dl>
+      {% if market.famous_brands_on_marketplace.all %}
+        <dl class="column-three-fifths">
+          <dt class="font-reg">Who else sells here?</dt>
+          <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
+        </dl>
+      {% endif %}
     </div>
   </div>
 </div>

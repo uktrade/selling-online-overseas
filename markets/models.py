@@ -253,7 +253,6 @@ class Market(ApprovalModel):
         'dit_advisor_tip',
         'seller_model',
         'signup_address',
-        'famous_brands_on_marketplace',
     ]
 
     def save(self, *args, **kwargs):
