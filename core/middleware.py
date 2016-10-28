@@ -14,6 +14,7 @@ class IpRestrictionMiddleware(object):
 
     def process_request(self, request):
         if getattr(settings, 'RESTRICT_IPS', False):
+            print(request.META['REMOTE_ADDR'])
             if request.META['REMOTE_ADDR'] not in settings.ALLOWED_IPS:
                 return http.HttpResponseForbidden('<h1>Forbidden</h1>')
             if request.META['REMOTE_ADDR'] in settings.BLOCKED_IPS:
