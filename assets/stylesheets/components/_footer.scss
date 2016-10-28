@@ -1,10 +1,11 @@
 #footer {
   background-color: $great-primary;
   border-top: 0;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 
   .footer-wrapper {
     background-color: $great-primary;
+    padding-top: 30px;
 
     .grid-row {
       @include media (mobile) {
@@ -41,20 +42,13 @@
 
   .footer-links {
 
-    margin-bottom: 6px;
+    margin-bottom: 3px;
 
     a {
-      border-bottom: 1px solid $light-grey;
-      border-bottom-color: $lighter-grey-opacity;
       color: $white;
-      margin-left: 50px;
       padding-bottom: 2px;
       text-decoration: none;
       text-transform: capitalize;
-
-      &:hover {
-        border-bottom: 1px dashed $white;
-      }
 
       @include media (mobile) {
         margin-left: 0;
@@ -94,7 +88,6 @@
 
   h3 {
     color: $white;
-    font-size: 24px;
   }
 
   .form-label {
