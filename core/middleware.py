@@ -21,14 +21,14 @@ class IpRestrictionMiddleware(object):
             if request.META['REMOTE_ADDR'] in settings.ALLOWED_IPS:
                 block_request = False
 
-            for allowed_range in ALLOWED_IP_RANGES:
+            for allowed_range in settings.ALLOWED_IP_RANGES:
                 if request_ip in ipaddress.ip_network(allowed_range):
                     block_request = False
 
             if request.META['REMOTE_ADDR'] in settings.BLOCKED_IPS:
                 block_request = True
 
-            for blocked_range in BLOCKED_IP_RANGES:
+            for blocked_range in settings.BLOCKED_IP_RANGES:
                 if request_ip in ipaddress.ip_network(blocked_range):
                     block_request = True
 
