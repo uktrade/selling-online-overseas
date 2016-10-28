@@ -93,6 +93,9 @@ class MarketAdmin(admin.ModelAdmin):
 
 
 class MarketSignOffAdmin(MarketAdmin):
+
+    list_display = ['name', 'web_address', 'published']
+
     def _flatten(self, data):
         rdata = []
         for x in data:
