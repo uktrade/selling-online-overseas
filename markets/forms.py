@@ -23,6 +23,15 @@ class MarketListFilterForm(ModelQueryForm):
     local_incorporation_needed = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
                                                            required=False, choices=BOOL_CHOICES)
 
+    translation_verbal = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                                   required=False, choices=BOOL_CHOICES)
+    translation_application_process = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                                                required=False, choices=BOOL_CHOICES)
+    translation_product_content = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                                            required=False, choices=BOOL_CHOICES)
+    translation_seller_support = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                                           required=False, choices=BOOL_CHOICES)
+
     class Meta:
         model = Market
         fields = []
@@ -30,10 +39,6 @@ class MarketListFilterForm(ModelQueryForm):
             ('product_type', QueryMultipleCheckboxField, 'product_type__name'),
             ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure__name'),
             ('countries_served', QueryMultipleCheckboxField, 'countries_served__name'),
-            ('product_categories', QueryMultipleCheckboxField, 'product_categories__name'),
-            ('region', QueryMultipleCheckboxField, 'countries_served__region__name'),
-            ('customer_support_channels', QueryMultipleCheckboxField, 'customer_support_channels'),
-            ('seller_support_channels', QueryMultipleCheckboxField, 'seller_support_channels'),
         ]
 
 
