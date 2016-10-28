@@ -43,7 +43,7 @@ class SellerModel(models.Model):
         return "{0}".format(self.name)
 
     class Meta:
-        ordering = ('-name',)
+        ordering = ('name',)
 
 
 class SupportChannel(models.Model):
@@ -53,7 +53,7 @@ class SupportChannel(models.Model):
         return "{0}".format(self.name)
 
     class Meta:
-        ordering = ('-name',)
+        ordering = ('name',)
 
 
 class UploadMethod(models.Model):
@@ -63,7 +63,7 @@ class UploadMethod(models.Model):
         return "{0}".format(self.name)
 
     class Meta:
-        ordering = ('-name',)
+        ordering = ('name',)
 
 
 class Currency(models.Model):
@@ -75,7 +75,7 @@ class Currency(models.Model):
 
     class Meta:
         verbose_name_plural = "Currencies"
-        ordering = ('-name',)
+        ordering = ('name',)
 
 
 class Brand(models.Model):
@@ -85,7 +85,7 @@ class Brand(models.Model):
         return "{0}".format(self.name)
 
     class Meta:
-        ordering = ('-name',)
+        ordering = ('name',)
 
 
 class ApprovalModel(models.Model):
@@ -247,6 +247,7 @@ class Market(ApprovalModel):
         'dit_advisor_tip',
         'seller_model',
         'signup_address',
+        'famous_brands_on_marketplace',
     ]
 
     def save(self, *args, **kwargs):
@@ -324,7 +325,7 @@ class Market(ApprovalModel):
         if value > 0:
             formatted_value = format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
             symbol = getattr(self, "{0}_currency".format(attr)).symbol
-            display_str = "{0}{1}".format(symbol, value)
+            display_str = "{0}{1}".format(symbol, formatted_value)
         else:
             display_str = "None"
 
