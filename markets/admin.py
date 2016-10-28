@@ -70,7 +70,7 @@ class MarketAdmin(admin.ModelAdmin):
             'fields': (
                 ('payment_terms_days', 'currency_of_payments',),
                 ('registration_fees_currency', 'registration_fees', 'registration_fees_notes',),
-                ('deposit_currency', 'deposit_amount', 'deposit_notes',),
+                ('deposit_currency', 'deposit', 'deposit_notes',),
                 ('membership_fees_currency', 'membership_fees', 'membership_fees_frequency',),
                 ('commission_lower', 'commission_upper', 'commission_notes',),
                 ('fee_per_listing', 'fee_per_listing_notes',),
