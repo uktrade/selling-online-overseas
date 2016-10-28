@@ -19,7 +19,7 @@ $aqua: #007ea3;
 $navy: #003666;
 $turquoise: #3ed3ff;
 $graphite: #292929;
-
+$indigo: #110b29;
 $lighter-grey-opacity: rgba(220, 224, 223, .5);
 $loader-background: rgba(0, 0, 0, .5);
 
@@ -84,7 +84,8 @@ $backgrounds: (
   'blue' $link-colour,
   'stone' $stone,
   'light-stone' $light-stone,
-  'great-primary' $great-primary
+  'great-primary' $great-primary,
+  'indigo' $indigo
 );
 
 $backgrounds-image: (

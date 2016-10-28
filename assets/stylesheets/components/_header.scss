@@ -11,6 +11,12 @@
     }
   }
 
+  &--right {
+    @include breakpoint (tablet) {
+      width: 100%;
+    }
+  }
+
   .header-hm-logo {
     @include media (mobile) {
       display: none;
@@ -19,10 +25,12 @@
 
   .header-nav {
     padding-top: 30px;
+    text-align: right;
 
     @include breakpoint (tablet) {
       display: none;
       padding: 10px 0;
+      text-align: left;
     }
 
     &.open {
@@ -112,7 +120,7 @@
       right: 20px;
       text-decoration: none;
       text-transform: uppercase;
-      top: 30px;
+      top: 70px;
 
       .icon-menu {
         height: 20px;
