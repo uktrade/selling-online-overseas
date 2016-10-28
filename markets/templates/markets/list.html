@@ -25,16 +25,16 @@
       <div class="grid-row">
         <ul class="filters-tab background--stone cf">
           <li class="column-one-fourth">
-            <a class="filters-tab--item" href="#" data-group="product_categories"><i class="icon icon-products" data-group="product_categories"></i>Product</a>
+            <a class="filters-tab--item" href="#" data-group="product_positioning"><i class="icon icon-products" data-group="product_positioning"></i>Product positioning</a>
           </li>
           <li class="column-one-fourth">
-            <a class="filters-tab--item" href="#" data-group="geography"><i class="icon icon-countries" data-group="geography"></i>Countries/Regions</a>
+            <a class="filters-tab--item" href="#" data-group="requirements"><i class="icon icon-countries" data-group="requirements"></i>Marketplace requirements</a>
           </li>
           <li class="column-one-fourth">
-            <a class="filters-tab--item" href="#" data-group="platform"><i class="icon icon-on-boarding" data-group="platform"></i>On Boarding</a>
+            <a class="filters-tab--item" href="#" data-group="logistics"><i class="icon icon-on-boarding" data-group="logistics"></i>Logistics support</a>
           </li>
           <li class="column-one-fourth">
-            <a class="filters-tab--item" href="#" data-group="finance"><i class="icon icon-fees" data-group="finance"></i>Fees & Pricing</a>
+            <a class="filters-tab--item" href="#" data-group="translation"><i class="icon icon-fees" data-group="translation"></i>Translation</a>
           </li>
         </ul>
       </div>
@@ -44,27 +44,27 @@
       <div class="grid-row">
         <form method="get" action="{% url 'markets:list' %}" class="filters-form">
           <fieldset>
-            <div class="cf filters-section filters-options" data-field="product_categories">
-              <h4 class="font-small push-half--bottom">Product Categories</h4>
-              {{ form.product_categories }}
-              <h4 class="font-small push-half--bottom">Product Type</h4>
+            <div class="cf filters-section filters-options" data-field="product_positioning">
               {{ form.product_type }}
             </div>
-            <div class="cf filters-section filters-options" data-field="finance">
-              <h4 class="font-small push-half--bottom">Logistics Structure</h4>
-              {{ form.logistics_structure }}
-            </div>
-            <div class="cf filters-section filters-options" data-field="platform">
+            <div class="cf filters-section filters-options" data-field="requirements">
               <h4 class="font-small push-half--bottom">Local bank account needed</h4>
               {{ form.local_bank_account_needed }}
               <h4 class="font-small push-half--bottom">Local incorporation needed</h4>
               {{ form.local_incorporation_needed }}
             </div>
-            <div class="cf filters-section filters-options" data-field="geography">
-              <h4 class="font-small push-half--bottom">Countries</h4>
-              {{ form.countries_served }}
-              <h4 class="font-small push-half--bottom">Region</h4>
-              {{ form.region }}
+            <div class="cf filters-section filters-options" data-field="logistics">
+              {{ form.logistics_structure }}
+            </div>
+            <div class="cf filters-section filters-options" data-field="translation">
+              <h4 class="font-small push-half--bottom">Translation needed for negotiations</h4>
+              {{ form.translation_verbal }}
+              <h4 class="font-small push-half--bottom">Translation needed to apply to join</h4>
+              {{ form.translation_application_process }}
+              <h4 class="font-small push-half--bottom">Translation needed for product content</h4>
+              {{ form.translation_product_content }}
+              <h4 class="font-small push-half--bottom">Translation needed for seller support</h4>
+              {{ form.translation_seller_support }}
             </div>
             <button class="button button-close link">Close</button>
             <button id="apply_filters" class="button button-white hide" type="submit" value="submit">Apply Filters</button>
