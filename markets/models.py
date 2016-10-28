@@ -105,10 +105,16 @@ class ApprovalModel(models.Model):
         if self.published:
             errors = {}
 
-            for field in self.approval_fields:
-                value = getattr(self, field, None)
-                if value is None or value == '':
-                    errors[field] = 'This field must be filled in for publishing'
+            for field_name in self.approval_fields:
+                field = getattr(self, field_name, None)
+                if getattr(field, 'all', False):
+                    value = field.all()
+                    if len(value) == 0:
+                        errors[field_name] = 'This field must be filled in for publishing'
+                else:
+                    value = field
+                    if value is None or value == '':
+                        errors[field_name] = 'This field must be filled in for publishing'
 
             if errors:
                 raise ValidationError(errors)
