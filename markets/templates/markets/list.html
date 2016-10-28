@@ -28,13 +28,13 @@
             <a class="filters-tab--item" href="#" data-group="product_positioning"><i class="icon icon-products" data-group="product_positioning"></i>Product positioning</a>
           </li>
           <li class="column-one-fourth">
-            <a class="filters-tab--item" href="#" data-group="requirements"><i class="icon icon-countries" data-group="requirements"></i>Marketplace requirements</a>
+            <a class="filters-tab--item" href="#" data-group="requirements"><i class="icon icon-on-boarding" data-group="requirements"></i>Marketplace requirements</a>
           </li>
           <li class="column-one-fourth">
-            <a class="filters-tab--item" href="#" data-group="logistics"><i class="icon icon-on-boarding" data-group="logistics"></i>Logistics support</a>
+            <a class="filters-tab--item" href="#" data-group="logistics"><i class="icon icon-logistics" data-group="logistics"></i>Logistics support</a>
           </li>
           <li class="column-one-fourth">
-            <a class="filters-tab--item" href="#" data-group="translation"><i class="icon icon-fees" data-group="translation"></i>Translation</a>
+            <a class="filters-tab--item" href="#" data-group="translation"><i class="icon icon-translation" data-group="translation"></i>Translation</a>
           </li>
         </ul>
       </div>
@@ -45,26 +45,40 @@
         <form method="get" action="{% url 'markets:list' %}" class="filters-form">
           <fieldset>
             <div class="cf filters-section filters-options" data-field="product_positioning">
+              <h4 class="font-small push-half--bottom">Show me marketplaces that sell these products</h4>
               {{ form.product_type }}
             </div>
             <div class="cf filters-section filters-options" data-field="requirements">
-              <h4 class="font-small push-half--bottom">Local bank account needed</h4>
-              {{ form.local_bank_account_needed }}
-              <h4 class="font-small push-half--bottom">Local incorporation needed</h4>
-              {{ form.local_incorporation_needed }}
+              <div class="column-one-half hard--left">
+                <h4 class="font-small push-half--bottom">Local bank account needed</h4>
+                {{ form.local_bank_account_needed }}
+              </div>
+              <div class="column-one-half">
+                <h4 class="font-small push-half--bottom">Local incorporation needed</h4>
+                {{ form.local_incorporation_needed }}
+              </div>
             </div>
             <div class="cf filters-section filters-options" data-field="logistics">
+              <h4 class="font-small push-half--bottom">Show me where logistics</h4>
               {{ form.logistics_structure }}
             </div>
             <div class="cf filters-section filters-options" data-field="translation">
-              <h4 class="font-small push-half--bottom">Translation needed for negotiations</h4>
-              {{ form.translation_verbal }}
-              <h4 class="font-small push-half--bottom">Translation needed to apply to join</h4>
-              {{ form.translation_application_process }}
-              <h4 class="font-small push-half--bottom">Translation needed for product content</h4>
-              {{ form.translation_product_content }}
-              <h4 class="font-small push-half--bottom">Translation needed for seller support</h4>
-              {{ form.translation_seller_support }}
+              <div class="column-one-quarter hard--left">
+                <h4 class="font-small push-half--bottom">Translation needed for negotiations</h4>
+                {{ form.translation_verbal }}
+              </div>
+              <div class="column-one-quarter">
+                <h4 class="font-small push-half--bottom">Translation needed to apply to join</h4>
+                {{ form.translation_application_process }}
+              </div>
+              <div class="column-one-quarter">
+                <h4 class="font-small push-half--bottom">Translation needed for product content</h4>
+                {{ form.translation_product_content }}
+              </div>
+              <div class="column-one-quarter">
+                <h4 class="font-small push-half--bottom">Translation needed for seller support</h4>
+                {{ form.translation_seller_support }}
+              </div>
             </div>
             <button class="button button-close link">Close</button>
             <button id="apply_filters" class="button button-white hide" type="submit" value="submit">Apply Filters</button>

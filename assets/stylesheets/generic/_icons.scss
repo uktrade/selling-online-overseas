@@ -69,6 +69,14 @@
     background-image: url('#{$image-path}icons/bank_account.svg');
   }
 
+  &-translation {
+    background-image: url('#{$image-path}icons/translation.svg');
+
+    &--white {
+      background-image: url('#{$image-path}icons/translation-white.svg');
+    }
+  }
+
   &-countries {
     background-image: url('#{$image-path}icons/region.svg');
 
