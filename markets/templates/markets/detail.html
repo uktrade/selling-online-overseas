@@ -134,7 +134,7 @@
       </dl>
       <dl class="column-two-thirds">
         <dt class="font-reg">Parcel tracking required by the marketplace {% if market.shipping_tracking_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.shipping_tracking_required_notes }}" data-tooltip="shipping"></button>{% endif %}</dt>
-        <dd>{{ market.shipping_tracking_required | formatvalue:'required' }}</dd>
+        <dd>{{ market.get_shipping_tracking_required_display }}</dd>
         <dialog data-tooltip="shipping"></dialog>
       </dl>
     </div>
@@ -154,12 +154,12 @@
     <div class="cf push--bottom">
       <dl class="column-one-third">
         <dt class="font-reg">One-off registration fee {% if market.registration_fees_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.registration_fees_notes }}" data-tooltip="registration-fee"></button>{% endif %}</dt>
-        <dd>{{ market.registration_fees_currency  }} {{ market.registration_fees  }}</dd>
+        <dd>{{ market.registration_fees_display  }}</dd>
         <dialog data-tooltip="registration-fee"></dialog>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Membership fee</dt>
-        <dd>{{ market.membership_fees }}</dd>
+        <dd>{{ market.membership_fees_display }}</dd>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Listing fee {% if market.fee_per_listing_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="listing-fee"></button>{% endif %}</dt>
@@ -170,7 +170,7 @@
     <div class="cf push--bottom">
       <dl class="column-one-third">
         <dt class="font-reg">Commission {% if market.commission_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.commission_notes }}" data-tooltip="commission"></button>{% endif %}</dt>
-        <dd>{{ market.commission }}</dd>
+        <dd>{{ market.commission_display }}</dd>
         <dialog data-tooltip="commission"></dialog>
       </dl>
       <dl class="column-one-third">
@@ -249,7 +249,7 @@
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Via UK bank account {% if market.local_bank_account_needed_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.local_bank_account_needed_notes }}" data-tooltip="local-bank"></button>{% endif %}</dt>
-        <dd>{{ market.local_bank_account_needed | formatvalue:'required' }}</dd>
+        <dd>{{ market.get_local_bank_account_needed_display }}</dd>
         <dialog data-tooltip="local-bank"></dialog>
       </dl>
     </div>

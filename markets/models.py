@@ -212,7 +212,7 @@ class Market(ApprovalModel):
     membership_fees_currency = models.ForeignKey(Currency, null=True, blank=True,
                                                  related_name="%(app_label)s_%(class)s_membership_fees_currency")
 
-    deposit_amount = models.FloatField(default=0)
+    deposit = models.FloatField(default=0)
     deposit_currency = models.ForeignKey(Currency, null=True, blank=True,
                                          related_name="%(app_label)s_%(class)s_deposit_currency")
     deposit_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
@@ -267,7 +267,7 @@ class Market(ApprovalModel):
 
         errors = {}
 
-        if self.deposit_amount > 0 and self.deposit_currency is None:
+        if self.deposit > 0 and self.deposit_currency is None:
             errors['deposit_currency'] = 'You must specify the currency if you specify an amount'
         if self.membership_fees > 0 and self.membership_fees_currency is None:
             errors['membership_fees_currency'] = 'You must specify the currency if you specify an amount'
@@ -288,7 +288,7 @@ class Market(ApprovalModel):
         return "{0}".format(self.name)
 
     @property
-    def commission(self):
+    def commission_display(self):
         if self.commission_lower is None and self.commission_upper is None:
             return "None"
 
@@ -305,24 +305,28 @@ class Market(ApprovalModel):
 
     @property
     def membership_fees_display(self):
-        if self.membership_fees > 0:
-            value = format(self.membership_fees, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
-            symbol = self.membership_fees_currency.symbol
-            frequency = self.get_membership_fees_frequency_display()
-            display_str = "{0}{1} {2}".format(symbol, value, frequency)
+        display_value = self._value_display('membership_fees')
+        if display_value != "None":
+            return "{0} {1}".format(display_value, self.get_membership_fees_frequency_display())
         else:
-            display_str = "Not required"
-
-        return display_str
+            return display_value
 
     @property
     def deposit_display(self):
-        if self.deposit_amount > 0:
-            value = format(self.deposit_amount, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
-            symbol = self.deposit_currency.symbol
+        return self._value_display('deposit')
+
+    @property
+    def registration_fees_display(self):
+        return self._value_display('registration_fees')
+
+    def _value_display(self, attr):
+        value = getattr(self, attr, 0)
+        if value > 0:
+            formatted_value = format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
+            symbol = getattr(self, "{0}_currency".format(attr)).symbol
             display_str = "{0}{1}".format(symbol, value)
         else:
-            display_str = "Not required"
+            display_str = "None"
 
         return display_str
 
