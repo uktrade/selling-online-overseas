@@ -39,6 +39,7 @@ class MarketListFilterForm(ModelQueryForm):
             ('product_type', QueryMultipleCheckboxField, 'product_type__name'),
             ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure__name'),
             ('countries_served', QueryMultipleCheckboxField, 'countries_served__name'),
+            ('product_categories', QueryMultipleCheckboxField, 'product_categories__name'),
         ]
 
 
