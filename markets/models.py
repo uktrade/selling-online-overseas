@@ -336,6 +336,16 @@ class Market(ApprovalModel):
 
         return display_str
 
+    @property
+    def payment_terms_days_display(self):
+        if self.payment_terms_days:
+            if self.payment_terms_days == 1:
+                return "1 day"
+            else:
+                return "{0} days".format(self.payment_terms_days)
+        else:
+            return ""
+
     class Meta:
         ordering = ('-name',)
 
