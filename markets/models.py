@@ -68,7 +68,7 @@ class UploadMethod(models.Model):
 
 class Currency(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    symbol = models.CharField(max_length=1, blank=True, null=True)
+    symbol = models.CharField(max_length=2, blank=True, null=True)
 
     def __str__(self):
         return "{0} {1}".format(self.name, self.symbol)
