@@ -13,34 +13,34 @@
 		<div class="column-one-whole">
           <h1 class="heading-large flush--top">Find online marketplaces overseas</h1>
         </div>
-        <div class="filters soft--top">
+        <div class=" soft--top">
           <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}'>
             <fieldset>
               <legend class="visuallyhidden">Please select countries and products</legend>
               <ul class="inline">
                 <li class="push-half--bottom cf">
                   <div class="column-one-third">
-                    <div id='results-count' class="filters-container filters-result">
+                    <div id='results-count'>
                       <p class="flush">Online marketplaces</p>
                       <h4 class="heading-xxlarge font-purple flush">{{results_count}}</h4>
                     </div>
                   </div>
                   <div class="column-two-thirds">
-                    <div class="filters-container form-dropdown push--bottom soft--bottom">
-                      <h4 class="heading-small font-med flush--top filters-header">What kind of products do you sell?</h4>
+                    <div class="form-dropdown push--bottom soft--bottom">
+                      <h4 class="heading-small form-dropdown-header font-med flush--top">What kind of products do you sell?</h4>
                       <label class="form-label font-small font-brand push--bottom" for="search-product">Product name (optional)</label>
-                      <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off">
+                      <input class="form-control form-dropdown-input column-one-whole" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off">
                       <ul class="form-dropdown-results"></ul>
                       <ul class="form-dropdown-tags"></ul>
                     </div>
 
-                    <div class="filters-container form-dropdown push--bottom soft--top">
-                      <h4 class="heading-small font-med flush--top filters-header">Where do you want to sell them?</h4>
+                    <div class="form-dropdown push--bottom soft--top">
+                      <h4 class="heading-small form-dropdown-header font-med flush--top">Where do you want to sell them?</h4>
                       <label class="form-label font-small font-brand push--bottom" for="search-country">Country name (optional)</label>
-                      <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="/geography/api/" data-field="countries_served" autocomplete="off">
+                      <input class="form-control form-dropdown-input column-one-whole" id="search-country" type="text" data-url="/geography/api/" data-field="countries_served" autocomplete="off">
                       <ul class="form-dropdown-results"></ul>
                       <ul class="form-dropdown-tags"></ul>
-                      <ul class="filters-checkbox hide"></ul>
+                      <ul class="form-dropdown-checkbox hide"></ul>
                     </div>
                     <button class='button button-blue button-large push--top' type='submit'>See results</button>
                   </div>

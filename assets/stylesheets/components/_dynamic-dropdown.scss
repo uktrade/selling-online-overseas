@@ -1,6 +1,10 @@
 .form-dropdown {
   position: relative;
 
+  &-header {
+    margin-bottom: 5px;
+  }
+
   &-results {
     background-color: $light-stone;
     border-left: 1px solid $stone;

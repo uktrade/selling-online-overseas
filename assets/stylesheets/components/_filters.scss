@@ -1,9 +1,5 @@
 .filters {
 
-  &-header {
-    margin-bottom: 5px;
-  }
-
   &-form {
     display: none;
     position: relative;
@@ -15,25 +11,14 @@
     }
   }
 
-
-  .block-label {
-    background: $grey-4;
-  }
-
   .form-control {
     border: 1px solid $secondary-text-colour;
     height: 40px;
     width: 100%;
   }
 
-  .dropdown {
-    margin-top: 21px;
-  }
-
   li {
-    display: block;
     padding: 0;
-
 
     &:last-child {
 
@@ -41,7 +26,6 @@
         border: 0;
       }
     }
-
   }
 
   &-tab {
@@ -73,6 +57,7 @@
 
     &:link {
       color: $great-primary;
+      letter-spacing: -.4px;
       position: relative;
       text-decoration: none;
 
@@ -128,22 +113,10 @@
     background-color: $great-primary;
     color: $white;
     margin: 0 10px;
-    padding: 50px 30px 0;
+    padding: 50px 30px 25px;
 
     @include breakpoint(tablet) {
       margin: 0;
-    }
-
-  }
-
-  .block-label--top {
-    background: none;
-    border: 0;
-    margin-bottom: 0;
-    padding: 17px 0 0 30px;
-
-    input {
-      left: 0;
     }
 
   }
@@ -152,26 +125,30 @@
   &-options {
     display: none;
 
-    ul {
-      @include prefix((flex-wrap: 'wrap'), webkit);
-      display: flex;
-      float: left;
-      margin-bottom: 30px;
-      width: 100%;
-
-      li {
-        padding-bottom: 10px;
-        width: 100%;
-      }
+    &--border {
+      border-right: 1px solid $light-grey;
+      margin-right: 30px;
     }
 
     &.show {
       display: block;
     }
+  }
 
-    p {
-      margin-bottom: .4em;
-      margin-top: 1.4em;
+  &-options--list {
+    display: block;
+    padding: 0;
+
+    &:last-child {
+
+      a {
+        border: 0;
+      }
+    }
+
+    li {
+      padding-bottom: 10px;
+      width: 100%;
     }
   }
 
