@@ -118,7 +118,7 @@ var autocomplete =(function ($) {
             'data-checkbox-id': value
         });
 
-        $('.filters-checkbox').append(input);
+        $('.form-dropdown-checkbox').append(input);
     }
 
     function deleteCheckbox(checkboxId) {

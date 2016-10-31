@@ -15,7 +15,7 @@
   &-control {
     @extend %light;
     background: $light-stone;
-    border: 2px solid $stone;
+    border: 1px solid $secondary-text-colour;
     font-family: $brand-font-family;
     height: $form-field-height;
     padding: 10px;

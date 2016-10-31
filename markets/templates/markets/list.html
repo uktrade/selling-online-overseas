@@ -15,11 +15,18 @@
     <div class="grid-row">
       <div class="column-one-whole heading">
         <h1 class="heading-xlarge push--bottom flush--top heading-results">{{ markets_list.count }} marketplace{{markets_list|pluralize}} found</h1>
-        <p class="heading-headline font-lig">Filter your results:</p>
       </div>
     </div>
   </div>
 
+  {% if markets_list.count != 0 %}
+  <div class="section">
+    <div class="grid-row">
+      <div class="column-one-whole">
+        <p class="heading-headline font-lig">Filter your results:</p>
+      </div>
+    </div>
+  </div>
   <div class="filters">
     <div class="section section-tablet">
       <div class="grid-row">
@@ -44,42 +51,62 @@
       <div class="grid-row">
         <form method="get" action="{% url 'markets:list' %}" class="filters-form">
           <fieldset>
-            <div class="cf filters-section filters-options" data-field="product_positioning">
-              <h4 class="font-small push-half--bottom">Show me marketplaces that sell these products</h4>
-              {{ form.product_type }}
-            </div>
-            <div class="cf filters-section filters-options" data-field="requirements">
-              <div class="column-one-half hard--left">
-                <h4 class="font-small push-half--bottom">Local bank account needed</h4>
-                {{ form.local_bank_account_needed }}
-              </div>
-              <div class="column-one-half">
-                <h4 class="font-small push-half--bottom">Local incorporation needed</h4>
-                {{ form.local_incorporation_needed }}
-              </div>
-            </div>
-            <div class="cf filters-section filters-options" data-field="logistics">
-              <h4 class="font-small push-half--bottom">Show me where logistics</h4>
-              {{ form.logistics_structure }}
-            </div>
-            <div class="cf filters-section filters-options" data-field="translation">
-              <div class="column-one-quarter hard--left">
-                <h4 class="font-small push-half--bottom">Translation needed for negotiations</h4>
-                {{ form.translation_verbal }}
-              </div>
-              <div class="column-one-quarter">
-                <h4 class="font-small push-half--bottom">Translation needed to apply to join</h4>
-                {{ form.translation_application_process }}
-              </div>
-              <div class="column-one-quarter">
-                <h4 class="font-small push-half--bottom">Translation needed for product content</h4>
-                {{ form.translation_product_content }}
-              </div>
-              <div class="column-one-quarter">
-                <h4 class="font-small push-half--bottom">Translation needed for seller support</h4>
-                {{ form.translation_seller_support }}
-              </div>
-            </div>
+            <ul class="cf filters-section filters-options" data-field="product_positioning">
+              <li class="column-one-whole">
+                <div class="filters-options--list">
+                  <h4 class="font-small push-half--bottom">Show me marketplaces that sell these products</h4>
+                  {{ form.product_type }}
+                </div>
+              </li>
+            </ul>
+            <ul class="cf filters-section filters-options" data-field="requirements">
+              <li class="column-one-third">
+                <div class="filters-options--list filters-options--border">
+                  <h4 class="font-small push-half--bottom">Local bank account needed</h4>
+                  {{ form.local_bank_account_needed }}
+                </div>
+              </li>
+              <li class="column-one-third">
+                <div class="filters-options--list">
+                  <h4 class="font-small push-half--bottom">Local incorporation needed</h4>
+                  {{ form.local_incorporation_needed }}
+                </div>
+              </li>
+            </ul>
+            <ul class="cf filters-section filters-options" data-field="logistics">
+              <li class="column-one-whole">
+                <div class="filters-options--list">
+                  <h4 class="font-small push-half--bottom">Show me where logistics</h4>
+                  {{ form.logistics_structure }}
+                </div>
+              </li>
+            </ul>
+            <ul class="cf filters-section filters-options" data-field="translation">
+              <li class="column-one-quarter">
+                <div class="filters-options--list filters-options--border">
+                  <h4 class="font-small push-half--bottom">Translation needed for negotiations</h4>
+                  {{ form.translation_verbal }}
+                </div>
+              </li>
+              <li class="column-one-quarter">
+                <div class="filters-options--list filters-options--border">
+                  <h4 class="font-small push-half--bottom">Translation needed to apply to join</h4>
+                  {{ form.translation_application_process }}
+                </div>
+              </li>
+              <li class="column-one-quarter">
+                <div class="filters-options--list filters-options--border">
+                  <h4 class="font-small push-half--bottom">Translation needed for product content</h4>
+                  {{ form.translation_product_content }}
+                </div>
+              </li>
+              <li class="column-one-quarter">
+                <div class="filters-options--list push--right">
+                  <h4 class="font-small push-half--bottom">Translation needed for seller support</h4>
+                  {{ form.translation_seller_support }}
+                </div>
+              </li>
+            </ul>
             <button class="button button-close link">Close</button>
             <button id="apply_filters" class="button button-white hide" type="submit" value="submit">Apply Filters</button>
           </fieldset>
@@ -87,6 +114,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
 
   <div class="section">
     <div class="grid-row">

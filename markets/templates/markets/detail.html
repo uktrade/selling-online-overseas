@@ -248,7 +248,7 @@
         <dd>{{ market | csl:'currency_of_payments' }}</dd>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Via UK bank account {% if market.local_bank_account_needed_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.local_bank_account_needed_notes }}" data-tooltip="local-bank"></button>{% endif %}</dt>
+        <dt class="font-reg">Can payment be made to a UK bank account ? {% if market.local_bank_account_needed_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.local_bank_account_needed_notes }}" data-tooltip="local-bank"></button>{% endif %}</dt>
         <dd>{{ market.get_local_bank_account_needed_display }}</dd>
         <dialog data-tooltip="local-bank"></dialog>
       </dl>

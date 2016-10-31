@@ -64,9 +64,15 @@
     position: relative;
     width: 345px;
 
+
+    &--right {
+      @include breakpoint(tablet) {
+        padding-right: 0;
+      }
+    }
+
     @include breakpoint(tablet) {
       margin-left: 0;
-      margin-top: 20px;
       width: 100%;
     }
 
