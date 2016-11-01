@@ -22,9 +22,27 @@
       <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
       <!--[if IE 8]><link href="{% static "stylesheets/ie8.css" %}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     {% endblock head_css %}
+
+    {% block google_tag_manager %}
+      <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PB37DC');
+      </script>
+    {% endblock google_tag_manager %}
+
   </head>
   <body class='{% block body_class %}{% endblock %}'>
-    <header role="banner"  class="">
+
+  {% block google_tag_manager_noscript %}
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB37DC" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+  {% endblock google_tag_manager_noscript %}
+
+  <header role="banner"  class="">
       {% block header %}
       <div class="nav-intro background--indigo font-white font-xxsmall">
         <div class="section">
