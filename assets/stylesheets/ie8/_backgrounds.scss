@@ -1,0 +1,7 @@
+@each $name, $url in $backgrounds-image-ie8 {
+  .background {
+    &-image--#{$name} {
+      background-image: url('#{$image-path}#{$url}');
+    }
+  }
+}

@@ -1,29 +1,4 @@
-.column-one-half,
-.column-one-third,
-.column-two-thirds {
-  float: left;
-}
-
-.column-one-half {
-  width: 50%;
-}
-
-.column-one-third {
-  width: 33.33333%;
-}
-
-.column-two-thirds {
-  width: 66.66667%;
-}
-
-
-#footer {
-  .footer-wrapper {
-    margin: 0 auto;
-  }
-}
-
-.section {
-  margin: 0 auto;
-}
-
+@import 'ie8/vars';
+@import 'ie8/grid';
+@import 'ie8/icons';
+@import 'ie8/backgrounds';
