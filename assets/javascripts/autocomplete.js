@@ -85,10 +85,8 @@ var autocomplete =(function ($) {
         }
     }
 
-    function addTag() {
-
+    function addTag(event) {
         event.preventDefault();
-
         var caterogyId = $(this).data('option-id'),
             checkboxOption = $(this).parent().parent().prev().data('field');
         $(this).parent().parent().next().append('<li>'+$(this).text()+' <button href="" data-option-id="'+caterogyId+'" class="form-dropdown-tags--close">x</button> </li>');
@@ -98,7 +96,7 @@ var autocomplete =(function ($) {
         closeDropdown();
     }
 
-    function deleteTag() {
+    function deleteTag(event) {
         event.preventDefault();
         $(this).parent().remove();
         deleteCheckbox($(this).data('option-id'));
