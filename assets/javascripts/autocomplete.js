@@ -86,7 +86,11 @@ var autocomplete =(function ($) {
     }
 
     function addTag(event) {
-        event.preventDefault();
+
+        if (event) {
+            event.preventDefault();
+        }
+
         var caterogyId = $(this).data('option-id'),
             checkboxOption = $(this).parent().parent().prev().data('field');
         $(this).parent().parent().next().append('<li>'+$(this).text()+' <button href="" data-option-id="'+caterogyId+'" class="form-dropdown-tags--close">x</button> </li>');
