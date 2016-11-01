@@ -134,4 +134,5 @@ WHOOSH_INDEX_DIR = os.path.join(BASE_DIR, 'whoosh_index')
 
 DEBUG = False
 
-RESTRICT_IPS = os.environ.get('RESTRICT_IPS', False)
+ip_check = os.environ.get('RESTRICT_IPS', False)
+RESTRICT_IPS = ip_check == 'True' or ip_check == '1'

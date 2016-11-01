@@ -23,7 +23,7 @@ class IpRestrictionMiddleware(object):
         else:
             ip = request.META.get('REMOTE_ADDR')
 
-        return ip
+        return ip.strip()
 
     def process_request(self, request):
         if getattr(settings, 'RESTRICT_IPS', False):
