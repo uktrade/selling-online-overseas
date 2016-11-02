@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['selling-online-overseas.export.great.gov.uk']
 ADMINS = (('David Downes', 'david@downes.co.uk'),)
 
 MIDDLEWARE_CLASSES += [
