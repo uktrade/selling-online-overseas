@@ -2,29 +2,27 @@
 
 <li class="markets-item cf">
   <div class="column-five-eights markets-info--left">
-    <div class="">
-      <div class="cf">
-        <div class="column-two-fifths hard--sides">
-          <div class="markets-item-logoholder text--center">
-            <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}"><span class="markets-item-helper"></span><img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo"></a>
-          </div>
-        </div>
-        <div class="column-three-fifths hard--left">
-          <h3 class="heading-medium flush--ends soft-half--bottom">{{ market.name }}</h3>
-          <ul>
-            <li class="soft-half--bottom markets-item--url"><a href="{{ market.web_address }}" class="link">{{ market.web_address }}</a></li>
-            <li>
-              <dl>
-                <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
-                <dd>{{ market | csl:'countries_served' }}</dd>
-              </dl>
-            </li>
-          </ul>
+    <div class="cf markets-group">
+      <div class="column-two-fifths hard--sides markets-image">
+        <div class="markets-item-logoholder text--center">
+          <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}"><span class="markets-item-helper"></span><img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo"></a>
         </div>
       </div>
-      <p class="soft-half--ends hard--left">{{ market.description }}</p>
-      <a class="button button-blue button-medium push--top" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">Full profile</a>
+      <div class="column-three-fifths hard--left markets-info">
+        <h3 class="heading-medium flush--ends soft-half--bottom">{{ market.name }}</h3>
+        <ul>
+          <li class="soft-half--bottom markets-item--url"><a href="{{ market.web_address }}" class="link">{{ market.web_address }}</a></li>
+          <li>
+            <dl>
+              <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
+              <dd>{{ market | csl:'countries_served' }}</dd>
+            </dl>
+          </li>
+        </ul>
+      </div>
     </div>
+    <p class="soft-half--ends hard--left">{{ market.description }}</p>
+    <a class="button button-blue button-medium push--top" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">Full profile</a>
   </div>
   <div class="column-three-eighths markets-item--highlight--right">
     <div class="background--stone markets-item--highlight">
