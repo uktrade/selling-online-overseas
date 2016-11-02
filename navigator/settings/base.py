@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'core.middleware.IpRestrictionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -133,5 +132,3 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 WHOOSH_INDEX_DIR = os.path.join(BASE_DIR, 'whoosh_index')
 
 DEBUG = False
-
-RESTRICT_IPS = os.environ.get('RESTRICT_IPS', False)
