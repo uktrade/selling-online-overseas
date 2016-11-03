@@ -23,3 +23,5 @@ ALLOWED_IPS = ['54.229.170.70', '82.35.63.118', '52.49.20.243']
 ALLOWED_IP_RANGES = ['165.225.80.0/22', '193.240.203.32/29', '94.119.64.0/24', '178.208.163.0/24']
 
 SECURE_SSL_REDIRECT = True
+# XXX: This needs to be made longer once it is confirmed it works as desired
+SECURE_HSTS_SECONDS = 60
