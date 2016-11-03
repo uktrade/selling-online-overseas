@@ -6,8 +6,16 @@
   }
 
   a {
+    @extend %regular;
+    border-bottom: 1px solid $light-grey;
+    border-bottom-color: $lighter-grey-opacity;
     color: $white;
+    padding-bottom: 2px;
     text-decoration: none;
+
+    &:hover {
+      border-bottom: 1px dashed $white;
+    }
   }
 
   @include breakpoint (tablet) {

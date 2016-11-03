@@ -39,15 +39,15 @@
 
   .footer-links {
 
-    margin-bottom: 6px;
+    margin-bottom: 15px;
 
     a {
+      @extend %regular;
       border-bottom: 1px solid $light-grey;
       border-bottom-color: $lighter-grey-opacity;
       color: $white;
       padding-bottom: 2px;
       text-decoration: none;
-      text-transform: capitalize;
 
       &:hover {
         border-bottom: 1px dashed $white;
@@ -64,8 +64,20 @@
     &-img {
       width: 250px;
 
+      @include breakpoint (tablet) {
+        width: 215px;
+      }
+
       &--top {
         margin-bottom: 10px;
+      }
+
+      &--eig {
+        width: 200px;
+
+        @include breakpoint (tablet) {
+          width: 150px;
+        }
       }
     }
 
@@ -90,7 +102,6 @@
     color: $white;
     font-size: 20px;
     margin-bottom: 30px;
-    text-transform: capitalize;
   }
 
 }
