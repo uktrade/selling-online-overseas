@@ -13,6 +13,7 @@
 
   &--right {
     @include breakpoint (tablet) {
+      padding: 0;
       width: 100%;
     }
   }
@@ -33,6 +34,14 @@
       text-align: left;
     }
 
+    &--top {
+      display: none;
+
+      @include breakpoint (tablet) {
+        display: block;
+      }
+    }
+
     &.open {
       @include breakpoint (tablet) {
         display: block;
@@ -44,7 +53,6 @@
       display: inline-block;
       list-style-type: none;
       padding-left: 22px;
-      text-transform: uppercase;
 
       @include breakpoint(tablet) {
         border-bottom: 1px solid $light-grey;
@@ -120,7 +128,7 @@
       right: 10px;
       text-decoration: none;
       text-transform: uppercase;
-      top: 70px;
+      top: 35px;
 
       .icon-menu {
         height: 20px;
