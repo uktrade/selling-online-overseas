@@ -63,7 +63,11 @@
         position: relative;
 
         @include breakpoint(tablet) {
-          width: 65%;
+          width: 93%;
+        }
+
+        @include media (mobile) {
+          width: 85%;
         }
 
         &:last-child {
