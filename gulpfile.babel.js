@@ -157,12 +157,11 @@ gulp.task('imagemin', () =>
 
 // Optional: recompile on changes
 gulp.task('watch',
-    ['default', 'watchForChanges']
+    ['watchForChanges']
 );
 
 gulp.task('test',
     [
-     'default',
      'lint',
      'unit-tests'
     ]

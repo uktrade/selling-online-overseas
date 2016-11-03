@@ -92,12 +92,20 @@
     top: -30px;
     width: 45px;
     z-index: 1;
+    @include media (mobile) {
+      top: -28px;
+    }
 
     &--left {
       background-color: $bright-grey;
       left: -1px;
       padding-bottom: 5px;
       width: 55px;
+
+      @include media (mobile) {
+        background-position: center center;
+        width: 40px;
+      }
     }
   }
 

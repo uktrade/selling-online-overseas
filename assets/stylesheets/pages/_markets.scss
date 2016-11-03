@@ -6,6 +6,21 @@
       display: none;
     }
 
+    .markets-group {
+      @include media (mobile) {
+        display: flex;
+        flex-flow: column;
+      }
+    }
+
+    .markets-image,
+    .markets-item-logoholder {
+      @include media (mobile) {
+        order: 2;
+        width: 100%;
+      }
+    }
+
     .markets-item--url {
       display: block;
     }
@@ -18,6 +33,10 @@
 
     &--list {
       padding: 5px 35px 15px;
+
+      @include media (mobile) {
+        padding: 5px 15px;
+      }
     }
 
     &-logo {
@@ -41,8 +60,7 @@
 
       @include media (mobile) {
         height: 100%;
-        margin-bottom: 20px;
-
+        margin-bottom: 10px;
       }
     }
 
@@ -66,13 +84,20 @@
 
 
     &--right {
+
       @include breakpoint(tablet) {
-        padding-right: 0;
+        padding: 0;
       }
+
+      @include media (mobile) {
+        margin-top: 30px;
+      }
+
     }
 
     @include breakpoint(tablet) {
       margin-left: 0;
+      padding: 10px 0;
       width: 100%;
     }
 
@@ -101,6 +126,10 @@
     dl {
       padding-left: 50px;
 
+      @include media (mobile) {
+        padding-left: 70px;
+      }
+
       .heading-large {
         margin: 0;
       }
@@ -121,10 +150,33 @@
   &-info--left {
     padding-left: 0;
 
+    p {
+      @include media(mobile) {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+
     @include media(mobile) {
       padding: 0;
     }
 
+  }
+
+  &-image {
+    @include media(mobile) {
+      float: left;
+      width: 40%;
+    }
+  }
+
+
+
+  &-info {
+    @include media (mobile) {
+      order: 1;
+      padding-bottom: 10px;
+    }
   }
 
 }

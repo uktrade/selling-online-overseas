@@ -2,6 +2,10 @@
   padding-bottom: 30px;
   padding-top: 20px;
 
+  @include media (mobile) {
+    padding-bottom: 20px;
+  }
+
   li {
     @extend %light;
     @extend %font-xxsmall;

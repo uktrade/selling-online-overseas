@@ -13,16 +13,16 @@
 		<div class="column-one-whole">
           <h1 class="heading-large flush--top">Find online marketplaces overseas</h1>
         </div>
-        <div class=" soft--top">
+        <div class="results">
           <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}'>
             <fieldset>
               <legend class="visuallyhidden">Please select countries and products</legend>
               <ul class="inline">
                 <li class="push-half--bottom cf">
                   <div class="column-one-third">
-                    <div id='results-count'>
-                      <p class="flush">Online marketplaces</p>
-                      <h4 class="heading-xxlarge font-purple flush">{{results_count}}</h4>
+                    <div id='results-count' class="soft--bottom">
+                      <p class="flush results-title">Online marketplaces:</p>
+                      <h4 class="heading-xxlarge font-purple flush results-count">{{results_count}}</h4>
                     </div>
                   </div>
                   <div class="column-two-thirds">

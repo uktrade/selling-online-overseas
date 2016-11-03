@@ -37,12 +37,16 @@
     li {
       @extend %font-regular;
       margin-bottom: 13px;
+      padding-left: 25px;
+      position: relative;
 
       &:before {
         color: $stone;
         content: '\25CF';
         font-size: 20px;
+        left: 0;
         margin-right: 10px;
+        position: absolute;
       }
     }
   }

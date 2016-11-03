@@ -17,7 +17,10 @@
     height: 200px;
 
     @include breakpoint(tablet) {
-      margin-right: 10px;
+      height: auto;
+      margin-right: 0;
+      margin-top: 30px;
+      padding-bottom: 0;
     }
 
   }
@@ -29,12 +32,13 @@
 
     @include breakpoint(tablet) {
       margin-right: 0;
+      margin-top: 30px;
     }
   }
 
   &-content {
     margin: 0;
-    padding: 25px 50px;
+    padding: 25px 50px 0;
 
     @include breakpoint(tablet) {
       padding: 30px 0;
@@ -56,6 +60,11 @@
 
     &.header-icon {
       padding-left: 70px;
+      @include media (mobile) {
+        font-size: 18px;
+        padding-left: 55px;
+        padding-right: 5px;
+      }
     }
   }
 

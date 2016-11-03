@@ -81,7 +81,6 @@
       @include media (mobile) {
         float: none;
         margin: 0;
-        padding: 0;
         width: 100%;
       }
     }
@@ -109,7 +108,7 @@
   @extend %contain-floats;
 
   @include breakpoint(tablet) {
-    margin: 0 20px;
+    margin: 0 15px;
   }
 
 

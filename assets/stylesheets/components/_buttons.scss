@@ -64,4 +64,8 @@
   &-start {
     background-image: none;
   }
+
+  @include media (mobile) {
+    text-align: center;
+  }
 }

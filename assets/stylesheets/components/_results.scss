@@ -1,0 +1,30 @@
+.results {
+  padding-top: 20px;
+  @include media (mobile) {
+    padding-top: 10px;
+  }
+
+  &-title {
+    @include media (mobile) {
+      display: inline-block;
+      position: relative;
+      top: -5px;
+    }
+  }
+
+  &-count {
+    @include media (mobile) {
+      background-color: $purple;
+      border-radius: 50px;
+      color: $white;
+      display: inline-block;
+      font-size: 40px;
+      line-height: 50px;
+      margin-left: 10px;
+      padding: 11px;
+      text-align: center;
+      width: 50px;
+    }
+  }
+
+}
