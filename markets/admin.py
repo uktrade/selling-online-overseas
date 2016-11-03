@@ -37,8 +37,7 @@ class MarketAdmin(admin.ModelAdmin):
         ('Platform Details', {
             'fields': (
                 ('countries_served', 'web_traffic',),
-                ('product_categories', 'prohibited_items',),
-                'product_type',
+                ('product_categories', 'product_type',),
                 ('customer_support_channels', 'seller_support_channels'),
                 ('customer_support_hours', 'seller_support_hours'),
                 'customer_demographics',
