@@ -152,3 +152,11 @@
   }
 
 }
+
+.desktop-only {
+  display: none;
+
+  @include breakpoint (tablet) {
+    display: block;
+  }
+}

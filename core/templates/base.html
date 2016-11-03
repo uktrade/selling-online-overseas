@@ -50,10 +50,10 @@
             <div class="column-one-whole text--right soft-half--ends">
               <h3 class="inline push--right">Our services:</h3>
               <ul class="nav-intro">
-                <li class="soft--right"><a href="">Exporting Opportunities</a></li>
-                <li class="soft--right"><a href="">Find A Buyer</a></li>
-                <li class="soft--right"><a href="">Selling Online Overseas</a></li>
-                <li><a href="">Events</a></li>
+                <li class="soft--right"><a class="link" href="#">Exporting Opportunities</a></li>
+                <li class="soft--right"><a class="link" href="#">Find A Buyer</a></li>
+                <li class="soft--right"><a class="link" href="#">Selling Online Overseas</a></li>
+                <li><a class="link" href="#">Events</a></li>
               </ul>
             </div>
           </div>
@@ -64,7 +64,7 @@
             <div class="grid-row">
               <div class="column-one-third">
                 <div class="header-global">
-                  <div class="header-logo float--left">
+                  <div class="header-logo">
                     <a href="https://www.exportingisgreat.gov.uk" title="Go to the Exporting is great homepage">
                       <img src="/static/images/EiG-logo-withHMG.svg" alt="Exporting is great logo" class="header-main-logo">
                     </a>
@@ -73,13 +73,29 @@
                 <a href="" class="header-nav-toggle" title="">menu<i class="icon icon-menu"></i></a>
               </div>
               <div class="column-two-thirds" id="global-header--right">
-                <nav>
-                  <ul class="header-nav">
-                    <li class="header-nav-link"><a title="" href="" class="active">new to exporting</a></li>
-                    <li class="header-nav-link"><a title="" href="">occasional exporter</a></li>
-                    <li class="header-nav-link"><a title="" href="">regular exporter</a></li>
-                  </ul>
-                </nav>
+                <div class="header-nav">
+                  <div class="background--indigo soft-half--sides soft--ends header-nav--top">
+                    <nav>
+                      <h3 class="font-white">Our services:</h3>
+                      <ul class="">
+                        <li class="header-nav-link"><a class="font-reg" href="">Exporting Opportunities</a></li>
+                        <li class="header-nav-link"><a class="font-reg" href="">Find A Buyer</a></li>
+                        <li class="header-nav-link"><a class="font-reg" href="">Selling Online Overseas</a></li>
+                        <li class="header-nav-link"><a class="font-reg" href="">Events</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <div class="soft-half--sides">
+                    <nav>
+                      <h3 class="font-white push--top desktop-only">Exporting is GREAT:</h3>
+                      <ul class="">
+                        <li class="header-nav-link"><a title="" href="" class="active">NEW TO EXPORTING</a></li>
+                        <li class="header-nav-link"><a title="" href="">OCCASIONAL EXPORTER</a></li>
+                        <li class="header-nav-link"><a title="" href="">REGULAR EXPORTER</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -124,42 +140,50 @@
     <footer role="contentinfo">
       <div class="" id="footer" >
         {% block footer %}
-          <div class="footer-wrapper">
-              <div class="grid-row">
-                <div class="column-one-half logo">
-                  <div class="footer-section">
-                    <h3 class="font-xxsmall">Exporting is great</h3>
-                    <div class="push-half--top">
-                      <ul class="column-one-half">
-                        <li class="footer-links push--left"><a href="" title="">New to Exporting</a></li>
-                        <li class="footer-links push--left"><a href="" title="">Occasional Exporter</a></li>
-                        <li class="footer-links push--left"><a href="" title="">Regular Exporter</a></li>
-                      </ul>
-                      <ul class="column-one-half hard">
-                        <li class="footer-links"><a href="" title="">About</a></li>
-                        <li class="footer-links"><a href="" title="">Contact</a></li>
-                        <li class="footer-links"><a href="" title="">Cookies</a></li>
-                        <li class="footer-links"><a href="" title="">Terms &amp; Conditions</a></li>
-                        <li class="footer-links"><a href="" title="">Department of International Trade</a></li>
-                      </ul>
-                    </div>
+        <div class="footer-wrapper">
+          <div class="grid-row">
+            <div class="column-one-third logo">
+              <div class="footer-section footer-section--first">
+                <a href="https://www.gov.uk" title="Go to the GOV.UK homepage">
+                  <img src="/static/images/footer_logo.png" alt="Gov.uk logo" class="footer-img footer-img--top">
+                </a>
+                <p class="font-xxxsmall font-lighter-grey font-light soft--bottom">&copy; Crown Copyright {% now 'Y' %}</p>
+                <a href="https://www.gov.uk" title="Go to the Exporting is Great homepage">
+                  <img src="/static/images/EiG-logo-stacked.svg" alt="Exporting is Great logo" class="footer-img footer-img--bottom footer-img--eig">
+                </a>
+              </div>
+            </div>
 
-                  </div>
+            <div class="column-one-third links">
+              <div class="footer-section">
+                <h3 class="footer-header">Our services</h3>
+                <ul>
+                  <li class="footer-links"><a href="" title="">Exporting Opportunities</a></li>
+                  <li class="footer-links"><a href="" title="">Find a buyer</a></li>
+                  <li class="footer-links"><a href="" title="">Selling online overseas</a></li>
+                  <li class="footer-links"><a href="" title="">Events</a></li>
+                </ul>
+              </div>
+            </div>
 
-                </div>
+            <div class="column-one-third subscribe">
+              <div class="footer-section">
+                <h3 class="footer-header">Exporting is GREAT</h3>
+                <ul>
+                  <li class="footer-links"><a href="" title="">New to Exporting</a></li>
+                  <li class="footer-links"><a href="" title="">Occasional Exporter</a></li>
+                  <li class="footer-links"><a href="" title="">Regular Exporter</a></li>
+                  <li class="footer-links"><a href="" title="">About</a></li>
+                  <li class="footer-links"><a href="" title="">Contact</a></li>
+                  <li class="footer-links"><a href="" title="">Privacy &amp; Cookies</a></li>
+                  <li class="footer-links"><a href="" title="">Terms &amp; Conditions</a></li>
+                  <li class="footer-links"><a href="" title="">Department for International Trade</a></li>
+                </ul>
 
-                <div class="column-one-half links">
-                  <div class="footer-section">
-                    <a href="https://www.gov.uk" title="Go to the GOV.UK homepage">
-                      <img src="/static/images/footer_logo.png" alt="Gov.uk logo" class="footer-img footer-img--top">
-                    </a>
-                    <a href="https://www.gov.uk" title="Go to the Exporting is Great homepage">
-                      <img src="/static/images/EiG-logo-stacked.svg" alt="Exporting is Great logo" class="footer-img footer-img--bottom footer-img--eig float--right">
-                    </a>
-                  </div>
-                </div>
+              </div>
             </div>
           </div>
+        </div>
         {% endblock footer %}
       </div>
     </footer>

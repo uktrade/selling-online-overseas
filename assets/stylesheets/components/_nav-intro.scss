@@ -9,4 +9,8 @@
     color: $white;
     text-decoration: none;
   }
+
+  @include breakpoint (tablet) {
+    display: none;
+  }
 }
