@@ -3,6 +3,7 @@ import logging
 
 from django.conf import settings
 from django import http
+from django.core.urlresolvers import resolve
 
 logger = logging.getLogger(__name__)
 
@@ -27,19 +28,29 @@ class IpRestrictionMiddleware(object):
 
     def process_request(self, request):
         if getattr(settings, 'RESTRICT_IPS', False):
-            block_request = True
+            # Get the app name
+            app_name = resolve(request.path).app_name
 
+            # Allow access to the admin
+            if app_name == 'admin':
+                return None
+
+            block_request = True
+            # Get the incoming IP address
             request_ip_str = self.get_client_ip(request)
             request_ip = ipaddress.ip_address(request_ip_str)
 
+            # If it's in the ALLOWED_IPS, don't block it
             if request_ip_str in settings.ALLOWED_IPS:
                 block_request = False
 
+            # If it's within a ALLOWED_IP_RANGE, don't block it
             for allowed_range in settings.ALLOWED_IP_RANGES:
                 if request_ip in ipaddress.ip_network(allowed_range):
                     block_request = False
                     break
 
+            # Otherwise, 403 Forbidden
             if block_request:
                 return http.HttpResponseForbidden('<h1>Forbidden</h1>')
 
