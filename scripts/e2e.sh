@@ -8,9 +8,7 @@
 nohup python manage.py runserver & > /dev/null 2>&1
 
 sleep_delay=0.2
-time_limit_seconds=10
-
-counter_limit=`bc <<< "$time_limit_seconds/$sleep_delay"`
+counter_limit=50
 
 # Test for django to come up using curl
 echo "Waiting for django, limit to $counter_limit retries" 
