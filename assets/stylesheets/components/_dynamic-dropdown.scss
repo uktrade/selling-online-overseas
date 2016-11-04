@@ -1,6 +1,11 @@
 .form-dropdown {
   position: relative;
 
+  @include media(mobile) {
+    margin-bottom: 10px;
+    padding-bottom: 0;
+  }
+
   &-header {
     margin-bottom: 5px;
   }
@@ -18,7 +23,11 @@
     border-bottom: 1px solid $stone;
 
     &.active {
-      outline: 2px solid $aqua;
+      background-color: $aqua;
+
+      a {
+        color: $white;
+      }
     }
   }
 
@@ -48,6 +57,11 @@
       font-size: 14px;
       margin: 10px 3px 0 0;
       padding: 7px;
+
+      @include media(mobile) {
+        font-size: 13px;
+        margin-top: 6px;
+      }
     }
 
     &--close {

@@ -10,7 +10,7 @@
     }
 
     @include media(mobile) {
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: 0;
     }
 
@@ -28,13 +28,17 @@
     font-family: $brand-font-family;
     letter-spacing: -.4px;
 
+    @include media(mobile) {
+      font-size: 19px;
+    }
+
   }
 
   &-large {
     @extend %medium;
     font-family: $brand-font-family;
     letter-spacing: -1px;
-    margin-top: 0px;
+    margin-top: 0;
   }
 
   &-last-updated {
@@ -64,7 +68,7 @@
     @extend %regular;
 
     @include media(mobile) {
-      display: none;
+      font-size: 15px;
     }
   }
 }

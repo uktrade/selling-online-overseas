@@ -111,7 +111,7 @@ strong {
 }
 
 blockquote {
-  @extend %font-regular;
+  @extend %font-xxsmall;
   line-height: 25px;
 }
 
@@ -155,6 +155,10 @@ a {
 
   &--regular {
     @extend %font-regular;
+
+    @include media(mobile) {
+      font-size: 15px;
+    }
   }
 
   &--back {

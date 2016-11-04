@@ -35,10 +35,14 @@
     padding-left: 0;
 
     li {
-      @extend %font-regular;
+      font-size: 18px;
       margin-bottom: 13px;
       padding-left: 25px;
       position: relative;
+
+      @include media(mobile) {
+        font-size: 15px;
+      }
 
       &:before {
         color: $stone;
