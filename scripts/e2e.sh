@@ -19,7 +19,7 @@ counter=0
 until $(curl --output /dev/null --silent --head --fail http://localhost:8000); do
     # Increment the counter and check it's not beyond a limit
     counter=$((counter+1))
-    if ((counter > $counter_limit))
+    if ((counter>$counter_limit))
         then
         # Kill python
         pkill -n python
