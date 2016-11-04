@@ -25,6 +25,20 @@
 
   }
 
+  &--top {
+    @include media (mobile) {
+      padding-top: 70px;
+    }
+  }
+
+  &--back {
+    @include media (mobile) {
+      left: 15px;
+      position: absolute;
+      top: 0;
+    }
+  }
+
   &--terms {
     border: 1px solid $great-primary;
     margin-top: 65px;
