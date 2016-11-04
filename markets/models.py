@@ -67,15 +67,14 @@ class UploadMethod(models.Model):
 
 
 class Currency(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-    symbol = models.CharField(max_length=2, blank=True, null=True)
+    code = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
-        return "{0} {1}".format(self.name, self.symbol)
+        return "{0}".format(self.code)
 
     class Meta:
         verbose_name_plural = "Currencies"
-        ordering = ('name',)
+        ordering = ('code',)
 
 
 class Brand(models.Model):
@@ -329,8 +328,8 @@ class Market(ApprovalModel):
         value = getattr(self, attr, 0)
         if value > 0:
             formatted_value = format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
-            symbol = getattr(self, "{0}_currency".format(attr)).symbol
-            display_str = "{0}{1}".format(symbol, formatted_value)
+            currency = getattr(self, "{0}_currency".format(attr)).code
+            display_str = "{0} {1}".format(currency, formatted_value)
         else:
             display_str = "None"
 
