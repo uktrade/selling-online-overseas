@@ -3,23 +3,14 @@
 {% block body_class %}details3{% endblock %}
 {% load static utils humanize %}
 
-{% block breadcrumbs %}
-  <ol>
-    <li><a href="/">Home</a></li>
-    <li><a href="/markets/filter/">Filter</a></li>
-    <li><a href="/markets/search/">Markets</a></li>
-    <li><a href="{{ request.path | urlencode  }}">{{ market.name }}</a></li>
-  </ol>
-{% endblock breadcrumbs %}
-
 {% block content %}
 
-<div class="section">
+<div class="section push--top soft--top">
   <div class="grid-row">
     <div class="column-one-whole">
       <h1 class='heading-xlarge push--bottom flush--top float--left'>{{ market.name }}</h1>
       <div class="text--right">
-        <a href="javascript:utilities.navigateBack()" class="link link--back" title="go back to listing">&lt; Go back to listing</a>
+        <a href="javascript:utilities.navigateBack()" class="link link--back" title="Return to marketplaces">&lt; Return to marketplaces</a>
       </div>
     </div>
     <ul class="list markets markets-details">
@@ -33,16 +24,16 @@
     <div class="column-three-fifths">
       <div class="detail-section-header detail-section-header--dotted detail-section--info push--right">
         <i class="icon icon-header icon-header--left icon-adviser">
-          <span class="visuallyhidden">DIT adviser tip</span>
+          <span class="visuallyhidden">Our advice</span>
         </i>
-        <h3 class="font-brand header-icon">DIT adviser tip</h3>
+        <h3 class="font-brand header-icon">Our advice</h3>
         <blockquote class="detail-section-content detail-section-content--head font-lig font-brand">{{ market.dit_advisor_tip }}</blockquote>
       </div>
     </div>
     <div class="column-two-fifths">
       <div class="detail-section--terms detail-section--info back background--great-primary font-white">
           <div class="detail-section-content detail-section-content--head">
-            <h4 class="detail-section-title font-reg hard--top">Special terms for British businesses</h4>
+            <h4 class="detail-section-title font-reg hard--top">Special terms for UK businesses*</h4>
             {{ market.ukti_terms|safe }}
           </div>
         </div>
