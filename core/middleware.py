@@ -30,9 +30,10 @@ class IpRestrictionMiddleware(object):
         if getattr(settings, 'RESTRICT_IPS', False):
             # Get the app name
             app_name = resolve(request.path).app_name
+            authenticated = request.user.is_authenticated()
 
             # Allow access to the admin
-            if app_name == 'admin':
+            if app_name == 'admin' or authenticated:
                 return None
 
             block_request = True
