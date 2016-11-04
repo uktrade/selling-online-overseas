@@ -324,6 +324,13 @@ class Market(ApprovalModel):
     def registration_fees_display(self):
         return self._value_display('registration_fees')
 
+    @property
+    def web_traffic_display(self):
+        if self.web_traffic != 0:
+            return "{0} million".format(self.web_traffic)
+
+        return "Not available"
+
     def _value_display(self, attr):
         value = getattr(self, attr, 0)
         if value > 0:

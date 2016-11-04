@@ -24,4 +24,4 @@ ALLOWED_IP_RANGES = ['165.225.80.0/22', '193.240.203.32/29']
 
 SECURE_SSL_REDIRECT = True
 # XXX: This needs to be made longer once it is confirmed it works as desired
-SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_SECONDS = 31536000
