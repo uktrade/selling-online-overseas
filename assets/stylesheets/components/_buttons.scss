@@ -66,6 +66,8 @@
   }
 
   @include media (mobile) {
+    font-size: 18px;
+    padding: 14px;
     text-align: center;
   }
 }
