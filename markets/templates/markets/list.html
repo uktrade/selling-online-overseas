@@ -1,17 +1,9 @@
 {% extends "base.html" %}
 
-{% block breadcrumbs %}
-  <ol>
-    <li><a href="/">Home</a></li>
-    <li><a href="/markets/filter/">Filter</a></li>
-    <li><a href="/markets/search/">Markets</a></li>
-  </ol>
-{% endblock breadcrumbs %}
-
 {% load static utils %}
 
 {% block content %}
-  <div class="section">
+  <div class="section push--top soft--top">
     <div class="grid-row">
       <div class="column-one-whole heading">
         <h1 class="heading-xlarge push--bottom flush--top heading-results">{{ markets_list.count }} marketplace{{markets_list|pluralize}} found</h1>

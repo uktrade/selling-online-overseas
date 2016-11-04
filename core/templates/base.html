@@ -105,21 +105,6 @@
 
     <main role="main">
       <div class="main">
-        <div class="section">
-          <div class="grid-row">
-            <div class="column-one-whole">
-              <div class="breadcrumbs">
-                {% block breadcrumbs %}
-                  <ol>
-                    <li><a href="/">Home</a></li>
-                    {% if categories %}<li><a href="/step-two?{{ categories }}">Categories</a></li>{% endif %}
-                    {% if market %}<li><a href="/markets?{{ markets }}">Markets</a></li>{% endif %}
-                  </ol>
-                {% endblock breadcrumbs %}
-              </div>
-            </div>
-          </div>
-        </div>
 
         {% block content %}{% endblock content %}
 
