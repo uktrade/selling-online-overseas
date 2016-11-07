@@ -14,7 +14,7 @@
   }
 
   &--info {
-    height: 200px;
+    min-height: 200px;
 
     @include breakpoint(tablet) {
       height: auto;

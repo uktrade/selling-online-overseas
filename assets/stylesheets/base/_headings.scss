@@ -27,6 +27,7 @@
     @extend %lede;
     font-family: $brand-font-family;
     letter-spacing: -.4px;
+    line-height: 26px;
 
     @include media(mobile) {
       font-size: 19px;
