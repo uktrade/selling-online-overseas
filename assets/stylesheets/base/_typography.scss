@@ -115,6 +115,10 @@ blockquote {
   line-height: 25px;
 }
 
+hr {
+  background: $purple;
+}
+
 p {
   @extend %light;
   line-height: 23px;

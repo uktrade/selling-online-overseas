@@ -58,4 +58,16 @@
   &-user--amount {
     font-size: 19px;
   }
+
+  &-regular {
+    @extend %font-regular;
+
+    li {
+      margin-bottom: 5px;
+
+      @include media(mobile) {
+        font-size: 15px;
+      }
+    }
+  }
 }
