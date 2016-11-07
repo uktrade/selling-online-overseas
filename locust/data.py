@@ -81,6 +81,5 @@ market_slugs = [
     'amazon-china',
     'amazon-canada',
     'allegro',
-    'alibaba-direct',
     '1688com'
 ]
