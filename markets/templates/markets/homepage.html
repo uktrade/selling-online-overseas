@@ -16,26 +16,31 @@
           <li>discover how to list your products on an online marketplace</li>
           <li>get information about costs of listing on the marketplace and how logistics are fulfilled</li>
           <li>access special terms negotiated by the UK government</li>
-          <li><a href="https://www.exportingisgreat.gov.uk" title="how to reach export customers online" class="link">how to reach export customers online</a></li>
         </ul>
         <a class='button button-blue button-large push--ends button-start' href='{% url 'markets:filtering' %}' title="start now">Start now</a>
       </div>
 
       <div class="column-three-eighths">
         <aside>
-          <div class="home-info background--stone">
-            <h4 class="heading-small font-med push-half--top">Essential information</h4>
+          <div class="home-info home-info--border push--bottom">
+            <h4 class="heading-small font-med push-half--top">About this service</h4>
             <dl class="soft--bottom">
 
-              <dt class="soft--top">Marketplaces in database:</dt>
+              <dt class="soft-half--top">Marketplaces in database:</dt>
               <dd><strong>{{ market_count }}</strong></dd>
 
-              <dt class="soft--top">Last updated:</dt>
+              <dt class="soft-half--top">Last updated:</dt>
               <dd><strong>{{ last_updated|date:"d M Y" }}</strong></dd>
 
-              <dt class="soft--top">Find out more about selling online overseas:</dt>
-              <dd class="soft--bottom"><a href="https://www.exportingisgreat.gov.uk" title="Guide to online export" class="link link--regular">Practical advice about <br /> e-commerce</a></dd>
             </dl>
+          </div>
+
+          <div class="home-info background--stone push-half--top">
+            <h4 class="heading-small font-med push-half--top">Learn more about selling online</h4>
+            <ul>
+            <li class="soft-half--top"><a href="https://www.exportingisgreat.gov.uk" title="Guide to online export" class="link link--regular">Practical advice about <br /> e-commerce</a></li>
+            <li class="soft-half--top soft--bottom"><a href="https://www.exportingisgreat.gov.uk" title="how to reach export customers online" class="link">How to reach export customers online</a></li>
+            </ul>
           </div>
         </aside>
       </div>
