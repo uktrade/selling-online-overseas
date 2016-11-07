@@ -3,6 +3,14 @@
   padding-bottom: 9px;
   padding-top: 15px;
 
+  @include breakpoint(tablet) {
+    margin-bottom: 20px;
+  }
+
+  @include media(mobile) {
+    margin-bottom: 10px;
+  }
+
   .header-main-logo {
     width: $logo-width;
 
