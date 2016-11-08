@@ -6,7 +6,9 @@
   <div class="section push--top soft--top">
     <div class="grid-row">
       <div class="column-one-whole heading">
-        <h1 class="heading-xlarge push--bottom flush--top heading-results">{{ markets_list.count }} marketplace{{markets_list|pluralize}} found</h1>
+        <h1 class="heading-xlarge push--bottom flush--top heading-results">{{ markets_list.count }} marketplace{{markets_list|pluralize}}
+          {% if markets_list.count == 0 %} match your search {% else %} found {% endif %}
+        </h1>
       </div>
     </div>
   </div>
