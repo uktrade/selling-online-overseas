@@ -1,8 +1,9 @@
 .heading {
 
   &-xlarge {
-    @extend %regular;
+    @extend %medium;
     font-family: $brand-font-family;
+    letter-spacing: -1px;
 
     @include breakpoint(tablet) {
       font-size: 36px;
