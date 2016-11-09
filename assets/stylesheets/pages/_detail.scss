@@ -53,6 +53,14 @@
       margin-top: 20px;
     }
 
+    &--header {
+      font-size: 24px;
+
+      @include media (mobile) {
+        font-size: 19px;
+      }
+    }
+
   }
 
   &-content {
@@ -122,6 +130,7 @@
 
     @include media (mobile) {
       font-size: 15px;
+      font-weight: 500;
     }
 
     &.subtitle {

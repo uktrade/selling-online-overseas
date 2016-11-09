@@ -17,6 +17,7 @@
   }
 
   &-control {
+    @extend %font-xxsmall;
     @extend %light;
     background: $light-stone;
     border: 1px solid $secondary-text-colour;
