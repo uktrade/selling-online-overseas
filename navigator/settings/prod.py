@@ -23,5 +23,6 @@ ALLOWED_IPS = []
 ALLOWED_IP_RANGES = ['165.225.80.0/22', '193.240.203.32/29']
 
 SECURE_SSL_REDIRECT = True
-# XXX: This needs to be made longer once it is confirmed it works as desired
 SECURE_HSTS_SECONDS = 31536000
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
