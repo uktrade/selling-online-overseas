@@ -202,6 +202,7 @@
 
   &-info {
     @include media (mobile) {
+      margin-top: 10px;
       order: 1;
       padding-bottom: 10px;
     }

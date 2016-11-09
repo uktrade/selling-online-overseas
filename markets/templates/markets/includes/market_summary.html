@@ -11,13 +11,13 @@
       <div class="column-three-fifths hard--left markets-info">
         <h3 class="heading-small font-med flush--ends soft-half--bottom">{{ market.name }}</h3>
         <ul>
-          <li class="soft-half--bottom markets-item--url"><a href="{{ market.web_address }}" class="link">{{ market.web_address }}</a></li>
           <li>
             <dl>
               <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
               <dd>{{ market | csl:'countries_served' }}</dd>
             </dl>
           </li>
+          <li class="soft-half--ends markets-item--url"><a href="{{ market.web_address }}" class="link" target="_blank">{{ market.web_address }}</a></li>
         </ul>
       </div>
     </div>
