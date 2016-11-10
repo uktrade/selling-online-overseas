@@ -1,11 +1,8 @@
 import ipaddress
-import logging
 
 from django.conf import settings
-from django import http
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import resolve
-
-logger = logging.getLogger(__name__)
 
 
 class IpRestrictionMiddleware(object):
@@ -53,6 +50,6 @@ class IpRestrictionMiddleware(object):
 
             # Otherwise, 403 Forbidden
             if block_request:
-                return http.HttpResponseForbidden('<h1>Forbidden</h1>')
+                raise PermissionDenied()
 
         return None
