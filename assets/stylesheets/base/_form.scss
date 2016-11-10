@@ -31,6 +31,13 @@
   }
 
   &-textarea {
+    float: none;
     height: 100%;
   }
 }
+
+.errorlist {
+  color: $great-secondary;
+  margin-bottom: 5px;
+}
+
