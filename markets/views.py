@@ -1,7 +1,8 @@
 import json
 import ast
+import csv
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.generic import ListView, DetailView, FormView, TemplateView
 from django.forms import TypedChoiceField
 from django.db.models import Max, Count
@@ -172,6 +173,29 @@ class MarketCountView(MarketListView):
             {'count': self.object_list.count()},
             **response_kwargs
         )
+
+
+class MarketStatsView(MarketListView):
+    """
+    A simple AJAX view that the filtering page calls to query the number of Markets will result from the currently
+    selected filters
+    """
+
+    def render_to_response(self, context, **response_kwargs):
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="marketstats.csv"'
+        last_updated_max = self.markets.aggregate(Max('last_modified'))['last_modified__max']
+
+        if last_updated_max is not None:
+            last_updated = last_updated_max.strftime('%d %b %Y')
+        else:
+            last_updated = "-"
+
+        writer = csv.writer(response)
+        writer.writerow(['count', 'last_updated'])
+        writer.writerow([self.object_list.count(), last_updated])
+
+        return response
 
 
 class MarketAPIView(MarketListView):
