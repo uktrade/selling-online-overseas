@@ -181,7 +181,7 @@ class MarketStatsCountView(MarketListView):
     """
 
     def render_to_response(self, context, **response_kwargs):
-        data = {'item': [{'value': self.object_list.count(), 'text': "Live marketplaces"}]}
+        data = {'item': [{'value': self.object_list.count(), 'text': 'Live marketplaces'}]}
         return JsonResponse(data, **response_kwargs)
 
 
@@ -192,7 +192,7 @@ class MarketStatsUpdateView(MarketListView):
 
     def render_to_response(self, context, **response_kwargs):
         last_updated_max = self.markets.aggregate(Max('last_modified'))['last_modified__max']
-        data = {'item': [{'value': last_updated_max.strftime('%d %b %Y'), 'text': "Last update"}]}
+        data = {'item': [{'text': last_updated_max.strftime('%d %b %Y'), 'type': 2}]}
         return JsonResponse(data, **response_kwargs)
 
 
