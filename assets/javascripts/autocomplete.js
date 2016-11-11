@@ -93,11 +93,17 @@ var autocomplete =(function ($) {
 
         var caterogyId = $(this).data('option-id'),
             checkboxOption = $(this).parent().parent().prev().data('field');
-        $(this).parent().parent().next().append('<li>'+$(this).text()+' <button href="" data-option-id="'+caterogyId+'" class="form-dropdown-tags--close">x</button> </li>');
+        $(this).parent().parent().next().append('<li>'+$(this).text()+'<button href="" data-option-id="'+caterogyId+'" class="form-dropdown-tags--close">x</button></li>');
         $('.form-dropdown-tags--close').on('click', deleteTag);
         addCheckbox(checkboxOption, caterogyId);
         resultCount.update_count();
+
+        clearInput($(event.target).parent().parent().prev());
         closeDropdown();
+    }
+
+    function clearInput(input) {
+        input.val("");
     }
 
     function deleteTag(event) {
