@@ -14,9 +14,16 @@ var autocomplete =(function ($) {
     });
 
     $('html').click(function (event) {
-        if(!$(event.target).hasClass('form-dropdown-input')) {
+        var input = $(event.target)
+        if(!input.hasClass('form-dropdown-input')) {
             closeDropdown();
+            clearInput(input);
         }
+    });
+
+    $('input.form-dropdown-input').blur(function (event) {
+        var input = $(event.target)
+        clearInput(input);
     });
 
     function selectedEnter() {
@@ -40,7 +47,9 @@ var autocomplete =(function ($) {
                 event.preventDefault();
                 break;
             case 27:
+                var input = $(event.target);
                 closeDropdown();
+                clearInput(input);
                 break;
             default:
                 getResults(this);
@@ -87,7 +96,8 @@ var autocomplete =(function ($) {
 
     function addTag(event) {
 
-        var input  = event ? $(event.target) : $(this);
+        var link  = event ? $(event.target) : $(this);
+        var input = link.parent().parent().prev();
 
         if (event) {
             event.preventDefault();
@@ -101,7 +111,7 @@ var autocomplete =(function ($) {
         addCheckbox(checkboxOption, caterogyId);
         resultCount.update_count();
 
-        clearInput(input.parent().parent().prev());
+        clearInput(input);
         closeDropdown();
     }
 
