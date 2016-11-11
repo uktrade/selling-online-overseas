@@ -76,7 +76,7 @@ var autocomplete =(function ($) {
 
         if(data) {
             for (var i = 0; i < data.length; i++) {
-                var content = (typeof(data[i]) === 'string') ? data[i] : data[i][0] + ' - <strong>'+data[i][1]+'</strong>',
+                var content = (typeof(data[i]) === 'string') ? data[i] : data[i][0] + ' - '+data[i][1]+'',
                     option = (typeof(data[i]) === 'string') ? data[i] : data[i][0];
 
                 $(element).next().append('<li class="form-dropdown-list"><a href="" class="form-dropdown-option" data-option-id="' + option + '">' + content + '</li></a></li>');
@@ -87,18 +87,21 @@ var autocomplete =(function ($) {
 
     function addTag(event) {
 
+        var input  = event ? $(event.target) : $(this);
+
         if (event) {
             event.preventDefault();
         }
 
         var caterogyId = $(this).data('option-id'),
             checkboxOption = $(this).parent().parent().prev().data('field');
+
         $(this).parent().parent().next().append('<li>'+$(this).text()+'<button href="" data-option-id="'+caterogyId+'" class="form-dropdown-tags--close">x</button></li>');
         $('.form-dropdown-tags--close').on('click', deleteTag);
         addCheckbox(checkboxOption, caterogyId);
         resultCount.update_count();
 
-        clearInput($(event.target).parent().parent().prev());
+        clearInput(input.parent().parent().prev());
         closeDropdown();
     }
 
