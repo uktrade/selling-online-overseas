@@ -14,7 +14,7 @@ var autocomplete =(function ($) {
     });
 
     $('html').click(function (event) {
-        var input = $(event.target)
+        var input = $(event.target);
         if(!input.hasClass('form-dropdown-input')) {
             closeDropdown();
             clearInput(input);
@@ -22,7 +22,7 @@ var autocomplete =(function ($) {
     });
 
     $('input.form-dropdown-input').blur(function (event) {
-        var input = $(event.target)
+        var input = $(event.target);
         clearInput(input);
     });
 
