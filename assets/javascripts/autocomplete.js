@@ -14,9 +14,16 @@ var autocomplete =(function ($) {
     });
 
     $('html').click(function (event) {
-        if(!$(event.target).hasClass('form-dropdown-input')) {
+        var input = $(event.target);
+        if(!input.hasClass('form-dropdown-input')) {
             closeDropdown();
+            clearInput(input);
         }
+    });
+
+    $('input.form-dropdown-input').blur(function (event) {
+        var input = $(event.target);
+        clearInput(input);
     });
 
     function selectedEnter() {
@@ -40,7 +47,9 @@ var autocomplete =(function ($) {
                 event.preventDefault();
                 break;
             case 27:
+                var input = $(event.target);
                 closeDropdown();
+                clearInput(input);
                 break;
             default:
                 getResults(this);
@@ -76,7 +85,7 @@ var autocomplete =(function ($) {
 
         if(data) {
             for (var i = 0; i < data.length; i++) {
-                var content = (typeof(data[i]) === 'string') ? data[i] : data[i][0] + ' - <strong>'+data[i][1]+'</strong>',
+                var content = (typeof(data[i]) === 'string') ? data[i] : data[i][0] + ' - '+data[i][1]+'',
                     option = (typeof(data[i]) === 'string') ? data[i] : data[i][0];
 
                 $(element).next().append('<li class="form-dropdown-list"><a href="" class="form-dropdown-option" data-option-id="' + option + '">' + content + '</li></a></li>');
@@ -87,18 +96,22 @@ var autocomplete =(function ($) {
 
     function addTag(event) {
 
+        var link  = event ? $(event.target) : $(this);
+        var input = link.parent().parent().prev();
+
         if (event) {
             event.preventDefault();
         }
 
         var caterogyId = $(this).data('option-id'),
             checkboxOption = $(this).parent().parent().prev().data('field');
+
         $(this).parent().parent().next().append('<li>'+$(this).text()+'<button href="" data-option-id="'+caterogyId+'" class="form-dropdown-tags--close">x</button></li>');
         $('.form-dropdown-tags--close').on('click', deleteTag);
         addCheckbox(checkboxOption, caterogyId);
         resultCount.update_count();
 
-        clearInput($(event.target).parent().parent().prev());
+        clearInput(input);
         closeDropdown();
     }
 
