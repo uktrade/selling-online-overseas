@@ -4,27 +4,35 @@ var autocomplete =(function ($) {
         results = $('.form-dropdown-results'),
         tags = $('.form-dropdown-tags');
 
-    searchField.keyup(catchEvent);
-    searchField.keypress(function (event) {
-        // User press enter
-        if (event.which === 13 && $('.form-dropdown-option').length > 0) {
-            event.preventDefault();
-            selectedEnter();
-        }
-    });
 
-    $('html').click(function (event) {
-        var input = $(event.target);
-        if(!input.hasClass('form-dropdown-input')) {
-            closeDropdown();
+    function init() {
+
+        searchField.keyup(catchEvent);
+        searchField.keypress(function (event) {
+            // User press enter
+            if (event.which === 13 && $('.form-dropdown-option').length > 0) {
+                event.preventDefault();
+                selectedEnter();
+            }
+        });
+
+        $('html').click(function (event) {
+            var input = $(event.target);
+            if(!input.hasClass('form-dropdown-input')) {
+                closeDropdown();
+                clearInput(input);
+            }
+        });
+
+        $('input.form-dropdown-input').blur(function (event) {
+            var input = $(event.target);
             clearInput(input);
-        }
-    });
+        });
 
-    $('input.form-dropdown-input').blur(function (event) {
-        var input = $(event.target);
-        clearInput(input);
-    });
+        updateTagsFromStorage();
+    }
+
+
 
     function selectedEnter() {
         var option = ($('.form-dropdown-results li.active a').length === 0) ? $('.form-dropdown-option').first() : $('.form-dropdown-results li.active a');
@@ -96,27 +104,53 @@ var autocomplete =(function ($) {
 
     function addTag(event) {
 
-        var link  = event ? $(event.target) : $(this);
-        var input = link.parent().parent().prev();
+        var link  = event ? $(event.target) : $(this),
+            input = link.parent().parent().prev(),
+            buttonId = Math.round(Math.random()*(+new Date())),
+            categoryId = $(this).data('option-id'),
+            checkboxOption = $(this).parent().parent().prev().data('field'),
+            text = $(this).text();
 
         if (event) {
             event.preventDefault();
         }
 
-        var caterogyId = $(this).data('option-id'),
-            checkboxOption = $(this).parent().parent().prev().data('field');
-
-        $(this).parent().parent().next().append('<li>'+$(this).text()+'<button href="" data-option-id="'+caterogyId+'" class="form-dropdown-tags--close">x</button></li>');
-        $('.form-dropdown-tags--close').on('click', deleteTag);
-        addCheckbox(checkboxOption, caterogyId);
-        resultCount.update_count();
+        createTag($(this).parent().parent().next(), checkboxOption, text, categoryId, buttonId);
 
         clearInput(input);
         closeDropdown();
+        addTagToStorage(buttonId, categoryId, text, checkboxOption);
+    }
+
+    function createTag(container, checkboxOption, text, categoryId, buttonId) {
+        container.append('<li>'+text+'<button href="" data-option-id="'+categoryId+'" class="form-dropdown-tags--close" data-button-id="'+buttonId+'">x</button></li>');
+        $('.form-dropdown-tags--close').on('click', deleteTag);
+        addCheckbox(checkboxOption, categoryId);
+        resultCount.update_count();
     }
 
     function clearInput(input) {
         input.val("");
+    }
+
+    function addTagToStorage(buttonId, categoryId, data, section) {
+
+        function Tag(buttonId, categoryId, data, section) {
+            this.buttonId = buttonId;
+            this.category = categoryId;
+            this.content = data;
+            this.section = section;
+        }
+
+        var tags = localStorage.getItem('tags') ? JSON.parse(localStorage.getItem('tags')) : [];
+        tags.push(new Tag(buttonId, categoryId, data, section));
+
+        localStorage.setItem('tags', JSON.stringify(tags));
+    }
+
+    function deleteTagFromStorage(id) {
+        var tags = _.reject(JSON.parse(localStorage.getItem('tags')),function(obj){ return obj.buttonId === id; });
+        localStorage.setItem('tags', JSON.stringify(tags));
     }
 
     function deleteTag(event) {
@@ -124,6 +158,7 @@ var autocomplete =(function ($) {
         $(this).parent().remove();
         deleteCheckbox($(this).data('option-id'));
         resultCount.update_count();
+        deleteTagFromStorage($(event.target).data('button-id'));
     }
 
     function closeDropdown() {
@@ -165,5 +200,18 @@ var autocomplete =(function ($) {
         }
     }
 
+    function updateTagsFromStorage() {
+        if(localStorage.getItem('tags')) {
+            _.each(JSON.parse(localStorage.getItem('tags')), function (obj) {
+                var element = (obj.section === 'product_categories') ? 'search-product' : 'search-country';
+                createTag($('#'+element).next().next(), obj.section, obj.content, obj.category, obj.buttonId);
+            });
+        }
+    }
 
+    return {
+        init: init
+    };
 })(jQuery);
+
+autocomplete.init();

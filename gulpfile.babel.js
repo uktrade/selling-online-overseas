@@ -52,6 +52,7 @@ gulp.task('javascripts', () => gulp
   .pipe(plugins.uglify(debugMode))
   .pipe(plugins.addSrc.prepend([
     paths.npm + 'jquery/dist/jquery.min.js',
+    paths.npm + 'underscore/underscore-min.js',
     paths.npm + 'query-command-supported/dist/queryCommandSupported.min.js',
     paths.npm + 'diff-dom/diffDOM.js'
   ]))
