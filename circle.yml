@@ -1,0 +1,24 @@
+machine:
+  node:
+    version: 5.0.0
+  python:
+    version: 3.5.0
+
+dependencies:
+  pre:
+    - pip install -r requirements_for_test.txt
+  override:
+    - npm install
+  post:
+    - npm rebuild node-sass
+    - npm run build
+
+test:
+  override:
+    - ./scripts/run_tests.sh
+
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: dit-navigator-staging
