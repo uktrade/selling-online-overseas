@@ -1,0 +1,19 @@
+## Customize machine
+machine:
+  post:
+    - pyenv global 3.5.2
+
+## Customize dependencies
+dependencies:
+  pre:
+    - npm install
+    - npm rebuild node-sass
+    - pip install -r requirements_for_test.txt
+
+## Customize test commands
+test:
+  pre:
+    - npm run build
+    - python manage.py collectstatic --no-input
+  override:
+    - ./scripts/run_tests.sh
