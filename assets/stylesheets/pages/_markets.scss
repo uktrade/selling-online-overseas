@@ -6,6 +6,19 @@
       display: none;
     }
 
+    .markets-item-logo {
+      @include media (mobile) {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .markets-info {
+      @include media (mobile) {
+        padding-left: 0;
+      }
+    }
+
     .markets-group {
       @include media (mobile) {
         display: flex;
@@ -63,23 +76,23 @@
     }
 
     &-logo {
+      border: 1px solid $lighter-grey;
+      height: 151px;
       vertical-align: middle;
-      width: 185px;
+      width: 200px;
 
       @include breakpoint(tablet) {
-        width: 90%;
+        height: 140px;
+        width: 185px;
+      }
+
+      @include media (mobile) {
+        height: 76px;
+        width: 100px;
       }
     }
 
     &-logoholder {
-      background: $white;
-      border: 1px solid $lighter-grey;
-      height: 140px;
-      width: 185px;
-
-      @include breakpoint(tablet) {
-        width: 90%;
-      }
 
       @include media (mobile) {
         height: 100%;
@@ -89,13 +102,6 @@
 
     &--url {
       display: none;
-    }
-
-
-    &-helper {
-      display: inline-block;
-      height: 100%;
-      vertical-align: middle;
     }
   }
 
@@ -194,13 +200,19 @@
   &-image {
     @include media(mobile) {
       float: left;
-      width: 40%;
+      width: 35%;
     }
   }
 
 
 
   &-info {
+    padding-left: 0;
+
+    @include breakpoint(tablet) {
+      padding-left: 30px;
+    }
+
     @include media (mobile) {
       margin-top: 10px;
       order: 1;
