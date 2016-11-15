@@ -116,6 +116,7 @@ var autocomplete =(function ($) {
         }
 
         createTag($(this).parent().parent().next(), checkboxOption, text, categoryId, buttonId);
+        resultCount.update_count();
 
         clearInput(input);
         closeDropdown();
@@ -126,7 +127,6 @@ var autocomplete =(function ($) {
         container.append('<li>'+text+'<button href="" data-option-id="'+categoryId+'" class="form-dropdown-tags--close" data-button-id="'+buttonId+'">x</button></li>');
         $('.form-dropdown-tags--close').on('click', deleteTag);
         addCheckbox(checkboxOption, categoryId);
-        resultCount.update_count();
     }
 
     function clearInput(input) {
@@ -142,15 +142,15 @@ var autocomplete =(function ($) {
             this.section = section;
         }
 
-        var tags = localStorage.getItem('tags') ? JSON.parse(localStorage.getItem('tags')) : [];
+        var tags = sessionStorage.getItem('tags') ? JSON.parse(sessionStorage.getItem('tags')) : [];
         tags.push(new Tag(buttonId, categoryId, data, section));
 
-        localStorage.setItem('tags', JSON.stringify(tags));
+        sessionStorage.setItem('tags', JSON.stringify(tags));
     }
 
     function deleteTagFromStorage(id) {
-        var tags = _.reject(JSON.parse(localStorage.getItem('tags')),function(obj){ return obj.buttonId === id; });
-        localStorage.setItem('tags', JSON.stringify(tags));
+        var tags = _.reject(JSON.parse(sessionStorage.getItem('tags')),function(obj){ return obj.buttonId === id; });
+        sessionStorage.setItem('tags', JSON.stringify(tags));
     }
 
     function deleteTag(event) {
@@ -201,8 +201,8 @@ var autocomplete =(function ($) {
     }
 
     function updateTagsFromStorage() {
-        if(localStorage.getItem('tags')) {
-            _.each(JSON.parse(localStorage.getItem('tags')), function (obj) {
+        if(sessionStorage.getItem('tags')) {
+            _.each(JSON.parse(sessionStorage.getItem('tags')), function (obj) {
                 var element = (obj.section === 'product_categories') ? 'search-product' : 'search-country';
                 createTag($('#'+element).next().next(), obj.section, obj.content, obj.category, obj.buttonId);
             });
