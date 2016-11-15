@@ -1,4 +1,6 @@
+from django.db.models import Q
 from django.http import JsonResponse
+
 from .models import Country
 
 
@@ -12,8 +14,9 @@ def query_countries(request):
     if query is None or query == '':
         countries = []
     else:
-        countries = Country.objects.filter(name__istartswith=query).order_by('-name')
+        countries_set = Country.objects.filter(Q(name__istartswith=query) | Q(alternate_name__istartswith=query))
+        countries = countries_set.order_by('-name')
 
-    country_names = [country.name for country in countries]
+    country_names = [country.verbose_name for country in countries]
 
     return JsonResponse({"countries": country_names})
