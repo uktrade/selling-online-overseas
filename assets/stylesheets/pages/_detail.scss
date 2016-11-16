@@ -10,12 +10,11 @@
 
     &--dotted {
       border: 1px dotted $great-primary;
+      padding-bottom: 0;
     }
   }
 
   &--info {
-    min-height: 200px;
-
     @include breakpoint(tablet) {
       height: auto;
       margin-right: 0;
@@ -42,7 +41,6 @@
   &--terms {
     border: 1px solid $great-primary;
     margin-top: 65px;
-    padding-bottom: 30px;
 
     @include breakpoint(tablet) {
       margin-right: 0;
@@ -91,6 +89,7 @@
     }
 
     &--notes {
+      padding-bottom: 15px;
       @include media (mobile) {
         padding-top: 0;
       }
