@@ -17,6 +17,6 @@ def query_countries(request):
         countries_set = Country.objects.filter(Q(name__istartswith=query) | Q(alternate_name__istartswith=query))
         countries = countries_set.order_by('-name')
 
-    country_names = [country.verbose_name for country in countries]
+    country_names = [country.name for country in countries]
 
     return JsonResponse({"countries": country_names})
