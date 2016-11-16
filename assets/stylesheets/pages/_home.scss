@@ -17,7 +17,7 @@
     width: 255px;
 
     &--border {
-      border: 1px solid $light-grey;
+      border: 1px solid $lighter-grey;
     }
 
     @include breakpoint(tablet) {
