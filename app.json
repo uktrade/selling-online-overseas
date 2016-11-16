@@ -4,6 +4,12 @@
   "env": {
     "DJANGO_SETTINGS_MODULE": "navigator.settings.dev",
     "RESTRICT_IPS": "True",
+    "ADMIN_USER": {
+      "required": true
+    },
+    "ADMIN_PASSWORD": {
+      "required": true
+    },
     "SECRET_KEY": {
       "description": "The django app's sercret key",
       "generator": "secret"
@@ -27,5 +33,8 @@
     {
       "url": "heroku/python"
     }
-  ]
+  ],
+  "scripts": {
+    "postdeploy": "echo \"from django.contrib.auth.models import User; import os; password = os.environ.get('ADMIN_PASSWORD', ''); username = os.environ.get('ADMIN_USER', ''); User.objects.create_superuser(username, 'admin@example.com', password)\" | python manage.py shell"
+  }
 }
