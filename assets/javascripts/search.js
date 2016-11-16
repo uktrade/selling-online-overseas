@@ -1,4 +1,4 @@
-var autocomplete =(function ($) {
+var search =(function ($) {
 
     var searchField = $('.form-dropdown .form-dropdown-input'),
         results = $('.form-dropdown-results'),
@@ -214,4 +214,4 @@ var autocomplete =(function ($) {
     };
 })(jQuery);
 
-autocomplete.init();
+search.init();
