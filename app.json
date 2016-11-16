@@ -2,8 +2,12 @@
   "name": "navigator",
   "scripts": {},
   "env": {
-    "DJANGO_SETTINGS_MODULE": "dev",
-    "RESTRICT_IPS": "True"
+    "DJANGO_SETTINGS_MODULE": "navigator.settings.dev",
+    "RESTRICT_IPS": "True",
+    "SECRET_KEY": {
+      "description": "The django app's sercret key",
+      "generator": "secret"
+    }
   },
   "formation": {
     "web": {
