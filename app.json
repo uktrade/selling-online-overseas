@@ -1,0 +1,27 @@
+{
+  "name": "navigator",
+  "scripts": {},
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "dev",
+    "RESTRICT_IPS": "True"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/uktrade/navigator-buildpack"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
