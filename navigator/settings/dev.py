@@ -14,5 +14,3 @@ RESTRICT_IPS = ip_check == 'True' or ip_check == '1'
 ALLOWED_IPS = []
 ALLOWED_IP_RANGES = ['165.225.80.0/22', '193.240.203.32/29']
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
