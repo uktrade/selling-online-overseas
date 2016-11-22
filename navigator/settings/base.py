@@ -134,3 +134,4 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 WHOOSH_INDEX_DIR = os.path.join(BASE_DIR, 'whoosh_index')
 
 DEBUG = False
+SESSION_COOKIE_AGE = 43200  # 12 hours
