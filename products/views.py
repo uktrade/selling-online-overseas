@@ -1,4 +1,7 @@
+import os
+
 from django.http import JsonResponse
+from django.conf import settings
 
 from .search import perform_category_query
 
@@ -26,3 +29,14 @@ def query_categories(request):
     }
 
     return JsonResponse(resp)
+
+
+def log_search_term(request):
+    log_filename = os.path.join(settings.BASE_DIR, 'search_terms.txt')
+    term = request.GET.get('term', None)
+    if term is not None:
+        with open(log_filename, 'a') as log_file:
+            log_file.write(term)
+            log_file.write('\n')
+
+    return JsonResponse({'success': True})

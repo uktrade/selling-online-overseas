@@ -26,7 +26,22 @@ var autocomplete =(function ($) {
 
         $('input.form-dropdown-input').blur(function (event) {
             var input = $(event.target);
-            clearInput(input);
+            
+            var log = $.ajax({
+                url: input.data('log-url'),
+                type: 'GET',
+                dataType: 'json',
+                data: {term: input.val()}
+            });
+            
+            $.when(log)
+                .done(function (input) {
+                })
+                .fail(function () {
+                })
+                .always(function () {
+                    clearInput(input);
+                });
         });
 
         updateTagsFromStorage();
