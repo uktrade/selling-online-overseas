@@ -26,8 +26,6 @@ var autocomplete =(function ($) {
 
         $('input.form-dropdown-input').blur(function (event) {
             var input = $(event.target);
-            ga('send', 'event', 'Search', input.val());
-            ga('send', 'event', 'Search', 'seach_term', input.val());
             clearInput(input);
         });
 
