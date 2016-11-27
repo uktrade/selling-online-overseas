@@ -20,13 +20,14 @@ var autocomplete =(function ($) {
             var input = $(event.target);
             if(!input.hasClass('form-dropdown-input')) {
                 closeDropdown();
-                clearInput(input);
+                var inputs = $('.form-dropdown-input');
+                inputs.each(function(i, item) {
+                    var input = $(item);
+                    if (input.val() !== '') {
+                        clearInput(input);
+                    }
+                });
             }
-        });
-
-        $('input.form-dropdown-input').blur(function (event) {
-            var input = $(event.target);
-            clearInput(input);
         });
 
         updateTagsFromStorage();
@@ -130,6 +131,7 @@ var autocomplete =(function ($) {
     }
 
     function clearInput(input) {
+        dataLayer.push({"event": "Search", "search_term": input.val()});
         input.val("");
     }
 
@@ -178,7 +180,7 @@ var autocomplete =(function ($) {
     }
 
     function deleteCheckbox(checkboxId) {
-        $('input[data-checkbox-id="'+checkboxId+'"]').remove();
+        $('input[data-checkbox-id="'+checkboxId+'"]').first().remove();
     }
 
     function selectOption(action, element){
