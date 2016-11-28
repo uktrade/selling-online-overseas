@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 from whoosh.index import create_in
 from whoosh.fields import Schema, TEXT, ID
+from whoosh.analysis import StemmingAnalyzer
 
 from ...models import Category
 
@@ -25,7 +26,12 @@ class Command(BaseCommand):
         csvfile = open(csvfilename, 'rt')
 
         # Define the Whoosh schema and get the index directory on disk
-        schema = Schema(category=TEXT(stored=True), pk=ID(stored=True), sub_category=TEXT(stored=True, spelling=True))
+        schema = Schema(
+            category=TEXT(stored=True),
+            pk=ID(stored=True),
+            sub_category=TEXT(stored=True, spelling=True, analyzer=StemmingAnalyzer())
+        )
+
         indexdir = settings.WHOOSH_INDEX_DIR
 
         if not os.path.exists(indexdir):

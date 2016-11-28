@@ -91,6 +91,7 @@ var autocomplete =(function ($) {
         closeDropdown();
 
         var data = request.countries ? request.countries : request.categories;
+        var suggestion = request.suggestion;
 
         if(data) {
             for (var i = 0; i < data.length; i++) {
@@ -101,6 +102,20 @@ var autocomplete =(function ($) {
             }
             $('.form-dropdown-option').on('click', addTag);
         }
+
+        if(suggestion) {
+            $(element).prev().html('Did you mean: <span style="color:blue" class="suggestion">' + suggestion + '</span>?');
+            $(element).prev().children('.suggestion').on('click', takeSuggestion);
+        } else {
+            $(element).prev().html('');
+        }
+    }
+
+    function takeSuggestion(event) {
+        var suggestion = $(event.target).html();
+        var input = $(event.target).parent().next();
+        input.val(suggestion);
+        getResults(input);
     }
 
     function addTag(event) {
