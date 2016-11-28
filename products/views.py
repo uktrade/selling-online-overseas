@@ -16,6 +16,9 @@ def query_categories(request):
 
     categories, suggestion = perform_category_query(stem(query_words))
 
+    if len(categories) == 0:
+        categories, suggestion = perform_category_query(query_words)
+
     resp = {
         "query": query_words,
         "categories": categories,
