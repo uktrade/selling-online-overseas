@@ -1,3 +1,4 @@
+from whoosh.lang.porter import stem
 from django.http import JsonResponse
 
 from .search import perform_category_query
@@ -13,11 +14,7 @@ def query_categories(request):
     if query_words is None:
         return {}
 
-    categories, suggestion = perform_category_query(query_words)
-
-    if len(categories) == 0 and suggestion is not None:
-        query_words = suggestion
-        categories, suggestion = perform_category_query(query_words)
+    categories, suggestion = perform_category_query(stem(query_words))
 
     resp = {
         "query": query_words,
