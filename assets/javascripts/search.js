@@ -61,9 +61,23 @@ var autocomplete =(function ($) {
                 clearInput(input);
                 break;
             default:
-                getResults(this);
+                delayedGetResults(this);
         }
 
+    }
+
+    function delayedGetResults(element) {
+        var timer = $(element).data('timeout');
+
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        timer = setTimeout(function() {
+            getResults(element);
+        }, 500);
+
+        $(element).data('timeout', timer);
     }
 
     function getResults(element) {
