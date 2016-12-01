@@ -13,7 +13,11 @@ fixture_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../fixtur
 
 
 def load_fixture(apps, schema_editor):
-    call_command('flush', interactive=False)
+    Country = apps.get_model('geography', 'Country')
+    Region = apps.get_model('geography', 'Region')
+    Country.objects.all().delete()
+    Region.objects.all().delete()
+
     fixture_filename = 'initial_0003.json'
     fixture_path = os.path.join(fixture_dir, fixture_filename)
     safe_load_fixture(apps, fixture_path)

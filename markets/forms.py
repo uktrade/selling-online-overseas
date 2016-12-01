@@ -7,7 +7,6 @@ from .models import Market, Logo
 from core.forms import (
     QueryChoiceField, QueryMultipleCheckboxField, QueryRadioField, QueryMultipleChoiceField, ModelQueryForm
 )
-from geography.models import Region
 
 
 class MarketListFilterForm(ModelQueryForm):
