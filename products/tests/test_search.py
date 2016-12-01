@@ -25,10 +25,10 @@ class SearchTests(TestCase):
 
     def test_perform_query(self):
         categories, suggestions = perform_category_query('Food')
-        self.assertEquals(categories, [('Food', 'Food')])
+        self.assertEquals(categories, {'Food': ['Food']})
 
         categories, suggestions = perform_category_query('Chocolate')
-        self.assertEquals(categories, [('Food', 'Chocolate')])
+        self.assertEquals(categories, {'Food': ['Chocolate']})
 
         categories, suggestions = perform_category_query('Cadbury')
-        self.assertEquals(categories, [('Food', 'Cadbury')])
+        self.assertEquals(categories, {'Food': ['Cadbury']})
