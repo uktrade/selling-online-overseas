@@ -7,7 +7,8 @@ var search =(function ($) {
 
     function init() {
 
-        searchField.keyup(catchEvent);
+        searchField.keyup(inputEvent);
+        results.keyup(manualSelect);
         searchField.keypress(function (event) {
             // User press enter
             if (event.which === 13 && $('.form-dropdown-option').length > 0) {
@@ -41,16 +42,31 @@ var search =(function ($) {
     }
 
 
-    function catchEvent(event) {
+    function manualSelect(event) {
+        var nextElement = $(event.currentTarget);
+
+        switch(event.which) {
+            case 40:
+                event.preventDefault();
+                selectOption('down', nextElement);
+                break;
+            case 38:
+                event.preventDefault();
+                selectOption('up', nextElement);
+                break;
+            default:
+                break;
+        }
+    }
+
+    function inputEvent(event) {
 
         var nextElement = $(event.target).next();
 
         switch(event.which) {
             case 40:
+                event.preventDefault();
                 selectOption('down', nextElement);
-                break;
-            case 38:
-                selectOption('up', nextElement);
                 break;
             case 13:
                 event.preventDefault();
@@ -187,17 +203,21 @@ var search =(function ($) {
             active = $('.form-dropdown-results li.active').index();
 
         if(!$('.form-dropdown-results li').hasClass('active')) {
-            $($('.form-dropdown-results li')[0]).addClass('active');
+            activateAndFocus(0);
         } else {
             $($('.form-dropdown-results li')[active]).removeClass('active');
+            $($('.form-dropdown-results li a')[active]).blur();
             if(action === 'up') {
-                $($('.form-dropdown-results li')[active-1]).addClass('active');
+                activateAndFocus((active === 0) ? 0 : active-1);
             } else {
-                var option = (active === list) ? 0 : active+1;
-                $($('.form-dropdown-results li')[option]).addClass('active');
+                activateAndFocus((active === list) ? 0 : active+1);
             }
-
         }
+    }
+
+    function activateAndFocus(index) {
+        $($('.form-dropdown-results li')[index]).addClass('active');
+        $($('.form-dropdown-results li a')[index]).focus();
     }
 
     function updateTagsFromStorage() {
