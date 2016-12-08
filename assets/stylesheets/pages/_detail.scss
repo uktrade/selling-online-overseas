@@ -10,12 +10,11 @@
 
     &--dotted {
       border: 1px dotted $great-primary;
+      padding-bottom: 0;
     }
   }
 
   &--info {
-    min-height: 200px;
-
     @include breakpoint(tablet) {
       height: auto;
       margin-right: 0;
@@ -42,7 +41,6 @@
   &--terms {
     border: 1px solid $great-primary;
     margin-top: 65px;
-    padding-bottom: 30px;
 
     @include breakpoint(tablet) {
       margin-right: 0;
@@ -79,20 +77,6 @@
       padding: 30px 20px;
       @include media (mobile) {
         padding: 20px 10px;
-      }
-    }
-
-    &--links {
-      padding-bottom: 20px;
-
-      @include media (mobile) {
-        padding-bottom: 0;
-      }
-    }
-
-    &--notes {
-      @include media (mobile) {
-        padding-top: 0;
       }
     }
   }
@@ -160,17 +144,17 @@
   &-consider {
     margin-right: 70px;
   }
-}
 
-.detail-row-column {
-  height: 280px;
-  margin-top: 20px;
-  position: relative;
+  &-next {
+    position: relative;
 
-  .button-section {
-    bottom: 20px;
-    left: 0;
-    position: absolute;
-    right: 0;
+    .button-section {
+      bottom: 40px;
+      left: 0;
+      padding: 0 20px;
+      position: absolute;
+      right: 0;
+    }
   }
+
 }

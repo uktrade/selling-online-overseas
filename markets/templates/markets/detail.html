@@ -20,23 +20,24 @@
 </div>
 
 <div class="section">
-  <div class='grid-row detail-section'>
+  <div class='grid-row detail-section' data-equaliser>
+    <div class="column-two-fifths">
+      <div class="detail-section--terms detail-section--info back background--great-primary font-white" data-section>
+        <div class="detail-section-content detail-section-content--head">
+          <h4 class="detail-section--terms--header  push-half--bottom font-med hard--top">Department for International Trade (DIT) assistance and special terms</h4>
+          {{ market.ukti_terms|safe }}
+          <a href="https://contact-us.export.great.gov.uk/triage/soo" class="button button-blue button-medium push-half--top" title="apply now">Apply now</a>
+        </div>
+      </div>
+    </div>
     <div class="column-three-fifths">
-      <div class="detail-section-header detail-section-header--dotted detail-section--info push--right">
+      <div class="detail-section-header detail-section-header--dotted detail-section--info push--right" data-section>
         <i class="icon icon-header icon-header--left icon-adviser">
           <span class="visuallyhidden">Our advice</span>
         </i>
         <h3 class="font-brand header-icon">Our advice</h3>
         <blockquote class="detail-section-content detail-section-content--head font-lig font-brand">{{ market.dit_advisor_tip }}</blockquote>
       </div>
-    </div>
-    <div class="column-two-fifths">
-      <div class="detail-section--terms detail-section--info back background--great-primary font-white">
-          <div class="detail-section-content detail-section-content--head">
-            <h4 class="detail-section--terms--header  push-half--bottom font-med hard--top">Special terms for UK businesses*</h4>
-            {{ market.ukti_terms|safe }}
-          </div>
-        </div>
     </div>
   </div>
 </div>
@@ -272,49 +273,55 @@
   </div>
 </div>
 
+
 <div class="section">
-  <div class='grid-row detail-section detail-section--format'>
-    <div class="column-one-whole">
-      <div class="detail-section-header detail-section-header--dotted cf">
+  <div class='grid-row detail-section' data-equaliser>
+    <div class="column-one-whole push--bottom">
+      <div class="detail-section-header">
         <i class="icon icon-header icon-header--left icon-next-step icon-left">
           <span class="visuallyhidden">next steps</span>
         </i>
         <h3 class="font-brand header-icon">What should I do next?</h3>
-        <div class="detail-section-content">
-          <div class="cf">
-            <div class="column-five-eights push--bottom">
-              <div class="detail-section-consider font-brand push-half--left push--top">
-                <h4 class="heading-headline font-med flush--bottom">Explore the marketplace</h4>
-                <p class="flush--bottom">Find out more about selling here:</p>
-                <a href="{{ market.signup_address }}" class="link">Go to {{ market.name }}</a>
-
-                <h4 class="heading-headline font-med push--top soft-half--top">Apply for our help with this marketplace</h4>
-                <p class="flush--bottom">We may be able to help you access preferential terms:</p>
-                <a href="https://contact-us.export.great.gov.uk/triage/soo" class="link">Contact Us</a>
-
-                <h4 class="heading-headline font-med push--top soft-half--top">Find out more about selling online overseas</h4>
-                <p class="flush--bottom">Practical advice about e-commerce:</p>
-                <a href="https://export.great.gov.uk/use-social-media-and-commerce-to-export/" class="link">Use social media, e-commerce and online marketplaces to export</a>
-              </div>
-            </div>
-            <div class="column-three-eights">
-              <div class="background--stone font-brand detail-section-content--links">
-                <div class="soft">
-                  <h4 class="heading-headline font-med flush--top push--bottom">Useful links</h4>
-                  <div class="soft--bottom">
-                    <p class="hard--bottom flush--bottom">Find out more about the countries you plan to export to:</p>
-                    <a href="https://www.gov.uk/government/collections/exporting-country-guides" title="Guide to online export" class="link" alt="Exporting country guides">Exporting country guides</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+      </div>
+    </div>
+    <div class='column-one-third'>
+      <div class="detail-section-next  background--stone push--bottom soft-half--bottom" data-section>
+        <div class="soft">
+          <h4 class="heading-headline font-med push--bottom soft--bottom soft-half--top">Explore this marketplace</h4>
+          <p class="push--bottom push--top soft--bottom">Find out more about selling on {{ market.name }} by visiting their website.</p>
+          <div class="button-section">
+            <a href="{{ market.signup_address }}" class="button button-blue button-large push--top column-one-whole text--center" title="Go to marketplace">Go to marketplace</a>
           </div>
         </div>
-        <p class="flush--bottom soft--sides font-brand soft--top font-xxxsmall detail-section-content--notes">* Special terms are subject to eligibility. Please fill out the application form above and we will contact you.</p>
+      </div>
+    </div>
+    <div class='column-one-third'>
+      <div class="background--stone push--bottom soft-half--bottom" data-section>
+        <div class="soft">
+          <h4 class="heading-headline font-med push--bottom soft--bottom soft-half--top">Apply with help from DIT</h4>
+          <p class="push--top">DIT advisers can help you get onto the marketplace. You may also be able to:</p>
+          <ul class="list list-ordered push--bottom">
+            <li class="soft-half--bottom">benefit from special terms negotiated by the government for UK businesses</li>
+            <li>get a direct contact at the marketplace</li>
+          </ul>
+          <a href="https://contact-us.export.great.gov.uk/triage/soo" class="button button-blue button-large push--top column-one-whole text--center" title="Apply Now">Apply Now</a>
+        </div>
+      </div>
+    </div>
+    <div class='column-one-third'>
+      <div class="home-info--border push--bottom soft-half--bottom" data-section>
+        <div class="soft">
+          <h4 class="heading-headline font-med push--bottom soft--bottom soft-half--top">Research your market</h4>
+          <p class="hard--bottom flush--bottom">Find out more about the countries you plan to export to:</p>
+          <a href="https://www.gov.uk/government/collections/exporting-country-guides" title="Guide to online export" class="link">Exporting country guides</a>
 
+          <p class="hard--bottom flush--bottom push--top soft--top ">Practical advice about e-commerce:</p>
+          <a href="https://www.exportingisgreat.gov.uk/use-social-media-and-commerce-to-export/" title="Practical advice about e-commerce" class="link">Exporting is GREAT</a>
+        </div>
       </div>
     </div>
   </div>
+  <p class="font-brand soft--top font-xxxsmall">* Special terms are subject to eligibility. Please fill out the application form above and we will contact you.</p>
 </div>
 
 {% endblock content %}
