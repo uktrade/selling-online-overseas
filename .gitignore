@@ -89,6 +89,7 @@ ENV/
 .ropeproject
 
 *.DS_Store
+*.icloud
 
 environment.sh
 
