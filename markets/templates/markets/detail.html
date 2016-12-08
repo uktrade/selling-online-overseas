@@ -5,23 +5,21 @@
 
 {% block content %}
 
-<div class="section detail-section--top push--top soft--top">
-  <div class="grid-row">
-    <div class="column-one-whole">
-      <h1 class='heading-xlarge push--bottom flush--top float--left'>{{ market.name }}</h1>
-      <div class="text--right detail-section--back">
-        <a href="javascript:utilities.navigateBack()" class="link link--back" title="Return to marketplaces">&lt; Return to marketplaces</a>
-      </div>
+<div class="section detail-section--top push--top">
+  <div class="grid-whole cf">
+    <h1 class='h1 flush--top float--left flush--bottom'>{{ market.name }}</h1>
+    <div class="text--right detail-section--back">
+      <a href="javascript:utilities.navigateBack()" class="link link--back" title="Return to marketplaces">&lt; Return to marketplaces</a>
     </div>
-    <ul class="list markets markets-details">
-      {% include "markets/includes/market_summary.html" %}
-    </ul>
   </div>
+  <ul class="list markets markets-details">
+    {% include "markets/includes/market_summary.html" %}
+  </ul>
 </div>
 
 <div class="section">
-  <div class='grid-row detail-section' data-equaliser>
-    <div class="column-two-fifths">
+  <div class='detail-section' data-equaliser>
+    <div class="grid-five-twelves">
       <div class="detail-section--terms detail-section--info back background--great-primary font-white" data-section>
         <div class="detail-section-content detail-section-content--head">
           <h4 class="detail-section--terms--header  push-half--bottom font-med hard--top">Department for International Trade (DIT) assistance and special terms</h4>
@@ -30,8 +28,8 @@
         </div>
       </div>
     </div>
-    <div class="column-three-fifths">
-      <div class="detail-section-header detail-section-header--dotted detail-section--info push--right" data-section>
+    <div class="grid-seven-twelves">
+      <div class="detail-section-header detail-section-header--dotted detail-section--info" data-section>
         <i class="icon icon-header icon-header--left icon-adviser">
           <span class="visuallyhidden">Our advice</span>
         </i>
@@ -43,8 +41,8 @@
 </div>
 
 <div class="section">
-  <div class='grid-row detail-section'>
-    <div class="column-one-whole">
+  <div class='detail-section'>
+    <div class="grid-whole">
       <div class="detail-section-header">
         <i class="icon icon-header icon-header--left icon-products">
           <span class="visuallyhidden">About this marketplace</span>
@@ -53,22 +51,22 @@
       </div>
     </div>
     <div class="cf">
-      <dl class="column-two-fifths">
+      <dl class="grid-five-twelves">
         <dt class="font-reg">Registered users</dt>
         <dd>{{ market.web_traffic_display }}</dd>
       </dl>
-      <dl class="column-three-fifths">
+      <dl class="grid-seven-twelves">
         <dt class="font-reg">Ways to sell</dt>
         {{ market | field_dd:'seller_model' }}
       </dl>
     </div>
     <div class="cf push--bottom">
-      <dl class="column-two-fifths">
+      <dl class="grid-five-twelves">
         <dt class="font-reg">Product positioning</dt>
         {{ market | field_dd:'product_type' }}
       </dl>
       {% if market.famous_brands_on_marketplace.all %}
-        <dl class="column-three-fifths">
+        <dl class="grid-seven-twelves">
           <dt class="font-reg">Who else sells here?</dt>
           <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
         </dl>
@@ -78,8 +76,8 @@
 </div>
 
 <div class="section">
-  <div class='grid-row detail-section'>
-    <div class="column-one-whole">
+  <div class='detail-section'>
+    <div class="gird-whole">
       <div class="detail-section-header">
         <i class="icon icon-header icon-header--left icon-users">
           <span class="visuallyhidden">users</span>
@@ -88,11 +86,11 @@
       </div>
     </div>
     <div class="cf push--bottom">
-      <dl class="column-two-thirds">
+      <dl class="grid-seven-twelves">
         <dt class="font-reg">About the customers</dt>
-        <dd class="column-three-quarters">{{ market.customer_demographics|safe }}</dd>
+        <dd class="grid-ten-twelves">{{ market.customer_demographics|safe }}</dd>
       </dl>
-      <div class="column-one-third">
+      <div class="grid-five-twelves">
         <h4 class="detail-section-title font-reg">Customer support</h4>
         <dl>
           <dt class="subtitle">Channels:</dt>
@@ -108,8 +106,8 @@
 </div>
 
 <div class="section">
-  <div class='grid-row detail-section'>
-    <div class="column-one-whole">
+  <div class='detail-section'>
+    <div class="grid-whole">
       <div class="detail-section-header">
         <i class="icon icon-header icon-header--left icon-logistics">
           <span class="visuallyhidden">logistics</span>
@@ -118,12 +116,12 @@
       </div>
     </div>
     <div class="cf push--bottom">
-      <dl class="column-one-third">
+      <dl class="grid-five-twelves">
         <dt class="font-reg">Logistics support {% if market.logistics_structure_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.logistics_structure_notes }}" data-tooltip="logistics"></button>{% endif %}</dt>
         {{ market | field_dd:'logistics_structure' }}
         <dialog data-tooltip="logistics"></dialog>
       </dl>
-      <dl class="column-two-thirds">
+      <dl class="grid-seven-twelves">
         <dt class="font-reg">Parcel tracking required by the marketplace {% if market.shipping_tracking_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.shipping_tracking_required_notes }}" data-tooltip="shipping"></button>{% endif %}</dt>
         <dd>{{ market.get_shipping_tracking_required_display }}</dd>
         <dialog data-tooltip="shipping"></dialog>
@@ -133,8 +131,8 @@
 </div>
 
 <div class="section">
-  <div class='grid-row detail-section'>
-    <div class="column-one-whole">
+  <div class='detail-section'>
+    <div class="grid-whole">
       <div class="detail-section-header">
         <i class="icon icon-header icon-header--left icon-fees">
           <span class="visuallyhidden">fees</span>
@@ -143,28 +141,28 @@
       </div>
     </div>
     <div class="cf push--bottom">
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">One-off registration fee {% if market.registration_fees_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.registration_fees_notes }}" data-tooltip="registration-fee"></button>{% endif %}</dt>
         <dd>{{ market.registration_fees_display  }}</dd>
         <dialog data-tooltip="registration-fee"></dialog>
       </dl>
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">Membership fee</dt>
         <dd>{{ market.membership_fees_display }}</dd>
       </dl>
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">Listing fee {% if market.fee_per_listing_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="listing-fee"></button>{% endif %}</dt>
         <dd>{{ market.fee_per_listing | formatvalue:'required' }}</dd>
         <dialog data-tooltip="listing-fee"></dialog>
       </dl>
     </div>
     <div class="cf push--bottom">
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">Commission {% if market.commission_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.commission_notes }}" data-tooltip="commission"></button>{% endif %}</dt>
         <dd>{{ market.commission_display }}</dd>
         <dialog data-tooltip="commission"></dialog>
       </dl>
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">Deposit {% if market.deposit_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.deposit_notes }}" data-tooltip="deposit"></button>{% endif %}</dt>
         <dd>{{ market.deposit_display }}</dd>
         <dialog data-tooltip="deposit"></dialog>
@@ -174,8 +172,8 @@
 </div>
 
 <div class="section">
-  <div class='grid-row detail-section'>
-    <div class="column-one-whole">
+  <div class='detail-section'>
+    <div class="grid-whole">
       <div class="detail-section-header">
         <i class="icon icon-header icon-header--left icon-on-boarding">
           <span class="visuallyhidden">on boarding</span>
@@ -184,7 +182,7 @@
       </div>
     </div>
     <div class="cf push--bottom">
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">Organise translation {% if market.translation_verbal_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.translation_verbal_notes }}" data-tooltip="translation"></button>{% endif %}</dt>
         <dd>{{ market.translation_verbal | formatvalue:'tick' }} To negotiate with the marketplace</dd>
         <dd>{{ market.translation_application_process | formatvalue:'tick' }} To apply to join</dd>
@@ -193,7 +191,7 @@
         <dialog data-tooltip="translation"></dialog>
       </dl>
 
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">Set up {% if market.local_incorporation_needed_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.local_incorporation_needed_notes }}" data-tooltip="local-incorporation"></button>{% endif %}</dt>
         <dd>{{ market.local_bank_account_needed | formatvalue:'tick' }} A local bank account</dd>
         <dd>{{ market.local_incorporation_needed | formatvalue:'tick' }} A local company</dd>
@@ -201,26 +199,25 @@
 
         <dialog data-tooltip="local-incorporation"></dialog>
       </dl>
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">Agree to {% if market.exclusivity_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.exclusivity_required_notes }}" data-tooltip="exclusivity"></button>{% endif %}</dt>
         <dd>{{ market.exclusivity_required | formatvalue:'tick' }} Product exclusivity terms</dd>
         <dialog data-tooltip="exclusivity"></dialog>
       </dl>
     </div>
     <div class="cf push--bottom">
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">Upload product details via {% if market.product_details_upload_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.product_details_upload_notes }}" data-tooltip="upload"></button>{% endif %}</dt>
         {{ market | field_dd:'product_details_upload' }}
         <dialog data-tooltip="upload"></dialog>
       </dl>
-      <div class="column-two-thirds">
-      </div>
+      <div class="grid-eight-twelves"></div>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class='grid-row detail-section'>
+  <div class='detail-section'>
     <div class="column-one-whole">
       <div class="detail-section-header">
         <i class="icon icon-header icon-header--left icon-bank">
@@ -230,22 +227,22 @@
       </div>
     </div>
     <div class="cf push--bottom">
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">Payments terms</dt>
         <dd>{{ market.payment_terms_days_display }}</dd>
       </dl>
-      <dl class="column-one-third">
+      <dl class="grid-four-twelves">
         <dt class="font-reg">Currency</dt>
         <dd>{{ market | csl:'currency_of_payments' }}</dd>
       </dl>
-      <div class="column-one-third"></div>
+      <div class="grid-four-twelves"></div>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class='grid-row detail-section'>
-    <div class="column-one-whole">
+  <div class='detail-section'>
+    <div class="grid-whole">
       <div class="detail-section-header">
         <i class="icon icon-header icon-header--left icon-support">
           <span class="visuallyhidden">support</span>
@@ -253,11 +250,11 @@
         <h3 class="font-brand header-icon">What help do they give sellers like me?</h3>
       </div>
     </div>
-    <div class="column-two-thirds">
+    <div class="grid-eight-twelves">
       <dt class="font-reg">Marketing and merchandising</dt>
-      <dd class="column-three-quarters">{{ market.marketing_merchandising | safe }}</dd>
+      <dd class="grid-ten-twelves">{{ market.marketing_merchandising | safe }}</dd>
     </div>
-    <div class="cf column-one-third push--bottom">
+    <div class="cf grid-four-twelves push--bottom">
       <h4 class="detail-section-title font-reg">Seller support</h4>
       <dl>
         <dl>
@@ -275,8 +272,8 @@
 
 
 <div class="section">
-  <div class='grid-row detail-section' data-equaliser>
-    <div class="column-one-whole push--bottom">
+  <div class='detail-section' data-equaliser>
+    <div class="grid-whole push--bottom">
       <div class="detail-section-header">
         <i class="icon icon-header icon-header--left icon-next-step icon-left">
           <span class="visuallyhidden">next steps</span>
@@ -284,7 +281,7 @@
         <h3 class="font-brand header-icon">What should I do next?</h3>
       </div>
     </div>
-    <div class='column-one-third'>
+    <div class='grid-four-twelves'>
       <div class="detail-section-next  background--stone push--bottom soft-half--bottom" data-section>
         <div class="soft">
           <h4 class="heading-headline font-med push--bottom soft--bottom soft-half--top">Explore this marketplace</h4>
@@ -295,7 +292,7 @@
         </div>
       </div>
     </div>
-    <div class='column-one-third'>
+    <div class='grid-four-twelves'>
       <div class="background--stone push--bottom soft-half--bottom" data-section>
         <div class="soft">
           <h4 class="heading-headline font-med push--bottom soft--bottom soft-half--top">Apply with help from DIT</h4>
@@ -304,11 +301,11 @@
             <li class="soft-half--bottom">benefit from special terms negotiated by the government for UK businesses</li>
             <li>get a direct contact at the marketplace</li>
           </ul>
-          <a href="https://contact-us.export.great.gov.uk/triage/soo" class="button button-blue button-large push--top column-one-whole text--center" title="Apply Now">Apply Now</a>
+          <a href="https://contact-us.export.great.gov.uk/triage/soo" class="button button-blue button-large push--top grid-whole text--center" title="Apply Now">Apply Now</a>
         </div>
       </div>
     </div>
-    <div class='column-one-third'>
+    <div class='grid-four-twelves'>
       <div class="home-info--border push--bottom soft-half--bottom" data-section>
         <div class="soft">
           <h4 class="heading-headline font-med push--bottom soft--bottom soft-half--top">Research your market</h4>
@@ -321,7 +318,7 @@
       </div>
     </div>
   </div>
-  <p class="font-brand soft--top font-xxxsmall">* Special terms are subject to eligibility. Please fill out the application form above and we will contact you.</p>
+  <p class="font-brand soft--top font-xsmall">* Special terms are subject to eligibility. Please fill out the application form above and we will contact you.</p>
 </div>
 
 {% endblock content %}

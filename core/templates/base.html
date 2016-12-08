@@ -18,7 +18,7 @@
     {% endblock head_favicon %}
     {% block head_css %}
       <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-      <link href="{% static "stylesheets/govuk-template.css" %}" rel="stylesheet" media="screen">
+      <!--<link href="{% static "stylesheets/govuk-template.css" %}" rel="stylesheet" media="screen">-->
       <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
       <!--[if IE 8]><link href="{% static "stylesheets/ie8.css" %}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     {% endblock head_css %}
@@ -46,55 +46,51 @@
       {% block header %}
       <div class="nav-intro background--indigo font-white font-xxsmall">
         <div class="section">
-          <div class="grid-row">
-            <div class="column-one-whole text--right soft-half--ends">
-              <h3 class="inline push--right">Our services:</h3>
-              <ul class="nav-intro">
-                <li class="soft--right"><a class="" href="https://www.exportingisgreat.gov.uk/opportunities" title="Export opportunities">Export opportunities</a></li>
-                <li class="soft--right"><a class="" href="https://find-a-buyer.export.great.gov.uk/" title="Find a buyer">Find a buyer</a></li>
-                <li class="soft--right"><a class="" href="https://selling-online-overseas.export.great.gov.uk/markets/" title="Selling online overseas">Selling online overseas</a></li>
-                <li><a class="" href="https://events.trade.gov.uk/" title="Events">Events</a></li>
-              </ul>
-            </div>
+          <div class="grid-whole text--right soft-half--ends">
+            <h3 class="inline push--right">Our services:</h3>
+            <ul class="nav-intro">
+              <li class="soft--right"><a class="" href="https://www.exportingisgreat.gov.uk/opportunities" title="Export opportunities">Export opportunities</a></li>
+              <li class="soft--right"><a class="" href="https://find-a-buyer.export.great.gov.uk/" title="Find a buyer">Find a buyer</a></li>
+              <li class="soft--right"><a class="" href="https://selling-online-overseas.export.great.gov.uk/markets/" title="Selling online overseas">Selling online overseas</a></li>
+              <li><a class="" href="https://events.trade.gov.uk/" title="Events">Events</a></li>
+            </ul>
           </div>
         </div>
       </div>
         <div id="global-header">
           <div class="section">
-            <div class="grid-row">
-              <div class="column-one-third">
-                <div class="header-global">
-                  <div class="header-logo">
-                    <a href="https://www.exportingisgreat.gov.uk" title="Go to the Exporting is great homepage">
-                      <img src="/static/images/EiG-logo-withHMG.svg" alt="Exporting is great logo" class="header-main-logo">
-                    </a>
-                  </div>
+            <div class="grid-four-twelves">
+              <div class="header-global">
+                <div class="header-logo">
+                  <a href="https://www.exportingisgreat.gov.uk" title="Go to the Exporting is great homepage">
+                    <img src="/static/images/EiG-logo-withHMG.svg" alt="Exporting is great logo" class="header-main-logo">
+                  </a>
                 </div>
-                <a href="" class="header-nav-toggle" title="">menu<i class="icon icon-menu"></i></a>
               </div>
-              <div class="column-two-thirds" id="global-header--right">
-                <div class="header-nav">
-                  <div class="background--indigo soft-half--sides soft--ends header-nav--top">
-                    <nav>
-                      <h3 class="font-white">Our services:</h3>
-                      <ul class="">
-                        <li class="header-nav-link"><a class="font-reg" href="https://www.exportingisgreat.gov.uk/opportunities" title="Export opportunities">Export opportunities</a></li>
-                        <li class="header-nav-link"><a class="font-reg" href="http://find-a-buyer.export.great.gov.uk/" title="Find a buyer">Find a buyer</a></li>
-                        <li class="header-nav-link"><a class="font-reg" href="https://selling-online-overseas.export.great.gov.uk/markets/" title="Selling online overseas">Selling online overseas</a></li>
-                        <li class="header-nav-link"><a class="font-reg" href="https://events.trade.gov.uk/" title="Events">Events</a></li>
-                      </ul>
-                    </nav>
-                  </div>
-                  <div class="soft-half--left">
-                    <nav>
-                      <h3 class="font-white push--top desktop-only">Exporting is GREAT:</h3>
-                      <ul class="">
-                        <li class="header-nav-link"><a title="new to exporting" href="https://www.exportingisgreat.gov.uk/new/">NEW TO EXPORTING</a></li>
-                        <li class="header-nav-link"><a title="occasional exporter" href="https://www.exportingisgreat.gov.uk/occasional/">OCCASIONAL EXPORTER</a></li>
-                        <li class="header-nav-link"><a title="regular exporter" href="https://www.exportingisgreat.gov.uk/regular/">REGULAR EXPORTER</a></li>
-                      </ul>
-                    </nav>
-                  </div>
+              <a href="" class="header-nav-toggle" title="">menu<i class="icon icon-menu"></i></a>
+            </div>
+            <div class="grid-eight-twelves" id="global-header--right">
+              <div class="header-nav">
+                <div class="background--indigo soft-half--sides soft--ends header-nav--top">
+                  <nav>
+                    <h3 class="font-white">Our services:</h3>
+                    <ul class="">
+                      <li class="header-nav-link"><a class="font-reg" href="https://www.exportingisgreat.gov.uk/opportunities" title="Export opportunities">Export opportunities</a></li>
+                      <li class="header-nav-link"><a class="font-reg" href="http://find-a-buyer.export.great.gov.uk/" title="Find a buyer">Find a buyer</a></li>
+                      <li class="header-nav-link"><a class="font-reg" href="https://selling-online-overseas.export.great.gov.uk/markets/" title="Selling online overseas">Selling online overseas</a></li>
+                      <li class="header-nav-link"><a class="font-reg" href="https://events.trade.gov.uk/" title="Events">Events</a></li>
+                    </ul>
+                  </nav>
+                </div>
+                <div class="soft-half--left">
+                  <nav>
+                    <h3 class="font-white push--top desktop-only">Exporting is GREAT:</h3>
+                    <ul class="">
+                      <li class="header-nav-link"><a title="new to exporting" href="https://www.exportingisgreat.gov.uk/new/">NEW TO EXPORTING</a></li>
+                      <li class="header-nav-link"><a title="occasional exporter" href="https://www.exportingisgreat.gov.uk/occasional/">OCCASIONAL EXPORTER</a></li>
+                      <li class="header-nav-link"><a title="regular exporter" href="https://www.exportingisgreat.gov.uk/regular/">REGULAR EXPORTER</a></li>
+                    </ul>
+                  </nav>
                 </div>
               </div>
             </div>
@@ -104,18 +100,16 @@
     </header>
 
     <main role="main">
-      <div class="main">
+      <div class="main push--top">
 
         {% block content %}{% endblock content %}
 
         {% block feedback %}
           <section>
             <div class="section push--ends soft--ends">
-              <div class="grid-row">
-                <div class="column-one-whole push--top">
+                <div class="push--ends">
                   <a href="https://contact-us.export.great.gov.uk/feedback/selling_online_overseas" class="link link--regular">Help us improve this service</a>
                 </div>
-              </div>
             </div>
           </section>
         {% endblock %}
@@ -126,8 +120,8 @@
       <div class="" id="footer" >
         {% block footer %}
         <div class="footer-wrapper">
-          <div class="grid-row">
-            <div class="column-one-third logo">
+          <div class="section">
+            <div class="grid-four-twelves logo">
               <div class="footer-section footer-section--first">
                 <a href="https://www.gov.uk" title="Go to the GOV.UK homepage">
                   <img src="/static/images/footer_logo.png" alt="Gov.uk logo" class="footer-img footer-img--top">
@@ -139,7 +133,7 @@
               </div>
             </div>
 
-            <div class="column-one-third links">
+            <div class="grid-four-twelves links">
               <div class="footer-section">
                 <h3 class="footer-header">Our services</h3>
                 <ul>
@@ -151,7 +145,7 @@
               </div>
             </div>
 
-            <div class="column-one-third subscribe">
+            <div class="grid-four-twelves subscribe">
               <div class="footer-section">
                 <h3 class="footer-header">Exporting is GREAT</h3>
                 <ul>

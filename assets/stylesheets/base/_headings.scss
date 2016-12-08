@@ -1,63 +1,22 @@
 .heading {
 
-  &-xlarge {
-    @extend %medium;
-    font-family: $brand-font-family;
-    letter-spacing: -1px;
-
-    @include breakpoint(tablet) {
-      font-size: 36px;
-      font-weight: 500;
-    }
-
-    @include media(mobile) {
-      font-size: 30px;
-      margin-bottom: 0;
-    }
-
-  }
-
   &-xxlarge {
     font-size: 100px;
     letter-spacing: -2.5px;
     line-height: 110px;
   }
 
-  &-small {
-    @extend %regular;
-    @extend %lede;
-    font-family: $brand-font-family;
-    letter-spacing: -.4px;
-    line-height: 26px;
-
-    @include media(mobile) {
-      font-size: 19px;
-    }
-
-  }
-
-  &-large {
-    @extend %medium;
-    font-family: $brand-font-family;
-    letter-spacing: -1px;
-    margin-top: 0;
-  }
-
-  &-last-updated {
-    color: $grey-1;
-  }
-
   &-sub {
     @extend %light;
-    @extend %lede;
+    @extend %h3;
     border-bottom: 2px solid $purple;
     letter-spacing: -.4px;
     line-height: 31px;
     margin: 30px 0;
     padding-bottom: 40px;
 
-    @include media(mobile) {
-      font-size: 18px;
+    @include breakpoint(mobile) {
+      font-size: $h4-font-size;
       line-height: 25px;
       margin-top: 20px;
       padding: 0 0 30px;
@@ -75,8 +34,35 @@
     @extend %font-headline;
     @extend %regular;
 
-    @include media(mobile) {
+    @include breakpoint(mobile) {
       font-size: 15px;
     }
   }
 }
+
+
+.h1 {
+  @extend %h1;
+}
+
+.h2 {
+  @extend %h2;
+}
+
+.h3 {
+  @extend %regular;
+  @extend %h3;
+  font-family: $brand-font-family;
+  letter-spacing: -.4px;
+  line-height: 26px;
+  margin-bottom: 7px;
+
+  @include media(mobile) {
+    font-size: 19px;
+  }
+}
+
+.h4 {
+  @extend %h4;
+}
+

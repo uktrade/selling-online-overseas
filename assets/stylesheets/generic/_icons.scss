@@ -1,4 +1,7 @@
 .icon {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: inline-block;
 
   &-information {
     background-image: url('#{$image-path}icon-information.png');
@@ -92,7 +95,7 @@
     top: -30px;
     width: 45px;
     z-index: 1;
-    @include media (mobile) {
+    @include breakpoint (mobile) {
       top: -28px;
     }
 
@@ -102,7 +105,7 @@
       padding-bottom: 5px;
       width: 55px;
 
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         background-position: center center;
         width: 33px;
       }

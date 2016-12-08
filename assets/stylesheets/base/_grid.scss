@@ -1,125 +1,104 @@
-// Extend the Govuk grid
+.section {
+  margin: 0 10px;
 
-.column {
-
-  &-one {
-
-    &-whole {
-      @extend %padding-gutter-override;
-      box-sizing: border-box;
-      width: 100%;
-    }
-
-    &-half {
-      @include breakpoint(tablet) {
-        float: none;
-        width: 100%;
-      }
-    }
-
-    &-fifth {
-      @extend %padding-gutter-override;
-      box-sizing: border-box;
-      float: left;
-      width: 20%;
-    }
-
-    &-fourth {
-      @extend %padding-gutter-override;
-      box-sizing: border-box;
-      float: left;
-      width: 25%;
-    }
+  @include media($tablet) {
+    @include outer-container;
   }
 
-  &-two {
-
-    &-fifths {
-      @extend %padding-gutter-override;
-      box-sizing: border-box;
-      float: left;
-      width: 40%;
-
-      @include media (mobile) {
-        float: none;
-        width: 100%;
-      }
-    }
-
-  }
-
-  &-three {
-
-    &-fifths {
-      @extend %padding-gutter-override;
-      box-sizing: border-box;
-      float: left;
-      width: 60%;
-
-      @include media (mobile) {
-        float: none;
-        width: 100%;
-      }
-    }
-
-    &-quarters {
-      float: left;
-      width: 75%;
-
-      @include media (mobile) {
-        float: none;
-        width: 100%;
-      }
-    }
-
-    &-eights {
-      @extend %padding-gutter-override;
-      box-sizing: border-box;
-      float: left;
-      width: 37.5%;
-
-      @include media (mobile) {
-        float: none;
-        margin: 0;
-        width: 100%;
-      }
-    }
-
-  }
-
-  &-five {
-    &-eights {
-      @extend %padding-gutter-override;
-      box-sizing: border-box;
-      float: left;
-      width: 62.5%;
-
-      @include media (mobile) {
-        float: none;
-        width: 100%;
-      }
-    }
-  }
-
+  @include clearfix;
 }
 
-.section {
-  @extend %site-width-container;
-  @extend %contain-floats;
-
-  @include breakpoint(tablet) {
-    margin: 0 15px;
+.grid {
+  &-whole {
+    @include fill-parent;
   }
 
+  &-one-twelve {
+    @include fill-parent;
 
-  &-tablet {
-    @include breakpoint(tablet) {
-      margin: 0;
-      width: 100%;
-
-      .grid-row {
-        margin: 0;
-      }
+    @include media($mobile) {
+      @include span-columns(1 of 12);
     }
   }
+
+  &-two-twelves {
+    @include fill-parent;
+
+    @include media($mobile) {
+      @include span-columns(2 of 12);
+    }
+  }
+
+  &-three-twelves {
+    @include fill-parent;
+
+    @include media($mobile) {
+      @include span-columns(3 of 12);
+    }
+  }
+
+  &-four-twelves {
+    @include fill-parent;
+
+    @include media($mobile) {
+      @include span-columns(4 of 12);
+    }
+  }
+
+  &-five-twelves {
+    @include fill-parent;
+
+    @include media($mobile) {
+      @include span-columns(5 of 12);
+    }
+  }
+
+  &-six-twelves {
+    @include fill-parent;
+
+    @include media($mobile) {
+      @include span-columns(6 of 12);
+    }
+  }
+
+  &-seven-twelves {
+    @include fill-parent;
+
+    @include media($mobile) {
+      @include span-columns(7 of 12);
+    }
+  }
+
+  &-eight-twelves {
+    @include fill-parent;
+
+    @include media($mobile) {
+      @include span-columns(8 of 12);
+    }
+  }
+
+  &-nine-twelves {
+    @include fill-parent;
+
+    @include media($mobile) {
+      @include span-columns(9 of 12);
+    }
+  }
+
+  &-ten-twelves {
+    @include fill-parent;
+
+    @include media($mobile) {
+      @include span-columns(10 of 12);
+    }
+  }
+
+  &-eleven-twelves {
+    @include fill-parent;
+
+    @include media($mobile) {
+      @include span-columns(11 of 12);
+    }
+  }
+
 }

@@ -2,13 +2,13 @@
   padding-bottom: 30px;
   padding-top: 20px;
 
-  @include media (mobile) {
+  @include breakpoint (mobile) {
     padding-bottom: 20px;
   }
 
   li {
     @extend %light;
-    @extend %font-xxsmall;
+    @extend %font-base;
     background-image: url('/static/images/separator-2x.png');
     background-size: 6px 11px;
     font-family: $brand-font-family;

@@ -1,15 +1,15 @@
 {% load static utils %}
 
 <li class="markets-item cf">
-  <div class="column-five-eights markets-info--left">
+  <div class="grid-eight-twelves markets-info--left">
     <div class="cf markets-group">
-      <div class="column-two-fifths hard--sides markets-image">
+      <div class="grid-four-twelves markets-image">
         <div class="markets-item-logoholder">
           <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}"><img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo"></a>
         </div>
       </div>
-      <div class="column-three-fifths markets-info">
-        <h3 class="heading-small font-med flush--ends soft-half--bottom">{{ market.name }}</h3>
+      <div class="grid-eight-twelves markets-info">
+        <h3 class="h3 font-med flush--ends soft-half--bottom">{{ market.name }}</h3>
         <ul>
           <li>
             <dl>
@@ -28,7 +28,7 @@
     <p class="soft-half--ends hard--left">{{ market.description }}</p>
     <a class="button button-blue button-medium markets-item--button push--top" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">Full profile</a>
   </div>
-  <div class="column-three-eights markets-item--highlight--right">
+  <div class="grid-four-twelves markets-item--highlight--right">
     <div class="background--stone markets-item--highlight">
       <ul class="markets-item--list">
         <li class="list markets-item--highlight--section background-image--users">

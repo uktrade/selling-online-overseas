@@ -65,8 +65,7 @@ gulp.task('sass', () => gulp
   .pipe(plugins.sass({
     outputStyle: 'compressed',
     includePaths: [
-      paths.npm + 'govuk-elements-sass/public/sass/',
-      paths.toolkit + 'stylesheets/'
+      require("bourbon-neat").includePaths
     ]
   }))
   .pipe(plugins.base64({baseDir: 'apps'}))
@@ -93,7 +92,8 @@ gulp.task('lint:sass', () => gulp
             'no-ids': 0,
             'mixins-before-declarations': 0,
             'no-duplicate-properties': 0,
-            'no-vendor-prefixes': 0
+            'no-vendor-prefixes': 0,
+            'single-line-per-selector': 0
         }
     }))
     .pipe(plugins.sassLint.format(stylish))

@@ -1,12 +1,12 @@
-body,
-main,
-.main {
+body {
   @extend %light;
   background-color: $body-background-color;
   color: $grey;
   font-family: $brand-font-family;
-  font-size: 15px;
+  font-size: $base-font-size;
+  line-height: 1.5;
   position: relative;
+  @include prefix((font-smoothing: antialiased), webkit);
 }
 
 // FONT WEIGHT
@@ -23,48 +23,58 @@ main,
 }
 
 // FONT SIZES
-%lede {
-  font-size: 24px;
-}
-
-%font-regular {
-  font-size: 18px;
-}
-
 %font-headline {
-  font-size: 19px;
+  font-size: $headline-font-size;
 }
 
-%font-xxsmall {
-  font-size: 15px;
+%font-base {
+  font-size: $base-font-size;
 }
 
-%font-xxxsmall {
-  font-size: 14px;
+%font-xsmall {
+  font-size: $extra-small-font-size;
 }
 
 // HEADERS
 %h1 {
-  font-size: 48px;
+  @extend %medium;
+  font-family: $brand-font-family;
+  font-size: $h1-font-size;
+  letter-spacing: -1px;
+  line-height: 1.04167;
+  margin-bottom: 1.25em;
+
+  @include breakpoint(tablet) {
+    font-size: $h2-font-size;
+    font-weight: 500;
+  }
+
+  @include breakpoint(mobile) {
+    font-size: 30px;
+    margin-bottom: 0;
+  }
 }
 
 %h2 {
-  font-size: 36px;
+  font-size: $h2-font-size;
+}
+
+%h3 {
+  font-size: $h3-font-size;
+}
+
+%h4 {
+  font-size: $h4-font-size;
 }
 
 .font {
 
-  &-small {
-    @extend %font-regular;
-    font-family: $brand-font-family;
+  &-base {
+    @extend %font-base;
   }
 
-  &-xxsmall {
-    @extend %font-xxsmall;
-  }
-
-  &-xxxsmall {
-    @extend %font-xxxsmall;
+  &-xsmall {
+    @extend %font-xsmall;
   }
 
   &-white {
@@ -96,10 +106,6 @@ main,
   }
 }
 
-.h1 {
-  @extend %h1;
-}
-
 h1,
 h2,
 h3,
@@ -111,7 +117,7 @@ strong {
 }
 
 blockquote {
-  @extend %font-xxsmall;
+  @extend %font-base;
   line-height: 25px;
 }
 
@@ -122,6 +128,13 @@ hr {
 p {
   @extend %light;
   line-height: 23px;
+  margin-bottom: 1.05263em;
+  margin-top: .26316em;
+
+  @include breakpoint(tablet) {
+    margin-bottom: 1.25em;
+    margin-top: .3125em;
+  }
 }
 
 a {
@@ -158,10 +171,10 @@ a {
   }
 
   &--regular {
-    @extend %font-regular;
+    @extend %h4;
 
-    @include media(mobile) {
-      font-size: 15px;
+    @include breakpoint(mobile) {
+      font-size: $base-font-size;
     }
   }
 
