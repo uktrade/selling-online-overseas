@@ -21,6 +21,15 @@
 
 <div class="section">
   <div class='grid-row detail-section' data-equaliser>
+    <div class="column-two-fifths">
+      <div class="detail-section--terms detail-section--info back background--great-primary font-white" data-section>
+        <div class="detail-section-content detail-section-content--head">
+          <h4 class="detail-section--terms--header  push-half--bottom font-med hard--top">Department for International Trade (DIT) assistance and special terms</h4>
+          {{ market.ukti_terms|safe }}
+          <a href="https://contact-us.export.great.gov.uk/triage/soo" class="button button-blue button-medium push-half--top" title="apply now">Apply now</a>
+        </div>
+      </div>
+    </div>
     <div class="column-three-fifths">
       <div class="detail-section-header detail-section-header--dotted detail-section--info push--right" data-section>
         <i class="icon icon-header icon-header--left icon-adviser">
@@ -29,15 +38,6 @@
         <h3 class="font-brand header-icon">Our advice</h3>
         <blockquote class="detail-section-content detail-section-content--head font-lig font-brand">{{ market.dit_advisor_tip }}</blockquote>
       </div>
-    </div>
-    <div class="column-two-fifths">
-      <div class="detail-section--terms detail-section--info back background--great-primary font-white" data-section>
-          <div class="detail-section-content detail-section-content--head">
-            <h4 class="detail-section--terms--header  push-half--bottom font-med hard--top">Department for International Trade (DIT) special terms*</h4>
-            {{ market.ukti_terms|safe }}
-            <a href="https://contact-us.export.great.gov.uk/triage/soo" class="button button-blue button-medium push-half--top" title="apply now">Apply now</a>
-          </div>
-        </div>
     </div>
   </div>
 </div>
@@ -298,8 +298,12 @@
     <div class='column-one-third'>
       <div class="background--stone push--bottom soft-half--bottom" data-section>
         <div class="soft">
-          <h4 class="heading-headline font-med soft-half--top soft-half--bottom">Access preferential terms negotiated by UK Government</h4>
-          <p class="">Our advisers, here at the Department for International Trade, can help you get onto this marketplace and access special terms negotiated by UK government.</p>
+          <h4 class="heading-headline font-med push--bottom soft--bottom soft-half--top">Apply with help from DIT</h4>
+          <p class="push--top">DIT advisers can help you get onto the marketplace. You may also be able to:</p>
+          <ul class="list list-ordered push--bottom">
+            <li class="soft-half--bottom">benefit from special terms negotiated by the government for UK businesses</li>
+            <li>get a direct contact at the marketplace</li>
+          </ul>
           <a href="https://contact-us.export.great.gov.uk/triage/soo" class="button button-blue button-large push--top column-one-whole text--center" title="contact us">Contact Us</a>
         </div>
       </div>
