@@ -49,12 +49,12 @@ class HomepageView(MarketFilterMixin, TemplateView):
         return context
 
 
-class FilteringView(MarketFilterMixin, TemplateView):
+class SearchView(MarketFilterMixin, TemplateView):
     """
     The first step in the tool, used to pre-filter the marketplaces
     """
 
-    template_name = 'markets/filtering.html'
+    template_name = 'markets/search.html'
 
     def get_context_data(self, *args, **kwargs):
         """
