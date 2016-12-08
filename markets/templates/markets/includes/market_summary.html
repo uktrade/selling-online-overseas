@@ -14,7 +14,11 @@
           <li>
             <dl>
               <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
-              <dd>{{ market | csl:'countries_served' }}</dd>
+              {% if market.countries_served.count > 20 %}
+                <dd>Global</dd>
+              {% else %}
+                <dd>{{ market | csl:'countries_served' }}</dd>
+              {% endif %}
             </dl>
           </li>
           <li class="soft-half--ends markets-item--url"><a href="{{ market.web_address }}" class="link" target="_blank">{{ market.web_address }}</a></li>

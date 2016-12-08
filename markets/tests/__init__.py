@@ -1,21 +1,15 @@
 import os
 from markets.models import Market, Logo
-from geography.models import Country, Region
+from geography.models import Country
 
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 
 def create_market(**variable_data):
-    if 'region' in variable_data:
-        region = variable_data.pop('region')
-        if type(region) == str:
-            region = create_region(region)
-    else:
-        region = create_region('Europe')
 
     if 'countries_served' not in variable_data:
-        country = create_country('UK', region)
+        country = create_country('UK')
         countries_served = [country]
     else:
         countries_served = variable_data.pop('countries_served')
@@ -42,19 +36,9 @@ def create_logo(**variable_data):
     return logo
 
 
-def create_country(name, region=None):
-    if region is None:
-        country = Country.objects.get(name=name)
-    else:
-        if type(region) == str:
-            region = create_region(region)
-        country, created = Country.objects.get_or_create(name=name, region=region)
+def create_country(name):
+    country, created = Country.objects.get_or_create(name=name)
     return country
-
-
-def create_region(name):
-    region, created = Region.objects.get_or_create(name=name)
-    return region
 
 
 def load_sample_png():

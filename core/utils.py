@@ -1,4 +1,4 @@
-from django.db import connections
+from django.db import connection, connections
 from django.core import serializers
 from django.db.models import Count
 
@@ -47,3 +47,10 @@ def delete_model_duplicates(Model, unique_attr):
         model_to_delete = Model.objects.filter(name=name)[count-1:]
         for model in model_to_delete:
             model.delete()
+
+
+def fix_model_index(Model):
+    with connection.cursor() as cursor:
+        table_name = Model._meta.db_table
+        sql = "SELECT setval('{0}_id_seq', COALESCE((SELECT MAX(id)+1 FROM {0}), 1), false)".format(table_name)
+        cursor.execute(sql)

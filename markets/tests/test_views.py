@@ -107,8 +107,8 @@ class MarketTests(TestCase):
 
     def test_filter_market_list_by_related_property(self):
         # Create 2 markets with a specific countries
-        uk = create_country('uk', 'Europe')
-        fr = create_country('france', 'Europe')
+        uk = create_country('uk')
+        fr = create_country('france')
         amazon = create_market(name="Amazon", countries_served=[uk])
         ebay = create_market(name="Ebay", countries_served=[uk, fr])
 
@@ -129,19 +129,13 @@ class MarketTests(TestCase):
 
     def test_filter_market_list_complex(self):
         # Create 2 markets with a specific countries
-        uk = create_country('uk', 'Europe')
-        fr = create_country('france', 'Europe')
+        uk = create_country('uk')
+        fr = create_country('france')
         amazon = create_market(name="Amazon", countries_served=[uk])
         ebay = create_market(name="Ebay", countries_served=[uk, fr])
 
         # Filter on a list of names, including an incorrect name, we should get back both markets
         response = self.client.get(reverse('markets:list'), {'name': ['Amazon', 'Ebay', 'Blah']})
-        self.assertContains(response, amazon.name, status_code=200)
-        self.assertContains(response, ebay.name, status_code=200)
-
-        # Filter on a property of a related model, to a related model of the Market
-        # Filter for Europe region, we should get both markets
-        response = self.client.get(reverse('markets:list'), {'region': 'Europe'})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
