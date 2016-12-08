@@ -46,6 +46,10 @@ class Command(BaseCommand):
             # Get the top-level category name for the row
             category = row[1]
 
+            if category == 'Mature':
+                # Do not index the mature category, to reduce the risk of reputational damage
+                continue
+
             # Go over all columns in the row
             for index in range(2, len(row)):
                 # When you find an empty column, the PREVIOUS column was a leaf sub-category for the main category
