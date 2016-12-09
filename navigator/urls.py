@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse_lazy
 
 urlpatterns = [
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', RedirectView.as_view(url=reverse_lazy('markets:home')), name="home"),
     url(r'^markets/', include('markets.urls'), name="markets"),

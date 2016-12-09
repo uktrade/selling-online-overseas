@@ -25,6 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'navigator.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'DIRS': [os.path.join(BASE_DIR, "core", "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,3 +136,6 @@ WHOOSH_INDEX_DIR = os.path.join(BASE_DIR, 'whoosh_index')
 
 DEBUG = False
 SESSION_COOKIE_AGE = 43200  # 12 hours
+
+# Grappelli settings
+GRAPPELLI_ADMIN_TITLE = "Selling Online Overseas CMS"
