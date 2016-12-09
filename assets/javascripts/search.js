@@ -146,7 +146,7 @@ var search =(function ($) {
     }
 
     function clearInput(input) {
-        dataLayer.push({"event": "Search", "search_term": input.val()});
+        dataLayer.push({"event": input.attr('id'), "search_term": input.val()});
         input.val("");
     }
 
