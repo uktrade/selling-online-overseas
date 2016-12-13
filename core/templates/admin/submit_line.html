@@ -1,0 +1,23 @@
+{% load i18n admin_urls %}
+<footer class="grp-module grp-submit-row grp-fixed-footer">
+    <header style="display:none"><h1>Submit Options</h1></header>
+    <ul>
+        {% if show_save_and_continue %}
+                <li class="grp-float-left"><input type="submit" value="Save" class="grp-button" name="_continue" /></li>
+        {% endif %}
+        {% if show_save_and_add_another %}
+                <li class="grp-float-left"><input type="submit" value="Save and add new" class="grp-button" name="_addanother" /></li>
+        {% endif %}
+        {% if show_save %}
+                <li class="grp-float-left"><input type="submit" value="Save and close" class="grp-button grp-default" name="_save" /></li>
+        {% endif %}
+        
+        {% url opts|admin_urlname:'changelist' as changelist_url %}
+        <li class="grp-float-left"><a href="{{ changelist_url }}" class="grp-button">Close</a></li>
+        
+        {% if show_delete_link %}
+            {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+            <li class="grp-float-left"><a href="{% add_preserved_filters delete_url %}" class="grp-button grp-delete-link">{% trans "Delete" %}</a></li>
+        {% endif %}
+    </ul>
+</footer>
