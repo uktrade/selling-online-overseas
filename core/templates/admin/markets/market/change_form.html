@@ -1,0 +1,27 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+
+{% block submit_buttons_bottom %}
+<footer class="grp-module grp-submit-row grp-fixed-footer">
+    <header style="display:none"><h1>Submit Options</h1></header>
+    <ul>
+        <li class="grp-float-left"><input type="submit" value="Save" class="grp-button" name="_continue" /></li>
+        <li class="grp-float-left"><input type="submit" value="Save and add new" class="grp-button" name="_addanother" /></li>
+        <li class="grp-float-left"><input type="submit" value="Save and close" class="grp-button grp-default" name="_save" /></li>
+        
+        {% url opts|admin_urlname:'changelists' as changelist_url %}
+        <li class="grp-float-left"><a href="{{ changelist_url }}" class="grp-button">Close</a></li>
+
+        {% if perms.markets.can_publish_market %}
+            {% url 'admin:publish_market' original.pk as publish_url %}
+            <!--li class="grp-float-left"><a href="{{ publish_url }}" class="grp-button">Publish</a></li-->
+            <li class="grp-float-left"><input type="submit" value="Publish" class="grp-button" name="_publish" /></li>
+        {% endif %}
+        
+        {% if perms.markets.can_delete_market %}
+            {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+            <li class="grp-float-left"><a href="{% add_preserved_filters delete_url %}" class="grp-button grp-delete-link">{% trans "Delete" %}</a></li>
+        {% endif %}
+    </ul>
+</footer>
+{% endblock %}

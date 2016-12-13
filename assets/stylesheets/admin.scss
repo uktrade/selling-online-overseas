@@ -13,3 +13,11 @@ $grey-3: #444;
 @import 'admin/breadcrumb';
 @import 'admin/headers';
 @import 'admin/footer';
+
+th.published {
+    width: 5em;
+}
+
+td.published {
+    text-align: center;
+}
