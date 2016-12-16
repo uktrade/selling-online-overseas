@@ -1,0 +1,22 @@
+.grp-submit-row {
+  &.grp-fixed-footer {
+    ul {
+      li {
+        background: none;
+      }
+    }
+  }
+  ul li input.grp-button,
+  ul>li a.grp-button,
+  ul>li button.grp-button {
+    border: 0;
+    opacity: 1;
+  }
+}
+
+.grp-module {
+  &.grp-fixed-footer {
+    background: #dcdbde;
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,62 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  color: $mid-blue;
+}
+
+#grp-context-navigation {
+  background-color: $indigo;
+}
+
+.grp-pagination ul li,
+.grp-pagination ul li span {
+  background: none;
+  border: 0;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.grp-object-tools li a {
+  background: $great-primary;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 1;
+  padding: 5px 28px;
+
+  &.grp-add-link {
+    background: $mid-blue;
+  }
+
+  &:hover {
+    background: $aqua;
+    border: 0;
+  }
+}
+
+.grp-object-tools li a:hover {
+  background: $aqua;
+  border: 0;
+}
+
+#grp-content-title h1 {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.grp-module h2 {
+  background: $stone;
+  font-size: 18px;
+  font-weight: 400;
+  text-shadow: none;
+}
+
+.grp-module {
+  background: $white;
+  border: 0;
+  margin-bottom: 30px;
+}
+
