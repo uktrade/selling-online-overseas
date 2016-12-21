@@ -19,7 +19,7 @@ var search =(function ($) {
 
         $('html').click(function (event) {
             var input = $(event.target);
-            if(!input.hasClass('form-dropdown-input')) {
+            if(!input.hasClass('form-dropdown-input') || input.val()=== "") {
                 closeDropdown();
                 var inputs = $('.form-dropdown-input');
                 inputs.each(function(i, item) {
@@ -91,11 +91,13 @@ var search =(function ($) {
             data: {q: $(element).val()}
         });
 
-        var test = element;
-
         $.when(categories)
             .done(function (categories) {
-                createDropDown(categories, test);
+                var data = categories.countries ? categories.countries : categories.categories;
+
+                if(data.length > 0) {
+                    createDropDown(data, element);
+                }
             })
             .fail(function () {
             })
@@ -106,17 +108,16 @@ var search =(function ($) {
     function createDropDown(request, element) {
         closeDropdown();
 
-        var data = request.countries ? request.countries : request.categories;
+        for (var i = 0; i < request.length; i++) {
+            var content = (typeof(request[i]) === 'string') ? request[i] : '<b>'+request[i][0]+'</b>'+ ' - '+request[i][1],
+                option = (typeof(request[i]) === 'string') ? request[i] : request[i][0];
 
-        if(data) {
-            for (var i = 0; i < data.length; i++) {
-                var content = (typeof(data[i]) === 'string') ? data[i] : '<b>'+data[i][0]+'</b>'+ ' - '+data[i][1],
-                    option = (typeof(data[i]) === 'string') ? data[i] : data[i][0];
-
-                $(element).next().append('<li class="form-dropdown-list"><a href="" class="form-dropdown-option" data-option-id="' + option + '">' + content + '</li></a></li>');
-            }
-            $('.form-dropdown-option').on('click', addTag);
+            $(element).next().append('<li class="form-dropdown-list" role="option"><a href="" class="form-dropdown-option" data-option-id="' + option + '">' + content + '</li></a></li>');
         }
+
+        $('.form-dropdown-option').click(addTag);
+        $('.form-dropdown-list').hover(onHover);
+        $('html').addClass('overflow--hidden');
     }
 
     function addTag(event) {
@@ -137,6 +138,17 @@ var search =(function ($) {
         clearInput(input);
         closeDropdown();
         addTagToStorage(buttonId, optionId, checkboxOption);
+    }
+
+    function onHover() {
+        $('.form-dropdown-list').removeClass('active');
+
+        if (!$(this).hasClass('active')) {
+            $(this).addClass('active');
+            $(this).children().focus();
+        } else {
+            $(this).removeClass('active');
+        }
     }
 
     function createTag(container, checkboxOption, optionId, buttonId) {
@@ -179,6 +191,7 @@ var search =(function ($) {
 
     function closeDropdown() {
         results.empty();
+        $('html').removeClass('overflow--hidden');
     }
     
     function addCheckbox(field, value) {
