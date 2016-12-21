@@ -1,0 +1,37 @@
+table {
+  tbody {
+    tr {
+      td,
+      th {
+        font-size: 15px;
+        font-weight: normal;
+      }
+      a {
+        color: $mid-blue;
+      }
+    }
+  }
+  thead th a {
+    color: $mid-blue;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  
+  &.grp-sortable thead th.sortable.sorted a {
+    font-weight: normal;
+  }
+}
+
+table.grp-sortable thead th div.grp-text span  {
+  color: $grey-3;
+  text-transform: uppercase;
+}
+
+.grp-row {
+  a {
+    strong {
+      font-size: 15px;
+      font-weight: normal;
+    }
+  }
+}

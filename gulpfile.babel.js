@@ -83,7 +83,8 @@ gulp.task('watchForChanges', function() {
 
 gulp.task('lint:sass', () => gulp
   .src([
-    paths.src + 'stylesheets/**/*.scss'
+    paths.src + 'stylesheets/**/*.scss',
+    '!'+paths.src + 'stylesheets/admin/**/*.scss'
   ])
     .pipe(plugins.sassLint({
         rules: {

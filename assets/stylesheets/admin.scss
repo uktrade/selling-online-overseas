@@ -1,3 +1,15 @@
-.test {
-  background: red; 
-}
+@import 'node_modules/govuk_frontend_toolkit/stylesheets/colours';
+
+@import 'vars';
+
+$grey: #adb0be;
+$blue: #1fc8fa;
+$grey-2: #333;
+$grey-3: #444;
+
+@import 'admin/typo';
+@import 'admin/table';
+@import 'admin/form';
+@import 'admin/breadcrumb';
+@import 'admin/headers';
+@import 'admin/footer';
