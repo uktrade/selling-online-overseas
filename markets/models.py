@@ -14,6 +14,7 @@ from django.contrib.contenttypes.models import ContentType
 
 from reversion.models import Version
 from ckeditor.fields import RichTextField
+from image_cropping import ImageRatioField
 
 from . import PAYMENT_FREQUENCIES, BOOL_CHOICES
 from geography.models import Country
@@ -32,10 +33,8 @@ class LogisticsModel(models.Model):
 
 class Logo(models.Model):
     name = models.CharField(max_length=200)
-    _encoded_data = models.TextField()
-
-    def base64_logo(self):
-        return self._encoded_data
+    image = models.ImageField(null=True)
+    cropping = ImageRatioField('image', '400x302')
 
     def __str__(self):
         return "{0}".format(self.name)
@@ -104,6 +103,7 @@ class BaseMarket(models.Model):
     slug = models.SlugField(max_length=200)
 
     logo = models.ForeignKey('Logo', null=True, blank=True)
+
     description = models.TextField(verbose_name="e-Marketplace Description")
     web_address = models.URLField(max_length=200)
     signup_address = models.URLField(max_length=200, null=True, blank=True, verbose_name="Explore the marketplace")

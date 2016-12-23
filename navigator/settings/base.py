@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import dj_database_url
+from easy_thumbnails.conf import Settings as thumbnail_settings
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -35,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.staticfiles',
     'ckeditor',
+    'easy_thumbnails',
+    'image_cropping',
     'core',
     'markets',
     'geography',
@@ -140,3 +143,7 @@ SESSION_COOKIE_AGE = 43200  # 12 hours
 
 # Grappelli settings
 GRAPPELLI_ADMIN_TITLE = "Selling Online Overseas CMS"
+
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
