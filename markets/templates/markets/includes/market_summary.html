@@ -1,11 +1,13 @@
-{% load static utils %}
+{% load static utils thumbnail %}
 
 <li class="markets-item cf">
   <div class="col-7 markets-info--left">
     <div class="cf markets-group">
       <div class="markets-image">
         <div class="markets-item-logoholder">
-          <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}"><img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo"></a>
+          <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
+            <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="{{ market.name }} logo">
+          </a>
         </div>
       </div>
       <div class="markets-info">
