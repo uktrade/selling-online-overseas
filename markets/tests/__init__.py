@@ -2,6 +2,7 @@ import os
 from markets.models import Market, Logo
 from geography.models import Country
 from products.models import Category
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
@@ -72,10 +73,13 @@ def get_market_data(**variable_data):
 def create_logo(**variable_data):
     if 'name' not in variable_data:
         variable_data['name'] = 'logo'
-    if '_encoded_data' not in variable_data:
-        variable_data['_encoded_data'] = (
-            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HA'
-            'wCAAAAC0lEQVR4nGP6LwkAAiABG+faPgsAAAAASUVORK5CYII=')
+    if 'image' not in variable_data:
+        folder = os.path.dirname(os.path.realpath(__file__))
+        image_path = os.path.join(folder, 'png', 'sample.png')
+        variable_data['image'] = SimpleUploadedFile(name='test.jpg',
+                                                    content=open(image_path, 'rb').read(),
+                                                    content_type='image/jpeg')
+
     logo = Logo(**variable_data)
     logo.save()
     return logo
