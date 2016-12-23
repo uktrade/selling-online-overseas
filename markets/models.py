@@ -348,6 +348,7 @@ class Market(BaseMarket):
         'dit_advisor_tip',
         'seller_model',
         'signup_address',
+        'famous_brands_on_marketplace',
     ]
 
     def publish(self, user=None, validate=True):
