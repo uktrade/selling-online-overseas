@@ -1,11 +1,18 @@
 from django.contrib.admin import widgets
 from django import forms
 from django.contrib import admin
+from django.conf.urls import url
+from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
+from django import forms
 
 from .models import (
-    Market, Logo, SupportChannel, UploadMethod, Currency, Brand, SellerModel, LogisticsModel, MarketForSignOff
+    Market, Logo, PublishedMarket, SupportChannel, UploadMethod, Currency, Brand, SellerModel, LogisticsModel
 )
 from .forms import LogoAdminForm
+from reversion.admin import VersionAdmin
+from django.utils.safestring import mark_safe
 
 
 admin.site.register(SupportChannel)
@@ -16,13 +23,45 @@ admin.site.register(SellerModel)
 admin.site.register(LogisticsModel)
 
 
-class MarketAdmin(admin.ModelAdmin):
+class MarketForm(forms.ModelForm):
+
+    class Meta:
+        model = Market
+        exclude = ['live_version']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        market = kwargs['instance']
+        try:
+            published_market = PublishedMarket.objects.get(id=market.id)
+
+            for field_name, field in self.fields.items():
+                try:
+                    market_value = getattr(market, field_name)
+                    published_market_value = getattr(published_market, field_name)
+
+                    if hasattr(market_value, 'all'):
+                        market_value = set([item.id for item in market_value.all()])
+                        published_market_value = set([item.id for item in published_market_value.all()])
+
+                    if market_value != published_market_value:
+                        field.label_suffix = mark_safe(' <span style="color: red; font-weight: bold;">(editted)</span>')
+                except AttributeError:
+                    continue
+
+        except PublishedMarket.DoesNotExist:
+            pass
+
+
+@admin.register(Market)
+class MarketAdmin(VersionAdmin):
 
     list_display = ['name', 'web_address']
     ordering = ['name']
     readonly_fields = ['slug']
-    filtered_widget_fields = ['countries_served', 'product_categories', 'famous_brands_on_marketplace']
+    filter_horizontal = ['countries_served', 'product_categories', 'famous_brands_on_marketplace']
     checkbox_widget_fields = ['customer_support_channels']
+    form = MarketForm
 
     fieldsets = (
         ('Marketplace Description', {
@@ -98,39 +137,58 @@ class MarketAdmin(admin.ModelAdmin):
         }),
     )
 
+    def get_urls(self):
+        """
+        Add the publishing URL to the ModelAdmin
+        """
+
+        urls = super().get_urls()
+        custom_urls = [
+            url(r'^(?P<pk>[0-9]+)/publish/$', self.admin_site.admin_view(self.publish_market), name="publish_market"),
+        ]
+        return custom_urls + urls
+
+    def publish_market(self, request, pk):
+        """
+        Special view for handling publishing of markets.  Checks the can_publish permission, and redirects to the main
+        markets list upon success
+        """
+
+        if not request.user.has_perm('markets.can_publish'):
+            return HttpResponseForbidden()
+
+        market = get_object_or_404(Market, pk=pk)
+        market.publish(request.user)
+        self.message_user(request, "Market published.")
+        url = reverse('admin:markets_market_change', args=[pk])
+        return HttpResponseRedirect(url)
+
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):
-        if db_field.name in self.filtered_widget_fields:
-            kwargs['widget'] = widgets.FilteredSelectMultiple(
-                db_field.verbose_name,
-                db_field.name in self.filter_vertical
-            )
-        else:
-            kwargs['widget'] = forms.CheckboxSelectMultiple()
+        """
+        Override the widgets for ManyToMany fields, to set to either a left-to-right filter widget (if specified in the
+        list above), or a multiple-checkbox widget otherwise
+        """
+
+        kwargs['widget'] = forms.CheckboxSelectMultiple()
 
         return super(admin.ModelAdmin, self).formfield_for_manytomany(db_field, request=request, **kwargs)
 
+    def response_post_save_change(self, request, obj):
 
-class MarketSignOffAdmin(MarketAdmin):
+        # Default response
+        resp = super().response_post_save_change(request, obj)
 
-    list_display = ['name', 'web_address', 'published']
-
-    def _flatten(self, data):
-        rdata = []
-        for x in data:
-            rdata += self._flatten(x) if hasattr(x, '__iter__') and not isinstance(x, str) else [x]
-        return rdata
-
-    def get_fieldsets(self, *args, **kwargs):
-        fields = super().get_fieldsets(*args, **kwargs)
-        return fields + (('Admin', {'fields': ('published',)}),)
+        # Check that you clicked the button `_save_and_copy`
+        if '_publish' in request.POST:
+            url = reverse('admin:publish_market', args=[obj.pk])
+            return HttpResponseRedirect(url)
+        else:
+            # Otherwise, just use default behavior
+            return resp
 
 
+@admin.register(Logo)
 class LogoAdmin(admin.ModelAdmin):
     list_display = ['name']
     ordering = ['name']
     form = LogoAdminForm
-
-
-admin.site.register(Market, MarketAdmin)
-admin.site.register(MarketForSignOff, MarketSignOffAdmin)
-admin.site.register(Logo, LogoAdmin)
