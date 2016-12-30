@@ -31,9 +31,17 @@ class MarketForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        market = kwargs['instance']
+
         try:
-            published_market = PublishedMarket.objects.get(id=market.id)
+            market = kwargs['instance']
+            if market is None:
+                return
+        except KeyError:
+            # Adding a new market, so there is no instance, return early
+            return
+
+        try:
+            published_market = PublishedMarket.objects.get_or_create(id=market.id)
 
             for field_name, field in self.fields.items():
                 try:
@@ -45,11 +53,12 @@ class MarketForm(forms.ModelForm):
                         published_market_value = set([item.id for item in published_market_value.all()])
 
                     if market_value != published_market_value:
-                        field.label_suffix = mark_safe(' <span style="color: red; font-weight: bold;">(editted)</span>')
+                        field.label_suffix = mark_safe(' <span style="color: red; font-weight: bold;">(edited)</span>')
                 except AttributeError:
                     continue
 
         except PublishedMarket.DoesNotExist:
+            # No PublishedMarket exists, nothing to compare to, just pass
             pass
 
 
