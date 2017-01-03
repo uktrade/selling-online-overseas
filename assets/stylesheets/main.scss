@@ -1,15 +1,11 @@
-// Path to assets for use with file-url()
-$path: '/static/images/';
-
-@import 'govuk_elements/govuk-elements';
-@import 'govuk_elements/govuk-frontend-toolkit';
-@import 'govuk_elements/gutter';
+@import 'neat/grid-settings';
+@import 'neat';
 
 @import 'vars';
 
+@import 'generic/reset';
 @import 'generic/mixins';
 @import 'generic/animation';
-@import 'generic/helpers';
 @import 'generic/icons';
 
 @import 'base/background';
@@ -33,3 +29,6 @@ $path: '/static/images/';
 @import 'pages/detail';
 @import 'pages/markets';
 @import 'pages/home';
+
+
+@import 'generic/helpers';

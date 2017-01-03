@@ -1,8 +1,5 @@
 @each $name, $bg-color, $visited, $hover, $color, $color-hover, $bg-image, $outline in $button {
   .button {
-    box-shadow: none;
-    font-weight: 900;
-
     &-#{$name} {
       background-color: $bg-color;
       @if $bg-image != null {
@@ -32,13 +29,20 @@
 }
 
 .button {
+  border: 0;
+  box-shadow: none;
+  display: inline-block;
+  font-family: $brand-font-family;
+  font-weight: 900;
+  text-decoration: none;
+
   &-large {
-    @extend %lede;
+    @extend %h3;
     padding: 18px 30px;
   }
 
   &-medium {
-    @extend %font-regular;
+    @extend %h4;
     padding: 13px 38px;
   }
 
@@ -52,7 +56,7 @@
     }
 
     &:before {
-      @extend %font-regular;
+      @extend %h4;
       color: $flag-red;
       content: 'X';
       font-size: 24px;
@@ -65,9 +69,10 @@
     background-image: none;
   }
 
-  @include media (mobile) {
+  @include breakpoint (mobile) {
     font-size: 18px;
     padding: 14px;
     text-align: center;
+    width: 100%;
   }
 }

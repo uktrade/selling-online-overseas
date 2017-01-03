@@ -7,14 +7,18 @@
     margin-bottom: 20px;
   }
 
-  @include media(mobile) {
+  @include breakpoint(mobile) {
     margin-bottom: 10px;
   }
 
   .header-main-logo {
     width: $logo-width;
 
-    @include media (mobile) {
+    @include breakpoint(tablet) {
+      margin-left: 10px;
+    }
+
+    @include breakpoint(mobile) {
       width: 70%;
     }
   }
@@ -23,12 +27,6 @@
     @include breakpoint (tablet) {
       padding: 0;
       width: 100%;
-    }
-  }
-
-  .header-hm-logo {
-    @include media (mobile) {
-      display: none;
     }
   }
 
@@ -74,7 +72,7 @@
           width: 93%;
         }
 
-        @include media (mobile) {
+        @include breakpoint (mobile) {
           width: 85%;
         }
 
@@ -163,6 +161,12 @@
       @include breakpoint(tablet) {
         display: block;
       }
+    }
+  }
+
+  .section {
+    @include breakpoint(tablet) {
+      margin: 0;
     }
   }
 }

@@ -25,13 +25,13 @@
   }
 
   &--top {
-    @include media (mobile) {
+    @include breakpoint (mobile) {
       padding-top: 70px;
     }
   }
 
   &--back {
-    @include media (mobile) {
+    @include breakpoint (mobile) {
       left: 15px;
       position: absolute;
       top: 0;
@@ -47,14 +47,14 @@
       margin-top: 30px;
     }
 
-    @include media (mobile) {
+    @include breakpoint (mobile) {
       margin-top: 20px;
     }
 
     &--header {
       font-size: 24px;
 
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         font-size: 19px;
       }
     }
@@ -69,13 +69,13 @@
       padding: 30px 0;
     }
 
-    @include media (mobile) {
+    @include breakpoint (mobile) {
       padding-top: 10px;
     }
 
     &--head {
       padding: 30px 20px;
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         padding: 20px 10px;
       }
     }
@@ -92,7 +92,7 @@
 
     &.header-icon {
       padding-left: 70px;
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         font-size: 19px;
         padding-left: 42px;
         padding-right: 5px;
@@ -103,7 +103,7 @@
   &.detail-section--format {
     dt,
     dd {
-      @extend %font-regular;
+      @extend %h4;
     }
   }
 
@@ -112,13 +112,13 @@
     font-size: 19px;
     padding: 20px 0 10px;
 
-    @include media (mobile) {
+    @include breakpoint (mobile) {
       font-size: 15px;
       font-weight: 500;
     }
 
     &.subtitle {
-      @extend %font-xxsmall;
+      @extend %font-base;
       @extend %medium;
       padding-top: 10px;
     }

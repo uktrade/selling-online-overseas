@@ -4,6 +4,13 @@ $half-spacing-unit: $base-spacing-unit / 2;
 $image-path: '/static/images/';
 
 // BRAND COLOURS
+$white: #fff;
+$link-colour: #005ea5;
+$grey-1: #6f777b;
+$grey-2: #bfc1c3;
+$grey-3: #dee0e2;
+$black: #0b0c0c;
+$secondary-text-colour: #6f777b;
 $great-primary: #1e1348;
 $great-secondary: #e41f13;
 $flag-red: #b00d23;
@@ -25,6 +32,17 @@ $loader-background: rgba(0, 0, 0, .5);
 
 // FONTS
 $brand-font-family: 'Roboto', sans-serif;
+$base-font-size: 15px;
+$h1-font-size: 48px;
+$h2-font-size: 36px;
+$h3-font-size: 24px;
+$h4-font-size: 18px;
+$paragraph-large-font-size: $h4-font-size;
+// not in styleguide
+$headline-font-size: 19px;
+$extra-small-font-size: 14px;
+
+
 
 //BODY
 $body-background-color: $bright-grey;
@@ -112,4 +130,4 @@ $form-field-height: 40px;
 
 // Devices
 $tablet: 960px;
-$mobile: 400px;
+$mobile: 640px;

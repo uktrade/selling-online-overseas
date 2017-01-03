@@ -7,20 +7,20 @@
     }
 
     .markets-item-logo {
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         height: 100%;
         width: 100%;
       }
     }
 
     .markets-info {
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         padding-left: 0;
       }
     }
 
     .markets-group {
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         display: flex;
         flex-flow: column;
       }
@@ -28,7 +28,7 @@
 
     .markets-image,
     .markets-item-logoholder {
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         order: 2;
         width: 100%;
       }
@@ -39,29 +39,28 @@
     }
 
     .markets-item {
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         padding-bottom: 30px;
         padding-top: 0;
       }
     }
 
-    @include media (mobile) {
+    @include breakpoint (mobile) {
       clear: both;
     }
   }
 
   &-item {
     border-bottom: 1px solid $great-primary;
-    margin: 0 10px;
     padding: 30px 0;
 
-    @include media (mobile) {
+    @include breakpoint (mobile) {
       padding-bottom: 100px;
       position: relative;
     }
 
     &--button {
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         bottom: 30px;
         position: absolute;
       }
@@ -70,7 +69,7 @@
     &--list {
       padding: 5px 35px 15px;
 
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         padding: 5px 15px;
       }
     }
@@ -86,7 +85,7 @@
         width: 185px;
       }
 
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         height: 76px;
         width: 100px;
       }
@@ -94,7 +93,7 @@
 
     &-logoholder {
 
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         height: 100%;
         margin-bottom: 10px;
       }
@@ -114,8 +113,6 @@
     margin-left: 7px;
     padding: 20px 0;
     position: relative;
-    width: 345px;
-
 
     &--right {
 
@@ -123,7 +120,7 @@
         padding: 0;
       }
 
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         margin-top: 30px;
       }
 
@@ -160,7 +157,7 @@
     dl {
       padding-left: 50px;
 
-      @include media (mobile) {
+      @include breakpoint (mobile) {
         padding-left: 70px;
       }
 
@@ -185,20 +182,20 @@
     padding-left: 0;
 
     p {
-      @include media(mobile) {
+      @include breakpoint(mobile) {
         margin-bottom: 0;
         padding-bottom: 0;
       }
     }
 
-    @include media(mobile) {
+    @include breakpoint(mobile) {
       padding: 0;
     }
 
   }
 
   &-image {
-    @include media(mobile) {
+    @include breakpoint(mobile) {
       float: left;
       width: 35%;
     }
@@ -213,7 +210,7 @@
       padding-left: 30px;
     }
 
-    @include media (mobile) {
+    @include breakpoint (mobile) {
       margin-top: 10px;
       order: 1;
       padding-bottom: 10px;
