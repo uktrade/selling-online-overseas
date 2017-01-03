@@ -7,10 +7,11 @@ from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django import forms
 
+from image_cropping import ImageCroppingMixin
+
 from .models import (
     Market, Logo, PublishedMarket, SupportChannel, UploadMethod, Currency, Brand, SellerModel, LogisticsModel
 )
-from .forms import LogoAdminForm
 from reversion.admin import VersionAdmin
 from django.utils.safestring import mark_safe
 
@@ -197,7 +198,6 @@ class MarketAdmin(VersionAdmin):
 
 
 @admin.register(Logo)
-class LogoAdmin(admin.ModelAdmin):
+class LogoAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ['name']
     ordering = ['name']
-    form = LogoAdminForm
