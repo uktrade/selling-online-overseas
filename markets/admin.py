@@ -41,7 +41,7 @@ class MarketForm(forms.ModelForm):
             return
 
         try:
-            published_market = PublishedMarket.objects.get_or_create(id=market.id)
+            published_market, created = PublishedMarket.objects.get_or_create(id=market.id)
 
             for field_name, field in self.fields.items():
                 try:
