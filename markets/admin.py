@@ -5,6 +5,8 @@ from django.conf.urls import url
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ValidationError
+from django.contrib import messages
 from django import forms
 
 from .models import (
@@ -153,11 +155,11 @@ class MarketAdmin(VersionAdmin):
 
         urls = super().get_urls()
         custom_urls = [
-            url(r'^(?P<pk>[0-9]+)/publish/$', self.admin_site.admin_view(self.publish_market), name="publish_market"),
+            url(r'^(?P<pk>[0-9]+)/publish/$', self.admin_site.admin_view(self.publish_view), name="publish_market"),
         ]
         return custom_urls + urls
 
-    def publish_market(self, request, pk):
+    def publish_view(self, request, pk):
         """
         Special view for handling publishing of markets.  Checks the can_publish permission, and redirects to the main
         markets list upon success
@@ -166,11 +168,18 @@ class MarketAdmin(VersionAdmin):
         if not request.user.has_perm('markets.can_publish'):
             return HttpResponseForbidden()
 
-        market = get_object_or_404(Market, pk=pk)
-        market.publish(request.user)
-        self.message_user(request, "Market published.")
+        try:
+            market = get_object_or_404(Market, pk=pk)
+            market.validate_for_publishing()
+            market.publish(request.user)
+            self.message_user(request, "Market published.", level=messages.SUCCESS)
+        except ValidationError as errors:
+            self.message_user(request, "Failed to publish Market.", level=messages.ERROR)
+            for error in errors:
+                self.message_user(request, error, level=messages.ERROR)
+
         url = reverse('admin:markets_market_change', args=[pk])
-        return HttpResponseRedirect(url)
+        return HttpResponseRedirect("{0}?publish".format(url))
 
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):
         """
@@ -187,7 +196,7 @@ class MarketAdmin(VersionAdmin):
         # Default response
         resp = super().response_post_save_change(request, obj)
 
-        # Check that you clicked the button `_save_and_copy`
+        # Check that you clicked the button `_publish`
         if '_publish' in request.POST:
             url = reverse('admin:publish_market', args=[obj.pk])
             return HttpResponseRedirect(url)

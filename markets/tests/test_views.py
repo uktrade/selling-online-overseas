@@ -15,7 +15,7 @@ class MarketPublishingTests(TestCase):
         self.market.delete()
 
     def _publish_market(self):
-        self.market.publish(validate=False)
+        self.market.publish()
         published_market = PublishedMarket.objects.get(id=self.market.id)
         self.market = published_market
 

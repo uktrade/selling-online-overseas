@@ -210,16 +210,6 @@ class BaseMarket(models.Model):
     dit_advisor_tip = models.TextField(null=True, blank=True,
                                        verbose_name="Department of International Trade advisor tip")
 
-    def get_changes_since_live(self):
-        live_version = Version.objects.get_for_object(self).get(revision_id=self.live_version).field_dict
-        curr_version = model_to_dict(self)
-        for field, new_val in live_version.items():
-            if field in ['live_version', 'last_modified']:
-                continue
-            curr_val = curr_version.get(field, None)
-            if curr_val != new_val:
-                yield field
-
     def save(self, *args, **kwargs):
         """
         Populate the slug based on the marketplace's name on save
@@ -351,28 +341,31 @@ class Market(BaseMarket):
         'famous_brands_on_marketplace',
     ]
 
-    def publish(self, user=None, validate=True):
+    def validate_for_publishing(self):
+        errors = []
+
+        for field_name in self.approval_fields:
+            field = getattr(self, field_name, None)
+            verbose_name = self._meta.get_field_by_name(field_name)[0].verbose_name
+            if getattr(field, 'all', False):
+                value = field.all()
+                if len(value) == 0:
+                    msg = '{0} must be filled in for publishing'.format(verbose_name)
+                    errors.append(msg)
+            else:
+                value = field
+                if value is None or value == '':
+                    msg = '{0} must be filled in for publishing'.format(verbose_name)
+                    errors.append(msg)
+        if errors:
+            raise ValidationError(errors)
+
+    def publish(self, user=None):
         """
         Publish the Market.  Check that all the approval_fields are completed, then create a PublishedMarket copy of
         the Market, by serialising and deserialiseing it as a PublishedMarket object.  Create a revision for it, and
         mark that revision as it being published.
         """
-
-        if validate:
-            errors = {}
-
-            for field_name in self.approval_fields:
-                field = getattr(self, field_name, None)
-                if getattr(field, 'all', False):
-                    value = field.all()
-                    if len(value) == 0:
-                        errors[field_name] = 'This field must be filled in for publishing'
-                else:
-                    value = field
-                    if value is None or value == '':
-                        errors[field_name] = 'This field must be filled in for publishing'
-            if errors:
-                raise ValidationError(errors)
 
         with reversion.create_revision():
             # Just save the model to trigger the new revision
