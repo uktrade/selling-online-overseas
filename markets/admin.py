@@ -178,8 +178,7 @@ class MarketAdmin(VersionAdmin):
             for error in errors:
                 self.message_user(request, error, level=messages.ERROR)
 
-        url = reverse('admin:markets_market_change', args=[pk])
-        return HttpResponseRedirect("{0}?publish".format(url))
+        return HttpResponseRedirect(reverse('admin:markets_market_change', args=[pk]))
 
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):
         """

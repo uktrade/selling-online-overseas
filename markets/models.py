@@ -346,7 +346,7 @@ class Market(BaseMarket):
 
         for field_name in self.approval_fields:
             field = getattr(self, field_name, None)
-            verbose_name = self._meta.get_field_by_name(field_name)[0].verbose_name
+            verbose_name = self._meta.get_field(field_name).verbose_name
             if getattr(field, 'all', False):
                 value = field.all()
                 if len(value) == 0:
