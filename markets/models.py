@@ -1,13 +1,18 @@
 from __future__ import unicode_literals
 import base64
 import datetime
+import json
+import reversion
 
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 from django.core.exceptions import ValidationError
 from django.utils.numberformat import format
+from django.core import serializers
+from django.contrib.contenttypes.models import ContentType
 
+from reversion.models import Version
 from ckeditor.fields import RichTextField
 
 from . import PAYMENT_FREQUENCIES, BOOL_CHOICES
@@ -87,39 +92,12 @@ class Brand(models.Model):
         ordering = ('name',)
 
 
-class ApprovalModel(models.Model):
+class BaseMarket(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ('-name',)
 
-    published = models.BooleanField(default=False)
-    approval_fields = []
-
-    def clean(self):
-        """
-        If the published flag is True, then go over all of the fields that must be populated for publishing, and check
-        that they have a value
-        """
-
-        if self.published:
-            errors = {}
-
-            for field_name in self.approval_fields:
-                field = getattr(self, field_name, None)
-                if getattr(field, 'all', False):
-                    value = field.all()
-                    if len(value) == 0:
-                        errors[field_name] = 'This field must be filled in for publishing'
-                else:
-                    value = field
-                    if value is None or value == '':
-                        errors[field_name] = 'This field must be filled in for publishing'
-
-            if errors:
-                raise ValidationError(errors)
-
-
-class Market(ApprovalModel):
     last_modified = models.DateTimeField(auto_now=True)
 
     name = models.CharField(max_length=200)
@@ -232,28 +210,6 @@ class Market(ApprovalModel):
     dit_advisor_tip = models.TextField(null=True, blank=True,
                                        verbose_name="Department of International Trade advisor tip")
 
-    approval_fields = [
-        'logo',
-        'countries_served',
-        'product_categories',
-        'web_traffic',
-        'customer_support_channels',
-        'customer_support_hours',
-        'seller_support_channels',
-        'seller_support_hours',
-        'customer_demographics',
-        'marketing_merchandising',
-        'product_details_upload',
-        'payment_terms_days',
-        'currency_of_payments',
-        'logistics_structure',
-        'product_type',
-        'ukti_terms',
-        'dit_advisor_tip',
-        'seller_model',
-        'signup_address',
-    ]
-
     def save(self, *args, **kwargs):
         """
         Populate the slug based on the marketplace's name on save
@@ -352,21 +308,94 @@ class Market(ApprovalModel):
         else:
             return ""
 
-    class Meta:
-        ordering = ('-name',)
 
-
-class MarketForSignOff(Market):
-    """
-    A proxy class to our Market that are for an approver to sign off.  We can't register the same Market model in the
-    admin site more than once, so here we create a proxy so that we can, and limit the queryset to only those that
-    published=False
-    """
+class Market(BaseMarket):
 
     class Meta:
-        proxy = True
-        verbose_name = "Market - To Sign Off"
-        verbose_name_plural = "Markets - To Sign Off"
+        permissions = (
+            ("can_publish", "Can publish Market"),
+        )
 
-    def queryset(self, request):
-        return self.model.objects.filter(published=False)
+    live_version = models.IntegerField(null=True)
+
+    approval_fields = [
+        'logo',
+        'countries_served',
+        'product_categories',
+        'web_traffic',
+        'customer_support_channels',
+        'customer_support_hours',
+        'seller_support_channels',
+        'seller_support_hours',
+        'customer_demographics',
+        'marketing_merchandising',
+        'product_details_upload',
+        'payment_terms_days',
+        'currency_of_payments',
+        'logistics_structure',
+        'product_type',
+        'ukti_terms',
+        'dit_advisor_tip',
+        'seller_model',
+        'signup_address',
+        'famous_brands_on_marketplace',
+    ]
+
+    def validate_for_publishing(self):
+        errors = []
+
+        for field_name in self.approval_fields:
+            field = getattr(self, field_name, None)
+            verbose_name = self._meta.get_field_by_name(field_name)[0].verbose_name
+            if getattr(field, 'all', False):
+                value = field.all()
+                if len(value) == 0:
+                    msg = '{0} must be filled in for publishing'.format(verbose_name)
+                    errors.append(msg)
+            else:
+                value = field
+                if value is None or value == '':
+                    msg = '{0} must be filled in for publishing'.format(verbose_name)
+                    errors.append(msg)
+        if errors:
+            raise ValidationError(errors)
+
+    def publish(self, user=None):
+        """
+        Publish the Market.  Check that all the approval_fields are completed, then create a PublishedMarket copy of
+        the Market, by serialising and deserialiseing it as a PublishedMarket object.  Create a revision for it, and
+        mark that revision as it being published.
+        """
+
+        with reversion.create_revision():
+            # Just save the model to trigger the new revision
+            self.save()
+
+            # Store the meta-information to say that the model has been published
+            reversion.set_user(user)
+            reversion.set_comment("Published")
+
+        # Get the latest revision id that was just completed
+        latest_version = Version.objects.get_for_object(self)[0]
+        # Save it to the model
+        self.live_version = latest_version.revision_id
+        self.save()
+
+        # Get the model data from the Version
+        data = latest_version.serialized_data
+        model_data = json.loads(data)
+
+        # Change it's content type to PublishedMarket
+        content_type = ContentType.objects.get_for_model(PublishedMarket)
+        model_name = "{0}.{1}".format(content_type.app_label, content_type.model)
+        model_data[0]['model'] = model_name
+        # Pop the live_version (which isn't on the PublisheMarket model)
+        model_data[0]['fields'].pop('live_version')
+
+        # Then deserialise and save the PublishedMarket object
+        published_market = next(serializers.deserialize("json", json.dumps(model_data)))
+        published_market.save()
+
+
+class PublishedMarket(BaseMarket):
+    pass

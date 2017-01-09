@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.contrib.auth.models import User
+from ..models import PublishedMarket
 
 from . import create_market, create_country
 
@@ -14,8 +15,9 @@ class MarketPublishingTests(TestCase):
         self.market.delete()
 
     def _publish_market(self):
-        self.market.published = True
-        self.market.save()
+        self.market.publish()
+        published_market = PublishedMarket.objects.get(id=self.market.id)
+        self.market = published_market
 
     def test_list_markets(self):
         response = self.client.get(reverse('markets:list'))

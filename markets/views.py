@@ -8,7 +8,7 @@ from django.forms import TypedChoiceField
 from django.db.models import Max, Count
 from django.http import Http404
 
-from .models import Market
+from .models import Market, PublishedMarket
 from .forms import MarketListFilterForm
 from core.forms import QueryChoiceMixin
 
@@ -26,7 +26,7 @@ class MarketFilterMixin(object):
 
         if not authenticated:
             # Remove the not published Markets for un-authed users
-            return Market.objects.filter(published=True)
+            return PublishedMarket.objects
         else:
             return Market.objects
 
@@ -204,20 +204,23 @@ class MarketAPIView(MarketListView):
     template_name = 'markets/includes/market_list.html'
 
 
-class MarketDetailView(MarketFilterMixin, DetailView):
+class MarketDetailView(MarketFilterMixin, TemplateView):
     """
     The simple view for the details page for individual Markets
     """
 
-    model = Market
     template_name = 'markets/detail.html'
-    slug_field = 'slug'
 
-    def get_object(self, queryset=None):
+    def get_context_data(self, *args, **kwargs):
+        """
+        """
+
+        context = super().get_context_data(*args, **kwargs)
         slug = self.kwargs['slug']
+
         try:
-            market = self.markets.get(slug=slug)
-        except Market.DoesNotExist:
+            context['market'] = self.markets.get(slug=slug)
+        except (Market.DoesNotExist, PublishedMarket.DoesNotExist):
             raise Http404('Market does not exist')
 
-        return market
+        return context

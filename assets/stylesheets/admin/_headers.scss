@@ -1,0 +1,27 @@
+header {
+  &#grp-header {
+    #grp-navigation {
+      background-color: $great-primary;
+      background-image: none;
+      a {
+        color: $white;
+        font-size: 14px;
+        font-weight: 500;
+  
+        &:hover {
+          color: $blue;
+        }
+      }
+  
+      h1#grp-admin-title {
+        font-size: 24px;
+        letter-spacing: -0.2px;
+      }
+  
+      ul li.grp-collapse.grp-open>ul {
+        background-color: $great-primary;
+        background-image: none;
+      }
+    }
+  }
+}

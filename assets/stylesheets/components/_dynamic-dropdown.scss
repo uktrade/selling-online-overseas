@@ -40,7 +40,8 @@
     border-bottom: 1px solid $stone;
     display: block;
 
-    &.active {
+    &.active,
+    &:hover {
       background-color: $aqua;
 
       a {
@@ -57,11 +58,6 @@
 
     &:visited {
       color: $grey;
-    }
-
-    &:hover,
-    &.active {
-      outline: 2px solid $aqua;
     }
   }
 
