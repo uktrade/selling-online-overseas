@@ -43,7 +43,7 @@ class MarketForm(forms.ModelForm):
             return
 
         try:
-            published_market, created = PublishedMarket.objects.get_or_create(id=market.id)
+            published_market = PublishedMarket.objects.get(id=market.id)
 
             for field_name, field in self.fields.items():
                 try:
@@ -67,7 +67,7 @@ class MarketForm(forms.ModelForm):
 @admin.register(Market)
 class MarketAdmin(VersionAdmin):
 
-    list_display = ['name', 'web_address']
+    list_display = ['name', 'web_address', 'is_published']
     ordering = ['name']
     readonly_fields = ['slug']
     filter_horizontal = ['countries_served', 'product_categories', 'famous_brands_on_marketplace']
