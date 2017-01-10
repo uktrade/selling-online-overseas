@@ -396,6 +396,26 @@ class Market(BaseMarket):
         published_market = next(serializers.deserialize("json", json.dumps(model_data)))
         published_market.save()
 
+    @property
+    def published(self):
+        """
+        Property the returns true/false based on whether a matching PublishedMarket exists in the database
+        """
+
+        try:
+            PublishedMarket.objects.get(pk=self.pk)
+            return True
+        except PublishedMarket.DoesNotExist:
+            return False
+
+    def is_published(self):
+        """
+        For use as a column in the list_display of the ModelAdmin
+        """
+        return self.published
+
+    is_published.boolean = True
+
 
 class PublishedMarket(BaseMarket):
     pass
