@@ -396,6 +396,65 @@ class Market(BaseMarket):
         published_market = next(serializers.deserialize("json", json.dumps(model_data)))
         published_market.save()
 
+    def unpublish(self, user=None):
+        """
+        Unpublish the market, deleting the associated PublishedMarket model, and setting the live_version to None
+        """
+
+        if not self.published:
+            raise ValidationError("Market is not published, so cannot unpublish.")
+
+        # Delet the associated PublishedMarket
+        PublishedMarket.objects.get(pk=self.pk).delete()
+
+        with reversion.create_revision():
+            # Make null the live_version and save
+            self.live_version = None
+            self.save()
+
+            # Store the meta-information to say that the model has been unpublished
+            reversion.set_user(user)
+            reversion.set_comment("Unpublished")
+
+    def delete(self):
+        """
+        Override standard delete behaviour to ensure we delete the associated PublishedMarket, if indeed there is one
+        """
+
+        if self.published:
+            published_market = PublishedMarket.objects.get(pk=self.pk)
+            pub_count, pub_objects = published_market.delete()
+            count, objects = super().delete()
+            for model, updated in pub_objects.items():
+                if model in objects:
+                    objects[model] += updated
+                else:
+                    objects[model] = updated
+
+            return (count + pub_count, objects)
+        else:
+            return super().delete()
+
+    @property
+    def published(self):
+        """
+        Property the returns true/false based on whether a matching PublishedMarket exists in the database
+        """
+
+        try:
+            PublishedMarket.objects.get(pk=self.pk)
+            return True
+        except PublishedMarket.DoesNotExist:
+            return False
+
+    def is_published(self):
+        """
+        For use as a column in the list_display of the ModelAdmin
+        """
+        return self.published
+
+    is_published.boolean = True
+
 
 class PublishedMarket(BaseMarket):
     pass

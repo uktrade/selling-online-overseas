@@ -1,6 +1,6 @@
 describe('result counts', function () {
 
-    var html ='<form="results-form">' +
+    var html ='<form class="results-form">' +
                 '<input checked="checked" id="id_product_categories_0" name="product_categories" type="checkbox" value="Accessories">' +
                 '<input checked="checked" id="id_product_categories_0" name="product_categories" type="checkbox" value="books">' +
                 '<div id="results-count" class="background--blue filters-container soft filters-result">' +
@@ -28,5 +28,9 @@ describe('result counts', function () {
         $('#results-form').remove();
 
     })
+
+    after(function () {
+        $('.results-form').remove();
+    });
 
 });
