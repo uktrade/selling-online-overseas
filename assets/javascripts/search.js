@@ -245,10 +245,28 @@ var search =(function ($) {
             });
         }
     }
-
+    
     return {
-        init: init
+        init: init,
+        selectedEnter: selectedEnter,
+        manualSelect: manualSelect,
+        inputEvent: inputEvent,
+        getResults: getResults,
+        createDropDown: createDropDown,
+        addTag: addTag,
+        createTag: createTag,
+        clearInput: clearInput,
+        addTagToStorage: addTagToStorage,
+        deleteTagFromStorage: deleteTagFromStorage,
+        deleteTag: deleteTag,
+        closeDropDown: closeDropdown,
+        addCheckbox: addCheckbox,
+        deleteCheckbox: deleteCheckbox,
+        selectOption: selectOption,
+        activateAndFocus: activateAndFocus,
+        updateTagsFromStorage: updateTagsFromStorage
     };
+
 })(jQuery);
 
 search.init();
