@@ -140,3 +140,18 @@ SESSION_COOKIE_AGE = 43200  # 12 hours
 
 # Grappelli settings
 GRAPPELLI_ADMIN_TITLE = "Selling Online Overseas CMS"
+
+# CKEDITOR configuration
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'format_tags': 'p',
+        'forcePasteAsPlainText': True,
+        'toolbar_Custom': [
+            ['Format', 'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'],
+            ['BulletedList', 'NumberedList'],
+            ['Link', 'Unlink'],
+            ['Source']
+        ]
+    },
+}
