@@ -185,21 +185,15 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">Organise translation {% if market.translation_verbal_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.translation_verbal_notes }}" data-tooltip="translation"></button>{% endif %}</dt>
-        <dd>{{ market.translation_verbal | formatvalue:'tick' }} To negotiate with the marketplace</dd>
-        <dd>{{ market.translation_application_process | formatvalue:'tick' }} To apply to join</dd>
-        <dd>{{ market.translation_product_content | formatvalue:'tick' }} For product content</dd>
-        <dd>{{ market.translation_seller_support | formatvalue:'tick' }} For seller support</dd>
+        <dt class="font-reg">Organise translation {% if market.translation_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.translation_notes }}" data-tooltip="translation"></button>{% endif %}</dt>
+        {{ market | field_dd:'translation_requirements' }}
         <dialog data-tooltip="translation"></dialog>
       </dl>
 
       <dl class="column-one-third">
-        <dt class="font-reg">Set up {% if market.local_incorporation_needed_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.local_incorporation_needed_notes }}" data-tooltip="local-incorporation"></button>{% endif %}</dt>
-        <dd>{{ market.local_bank_account_needed | formatvalue:'tick' }} A local bank account</dd>
-        <dd>{{ market.local_incorporation_needed | formatvalue:'tick' }} A local company</dd>
-        <dd>{{ market.local_return_address_required | formatvalue:'tick' }} A local address to handle returns</dd>
-
-        <dialog data-tooltip="local-incorporation"></dialog>
+        <dt class="font-reg">Set up {% if market.setup_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.setup_notes }}" data-tooltip="setup-notes"></button>{% endif %}</dt>
+        {{ market | field_dd:'setup_requirements' }}
+        <dialog data-tooltip="setup-notes"></dialog>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Agree to {% if market.exclusivity_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.exclusivity_required_notes }}" data-tooltip="exclusivity"></button>{% endif %}</dt>
