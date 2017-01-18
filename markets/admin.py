@@ -119,13 +119,14 @@ class MarketAdmin(VersionAdmin):
         }),
         ('What does the marketplace need me to do?', {
             'fields': (
-                ('translation_verbal', 'translation_verbal_notes',),
-                ('translation_application_process', 'translation_application_process_notes',),
-                ('translation_product_content', 'translation_product_content_notes',),
-                ('translation_seller_support', 'translation_seller_support_notes',),
-                ('local_bank_account_needed', 'local_bank_account_needed_notes',),
-                ('local_incorporation_needed', 'local_incorporation_needed_notes',),
-                ('local_return_address_required', 'local_return_address_required_notes',),
+                ('translation_requirements', 'translation_notes'),
+                (
+                    'translation_application_process_notes',
+                    'translation_product_content_notes',
+                    'translation_seller_support_notes'
+                ),
+                ('setup_requirements', 'setup_notes'),
+                ('local_bank_account_needed_notes', 'local_return_address_required_notes',),
                 ('exclusivity_required', 'exclusivity_required_notes',),
                 ('product_details_upload', 'product_details_upload_notes',),
             )
@@ -178,8 +179,7 @@ class MarketAdmin(VersionAdmin):
             for error in errors:
                 self.message_user(request, error, level=messages.ERROR)
 
-        url = reverse('admin:markets_market_change', args=[pk])
-        return HttpResponseRedirect("{0}?publish".format(url))
+        return HttpResponseRedirect(reverse('admin:markets_market_change', args=[pk]))
 
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):
         """
@@ -190,6 +190,12 @@ class MarketAdmin(VersionAdmin):
         kwargs['widget'] = forms.CheckboxSelectMultiple()
 
         return super(admin.ModelAdmin, self).formfield_for_manytomany(db_field, request=request, **kwargs)
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        default = super().formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name[-6:] == '_notes':
+            default.widget.attrs = {'cols': '40', 'rows': '2'}
+        return default
 
     def response_post_save_change(self, request, obj):
 

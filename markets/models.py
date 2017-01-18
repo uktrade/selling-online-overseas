@@ -92,6 +92,28 @@ class Brand(models.Model):
         ordering = ('name',)
 
 
+class TranslationRequirement(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    ordering = models.IntegerField()
+
+    def __str__(self):
+        return "{0}".format(self.name)
+
+    class Meta:
+        ordering = ('ordering',)
+
+
+class SetupRequirement(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    ordering = models.IntegerField()
+
+    def __str__(self):
+        return "{0}".format(self.name)
+
+    class Meta:
+        ordering = ('ordering',)
+
+
 class BaseMarket(models.Model):
 
     class Meta:
@@ -104,7 +126,7 @@ class BaseMarket(models.Model):
     slug = models.SlugField(max_length=200)
 
     logo = models.ForeignKey('Logo', null=True, blank=True)
-    description = models.TextField(verbose_name="e-Marketplace Description")
+    description = RichTextField(verbose_name="e-Marketplace Description")
     web_address = models.URLField(max_length=200)
     signup_address = models.URLField(max_length=200, null=True, blank=True, verbose_name="Explore the marketplace")
 
@@ -130,7 +152,7 @@ class BaseMarket(models.Model):
 
     product_details_upload = models.ManyToManyField(UploadMethod, blank=True,
                                                     verbose_name="Upload product details via")
-    product_details_upload_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    product_details_upload_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
     payment_terms_days = models.IntegerField(null=True, blank=True, help_text="in days",
                                              verbose_name="Payment terms - sale to payment duration")
@@ -139,56 +161,39 @@ class BaseMarket(models.Model):
                                                   verbose_name="Payment terms - Currency of payments")
 
     logistics_structure = models.ManyToManyField(LogisticsModel, blank=True)
-    logistics_structure_notes = models.CharField(max_length=200, blank=True, null=True, verbose_name='notes')
+    logistics_structure_notes = models.TextField(blank=True, null=True, verbose_name='notes')
 
     product_type = models.ManyToManyField(Type, blank=True, verbose_name="Product Positioning")
     prohibited_items = models.ManyToManyField(ProhibitedItem, blank=True)
 
     commission_lower = models.FloatField(null=True, blank=True)
     commission_upper = models.FloatField(null=True, blank=True)
-    commission_notes = models.CharField(max_length=255, null=True, blank=True)
+    commission_notes = models.TextField(null=True, blank=True)
 
     ukti_terms = RichTextField(null=True, blank=True, verbose_name="Department of International Trade special terms")
 
-    local_bank_account_needed = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                                    verbose_name="A local bank account")
-    local_bank_account_needed_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    local_incorporation_needed = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                                     verbose_name="A local company")
-    local_incorporation_needed_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-
     exclusivity_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                                verbose_name="Product exclusivity required")
-    exclusivity_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    exclusivity_required_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
-    translation_verbal = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                             verbose_name="To negotiate with the marketplace")
-    translation_verbal_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    translation_application_process = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                                          verbose_name="To apply to join")
-    translation_application_process_notes = models.CharField(max_length=255, null=True, blank=True,
-                                                             verbose_name="Notes")
+    translation_requirements = models.ManyToManyField(TranslationRequirement, blank=True)
+    translation_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
-    translation_product_content = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                                      verbose_name="For product content")
-
-    translation_product_content_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    translation_seller_support = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                                     verbose_name="For seller support")
-    translation_seller_support_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    setup_requirements = models.ManyToManyField(SetupRequirement, blank=True)
+    setup_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
     payment_terms_rate_fixed = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                                    verbose_name="Payment Terms - Exchange rate fixed")
-    payment_terms_rate_fixed_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    payment_terms_rate_fixed_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
     registration_fees = models.FloatField(default=0, verbose_name="One off registration fee")
-    registration_fees_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    registration_fees_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
     registration_fees_currency = models.ForeignKey(Currency, null=True, blank=True,
                                                    related_name="%(app_label)s_%(class)s_registration_fees_currency")
 
     fee_per_listing = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                           verbose_name="Fee per Listing")
-    fee_per_listing_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    fee_per_listing_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
     membership_fees = models.FloatField(default=0, verbose_name="Membership fees")
     membership_fees_frequency = models.CharField(choices=PAYMENT_FREQUENCIES, max_length=1, null=True, blank=True)
@@ -198,17 +203,23 @@ class BaseMarket(models.Model):
     deposit = models.FloatField(default=0)
     deposit_currency = models.ForeignKey(Currency, null=True, blank=True,
                                          related_name="%(app_label)s_%(class)s_deposit_currency")
-    deposit_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    deposit_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
     shipping_tracking_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                                      verbose_name="Shipping Tracking Required")
-    shipping_tracking_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    local_return_address_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                                        verbose_name="A local address to handle returns?")
-    local_return_address_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    shipping_tracking_required_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
-    dit_advisor_tip = models.TextField(null=True, blank=True,
-                                       verbose_name="Department of International Trade advisor tip")
+    dit_advisor_tip = RichTextField(null=True, blank=True,
+                                    verbose_name="Department of International Trade advisor tip")
+
+    # Redundant fields to remove
+    translation_product_content_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    translation_seller_support_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    translation_application_process_notes = models.CharField(max_length=255, null=True, blank=True,
+                                                             verbose_name="Notes")
+
+    local_bank_account_needed_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
+    local_return_address_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
 
     def save(self, *args, **kwargs):
         """
@@ -346,7 +357,7 @@ class Market(BaseMarket):
 
         for field_name in self.approval_fields:
             field = getattr(self, field_name, None)
-            verbose_name = self._meta.get_field_by_name(field_name)[0].verbose_name
+            verbose_name = self._meta.get_field(field_name).verbose_name
             if getattr(field, 'all', False):
                 value = field.all()
                 if len(value) == 0:

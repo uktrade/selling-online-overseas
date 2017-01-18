@@ -23,6 +23,17 @@ def publish_markets(apps, schema_editor):
     ContentType = apps.get_model('contenttypes', 'ContentType')
     PublishedMarket = apps.get_model('markets', 'PublishedMarket')
 
+    from django.apps.registry import Apps
+    orig_get_model = Apps.get_model
+
+    def my_get_model(self, app_label, model_name=None):
+        if app_label == 'markets.publishedmarket':
+            return PublishedMarket
+        else:
+            return orig_get_model
+
+    Apps.get_model = my_get_model
+
     market_content_type = ContentType.objects.get_for_model(Market)
 
     for market in Market.objects.all():
@@ -58,11 +69,13 @@ def publish_markets(apps, schema_editor):
             published_market = next(serializers.deserialize("json", json.dumps(model_data)))
             published_market.save()
 
+    Apps.get_model = orig_get_model
+
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('markets', '0050_create_initial_revisions'),
+        ('markets', '0049_published_market_model'),
     ]
 
     operations = [

@@ -1,9 +1,10 @@
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.contrib.auth.models import User
-from ..models import PublishedMarket
+from django.contrib.auth.models import Permission
 
-from . import create_market, create_country
+from ..models import Market, PublishedMarket
+from . import create_market, create_country, get_market_data
 
 
 class MarketPublishingTests(TestCase):
@@ -164,22 +165,22 @@ class MarketTests(TestCase):
         as necessary
         """
 
-        amazon = create_market(name="Amazon", local_bank_account_needed=True, payment_terms_days=15)
-        ebay = create_market(name="Ebay", local_bank_account_needed=False, payment_terms_days=30)
+        amazon = create_market(name="Amazon", payment_terms_rate_fixed=True, payment_terms_days=15)
+        ebay = create_market(name="Ebay", payment_terms_rate_fixed=False, payment_terms_days=30)
 
-        # Filter for local_bank_account_needed True, we shoudl get back only Amazon
-        response = self.client.get(reverse('markets:list'), {'local_bank_account_needed': True})
+        # Filter for payment_terms_rate_fixed True, we shoudl get back only Amazon
+        response = self.client.get(reverse('markets:list'), {'payment_terms_rate_fixed': True})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertNotContains(response, ebay.name, status_code=200)
 
         # Filtering using a string shoudl work the same, since True/False would be converted to 'True'/'False' in the
         # get request anyway, check that 'False' therefore only returns ebay
-        response = self.client.get(reverse('markets:list'), {'local_bank_account_needed': 'False'})
+        response = self.client.get(reverse('markets:list'), {'payment_terms_rate_fixed': 'False'})
         self.assertNotContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
         # We should be able to pass a list of these values, and get back both
-        response = self.client.get(reverse('markets:list'), {'local_bank_account_needed': ['True', 'False']})
+        response = self.client.get(reverse('markets:list'), {'payment_terms_rate_fixed': ['True', 'False']})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
@@ -195,3 +196,76 @@ class MarketTests(TestCase):
         response = self.client.get(reverse('markets:list'), {'payment_terms_days': ['15', 30]})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
+
+
+class MarketAdminTests(TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.username = 'testuser'
+        cls.password = '12345'
+        cls.user = User.objects.create(username=cls.username)
+        cls.user.set_password('12345')
+        cls.user.is_staff = True
+        cls.user.save()
+        cls.change_perm = Permission.objects.get(codename='change_market')
+        cls.add_perm = Permission.objects.get(codename='add_market')
+        cls.publish_perm = Permission.objects.get(codename='can_publish')
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.user.delete()
+
+    def _add_permission(self, permission):
+        self.user.user_permissions.add(permission)
+        self.user = User.objects.get(username=self.username)
+        self.client.logout()
+        self.client.login(username=self.user.username, password=self.password)
+
+    def setUp(self):
+        self.client.login(username=self.user.username, password=self.password)
+
+    def tearDown(self):
+        self.user.user_permissions.clear()
+        self.client.logout()
+
+    def test_add_no_publish(self):
+        self._add_permission(self.add_perm)
+        self._add_permission(self.change_perm)
+        self.assertEquals(Market.objects.count(), 0)
+
+        market_data = get_market_data()
+        response = self.client.post(reverse('admin:markets_market_add'), market_data)
+
+        self.assertRedirects(response, reverse('admin:markets_market_changelist'))
+        self.assertEquals(Market.objects.count(), 1)
+        self.assertEquals(PublishedMarket.objects.count(), 0)
+
+    def test_publish_button(self):
+        market = create_market()
+        self._add_permission(self.publish_perm)
+        self._add_permission(self.change_perm)
+        response = self.client.get(reverse('admin:markets_market_change', args=[market.pk]))
+        self.assertContains(response, 'name="_publish"')
+
+    def test_no_publish_button(self):
+        market = create_market()
+        self._add_permission(self.change_perm)
+        response = self.client.get(reverse('admin:markets_market_change', args=[market.pk]))
+        self.assertNotContains(response, 'name="_publish"')
+
+    def test_publish(self):
+        market = create_market()
+        self._add_permission(self.publish_perm)
+        self._add_permission(self.change_perm)
+
+        self.assertEquals(PublishedMarket.objects.count(), 0)
+
+        # Try and publish, but validation will mean it won't publish
+        response = self.client.post(reverse('admin:publish_market', args=[market.pk]))
+        self.assertRedirects(response, reverse('admin:markets_market_change', args=[market.pk]))
+        self.assertEquals(Market.objects.count(), 1)
+        # XXX: CAn I test the redirected page contains "Failed to publish Market" as a user message?
+        self.assertEquals(PublishedMarket.objects.count(), 0)
+
+        # XXX: TODO Fill in all the required market attributes for publishing

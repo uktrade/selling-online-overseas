@@ -5,12 +5,14 @@ import csv
 from django.http import JsonResponse, HttpResponse
 from django.views.generic import ListView, DetailView, FormView, TemplateView
 from django.forms import TypedChoiceField
-from django.db.models import Max, Count
+from django.db.models import Max, Case, When, FloatField, ExpressionWrapper, Count, F
 from django.http import Http404
 
 from .models import Market, PublishedMarket
 from .forms import MarketListFilterForm
 from core.forms import QueryChoiceMixin
+from products.models import Category
+from geography.models import Country
 
 
 class MarketFilterMixin(object):
@@ -156,10 +158,79 @@ class MarketListView(MarketFilterMixin, ListView):
                 # Ignore GET params that aren't on the model
                 pass
 
-        filtered_markets = self.markets.filter(**_filter).distinct()
-        ordered_markets = filtered_markets.annotate(cats=Count('product_categories')).order_by('cats', 'name')
+        markets = self._order_markets(_filter)
 
-        return ordered_markets
+        return markets
+
+    def _order_markets(self, orig_filter):
+        # We will need to apply a different filter to the query than the original passed in, store it here
+        new_filter = {}
+        # Build annotations for each of the __in filters
+        annotations = {}
+
+        category_filter = orig_filter.pop('product_categories__name__in', [])
+        matches, score = self._order_by_related_model_name('product_categories__name__in', category_filter)
+        annotations['product_categories_matches'] = matches
+        annotations['product_categories_score'] = score
+        annotations['total_score'] = score
+
+        country_filter = orig_filter.pop('countries_served__name__in', [])
+        matches, score = self._order_by_related_model_name('countries_served__name__in', country_filter)
+        annotations['countries_served_matches'] = matches
+        annotations['countries_served_score'] = score
+        annotations['total_score'] += score
+
+        # Filter the markets based on the original search params (without the product/category terms)
+        markets = self.markets.filter(**orig_filter)
+
+        # Make the filter term to ensure we only have results where there is more than 1 match for each filter term
+        new_filter = {'product_categories_matches__gt': 0, 'countries_served_matches__gt': 0}
+
+        # Apply all the annotations to the queryset
+        return markets.annotate(**annotations).filter(**new_filter).order_by('-total_score')
+
+    def _order_by_related_model_name(self, attribute, values):
+
+        # Get the related model from the attribute
+        related_model_name = attribute[:attribute.index('__')]
+        related_model = getattr(Market, related_model_name).rel.model
+        search_count = len(values)
+
+        # Get rid of the trailing '__in'
+        attr_name = attribute[:-4]
+
+        # Get the name of the related model as a field in the query
+        field_name = F('{0}__name'.format(related_model_name))
+
+        if search_count > 0:
+            # The user has filtered this related model, so calculate a score based on matching values, with a modifier
+            # for unmatched values
+
+            when_statements = []
+
+            for value in values:
+                # Construct When objects like When(related_model='value', then=blah)
+                # 'blah' in this case is the name of the model, as this will be COUNT(DISTINCT) later
+                when_kwargs = {attr_name: value, 'then': field_name}
+                when_statements.append(When(**when_kwargs))
+
+            # Get the number of matches for the related model
+            matches = Count(Case(*when_statements, default=None, output_field=FloatField()), distinct=True)
+            # Get the total number of the related model the market has
+            total = ExpressionWrapper(Count(field_name, distinct=True), output_field=FloatField())
+            # Calculate an irrelevance score, based the unmatched values
+            irrelevance = ExpressionWrapper((1.0 * (total - matches) / total), output_field=FloatField())
+            # Compute the overall score
+            score = ExpressionWrapper(((matches - irrelevance) / search_count), output_field=FloatField())
+        else:
+            # The user did NOT filter this related model, so calculate based on all relations to the market counting
+            # as a match, and divide by the total number of the related model in the database
+
+            count = related_model.objects.count()
+            matches = Count(field_name, distinct=True)
+            score = ExpressionWrapper((1.0 * matches / count), output_field=FloatField())
+
+        return matches, score
 
 
 class MarketCountView(MarketListView):
