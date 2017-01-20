@@ -6,7 +6,7 @@
 
   &-label {
     @extend %font-regular;
-    @extend %light;
+    @extend %regular;
     color: $grey;
     font-family: $brand-font-family;
     margin-bottom: 10px;
@@ -34,6 +34,70 @@
     float: none;
     height: 100%;
   }
+
+  &-tab {
+
+    li {
+      height: 20px;
+      position: relative;
+    }
+
+    a {
+      color: $light-grey;
+      position: absolute;
+
+      &.form-tab-link {
+        @extend %medium;
+        font-size: 18px;
+        text-decoration: none;
+
+        span {
+          border: {
+            radius: 100px;
+            style: solid;
+            width: 2px;
+          }
+          display: inline-block;
+          padding: 0 6px;
+          text-align: center;
+        }
+      }
+
+      &.form-tab-link--completed {
+        color: $aqua;
+      }
+
+      &.form-tab-link--active {
+        color: $aqua;
+        font-size: 22px;
+        margin-top: -6px;
+
+        span {
+          padding: 3px 11px;
+        }
+      }
+    }
+
+    &-progressbar {
+      border: {
+        bottom-width: 1px;
+        color: $aqua;
+        left-width: 0;
+        right-width: 0;
+        style: solid;
+        top-width: 1px;
+      };
+      height: 9px;
+      width: 100%;
+
+      &-indicator {
+        background: $aqua;
+        display: block;
+        height: 100%;
+        width: 50%;
+      }
+    }
+  }
 }
 
 .errorlist {
@@ -41,3 +105,7 @@
   margin-bottom: 5px;
 }
 
+.block-label {
+  background: none;
+  border: 0;
+}
