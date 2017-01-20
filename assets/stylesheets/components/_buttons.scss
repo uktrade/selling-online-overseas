@@ -70,4 +70,16 @@
     padding: 14px;
     text-align: center;
   }
+
+  &-border {
+    border: 2px solid;
+    padding: {
+      bottom: 10px;
+      top: 10px;
+    };
+  }
+
+  &-block {
+    display: block;
+  }
 }
