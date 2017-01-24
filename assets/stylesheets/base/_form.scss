@@ -41,6 +41,10 @@
     li {
       height: 20px;
       position: relative;
+
+      &:first-child {
+        padding-left: 0;
+      }
     }
 
     a {
@@ -49,6 +53,7 @@
 
       &.form-tab-link {
         @extend %medium;
+        cursor: default;
         font-size: 18px;
         text-decoration: none;
 
@@ -66,11 +71,12 @@
 
       &.form-tab-link--completed {
         color: $aqua;
+        cursor: pointer;
       }
 
       &.form-tab-link--active {
         color: $aqua;
-        font-size: 22px;
+        font-size: 20px;
         margin-top: -6px;
 
         span {
