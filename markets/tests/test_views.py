@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import Permission
 
 from ..models import Market, PublishedMarket
-from . import create_market, create_country, get_market_data
+from . import create_market, create_country, create_category, get_market_data
 
 
 class MarketPublishingTests(TestCase):
@@ -196,6 +196,67 @@ class MarketTests(TestCase):
         response = self.client.get(reverse('markets:list'), {'payment_terms_days': ['15', 30]})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
+
+    def test_market_ordering(self):
+        # Create some countries and some categories
+        uk = create_country('uk')
+        fr = create_country('france')
+        de = create_country('germany')
+        sport = create_category('sport')
+        food = create_category('food')
+
+        # Create 4 markets with differing numbers of countries and categories
+        country_vertical = create_market(countries_served=[uk], product_categories=[sport])
+        global_vertical = create_market(countries_served=[uk, fr, de], product_categories=[sport])
+        country_generalist = create_market(countries_served=[uk], product_categories=[sport, food])
+        global_generalist = create_market(countries_served=[uk, fr, de], product_categories=[sport, food])
+
+        # Searching one category and one country should return all markets with those items
+        # But ordered by country-specific vertical first
+        _filter = {'countries_served': ['uk'], 'product_categories': ['sport']}
+        response = self.client.get(reverse('markets:list'), _filter)
+        markets = response.context_data['object_list']
+
+        # Country vertical should be first - perfect match on both terms
+        self.assertEqual(markets[0], country_vertical)
+        # ... then country generalist - since there are more countries than categories, meaning the global is de-ranked
+        self.assertEqual(markets[1], country_generalist)
+        # ... then the global vertical - since it matches perfectly on category but loosely on country
+        self.assertEqual(markets[2], global_vertical)
+        # ... finally the global generalist - since it matches loosley on both
+        self.assertEqual(markets[3], global_generalist)
+
+        # Searching on only category should bring the globals back first
+        _filter = {'product_categories': ['sport']}
+        response = self.client.get(reverse('markets:list'), _filter)
+        markets = response.context_data['object_list']
+
+        self.assertEqual(markets[0], global_vertical)
+        self.assertEqual(markets[1], global_generalist)
+        # ... then country specific markets, but with single category matches first
+        self.assertEqual(markets[2], country_vertical)
+        self.assertEqual(markets[3], country_generalist)
+
+        # Searching on only country should bring the country markets first (generalists first)
+        _filter = {'countries_served': ['uk']}
+        response = self.client.get(reverse('markets:list'), _filter)
+        markets = response.context_data['object_list']
+
+        self.assertEqual(markets[0], country_generalist)
+        self.assertEqual(markets[1], country_vertical)
+        # ... then global markets, but with single category matche first
+        self.assertEqual(markets[2], global_generalist)
+        self.assertEqual(markets[3], global_vertical)
+
+        # Searching for nothing
+        response1 = self.client.get(reverse('markets:list'))
+        markets1 = response.context_data['object_list']
+        # ... should be the same as searching for everything
+        {'countries_served': ['uk', 'france', 'germany'], 'product_categories': ['sport', 'food']}
+        response2 = self.client.get(reverse('markets:list'), _filter)
+        markets2 = response.context_data['object_list']
+
+        self.assertEqual(markets1, markets2)
 
 
 class MarketAdminTests(TestCase):
