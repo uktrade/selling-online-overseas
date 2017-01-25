@@ -69,6 +69,7 @@ var triageForm = function ($) {
                 activeTab = $(".form-tab-link").index( $(event.currentTarget));
         }
         activeSection(activeTab);
+        window.location.hash = $(this).attr("href");
     }
 
 
