@@ -1,8 +1,7 @@
 var triageForm = function ($) {
 
     var activeTab = 0,
-        navigateButton = $('.form-tab-section a'),
-        tabCompletedlinks = $('a.form-tab-link--completed');
+        navigateButton = $('.form-tab-section a');
 
     function init() {
         activeSection(activeTab);
@@ -17,21 +16,27 @@ var triageForm = function ($) {
     }
 
     function checkFormStatus(selectedFrom) {
+        $('.form-tab-section').addClass('hide').removeClass('show');
         $($('.form-tab-section')[selectedFrom]).addClass('show');
-        $('.form-tab-section').addClass('hide');
     }
 
     function checkTabsStatus(selectedTab) {
-        $($('.form-tab li a')[selectedTab]).addClass('form-tab-link--active');
+
+        $('.form-tab li a').removeClass('form-tab-link--active form-tab-link--completed');
+
 
         if(selectedTab>=0) {
             setCompletedTab(selectedTab);
         }
+        $($('.form-tab li a')[selectedTab]).addClass('form-tab-link--active');
     }
 
     function setCompletedTab(selectedTab) {
         selectedTab--;
-        $($('.form-tab li a')[selectedTab]).removeClass('form-tab-link--active').addClass('form-tab-link--completed');
+        if(selectedTab >=0) {
+            $($('.form-tab li a')[selectedTab]).removeClass('form-tab-link--active').addClass('form-tab-link--completed');
+            setCompletedTab(selectedTab);
+        }
     }
 
     function deActiveSection(tab) {
@@ -51,21 +56,18 @@ var triageForm = function ($) {
         event.preventDefault();
         var action = $(event.currentTarget).data('action');
 
-        deActiveSection(activeTab);
-
         switch(action) {
             case 'next':
+                deActiveSection(activeTab);
                 activeTab++;
                 break;
             case 'back':
-                $($('.form-tab li a')[activeTab]).removeClass('form-tab-link--active form-tab-link--completed');
+                deActiveSection(activeTab);
                 activeTab--;
                 break;
             default:
-                $('.form-tab li a').removeClass('form-tab-link--active form-tab-link--completed');
                 activeTab = $(".form-tab-link").index( $(event.currentTarget));
         }
-
         activeSection(activeTab);
     }
 

@@ -1,6 +1,22 @@
 .form {
 
-  &-group,
+  &-group {
+    margin-bottom: 10px;
+
+    &-error {
+      border-left: 10px solid $great-secondary;
+      padding-left: 20px;
+    }
+
+    &-error--message {
+      @extend %medium;
+      @extend %font-regular ;
+      color: $great-secondary;
+      display: block;
+      margin-bottom: 15px;
+    }
+  }
+
   &-tab-section {
     margin-bottom: 10px;
   }
@@ -55,6 +71,7 @@
         @extend %medium;
         cursor: default;
         font-size: 18px;
+        pointer-events: none;
         text-decoration: none;
 
         span {
@@ -72,6 +89,7 @@
       &.form-tab-link--completed {
         color: $aqua;
         cursor: pointer;
+        pointer-events: inherit;
       }
 
       &.form-tab-link--active {
@@ -103,6 +121,10 @@
 
       @include media(mobile) {
         width: 100%;
+      }
+
+      &--medium {
+        width: 25%;
       }
     }
   }
