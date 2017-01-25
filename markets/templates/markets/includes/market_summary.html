@@ -25,7 +25,7 @@
         </ul>
       </div>
     </div>
-    <p class="soft-half--ends hard--left">{{ market.description }}</p>
+    <p class="soft-half--ends hard--left">{{ market.description|safe }}</p>
     <a class="button button-blue button-medium markets-item--button push--top" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">Full profile</a>
   </div>
   <div class="column-three-eights markets-item--highlight--right">
