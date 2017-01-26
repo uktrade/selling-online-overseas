@@ -16,8 +16,8 @@ var triageForm = function ($) {
     }
 
     function checkFormStatus(selectedFrom) {
-        $('.form-tab-section').addClass('hide').removeClass('show');
-        $($('.form-tab-section')[selectedFrom]).addClass('show');
+        $('.form-tab-section').addClass('hide');
+        $($('.form-tab-section')[selectedFrom]).removeClass('hide').addClass('show');
     }
 
     function checkTabsStatus(selectedTab) {
@@ -53,9 +53,12 @@ var triageForm = function ($) {
 
     function navigate(event) {
 
-        event.preventDefault();
         var action = $(event.currentTarget).data('action');
 
+        if(!validation.validateFields()) {
+            event.preventDefault();
+            return;
+        }
         switch(action) {
             case 'next':
                 deActiveSection(activeTab);
@@ -69,7 +72,6 @@ var triageForm = function ($) {
                 activeTab = $(".form-tab-link").index( $(event.currentTarget));
         }
         activeSection(activeTab);
-        window.location.hash = $(this).attr("href");
     }
 
 
