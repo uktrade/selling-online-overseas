@@ -2,7 +2,6 @@ var validation = function ($) {
 
     var elements = [];
 
-
     function validateFields() {
         var valid = true,
             fields  = $('.form-tab-section.show *[data-validate]');
@@ -22,7 +21,7 @@ var validation = function ($) {
                     }
                     break;
                 case 'company-number':
-                    if(isEmpty(fields[i])) {
+                    if(isEmpty(fields[i]) && notCheck($('.form-tab-section.show *[data-validate="soletrader"]'), 'soletrader') ) {
                         displayErrorMessage(fields[i], validationMessages.messages.company.number);
                        valid = false;
                     }
@@ -58,7 +57,7 @@ var validation = function ($) {
                     }
                     break;
                 case 'email':
-                    if(isEmpty(fields[i])) {
+                    if(isEmpty(fields[i]) || (!isValidEmail($(fields[i]).val()))) {
                         displayErrorMessage(fields[i], validationMessages.messages.contact.email);
                         valid = false;
                     }
@@ -70,19 +69,19 @@ var validation = function ($) {
                     }
                     break;
                 case 'turnover':
-                    if(isChecked(fields[i], validation)) {
+                    if(notCheck(fields[i], validation)) {
                         displayErrorMessage(fields[i], validationMessages.messages.business.turnover);
                         valid = false;
                     }
                     break;
                 case 'trademark':
-                    if(isChecked(fields[i], validation)) {
+                    if(notCheck(fields[i], validation)) {
                         displayErrorMessage(fields[i], validationMessages.messages.business.trademark);
                         valid = false;
                     }
                     break;
                 case 'export':
-                    if(isChecked(fields[i], validation)) {
+                    if(notCheck(fields[i], validation)) {
                         displayErrorMessage(fields[i], validationMessages.messages.experience.export);
                         valid = false;
                     }
@@ -93,7 +92,12 @@ var validation = function ($) {
         return valid;
     }
 
-    function isChecked(field, validation) {
+    function isValidEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
+
+    function notCheck(field, validation) {
         var checked = true,
             fields = $('.form-tab-section.show *[data-validate='+validation+']');
 

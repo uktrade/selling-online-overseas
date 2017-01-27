@@ -43,7 +43,7 @@
   }
 }
 
-@mixin checkbox-checked {
+@mixin radio-checked {
   &[type='radio'] {
     &:checked {
       left: 8px;
@@ -60,6 +60,32 @@
         position: absolute;
         top: 4px;
         width: 0;
+        zoom: 1;
+      }
+    }
+  }
+}
+
+@mixin checkbox-checked {
+  &[type='checkbox'] {
+    &:checked {
+      left: 8px;
+      opacity: 1;
+      top: 3px;
+
+      &:before {
+        @include prefix((transform: rotate(-45deg)), webkit moz ms o);
+        background: transparent;
+        border: solid;
+        border-width: 0 0 5px 5px;
+        content: '';
+        filter: alpha(opacity=0);
+        height: 5px;
+        left: -4px;
+        opacity: 1;
+        position: absolute;
+        top: 5px;
+        width: 14px;
         zoom: 1;
       }
     }
