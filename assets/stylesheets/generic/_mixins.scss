@@ -42,3 +42,26 @@
     }
   }
 }
+
+@mixin checkbox-checked {
+  &[type='radio'] {
+    &:checked {
+      left: 8px;
+      opacity: 1;
+      top: 3px;
+
+      &:before {
+        @include prefix((border-radius: 50%), webkit moz);
+        border: 10px solid;
+        content: '';
+        filter: alpha(opacity=0);
+        height: 0;
+        left: -1px;
+        position: absolute;
+        top: 4px;
+        width: 0;
+        zoom: 1;
+      }
+    }
+  }
+}

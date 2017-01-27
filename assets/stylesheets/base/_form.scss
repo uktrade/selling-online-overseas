@@ -183,6 +183,10 @@
   &.selection-button-radio {
     padding-bottom: 20px;
 
+    input {
+      @include checkbox-checked;
+    }
+
     &:before {
       @include prefix((border-radius: 50%), webkit moz);
       background: transparent;

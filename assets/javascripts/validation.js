@@ -1,5 +1,8 @@
 var validation = function ($) {
 
+    var elements = [];
+
+
     function validateFields() {
         var valid = true,
             fields  = $('.form-tab-section.show *[data-validate]');
@@ -21,19 +24,19 @@ var validation = function ($) {
                 case 'company-number':
                     if(isEmpty(fields[i])) {
                         displayErrorMessage(fields[i], validationMessages.messages.company.number);
-                        valid = false;
+                       valid = false;
                     }
                     break;
                 case 'postcode':
                     if(isEmpty(fields[i])) {
                         displayErrorMessage(fields[i], validationMessages.messages.company.postcode);
-                        valid = false;
+                       valid = false;
                     }
                     break;
                 case 'url':
                     if(isEmpty(fields[i])) {
                         displayErrorMessage(fields[i], validationMessages.messages.company.website);
-                        valid = false;
+                       valid = false;
                     }
                     break;
                 case 'sku':
@@ -66,10 +69,46 @@ var validation = function ($) {
                         valid = false;
                     }
                     break;
+                case 'turnover':
+                    if(isChecked(fields[i], validation)) {
+                        displayErrorMessage(fields[i], validationMessages.messages.business.turnover);
+                        valid = false;
+                    }
+                    break;
+                case 'trademark':
+                    if(isChecked(fields[i], validation)) {
+                        displayErrorMessage(fields[i], validationMessages.messages.business.trademark);
+                        valid = false;
+                    }
+                    break;
+                case 'export':
+                    if(isChecked(fields[i], validation)) {
+                        displayErrorMessage(fields[i], validationMessages.messages.experience.export);
+                        valid = false;
+                    }
+                    break;
                 default:
             }
         }
         return valid;
+    }
+
+    function isChecked(field, validation) {
+        var checked = true,
+            fields = $('.form-tab-section.show *[data-validate='+validation+']');
+
+        elements.push(field);
+
+        for(var i=0; i<fields.length;i++) {
+            if($(fields[i]).is(':checked')) {
+                checked = false ;
+            }
+        }
+
+        if(fields.length === elements.length) {
+            elements = [];
+            return checked;
+        }
     }
 
     function isEmpty( field) {
