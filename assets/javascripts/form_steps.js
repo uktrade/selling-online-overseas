@@ -1,12 +1,14 @@
 var formSteps = function ($) {
 
     var activeTab = 0,
-        navigateButton = $('.form-tab-section a');
+        navigateButton = $('.form-tab-section a'),
+        form = $(".form-steps");
 
     function init() {
         activeSection(activeTab);
         navigateButton.click(navigate);
         $('.form-tab').on('click', 'a.form-tab-link--completed', navigate);
+        form.on('submit', submitForm);
     }
 
     function activeSection(index) {
@@ -72,6 +74,13 @@ var formSteps = function ($) {
                 activeTab = $(".form-tab-link").index( $(event.currentTarget));
         }
         activeSection(activeTab);
+    }
+
+    function submitForm(event) {
+        if(!validation.validateFields()) {
+            event.preventDefault();
+            return;
+        }
     }
 
 

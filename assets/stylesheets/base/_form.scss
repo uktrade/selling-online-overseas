@@ -133,12 +133,6 @@
     position: relative;
 
     &-button {
-      position: absolute;
-      right: 0;
-      top: 8px;
-    }
-
-    &-button--open {
       @extend %light;
       background-color: transparent;
       border: 0;
@@ -147,6 +141,9 @@
       line-height: 40px;
       margin: 0;
       padding: 0;
+      position: absolute;
+      right: 0;
+      top: 8px;
     }
 
     &-content {
@@ -227,6 +224,60 @@
       position: absolute;
       top: 0;
       width: 30px;
+    }
+  }
+}
+
+.form-success {
+  padding-bottom: 60px;
+
+  &-icon {
+    border: 2px solid $white;
+    border-radius: 100px;
+    display: block;
+    font-size: 40px;
+    height: 70px;
+    line-height: 70px;
+    margin: auto;
+    width: 70px;
+  }
+
+  &-header {
+    border-bottom: 1px solid $white;
+    display: inline-block;
+    padding-bottom: 40px;
+  }
+
+  &-section {
+    p {
+      margin: auto;
+      text-align: left;
+      width: 80%;
+    }
+
+    span {
+      @extend %regular;
+      border: 2px solid $white;
+      border-radius: 100px;
+      display: block;
+      font-size: 25px;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 auto 15px;
+      width: 40px;
+    }
+  }
+
+  a {
+    @extend %regular;
+    border-bottom: 1px solid $light-grey;
+    border-bottom-color: $lighter-grey-opacity;
+    color: $white;
+    padding-bottom: 2px;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom: 1px dashed $white;
     }
   }
 }
