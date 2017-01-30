@@ -112,6 +112,14 @@
         display: block;
         height: 100%;
       }
+
+      @include media(mobile) {
+        display: none;
+      }
+    }
+
+    @include media(mobile) {
+      display: none;
     }
   }
 
@@ -265,6 +273,10 @@
       line-height: 40px;
       margin: 0 auto 15px;
       width: 40px;
+    }
+
+    @include media(mobile) {
+      margin-top: 20px;
     }
   }
 
