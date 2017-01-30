@@ -115,7 +115,7 @@
     }
   }
 
-  &-triage {
+  &-steps {
     .form-control {
       width: 75%;
 
@@ -126,6 +126,31 @@
       &--medium {
         width: 25%;
       }
+    }
+  }
+
+  &-intro {
+    position: relative;
+
+    &-button {
+      position: absolute;
+      right: 0;
+      top: 8px;
+    }
+
+    &-button--open {
+      @extend %light;
+      background-color: transparent;
+      border: 0;
+      font-family: $brand-font-family;
+      font-size: 50px;
+      line-height: 40px;
+      margin: 0;
+      padding: 0;
+    }
+
+    &-content {
+      display: none;
     }
   }
 

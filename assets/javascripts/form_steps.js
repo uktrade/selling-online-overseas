@@ -1,4 +1,4 @@
-var triageForm = function ($) {
+var formSteps = function ($) {
 
     var activeTab = 0,
         navigateButton = $('.form-tab-section a');
@@ -80,4 +80,4 @@ var triageForm = function ($) {
     };
 }(jQuery);
 
-triageForm.init();
+formSteps.init();
