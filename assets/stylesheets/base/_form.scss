@@ -160,9 +160,12 @@
   }
 
   &-section {
-    border-bottom: 1px solid $lighter-grey;
     margin: 0 10px 20px;
     padding-bottom: 20px;
+  
+    &--border{
+      border-bottom: 1px solid $lighter-grey;
+    }
   }
 }
 
