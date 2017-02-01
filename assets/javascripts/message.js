@@ -2,9 +2,9 @@ var validationMessages = (function () {
 
     var messages = {
         'company': {
-            'name': 'Please type in your company name and use the search button to look up your company.',
-            'search': 'Please search for your company name and select it from the list.',
-            'number': 'Please provide your company number or use company search again to find it.',
+            'name': 'Please type in your company name.',
+            'search': 'Please search for your company name.',
+            'number': 'Please provide your company number.',
             'no_number': 'If you don\'t have a company number please tick this box.',
             'postcode' : 'Please tell us the postcode of your business.',
             'website': 'Please give us your website address or a link where your products are shown.'

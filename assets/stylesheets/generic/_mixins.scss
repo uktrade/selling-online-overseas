@@ -47,7 +47,7 @@
 
   &:after {
     @include prefix((border-radius: 50%), webkit moz);
-    border: 10px solid;
+    border: 10px solid $mid-blue;
     content: '';
     filter: alpha(opacity=0);
     height: 0;
@@ -65,6 +65,7 @@
     @include prefix((transform: rotate(-45deg)), webkit moz ms o);
     background: transparent;
     border: solid;
+    border-color: $mid-blue;
     border-width: 0 0 5px 5px;
     content: '';
     filter: alpha(opacity=0);

@@ -18,7 +18,7 @@
   }
 
   &-tab-section {
-    margin-bottom: 10px;
+    margin-bottom: 40px;
   }
 
   &-label {
@@ -78,7 +78,7 @@
           border: {
             radius: 100px;
             style: solid;
-            width: 2px;
+            width: 3px;
           }
           display: inline-block;
           padding: 0 6px;
@@ -221,6 +221,7 @@
     &:before {
       background: transparent;
       border: 2px solid;
+      border-radius: 4px;
       content: '';
       height: 25px;
       left: 0;
@@ -241,6 +242,7 @@
       @include prefix((border-radius: 50%), webkit moz);
       background: transparent;
       border: 2px solid;
+      color: #999;
       content: '';
       height: 30px;
       left: 0;

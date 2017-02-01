@@ -18,8 +18,8 @@ var formSteps = function ($) {
     }
 
     function checkFormStatus(selectedFrom) {
-        $('.form-tab-section').addClass('hide');
-        $($('.form-tab-section')[selectedFrom]).removeClass('hide').addClass('show');
+        $('.form-tab-section').removeClass('show').addClass('hide');
+        $($('.form-tab-section')[selectedFrom]).addClass('show');
     }
 
     function checkTabsStatus(selectedTab) {
@@ -57,7 +57,7 @@ var formSteps = function ($) {
 
         var action = $(event.currentTarget).data('action');
 
-        if(!validation.validateFields()) {
+        if((action ==='next') && (!validation.validateFields())) {
             event.preventDefault();
             return;
         }
