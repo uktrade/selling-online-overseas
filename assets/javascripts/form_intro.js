@@ -4,7 +4,7 @@ var formIntro = (function ($) {
 
     button.click(function () {
         section.toggle();
-        $(this).toggleClass( "form-intro-button--open" );
+        $(this).children().toggleClass( "icon-close" );
     });
 
 })(jQuery);

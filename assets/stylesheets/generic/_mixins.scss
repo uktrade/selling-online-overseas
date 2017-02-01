@@ -69,9 +69,7 @@
 @mixin checkbox-checked {
   &[type='checkbox'] {
     &:checked {
-      left: 8px;
       opacity: 1;
-      top: 3px;
 
       &:before {
         @include prefix((transform: rotate(-45deg)), webkit moz ms o);
@@ -81,10 +79,10 @@
         content: '';
         filter: alpha(opacity=0);
         height: 5px;
-        left: -4px;
+        left: 5px;
         opacity: 1;
         position: absolute;
-        top: 5px;
+        top: 7px;
         width: 14px;
         zoom: 1;
       }

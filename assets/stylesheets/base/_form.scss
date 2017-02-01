@@ -144,18 +144,30 @@
       @extend %light;
       background-color: transparent;
       border: 0;
-      font-family: $brand-font-family;
-      font-size: 50px;
-      line-height: 40px;
-      margin: 0;
-      padding: 0;
+      bottom: 0;
       position: absolute;
       right: 0;
       top: 8px;
+
+      i {
+        background: {
+          position: top center;
+          repeat: no-repeat;
+        }
+        display: block;
+        height: 36px;
+        width: 36px;
+      }
     }
 
     &-content {
       display: none;
+
+      li {
+        &:before {
+          color: $white;
+        }
+      }
     }
   }
 
@@ -191,13 +203,11 @@
   input {
     cursor: pointer;
     filter: alpha(opacity=0);
-    height: 0;
     left: 0;
     margin: 0;
     opacity: 0;
     position: absolute;
     top: 0;
-    width: 0;
     zoom: 1;
   }
 
@@ -247,10 +257,8 @@
     border: 2px solid $white;
     border-radius: 100px;
     display: block;
-    font-size: 40px;
-    height: 70px;
-    line-height: 70px;
     margin: auto;
+    padding: 20px 7px;
     width: 70px;
   }
 

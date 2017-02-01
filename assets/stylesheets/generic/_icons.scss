@@ -85,6 +85,14 @@
     }
   }
 
+  &-expand {
+    background-image: url('#{$image-path}icons/expand-white.svg');
+  }
+
+  &-close {
+    background-image: url('#{$image-path}icons/close-white.svg');
+  }
+
   &-header {
     background-size: contain;
     height: 45px;
