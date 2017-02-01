@@ -212,15 +212,6 @@ class BaseMarket(models.Model):
     dit_advisor_tip = RichTextField(null=True, blank=True,
                                     verbose_name="Department of International Trade advisor tip")
 
-    # Redundant fields to remove
-    translation_product_content_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    translation_seller_support_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    translation_application_process_notes = models.CharField(max_length=255, null=True, blank=True,
-                                                             verbose_name="Notes")
-
-    local_bank_account_needed_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-    local_return_address_required_notes = models.CharField(max_length=255, null=True, blank=True, verbose_name="Notes")
-
     def save(self, *args, **kwargs):
         """
         Populate the slug based on the marketplace's name on save
