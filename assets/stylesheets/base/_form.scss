@@ -209,11 +209,12 @@
     position: absolute;
     top: 0;
     zoom: 1;
+    opacity: 0;
   }
 
   &.selection-button-checkbox {
 
-    input {
+    &.selected {
       @include checkbox-checked;
     }
 
@@ -232,7 +233,7 @@
   &.selection-button-radio {
     padding-bottom: 20px;
 
-    input {
+    &.selected {
       @include radio-checked;
     }
 

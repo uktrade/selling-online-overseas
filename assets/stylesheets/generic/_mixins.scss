@@ -44,48 +44,36 @@
 }
 
 @mixin radio-checked {
-  &[type='radio'] {
-    &:checked {
-      left: 8px;
-      opacity: 1;
-      top: 3px;
 
-      &:before {
-        @include prefix((border-radius: 50%), webkit moz);
-        border: 10px solid;
-        content: '';
-        filter: alpha(opacity=0);
-        height: 0;
-        left: -1px;
-        position: absolute;
-        top: 4px;
-        width: 0;
-        zoom: 1;
-      }
-    }
+  &:after {
+    @include prefix((border-radius: 50%), webkit moz);
+    border: 10px solid;
+    content: '';
+    filter: alpha(opacity=0);
+    height: 0;
+    left: 7px;
+    position: absolute;
+    top: 7px;
+    width: 0;
+    zoom: 1;
   }
 }
 
 @mixin checkbox-checked {
-  &[type='checkbox'] {
-    &:checked {
-      opacity: 1;
 
-      &:before {
-        @include prefix((transform: rotate(-45deg)), webkit moz ms o);
-        background: transparent;
-        border: solid;
-        border-width: 0 0 5px 5px;
-        content: '';
-        filter: alpha(opacity=0);
-        height: 5px;
-        left: 5px;
-        opacity: 1;
-        position: absolute;
-        top: 7px;
-        width: 14px;
-        zoom: 1;
-      }
-    }
+  &:after {
+    @include prefix((transform: rotate(-45deg)), webkit moz ms o);
+    background: transparent;
+    border: solid;
+    border-width: 0 0 5px 5px;
+    content: '';
+    filter: alpha(opacity=0);
+    height: 5px;
+    left: 5px;
+    opacity: 1;
+    position: absolute;
+    top: 7px;
+    width: 14px;
+    zoom: 1;
   }
 }
