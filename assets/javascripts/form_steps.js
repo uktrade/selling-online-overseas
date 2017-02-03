@@ -74,6 +74,7 @@ var formSteps = function ($) {
                 activeTab = $(".form-tab-link").index( $(event.currentTarget));
         }
         activeSection(activeTab);
+        scrollTo(form);
     }
 
     function submitForm(event) {
@@ -83,6 +84,9 @@ var formSteps = function ($) {
         }
     }
 
+    function scrollTo(element) {
+        $("body").animate({ scrollTop: element.position().top }, 500);
+    }
 
     return {
         init: init

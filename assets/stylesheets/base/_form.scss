@@ -15,6 +15,13 @@
       display: block;
       margin-bottom: 15px;
     }
+
+    &-help {
+      padding-top: 20px;
+      @include media(mobile) {
+        margin-bottom: 20px;
+      }
+    }
   }
 
   &-tab-section {
@@ -25,11 +32,12 @@
     @extend %font-regular;
     @extend %medium;
     color: $grey;
+    display: table;
     font-family: $brand-font-family;
     margin-bottom: 10px;
 
     @include media(mobile) {
-      font-size: 15px;
+      font-size: 19px;
     }
   }
 
@@ -42,8 +50,25 @@
     height: $form-field-height;
     padding: 10px;
 
+    &-addon {
+      color: $black;
+      font-size: 15px;
+      font-weight: 300;
+      margin-right: -5px;
+      padding: 11px;
+      position: absolute;
+
+      + input {
+        padding-left: 40px;
+      }
+    }
+
     &:focus {
       outline: 3px solid $aqua;
+    }
+
+    @include placeholder {
+      color: $grey;
     }
   }
 
@@ -78,7 +103,7 @@
           border: {
             radius: 100px;
             style: solid;
-            width: 3px;
+            width: 2px;
           }
           display: inline-block;
           padding: 0 6px;
@@ -87,18 +112,18 @@
       }
 
       &.form-tab-link--completed {
-        color: $aqua;
+        color: $mid-blue;
         cursor: pointer;
         pointer-events: inherit;
       }
 
       &.form-tab-link--active {
         color: $aqua;
-        font-size: 20px;
-        margin-top: -6px;
+        font-size: 24px;
+        margin-top: -10px;
 
         span {
-          padding: 3px 11px;
+          padding: 3px 12px;
         }
       }
     }
@@ -118,6 +143,11 @@
       }
     }
 
+    &-back {
+      line-height: 40px;
+      margin-right: 40px;
+    }
+
     @include media(mobile) {
       display: none;
     }
@@ -133,6 +163,10 @@
 
       &--medium {
         width: 25%;
+
+        @include media(mobile) {
+          width: 100%;
+        }
       }
     }
   }
@@ -144,7 +178,7 @@
       @extend %light;
       background-color: transparent;
       border: 0;
-      bottom: 0;
+      cursor: pointer;
       position: absolute;
       right: 0;
       top: 8px;
@@ -158,10 +192,13 @@
         height: 36px;
         width: 36px;
       }
+
+      &:focus {
+        outline: none;
+      }
     }
 
     &-content {
-      display: none;
 
       li {
         &:before {
@@ -193,7 +230,7 @@
   border: 0;
   clear: left;
   cursor: pointer;
-  display: block;
+  display: table;
   float: none;
   margin-bottom: 10px;
   margin-top: 0;
@@ -221,6 +258,7 @@
     &:before {
       background: transparent;
       border: 2px solid;
+      border-color: $grey;
       border-radius: 4px;
       content: '';
       height: 25px;
@@ -242,7 +280,7 @@
       @include prefix((border-radius: 50%), webkit moz);
       background: transparent;
       border: 2px solid;
-      color: #999;
+      color: $grey;
       content: '';
       height: 30px;
       left: 0;
