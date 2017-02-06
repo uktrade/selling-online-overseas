@@ -21,7 +21,7 @@ def create_market(**variable_data):
         category = create_category('Toys')
         product_categories = [category]
     else:
-        product_categories = variable_data.pop('product_categories')
+        product_categories = market_data.pop('product_categories')
 
     if 'name' not in variable_data:
         variable_data['name'] = "Amazon"
