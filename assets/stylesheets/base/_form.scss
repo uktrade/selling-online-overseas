@@ -312,7 +312,6 @@
   &-section {
     p {
       margin: auto;
-      text-align: left;
       width: 80%;
     }
 
@@ -343,6 +342,12 @@
 
     &:hover {
       border-bottom: 1px dashed $white;
+    }
+  }
+
+  &-body {
+    #global-header {
+      margin-bottom: 0;
     }
   }
 }
