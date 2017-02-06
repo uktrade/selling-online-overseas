@@ -120,13 +120,7 @@ class MarketAdmin(VersionAdmin):
         ('What does the marketplace need me to do?', {
             'fields': (
                 ('translation_requirements', 'translation_notes'),
-                (
-                    'translation_application_process_notes',
-                    'translation_product_content_notes',
-                    'translation_seller_support_notes'
-                ),
                 ('setup_requirements', 'setup_notes'),
-                ('local_bank_account_needed_notes', 'local_return_address_required_notes',),
                 ('exclusivity_required', 'exclusivity_required_notes',),
                 ('product_details_upload', 'product_details_upload_notes',),
             )
