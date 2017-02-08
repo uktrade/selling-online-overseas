@@ -2,9 +2,10 @@ var formIntro = (function ($) {
     var button = $(".form-intro-button"),
         section = $('.form-intro-content');
 
-    button.click(function () {
+    button.click(function (event) {
+        event.preventDefault();
         section.toggle();
-        $(this).children().toggleClass( "icon-close" );
+        $(this).find("i").toggleClass( "icon-close" );
     });
 
 })(jQuery);

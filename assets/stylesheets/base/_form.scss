@@ -52,13 +52,22 @@
   }
 
   &-control {
-    @extend %font-xxsmall;
     @extend %light;
     background: $light-stone;
     border: 1px solid $secondary-text-colour;
     font-family: $brand-font-family;
+    font-size: 16px;
     height: $form-field-height;
     padding: 10px;
+    width: 75%;
+
+    &--medium {
+      width: 40%;
+
+      @include media(mobile) {
+        width: 100%;
+      }
+    }
 
     &-addon {
       color: $black;
@@ -80,12 +89,20 @@
     @include placeholder {
       color: $grey;
     }
+
+    @include media(mobile) {
+      width: 100%;
+    }
   }
 
   &-textarea {
     float: none;
     height: 100%;
     width: 85%;
+
+    @include media(mobile) {
+      width: 100%;
+    }
   }
 
   &-tab {
@@ -171,41 +188,34 @@
     }
 
     &-back {
-      line-height: 40px;
       margin-right: 40px;
+      position: relative;
+      top: 11px;
 
       @include media(mobile) {
-        margin-bottom: 20px;
+        bottom: 40px;
+        position: absolute;
+        top: inherit;
       }
+    }
 
-      &-section {
-        @include media(mobile) {
-          text-align: center;
-        }
+    &-button {
+      @include media(mobile) {
+        text-align: center;
       }
     }
   }
 
   &-steps {
-    .form-control {
-      width: 75%;
-
-      @include media(mobile) {
-        width: 100%;
-      }
-
-      &--medium {
-        width: 40%;
-
-        @include media(mobile) {
-          width: 100%;
-        }
-      }
-    }
 
     &-header {
       font-size: 24px;
       margin-top: 25px;
+    }
+
+    @include media(mobile) {
+      padding-bottom: 50px;
+      position: relative;
     }
   }
 
@@ -213,13 +223,11 @@
     position: relative;
 
     &-button {
-      @extend %light;
-      background-color: transparent;
-      border: 0;
-      cursor: pointer;
-      position: absolute;
-      right: 0;
-      top: 8px;
+      text-decoration: none;
+
+      h2 {
+        color: $white;
+      }
 
       i {
         background: {
@@ -228,11 +236,10 @@
         }
         display: block;
         height: 36px;
+        position: absolute;
+        right: 0;
+        top: 14px;
         width: 36px;
-      }
-
-      &:focus {
-        outline: none;
       }
     }
 
@@ -243,6 +250,11 @@
           color: $white;
         }
       }
+    }
+
+    &-terms {
+      font-size: 12px;
+      line-height: 17px;
     }
   }
 

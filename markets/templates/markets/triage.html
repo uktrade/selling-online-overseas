@@ -15,8 +15,10 @@
     <div class="grid-row">
       <div class="column-one-whole">
         <div class="form-intro font-white">
-          <h2 class='heading-small font-med push-half--bottom flush--ends soft--ends'>Benefits of applying here</h2>
-          <button class="form-intro-button"><i class="icon-expand icon-close"></i></button>
+          <a href="" class="form-intro-button">
+            <h2 class='heading-small font-med push-half--bottom flush--ends soft--ends'>Benefits of applying here</h2>
+            <i class="icon-expand icon-close"></i>
+          </a>
           <div class="form-intro-content column-three-quarters soft-half--bottom">
             <p class="flush--ends">The Department of International Trade facilitates the introduction between you and the marketplace directly.</p>
             <h2 class='heading-headline font-med flush--top soft--top'>Save time</h2>
@@ -24,6 +26,7 @@
             <p class="flush--ends">Your application for this marketplace will be reviewed for suitability and we will respond to you within 5 days.</p>
             <h2 class='heading-headline font-med flush--ends soft--top'>Save money</h2>
             <p>If successfully matched you will be able to get access to marketplace offers and discounts.</p>
+            <p class="form-intro-terms">We respect your privacy and will handle your information with care. We aren’t sharing any information publicly nor send you unwanted emails. <a href="https://www.exportingisgreat.gov.uk/privacy-and-cookies/" class="link--white">Read our full privacy statement.</a></p>
           </div>
         </div>
       </div>
@@ -91,7 +94,8 @@
             </div>
           </div>
         </fieldset>
-        <div class="column-one-whole">
+        <div class="column-one-whole form-tab-button">
+          <a href="#{{ previous_step.slug }}" class="link form-tab-back" data-action="back">< Back to previous step</a>
           <a href="#business" class="button button-blue button-medium" data-action="next">Continue to next step</a>
         </div>
       </div>
