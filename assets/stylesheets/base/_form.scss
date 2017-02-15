@@ -253,8 +253,13 @@
     }
 
     &-terms {
-      font-size: 12px;
+      font-size: 13px;
       line-height: 17px;
+
+      a {
+        @extend %regular;
+        color: $white;
+      }
     }
   }
 
@@ -317,6 +322,12 @@
       top: 0;
       width: 25px;
     }
+  //
+  //  &.focused {
+  //    &:before {
+  //      outline: 2px solid $aqua;
+  //    }
+  //  }
   }
 
   &.selection-button-radio {
@@ -325,6 +336,12 @@
     &.selected {
       @include radio-checked;
     }
+
+    //&.focused {
+    //  &:before {
+    //    box-shadow: 0 0 0 4px #ffbf47;
+    //  }
+    //}
 
     &:before {
       @include prefix((border-radius: 50%), webkit moz);

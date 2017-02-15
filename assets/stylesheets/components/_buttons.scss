@@ -77,6 +77,20 @@
       bottom: 10px;
       top: 10px;
     };
+
+    &:hover {
+      border-color: $white;
+    }
+
+    &:disabled {
+      background-color: $white;
+      border-color: $white;
+      color: $aqua;
+
+      &:hover {
+        background-color: $white;
+      }
+    }
   }
 
   &-block {

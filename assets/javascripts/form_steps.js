@@ -78,7 +78,7 @@ var formSteps = function ($) {
     }
 
     function submitForm(event) {
-        if(!validation.validateFields()) {
+        if((!validation.validateFields()) || (activeTab !== ($('.form-tab li a').length-1))) {
             event.preventDefault();
             return;
         }
@@ -89,7 +89,8 @@ var formSteps = function ($) {
     }
 
     return {
-        init: init
+        init: init,
+        scrollTo: scrollTo
     };
 }(jQuery);
 

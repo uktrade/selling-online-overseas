@@ -93,6 +93,18 @@
     background-image: url('#{$image-path}icons/close-white.svg');
   }
 
+  &-thankyou {
+    background-image: url('#{$image-path}icons/thanks.svg');
+  }
+
+  &-error {
+    background-image: url('#{$image-path}icons/error.svg');
+  }
+
+  &-feedback {
+    background-image: url('#{$image-path}icons/feedback.svg');
+  }
+
   &-header {
     background-size: contain;
     height: 45px;
