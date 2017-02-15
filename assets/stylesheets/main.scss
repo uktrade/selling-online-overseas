@@ -3,6 +3,7 @@ $path: '/static/images/';
 
 @import 'govuk_elements/govuk-elements';
 @import 'govuk_elements/govuk-frontend-toolkit';
+@import 'node_modules/slick-carousel/slick/slick.scss';
 
 // bourbon grid
 @import 'new_styles/neat/grid-settings';
@@ -27,18 +28,20 @@ $path: '/static/images/';
 @import 'base/form';
 @import 'new_styles/elements/links';
 
-
-@import 'components/breadcrumbs';
 @import 'components/buttons';
 @import 'components/tooltip';
-@import 'components/filters';
 @import 'components/navigation';
 @import 'components/footer';
 @import 'components/dynamic-dropdown';
 @import 'components/nav-intro';
-@import 'components/results';
 @import 'components/audit';
+@import 'components/stories';
+@import 'components/steps';
+@import 'components/hero';
+@import 'components/logo-strip';
+@import 'components/carousel';
+@import 'components/autocomplete';
+@import 'components/toggle';
 
 @import 'pages/detail';
 @import 'pages/markets';
-@import 'pages/home';

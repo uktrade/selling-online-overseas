@@ -1,48 +1,219 @@
 {% extends "base.html" %}
 
+{% load thumbnail %}
+
 {% block content %}
-  <div class="outer-container push--top soft--top">
-    <div class="col-7 home">
-      <h1 class='heading-xlarge push--bottom flush--top'>Selling online overseas</h1>
+  <section>
+    <div class="hero hero-gradient background-image--hero soft--bottom cf">
+      <div class="hero-content">
+        <div class="outer-container soft-half--top text-shadow">
+          <h1 class="h1 font-reg soft--top soft-half--bottom">Find online marketplaces</h1>
+          <p class="h3 font-lig flush--bottom">Reach over 2 billion consumers online around the world</p>
+          <p class="h3 font-lig soft-half--bottom">Get exclusive deals negotiated on behalf of UK businesses</p>
+        </div>
+        <div class="outer-container">
+          <div class="background--bright-grey-opacity soft--sides soft--top soft-half--bottom autocomplete">
+            <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}' data-form-type="autocomplete">
+              <div role="group" class="autocomplete-form-group">
+                <legend class="visuallyhidden">Please select countries and products</legend>
+                <div class="autocomplete-section push--bottom">
+                  <div class="form-dropdown">
+                    <label class="form-label" for="search-product">What do you sell?</label>
+                    <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off" placeholder="Product name">
+                    <ul class="form-dropdown-results" role="presentation"></ul>
+                  </div>
+                </div>
+                <div class="autocomplete-section push--bottom">
+                  <div class="form-dropdown">
+                    <label class="form-label" for="search-country">Where do you want to sell them?</label>
+                    <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="/geography/api/" data-field="operating_countries" autocomplete="off" placeholder="Country name">
+                    <ul class="form-dropdown-results" role="presentation"></ul>
+                    <ul class="form-dropdown-checkbox hide"></ul>
+                  </div>
+                </div>
+                <div class="autocomplete-section autocomplete-section--button push--bottom">
+                  <div id='results-count'>
+                    <button class='button button-red button-large' type='submit'>Find marketplaces (<span class="results-count">{{results_count}}</span>)</button>
+                  </div>
+                </div>
+                <div class="cf autocomplete-tags">
+                  <ul class="form-dropdown-tags"></ul>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <p class="heading-sub push--bottom">Use this service to help choose a suitable online marketplace to sell your products overseas.</p>
+  <section>
+    <div class="logo-strip background--white text--center overflow--hidden">
+      <div class="outer-container">
+        <div class="logo-strip-section">
+          {% for ran in random_markets %}
+            <div class="col-2">
+              <img class="logo-strip-img" src="{% thumbnail ran.logo.image 110x83 box=ran.logo.cropping crop detail %}" alt="{{ ran }}">
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <p class="font-xxxsmall font-mid-grey">Randomly loaded marketplaces from our database</p>
+    </div>
+  </section>
 
-      <h2 class="heading-small push--bottom">You can:</h2>
+  <section>
+    <div class="soft--bottom soft-half--top">
+      <div class="outer-container">
+        <h3 class="h2 font-reg flush--top push--bottom soft--top">How we can help your business</h3>
+        <ul>
+          <li class="steps-content--section soft--bottom">
+            <div class="steps-image-section steps-image-section-with-arrow">
+              <img class="steps-image" src="/static/images/infographics/exporting.svg" alt="">
+            </div>
+            <div class="cf push--top text--left steps-info">
+              <h4 class="h3 font-lig">Exporting</h4>
+              <p class="font-xsmall">UK businesses like yours want to sell online to overseas customers.</p>
+            </div>
+          </li>
+          <li class="steps-content--section soft--bottom">
+            <div class="steps-image-section steps-image-section-with-arrow">
+              <img class="steps-image" src="/static/images/infographics/exclusivedeals.svg" alt="">
+            </div>
+            <div class="cf push--top text--left steps-info">
+              <h4 class="h3 font-lig">Exclusive deals</h4>
+              <p class="font-xsmall">DIT negotiates exclusive deals for businesses like yours from a wide range of marketplaces.</p>
+            </div>
+          </li>
+          <li class="steps-content--section soft--bottom">
+            <div class="steps-image-section">
+              <img class="steps-image" src="/static/images/infographics/growyourbusiness.svg" alt="">
+            </div>
+            <div class="cf push--top text--left steps-info">
+              <h4 class="h3 font-lig">Grow your business</h4>
+              <p class="font-xsmall">We help you to find the right marketplace for your products in the countries of your choice.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      <ul class="list list-bullet push--bottom">
-        <li>find major online marketplaces in other countries</li>
-        <li>see whether these online marketplaces are suitable to sell your products</li>
-        <li>discover how to list your products on an online marketplace</li>
-        <li>get information about costs of listing on the marketplace and how logistics are fulfilled</li>
-        <li>access special terms negotiated by the UK government</li>
+  <section>
+    <div>
+      <ul class="carousel font-white">
+        <li class="carousel-panel tinted-image background-image--carousel-msb">
+          <blockquote class="soft quote-left quote-white push--ends">
+            <p>Exporting overseas has allowed us to grow our business by 300% in 3 years.</p>
+            <footer class="font-lig push--top soft--top">
+              <strong class="font-small">William Forshaw</strong>
+              <br />
+              <span>Founder | Maxwell Scott Bags </span>
+            </footer>
+          </blockquote>
+        </li>
+        <li class="carousel-panel background-image--carousel-hb">
+          <blockquote class="soft quote-left quote-white push--ends">
+            <p>At least 50% of our profits come from exporting via e-marketplaces. If we didn’t export online, we wouldn’t have a business.</p>
+            <footer class="font-lig push--top soft--top">
+              <strong class="font-small">Trevor Ginn, Hello Baby</strong>
+              <br />
+              <span>Founder | Hello Baby </span>
+            </footer>
+          </blockquote>
+        </li>
+        <li class="carousel-panel background-image--carousel-fx">
+          <blockquote class="soft quote-left quote-white push--ends">
+            <p>My advice to brands is that you have to try e-marketplaces, because nobody could have convinced me of the success we are having now.</p>
+            <footer class="font-lig push--top soft--top">
+              <strong class="font-small">Shaun Loughlin</strong>
+              <br />
+              <span>Managing Director | Freestyle Xtreme </span>
+            </footer>
+          </blockquote>
+        </li>
       </ul>
-      <a class='button button-blue button-large push--ends button-start' href='{% url 'markets:search' %}' title="start now">Find an online marketplace</a>
     </div>
-    <div class="col-1">&nbsp;</div>
+  </section>
 
-    <div class="col-4">
-      <aside>
-        <div class="home-info home-info--border push--bottom">
-          <h4 class="heading-small font-med push-half--top">About this service</h4>
-          <dl class="soft--bottom">
-
-            <dt class="soft-half--top">Marketplaces in database:</dt>
-            <dd><strong>{{ market_count }}</strong></dd>
-
-            <dt class="soft-half--top">Last updated:</dt>
-            <dd><strong>{{ last_updated|date:"d M Y" }}</strong></dd>
-
-          </dl>
+  <section>
+    <div class="stories soft--bottom soft-half--top">
+      <div class="outer-container">
+        <h3 class="h2 font-reg flush--top push--bottom soft--top">E-commerce success stories</h3>
+        <div class="col-4 soft--right">
+          <div class="section-clickable push--bottom soft--bottom">
+            <img src="/static/images/case-story/freestylextreme.jpg" class="stories-img image-full" alt="FreestyleXtreme">
+            <h4 class="font-small push-half--top font-brand">Online marketplaces propel FreestyleXtreme</h4>
+            <p class="font-brand">Like many businesses, Bristol-based specialist sports retailer FreestyleXtreme has seen big growth through online sales overseas.</p>
+            <a href="/markets/story/online-marketplaces-propel-freestyle-xtreme-sales/" class="link" title="Online marketplaces propel FreestyleXtreme">Read case study ></a>
+          </div>
         </div>
-
-        <div class="home-info background--stone push-half--top">
-          <h4 class="heading-small font-med push-half--top">Learn more about selling online</h4>
-          <ul>
-            <li class="soft-half--top"><a href="https://export.great.gov.uk/use-social-media-and-commerce-to-export/" title="Guide to online export" class="link">Practical advice about <br /> e-commerce</a></li>
-            <li class="soft-half--top soft--bottom"><a href="https://export.great.gov.uk/getting-ready-to-sell-overseas/" title="how to reach export customers online" class="link">Get ready to sell overseas</a></li>
-          </ul>
+        <div class="col-4 soft-half--sides">
+          <div class="section-clickable push--bottom soft--bottom">
+            <img src="/static/images/case-story/hellobaby.jpg" class="stories-img image-full" alt="Hello Baby’s">
+            <h4 class="font-small push-half--top font-brand">Hello Baby’s online growth spurt</h4>
+            <p class="font-brand">Read how DIT helped this retailer of baby products through initial teething pains with online marketplaces, paving the way for big EU sales.</p>
+            <a href="/markets/story/hello-babys-online-growth-spurt/" class="link" title="Hello Baby’s online growth spurt">Read case study ></a>
+          </div>
         </div>
-      </aside>
+        <div class="col-4 soft--left">
+          <div class="section-clickable push--bottom soft--bottom">
+            <img src="/static/images/case-story/maxwellscottbags.jpg" class="stories-img image-full" alt="Maxwell Scott Bags">
+            <h4 class="font-small push-half--top font-brand">York bag retailer goes global via e-commerce</h4>
+            <p class="font-brand">York-based retailer Maxwell Scott Bags was already selling internationally from its UK website when its owners made the decision to launch...</p>
+            <a href="/markets/story/york-bag-retailer-goes-global-via-e-commerce/" class="link" title="York bag retailer goes global via e-commerce">Read case study ></a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section>
+    <div class="steps soft--bottom soft-half--top background--white">
+      <div class="outer-container">
+        <h3 class="h2 font-reg flush--top push--bottom soft--top">Start selling</h3>
+        <ul>
+          <li class="col-4 soft--bottom">
+            <div class="steps-image-section-with-arrow">
+              <img class="steps-image" src="/static/images/infographics/searchandcompare.svg" alt="">
+            </div>
+            <div class="cf push--top">
+              <span class="steps-number font-med font-grey float--left push-half--right">1</span>
+              <div class="steps-content float--left">
+                <h4 class="h3 font-lig">Search and compare</h4>
+                <p class="font-xsmall">Find online marketplaces to sell your products and compare them by size, fees and support.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="col-4 soft--bottom">
+            <div class="steps-image-section-with-arrow">
+              <img class="steps-image" src="/static/images/infographics/selectandapply.svg" alt="">
+            </div>
+            <div class="cf push--top">
+              <span class="steps-number font-med font-grey float--left push-half--right">2</span>
+              <div class="steps-content float--left">
+                <h4 class="h3 font-lig">Select and apply</h4>
+                <p class="font-xsmall">Choose your marketplace, find out their details and exclusive deals and apply to join.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="col-4 soft--bottom">
+            <div>
+              <img class="steps-image" src="/static/images/infographics/startselling.svg" alt="">
+            </div>
+            <div class="cf push--top">
+              <span class="steps-number font-med font-grey float--left push-half--right">3</span>
+              <div class="steps-content float--left">
+                <h4 class="h3 font-lig">Sell your product</h4>
+                <p class="font-xsmall">Join an online marketplace and start selling your product to customers across the world.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
 {% endblock content %}

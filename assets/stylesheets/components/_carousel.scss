@@ -1,0 +1,123 @@
+.carousel {
+  background-color: $white;
+  overflow: hidden;
+
+  &-panel {
+    background: {
+      position: center;
+      repeat: no-repeat;
+      size: cover;
+    };
+    height: 450px;
+    padding: 0 0 95px;
+    position: relative;
+
+    &:after {
+      background: $transparent-background;
+      content: '';
+      height: inherit;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: inherit;
+      z-index: 1;
+    }
+
+    @include media($mobile) {
+      height: 380px;
+    }
+  }
+
+  blockquote {
+    margin: 35px auto 0;
+    width: 705px;
+    z-index: 2;
+
+    @include media($mobile) {
+      width: 100%;
+    }
+
+    @include media($tablet) {
+      margin-top: 55px;
+      width: 402px;
+    }
+  }
+
+  .slick-arrow {
+    @extend %remove-text;
+    background-color: transparent;
+    border: 0;
+    bottom: 50px;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    z-index: 2;
+
+
+    &:before {
+      @include prefix((box-shadow: 2px -2px 0 0 $white inset), webkit moz);
+      background-color: transparent;
+      border: solid transparent;
+      bottom: 0;
+      content: '';
+      height: 40px;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      transform: translateZ(1px) rotate(45deg);
+      width: 40px;
+      z-index: 2;
+    }
+
+    @include media($mobile) {
+      bottom: 85px;
+      height: 50px;
+      top: inherit;
+    }
+  }
+
+  .slick-prev {
+    &:before {
+      left: 20px;
+    }
+  }
+
+  .slick-next {
+    left: inherit;
+    right: 0;
+
+    &:before {
+      right: 20px;
+      transform: translateZ(1px) rotate(225deg);
+    }
+  }
+
+  .slick-dots {
+    padding: 10px 0 20px;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    button {
+      @extend %remove-text;
+      background-color: $grey;
+      border: 0;
+      border-radius: 10px;
+      height: 12px;
+      padding: 0;
+      width: 12px;
+    }
+  }
+
+  .slick-active {
+    button {
+      background-color: $aqua;
+    }
+  }
+}

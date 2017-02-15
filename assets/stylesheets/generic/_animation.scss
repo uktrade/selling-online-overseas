@@ -7,3 +7,63 @@
     @include prefix((transform: rotate(360deg)), webkit ms);
   }
 }
+
+@keyframes shake-horizontal {
+  10%,
+  90% {
+    @include prefix((transform: translate3d(-1px, 0, 0)), webkit ms);
+  }
+
+  20%,
+  80% {
+    @include prefix((transform: translate3d(2px, 0, 0)), webkit ms);
+  }
+
+  30%,
+  50%,
+  70% {
+    @include prefix((transform: translate3d(-4px, 0, 0)), webkit ms);
+  }
+
+  40%,
+  60% {
+    @include prefix((transform: translate3d(4px, 0, 0)), webkit ms);
+  }
+}
+
+@keyframes shake-vertical {
+  10%,
+  90% {
+    @include prefix((transform: translate3d(0, -1px, 0)), webkit ms);
+  }
+
+  20%,
+  80% {
+    @include prefix((transform: translate3d(0, 2px, 0)), webkit ms);
+  }
+
+  30%,
+  50%,
+  70% {
+    @include prefix((transform: translate3d(0, -4px, 0)), webkit ms);
+  }
+
+  40%,
+  60% {
+    @include prefix((transform: translate3d(0, 4px, 0)), webkit ms);
+  }
+}
+
+.shake {
+  @include prefix((transform: translate3d(0, 0, 0)), webkit ms);
+  backface-visibility: hidden;
+  perspective: 1000px;
+
+  &-horizontal {
+    @include prefix((animation: shake-horizontal .82s cubic-bezier(.36, .07, .19, .97) both), webkit);
+  }
+
+  &-vertical {
+    @include prefix((animation: shake-vertical .82s cubic-bezier(.36, .07, .19, .97) both), webkit);
+  }
+}

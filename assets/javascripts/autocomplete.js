@@ -2,7 +2,10 @@ var autoComplete =(function ($) {
 
     var searchField = $('.form-dropdown .form-dropdown-input'),
         results = $('.form-dropdown-results'),
-        tags = $('.form-dropdown-tags');
+        cachedTags = {
+            'operating_countries': [],
+            'product_categories': []
+        };
 
     function init() {
 
@@ -94,9 +97,12 @@ var autoComplete =(function ($) {
 
         for (var i = 0; i < request.length; i++) {
             var content = (typeof(request[i]) === 'string') ? request[i] : '<b>'+request[i][0]+'</b>'+ ' - '+request[i][1],
-                option = (typeof(request[i]) === 'string') ? request[i] : request[i][0];
+                option = (typeof(request[i]) === 'string') ? request[i] : request[i][0],
+                isSelected = _.contains(cachedTags[$(element).data('field')], option) ? 'form-dropdown-option--selected' : '';
 
-            list.append('<li class="form-dropdown-list" role="option"><a href="" class="form-dropdown-option" data-option-id="' + option + '">' + content + '</li></a></li>');
+            console.log(isSelected);
+
+            list.append('<li class="form-dropdown-list" role="option"><a href="" class="form-dropdown-option '+isSelected+'" data-option-id="' + option + '">' + content + '</li></a></li>');
         }
 
         list.show();
@@ -117,12 +123,35 @@ var autoComplete =(function ($) {
             event.preventDefault();
         }
 
-        createTag($(this).parent().parent().next(), checkboxOption, optionId, buttonId);
+        if(checkDuplicateTag(optionId, checkboxOption)) {
+            return;
+        }
+
+        createTag($('.form-dropdown-tags'), checkboxOption, optionId, buttonId);
         resultCount.update_count();
 
         clearInput(input);
         dropdown.closeDropdown();
         addTagToStorage(buttonId, optionId, checkboxOption);
+    }
+
+    function checkDuplicateTag(optionId, checkboxOption) {
+
+        if(!(_.contains(cachedTags[checkboxOption], optionId ))) {
+            cachedTags[checkboxOption].push(optionId);
+        } else {
+            animateSelected($('button[data-option-id="'+optionId+'"]').first().parent());
+            return true;
+        }
+
+    }
+
+    function animateSelected(selected) {
+        selected.addClass('shake-vertical');
+
+        setTimeout(function () {
+            selected.removeClass("shake-vertical");
+        }, 1000);
     }
 
     function onHover() {
@@ -137,7 +166,21 @@ var autoComplete =(function ($) {
     }
 
     function createTag(container, checkboxOption, optionId, buttonId) {
-        container.append('<li>'+optionId+'<button href="" data-option-id="'+optionId+'" class="form-dropdown-tags--close" data-button-id="'+buttonId+'">x</button></li>');
+
+        var button = $('<button>', {
+            'data-button-id': buttonId,
+            'data-option-id': optionId,
+            'data-item': checkboxOption,
+            class: "form-dropdown-tags--close",
+            html: "x"
+        }),
+        li = $('<li>', {
+            class: (checkboxOption==='operating_countries' ? 'background--light-aqua' : 'background--stone'),
+            html: optionId + button[0].outerHTML
+        });
+
+
+        container.append(li);
         $('.form-dropdown-tags--close').on('click', deleteTag);
         addCheckbox(checkboxOption, optionId);
     }
@@ -167,11 +210,18 @@ var autoComplete =(function ($) {
     }
 
     function deleteTag(event) {
+        var optionId = $(this).data('option-id');
+
         event.preventDefault();
         $(this).parent().remove();
-        deleteCheckbox($(this).data('option-id'));
+        deleteCheckbox(optionId);
         resultCount.update_count();
         deleteTagFromStorage($(event.target).data('button-id'));
+        deleteCacheTag($(this).data('item'),optionId);
+    }
+
+    function deleteCacheTag(key, value) {
+        cachedTags[key] = _.filter(cachedTags[key], function(val){ return val !== value; });
     }
 
     function addCheckbox(field, value) {
@@ -195,7 +245,8 @@ var autoComplete =(function ($) {
             _.each(JSON.parse(sessionStorage.getItem('tags')), function (obj) {
                 var element = (obj.section === 'product_categories') ? 'search-product' : 'search-country';
                 if (obj.section && obj.option) {
-                    createTag($('#'+element).next().next(), obj.section, obj.option, obj.buttonId);
+                    createTag($('.form-dropdown-tags'), obj.section, obj.option, obj.buttonId);
+                    checkDuplicateTag(obj.option, obj.section);
                 } else {
                     deleteTagFromStorage(obj.buttonId);
                 }
