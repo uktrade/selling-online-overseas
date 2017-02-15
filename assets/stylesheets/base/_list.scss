@@ -45,7 +45,7 @@
       padding-left: 25px;
       position: relative;
 
-      @include media(mobile) {
+      @include media($mobile) {
         font-size: 15px;
       }
 
@@ -70,8 +70,44 @@
     li {
       margin-bottom: 5px;
 
-      @include media(mobile) {
+      @include media($mobile) {
         font-size: 15px;
+      }
+    }
+  }
+
+  &-separators {
+    font-size: 0;
+
+    li {
+      position: relative;
+
+      &:after {
+        @extend %transparent-color;
+        content: '|';
+        font-size: 20px;
+        position: absolute;
+        right: -1px;
+        top: 0;
+      }
+
+      &:last-child,
+      &:nth-child(3) {
+        &:after {
+          content: '';
+        }
+      }
+    }
+  }
+
+  &-inline {
+    li {
+      display: inline-block;
+
+      @include media($mobile) {
+        &.hide-mobile {
+          display: none;
+        }
       }
     }
   }

@@ -12,7 +12,6 @@ $light-stone: #f6f4f1;
 $grey: #4a4a4a;
 $light-grey: #777;
 $lighter-grey: #dce0df;
-$lighter-grey: #dce0df;
 $bright-grey: #fafafa;
 $purple: #4f0b7b;
 $mid-blue: #00549f;
@@ -23,9 +22,12 @@ $graphite: #292929;
 $indigo: #110b29;
 $lighter-grey-opacity: rgba(220, 224, 223, .5);
 $loader-background: rgba(0, 0, 0, .5);
+$dark-navy: #160d37;
+$dark-blue: #132965;
+
 
 // FONTS
-$brand-font-family: 'Roboto', sans-serif;
+$brand-font-family: 'Roboto', arial, helvetica, sans-serif;
 
 //BODY
 $body-background-color: $bright-grey;
@@ -69,6 +71,13 @@ $button-border-color: $white;
 $button-border-color-hover: $aqua;
 $button-border-outline: 0;
 
+$button-border-blue-bg-color: transparent;
+$button-border-blue-bg-color--visited: transparent;
+$button-border-blue-bg-color--hover: transparent;
+$button-border-blue-color: $mid-blue;
+$button-border-blue-color-hover: $aqua;
+$button-border-blue-outline: 0;
+
 $button-red-bg-color: $flag-red;
 $button-red-bg-color--visited: $flag-red;
 $button-red-bg-color--hover: $great-secondary;
@@ -88,7 +97,11 @@ $backgrounds: (
   'great-primary' $great-primary,
   'indigo' $indigo,
   'lighter-grey' $lighter-grey,
-  'aqua' $aqua
+  'aqua' $aqua,
+  'dark-navy' $dark-navy,
+  'great-blue' $great-primary,
+  'dark-blue' $dark-blue,
+  'light-blue' $mid-blue
 );
 
 $backgrounds-image: (
@@ -105,6 +118,7 @@ $button: (
   'white' $button-white-bg-color $button-white-bg-color--visited $button-white-bg-color--hover $button-white-color $button-white-color-hover null $button-white-outline,
   'grey' $button-grey-bg-color $button-grey-bg-color--visited $button-grey-bg-color--hover $button-grey-color $button-grey-color-hover null $button-grey-outline,
   'border' $button-border-bg-color $button-border-bg-color--visited $button-border-bg-color--hover $button-border-color $button-border-color-hover null $button-border-outline,
+  'border-blue' $button-border-blue-bg-color $button-border-blue-bg-color--visited $button-border-blue-bg-color--hover $button-border-blue-color $button-border-blue-color-hover null $button-border-blue-outline,
   'red' $button-red-bg-color $button-red-bg-color--visited $button-red-bg-color--hover $button-red-color $button-red-color-hover null $button-red-outline
 );
 
@@ -113,6 +127,6 @@ $button: (
 $form-field-height: 40px;
 
 
-// Devices
-$tablet: 960px;
-$mobile: 400px;
+//// Devices
+//$tablet: 960px;
+//$mobile: 400px;

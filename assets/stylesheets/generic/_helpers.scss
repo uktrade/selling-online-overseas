@@ -124,6 +124,12 @@
 
 .hide {
   display: none;
+
+  &-mobile {
+    @include media($mobile) {
+      display: none;
+    }
+  }
 }
 
 .show {
@@ -151,7 +157,11 @@
     content: '';
     display: block;
     height: 50px;
-    margin: 20% auto;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 50%;
     width: 50px;
   }
 
@@ -160,7 +170,7 @@
 .desktop-only {
   display: none;
 
-  @include breakpoint (tablet) {
+  @include media ($tablet) {
     display: block;
   }
 }
@@ -168,5 +178,13 @@
 .overflow {
   &--hidden {
     overflow: hidden;
+  }
+}
+
+.min-height {
+  min-height: 550px;
+
+  @include media ($mobile) {
+    min-height: 0;
   }
 }
