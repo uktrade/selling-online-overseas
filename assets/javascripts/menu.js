@@ -1,13 +1,13 @@
 var menu = (function ($) {
-    var toggleButton = $('.header-nav-toggle'),
-        menu = $('.header-nav');
+    var toggleButton = $('.navigation-main-button'),
+        menu = $('.navigation-toggle');
 
     toggleButton.click({ button: toggleButton, menu: menu }, toggle);
 
     function toggle (event){
         event.preventDefault();
-        $(event.data.button).toggleClass('header-nav-toggle--open');
-        $(event.data.menu).toggleClass( "open");
+        $(event.data.button).toggleClass('navigation-main-button--open');
+        $(event.data.menu).toggleClass( "navigation-toggle--open");
     }
 
     return {
