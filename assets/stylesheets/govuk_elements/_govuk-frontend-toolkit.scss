@@ -15,3 +15,9 @@
 @import '../../../node_modules/govuk_frontend_toolkit/stylesheets/design-patterns/breadcrumbs';
 @import '../../../node_modules/govuk_frontend_toolkit/stylesheets/design-patterns/buttons';
 @import '../../../node_modules/govuk_frontend_toolkit/stylesheets/design-patterns/media-player';
+
+#content {
+  margin: 0;
+  max-width: inherit;
+  padding: 0;
+}

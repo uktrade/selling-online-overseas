@@ -1,4 +1,4 @@
-describe('Search', function () {
+describe('Autocomplete', function () {
 
     var event, result, html = '<form class="form">' +
                 '<label class="heading-small form-dropdown-header font-med flush--top" for="search-product">What kind of products do you sell? (optional)</label>'+
@@ -35,7 +35,7 @@ describe('Search', function () {
             init();
 
             $('.form-dropdown-results').append(result);
-            search.selectedEnter();
+            autoComplete.selectedEnter();
 
             expect($('.form-dropdown-tags li').length > 0).to.equal(true);
             expect($('.form-dropdown-tags li button').data('optionId')).to.equal('Health & Beauty');
@@ -49,7 +49,7 @@ describe('Search', function () {
             $('.form-dropdown-results').append(result);
             $('.form-dropdown-results li').last().addClass('active');
 
-            search.selectedEnter();
+            autoComplete.selectedEnter();
 
             expect($('.form-dropdown-tags li').length > 0).to.equal(true);
             expect($('.form-dropdown-tags li button').data('optionId')).to.equal('Cameras & Optics');
@@ -61,7 +61,7 @@ describe('Search', function () {
 
             var input = $('.form-dropdown-input');
 
-            search.inputEvent.call(input,event);
+            autoComplete.inputEvent.call(input,event);
 
             expect(true).to.equal(true);
         });
