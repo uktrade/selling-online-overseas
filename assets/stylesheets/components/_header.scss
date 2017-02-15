@@ -1,168 +1,249 @@
-#global-header {
-  background-color: $great-primary;
-  padding-bottom: 9px;
-  padding-top: 15px;
+.navigation {
 
-  @include breakpoint(tablet) {
-    margin-bottom: 20px;
+  a {
+    display: block;
   }
 
-  @include media(mobile) {
-    margin-bottom: 10px;
-  }
+  &-main {
+    @extend %anchor-white;
 
-  .header-main-logo {
-    width: $logo-width;
-
-    @include media (mobile) {
-      width: 70%;
-    }
-  }
-
-  &--right {
-    @include breakpoint (tablet) {
-      padding: 0;
-      width: 100%;
-    }
-  }
-
-  .header-hm-logo {
-    @include media (mobile) {
-      display: none;
-    }
-  }
-
-  .header-nav {
-    padding-top: 20px;
-    text-align: right;
-
-    @include breakpoint (tablet) {
-      display: none;
-      padding: 10px 0;
-      text-align: left;
+    &-section {
+      position: relative;
     }
 
-    &--top {
-      display: none;
-
-      @include breakpoint (tablet) {
-        display: block;
+    li {
+      &:after {
+        top: 7px;
       }
     }
 
-    &.open {
-      @include breakpoint (tablet) {
-        display: block;
-      }
+    a {
+      font-size: $small;
     }
 
     &-link {
-      @extend %medium;
-      display: inline-block;
-      list-style-type: none;
-      padding-left: 22px;
+      padding: 8px 11px 7px;
 
-      @include breakpoint(tablet) {
-        border-bottom: 1px solid $light-grey;
-        border-bottom-color: $lighter-grey-opacity;
-        margin-left: 20px;
-        margin-right: 20px;
-        padding: 10px 0;
-        position: relative;
-
-        @include breakpoint(tablet) {
-          width: 93%;
-        }
-
-        @include media (mobile) {
-          width: 85%;
-        }
-
-        &:last-child {
-          border-bottom: 0;
-          padding-bottom: 0;
-        }
-
+      &:focus {
+        @include navigation-focus;
       }
 
-      a {
-        color: $white;
-        padding-bottom: 4px;
-        text-decoration: none;
+      &:hover,
+      &--active {
 
-
-        &:hover,
-        &.active {
-          border-bottom: 4px solid $flag-red;
-
-          @include breakpoint(tablet) {
-            border-bottom: 0;
-
-            &:before {
-              border: 6px solid $flag-red;
-              content: '';
-              height: 10px;
-              left: -20px;
-              position: absolute;
-            }
-          }
-        }
-
-        &:hover {
-          border-color: $lighter-grey;
-
-          @include breakpoint(tablet) {
-            &:before {
-              border-color: $lighter-grey;
-            }
-          }
-        }
-
-        @include breakpoint(tablet) {
-          border-bottom: 0;
-        }
-
-      }
-
-      &:last-child {
-        margin-left: 0;
-        @include breakpoint(tablet) {
-          margin-left: 20px;
+        &:after {
+          border-top: 3px solid $great-secondary;
+          content: '';
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
         }
       }
     }
 
-    &-toggle {
-      color: $white;
-      display: none;
-      font-weight: bold;
-      position: absolute;
-      right: 10px;
-      text-decoration: none;
-      text-transform: uppercase;
-      top: 35px;
+    &-menu {
+      overflow-x: hidden;
+      padding-right: 70px;
+      white-space: nowrap;
 
-      .icon-menu {
-        height: 20px;
-        line-height: 31px;
-        margin-left: 10px;
-        position: relative;
-        top: 4px;
-        width: 25px;
+      @include media($mobile) {
+        display: none;
       }
 
-      &--open {
-        color: $white;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &-toggle {
+    display: none;
+    padding: 28px 0 25px;
+
+    &-item {
+      padding: 13px 25px 0;
+      position: relative;
+
+      &:first-child {
+        padding-top: 0;
+
+        @include media($mobile) {
+          padding-top: 13px;
+        }
       }
 
-      &:focus {
-        color: $white;
-        outline: 0;
+      a {
+        @extend %transparent-border;
+        display: inline;
+
+        &.last {
+          border: 0;
+        }
+
+        &.navigation-toggle-active,
+        &:hover {
+          border: {
+            bottom-width: 1px;
+            style: dashed;
+          }
+          padding-bottom: 5px;
+
+          @include media($mobile) {
+            border-style: solid;
+            display: block;
+            padding-bottom: 10px;
+
+            &:after {
+              border: {
+                bottom: 10px solid transparent;
+                left: 15px solid $great-secondary;
+                top: 10px solid transparent;
+              }
+              content: '';
+              height: 0;
+              left: 0;
+              position: absolute;
+              top: 15px;
+              width: 0;
+            }
+          }
+        }
+
+        @include media($mobile) {
+          border: {
+            bottom-width: 1px;
+            style: solid;
+          }
+          display: block;
+          padding-bottom: 10px;
+
+          &.navigation-toggle-active,
+          &:hover {
+
+            &.last {
+              border: 0;
+            }
+          }
+        }
       }
 
-      @include breakpoint(tablet) {
-        display: block;
+      &-last {
+        border: 0;
       }
+    }
+
+    &-services {
+
+      @include media($mobile) {
+        background-color: $light-blue;
+        font-weight: 500;
+      }
+    }
+
+    &--open {
+      display: block;
+    }
+
+    .outer-container {
+
+      @include media($mobile) {
+        margin: 0;
+        width: 100%;
+      }
+    }
+
+    @include media($mobile) {
+      padding: 0;
+
+      .col-3 {
+        @include span-columns(12 of 12);
+      }
+    }
+
+    &-middle {
+      @extend %transparent-color;
+      border: {
+        left: 1px;
+        style: solid;
+      }
+      padding-left: 15px;
+
+      @include media($mobile) {
+        border: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  &-main-button {
+    background-color: $light-blue;
+    border-left: 2px solid $black;
+    border-radius: 0;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 8px 10px 5px;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &:focus {
+      @include navigation-focus;
+    }
+
+    .icon {
+      height: 12px;
+      line-height: 15px;
+      margin-right: 2px;
+      top: 1px;
+      width: 25px;
+    }
+
+    &:hover,
+    &--open {
+      background-color: $dark-navy;
+      border-top: 3px solid $great-secondary;
+      bottom: 0;
+      display: block;
+      padding-top: 5px;
+
+      @include media($mobile) {
+        border: {
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+
+    @include media($mobile) {
+      background: transparent;
+      border: 1px solid;
+      border-color: $border-color-fallback;
+      border-color: $border-color;
+      top: -50px;
+    }
+  }
+
+  &-strip {
+    padding: 8px 0 3px;
+
+    a {
+      font-size: $xsmall;
+      padding: 0 5px 0 2px;
+    }
+
+    @include media($mobile) {
+      @include span-columns(12 of 12);
+    }
+  }
+
+  &-logo {
+    @include logo-in-link;
+    padding: 17px 0 11px;
+
+    @include media($mobile) {
+      width: 70%;
     }
   }
 }

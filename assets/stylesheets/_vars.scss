@@ -23,6 +23,7 @@ $graphite: #292929;
 $indigo: #110b29;
 $lighter-grey-opacity: rgba(220, 224, 223, .5);
 $loader-background: rgba(0, 0, 0, .5);
+$dark-navy: #160d37;
 
 // FONTS
 $brand-font-family: 'Roboto', sans-serif;
@@ -88,7 +89,8 @@ $backgrounds: (
   'great-primary' $great-primary,
   'indigo' $indigo,
   'lighter-grey' $lighter-grey,
-  'aqua' $aqua
+  'aqua' $aqua,
+  'dark-navy' $dark-navy,
 );
 
 $backgrounds-image: (

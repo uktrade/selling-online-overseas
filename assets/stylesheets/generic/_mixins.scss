@@ -86,3 +86,35 @@
   &:-ms-input-placeholder { @content; }
   &::-webkit-input-placeholder { @content; }
 }
+
+// Set font dimensions
+@mixin font($font-size, $letter-spacing, $line-height: '') {
+  font-size: $font-size;
+  letter-spacing: $letter-spacing;
+
+  @if $line-height != '' {
+    line-height: $line-height;
+  }
+}
+
+// Centralise focus states
+@mixin button-focus {
+  outline: 3px solid $focus-yellow;
+}
+
+@mixin link-focus {
+  background-color: $focus-yellow;
+  color: $dark-blue;
+  outline: 3px solid $focus-yellow;
+}
+
+@mixin navigation-focus {
+  background-color: $focus-yellow;
+  color: $dark-blue;
+  outline: none;
+}
+
+@mixin logo-in-link {
+  background-color: $great-primary;
+  margin-bottom: -4px;
+}

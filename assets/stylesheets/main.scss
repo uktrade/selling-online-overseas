@@ -5,12 +5,19 @@ $path: '/static/images/';
 @import 'govuk_elements/govuk-frontend-toolkit';
 @import 'govuk_elements/gutter';
 
+// bourbon grid
+@import 'new_styles/neat/grid-settings';
+@import 'neat';
+
+@import 'new_styles/vars';
 @import 'vars';
 
 @import 'generic/mixins';
 @import 'generic/animation';
 @import 'generic/helpers';
 @import 'generic/icons';
+@import 'new_styles/utilities/placeholders';
+@import 'new_styles/utilities/grid';
 
 @import 'base/background';
 @import 'base/choices';
@@ -19,6 +26,7 @@ $path: '/static/images/';
 @import 'base/typography';
 @import 'base/headings';
 @import 'base/form';
+
 
 @import 'components/breadcrumbs';
 @import 'components/buttons';
