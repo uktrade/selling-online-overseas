@@ -295,3 +295,7 @@ class MarketDetailView(MarketFilterMixin, TemplateView):
             raise Http404('Market does not exist')
 
         return context
+
+
+class TriageView(TemplateView):
+    template_name = 'markets/triage.html'

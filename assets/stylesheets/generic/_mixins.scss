@@ -42,3 +42,47 @@
     }
   }
 }
+
+@mixin radio-checked {
+
+  &:after {
+    @include prefix((border-radius: 50%), webkit moz);
+    border: 10px solid $mid-blue;
+    content: '';
+    filter: alpha(opacity=0);
+    height: 0;
+    left: 7px;
+    position: absolute;
+    top: 7px;
+    width: 0;
+    zoom: 1;
+  }
+}
+
+@mixin checkbox-checked {
+
+  &:after {
+    @include prefix((transform: rotate(-45deg)), webkit moz ms o);
+    background: transparent;
+    border: solid;
+    border-color: $mid-blue;
+    border-width: 0 0 5px 5px;
+    content: '';
+    filter: alpha(opacity=0);
+    height: 5px;
+    left: 5px;
+    opacity: 1;
+    position: absolute;
+    top: 7px;
+    width: 14px;
+    zoom: 1;
+  }
+}
+
+@mixin placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}

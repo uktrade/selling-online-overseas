@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section push--top">
+  <div class="grid-row">
+    <div class="column-one-whole">
+      <h1 class='heading-xlarge push-half--bottom flush--top'>Zalora.com</h1>
+      <p class="heading-sub heading-sub-no--border">Application via Department for International Trade</p>
+    </div>
+  </div>
+</div>
+
+<div class="background--aqua">
+  <div class="section">
+    <div class="grid-row">
+      <div class="column-one-whole">
+        <div class="form-intro font-white">
+          <a href="" class="form-intro-button">
+            <h2 class='heading-small font-med push-half--bottom flush--ends soft--ends'>Benefits of applying here</h2>
+            <i class="icon-expand icon-close"></i>
+          </a>
+          <div class="form-intro-content column-three-quarters soft-half--bottom">
+            <p class="flush--ends">The Department of International Trade facilitates the introduction between you and the marketplace directly.</p>
+            <h2 class='heading-headline font-med flush--top soft--top'>Save time</h2>
+            <p>Your application will be fast tracked through this channel. You go straight to a named contact at the marketplace.</p>
+            <p class="flush--ends">Your application for this marketplace will be reviewed for suitability and we will respond to you within 5 days.</p>
+            <h2 class='heading-headline font-med flush--ends soft--top'>Save money</h2>
+            <p>If successfully matched you will be able to get access to marketplace offers and discounts.</p>
+            <p class="form-intro-terms">We respect your privacy and will handle your information with care. We aren’t sharing any information publicly nor send you unwanted emails. <a href="https://www.exportingisgreat.gov.uk/privacy-and-cookies/">Read our full privacy statement.</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="background--lighter-grey">
+  <div class="section">
+    <div class="grid-row">
+      <div class="column-one-whole">
+        <ul class="form-tab cf">
+          <li class="column-one-fourth"><a href="#company" class="form-tab-link"><span class="form-tab-order">1</span><span class="form-tab-content">Your business</span></a></li>
+          <li class="column-one-fourth"><a href="#business" class="form-tab-link"><span class="form-tab-order">2</span><span class="form-tab-content">business details</span></a></li>
+          <li class="column-one-fourth"><a href="#experience" class="form-tab-link"><span class="form-tab-order">3</span><span class="form-tab-content">Your experience</span></a></li>
+          <li class="column-one-fourth"><a href="#contact" class="form-tab-link"><span class="form-tab-order">4</span><span class="form-tab-content">Contact details</span></a></li>
+        </ul>
+        <div class="form-tab-progressbar"><span class="form-tab-progressbar-indicator"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="grid-row">
+    <form class="form-steps" novalidate>
+      <div class="form-tab-section">
+        <fieldset>
+          <div class="form-section form-section--border cf">
+            <div class="column-five-eights hard--left">
+              <legend class="form-steps-header font-med soft--bottom">Your company</legend>
+              <div class="form-group">
+                <label class="form-label" for="company-name">Company name</label>
+                <input class="form-control" id="company-name" name="company-name-" type="text" data-validate="company">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="company-number">Company number</label>
+                <span class="form-control-addon">+44</span>
+                <input class="form-control form-control--medium" name="company-number" type="number" id="company-number" data-validate="company-number">
+              </div>
+              <div class="form-group">
+                <label class="block-label selection-button-checkbox push--top" for="soletrader">
+                  <input id="soletrader" name="soletrader" type="checkbox" value="email" data-validate="soletrader">
+                  I don't have a Companies House number
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="company-postcode">Postcode of your business</label>
+                <input class="form-control form-control--medium" name="company-postcode" type="text" id="company-postcode" data-validate="postcode">
+              </div>
+            </div>
+            <div class="column-three-eights">
+              asdasd
+            </div>
+          </div>
+          <div class="form-section cf">
+            <div class="column-five-eights hard--left">
+              <div class="form-group">
+                <label class="form-label" for="website-address">Website address</label>
+                <input class="form-control" name="website-address" type="url" id="website-address" placeholder="e.g www.example.com" data-validate="url">
+              </div>
+            </div>
+            <div class="column-three-eights">
+              asdasd
+            </div>
+          </div>
+        </fieldset>
+        <div class="column-one-whole form-tab-button">
+          <a href="#{{ previous_step.slug }}" class="link form-tab-back" data-action="back">< Back to previous step</a>
+          <a href="#business" class="button button-blue button-medium" data-action="next">Continue to next step</a>
+        </div>
+      </div>
+
+      <div class="form-tab-section">
+        <fieldset>
+          <div class="form-section form-section--border cf">
+            <legend class="heading-small font-med soft--bottom">Your business</legend>
+            <div class="column-five-eights hard--left">
+              <div class="form-group">
+                <h3 class="form-label soft-half--bottom">Annual turnover</h3>
+                <label class="block-label selection-button-radio" for="radio-1">
+                  <input id="radio-1" type="radio" name="radio-group" value="Under £ 100,000 GBP" data-validate="turnover">
+                  Under £ 100,000 GBP
+                </label>
+                <label class="block-label selection-button-radio" for="radio-2">
+                  <input id="radio-2" type="radio" name="radio-group" value="Under £ 100,000 GBP" data-validate="turnover">
+                  £100,000 to £500,000 GBP
+                </label>
+                <label class="block-label selection-button-radio" for="radio-3">
+                  <input id="radio-3" type="radio" name="radio-group" value="£500,000 to 2 millions GBP" data-validate="turnover">
+                  £500,000 to 2 millions GBP
+                </label>
+                <label class="block-label selection-button-radio" for="radio-4">
+                  <input id="radio-4" type="radio" name="radio-group" value="Over 2 millions GBP" data-validate="turnover">
+                  Over 2 millions GBP
+                </label>
+              </div>
+            </div>
+            <div class="column-three-eights">
+              asdasd
+            </div>
+          </div>
+
+          <div class="form-section form-section--border cf">
+            <div class="column-five-eights hard--left">
+              <div class="form-group">
+                <label class="form-label" for="stocks">Number of Stock Keeping Units (SKU)</label>
+                <input class="form-control form-control--medium" name="stocks" type="number" id="stocks" placeholder="e.g 480" data-validate="sku">
+              </div>
+            </div>
+            <div class="column-three-eights">
+              asdasd
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="column-five-eights hard--left">
+              <div class="form-group">
+                <h3 class="form-label soft-half--bottom">Are your products trademarked?</h3>
+                <label class="block-label selection-button-radio" for="radio-5">
+                  <input id="radio-5" type="radio" name="radio-group-2" value="Yes" data-validate="trademark">
+                  Yes
+                </label>
+                <label class="block-label selection-button-radio" for="radio-6">
+                  <input id="radio-6" type="radio" name="radio-group-2" value="No" data-validate="trademark">
+                  No
+                </label>
+              </div>
+            </div>
+            <div class="column-three-eights">
+              asdasd
+            </div>
+          </div>
+        </fieldset>
+        <div class="column-one-whole">
+          <a href="#company" class="button button-blue button-medium" data-action="back">Back</a>
+          <a href="#experience" class="button button-blue button-medium" data-action="next">Continue to next step</a>
+        </div>
+      </div>
+
+      <div class="form-tab-section">
+        <fieldset>
+          <div class="form-section form-section--border cf">
+            <div class="column-five-eights hard--left">
+              <legend class="heading-small font-med soft--bottom">Your experience</legend>
+              <div class="form-group">
+                <h3 class="form-label soft-half--bottom">Have you sold products online to overseas customers?</h3>
+                <label class="block-label selection-button-radio" for="radio-7">
+                  <input id="radio-7" type="radio" name="radio-group-3" value="Not yet" data-validate="export">
+                  Not yet
+                </label>
+                <label class="block-label selection-button-radio" for="radio-8">
+                  <input id="radio-8" type="radio" name="radio-group-3" value="Yes, regularly" data-validate="export">
+                  Yes, regularly
+                </label>
+                <label class="block-label selection-button-radio" for="radio-9">
+                  <input id="radio-9" type="radio" name="radio-group=3" value="Yes, a few years ago" data-validate="export">
+                  Yes, a few years ago
+                </label>
+              </div>
+            </div>
+            <div class="column-three-eights">
+              asdasd
+            </div>
+          </div>
+
+          <div class="form-section cf">
+            <div class="column-five-eights hard--left">
+              <div class="form-group">
+                <label class="form-label" for="id_description">Tell us why your business is a good match for this marketplace</label>
+                <textarea class="form-control form-textarea" id="id_description" name="description" cols="40" rows="10" data-validate="description"></textarea>
+              </div>
+            </div>
+            <div class="column-three-eights">
+              asdasd
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="column-one-whole">
+          <a href="#business" class="button button-blue button-medium" data-action="back">Back</a>
+          <a href="#contact" class="button button-blue button-medium" data-action="next">continue to last step</a>
+        </div>
+      </div>
+
+      <div class="form-tab-section">
+        <fieldset>
+          <div class="form-section cf">
+            <div class="column-five-eights hard--left">
+              <legend class="heading-small font-med soft--bottom">Contact information</legend>
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Contact name</label>
+                <input class="form-control" id="contact-name" name="contact-name" type="text" data-validate="name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-email">Email address</label>
+                <input class="form-control" name="contact-email" type="email" id="contact-email" placeholder="e.g contact name@webaddress.com" data-validate="email">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-number">Phone number</label>
+                <span class="form-control-addon">+44</span>
+                <input class="form-control" name="contact-number" type="number" id="contact-number" data-validate="contact-number">
+              </div>
+              <div class="form-group">
+                <label class="block-label selection-button-checkbox" for="contact-preference">
+                  <input id="contact-preference" name="contact-preference" type="checkbox" value="email">
+                  I prefer to be contacted by email
+                </label>
+              </div>
+            </div>
+            <div class="column-three-eights">
+              asdasd
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="column-one-whole">
+          <a href="#experience" class="button button-blue button-medium" data-action="back">Back</a>
+          <button class="button button-blue button-medium">Apply &#38; get onto this marketplace</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="form-success background--aqua">
+  <div class="section">
+    <div class="grid-row text--center font-white soft--top">
+      <div class="column-one-whole soft--ends">
+        <span class="form-success-icon"><img src="/static/images/submitted.svg" alt="application sent"></span>
+
+        <h1 class="heading-large push-half--bottom soft--top form-success-header">Your application has been sent.</h1>
+        <p class="heading-small font-med">What happens next?</p>
+      </div>
+      <div class="cf soft--top">
+        <div class="column-one-third form-success-section"><span>1</span><p>A member of staff at the Department for International Trade wil review your application.</p></div>
+        <div class="column-one-third form-success-section"><span>2</span><p>Respond to you within 5 working days. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div>
+        <div class="column-one-third form-success-section"><span>3</span><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has</p></div>
+      </div>
+      <div class="column-one-whole soft--ends push--top">
+        <a href="" class="">< Go back to details</a>
+      </div>
+      <div class="cf soft--top">
+        <div class="column-one-fifth">&nbsp;</div>
+        <div class="column-three-fifths">
+          <div class="audit">
+            <i class="icon icon-feedback">
+              <span class="visuallyhidden">feedback</span>
+            </i>
+            <h3 class="heading-small font-med audit-header">Was this service useful?</h3>
+            <form class="audit-form">
+              <div class="audit-button float--left text--left">
+                <button class="button button-border push--bottom" data-audit="yes">Yes, thanks</button>
+              </div>
+              <div class="audit-button float--left text--right">
+                <button class="button button-border push--bottom" data-audit="no">Not really</button>
+              </div>
+              <div class="audit-text-section hide">
+                <fieldset>
+                  <div class="push--bottom">
+                    <textarea class="form-control form-textarea column-one-whole" id="" name="description" cols="40" rows="5" placeholder="We are sorry to hear that. Would you tell us why?"></textarea>
+                  </div>
+                </fieldset>
+                <div class="audit-button audit-button--send text--right float--right hard--right">
+                  <button class="button button-border" data-audit="submit">Send my feedback</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="audit-thank hide">
+            <i class="icon icon-thankyou">
+              <span class="visuallyhidden">Thank you</span>
+            </i>
+            <h3 class="heading-small font-med audit-header">Thank you for your feedback</h3>
+          </div>
+          <div class="audit-error">
+            <i class="icon icon-error">
+              <span class="visuallyhidden">error</span>
+            </i>
+            <h3 class="heading-small font-med audit-header">Sorry, something went wrong</h3>
+            <p>Please try again later, or <a href="https://contact-us.export.great.gov.uk/feedback/selling_online_overseas/" title="feedback">use the feedback form</a></p>
+          </div>
+        </div>
+        <div class="column-one-fifth">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
