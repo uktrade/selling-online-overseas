@@ -1,0 +1,25 @@
+.logo-strip {
+  &-img {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80px;
+  }
+
+  .col-2 {
+    height: 90px;
+    position: relative;
+
+    @include media($mobile) {
+      @include span-columns(4 of 12);
+
+      &:last-child,
+      &:nth-of-type(3) {
+        margin-right: 0;
+      }
+    }
+  }
+}

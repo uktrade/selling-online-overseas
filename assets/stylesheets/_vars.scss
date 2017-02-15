@@ -21,10 +21,14 @@ $turquoise: #3ed3ff;
 $graphite: #292929;
 $indigo: #110b29;
 $lighter-grey-opacity: rgba(220, 224, 223, .5);
-$loader-background: rgba(0, 0, 0, .5);
+$transparent-background: rgba(0, 0, 0, .5);
 $dark-navy: #160d37;
 $dark-blue: #132965;
-
+$bright-grey-opacity: rgba(250, 250, 250, .9);
+$light-aqua: #8ae2fb;
+$gradient-start: rgba(0, 0, 0, 1);
+$gradient-end: rgba(0, 0, 0, 0);
+$lightest-grey: #d8d8d8;
 
 // FONTS
 $brand-font-family: 'Roboto', arial, helvetica, sans-serif;
@@ -78,9 +82,9 @@ $button-border-blue-color: $mid-blue;
 $button-border-blue-color-hover: $aqua;
 $button-border-blue-outline: 0;
 
-$button-red-bg-color: $flag-red;
+$button-red-bg-color: $great-secondary;
 $button-red-bg-color--visited: $flag-red;
-$button-red-bg-color--hover: $great-secondary;
+$button-red-bg-color--hover: $flag-red;
 $button-red-color: $white;
 $button-red-color-hover: $white;
 $button-red-outline: 0;
@@ -101,7 +105,11 @@ $backgrounds: (
   'dark-navy' $dark-navy,
   'great-blue' $great-primary,
   'dark-blue' $dark-blue,
-  'light-blue' $mid-blue
+  'light-blue' $mid-blue,
+  'bright-grey-opacity' $bright-grey,
+  'bright-grey-opacity' $bright-grey-opacity,
+  'light-aqua' $light-aqua,
+  'white' $white
 );
 
 $backgrounds-image: (
@@ -109,7 +117,8 @@ $backgrounds-image: (
   'logistics' 'icons/logistics.svg',
   'users' 'icons/registered_users.svg',
   'fees' 'icons/fees.svg',
-  'commission' 'icons/commission.svg'
+  'commission' 'icons/commission.svg',
+  'hero' 'hero/SOO-start-hero.jpg'
 );
 
 $button: (
@@ -125,8 +134,3 @@ $button: (
 
 //FORMS
 $form-field-height: 40px;
-
-
-//// Devices
-//$tablet: 960px;
-//$mobile: 400px;

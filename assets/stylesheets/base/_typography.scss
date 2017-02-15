@@ -60,6 +60,11 @@ main,
     font-family: $brand-font-family;
   }
 
+  &-xsmall {
+    font-family: $brand-font-family;
+    font-weight: 300;
+  }
+
   &-xxsmall {
     @extend %font-xxsmall;
   }
@@ -99,6 +104,27 @@ main,
 
 .h1 {
   @extend %h1;
+  letter-spacing: -1px;
+
+  @include media($tablet) {
+    font-size: 33px;
+  }
+
+  @include media($mobile) {
+    font-size: 30px;
+  }
+}
+
+.h2 {
+  font-size: 32px;
+}
+
+.h3 {
+  font-size: 24px;
+
+  @include media($desktop) {
+    font-size: 20px;
+  }
 }
 
 h1,
@@ -160,7 +186,7 @@ a {
   &--regular {
     @extend %font-regular;
 
-    @include media(mobile) {
+    @include media($mobile) {
       font-size: 15px;
     }
   }
