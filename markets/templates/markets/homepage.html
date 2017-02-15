@@ -1,49 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="section push--top soft--top">
-    <div class="grid-row">
-      <div class="column-five-eights home">
-        <h1 class='heading-xlarge push--bottom flush--top'>Selling online overseas</h1>
+  <div class="outer-container push--top soft--top">
+    <div class="col-7 home">
+      <h1 class='heading-xlarge push--bottom flush--top'>Selling online overseas</h1>
 
-        <p class="heading-sub push--bottom">Use this service to help choose a suitable online marketplace to sell your products overseas.</p>
+      <p class="heading-sub push--bottom">Use this service to help choose a suitable online marketplace to sell your products overseas.</p>
 
-        <h2 class="heading-small push--bottom">You can:</h2>
+      <h2 class="heading-small push--bottom">You can:</h2>
 
-        <ul class="list list-bullet push--bottom">
-          <li>find major online marketplaces in other countries</li>
-          <li>see whether these online marketplaces are suitable to sell your products</li>
-          <li>discover how to list your products on an online marketplace</li>
-          <li>get information about costs of listing on the marketplace and how logistics are fulfilled</li>
-          <li>access special terms negotiated by the UK government</li>
-        </ul>
-        <a class='button button-blue button-large push--ends button-start' href='{% url 'markets:search' %}' title="start now">Find an online marketplace</a>
-      </div>
+      <ul class="list list-bullet push--bottom">
+        <li>find major online marketplaces in other countries</li>
+        <li>see whether these online marketplaces are suitable to sell your products</li>
+        <li>discover how to list your products on an online marketplace</li>
+        <li>get information about costs of listing on the marketplace and how logistics are fulfilled</li>
+        <li>access special terms negotiated by the UK government</li>
+      </ul>
+      <a class='button button-blue button-large push--ends button-start' href='{% url 'markets:search' %}' title="start now">Find an online marketplace</a>
+    </div>
+    <div class="col-1">&nbsp;</div>
 
-      <div class="column-three-eights">
-        <aside>
-          <div class="home-info home-info--border push--bottom">
-            <h4 class="heading-small font-med push-half--top">About this service</h4>
-            <dl class="soft--bottom">
+    <div class="col-4">
+      <aside>
+        <div class="home-info home-info--border push--bottom">
+          <h4 class="heading-small font-med push-half--top">About this service</h4>
+          <dl class="soft--bottom">
 
-              <dt class="soft-half--top">Marketplaces in database:</dt>
-              <dd><strong>{{ market_count }}</strong></dd>
+            <dt class="soft-half--top">Marketplaces in database:</dt>
+            <dd><strong>{{ market_count }}</strong></dd>
 
-              <dt class="soft-half--top">Last updated:</dt>
-              <dd><strong>{{ last_updated|date:"d M Y" }}</strong></dd>
+            <dt class="soft-half--top">Last updated:</dt>
+            <dd><strong>{{ last_updated|date:"d M Y" }}</strong></dd>
 
-            </dl>
-          </div>
+          </dl>
+        </div>
 
-          <div class="home-info background--stone push-half--top">
-            <h4 class="heading-small font-med push-half--top">Learn more about selling online</h4>
-            <ul>
-              <li class="soft-half--top"><a href="https://export.great.gov.uk/use-social-media-and-commerce-to-export/" title="Guide to online export" class="link">Practical advice about <br /> e-commerce</a></li>
-              <li class="soft-half--top soft--bottom"><a href="https://export.great.gov.uk/getting-ready-to-sell-overseas/" title="how to reach export customers online" class="link">Get ready to sell overseas</a></li>
-            </ul>
-          </div>
-        </aside>
-      </div>
+        <div class="home-info background--stone push-half--top">
+          <h4 class="heading-small font-med push-half--top">Learn more about selling online</h4>
+          <ul>
+            <li class="soft-half--top"><a href="https://export.great.gov.uk/use-social-media-and-commerce-to-export/" title="Guide to online export" class="link">Practical advice about <br /> e-commerce</a></li>
+            <li class="soft-half--top soft--bottom"><a href="https://export.great.gov.uk/getting-ready-to-sell-overseas/" title="how to reach export customers online" class="link">Get ready to sell overseas</a></li>
+          </ul>
+        </div>
+      </aside>
     </div>
   </div>
 {% endblock content %}

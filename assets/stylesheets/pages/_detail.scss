@@ -15,7 +15,7 @@
   }
 
   &--info {
-    @include breakpoint(tablet) {
+    @include media ($tablet) {
       height: auto;
       margin-right: 0;
       margin-top: 30px;
@@ -25,13 +25,13 @@
   }
 
   &--top {
-    @include media (mobile) {
+    @include media ($mobile) {
       padding-top: 70px;
     }
   }
 
   &--back {
-    @include media (mobile) {
+    @include media ($mobile) {
       left: 15px;
       position: absolute;
       top: 0;
@@ -42,19 +42,19 @@
     border: 1px solid $great-primary;
     margin-top: 65px;
 
-    @include breakpoint(tablet) {
+    @include media ($tablet) {
       margin-right: 0;
       margin-top: 30px;
     }
 
-    @include media (mobile) {
+    @include media ($mobile) {
       margin-top: 20px;
     }
 
     &--header {
       font-size: 24px;
 
-      @include media (mobile) {
+      @include media ($mobile) {
         font-size: 19px;
       }
     }
@@ -65,17 +65,17 @@
     margin: 0;
     padding: 25px 50px 0;
 
-    @include breakpoint(tablet) {
+    @include media ($tablet) {
       padding: 30px 0;
     }
 
-    @include media (mobile) {
+    @include media ($mobile) {
       padding-top: 10px;
     }
 
     &--head {
       padding: 30px 20px;
-      @include media (mobile) {
+      @include media ($mobile) {
         padding: 20px 10px;
       }
     }
@@ -92,7 +92,7 @@
 
     &.header-icon {
       padding-left: 70px;
-      @include media (mobile) {
+      @include media ($mobile) {
         font-size: 19px;
         padding-left: 42px;
         padding-right: 5px;
@@ -112,7 +112,7 @@
     font-size: 19px;
     padding: 20px 0 10px;
 
-    @include media (mobile) {
+    @include media ($mobile) {
       font-size: 15px;
       font-weight: 500;
     }
@@ -154,6 +154,18 @@
       padding: 0 20px;
       position: absolute;
       right: 0;
+    }
+  }
+
+  .col-3 {
+    @include media ($tablet) {
+      @include span-columns(4 of 12);
+    }
+
+    &.last {
+      @include media ($tablet) {
+        @include span-columns(12 of 12);
+      }
     }
   }
 
