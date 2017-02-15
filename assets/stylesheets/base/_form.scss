@@ -322,12 +322,12 @@
       top: 0;
       width: 25px;
     }
-  //
-  //  &.focused {
-  //    &:before {
-  //      outline: 2px solid $aqua;
-  //    }
-  //  }
+
+    &.focused {
+      &:before {
+        box-shadow: 0 0 0 3px $aqua;
+      }
+    }
   }
 
   &.selection-button-radio {
@@ -337,11 +337,11 @@
       @include radio-checked;
     }
 
-    //&.focused {
-    //  &:before {
-    //    box-shadow: 0 0 0 4px #ffbf47;
-    //  }
-    //}
+    &.focused {
+      &:before {
+        box-shadow: 0 0 0 4px $aqua;
+      }
+    }
 
     &:before {
       @include prefix((border-radius: 50%), webkit moz);
