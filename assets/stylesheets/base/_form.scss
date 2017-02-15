@@ -1,38 +1,275 @@
 .form {
 
   &-group {
+    margin-bottom: 20px;
+
+    &-error {
+      border-left: 10px solid $great-secondary;
+      padding-left: 20px;
+    }
+
+    &-error--message {
+      @extend %medium;
+      @extend %font-regular ;
+      color: $great-secondary;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    &-help {
+      padding-top: 20px;
+      @include media(mobile) {
+        margin-bottom: 20px;
+      }
+
+      ul {
+        list-style-type: disc;
+        padding-left: 15px;
+        padding-top: 5px;
+      }
+    }
+
+    @include media(mobile) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &-tab-section {
     margin-bottom: 40px;
   }
 
   &-label {
     @extend %font-regular;
-    @extend %light;
+    @extend %medium;
     color: $grey;
+    display: table;
     font-family: $brand-font-family;
     margin-bottom: 10px;
 
     @include media(mobile) {
-      font-size: 15px;
+      font-size: 19px;
     }
   }
 
   &-control {
-    @extend %font-xxsmall;
     @extend %light;
     background: $light-stone;
     border: 1px solid $secondary-text-colour;
     font-family: $brand-font-family;
+    font-size: 16px;
     height: $form-field-height;
     padding: 10px;
+    width: 75%;
+
+    &--medium {
+      width: 40%;
+
+      @include media(mobile) {
+        width: 100%;
+      }
+    }
+
+    &-addon {
+      color: $black;
+      font-size: 15px;
+      font-weight: 300;
+      margin-right: -5px;
+      padding: 11px;
+      position: absolute;
+
+      + input {
+        padding-left: 40px;
+      }
+    }
 
     &:focus {
       outline: 3px solid $aqua;
+    }
+
+    @include placeholder {
+      color: $grey;
+    }
+
+    @include media(mobile) {
+      width: 100%;
     }
   }
 
   &-textarea {
     float: none;
     height: 100%;
+    width: 85%;
+
+    @include media(mobile) {
+      width: 100%;
+    }
+  }
+
+  &-tab {
+    height: 22px;
+    padding: 18px 0;
+
+    li {
+      height: 20px;
+      position: relative;
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+
+    a {
+      color: $light-grey;
+      position: absolute;
+
+      &.form-tab-link {
+        @extend %medium;
+        cursor: default;
+        font-size: 15px;
+        pointer-events: none;
+        text-decoration: none;
+
+        .form-tab-order {
+          border: {
+            radius: 100px;
+            style: solid;
+            width: 2px;
+          }
+          display: inline-block;
+          margin-right: 5px;
+          padding: 3px 8px;
+          text-align: center;
+        }
+
+        @include media(mobile) {
+          margin: 0 auto;
+          text-align: center;
+          width: 100%;
+        }
+      }
+
+      &.form-tab-link--completed {
+        color: $mid-blue;
+        cursor: pointer;
+        pointer-events: inherit;
+      }
+
+      &.form-tab-link--active {
+        color: $aqua;
+        font-size: 18px;
+        margin-top: -8px;
+
+        .form-tab-order {
+          padding: 6px 12px;
+        }
+      }
+
+      .form-tab-content {
+
+        @include breakpoint (tablet) {
+          font-size: 15px;
+        }
+
+        @include media(mobile) {
+          display: none;
+        }
+      }
+    }
+
+    &-progressbar {
+      height: 9px;
+      width: 100%;
+
+      &-indicator {
+        background: $aqua;
+        display: block;
+        height: 100%;
+      }
+    }
+
+    &-back {
+      margin-right: 40px;
+      position: relative;
+      top: 11px;
+
+      @include media(mobile) {
+        bottom: 40px;
+        position: absolute;
+        top: inherit;
+      }
+    }
+
+    &-button {
+      @include media(mobile) {
+        text-align: center;
+      }
+    }
+  }
+
+  &-steps {
+
+    &-header {
+      font-size: 24px;
+      margin-top: 25px;
+    }
+
+    @include media(mobile) {
+      padding-bottom: 50px;
+      position: relative;
+    }
+  }
+
+  &-intro {
+    position: relative;
+
+    &-button {
+      text-decoration: none;
+
+      h2 {
+        color: $white;
+      }
+
+      i {
+        background: {
+          position: top center;
+          repeat: no-repeat;
+        }
+        display: block;
+        height: 36px;
+        position: absolute;
+        right: 0;
+        top: 14px;
+        width: 36px;
+      }
+    }
+
+    &-content {
+
+      li {
+        &:before {
+          color: $white;
+        }
+      }
+    }
+
+    &-terms {
+      font-size: 13px;
+      line-height: 17px;
+
+      a {
+        @extend %regular;
+        color: $white;
+      }
+    }
+  }
+
+  &-section {
+    margin: 0 10px 20px;
+
+    &--border {
+      border-bottom: 1px solid $lighter-grey;
+      padding-bottom: 20px;
+    }
   }
 }
 
@@ -41,3 +278,143 @@
   margin-bottom: 5px;
 }
 
+.block-label {
+  @extend %regular;
+  @include prefix((touch-action: manipulation), ms);
+  background: none;
+  border: 0;
+  clear: left;
+  cursor: pointer;
+  display: table;
+  float: none;
+  margin-bottom: 10px;
+  margin-top: 0;
+  padding: 8px 10px 9px 45px;
+  position: relative;
+
+  input {
+    cursor: pointer;
+    filter: alpha(opacity=0);
+    left: 0;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    zoom: 1;
+    opacity: 0;
+  }
+
+  &.selection-button-checkbox {
+
+    &.selected {
+      @include checkbox-checked;
+    }
+
+    &:before {
+      background: transparent;
+      border: 2px solid;
+      border-color: $grey;
+      border-radius: 4px;
+      content: '';
+      height: 25px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 25px;
+    }
+
+    &.focused {
+      &:before {
+        box-shadow: 0 0 0 3px $aqua;
+      }
+    }
+  }
+
+  &.selection-button-radio {
+    padding-bottom: 20px;
+
+    &.selected {
+      @include radio-checked;
+    }
+
+    &.focused {
+      &:before {
+        box-shadow: 0 0 0 4px $aqua;
+      }
+    }
+
+    &:before {
+      @include prefix((border-radius: 50%), webkit moz);
+      background: transparent;
+      border: 2px solid;
+      color: $grey;
+      content: '';
+      height: 30px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 30px;
+    }
+  }
+}
+
+.form-success {
+  padding-bottom: 60px;
+
+  &-icon {
+    border: 2px solid $white;
+    border-radius: 100px;
+    display: block;
+    margin: auto;
+    padding: 20px 7px;
+    width: 70px;
+  }
+
+  &-header {
+    border-bottom: 1px solid $white;
+    display: inline-block;
+    padding-bottom: 40px;
+  }
+
+  &-section {
+    p {
+      margin: auto;
+      width: 80%;
+    }
+
+    span {
+      @extend %regular;
+      border: 2px solid $white;
+      border-radius: 100px;
+      display: block;
+      font-size: 25px;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 auto 15px;
+      width: 40px;
+    }
+
+    @include media(mobile) {
+      margin-top: 20px;
+    }
+  }
+
+  a {
+    @extend %regular;
+    border-bottom: 1px solid $light-grey;
+    border-bottom-color: $lighter-grey-opacity;
+    color: $white;
+    padding-bottom: 2px;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom: 1px dashed $white;
+    }
+  }
+
+  &-body {
+    #global-header {
+      margin-bottom: 0;
+    }
+  }
+}

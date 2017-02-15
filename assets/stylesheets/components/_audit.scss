@@ -1,0 +1,52 @@
+.audit {
+  border-top: 1px solid $white;
+  margin-top: 40px;
+  padding-top: 10px;
+  position: relative;
+
+  &-button {
+    width: 50%;
+
+    .button {
+      width: 70%;
+
+      @include breakpoint(tablet) {
+        width: 90%;
+      }
+    }
+
+    &--send {
+      @include media(mobile) {
+        width: 100%;
+
+        .button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .form-textarea {
+    width: 100%;
+  }
+
+  .icon {
+    background-size: 30px;
+    display: inline-block;
+    height: 30px;
+    position: relative;
+    top: 7px;
+    width: 30px;
+  }
+
+  &-header {
+    display: inline-block;
+    font-size: 20px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+  }
+
+  .button {
+    font-size: 18px;
+  }
+}
