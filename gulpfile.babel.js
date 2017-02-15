@@ -66,7 +66,8 @@ gulp.task('sass', () => gulp
     outputStyle: 'compressed',
     includePaths: [
       paths.npm + 'govuk-elements-sass/public/sass/',
-      paths.toolkit + 'stylesheets/'
+      paths.toolkit + 'stylesheets/',
+      require("bourbon-neat").includePaths
     ]
   }))
   .pipe(plugins.base64({baseDir: 'apps'}))

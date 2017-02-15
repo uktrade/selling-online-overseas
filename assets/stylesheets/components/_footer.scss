@@ -1,108 +1,159 @@
-#footer {
-  background-color: $great-primary;
-  border-top: 0;
-  padding-bottom: 50px;
+.footer {
+  @extend %anchor-white;
+  font-size: $small;
+  padding-top: 40px;
 
-  .footer-wrapper {
-    background-color: $great-primary;
-    padding-top: 40px;
+  &-logo {
+    @include logo-in-link;
+    width: 200px;
 
-    @include media (mobile) {
-      padding-top: 0;
+    @include media($tablet) {
+      width: 170px;
     }
 
-    .grid-row {
-      @include media (mobile) {
-        display: flex;
-        flex-flow: column;
-
-        .logo {
-          order: 3;
-        }
-
-        .links {
-          order: 2;
-        }
-
-        .subscribe   {
-          order: 1;
-
-          .footer-section {
-            border: 0;
-          }
-        }
-
-      }
+    @include media($mobile) {
+      width: 150px;
     }
-
   }
 
-  .footer-links {
+  &-links {
+    padding-left: 10px;
 
-    margin-bottom: 15px;
+    @include media($mobile) {
+      li {
+        padding-bottom: 10px;
+      }
+    }
 
     a {
-      @extend %regular;
-      border-bottom: 1px solid $light-grey;
-      border-bottom-color: $lighter-grey-opacity;
-      color: $white;
-      padding-bottom: 2px;
-      text-decoration: none;
-
       &:hover {
         border-bottom: 1px dashed $white;
+        padding-bottom: 5px;
       }
+    }
 
-      @include media (mobile) {
-        margin-left: 0;
+    &--border {
+      @extend %transparent-color;
+
+      @include media($mobile) {
+        border: {
+          left: 1px;
+          style: solid;
+        }
+        padding-left: 20px;
       }
     }
   }
 
-  .footer {
+  &-middle-section {
+    @extend %transparent-color;
+    border: {
+      left: 1px;
+      right: 1px;
+      style: solid;
+    }
+    padding-left: 20px;
 
-    &-img {
-      width: 250px;
+    @include media($mobile) {
+      border: 0;
+      padding-left: 0;
+    }
+  }
 
-      @include breakpoint (tablet) {
-        width: 215px;
-      }
+  &-section {
+    @include span-columns(6 of 12);
 
-      &--top {
-        margin-bottom: 10px;
-      }
-
-      &--eig {
-        width: 200px;
-
-        @include breakpoint (tablet) {
-          width: 150px;
-        }
+    @include media($tablet) {
+      .col-8,
+      .col-4 {
+        @include span-columns(6 of 12);
       }
     }
 
-    &-section {
-      padding-left: 30px;
+    @include media($mobile) {
+      @include span-columns(12 of 12);
+      border-bottom: 1px solid;
+      color: $border-color-fallback;
+      color: $border-color;
+      padding: 20px 0;
 
-      @include media (mobile) {
-        border-top: 1px solid $white;
-        padding: 30px 0;
+      .col-8,
+      .col-4 {
+        @include span-columns(6 of 12);
       }
+    }
+  }
 
-      &--first {
+  &-section-right {
+    li {
+      padding-left: 40px;
+      padding-right: 5px;
+
+      @include media($mobile) {
         padding-left: 0;
       }
 
-
+      @include media($desktop) {
+        padding-left: 0;
+      }
     }
 
+    @include media($tablet) {
+      .col-6 {
+        &:nth-child(1) {
+          @include span-columns(7 of 12);
+        }
+
+        &:nth-child(2) {
+          @include span-columns(5 of 12);
+        }
+      }
+    }
+
+    @include media($mobile) {
+      margin-bottom: 10px;
+    }
   }
 
-  .footer-header {
-    color: $white;
-    font-size: 20px;
-    margin-bottom: 30px;
+  &-copy {
+    text-align: right;
+
+    @include media($mobile) {
+      @include span-columns(12 of 12);
+      padding: 10px 0 20px;
+      text-align: center;
+    }
   }
 
+  .list-separators {
+
+    li {
+      @include media($mobile) {
+        @include span-columns(6 of 12);
+
+        &:after {
+          content: '';
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    @extend %transparent-color;
+    border: {
+      top: 1px solid;
+    }
+    margin-top: 60px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+
+    @include media($mobile) {
+      border: 0;
+      margin-top: 0;
+    }
+  }
+
+  @include media($mobile) {
+    padding-top: 0;
+  }
 }
-

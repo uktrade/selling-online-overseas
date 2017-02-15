@@ -1,0 +1,24 @@
+%anchor-white {
+  a {
+    color: $white;
+
+    &:hover {
+      //color: $grey;
+    }
+  }
+}
+
+%transparent-color {
+  color: $border-color-fallback;
+  color: $border-color;
+}
+
+%transparent-background {
+  background-color: $border-color-fallback;
+  background-color: $border-color;
+}
+
+%transparent-border {
+  border-color: $border-color-fallback;
+  border-color: $border-color;
+}
