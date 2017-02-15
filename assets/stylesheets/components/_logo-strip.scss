@@ -1,0 +1,52 @@
+.logo-strip {
+
+  &-section {
+    padding: 0;
+
+    @include media($desktop-only) {
+      padding: 0 60px;
+    }
+  }
+
+  &-img {
+    bottom: 0;
+    height: 83px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+
+    @include media($tablet) {
+      height: 68px;
+      width: 90px;
+    }
+
+    @include media($mobile) {
+      height: 60px;
+      width: 80px;
+    }
+  }
+
+  .col-2 {
+    height: 90px;
+    margin-top: 10px;
+    position: relative;
+
+    @include media($mobile) {
+      @include span-columns(4 of 12);
+      height: 80px;
+      margin-top: 0;
+
+      &:last-child,
+      &:nth-of-type(3) {
+        margin-right: 0;
+      }
+    }
+
+    @include media($tablet) {
+      margin-top: 0;
+    }
+  }
+}

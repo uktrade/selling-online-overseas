@@ -9,9 +9,10 @@ $great-secondary: #e41f13;
 $flag-red: #b00d23;
 $stone: #dfd5c5;
 $light-stone: #f6f4f1;
-$grey: #4a4a4a;
-$light-grey: #777;
+$grey: #333;
+$mid-grey: #999;
 $lighter-grey: #dce0df;
+$light-grey: $lighter-grey;
 $bright-grey: #fafafa;
 $purple: #4f0b7b;
 $mid-blue: #00549f;
@@ -21,13 +22,18 @@ $turquoise: #3ed3ff;
 $graphite: #292929;
 $indigo: #110b29;
 $lighter-grey-opacity: rgba(220, 224, 223, .5);
-$loader-background: rgba(0, 0, 0, .5);
+$transparent-background: rgba(0, 0, 0, .65);
 $dark-navy: #160d37;
 $dark-blue: #132965;
-
+$bright-grey-opacity: rgba(250, 250, 250, .9);
+$light-aqua: #8ae2fb;
+$gradient-start: rgba(0, 0, 0, 1);
+$gradient-end: rgba(0, 0, 0, 0);
+$lightest-grey: #d8d8d8;
 
 // FONTS
 $brand-font-family: 'Roboto', arial, helvetica, sans-serif;
+$quote-font-family: georgia, serif;
 
 //BODY
 $body-background-color: $bright-grey;
@@ -78,9 +84,9 @@ $button-border-blue-color: $mid-blue;
 $button-border-blue-color-hover: $aqua;
 $button-border-blue-outline: 0;
 
-$button-red-bg-color: $flag-red;
+$button-red-bg-color: $great-secondary;
 $button-red-bg-color--visited: $flag-red;
-$button-red-bg-color--hover: $great-secondary;
+$button-red-bg-color--hover: $flag-red;
 $button-red-color: $white;
 $button-red-color-hover: $white;
 $button-red-outline: 0;
@@ -101,7 +107,11 @@ $backgrounds: (
   'dark-navy' $dark-navy,
   'great-blue' $great-primary,
   'dark-blue' $dark-blue,
-  'light-blue' $mid-blue
+  'light-blue' $mid-blue,
+  'bright-grey-opacity' $bright-grey,
+  'bright-grey-opacity' $bright-grey-opacity,
+  'light-aqua' $light-aqua,
+  'white' $white
 );
 
 $backgrounds-image: (
@@ -109,7 +119,11 @@ $backgrounds-image: (
   'logistics' 'icons/logistics.svg',
   'users' 'icons/registered_users.svg',
   'fees' 'icons/fees.svg',
-  'commission' 'icons/commission.svg'
+  'commission' 'icons/commission.svg',
+  'hero' 'hero/startpage_hero_desktop.jpg' 'hero/tablet/startpage_hero_tablet.jpg',
+  'carousel-fx' 'carousel/carousel_fx.jpg' null 'carousel/carousel_fx_mobile.jpg',
+  'carousel-hb' 'carousel/carousel_hb.jpg' null 'carousel/carousel_hb_mobile.jpg',
+  'carousel-msb' 'carousel/carousel_msb.jpg' null 'carousel/carousel_msb_mobile.jpg'
 );
 
 $button: (
@@ -125,8 +139,3 @@ $button: (
 
 //FORMS
 $form-field-height: 40px;
-
-
-//// Devices
-//$tablet: 960px;
-//$mobile: 400px;

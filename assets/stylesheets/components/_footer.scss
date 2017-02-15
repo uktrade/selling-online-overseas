@@ -114,10 +114,11 @@
     }
 
     @include media($mobile) {
+      margin-bottom: 10px;
+
       .col-6 {
         @include span-columns(6 of 12);
       }
-      margin-bottom: 10px;
     }
   }
 

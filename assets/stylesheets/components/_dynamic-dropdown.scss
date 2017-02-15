@@ -56,20 +56,32 @@
     padding: 5px 10px;
     text-decoration: none;
 
+    &--selected {
+      &:before {
+        color: $dark-blue;
+        content: '\2714';
+        margin-right: 10px;
+      }
+    }
+
     &:visited {
       color: $grey;
     }
   }
 
   &-tags {
+    @include span-columns(12 of 12);
+
+    @include media($desktop-only) {
+      @include span-columns(8 of 12);
+    }
 
     li {
-      background-color: $stone;
       border-radius: 10px;
       color: $graphite;
       display: inline-block;
       font-size: 14px;
-      margin: 10px 3px 0 0;
+      margin: 0 10px 10px 0;
       padding: 7px;
 
       @include media(mobile) {
@@ -79,12 +91,14 @@
     }
 
     &--close {
+      @extend %light;
       background-color: $mid-blue;
       border: 0;
       border-radius: 10px;
       color: $white;
       cursor: pointer;
       display: inline-block;
+      font-family: $brand-font-family;
       font-size: 15px;
       height: 20px;
       line-height: 20px;

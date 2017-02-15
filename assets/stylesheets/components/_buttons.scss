@@ -1,6 +1,8 @@
 @each $name, $bg-color, $visited, $hover, $color, $color-hover, $bg-image, $outline in $button {
   .button {
+    @include prefix((border-radius: 3px), webkit moz);
     box-shadow: none;
+    font-family: $brand-font-family;
     font-weight: 900;
 
     &-#{$name} {
@@ -32,8 +34,8 @@
 
 .button {
   &-large {
-    @extend %lede;
-    padding: 18px 30px;
+    @extend %font-regular;
+    padding: 15px 30px;
   }
 
   &-medium {

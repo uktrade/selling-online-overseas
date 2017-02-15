@@ -141,7 +141,7 @@
 .float--none    { float: none; }
 
 .loader {
-  background-color: $loader-background;
+  background-color: $transparent-background;
   bottom: 0;
   left: 0;
   position: absolute;
@@ -186,5 +186,29 @@
 
   @include media ($mobile) {
     min-height: 0;
+  }
+}
+
+.border {
+  border: 1px solid $lighter-grey;
+
+  &-top {
+    border-top: 1px solid $lighter-grey;
+  }
+}
+
+.text-shadow {
+  text-shadow: 0 2px 2px $transparent-background;
+
+  @include media ($mobile) {
+    text-shadow: none;
+  }
+}
+
+.section-clickable {
+  position: relative;
+
+  a {
+    @extend %whole-section-clickable;
   }
 }

@@ -6,11 +6,23 @@
   }
 }
 
-@each $name, $url in $backgrounds-image {
+@each $name, $url, $tablet-url, $mobile-url in $backgrounds-image {
   .background {
     &-image--#{$name} {
       background-image: url('#{$image-path}#{$url}');
       background-repeat: no-repeat;
+
+      @if $tablet-url != null {
+        @include media ($tablet) {
+          background-image: url('#{$image-path}#{$tablet-url}');
+        }
+      }
+
+      @if $mobile-url != null {
+        @include media ($mobile) {
+          background-image: url('#{$image-path}#{$mobile-url}');
+        }
+      }
     }
   }
 }
