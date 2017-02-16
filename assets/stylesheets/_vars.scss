@@ -12,6 +12,7 @@ $light-stone: #f6f4f1;
 $grey: #4a4a4a;
 $light-grey: #777;
 $lighter-grey: #dce0df;
+$lighter-grey: #dce0df;
 $bright-grey: #fafafa;
 $purple: #4f0b7b;
 $mid-blue: #00549f;
@@ -63,9 +64,9 @@ $button-grey-outline: 0;
 
 $button-border-bg-color: transparent;
 $button-border-bg-color--visited: transparent;
-$button-border-bg-color--hover: transparent;
-$button-border-color: $black;
-$button-border-color-hover: $black;
+$button-border-bg-color--hover: $white;
+$button-border-color: $white;
+$button-border-color-hover: $aqua;
 $button-border-outline: 0;
 
 $button-red-bg-color: $flag-red;
@@ -85,7 +86,9 @@ $backgrounds: (
   'stone' $stone,
   'light-stone' $light-stone,
   'great-primary' $great-primary,
-  'indigo' $indigo
+  'indigo' $indigo,
+  'lighter-grey' $lighter-grey,
+  'aqua' $aqua
 );
 
 $backgrounds-image: (

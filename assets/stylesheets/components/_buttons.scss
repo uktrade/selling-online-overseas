@@ -70,4 +70,30 @@
     padding: 14px;
     text-align: center;
   }
+
+  &-border {
+    border: 2px solid;
+    padding: {
+      bottom: 10px;
+      top: 10px;
+    };
+
+    &:hover {
+      border-color: $white;
+    }
+
+    &:disabled {
+      background-color: $white;
+      border-color: $white;
+      color: $aqua;
+
+      &:hover {
+        background-color: $white;
+      }
+    }
+  }
+
+  &-block {
+    display: block;
+  }
 }
