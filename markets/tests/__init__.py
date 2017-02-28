@@ -11,11 +11,11 @@ def create_market(**variable_data):
 
     market_data = get_market_data(**variable_data)
 
-    if 'countries_served' not in variable_data:
+    if 'operating_countries' not in variable_data:
         country = create_country('UK')
-        countries_served = [country]
+        operating_countries = [country]
     else:
-        countries_served = market_data.pop('countries_served')
+        operating_countries = market_data.pop('operating_countries')
 
     if 'product_categories' not in variable_data:
         category = create_category('Toys')
@@ -33,7 +33,7 @@ def create_market(**variable_data):
 
     market = Market(**market_data)
     market.save()
-    market.countries_served = countries_served
+    market.operating_countries = operating_countries
     market.product_categories = product_categories
     market.logo = logo
     market.save()
@@ -48,14 +48,14 @@ def get_market_data(**variable_data):
     if 'name' not in variable_data:
         variable_data['name'] = "Amazon"
 
-    if 'description' not in variable_data:
-        variable_data['description'] = "Lorem Ipsum"
+    if 'e_marketplace_description' not in variable_data:
+        variable_data['e_marketplace_description'] = "Lorem Ipsum"
 
     if 'web_address' not in variable_data:
         variable_data['web_address'] = "example.com"
 
-    if 'registration_fees' not in variable_data:
-        variable_data['registration_fees'] = 0
+    if 'one_off_registration_fee' not in variable_data:
+        variable_data['one_off_registration_fee'] = 0
 
     if 'membership_fees' not in variable_data:
         variable_data['membership_fees'] = 0
