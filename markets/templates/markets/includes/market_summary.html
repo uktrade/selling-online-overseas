@@ -14,10 +14,10 @@
           <li>
             <dl>
               <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
-              {% if market.countries_served.count > 20 %}
+              {% if market.operating_countries.count > 20 %}
                 <dd>Global</dd>
               {% else %}
-                <dd>{{ market | csl:'countries_served' }}</dd>
+                <dd>{{ market | csl:'operating_countries' }}</dd>
               {% endif %}
             </dl>
           </li>
@@ -34,7 +34,7 @@
         <li class="list markets-item--highlight--section background-image--users">
           <dl>
             <dt><strong>Registered users:</strong></dt>
-            <dd>{{ market.web_traffic_display }}</dd>
+            <dd>{{ market.number_of_registered_users_display }}</dd>
           </dl>
         </li>
         <li class="list markets-item--highlight--section background-image--commission">

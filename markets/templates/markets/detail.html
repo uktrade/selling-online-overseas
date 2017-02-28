@@ -25,7 +25,7 @@
       <div class="detail-section--terms detail-section--info back background--great-primary font-white" data-section>
         <div class="detail-section-content detail-section-content--head">
           <h4 class="detail-section--terms--header  push-half--bottom font-med hard--top">Department for International Trade (DIT) assistance and special terms</h4>
-          {{ market.ukti_terms|safe }}
+          {{ market.dit_special_terms|safe }}
           <a href="https://contact-us.export.great.gov.uk/triage/soo/?market={{ market.name|urlencode }}" class="button button-blue button-medium push-half--top" title="apply now">Apply now</a>
         </div>
       </div>
@@ -55,7 +55,7 @@
     <div class="cf">
       <dl class="column-two-fifths">
         <dt class="font-reg">Registered users</dt>
-        <dd>{{ market.web_traffic_display }}</dd>
+        <dd>{{ market.number_of_registered_users_display }}</dd>
       </dl>
       <dl class="column-three-fifths">
         <dt class="font-reg">Ways to sell</dt>
@@ -65,7 +65,7 @@
     <div class="cf push--bottom">
       <dl class="column-two-fifths">
         <dt class="font-reg">Product positioning</dt>
-        {{ market | field_dd:'product_type' }}
+        {{ market | field_dd:'product_positioning' }}
       </dl>
       {% if market.famous_brands_on_marketplace.all %}
         <dl class="column-three-fifths">
@@ -144,8 +144,8 @@
     </div>
     <div class="cf push--bottom">
       <dl class="column-one-third">
-        <dt class="font-reg">One-off registration fee {% if market.registration_fees_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.registration_fees_notes }}" data-tooltip="registration-fee"></button>{% endif %}</dt>
-        <dd>{{ market.registration_fees_display  }}</dd>
+        <dt class="font-reg">One-off registration fee {% if market.one_off_registration_fee_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.one_off_registration_fee_notes }}" data-tooltip="registration-fee"></button>{% endif %}</dt>
+        <dd>{{ market.one_off_registration_fee_display  }}</dd>
         <dialog data-tooltip="registration-fee"></dialog>
       </dl>
       <dl class="column-one-third">
@@ -196,7 +196,7 @@
         <dialog data-tooltip="setup-notes"></dialog>
       </dl>
       <dl class="column-one-third">
-        <dt class="font-reg">Agree to {% if market.exclusivity_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.exclusivity_required_notes }}" data-tooltip="exclusivity"></button>{% endif %}</dt>
+        <dt class="font-reg">Agree to {% if market.product_exclusivity_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.product_exclusivity_required_notes }}" data-tooltip="exclusivity"></button>{% endif %}</dt>
         <dd>{{ market.exclusivity_required | formatvalue:'tick' }} Product exclusivity terms</dd>
         <dialog data-tooltip="exclusivity"></dialog>
       </dl>
@@ -204,7 +204,7 @@
     <div class="cf push--bottom">
       <dl class="column-one-third">
         <dt class="font-reg">Upload product details via {% if market.product_details_upload_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.product_details_upload_notes }}" data-tooltip="upload"></button>{% endif %}</dt>
-        {{ market | field_dd:'product_details_upload' }}
+        {{ market | field_dd:'product_details_upload_method' }}
         <dialog data-tooltip="upload"></dialog>
       </dl>
       <div class="column-two-thirds">
@@ -226,7 +226,7 @@
     <div class="cf push--bottom">
       <dl class="column-one-third">
         <dt class="font-reg">Payments terms</dt>
-        <dd>{{ market.payment_terms_days_display }}</dd>
+        <dd>{{ market.sale_to_payment_duration_display }}</dd>
       </dl>
       <dl class="column-one-third">
         <dt class="font-reg">Currency</dt>
