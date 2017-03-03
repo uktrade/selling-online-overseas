@@ -20,7 +20,7 @@ gulp.task('webdriver_update', webdriver_update);
 gulp.task('webdriver_standalone', webdriver_standalone);
 
 // set debugMode to true to use non uglified and compressed js versions
-let debugMode = false ? { mangle: false, compress: false, output: { beautify: true } } : null;
+let debugMode = true ? { mangle: false, compress: false, output: { beautify: true } } : null;
 
 // TASKS
 // - - - - - - - - - - - - - - -
@@ -53,6 +53,7 @@ gulp.task('javascripts', () => gulp
   .pipe(plugins.addSrc.prepend([
     paths.npm + 'jquery/dist/jquery.min.js',
     paths.npm + 'underscore/underscore-min.js',
+    paths.npm + 'slick-carousel/slick/slick.js',
     paths.npm + 'query-command-supported/dist/queryCommandSupported.min.js',
     paths.npm + 'diff-dom/diffDOM.js'
   ]))
@@ -94,7 +95,8 @@ gulp.task('lint:sass', () => gulp
             'no-ids': 0,
             'mixins-before-declarations': 0,
             'no-duplicate-properties': 0,
-            'no-vendor-prefixes': 0
+            'no-vendor-prefixes': 0,
+            'clean-import-paths': 0
         }
     }))
     .pipe(plugins.sassLint.format(stylish))

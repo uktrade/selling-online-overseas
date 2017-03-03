@@ -1,0 +1,19 @@
+.steps {
+  &-number {
+    display: block;
+    font-size: 110px;
+    line-height: 90px;
+  }
+
+  &-content {
+    width: 186px;
+
+    @include media($mobile) {
+      width: 80%;
+    }
+
+    @include media($tablet) {
+      width: 150px;
+    }
+  }
+}

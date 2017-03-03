@@ -1,8 +1,7 @@
 var autoComplete =(function ($) {
 
     var searchField = $('.form-dropdown .form-dropdown-input'),
-        results = $('.form-dropdown-results'),
-        tags = $('.form-dropdown-tags');
+        results = $('.form-dropdown-results');
 
     function init() {
 
@@ -117,7 +116,7 @@ var autoComplete =(function ($) {
             event.preventDefault();
         }
 
-        createTag($(this).parent().parent().next(), checkboxOption, optionId, buttonId);
+        createTag($('.form-dropdown-tags'), checkboxOption, optionId, buttonId);
         resultCount.update_count();
 
         clearInput(input);
@@ -137,7 +136,20 @@ var autoComplete =(function ($) {
     }
 
     function createTag(container, checkboxOption, optionId, buttonId) {
-        container.append('<li>'+optionId+'<button href="" data-option-id="'+optionId+'" class="form-dropdown-tags--close" data-button-id="'+buttonId+'">x</button></li>');
+
+        var button = $('<button>', {
+            'data-button-id': buttonId,
+            'data-option-id': optionId,
+            class: "form-dropdown-tags--close",
+            html: "x"
+        }),
+        li = $('<li>', {
+            class: (checkboxOption==='countries_served' ? 'background--light-aqua' : 'background--stone'),
+            html: optionId + button[0].outerHTML
+        });
+
+
+        container.append(li);
         $('.form-dropdown-tags--close').on('click', deleteTag);
         addCheckbox(checkboxOption, optionId);
     }
@@ -195,7 +207,7 @@ var autoComplete =(function ($) {
             _.each(JSON.parse(sessionStorage.getItem('tags')), function (obj) {
                 var element = (obj.section === 'product_categories') ? 'search-product' : 'search-country';
                 if (obj.section && obj.option) {
-                    createTag($('#'+element).next().next(), obj.section, obj.option, obj.buttonId);
+                    createTag($('.form-dropdown-tags'), obj.section, obj.option, obj.buttonId);
                 } else {
                     deleteTagFromStorage(obj.buttonId);
                 }

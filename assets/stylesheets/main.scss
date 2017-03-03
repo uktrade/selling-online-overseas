@@ -8,6 +8,9 @@ $path: '/static/images/';
 @import 'new_styles/neat/grid-settings';
 @import 'neat';
 
+// slick carousel
+@import 'node_modules/slick-carousel/slick/slick.scss';
+
 @import 'new_styles/vars';
 @import 'vars';
 
@@ -31,14 +34,17 @@ $path: '/static/images/';
 @import 'components/breadcrumbs';
 @import 'components/buttons';
 @import 'components/tooltip';
-@import 'components/filters';
 @import 'components/navigation';
 @import 'components/footer';
 @import 'components/dynamic-dropdown';
 @import 'components/nav-intro';
-@import 'components/results';
 @import 'components/audit';
+@import 'components/autocomplete';
+@import 'components/hero';
+@import 'components/carousel';
+@import 'components/logo-strip';
+@import 'components/steps';
+@import 'components/stories';
 
 @import 'pages/detail';
 @import 'pages/markets';
-@import 'pages/home';

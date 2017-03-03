@@ -24,7 +24,10 @@ $lighter-grey-opacity: rgba(220, 224, 223, .5);
 $loader-background: rgba(0, 0, 0, .5);
 $dark-navy: #160d37;
 $dark-blue: #132965;
-
+$bright-grey-opacity: rgba(250, 250, 250, .9);
+$light-aqua: #8ae2fb;
+$gradient-start: rgba(0, 0, 0, 1);
+$gradient-end: rgba(0, 0, 0, 0);
 
 // FONTS
 $brand-font-family: 'Roboto', arial, helvetica, sans-serif;
@@ -101,7 +104,11 @@ $backgrounds: (
   'dark-navy' $dark-navy,
   'great-blue' $great-primary,
   'dark-blue' $dark-blue,
-  'light-blue' $mid-blue
+  'light-blue' $mid-blue,
+  'bright-grey-opacity' $bright-grey,
+  'bright-grey-opacity' $bright-grey-opacity,
+  'light-aqua' $light-aqua,
+  'white' $white
 );
 
 $backgrounds-image: (
@@ -109,7 +116,8 @@ $backgrounds-image: (
   'logistics' 'icons/logistics.svg',
   'users' 'icons/registered_users.svg',
   'fees' 'icons/fees.svg',
-  'commission' 'icons/commission.svg'
+  'commission' 'icons/commission.svg',
+  'hero' 'hero/SOO-start-hero.jpg'
 );
 
 $button: (
@@ -126,7 +134,3 @@ $button: (
 //FORMS
 $form-field-height: 40px;
 
-
-//// Devices
-//$tablet: 960px;
-//$mobile: 400px;

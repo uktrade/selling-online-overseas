@@ -188,3 +188,9 @@
     min-height: 0;
   }
 }
+
+.border {
+  &-grey {
+    border: 1px solid $lighter-grey;
+  }
+}
