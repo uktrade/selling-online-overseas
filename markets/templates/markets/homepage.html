@@ -1,48 +1,128 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="outer-container push--top soft--top">
-    <div class="col-7 home">
-      <h1 class='heading-xlarge push--bottom flush--top'>Selling online overseas</h1>
-
-      <p class="heading-sub push--bottom">Use this service to help choose a suitable online marketplace to sell your products overseas.</p>
-
-      <h2 class="heading-small push--bottom">You can:</h2>
-
-      <ul class="list list-bullet push--bottom">
-        <li>find major online marketplaces in other countries</li>
-        <li>see whether these online marketplaces are suitable to sell your products</li>
-        <li>discover how to list your products on an online marketplace</li>
-        <li>get information about costs of listing on the marketplace and how logistics are fulfilled</li>
-        <li>access special terms negotiated by the UK government</li>
-      </ul>
-      <a class='button button-blue button-large push--ends button-start' href='{% url 'markets:search' %}' title="start now">Find an online marketplace</a>
-    </div>
-    <div class="col-1">&nbsp;</div>
-
-    <div class="col-4">
-      <aside>
-        <div class="home-info home-info--border push--bottom">
-          <h4 class="heading-small font-med push-half--top">About this service</h4>
-          <dl class="soft--bottom">
-
-            <dt class="soft-half--top">Marketplaces in database:</dt>
-            <dd><strong>{{ market_count }}</strong></dd>
-
-            <dt class="soft-half--top">Last updated:</dt>
-            <dd><strong>{{ last_updated|date:"d M Y" }}</strong></dd>
-
-          </dl>
+  <div class="hero hero-gradient background-image--hero cf">
+    <div class="hero-content">
+      <div class="outer-container soft-half--top">
+        <h1 class="h1 font-reg font-white soft--top">Join the world's online marketplaces</h1>
+        <p class="font-small font-lig font-white flush--bottom">Reach over 2 billion consumers online</p>
+        <p class="font-small font-lig font-white">Get exclusive offers negotiated on behalf of UK businesses</p>
+      </div>
+      <div class="outer-container">
+        <div class="background--bright-grey-opacity soft autocomplete">
+          <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}' data-form-type="autocomplete">
+            <fieldset>
+              <legend class="visuallyhidden">Please select countries and products</legend>
+              <div class="col-4">
+                <div class="form-dropdown">
+                  <label class="form-label" for="search-product">What products do you sell?</label>
+                  <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off" placeholder="Product name">
+                  <ul class="form-dropdown-results" role="presentation"></ul>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-dropdown">
+                  <label class="form-label" for="search-country">Where do you want to sell them?</label>
+                  <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="/geography/api/" data-field="countries_served" autocomplete="off" placeholder="Country name">
+                  <ul class="form-dropdown-results" role="presentation"></ul>
+                  <ul class="form-dropdown-checkbox hide"></ul>
+                </div>
+              </div>
+              <div class="col-4">
+                <div id='results-count'>
+                  <button class='button button-red button-medium' type='submit'>Find marketplaces (<span class="results-count">{{results_count}}</span>)</button>
+                </div>
+              </div>
+            </fieldset>
+            <div class="cf">
+              <ul class="form-dropdown-tags col-8"></ul>
+            </div>
+          </form>
         </div>
-
-        <div class="home-info background--stone push-half--top">
-          <h4 class="heading-small font-med push-half--top">Learn more about selling online</h4>
-          <ul>
-            <li class="soft-half--top"><a href="https://export.great.gov.uk/use-social-media-and-commerce-to-export/" title="Guide to online export" class="link">Practical advice about <br /> e-commerce</a></li>
-            <li class="soft-half--top soft--bottom"><a href="https://export.great.gov.uk/getting-ready-to-sell-overseas/" title="how to reach export customers online" class="link">Get ready to sell overseas</a></li>
-          </ul>
-        </div>
-      </aside>
+      </div>
     </div>
   </div>
+
+  <div>
+    <ul class="carousel text--center font-white">
+      <li class="carousel-panel background--dark-blue">
+        <blockquote>
+          <p class="font-small font-lig">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scram</p>
+          <footer class="font-lig push--top">Bob kane</footer>
+        </blockquote>
+      </li>
+      <li class="carousel-panel background--grey">
+        <blockquote>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scram</p>
+          <footer class="font-lig push--top">killer Croc</footer>
+        </blockquote>
+      </li>
+      <li class="carousel-panel background--blue">
+        <blockquote>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scram</p>
+          <footer class="font-lig push--top">Lex Luther</footer>
+        </blockquote>
+      </li>
+    </ul>
+  </div>
+
+  <div class="logo-strip text--center">
+    <div class="outer-container">
+      {% for ran in random_markets %}
+        <div class="col-2"><img src="{{ ran.logo.base64_logo }}"></div>
+        {% comment %}
+        <!-- new way of doing things, for if/when the image cropper is integrated -->
+        <!-- requires the {% load thumbnail %} at the top -->
+        <div class="col-2"><img src="{% thumbnail ran.logo.image 75x50 box=ran.logo.cropping crop detail %}"></div>
+        {% endcomment %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="background--grey">
+    <div class="outer-container">
+      <h3>How does it work?</h3>
+
+      <div class="col-4">
+        <h4>Find marketplaces</h4>
+        <p>Find online marketplaces suitable for your products</p>
+      </div>
+
+      <div class="col-4">
+        <h4>Apply to join</h4>
+        <p>Apply via Department for International Trade and get fast track.</p>
+      </div>
+
+      <div class="col-4">
+        <h4>Start selling</h4>
+        <p>Reach billions of consumers and grow your business</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="carousel background--dark-navy text--center">
+    <blockquote>asdas asdas asd asdasdasasasd asd</blockquote>
+  </div>
+
+  <div class="background--grey">
+    <div class="outer-container">
+      <h3>E-commerce success stories</h3>
+      <div class="col-4">
+        <img src="http://placehold.it/30x30">
+        <p>asdasd asdasd asdasda sdasd asdasdas d</p>
+        <a href="">Read success story</a>
+      </div>
+      <div class="col-4">
+        <img src="http://placehold.it/30x30">
+        <p>asdasd asdasd asdasda sdasd asdasdas d</p>
+        <a href="">Read success story</a>
+      </div>
+      <div class="col-4">
+        <img src="http://placehold.it/30x30">
+        <p>asdasd asdasd asdasda sdasd asdasdas d</p>
+        <a href="">Read success story</a>
+      </div>
+    </div>
+  </div>
+
 {% endblock content %}
