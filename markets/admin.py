@@ -70,7 +70,7 @@ class MarketAdmin(VersionAdmin):
     list_display = ['name', 'web_address', 'is_published']
     ordering = ['name']
     readonly_fields = ['slug']
-    filter_horizontal = ['countries_served', 'product_categories', 'famous_brands_on_marketplace']
+    filter_horizontal = ['operating_countries', 'product_categories', 'famous_brands_on_marketplace']
     checkbox_widget_fields = ['customer_support_channels']
     form = MarketForm
 
@@ -78,20 +78,20 @@ class MarketAdmin(VersionAdmin):
         ('Marketplace Description', {
             'fields': (
                 ('name', 'slug', 'logo'),
-                'countries_served',
+                'operating_countries',
                 'web_address',
-                'description',
+                'e_marketplace_description',
             )
         }),
         ('Department of International Trade tips and terms', {
             'fields': (
-                'ukti_terms',
+                'dit_special_terms',
                 'dit_advisor_tip',
             )
         }),
         ('Tell me about this marketplace', {
             'fields': (
-                ('web_traffic', 'seller_model', 'product_type'),
+                ('number_of_registered_users', 'seller_model', 'product_positioning'),
                 ('product_categories'),
                 ('famous_brands_on_marketplace'),
             )
@@ -110,7 +110,7 @@ class MarketAdmin(VersionAdmin):
         }),
         ('What costs will I pay this marketplace?', {
             'fields': (
-                ('registration_fees', 'registration_fees_currency', 'registration_fees_notes',),
+                ('one_off_registration_fee', 'one_off_registration_fee_currency', 'one_off_registration_fee_notes',),
                 ('membership_fees', 'membership_fees_currency', 'membership_fees_frequency',),
                 ('fee_per_listing', 'fee_per_listing_notes',),
                 ('commission_lower', 'commission_upper', 'commission_notes',),
@@ -121,13 +121,13 @@ class MarketAdmin(VersionAdmin):
             'fields': (
                 ('translation_requirements', 'translation_notes'),
                 ('setup_requirements', 'setup_notes'),
-                ('exclusivity_required', 'exclusivity_required_notes',),
-                ('product_details_upload', 'product_details_upload_notes',),
+                ('product_exclusivity_required', 'product_exclusivity_required_notes',),
+                ('product_details_upload_method', 'product_details_upload_notes',),
             )
         }),
         ('How will I get paid?', {
             'fields': (
-                ('payment_terms_days', 'currency_of_payments',),
+                ('sale_to_payment_duration', 'currency_of_payments',),
             )
         }),
         ('What help do they give sellers like me?', {
@@ -138,7 +138,7 @@ class MarketAdmin(VersionAdmin):
         }),
         ('What should I do next?', {
             'fields': (
-                'signup_address',
+                'explore_the_marketplace',
             )
         }),
     )

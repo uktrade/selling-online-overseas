@@ -42,7 +42,7 @@ class UserBehavior(TaskSet):
             countries.append(random.choice(search_options['countries']))
 
         category_filter = 'product_category={0}'.format('&product_category='.join(categories))
-        country_filter = 'countries_served={0}'.format('&countries_served='.join(countries))
+        country_filter = 'operating_countries={0}'.format('&operating_countries='.join(countries))
 
         url = "{0}?{1}&{2}".format(base_url, category_filter, country_filter)
         self.client.get(url, name=base_url)

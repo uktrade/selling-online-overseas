@@ -118,9 +118,9 @@ class MarketListView(MarketFilterMixin, ListView):
         into __in selectors
 
         eg. URL args of:
-                ?name=Foo&countries_served__name=uk&boolen_field=True&invalid_property=blah
+                ?name=Foo&operating_countries__name=uk&boolen_field=True&invalid_property=blah
             will be result in:
-                Market.objects.filter(name__in=['Foo'], countries_served__name=['uk'], boolen_field__in=[True])
+                Market.objects.filter(name__in=['Foo'], operating_countries__name=['uk'], boolen_field__in=[True])
         """
 
         # Get the cleaned get parameters
@@ -174,17 +174,17 @@ class MarketListView(MarketFilterMixin, ListView):
         annotations['product_categories_score'] = score
         annotations['total_score'] = score
 
-        country_filter = orig_filter.pop('countries_served__name__in', [])
-        matches, score = self._order_by_related_model_name('countries_served__name__in', country_filter)
-        annotations['countries_served_matches'] = matches
-        annotations['countries_served_score'] = score
+        country_filter = orig_filter.pop('operating_countries__name__in', [])
+        matches, score = self._order_by_related_model_name('operating_countries__name__in', country_filter)
+        annotations['operating_countries_matches'] = matches
+        annotations['operating_countries_score'] = score
         annotations['total_score'] += score
 
         # Filter the markets based on the original search params (without the product/category terms)
         markets = self.markets.filter(**orig_filter)
 
         # Make the filter term to ensure we only have results where there is more than 1 match for each filter term
-        new_filter = {'product_categories_matches__gt': 0, 'countries_served_matches__gt': 0}
+        new_filter = {'product_categories_matches__gt': 0, 'operating_countries_matches__gt': 0}
 
         # Apply all the annotations to the queryset
         return markets.annotate(**annotations).filter(**new_filter).order_by('-total_score')
