@@ -155,7 +155,7 @@ gulp.task('imagemin', () =>
         .pipe(plugins.imagemin({
             progressive: true
         }))
-        .pipe(gulp.dest(paths.images))
+        .pipe(gulp.dest(paths.dist + 'images/'))
 );
 
 // Optional: recompile on changes
