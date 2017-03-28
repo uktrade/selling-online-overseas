@@ -8,6 +8,8 @@ from django.forms import TypedChoiceField
 from django.db.models import Max, Case, When, FloatField, ExpressionWrapper, Count, F
 from django.http import Http404
 
+from thumber.decorators import thumber_feedback
+
 from .models import Market, PublishedMarket
 from .forms import MarketListFilterForm
 from core.forms import QueryChoiceMixin
@@ -68,11 +70,13 @@ class SearchView(MarketFilterMixin, TemplateView):
         return context
 
 
+@thumber_feedback
 class MarketListView(MarketFilterMixin, ListView):
     """
     View for producing a list of Markets based on some user-selected filtering
     """
 
+    satisfied_wording = "Did you find what you were looking for?"
     template_name = 'markets/list.html'
     context_object_name = 'markets_list'
 
@@ -275,11 +279,13 @@ class MarketAPIView(MarketListView):
     template_name = 'markets/includes/market_list.html'
 
 
+@thumber_feedback
 class MarketDetailView(MarketFilterMixin, TemplateView):
     """
     The simple view for the details page for individual Markets
     """
 
+    satisfied_wording = "Was this page useful?"
     template_name = 'markets/detail.html'
 
     def get_context_data(self, *args, **kwargs):
