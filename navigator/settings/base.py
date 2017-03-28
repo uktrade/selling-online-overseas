@@ -126,7 +126,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'fixstatic'),
 )
