@@ -95,14 +95,26 @@
 
   &-thankyou {
     background-image: url('#{$image-path}icons/thanks.svg');
+
+    &--grey {
+      background-image: url('#{$image-path}icons/thanks-grey.svg');
+    }
   }
 
   &-error {
     background-image: url('#{$image-path}icons/error.svg');
+
+    &--grey {
+      background-image: url('#{$image-path}icons/error-grey.svg');
+    }
   }
 
   &-feedback {
     background-image: url('#{$image-path}icons/feedback.svg');
+
+    &--grey {
+      background-image: url('#{$image-path}icons/feedback-grey.svg');
+    }
   }
 
   &-sign-in {

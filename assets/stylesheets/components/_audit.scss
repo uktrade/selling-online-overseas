@@ -1,6 +1,6 @@
 .audit {
   border-top: 1px solid $white;
-  margin-top: 40px;
+  margin-top: 20px;
   padding-top: 10px;
   position: relative;
 
@@ -8,7 +8,7 @@
     width: 50%;
 
     .button {
-      width: 70%;
+      width: 85%;
 
       @include media ($tablet) {
         width: 90%;
@@ -16,11 +16,15 @@
     }
 
     &--send {
-      @include media(mobile) {
+      @include media($mobile) {
+        width: 100%;
+      }
+
+      .button {
         width: 100%;
 
-        .button {
-          width: 100%;
+        @include media($desktop-only) {
+          width: 70%;
         }
       }
     }
@@ -47,6 +51,34 @@
   }
 
   .button {
+    @extend %medium;
     font-size: 18px;
+  }
+
+  &--white {
+    border-color: $mid-grey;
+
+    .button-border {
+      color: $grey;
+
+      &:hover {
+        border-color: $aqua;
+        color: $aqua;
+      }
+
+      &:active,
+      &:focus {
+        color: $white;
+      }
+
+      &:disabled {
+        background-color: $lighter-grey;
+        color: $grey;
+
+        &:hover {
+          border-color: $white;
+        }
+      }
+    }
   }
 }
