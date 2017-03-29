@@ -53,9 +53,13 @@
                 <li class="float--left soft-half--left"><a class="link link--white" href="https://www.export.great.gov.uk/" title="part of great.gov.uk"><span class="hide-mobile font-light-grey font-lig">Part of </span><span class="font-reg">great.gov.uk</span></a></li>
               </ul>
 
-              <ul class="list-inline list-separators float--right navigation-login font-reg">
-                <li class="float--left soft-half--right"><a class="link--white" href="" title="Sign in"><i class="icon icon--left icon-sign-out"><span class="visuallyhidden">Sign in icon</span></i><span class="hide-mobile">Sign in</span></a></li>
-                <li class="float--left soft-half--left hide-mobile"><a class="link--white" href="" title="Register"><span>Register</span></a></li>
+              <ul class="list-inline list-separators float--right navigation-login font-regular" id="sso-signin">
+                <li class="float--left soft-half--right"><a class="link--white" href="{{ SSO_HOST }}accounts/login/" title="Sign in"><i class="icon icon--left icon-sign-in"></i><span class="hide-mobile">Sign in</span></a></li>
+                <li class="float--left soft-half--left hide-mobile"><a class="link--white" href="{{ SSO_HOST }}accounts/signup/" title="Register"><span>Register</span></a></li>
+              </ul>
+              <ul class="list-inline list-separators float--right navigation-login font-regular" id="sso-signout" style="display:none">
+                <li class="float--left soft-half--right"><a class="link--white" href="{{ PROFILE_HOST }}soo" title="Sign in"><i class="icon icon--left icon-sign-in"></i><span class="hide-mobile">Profile</span></a></li>
+                <li class="float--left soft-half--left hide-mobile"><a class="link--white" href="{{ SSO_HOST }}accounts/logout/" title="Register"><span>Sign out</span></a></li>
               </ul>
             </div>
           </div>
