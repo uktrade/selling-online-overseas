@@ -13,6 +13,18 @@
       "description": "The django app's sercret key",
       "generator": "secret"
     },
+    "SOO_HOST": {
+      "required": false
+    },
+    "HELP_HOST": {
+      "required": false
+    },
+    "SSO_HOST": {
+      "required": false
+    },
+    "PROFILE_HOST": {
+      "required": false
+    },
     "ALLOWED_IPS": {
       "required": false
     },
