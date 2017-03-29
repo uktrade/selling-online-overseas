@@ -15,7 +15,7 @@
     background-color: $light-stone;
     border-left: 1px solid $stone;
     border-right: 1px solid $stone;
-    max-height: 137px;
+    max-height: 150px;
     overflow-y: auto;
     position: absolute;
     width: 100%;
@@ -100,4 +100,10 @@
     }
   }
 
+}
+
+.js-enabled {
+  .form-dropdown-hidden {
+    display: none;
+  }
 }

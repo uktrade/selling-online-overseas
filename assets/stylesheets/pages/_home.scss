@@ -1,26 +1,26 @@
 .home {
-  padding-right: 70px;
 
-  @include breakpoint(tablet) {
+  @include media($mobile) {
+    padding-right: 0;
+  }
+
+  @include media ($tablet) {
     padding-right: 30px;
   }
 
-  @include media (mobile) {
-    padding-right: 10px;
-  }
 
   &-info {
     @extend %font-regular;
     float: right;
     line-height: 25px;
     padding: 20px 25px;
-    width: 255px;
+    width: 100%;
 
     &--border {
       border: 1px solid $lighter-grey;
     }
 
-    @include breakpoint(tablet) {
+    @include media($mobile) {
       float: none;
       padding: 25px 15px;
       width: inherit;
@@ -28,7 +28,7 @@
 
     dt,
     dd {
-      @include media (mobile) {
+      @include media ($mobile) {
         display: inline-block;
       }
     }
