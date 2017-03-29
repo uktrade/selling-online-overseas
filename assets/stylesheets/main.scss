@@ -3,34 +3,48 @@ $path: '/static/images/';
 
 @import 'govuk_elements/govuk-elements';
 @import 'govuk_elements/govuk-frontend-toolkit';
-@import 'govuk_elements/gutter';
 
+// bourbon grid
+@import 'new_styles/neat/grid-settings';
+@import 'neat';
+
+// slick carousel
+@import 'node_modules/slick-carousel/slick/slick.scss';
+
+@import 'new_styles/vars';
 @import 'vars';
 
 @import 'generic/mixins';
 @import 'generic/animation';
 @import 'generic/helpers';
 @import 'generic/icons';
+@import 'new_styles/utilities/placeholders';
+@import 'new_styles/utilities/grid';
+@import 'new_styles/utilities/typography';
 
 @import 'base/background';
 @import 'base/choices';
-@import 'base/grid';
 @import 'base/list';
 @import 'base/typography';
 @import 'base/headings';
 @import 'base/form';
+@import 'new_styles/elements/links';
+
 
 @import 'components/breadcrumbs';
 @import 'components/buttons';
 @import 'components/tooltip';
-@import 'components/filters';
-@import 'components/header';
+@import 'components/navigation';
 @import 'components/footer';
 @import 'components/dynamic-dropdown';
 @import 'components/nav-intro';
-@import 'components/results';
 @import 'components/audit';
+@import 'components/autocomplete';
+@import 'components/hero';
+@import 'components/carousel';
+@import 'components/logo-strip';
+@import 'components/steps';
+@import 'components/stories';
 
 @import 'pages/detail';
 @import 'pages/markets';
-@import 'pages/home';

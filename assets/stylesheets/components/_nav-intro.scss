@@ -18,7 +18,7 @@
     }
   }
 
-  @include breakpoint (tablet) {
+  @include media ($tablet) {
     display: none;
   }
 }

@@ -7,6 +7,7 @@ main,
   font-family: $brand-font-family;
   font-size: 15px;
   position: relative;
+  @include prefix((font-smoothing: inherit), webkit moz-osx);
 }
 
 // FONT WEIGHT
@@ -98,6 +99,14 @@ main,
 
 .h1 {
   @extend %h1;
+
+  @include media($tablet) {
+    font-size: 33px;
+  }
+
+  @include media($mobile) {
+    font-size: 30px;
+  }
 }
 
 h1,
@@ -130,7 +139,6 @@ a {
 
   &:focus {
     background-color: transparent;
-    outline: 3px solid $aqua;
   }
 }
 
@@ -160,7 +168,7 @@ a {
   &--regular {
     @extend %font-regular;
 
-    @include media(mobile) {
+    @include media($mobile) {
       font-size: 15px;
     }
   }

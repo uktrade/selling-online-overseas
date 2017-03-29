@@ -1,49 +1,156 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="section push--top soft--top">
-    <div class="grid-row">
-      <div class="column-five-eights home">
-        <h1 class='heading-xlarge push--bottom flush--top'>Selling online overseas</h1>
-
-        <p class="heading-sub push--bottom">Use this service to help choose a suitable online marketplace to sell your products overseas.</p>
-
-        <h2 class="heading-small push--bottom">You can:</h2>
-
-        <ul class="list list-bullet push--bottom">
-          <li>find major online marketplaces in other countries</li>
-          <li>see whether these online marketplaces are suitable to sell your products</li>
-          <li>discover how to list your products on an online marketplace</li>
-          <li>get information about costs of listing on the marketplace and how logistics are fulfilled</li>
-          <li>access special terms negotiated by the UK government</li>
-        </ul>
-        <a class='button button-blue button-large push--ends button-start' href='{% url 'markets:search' %}' title="start now">Find an online marketplace</a>
-      </div>
-
-      <div class="column-three-eights">
-        <aside>
-          <div class="home-info home-info--border push--bottom">
-            <h4 class="heading-small font-med push-half--top">About this service</h4>
-            <dl class="soft--bottom">
-
-              <dt class="soft-half--top">Marketplaces in database:</dt>
-              <dd><strong>{{ market_count }}</strong></dd>
-
-              <dt class="soft-half--top">Last updated:</dt>
-              <dd><strong>{{ last_updated|date:"d M Y" }}</strong></dd>
-
-            </dl>
+  <section>
+    <div class="hero hero-gradient background-image--hero soft--bottom cf">
+      <div class="hero-content">
+        <div class="outer-container soft-half--top">
+          <h1 class="h1 font-reg soft--top">Join the world's online marketplaces</h1>
+          <p class="font-small font-lig flush--bottom">Reach over 2 billion consumers online</p>
+          <p class="font-small font-lig">Get exclusive offers negotiated on behalf of UK businesses</p>
+        </div>
+        <div class="outer-container">
+          <div class="background--bright-grey-opacity soft--sides soft--top soft-half--bottom autocomplete">
+            <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}' data-form-type="autocomplete">
+              <div role="group" class="autocomplete-form-group">
+                <legend class="visuallyhidden">Please select countries and products</legend>
+                <div class="autocomplete-section push--bottom">
+                  <div class="form-dropdown">
+                    <label class="form-label" for="search-product">What products do you sell?</label>
+                    <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off" placeholder="Product name">
+                    <ul class="form-dropdown-results" role="presentation"></ul>
+                  </div>
+                </div>
+                <div class="autocomplete-section push--bottom">
+                  <div class="form-dropdown">
+                    <label class="form-label" for="search-country">Where do you want to sell them?</label>
+                    <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="/geography/api/" data-field="countries_served" autocomplete="off" placeholder="Country name">
+                    <ul class="form-dropdown-results" role="presentation"></ul>
+                    <ul class="form-dropdown-checkbox hide"></ul>
+                  </div>
+                </div>
+                <div class="autocomplete-section autocomplete-section--button push--bottom">
+                  <div id='results-count'>
+                    <button class='button button-red button-medium' type='submit'>Find marketplaces (<span class="results-count">{{results_count}}</span>)</button>
+                  </div>
+                </div>
+                <div class="cf autocomplete-tags">
+                  <ul class="form-dropdown-tags"></ul>
+                </div>
+              </div>
+            </form>
           </div>
-
-          <div class="home-info background--stone push-half--top">
-            <h4 class="heading-small font-med push-half--top">Learn more about selling online</h4>
-            <ul>
-              <li class="soft-half--top"><a href="https://export.great.gov.uk/use-social-media-and-commerce-to-export/" title="Guide to online export" class="link">Practical advice about <br /> e-commerce</a></li>
-              <li class="soft-half--top soft--bottom"><a href="https://export.great.gov.uk/getting-ready-to-sell-overseas/" title="how to reach export customers online" class="link">Get ready to sell overseas</a></li>
-            </ul>
-          </div>
-        </aside>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section>
+    <div class="logo-strip background--white text--center overflow--hidden">
+      <div class="outer-container">
+        {% for ran in random_markets %}
+        <div class="col-2"><img class="logo-strip-img" src="{{ ran.logo.base64_logo }}" alt=""></div>
+        {% comment %}
+        <!-- new way of doing things, for if/when the image cropper is integrated -->
+        <!-- requires the {% load thumbnail %} at the top -->
+        <div class="col-2"><img class="logo-strip-img" src="{% thumbnail ran.logo.image 75x50 box=ran.logo.cropping crop detail %}" alt=""></div>
+        {% endcomment %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="steps soft--ends">
+      <div class="outer-container">
+        <h3 class="heading-small flush--top push--bottom">How does it work?</h3>
+        <ul>
+          <li class="col-4 text--center">
+            <img src="http://placehold.it/250x250" alt="">
+            <div class="cf push--top text--left">
+              <span class="steps-number font-med font-grey float--left push-half--right">1</span>
+              <div class="steps-content float--left">
+                <h4 class="font-reg">Find marketplaces</h4>
+                <p class="font-xxxsmall">Find online marketplaces suitable for your products</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="col-4 text--center">
+            <img src="http://placehold.it/250x250" alt="">
+            <div class="cf push--top text--left">
+              <span class="steps-number font-med font-grey float--left push-half--right">2</span>
+              <div class="steps-content float--left">
+                <h4 class="font-reg">Apply to join</h4>
+                <p class="font-xxxsmall">Apply via Department for International Trade and get fast track.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="col-4 text--center">
+            <img src="http://placehold.it/250x250" alt="">
+            <div class="cf push--top text--left">
+              <span class="steps-number font-med font-grey float--left push-half--right">3</span>
+              <div class="steps-content float--left">
+                <h4 class="font-reg">Start selling</h4>
+                <p class="font-xxxsmall">Reach billions of consumers and grow your business</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <ul class="carousel text--center font-white">
+        <li class="carousel-panel background--dark-blue">
+          <blockquote>
+            <p class="font-small font-lig">&quot;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scram.&quot;</p>
+            <footer class="font-lig push--top soft--top">Bob kane</footer>
+          </blockquote>
+        </li>
+        <li class="carousel-panel background--grey">
+          <blockquote>
+            <p>&quot;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scram.&quot;</p>
+            <footer class="font-lig push--top soft--top">killer Croc</footer>
+          </blockquote>
+        </li>
+        <li class="carousel-panel background--blue">
+          <blockquote>
+            <p>&quot;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scram.&quot;</p>
+            <footer class="font-lig push--top soft--top">Lex Luther</footer>
+          </blockquote>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="stories soft--top">
+      <div class="outer-container">
+        <h3 class="heading-small flush--top push--bottom">E-commerce success stories</h3>
+        <div class="col-4 push--bottom soft--bottom soft--right">
+          <img src="http://placehold.it/30x30" class="stories-img image-full" alt="">
+          <h4 class="push-half--top">lorem lorem</h4>
+          <p>asdasd asdasd asdasda sdasd asdasdas d</p>
+          <a href="" class="link">Read success story ></a>
+        </div>
+        <div class="col-4 push--bottom soft--bottom soft-half--sides">
+          <img src="http://placehold.it/30x30" class="stories-img image-full" alt="">
+          <h4 class="push-half--top">lorem lorem</h4>
+          <p>asdasd asdasd asdasda sdasd asdasdas d</p>
+          <a href="" class="link">Read success story ></a>
+        </div>
+        <div class="col-4 push--bottom soft--bottom soft--left">
+          <img src="http://placehold.it/30x30" class="stories-img image-full" alt="">
+          <h4 class="push-half--top">lorem lorem</h4>
+          <p>asdasd asdasd asdasda sdasd asdasdas d</p>
+          <a href="http://www.sdfsdfs.com" class="link">Read success story ></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 {% endblock content %}

@@ -1,62 +1,43 @@
-var search =(function ($) {
+var autoComplete =(function ($) {
 
     var searchField = $('.form-dropdown .form-dropdown-input'),
-        results = $('.form-dropdown-results'),
-        tags = $('.form-dropdown-tags');
-
+        results = $('.form-dropdown-results');
 
     function init() {
 
-        searchField.keyup(inputEvent);
-        results.keyup(manualSelect);
-        searchField.keypress(function (event) {
-            // User press enter
-            if (event.which === 13 && $('.form-dropdown-option').length > 0) {
-                event.preventDefault();
-                selectedEnter();
-            }
-        });
+        if($('form').data('form-type') === "autocomplete") {
 
-        $('html').click(function (event) {
-            var input = $(event.target);
-            if(!input.hasClass('form-dropdown-input') || input.val()=== "") {
-                closeDropdown();
-                var inputs = $('.form-dropdown-input');
-                inputs.each(function(i, item) {
-                    var input = $(item);
-                    if (input.val() !== '') {
-                        clearInput(input);
-                    }
-                });
-            }
-        });
+            searchField.keyup(inputEvent);
+            results.keyup(dropdown.manualSelect);
+            searchField.keypress(function (event) {
+                // User press enter
+                if (event.which === 13 && $('.form-dropdown-option').length > 0) {
+                    event.preventDefault();
+                    selectedEnter();
+                }
+            });
 
-        updateTagsFromStorage();
+            $('html').click(function (event) {
+                var input = $(event.target);
+                if (!input.hasClass('form-dropdown-input') || input.val() === "") {
+                    dropdown.closeDropdown();
+                    var inputs = $('.form-dropdown-input');
+                    inputs.each(function (i, item) {
+                        var input = $(item);
+                        if (input.val() !== '') {
+                            clearInput(input);
+                        }
+                    });
+                }
+            });
+
+            updateTagsFromStorage();
+        }
     }
-
-
 
     function selectedEnter() {
         var option = ($('.form-dropdown-results li.active a').length === 0) ? $('.form-dropdown-option').first() : $('.form-dropdown-results li.active a');
         addTag.call(option);
-    }
-
-
-    function manualSelect(event) {
-        var nextElement = $(event.currentTarget);
-
-        switch(event.which) {
-            case 40:
-                event.preventDefault();
-                selectOption('down', nextElement);
-                break;
-            case 38:
-                event.preventDefault();
-                selectOption('up', nextElement);
-                break;
-            default:
-                break;
-        }
     }
 
     function inputEvent(event) {
@@ -66,14 +47,14 @@ var search =(function ($) {
         switch(event.which) {
             case 40:
                 event.preventDefault();
-                selectOption('down', nextElement);
+                dropdown.selectOption('down', nextElement);
                 break;
             case 13:
                 event.preventDefault();
                 break;
             case 27:
                 var input = $(event.target);
-                closeDropdown();
+                dropdown.closeDropdown();
                 clearInput(input);
                 break;
             default:
@@ -106,15 +87,18 @@ var search =(function ($) {
     }
 
     function createDropDown(request, element) {
-        closeDropdown();
+        dropdown.closeDropdown();
+
+        var list = $(element).next();
 
         for (var i = 0; i < request.length; i++) {
             var content = (typeof(request[i]) === 'string') ? request[i] : '<b>'+request[i][0]+'</b>'+ ' - '+request[i][1],
                 option = (typeof(request[i]) === 'string') ? request[i] : request[i][0];
 
-            $(element).next().append('<li class="form-dropdown-list" role="option"><a href="" class="form-dropdown-option" data-option-id="' + option + '">' + content + '</li></a></li>');
+            list.append('<li class="form-dropdown-list" role="option"><a href="" class="form-dropdown-option" data-option-id="' + option + '">' + content + '</li></a></li>');
         }
 
+        list.show();
         $('.form-dropdown-option').click(addTag);
         $('.form-dropdown-list').hover(onHover);
         $('html').addClass('overflow--hidden');
@@ -132,11 +116,11 @@ var search =(function ($) {
             event.preventDefault();
         }
 
-        createTag($(this).parent().parent().next(), checkboxOption, optionId, buttonId);
+        createTag($('.form-dropdown-tags'), checkboxOption, optionId, buttonId);
         resultCount.update_count();
 
         clearInput(input);
-        closeDropdown();
+        dropdown.closeDropdown();
         addTagToStorage(buttonId, optionId, checkboxOption);
     }
 
@@ -152,7 +136,20 @@ var search =(function ($) {
     }
 
     function createTag(container, checkboxOption, optionId, buttonId) {
-        container.append('<li>'+optionId+'<button href="" data-option-id="'+optionId+'" class="form-dropdown-tags--close" data-button-id="'+buttonId+'">x</button></li>');
+
+        var button = $('<button>', {
+            'data-button-id': buttonId,
+            'data-option-id': optionId,
+            class: "form-dropdown-tags--close",
+            html: "x"
+        }),
+        li = $('<li>', {
+            class: (checkboxOption==='countries_served' ? 'background--light-aqua' : 'background--stone'),
+            html: optionId + button[0].outerHTML
+        });
+
+
+        container.append(li);
         $('.form-dropdown-tags--close').on('click', deleteTag);
         addCheckbox(checkboxOption, optionId);
     }
@@ -189,11 +186,6 @@ var search =(function ($) {
         deleteTagFromStorage($(event.target).data('button-id'));
     }
 
-    function closeDropdown() {
-        results.empty();
-        $('html').removeClass('overflow--hidden');
-    }
-    
     function addCheckbox(field, value) {
         var input = $('<input>', {
             type:"checkbox",
@@ -210,46 +202,22 @@ var search =(function ($) {
         $('input[data-checkbox-id="'+checkboxId+'"]').first().remove();
     }
 
-    function selectOption(action, element){
-
-        var list = (element.children().length - 1),
-            active = $('.form-dropdown-results li.active').index();
-
-        if(!$('.form-dropdown-results li').hasClass('active')) {
-            activateAndFocus(0);
-        } else {
-            $($('.form-dropdown-results li')[active]).removeClass('active');
-            $($('.form-dropdown-results li a')[active]).blur();
-            if(action === 'up') {
-                activateAndFocus((active === 0) ? 0 : active-1);
-            } else {
-                activateAndFocus((active === list) ? 0 : active+1);
-            }
-        }
-    }
-
-    function activateAndFocus(index) {
-        $($('.form-dropdown-results li')[index]).addClass('active');
-        $($('.form-dropdown-results li a')[index]).focus();
-    }
-
     function updateTagsFromStorage() {
         if(sessionStorage.getItem('tags')) {
             _.each(JSON.parse(sessionStorage.getItem('tags')), function (obj) {
                 var element = (obj.section === 'product_categories') ? 'search-product' : 'search-country';
                 if (obj.section && obj.option) {
-                    createTag($('#'+element).next().next(), obj.section, obj.option, obj.buttonId);
+                    createTag($('.form-dropdown-tags'), obj.section, obj.option, obj.buttonId);
                 } else {
                     deleteTagFromStorage(obj.buttonId);
                 }
             });
         }
     }
-    
+
     return {
         init: init,
         selectedEnter: selectedEnter,
-        manualSelect: manualSelect,
         inputEvent: inputEvent,
         getResults: getResults,
         createDropDown: createDropDown,
@@ -259,14 +227,14 @@ var search =(function ($) {
         addTagToStorage: addTagToStorage,
         deleteTagFromStorage: deleteTagFromStorage,
         deleteTag: deleteTag,
-        closeDropDown: closeDropdown,
         addCheckbox: addCheckbox,
         deleteCheckbox: deleteCheckbox,
-        selectOption: selectOption,
-        activateAndFocus: activateAndFocus,
         updateTagsFromStorage: updateTagsFromStorage
     };
 
 })(jQuery);
 
-search.init();
+$(document).ready(function() {
+    autoComplete.init();
+});
+

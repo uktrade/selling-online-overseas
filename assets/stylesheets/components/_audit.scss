@@ -10,7 +10,7 @@
     .button {
       width: 70%;
 
-      @include breakpoint(tablet) {
+      @include media ($tablet) {
         width: 90%;
       }
     }

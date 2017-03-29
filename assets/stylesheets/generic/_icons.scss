@@ -105,6 +105,14 @@
     background-image: url('#{$image-path}icons/feedback.svg');
   }
 
+  &-sign-in {
+    background-image: url('#{$image-path}icons/signin.svg');
+  }
+
+  &-sign-out {
+    background-image: url('#{$image-path}icons/signout.svg');
+  }
+
   &-header {
     background-size: contain;
     height: 45px;
@@ -112,7 +120,7 @@
     top: -30px;
     width: 45px;
     z-index: 1;
-    @include media (mobile) {
+    @include media ($mobile) {
       top: -28px;
     }
 
@@ -122,7 +130,7 @@
       padding-bottom: 5px;
       width: 55px;
 
-      @include media (mobile) {
+      @include media ($mobile) {
         background-position: center center;
         width: 33px;
       }
@@ -142,6 +150,13 @@
     height: 15px;
     margin-right: 5px;
     width: 13px;
+  }
+
+  &--left {
+    height: 20px;
+    left: -25px;
+    position: absolute;
+    width: 22px;
   }
 
 }
