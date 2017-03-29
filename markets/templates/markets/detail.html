@@ -26,7 +26,7 @@
         <div class="detail-section-content detail-section-content--head">
           <h4 class="detail-section--terms--header  push-half--bottom font-med hard--top">Department for International Trade (DIT) assistance and special terms</h4>
           {{ market.dit_special_terms|safe }}
-          <a href="https://contact-us.export.great.gov.uk/triage/soo/?market={{ market.name|urlencode }}" class="button button-blue button-medium push-half--top" title="apply now">Apply now</a>
+          <a href="{{ HELP_HOST }}triage/soo/?market={{ market.name|urlencode }}" class="button button-blue button-medium push-half--top" title="apply now">Apply now</a>
         </div>
       </div>
     </div>
@@ -298,7 +298,7 @@
             <li class="soft-half--bottom">benefit from special terms negotiated by the government for UK businesses</li>
             <li>get a direct contact at the marketplace</li>
           </ul>
-          <a href="https://contact-us.export.great.gov.uk/triage/soo/?market={{ market.name|urlencode }}" class="button button-blue button-large push--top column-one-whole text--center" title="Apply Now">Apply Now</a>
+          <a href="{{ HELP_HOST }}triage/soo/?market={{ market.name|urlencode }}" class="button button-blue button-large push--top column-one-whole text--center" title="Apply Now">Apply Now</a>
         </div>
       </div>
     </div>
