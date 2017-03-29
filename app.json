@@ -3,7 +3,6 @@
   "scripts": {},
   "env": {
     "DJANGO_SETTINGS_MODULE": "navigator.settings.dev",
-    "RESTRICT_IPS": "True",
     "ADMIN_USER": {
       "required": true
     },
@@ -13,7 +12,16 @@
     "SECRET_KEY": {
       "description": "The django app's sercret key",
       "generator": "secret"
-    }
+    },
+    "ALLOWED_IPS": {
+      "required": false
+    },
+    "ALLOWED_IP_RANGES": {
+      "required": false
+    },
+    "RESTRICT_IPS": "True",
+    "ALLOW_ADMIN": "True",
+    "ALLOW_AUTHENTICATED": "True"
   },
   "formation": {
     "web": {

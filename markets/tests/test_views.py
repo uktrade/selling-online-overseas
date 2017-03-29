@@ -112,21 +112,21 @@ class MarketTests(TestCase):
         # Create 2 markets with a specific countries
         uk = create_country('uk')
         fr = create_country('france')
-        amazon = create_market(name="Amazon", countries_served=[uk])
-        ebay = create_market(name="Ebay", countries_served=[uk, fr])
+        amazon = create_market(name="Amazon", operating_countries=[uk])
+        ebay = create_market(name="Ebay", operating_countries=[uk, fr])
 
         # Filter the list of markets on country is uk, and check we get both markets
-        response = self.client.get(reverse('markets:list'), {'countries_served': 'uk'})
+        response = self.client.get(reverse('markets:list'), {'operating_countries': 'uk'})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
         # Filter on country name is france, and check we get ebay, but not amazon
-        response = self.client.get(reverse('markets:list'), {'countries_served': 'france'})
+        response = self.client.get(reverse('markets:list'), {'operating_countries': 'france'})
         self.assertNotContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
         # Filter on an incorrect country name, we should get neither market
-        response = self.client.get(reverse('markets:list'), {'countries_served': 'us'})
+        response = self.client.get(reverse('markets:list'), {'operating_countries': 'us'})
         self.assertNotContains(response, amazon.name, status_code=200)
         self.assertNotContains(response, ebay.name, status_code=200)
 
@@ -134,8 +134,8 @@ class MarketTests(TestCase):
         # Create 2 markets with a specific countries
         uk = create_country('uk')
         fr = create_country('france')
-        amazon = create_market(name="Amazon", countries_served=[uk])
-        ebay = create_market(name="Ebay", countries_served=[uk, fr])
+        amazon = create_market(name="Amazon", operating_countries=[uk])
+        ebay = create_market(name="Ebay", operating_countries=[uk, fr])
 
         # Filter on a list of names, including an incorrect name, we should get back both markets
         response = self.client.get(reverse('markets:list'), {'name': ['Amazon', 'Ebay', 'Blah']})
@@ -148,7 +148,7 @@ class MarketTests(TestCase):
         self.assertContains(response, ebay.name, status_code=200)
 
         # Filter for both countries, and make sure we don't get duplicates
-        response = self.client.get(reverse('markets:list'), {'countries_served': ['uk', 'france']})
+        response = self.client.get(reverse('markets:list'), {'operating_countries': ['uk', 'france']})
         markets = response.context_data['object_list']
         self.assertEqual(len(markets), 2)
         self.assertIn(amazon, markets)
@@ -165,35 +165,35 @@ class MarketTests(TestCase):
         as necessary
         """
 
-        amazon = create_market(name="Amazon", payment_terms_rate_fixed=True, payment_terms_days=15)
-        ebay = create_market(name="Ebay", payment_terms_rate_fixed=False, payment_terms_days=30)
+        amazon = create_market(name="Amazon", product_exclusivity_required=True, sale_to_payment_duration=15)
+        ebay = create_market(name="Ebay", product_exclusivity_required=False, sale_to_payment_duration=30)
 
         # Filter for payment_terms_rate_fixed True, we shoudl get back only Amazon
-        response = self.client.get(reverse('markets:list'), {'payment_terms_rate_fixed': True})
+        response = self.client.get(reverse('markets:list'), {'product_exclusivity_required': True})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertNotContains(response, ebay.name, status_code=200)
 
         # Filtering using a string shoudl work the same, since True/False would be converted to 'True'/'False' in the
         # get request anyway, check that 'False' therefore only returns ebay
-        response = self.client.get(reverse('markets:list'), {'payment_terms_rate_fixed': 'False'})
+        response = self.client.get(reverse('markets:list'), {'product_exclusivity_required': 'False'})
         self.assertNotContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
         # We should be able to pass a list of these values, and get back both
-        response = self.client.get(reverse('markets:list'), {'payment_terms_rate_fixed': ['True', 'False']})
+        response = self.client.get(reverse('markets:list'), {'product_exclusivity_required': ['True', 'False']})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
         # Perform the same tests with numbers
-        response = self.client.get(reverse('markets:list'), {'payment_terms_days': 15})
+        response = self.client.get(reverse('markets:list'), {'sale_to_payment_duration': 15})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertNotContains(response, ebay.name, status_code=200)
 
-        response = self.client.get(reverse('markets:list'), {'payment_terms_days': '30'})
+        response = self.client.get(reverse('markets:list'), {'sale_to_payment_duration': '30'})
         self.assertNotContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
-        response = self.client.get(reverse('markets:list'), {'payment_terms_days': ['15', 30]})
+        response = self.client.get(reverse('markets:list'), {'sale_to_payment_duration': ['15', 30]})
         self.assertContains(response, amazon.name, status_code=200)
         self.assertContains(response, ebay.name, status_code=200)
 
@@ -206,14 +206,14 @@ class MarketTests(TestCase):
         food = create_category('food')
 
         # Create 4 markets with differing numbers of countries and categories
-        country_vertical = create_market(countries_served=[uk], product_categories=[sport])
-        global_vertical = create_market(countries_served=[uk, fr, de], product_categories=[sport])
-        country_generalist = create_market(countries_served=[uk], product_categories=[sport, food])
-        global_generalist = create_market(countries_served=[uk, fr, de], product_categories=[sport, food])
+        country_vertical = create_market(operating_countries=[uk], product_categories=[sport])
+        global_vertical = create_market(operating_countries=[uk, fr, de], product_categories=[sport])
+        country_generalist = create_market(operating_countries=[uk], product_categories=[sport, food])
+        global_generalist = create_market(operating_countries=[uk, fr, de], product_categories=[sport, food])
 
         # Searching one category and one country should return all markets with those items
         # But ordered by country-specific vertical first
-        _filter = {'countries_served': ['uk'], 'product_categories': ['sport']}
+        _filter = {'operating_countries': ['uk'], 'product_categories': ['sport']}
         response = self.client.get(reverse('markets:list'), _filter)
         markets = response.context_data['object_list']
 
@@ -238,7 +238,7 @@ class MarketTests(TestCase):
         self.assertEqual(markets[3], country_generalist)
 
         # Searching on only country should bring the country markets first (generalists first)
-        _filter = {'countries_served': ['uk']}
+        _filter = {'operating_countries': ['uk']}
         response = self.client.get(reverse('markets:list'), _filter)
         markets = response.context_data['object_list']
 
@@ -252,7 +252,7 @@ class MarketTests(TestCase):
         response1 = self.client.get(reverse('markets:list'))
         markets1 = response.context_data['object_list']
         # ... should be the same as searching for everything
-        {'countries_served': ['uk', 'france', 'germany'], 'product_categories': ['sport', 'food']}
+        {'operating_countries': ['uk', 'france', 'germany'], 'product_categories': ['sport', 'food']}
         response2 = self.client.get(reverse('markets:list'), _filter)
         markets2 = response.context_data['object_list']
 

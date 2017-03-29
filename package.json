@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Navigator for UKTI",
   "engines": {
-    "node": "5.0.0"
+    "node": "4.4.6",
+    "npm": "2.15.5"
   },
   "scripts": {
     "test": "gulp test",
@@ -40,7 +41,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp-css-url-adjuster": "0.2.3",
-    "gulp-imagemin": "^3.0.3",
+    "gulp-imagemin": "2.4.0",
     "gulp-jshint": "2.0.0",
     "gulp-protractor": "^3.0.0",
     "gulp-sass-lint": "1.1.1",

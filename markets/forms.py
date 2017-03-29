@@ -35,9 +35,9 @@ class MarketListFilterForm(ModelQueryForm):
         model = Market
         fields = []
         query_fields = [
-            ('product_type', QueryMultipleCheckboxField, 'product_type__name'),
+            ('product_positioning', QueryMultipleCheckboxField, 'product_positioning__name'),
             ('logistics_structure', QueryMultipleCheckboxField, 'logistics_structure__name'),
-            ('countries_served', QueryMultipleCheckboxField, 'countries_served__name'),
+            ('operating_countries', QueryMultipleCheckboxField, 'operating_countries__name'),
             ('product_categories', QueryMultipleCheckboxField, 'product_categories__name'),
         ]
 

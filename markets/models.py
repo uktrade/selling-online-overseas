@@ -126,15 +126,16 @@ class BaseMarket(models.Model):
     slug = models.SlugField(max_length=200)
 
     logo = models.ForeignKey('Logo', null=True, blank=True)
-    description = RichTextField(verbose_name="e-Marketplace Description")
+    e_marketplace_description = RichTextField(verbose_name="e-Marketplace Description")
     web_address = models.URLField(max_length=200)
-    signup_address = models.URLField(max_length=200, null=True, blank=True, verbose_name="Explore the marketplace")
+    explore_the_marketplace = models.URLField(max_length=200, null=True, blank=True,
+                                              verbose_name="Explore the marketplace")
 
-    countries_served = models.ManyToManyField(Country, verbose_name="Operating Countries", blank=True)
+    operating_countries = models.ManyToManyField(Country, verbose_name="Operating Countries", blank=True)
     product_categories = models.ManyToManyField(Category, blank=True)
 
-    web_traffic = models.FloatField(default=0, null=True, blank=True, help_text="in millions",
-                                    verbose_name="Number of registered users")
+    number_of_registered_users = models.FloatField(default=0, null=True, blank=True, help_text="in millions",
+                                                   verbose_name="Number of registered users")
     famous_brands_on_marketplace = models.ManyToManyField(Brand, blank=True)
     seller_model = models.ManyToManyField(SellerModel, blank=True)
 
@@ -150,12 +151,12 @@ class BaseMarket(models.Model):
 
     marketing_merchandising = RichTextField(null=True, blank=True)
 
-    product_details_upload = models.ManyToManyField(UploadMethod, blank=True,
-                                                    verbose_name="Upload product details via")
+    product_details_upload_method = models.ManyToManyField(UploadMethod, blank=True,
+                                                           verbose_name="Upload product details via")
     product_details_upload_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
-    payment_terms_days = models.IntegerField(null=True, blank=True, help_text="in days",
-                                             verbose_name="Payment terms - sale to payment duration")
+    sale_to_payment_duration = models.IntegerField(null=True, blank=True, help_text="in days",
+                                                   verbose_name="Payment terms - sale to payment duration")
 
     currency_of_payments = models.ManyToManyField(Currency, blank=True,
                                                   verbose_name="Payment terms - Currency of payments")
@@ -163,18 +164,19 @@ class BaseMarket(models.Model):
     logistics_structure = models.ManyToManyField(LogisticsModel, blank=True)
     logistics_structure_notes = models.TextField(blank=True, null=True, verbose_name='notes')
 
-    product_type = models.ManyToManyField(Type, blank=True, verbose_name="Product Positioning")
+    product_positioning = models.ManyToManyField(Type, blank=True, verbose_name="Product Positioning")
     prohibited_items = models.ManyToManyField(ProhibitedItem, blank=True)
 
     commission_lower = models.FloatField(null=True, blank=True)
     commission_upper = models.FloatField(null=True, blank=True)
     commission_notes = models.TextField(null=True, blank=True)
 
-    ukti_terms = RichTextField(null=True, blank=True, verbose_name="Department of International Trade special terms")
+    dit_special_terms = RichTextField(null=True, blank=True,
+                                      verbose_name="Department of International Trade special terms")
 
-    exclusivity_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                               verbose_name="Product exclusivity required")
-    exclusivity_required_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
+    product_exclusivity_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
+                                                       verbose_name="Product exclusivity required")
+    product_exclusivity_required_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
     translation_requirements = models.ManyToManyField(TranslationRequirement, blank=True)
     translation_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
@@ -182,14 +184,10 @@ class BaseMarket(models.Model):
     setup_requirements = models.ManyToManyField(SetupRequirement, blank=True)
     setup_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
-    payment_terms_rate_fixed = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                                   verbose_name="Payment Terms - Exchange rate fixed")
-    payment_terms_rate_fixed_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
-
-    registration_fees = models.FloatField(default=0, verbose_name="One off registration fee")
-    registration_fees_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
-    registration_fees_currency = models.ForeignKey(Currency, null=True, blank=True,
-                                                   related_name="%(app_label)s_%(class)s_registration_fees_currency")
+    one_off_registration_fee = models.FloatField(default=0, verbose_name="One off registration fee")
+    one_off_registration_fee_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
+    one_off_registration_fee_currency = models.ForeignKey(Currency, null=True, blank=True,
+                                                          related_name="%(app_label)s_%(class)s_reg_fees_currency")
 
     fee_per_listing = models.BooleanField(choices=BOOL_CHOICES, default=False,
                                           verbose_name="Fee per Listing")
@@ -236,8 +234,8 @@ class BaseMarket(models.Model):
             errors['membership_fees_currency'] = 'You must specify the currency if you specify an amount'
         if self.membership_fees > 0 and self.membership_fees_frequency is None:
             errors['membership_fees_frequency'] = 'You must specify the frequency if you specify an amount'
-        if self.registration_fees > 0 and self.registration_fees_currency is None:
-            errors['registration_fees_currency'] = 'You must specify the currency if you specify an amount'
+        if self.one_off_registration_fee > 0 and self.one_off_registration_fee_currency is None:
+            errors['one_off_registration_fee_currency'] = 'You must specify the currency if you specify an amount'
 
         try:
             super().clean(*args, **kwargs)
@@ -279,13 +277,13 @@ class BaseMarket(models.Model):
         return self._value_display('deposit')
 
     @property
-    def registration_fees_display(self):
-        return self._value_display('registration_fees')
+    def one_off_registration_fee_display(self):
+        return self._value_display('one_off_registration_fee')
 
     @property
-    def web_traffic_display(self):
-        if self.web_traffic != 0:
-            return "{0} million".format(self.web_traffic)
+    def number_of_registered_users_display(self):
+        if self.number_of_registered_users != 0:
+            return "{0} million".format(self.number_of_registered_users)
 
         return "Not available"
 
@@ -301,12 +299,12 @@ class BaseMarket(models.Model):
         return display_str
 
     @property
-    def payment_terms_days_display(self):
-        if self.payment_terms_days:
-            if self.payment_terms_days == 1:
+    def sale_to_payment_duration_display(self):
+        if self.sale_to_payment_duration:
+            if self.sale_to_payment_duration == 1:
                 return "1 day"
             else:
-                return "{0} days".format(self.payment_terms_days)
+                return "{0} days".format(self.sale_to_payment_duration)
         else:
             return ""
 
@@ -322,24 +320,25 @@ class Market(BaseMarket):
 
     approval_fields = [
         'logo',
-        'countries_served',
+        'e_marketplace_description',
+        'operating_countries',
         'product_categories',
-        'web_traffic',
+        'number_of_registered_users',
         'customer_support_channels',
         'customer_support_hours',
         'seller_support_channels',
         'seller_support_hours',
         'customer_demographics',
         'marketing_merchandising',
-        'product_details_upload',
-        'payment_terms_days',
+        'product_details_upload_method',
+        'sale_to_payment_duration',
         'currency_of_payments',
         'logistics_structure',
-        'product_type',
-        'ukti_terms',
+        'product_positioning',
+        'dit_special_terms',
         'dit_advisor_tip',
         'seller_model',
-        'signup_address',
+        'explore_the_marketplace',
         'famous_brands_on_marketplace',
     ]
 

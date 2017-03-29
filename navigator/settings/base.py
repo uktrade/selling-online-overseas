@@ -51,6 +51,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'ip_restriction.IpWhitelister',
 ]
 
 ROOT_URLCONF = 'navigator.urls'
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.hosts',
             ],
         },
     },
@@ -125,7 +127,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'fixstatic'),
 )
@@ -155,3 +156,9 @@ CKEDITOR_CONFIGS = {
         ]
     },
 }
+
+# Hosts for various services, used in templates
+SOO_HOST = os.environ.get('SOO_HOST', 'https://selling-online-overseas.export.great.gov.uk/')
+HELP_HOST = os.environ.get('HELP_HOST', 'https://contact-us.export.great.gov.uk/')
+SSO_HOST = os.environ.get('SSO_HOST', 'https://sso.trade.great.gov.uk/')
+PROFILE_HOST = os.environ.get('SSO_HOST', 'https://profile.great.gov.uk/')
