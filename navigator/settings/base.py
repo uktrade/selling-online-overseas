@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.hosts',
             ],
         },
     },
@@ -155,3 +156,9 @@ CKEDITOR_CONFIGS = {
         ]
     },
 }
+
+# Hosts for various services, used in templates
+SOO_HOST = os.environ.get('SOO_HOST', 'https://selling-online-overseas.export.great.gov.uk/')
+HELP_HOST = os.environ.get('HELP_HOST', 'https://contact-us.export.great.gov.uk/')
+SSO_HOST = os.environ.get('SSO_HOST', 'https://sso.trade.great.gov.uk/')
+PROFILE_HOST = os.environ.get('SSO_HOST', 'https://profile.great.gov.uk/')
