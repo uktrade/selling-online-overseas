@@ -31,7 +31,7 @@ describe('Mobile Navigation', function() {
         init();
     });
 
-    describe('Click on Menu button', function () {
+    xdescribe('Click on Menu button', function () {
 
         it('Should display navigation', function () {
 
