@@ -1,14 +1,14 @@
 {% load static utils %}
 
 <li class="markets-item cf">
-  <div class="column-five-eights markets-info--left">
+  <div class="col-7 markets-info--left">
     <div class="cf markets-group">
-      <div class="column-two-fifths hard--sides markets-image">
+      <div class="markets-image">
         <div class="markets-item-logoholder">
           <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}"><img src="{{ market.logo.base64_logo }}" class="markets-item-logo" alt="{{ market.name }} logo"></a>
         </div>
       </div>
-      <div class="column-three-fifths markets-info">
+      <div class="markets-info">
         <h3 class="heading-small font-med flush--ends soft-half--bottom">{{ market.name }}</h3>
         <ul>
           <li>
@@ -28,7 +28,8 @@
     <p class="soft-half--ends hard--left">{{ market.e_marketplace_description|safe }}</p>
     <a class="button button-blue button-medium markets-item--button push--top" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">Full profile</a>
   </div>
-  <div class="column-three-eights markets-item--highlight--right">
+  <div class="col-1">&nbsp;</div>
+  <div class="col-4 markets-item--highlight--right">
     <div class="background--stone markets-item--highlight">
       <ul class="markets-item--list">
         <li class="list markets-item--highlight--section background-image--users">

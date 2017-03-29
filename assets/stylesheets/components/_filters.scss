@@ -31,7 +31,7 @@
   &-tab {
     margin: 0 10px;
 
-    @include breakpoint(tablet) {
+    @include media ($tablet) {
       margin: 0;
     }
 
@@ -114,7 +114,7 @@
     margin: 0 10px;
     padding: 50px 30px 25px;
 
-    @include breakpoint(tablet) {
+    @include media ($tablet) {
       margin: 0;
     }
 

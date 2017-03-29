@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/uktrade/navigator.svg?branch=master)](https://travis-ci.org/uktrade/navigator)
+[![CircleCI](https://circleci.com/gh/uktrade/navigator.svg?style=svg)](https://circleci.com/gh/uktrade/navigator)
 
 # navigator
 
