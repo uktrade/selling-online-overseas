@@ -2,7 +2,7 @@
   "name": "navigator",
   "scripts": {},
   "env": {
-    "DJANGO_SETTINGS_MODULE": "navigator.settings.dev",
+    "DJANGO_SETTINGS_MODULE": "navigator.settings.test",
     "ADMIN_USER": {
       "required": true
     },
