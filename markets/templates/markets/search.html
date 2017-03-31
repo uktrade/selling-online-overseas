@@ -8,45 +8,43 @@
 {% endblock breadcrumbs %}
 
 {% block content %}
-	<div class="section push--top soft--top">
-	  <div class="grid-row">
-		<div class="column-one-whole">
-          <h1 class="heading-xlarge flush--top">Selling online overseas</h1>
-        </div>
-        <div class="results">
-          <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}'>
-            <fieldset>
-              <legend class="visuallyhidden">Please select countries and products</legend>
-              <ul class="inline">
-                <li class="push-half--bottom cf">
-                  <div class="column-one-third">
-                    <div id='results-count' class="soft--bottom">
-                      <p class="flush results-title">Online marketplaces:</p>
-                      <h4 class="heading-xxlarge font-purple flush results-count">{{results_count}}</h4>
-                    </div>
+	<div class="outer-container push--top soft--top">
+      <div class="col-12">
+        <h1 class="heading-xlarge flush--top">Selling online overseas</h1>
+      </div>
+      <div class="results">
+        <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}' data-form-type="autocomplete">
+          <fieldset>
+            <legend class="visuallyhidden">Please select countries and products</legend>
+            <ul class="inline">
+              <li class="push-half--bottom cf">
+                <div class="col-4">
+                  <div id='results-count' class="soft--bottom">
+                    <p class="flush results-title">Online marketplaces:</p>
+                    <h4 class="heading-xxlarge font-purple flush results-count">{{results_count}}</h4>
                   </div>
-                  <div class="column-two-thirds">
-                    <div class="form-dropdown push--bottom soft--bottom">
-                      <label class="heading-small form-dropdown-header font-med flush--top" for="search-product">What kind of products do you sell? (optional)</label>
-                      <input class="form-control form-dropdown-input column-one-whole" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off">
-                      <ul class="form-dropdown-results" role="presentation"></ul>
-                      <ul class="form-dropdown-tags"></ul>
-                    </div>
+                </div>
+                <div class="col-8">
+                  <div class="form-dropdown push--bottom soft--bottom">
+                    <label class="heading-small form-dropdown-header font-med flush--top" for="search-product">What kind of products do you sell? (optional)</label>
+                    <input class="form-control form-dropdown-input column-one-whole" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off">
+                    <ul class="form-dropdown-results" role="presentation"></ul>
+                    <ul class="form-dropdown-tags"></ul>
+                  </div>
 
-                    <div class="form-dropdown push--bottom soft--top">
-                      <label class="heading-small form-dropdown-header font-med flush--top" for="search-country">What countries do you want to sell them in? (optional)</label>
-                      <input class="form-control form-dropdown-input column-one-whole" id="search-country" type="text" data-url="/geography/api/" data-field="operating_countries" autocomplete="off">
-                      <ul class="form-dropdown-results" role="presentation"></ul>
-                      <ul class="form-dropdown-tags"></ul>
-                      <ul class="form-dropdown-checkbox hide"></ul>
-                    </div>
-                    <button class='button button-blue button-large push--top' type='submit'>See results</button>
+                  <div class="form-dropdown push--bottom soft--top">
+                    <label class="heading-small form-dropdown-header font-med flush--top" for="search-country">What countries do you want to sell them in? (optional)</label>
+                    <input class="form-control form-dropdown-input column-one-whole" id="search-country" type="text" data-url="/geography/api/" data-field="operating_countries" autocomplete="off">
+                    <ul class="form-dropdown-results" role="presentation"></ul>
+                    <ul class="form-dropdown-tags"></ul>
+                    <ul class="form-dropdown-checkbox hide"></ul>
                   </div>
-                </li>
-              </ul>
-            </fieldset>
-          </form>
-        </div>
+                  <button class='button button-blue button-large push--top' type='submit'>See results</button>
+                </div>
+              </li>
+            </ul>
+          </fieldset>
+        </form>
       </div>
     </div>
 

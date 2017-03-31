@@ -29,20 +29,6 @@
   }
 }
 
-// Define breakpoint for mobile and tablet
-@mixin breakpoint ($device) {
-
-  @if ($device == tablet) {
-    @media (max-width: $tablet) {
-      @content;
-    }
-  } @else {
-    @media (max-width: $mobile) {
-      @content;
-    }
-  }
-}
-
 @mixin radio-checked {
 
   &:after {
@@ -52,6 +38,7 @@
     filter: alpha(opacity=0);
     height: 0;
     left: 7px;
+    opacity: 0;
     position: absolute;
     top: 7px;
     width: 0;
@@ -71,11 +58,11 @@
     filter: alpha(opacity=0);
     height: 5px;
     left: 5px;
-    opacity: 1;
+    opacity: 0;
     position: absolute;
     top: 7px;
     width: 14px;
-    zoom: 1;
+    zoom: 0;
   }
 }
 
@@ -86,3 +73,14 @@
   &:-ms-input-placeholder { @content; }
   &::-webkit-input-placeholder { @content; }
 }
+
+// Set font dimensions
+@mixin font($font-size, $letter-spacing, $line-height: '') {
+  font-size: $font-size;
+  letter-spacing: $letter-spacing;
+
+  @if $line-height != '' {
+    line-height: $line-height;
+  }
+}
+
