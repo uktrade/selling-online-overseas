@@ -36,6 +36,8 @@
   </head>
   <body class='{% block body_class %}{% endblock %}'>
 
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
   {% block google_tag_manager_noscript %}
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB37DC" height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -55,7 +57,7 @@
 
               <ul class="list-inline list-separators float--right navigation-login font-reg" id="sso-signin">
                 <li class="float--left soft-half--right"><a class="link--white" href="{{ SSO_HOST }}accounts/login/?next={{ SOO_HOST }}" title="Sign in"><i class="icon icon--left icon-sign-in"></i><span class="hide-mobile">Sign in</span></a></li>
-                <li class="float--left soft-half--left hide-mobile"><a class="link--white" href="{{ SSO_HOST }}accounts/signup/?next={{ SOO_HOST }}" title="Register"><span>Register</span></a></li>
+                <li class="float--left soft-half--left hide-mobile"><a class="link--white" href="{{ SSO_HOST }}accounts/signup/" title="Register"><span>Register</span></a></li>
               </ul>
               <ul class="list-inline list-separators float--right navigation-login font-reg" id="sso-signout" style="display:none">
                 <li class="float--left soft-half--right"><a class="link--white" href="{{ PROFILE_HOST }}selling-online-overseas/" title="Profile"><i class="icon icon--left icon-sign-out"></i><span class="hide-mobile">Profile</span></a></li>
@@ -203,7 +205,6 @@
         {% endblock footer %}
     </footer>
     {% block footer_javascript %}
-      <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
       <script src="{% static "javascripts/all.js" %}"></script>
     {% endblock footer_javascript %}
   </body>
