@@ -1,6 +1,6 @@
 contextlib2==0.5.4
 dj-database-url==0.4.1
-Django==1.9.12
+Django==1.9.13
 django-ckeditor==5.0.3
 django-grappelli==2.8.3
 django-ip-restriction==0.9.0
