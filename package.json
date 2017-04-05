@@ -10,8 +10,7 @@
     "test": "gulp test",
     "build": "gulp",
     "watch": "gulp watch",
-    "heroku-prebuild": "echo '********* TEST **********'",
-    "heroku-postbuild": "python manage.py migrate --noinput && python manage.py build_index"
+    "heroku-postbuild": "npm run build && gulp",
   },
   "repository": {
     "type": "git",
