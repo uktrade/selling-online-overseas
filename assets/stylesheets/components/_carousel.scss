@@ -1,0 +1,106 @@
+.carousel {
+  background-color: $white;
+  overflow: hidden;
+
+  &-panel {
+    height: 450px;
+    padding: 80px 0 95px;
+
+    @include media($mobile) {
+      height: 380px;
+    }
+  }
+
+  p {
+    margin: auto;
+    width: 640px;
+
+    @include media($mobile) {
+      padding: 0 10px;
+      width: 100%;
+    }
+  }
+
+  .slick-arrow {
+    @extend %remove-text;
+    background-color: transparent;
+    border: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    z-index: 2;
+
+
+    &:before {
+      @include prefix((box-shadow: 1px -1px 0 0 $white inset), webkit moz);
+      background-color: transparent;
+      border: solid transparent;
+      bottom: 0;
+      content: '';
+      height: 40px;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      transform: rotate(45deg);
+      width: 40px;
+      z-index: 2;
+    }
+
+    &:focus {
+      outline: 0;
+
+      &:before {
+        outline: 3px solid $focus-yellow;
+      }
+    }
+
+    @include media($mobile) {
+      bottom: 85px;
+      top: inherit;
+    }
+  }
+
+  .slick-prev {
+    &:before {
+      left: 20px;
+    }
+  }
+
+  .slick-next {
+    left: inherit;
+    right: 0;
+
+    &:before {
+      right: 20px;
+      transform: rotate(225deg);
+    }
+  }
+
+  .slick-dots {
+    padding: 10px 0 20px;
+
+    li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    button {
+      @extend %remove-text;
+      background-color: $grey;
+      border: 0;
+      border-radius: 10px;
+      height: 12px;
+      padding: 0;
+      width: 12px;
+    }
+  }
+
+  .slick-active {
+    button {
+      background-color: $aqua;
+    }
+  }
+}

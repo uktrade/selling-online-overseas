@@ -1,0 +1,49 @@
+.hero {
+  background: {
+    repeat: no-repeat;
+    size: cover;
+  }
+  color: $white;
+  min-height: 370px;
+  position: relative;
+
+  &-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  &-gradient {
+
+    &:after {
+      @include gradient;
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 700px;
+      z-index: 1;
+
+      @include media($mobile) {
+        content: none;
+      }
+    }
+  }
+
+  @include media($tablet) {
+    padding: {
+      left: 90px;
+      right: 90px;
+    };
+  }
+
+  @include media($mobile) {
+    background-color: $bright-grey;
+    background-image: none;
+    color: $grey;
+  }
+
+
+}

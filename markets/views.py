@@ -48,6 +48,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
         context = super().get_context_data(*args, **kwargs)
         context['market_count'] = self.markets.count()
         context['last_updated'] = self.markets.aggregate(Max('last_modified'))['last_modified__max']
+        context['random_markets'] = self.markets.order_by('?')[:6]
         return context
 
 

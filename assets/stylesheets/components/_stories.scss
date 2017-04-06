@@ -1,0 +1,11 @@
+.stories {
+  &-img {
+    height: 230px;
+  }
+
+  .col-4 {
+    @include media($mobile) {
+      padding: 0;
+    }
+  }
+}
