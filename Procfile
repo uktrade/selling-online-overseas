@@ -1,2 +1,2 @@
-release: python manage.py migrate --noinput && python manage.py build_index
-web: gunicorn navigator.wsgi
+release: python manage.py migrate --noinput
+web: python manage.py build_index && gunicorn navigator.wsgi
