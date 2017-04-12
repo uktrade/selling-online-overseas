@@ -31,5 +31,9 @@
     position: absolute;
     top: -8px;
     width: 100%;
+
+    @include media($mobile) {
+      content: none;
+    }
   }
 }
