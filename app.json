@@ -33,7 +33,16 @@
     },
     "RESTRICT_IPS": "True",
     "ALLOW_ADMIN": "True",
-    "ALLOW_AUTHENTICATED": "True"
+    "ALLOW_AUTHENTICATED": "True",
+    "AWS_STORAGE_BUCKET_NAME": {
+      "required": true
+    },
+    "AWS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_KEY": {
+      "required": true
+    }
   },
   "formation": {
     "web": {

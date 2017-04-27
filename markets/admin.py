@@ -7,14 +7,16 @@ from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-from django import forms
+from django.utils.safestring import mark_safe
+from django.contrib.admin.options import IS_POPUP_VAR, TO_FIELD_VAR
+from django.template.response import SimpleTemplateResponse
+
+from image_cropping import ImageCroppingMixin
 
 from .models import (
     Market, Logo, PublishedMarket, SupportChannel, UploadMethod, Currency, Brand, SellerModel, LogisticsModel
 )
-from .forms import LogoAdminForm
 from reversion.admin import VersionAdmin
-from django.utils.safestring import mark_safe
 
 
 admin.site.register(SupportChannel)
@@ -206,7 +208,43 @@ class MarketAdmin(VersionAdmin):
 
 
 @admin.register(Logo)
-class LogoAdmin(admin.ModelAdmin):
+class LogoAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ['name']
     ordering = ['name']
-    form = LogoAdminForm
+
+    def response_add(self, request, obj, post_url_continue=None):
+        if IS_POPUP_VAR in request.POST and '_continue' in request.POST:
+            to_field = request.POST.get(TO_FIELD_VAR)
+            if to_field:
+                attr = str(to_field)
+            else:
+                attr = obj._meta.pk.attname
+            value = obj.serializable_value(attr)
+            response = SimpleTemplateResponse('admin/markets/logo/popup_response.html', {
+                'value': value,
+                'obj': obj,
+                'reopen': True
+            })
+        else:
+            response = super().response_add(request, obj, post_url_continue)
+
+        return response
+
+    def response_change(self, request, obj):
+        if IS_POPUP_VAR in request.POST:
+            to_field = request.POST.get(TO_FIELD_VAR)
+            attr = str(to_field) if to_field else obj._meta.pk.attname
+            # Retrieve the `object_id` from the resolved pattern arguments.
+            value = request.resolver_match.args[0]
+            new_value = obj.serializable_value(attr)
+            response = SimpleTemplateResponse('admin/markets/logo/popup_response.html', {
+                'action': 'change',
+                'value': value,
+                'obj': obj,
+                'new_value': new_value,
+                'reopen': '_continue' in request.POST
+            })
+        else:
+            response = super().response_change(request, obj)
+
+        return response
