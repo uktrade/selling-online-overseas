@@ -16,7 +16,7 @@ table {
     font-size: 12px;
     text-transform: uppercase;
   }
-  
+
   &.grp-sortable thead th.sortable.sorted a {
     font-weight: normal;
   }
@@ -34,6 +34,11 @@ table.grp-sortable thead th div.grp-text span  {
       font-weight: normal;
     }
   }
+
+  strong {
+    font-size: 15px;
+    font-weight: normal;
+  }
 }
 
 th.published {
@@ -42,4 +47,12 @@ th.published {
 
 td.published {
   text-align: center;
+}
+
+.grp-submit-row {
+  ul {
+    li {
+      float: none;
+    }
+  }
 }
