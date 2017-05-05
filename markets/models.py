@@ -314,6 +314,7 @@ class Market(BaseMarket):
     class Meta:
         permissions = (
             ("can_publish", "Can publish Market"),
+            ("can_unpublish", "Can unpublish Market"),
         )
 
     live_version = models.IntegerField(null=True)

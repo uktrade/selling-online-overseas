@@ -145,12 +145,15 @@ class MarketAdmin(VersionAdmin):
 
     def get_urls(self):
         """
-        Add the publishing URL to the ModelAdmin
+        Add the publishing/unpublishing URLs to the ModelAdmin
         """
 
         urls = super().get_urls()
+        publish_view = self.admin_site.admin_view(self.publish_view)
+        unpublish_view = self.admin_site.admin_view(self.unpublish_view)
         custom_urls = [
-            url(r'^(?P<pk>[0-9]+)/publish/$', self.admin_site.admin_view(self.publish_view), name="publish_market"),
+            url(r'^(?P<pk>[0-9]+)/publish/$', publish_view, name="publish_market"),
+            url(r'^(?P<pk>[0-9]+)/unpublish/$', unpublish_view, name="unpublish_market"),
         ]
         return custom_urls + urls
 
@@ -175,6 +178,21 @@ class MarketAdmin(VersionAdmin):
 
         return HttpResponseRedirect(reverse('admin:markets_market_change', args=[pk]))
 
+    def unpublish_view(self, request, pk):
+        """
+        Special view for handling unpublishing of markets.  Checks the can_unpublish permission, and redirects to the
+        main markets list upon success
+        """
+
+        if not request.user.has_perm('markets.can_unpublish'):
+            return HttpResponseForbidden()
+
+        market = get_object_or_404(Market, pk=pk)
+        market.unpublish(request.user)
+        self.message_user(request, "Market unpublished.", level=messages.SUCCESS)
+
+        return HttpResponseRedirect(reverse('admin:markets_market_change', args=[pk]))
+
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):
         """
         Override the widgets for ManyToMany fields, to set to either a left-to-right filter widget (if specified in the
@@ -196,9 +214,13 @@ class MarketAdmin(VersionAdmin):
         # Default response
         resp = super().response_post_save_change(request, obj)
 
-        # Check that you clicked the button `_publish`
+        # Check if the user clicked the button to `_publish`
         if '_publish' in request.POST:
             url = reverse('admin:publish_market', args=[obj.pk])
+            return HttpResponseRedirect(url)
+        # Check if the user clicked the button to `_unpublish`
+        elif '_unpublish' in request.POST:
+            url = reverse('admin:unpublish_market', args=[obj.pk])
             return HttpResponseRedirect(url)
         else:
             # Otherwise, just use default behavior
