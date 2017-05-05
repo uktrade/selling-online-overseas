@@ -138,6 +138,10 @@
           margin-right: 5px;
           padding: 3px 8px;
           text-align: center;
+
+          @include media($mobile) {
+            margin-right: 0;
+          }
         }
 
         @include media($mobile) {
@@ -151,6 +155,10 @@
         color: $mid-blue;
         cursor: pointer;
         pointer-events: inherit;
+
+        .form-tab-content {
+          border-bottom: 1px solid $mid-blue;
+        }
       }
 
       &.form-tab-link--active {
@@ -160,6 +168,16 @@
 
         .form-tab-order {
           padding: 6px 12px;
+        }
+
+        .form-tab-content {
+          @include media($mobile) {
+            display: inline-block;
+          }
+        }
+
+        @include media($mobile) {
+          top: -8px;
         }
       }
 
@@ -172,6 +190,9 @@
         @include media($mobile) {
           display: none;
         }
+      }
+      @include media($mobile) {
+        position: relative;
       }
     }
 
@@ -208,8 +229,23 @@
 
     .col-3 {
       @include media($mobile) {
-        @include span-columns(3 of 12);
+        border-right: 1px solid $white;
+        display: inline-block;
+        float: left;
+        height: 51px;
+        margin-right: 0;
+        padding: 15px 16px;
+        width: inherit;
+
+        &:last-child {
+          border-right: 0;
+        }
       }
+    }
+
+    @include media($mobile) {
+      height: inherit;
+      padding: 0;
     }
   }
 
