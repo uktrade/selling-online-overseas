@@ -14,7 +14,8 @@ import karma from 'karma';
 const plugins = loadPlugins(),
       protractor = plugins.protractor.protractor,
       webdriver_standalone = plugins.protractor.webdriver_standalone,
-      webdriver_update = plugins.protractor.webdriver_update;
+      webdriver_update = plugins.protractor.webdriver_update,
+      Server = karma.Server;
 
 gulp.task('webdriver_update', webdriver_update);
 gulp.task('webdriver_standalone', webdriver_standalone);
@@ -97,7 +98,7 @@ gulp.task('lint:sass', () => gulp
             'no-vendor-prefixes': 0
         }
     }))
-    .pipe(plugins.sassLint.format(stylish))
+    .pipe(plugins.sassLint.format())
     .pipe(plugins.sassLint.failOnError())
 );
 
@@ -127,17 +128,17 @@ gulp.task('protractor:e2e', (callback) => gulp
 
 
 gulp.task('unit-tests', () => {
-    karma.server.start({
+    new Server({
         configFile: __dirname + '/karma.conf.js',
         reporters: ['progress', 'coverage']
-    })
+    }).start();
 });
 
 gulp.task('watch-unit-tests', () => {
-    karma.server.start({
+    new Server({
         configFile: __dirname + '/karma.conf.js',
         singleRun: false
-    })
+    }).start();
 });
 
 // Default: compile everything
