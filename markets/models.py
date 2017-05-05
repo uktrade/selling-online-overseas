@@ -141,11 +141,13 @@ class BaseMarket(models.Model):
 
     customer_support_channels = models.ManyToManyField(SupportChannel, blank=True,
                                                        related_name="%(app_label)s_%(class)s_customer_related")
-    customer_support_hours = models.CharField(max_length=150, blank=True, null=True)
+    customer_support_hours = models.CharField(max_length=150, blank=True, null=True,
+                                              help_text="Format: <br/>9:00am to 6:00pm (GMT+1), Monday - Friday")
 
     seller_support_channels = models.ManyToManyField(SupportChannel, blank=True,
                                                      related_name="%(app_label)s_%(class)s_seller_related")
-    seller_support_hours = models.CharField(max_length=150, null=True, blank=True)
+    seller_support_hours = models.CharField(max_length=150, null=True, blank=True,
+                                            help_text="Format: <br/>9:00am to 6:00pm (GMT+1), Monday - Friday")
 
     customer_demographics = RichTextField(null=True, blank=True)
 
