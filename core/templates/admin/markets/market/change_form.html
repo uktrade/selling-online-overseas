@@ -13,9 +13,11 @@
         <li class="grp-float-left"><a href="{{ changelist_url }}" class="grp-button">Close</a></li>
 
         {% if perms.markets.can_publish %}
-            {% url 'admin:publish_market' original.pk as publish_url %}
-            <!--li class="grp-float-left"><a href="{{ publish_url }}" class="grp-button">Publish</a></li-->
             <li class="grp-float-left"><input type="submit" value="Publish" class="grp-button" name="_publish" /></li>
+        {% endif %}
+
+        {% if perms.markets.can_unpublish %}
+            <li class="grp-float-left"><input type="submit" value="Unpublish" class="grp-button" name="_unpublish" /></li>
         {% endif %}
         
         {% if perms.markets.can_delete_market %}

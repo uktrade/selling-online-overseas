@@ -47,6 +47,28 @@ class MarketModelTests(TestCase):
         # Make sure the market and it's published market share the same pk
         self.assertEqual(markets[0].pk, published_markets[0].pk)
 
+    def test_unpublish_model(self):
+        # Add a market, and publish it
+        name = "Amazon"
+        market = create_market(name=name)
+        self.assertEqual(name, str(market))
+        market.publish()
+
+        # Check we have 1 market, and 1 published markets
+        markets = Market.objects.all()
+        published_markets = PublishedMarket.objects.all()
+        self.assertEqual(len(markets), 1)
+        self.assertEqual(len(published_markets), 1)
+
+        # Unpublish the market and check we have 1 of each now
+        market.unpublish()
+
+        # Check we have 1 market, and 0 published markets
+        markets = Market.objects.all()
+        published_markets = PublishedMarket.objects.all()
+        self.assertEqual(len(markets), 1)
+        self.assertEqual(len(published_markets), 0)
+
     def test_market_delete(self):
         # Create 3 markets and publish 2 of them
         market1 = create_market()
