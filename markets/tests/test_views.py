@@ -37,13 +37,19 @@ class MarketPublishingTests(TestCase):
     def test_filter_market_list_by_name(self):
         # Filter the list of markets on it's name, check we get 200 and the market in the response
         response = self.client.get(reverse('markets:list'), {'name': self.market.name})
-        self.assertNotContains(response, self.market.name, status_code=200)
+        markets = response.context_data['markets_list']
+        self.assertNotIn(self.market, markets)
 
         self._publish_market()
 
+        response = self.client.get(reverse('markets:list'), {'name': self.market.name})
+        markets = response.context_data['markets_list']
+        self.assertIn(self.market, markets)
+
         # Search for an incorrect name, check we get 200 and NOT the market we created
         response = self.client.get(reverse('markets:list'), {'name': "Amazing"})
-        self.assertNotContains(response, self.market.name, status_code=200)
+        markets = response.context_data['markets_list']
+        self.assertNotIn(self.market, markets)
 
     def test_count_markets(self):
         response = self.client.get(reverse('markets:count'))
