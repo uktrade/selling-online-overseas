@@ -1,0 +1,18 @@
+{% load i18n %}<!DOCTYPE html>
+<html>
+    <head><title>{% trans 'Popup closing...' %}</title></head>
+    <body>
+        <script type="text/javascript">
+            {% if action == 'change' %}
+                opener.dismissChangeRelatedObjectPopup(window, "{{ value|escapejs }}", "{{ obj|escapejs }}", "{{ new_value|escapejs }}");
+            {% else %}
+                opener.dismissAddRelatedObjectPopup(window, "{{ value|escapejs }}", "{{ obj|escapejs }}");
+            {% endif %}
+
+            {% if reopen %}
+                var fauxLink = {'id':'change_id_logo', href:'{% url "admin:markets_logo_change" obj.id %}?_popup=1'};
+                opener.showRelatedObjectPopup(fauxLink, /^/, true);
+            {% endif %}
+        </script>
+    </body>
+</html>

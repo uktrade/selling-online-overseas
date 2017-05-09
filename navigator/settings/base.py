@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import dj_database_url
+from easy_thumbnails.conf import Settings as thumbnail_settings
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -35,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.staticfiles',
     'ckeditor',
+    'easy_thumbnails',
+    'image_cropping',
     'core',
     'markets',
     'geography',
@@ -122,16 +125,35 @@ CSRF_COOKIE_HTTPONLY = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'compiled_assets'),
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'fixstatic'),
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+# Media file storage
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STORAGE_CLASSES = {
+    'default': 'storages.backends.s3boto3.S3Boto3Storage',
+    'local': 'django.core.files.storage.FileSystemStorage',
+}
+STORAGE_CLASS_NAME = os.getenv('STORAGE_TYPE', 'default')
+DEFAULT_FILE_STORAGE = STORAGE_CLASSES[STORAGE_CLASS_NAME]
+THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_KEY')
+AWS_DEFAULT_ACL = 'public-read'
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_ENCRYPTION = False
+AWS_S3_FILE_OVERWRITE = False
+AWS_S3_REGION_NAME = 'eu-west-2'
+IMAGE_CROPPING_THUMB_SIZE = (710, 537)
 
 # Index location for Whoosh searching
 WHOOSH_INDEX_DIR = os.path.join(BASE_DIR, 'whoosh_index')
@@ -162,3 +184,7 @@ SOO_HOST = os.environ.get('SOO_HOST', 'https://selling-online-overseas.export.gr
 HELP_HOST = os.environ.get('HELP_HOST', 'https://contact-us.export.great.gov.uk/')
 SSO_HOST = os.environ.get('SSO_HOST', 'https://sso.trade.great.gov.uk/')
 PROFILE_HOST = os.environ.get('PROFILE_HOST', 'https://profile.great.gov.uk/')
+
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS

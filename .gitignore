@@ -95,7 +95,7 @@ environment.sh
 
 # static files
 staticfiles/
-static/
+compiled_assets/
 
 # nodes #
 node_modules/
@@ -108,3 +108,6 @@ assets/test/unit/coverage/
 
 # Whoosh search index
 whoosh_index*
+
+# Media files
+media/

@@ -14,6 +14,7 @@ from django.contrib.contenttypes.models import ContentType
 
 from reversion.models import Version
 from ckeditor.fields import RichTextField
+from image_cropping import ImageRatioField
 
 from . import PAYMENT_FREQUENCIES, BOOL_CHOICES
 from geography.models import Country
@@ -32,10 +33,12 @@ class LogisticsModel(models.Model):
 
 class Logo(models.Model):
     name = models.CharField(max_length=200)
-    _encoded_data = models.TextField()
-
-    def base64_logo(self):
-        return self._encoded_data
+    image = models.ImageField(null=True, help_text="After choosing an image to upload click 'Save' to access the\
+                                                    'Cropping' tool and edit the image")
+    cropping = ImageRatioField('image', '400x302',
+                               help_text="Use cropping tool to cut the image to the right format. Always leave enough\
+                                          white space around the edges and try to keep the largest possible size for\
+                                          good image quality.")
 
     def __str__(self):
         return "{0}".format(self.name)
