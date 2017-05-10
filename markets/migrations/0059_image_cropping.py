@@ -8,8 +8,10 @@ import os
 from django.conf import settings
 from django.db import migrations, models
 from django.utils.text import slugify
-import image_cropping.fields
 from django.core.files import File
+
+from core.utils import fix_model_index
+from image_cropping import fields
 from PIL import Image
 
 
@@ -33,6 +35,8 @@ def export_images(apps, schema_editor):
         os.remove(filename)
         logo.save()
 
+    fix_model_index(Logo)
+
 
 class Migration(migrations.Migration):
 
@@ -44,9 +48,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='logo',
             name='cropping',
-            field=image_cropping.fields.ImageRatioField('image', '400x302', adapt_rotation=False, allow_fullsize=False,
-                                                        free_crop=False, help_text=None, hide_image_field=False,
-                                                        size_warning=False, verbose_name='cropping'),
+            field=fields.ImageRatioField('image', '400x302', adapt_rotation=False, allow_fullsize=False,
+                                         free_crop=False, help_text=None, hide_image_field=False,
+                                         size_warning=False, verbose_name='cropping'),
         ),
         migrations.AddField(
             model_name='logo',
