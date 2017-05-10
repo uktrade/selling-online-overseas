@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^stats/update$', views.MarketStatsUpdateView.as_view(), name='stats_update'),
     url(r'^api/$', views.MarketAPIView.as_view(), name='api'),
     url(r'^details/(?P<slug>[\w-]+)/$', views.MarketDetailView.as_view(), name='detail'),
+    url(r'^story/(?P<slug>[\w-]+)/$', views.CaseStoryView.as_view(), name='case_story'),
 ]

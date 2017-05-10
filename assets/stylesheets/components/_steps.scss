@@ -1,0 +1,103 @@
+.steps {
+  &-number {
+    color: $lightest-grey;
+    display: block;
+    font-size: 144px;
+    line-height: 110px;
+
+    @include media($tablet) {
+      font-size: 96px;
+      line-height: 80px;
+    }
+
+    @include media($mobile) {
+      font-size: 90px;
+      line-height: 69px;
+    }
+  }
+
+  &-content {
+    width: 221px;
+
+    @include media($mobile) {
+      width: 76%;
+    }
+
+    @include media($tablet) {
+      width: 70%;
+    }
+  }
+
+  &-content--section {
+    @include span-columns(4 of 12);
+
+    @include media($mobile) {
+      @include span-columns(12 of 12);
+    }
+  }
+
+  &-image {
+    padding-left: 40px;
+
+    @include media($tablet) {
+      width: 184px;
+    }
+
+    @include media($mobile) {
+      display: block;
+      margin: 0 auto;
+      padding-left: 0;
+    }
+  }
+
+  &-image-section {
+
+    @include media($mobile) {
+      @include span-columns(5 of 12);
+      text-align: left;
+
+      img {
+        width: 139px;
+      }
+    }
+
+
+
+    &-with-arrow {
+      position: relative;
+
+      @include media($desktop-only) {
+        &:after {
+          background: {
+            image: url('#{$image-path}icons/dotted_arrow.svg');;
+            position: 90% center;
+            repeat: no-repeat;
+            size: 45px;
+          }
+          bottom: 0;
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 100px;
+          z-index: 10;
+        }
+      }
+    }
+  }
+
+  &-info {
+    padding: 0 60px;
+
+    @include media($tablet) {
+      padding: 20px;
+    }
+
+
+    @include media($mobile) {
+      padding: 0;
+      @include span-columns(7 of 12);
+    }
+  }
+
+}

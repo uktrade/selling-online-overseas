@@ -48,6 +48,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
         context = super().get_context_data(*args, **kwargs)
         context['market_count'] = self.markets.count()
         context['last_updated'] = self.markets.aggregate(Max('last_modified'))['last_modified__max']
+        context['random_markets'] = self.markets.order_by('?')[:6]
         return context
 
 
@@ -295,3 +296,13 @@ class MarketDetailView(MarketFilterMixin, TemplateView):
             raise Http404('Market does not exist')
 
         return context
+
+
+class CaseStoryView(TemplateView):
+    """
+    The simple view for a case story page
+    """
+
+    def get_template_names(self):
+        story_name = self.kwargs['slug']
+        return ['markets/case_studies/{}.html'.format(story_name)]

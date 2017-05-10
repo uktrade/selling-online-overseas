@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="outer-container push--top soft--top stories">
+
+    <div class="stories-header">
+      <span class="heading-sub font-mid-grey">Case study</span>
+      <h1 class="heading-xlarge push--bottom flush--top">{% block story_title %}{% endblock %}</h1>
+
+      <p class="heading-sub">{% block story_subtitle %}{% endblock %}</p>
+    </div>
+    <div class="cf">
+      <div class="stories-image-section push--bottom">
+        <img src="/static/images/case-story/{% block story_image%}{% endblock %}" class="stories-img--large" alt=""/>
+      </div>
+      <div class="stories-quote-section push--bottom">
+        <aside>
+          <blockquote class="background--light-stone soft quote-left">
+            <p class="">{% block story_blockquote_top_content%}{% endblock %}</p>
+            <footer class="font-lig ">
+              <strong class="font-small">{% block story_blockquote_top_author%}{% endblock %}</strong>
+              <br />
+              <span>Founder | <a href="{% block story_blockquote_top_link%}{% endblock %}" class="link" title="">{% block story_blockquote_top_founder%}{% endblock %}</a> </span>
+            </footer>
+          </blockquote>
+        </aside>
+      </div>
+    </div>
+    <div class="cf font-xsmall">
+      <div class="stories-main">
+
+        {% block story_content%}{% endblock %}
+        <blockquote class="background--light-stone soft quote-left push--ends">
+          <p class="">{% block story_blockquote_bottom_content%}{% endblock %}</p>
+          <footer class="font-lig push--top soft--top">
+            <strong class="font-small">{% block story_blockquote_bottom_author%}{% endblock %}</strong>
+            <br />
+            <span>Founder | <a href="{% block story_blockquote_bottom_link%}{% endblock %}" class="link" title="">{% block story_blockquote_bottom_founder%}{% endblock %}</a> </span>
+          </footer>
+        </blockquote>
+
+        <p>{% block story_footer_note%}{% endblock %}</p>
+      </div>
+    </div>
+
+    <div class="cf push--top border-top soft--top stories-more">
+      <h3 class="h3 font-med flush--top push--bottom">More case studies</h3>
+      <a href="/markets/story/{% block story_more_link%}{% endblock %}" class="col-6 soft--bottom" title="">
+        <div class="stories-more-image">
+          <img src="/static/images/case-story/{% block story_more_image%}{% endblock %}"  alt=""/>
+        </div>
+        <div class="stories-more-info">
+          <h4 class="font-small font-brand">{% block story_more_title%}{% endblock %}</h4>
+          <p class="font-brand">{% block story_more_content%}{% endblock %}</p>
+        </div>
+      </a>
+      <a href="/markets/story/{% block story_2_more_link%}{% endblock %}" class="col-6 soft--bottom" title="">
+        <div class="stories-more-image">
+          <img src="/static/images/case-story/{% block story_2_more_image%}{% endblock %}" alt=""/>
+        </div>
+        <div class="stories-more-info">
+          <h4 class="font-small font-brand">{% block story_2_more_title%}{% endblock %}</h4>
+          <p class="font-brand">{% block story_2_more_content%}{% endblock %}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+{% endblock content %}
