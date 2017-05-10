@@ -212,3 +212,23 @@
     @extend %whole-section-clickable;
   }
 }
+
+.top-chevron {
+  position: relative;
+
+  &:before {
+    border: {
+      left: 20px solid transparent;
+      right: 20px solid transparent;
+      top: 22px solid $white;
+    }
+    content: '';
+    height: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+  }
+}

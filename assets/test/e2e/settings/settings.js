@@ -5,5 +5,8 @@ module.exports = {
         home: url+'/markets/',
         filtering: url+'/markets/filter/',
         list: url+'/markets/search'
-    }
+    },
+    pageHeader: element(by.css('h1.heading-xlarge'))
 };
+
+/*TODO remove filter template not needed anymore */

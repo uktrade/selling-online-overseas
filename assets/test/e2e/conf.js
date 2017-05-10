@@ -5,7 +5,9 @@ exports.config = {
         'browserName': 'chrome'
     },
 
-    specs: ['./specs/*-spec.js'],
+    debug: false,
+
+    autoStartStopServer: true,
 
     jasmineNodeOpts: {
         showColors: true // Use colors in the command line report.

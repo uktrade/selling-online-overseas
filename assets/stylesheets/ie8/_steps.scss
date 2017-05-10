@@ -1,0 +1,14 @@
+.steps {
+
+  &-image-section {
+
+    &-with-arrow {
+
+      background: {
+        image: url('#{$image-path}dotted_arrow.png');
+        position: right center;
+        repeat: no-repeat;
+      };
+    }
+  }
+}

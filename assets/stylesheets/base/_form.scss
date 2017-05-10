@@ -51,6 +51,13 @@
     }
   }
 
+  &-hint {
+    @extend %font-xxsmall;
+    color: $grey;
+    font-family: $brand-font-family;
+    margin: 5px 0 0;
+  }
+
   &-control {
     @extend %light;
     background: $light-stone;

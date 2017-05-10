@@ -6,6 +6,7 @@
   <section>
     <div class="hero hero-gradient background-image--hero soft--bottom cf">
       <div class="hero-content">
+        <a name="anchor"></a>
         <div class="outer-container soft-half--top text-shadow">
           <h1 class="h1 font-reg soft--top soft-half--bottom">Find online marketplaces</h1>
           <p class="h3 font-lig flush--bottom">Reach over 2 billion consumers online around the world</p>
@@ -18,14 +19,18 @@
                 <legend class="visuallyhidden">Please select countries and products</legend>
                 <div class="autocomplete-section push--bottom">
                   <div class="form-dropdown">
-                    <label class="form-label" for="search-product">What do you sell?</label>
+                    <label class="form-label" for="search-product">What do you sell?
+                      <span class="form-hint font">Enter your product name and pick a category</span>
+                    </label>
                     <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off" placeholder="Product name">
                     <ul class="form-dropdown-results" role="presentation"></ul>
                   </div>
                 </div>
                 <div class="autocomplete-section push--bottom">
                   <div class="form-dropdown">
-                    <label class="form-label" for="search-country">Where do you want to sell them?</label>
+                    <label class="form-label" for="search-country">Where do you want to sell them?
+                      <span class="form-hint">Leave this empty if you are not sure</span>
+                    </label>
                     <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="/geography/api/" data-field="operating_countries" autocomplete="off" placeholder="Country name">
                     <ul class="form-dropdown-results" role="presentation"></ul>
                     <ul class="form-dropdown-checkbox hide"></ul>
@@ -65,20 +70,20 @@
   <section>
     <div class="soft--bottom soft-half--top">
       <div class="outer-container">
-        <h3 class="h2 font-reg flush--top push--bottom soft--top">How we can help your business</h3>
+        <h3 class="h2 font-reg flush--top push--bottom soft-half--bottom soft--top">How this tool can help your business</h3>
         <ul>
           <li class="steps-content--section soft--bottom">
-            <div class="steps-image-section steps-image-section-with-arrow">
-              <img class="steps-image" src="/static/images/infographics/exporting.svg" alt="">
+            <div class="steps-image-section">
+              <img class="steps-image" src="/static/images/infographics/exporting.svg" alt="Exporting online">
             </div>
             <div class="cf push--top text--left steps-info">
-              <h4 class="h3 font-lig">Exporting</h4>
+              <h4 class="h3 font-lig">Exporting online</h4>
               <p class="font-xsmall">UK businesses like yours want to sell online to overseas customers.</p>
             </div>
           </li>
           <li class="steps-content--section soft--bottom">
-            <div class="steps-image-section steps-image-section-with-arrow">
-              <img class="steps-image" src="/static/images/infographics/exclusivedeals.svg" alt="">
+            <div class="steps-image-section">
+              <img class="steps-image" src="/static/images/infographics/exclusivedeals.svg" alt="Department of International Trade">
             </div>
             <div class="cf push--top text--left steps-info">
               <h4 class="h3 font-lig">Exclusive deals</h4>
@@ -87,11 +92,11 @@
           </li>
           <li class="steps-content--section soft--bottom">
             <div class="steps-image-section">
-              <img class="steps-image" src="/static/images/infographics/growyourbusiness.svg" alt="">
+              <img class="steps-image" src="/static/images/infographics/growyourbusiness.svg" alt="Grow your business">
             </div>
             <div class="cf push--top text--left steps-info">
               <h4 class="h3 font-lig">Grow your business</h4>
-              <p class="font-xsmall">We help you to find the right marketplace for your products in the countries of your choice.</p>
+              <p class="font-xsmall">We help you to find the right marketplace. All information is in English, making it easier to choose.</p>
             </div>
           </li>
         </ul>
@@ -145,7 +150,7 @@
             <img src="/static/images/case-story/freestylextreme.jpg" class="stories-img image-full" alt="FreestyleXtreme">
             <h4 class="font-small push-half--top font-brand">Online marketplaces propel FreestyleXtreme</h4>
             <p class="font-brand">Like many businesses, Bristol-based specialist sports retailer FreestyleXtreme has seen big growth through online sales overseas.</p>
-            <a href="/markets/story/online-marketplaces-propel-freestyle-xtreme-sales/" class="link" title="Online marketplaces propel FreestyleXtreme">Read case study ></a>
+            <a href="/markets/story/online-marketplaces-propel-freestyle-xtreme-sales/" class="link" title="Online marketplaces propel FreestyleXtreme">Read FreestyleXtreme case study ></a>
           </div>
         </div>
         <div class="col-4 soft-half--sides">
@@ -153,7 +158,7 @@
             <img src="/static/images/case-story/hellobaby.jpg" class="stories-img image-full" alt="Hello Baby’s">
             <h4 class="font-small push-half--top font-brand">Hello Baby’s online growth spurt</h4>
             <p class="font-brand">Read how DIT helped this retailer of baby products through initial teething pains with online marketplaces, paving the way for big EU sales.</p>
-            <a href="/markets/story/hello-babys-online-growth-spurt/" class="link" title="Hello Baby’s online growth spurt">Read case study ></a>
+            <a href="/markets/story/hello-babys-online-growth-spurt/" class="link" title="Hello Baby’s online growth spurt">Read Hello Baby case study ></a>
           </div>
         </div>
         <div class="col-4 soft--left">
@@ -161,7 +166,7 @@
             <img src="/static/images/case-story/maxwellscottbags.jpg" class="stories-img image-full" alt="Maxwell Scott Bags">
             <h4 class="font-small push-half--top font-brand">York bag retailer goes global via e-commerce</h4>
             <p class="font-brand">York-based retailer Maxwell Scott Bags was already selling internationally from its UK website when its owners made the decision to launch...</p>
-            <a href="/markets/story/york-bag-retailer-goes-global-via-e-commerce/" class="link" title="York bag retailer goes global via e-commerce">Read case study ></a>
+            <a href="/markets/story/york-bag-retailer-goes-global-via-e-commerce/" class="link" title="York bag retailer goes global via e-commerce">Read Maxwell Scott Bags case study ></a>
           </div>
         </div>
       </div>
@@ -172,10 +177,10 @@
     <div class="steps soft--bottom soft-half--top background--white">
       <div class="outer-container">
         <h3 class="h2 font-reg flush--top push--bottom soft--top">Start selling</h3>
-        <ul>
+        <ul class="cf">
           <li class="col-4 soft--bottom">
             <div class="steps-image-section-with-arrow">
-              <img class="steps-image" src="/static/images/infographics/searchandcompare.svg" alt="">
+              <img class="steps-image" src="/static/images/infographics/searchandcompare.svg" alt="Search and Compare">
             </div>
             <div class="cf push--top">
               <span class="steps-number font-med font-grey float--left push-half--right">1</span>
@@ -188,30 +193,47 @@
 
           <li class="col-4 soft--bottom">
             <div class="steps-image-section-with-arrow">
-              <img class="steps-image" src="/static/images/infographics/selectandapply.svg" alt="">
+              <img class="steps-image" src="/static/images/infographics/selectandapply.svg" alt="Select and Apply">
             </div>
             <div class="cf push--top">
               <span class="steps-number font-med font-grey float--left push-half--right">2</span>
               <div class="steps-content float--left">
                 <h4 class="h3 font-lig">Select and apply</h4>
-                <p class="font-xsmall">Choose your marketplace, find out their details and exclusive deals and apply to join.</p>
+                <p class="font-xsmall">Choose your marketplace. Find out their details and exclusive deals. Apply to join.</p>
               </div>
             </div>
           </li>
 
           <li class="col-4 soft--bottom">
             <div>
-              <img class="steps-image" src="/static/images/infographics/startselling.svg" alt="">
+              <img class="steps-image" src="/static/images/infographics/startselling.svg" alt="Start Selling">
             </div>
             <div class="cf push--top">
               <span class="steps-number font-med font-grey float--left push-half--right">3</span>
               <div class="steps-content float--left">
                 <h4 class="h3 font-lig">Sell your product</h4>
-                <p class="font-xsmall">Join an online marketplace and start selling your product to customers across the world.</p>
+                <p class="font-xsmall">Join an online marketplace and start selling your product to customers around the world.</p>
               </div>
             </div>
           </li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="soft--bottom soft-half--top top-chevron">
+      <div class="outer-container">
+        <div class="steps-sub-section soft--top">
+          <div class="col-6">
+            <h1 class="h2 font-med flush--top push-half--bottom">Find online marketplaces</h1>
+            <p class="font-small flush--bottom font-brand">Reach over 2 billion consumers online around the world</p>
+            <p class="font-small font-brand">Get exclusive deals negotiated on behalf of UK businesses</p>
+          </div>
+          <div class="col-6">
+            <button class="button button-red button-large push--top" data-scrollTo="search-product">Start your search now</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>

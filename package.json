@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Selling Online Overseas",
   "engines": {
-    "node": "6",
+    "node": "6.10.3",
     "npm": "2.15.5"
   },
   "scripts": {
