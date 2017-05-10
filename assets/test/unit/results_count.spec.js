@@ -4,7 +4,7 @@ describe('result counts', function () {
                 '<input checked="checked" id="id_product_categories_0" name="product_categories" type="checkbox" value="Accessories">' +
                 '<input checked="checked" id="id_product_categories_0" name="product_categories" type="checkbox" value="books">' +
                 '<div id="results-count" class="background--blue filters-container soft filters-result">' +
-                    '<h4>1</h4>' +
+                    '<h4 class="results-count">1</h4>' +
                 '</div>' +
               '</form>';
 

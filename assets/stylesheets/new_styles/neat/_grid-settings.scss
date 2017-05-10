@@ -12,3 +12,5 @@ $max-width: 1200px;
 $desktop: max-width $max-width;
 $mobile: max-width 767px;
 $tablet: max-width 959px min-width 768px;
+
+$desktop-only: min-width 959px;

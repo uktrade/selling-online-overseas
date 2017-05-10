@@ -53,11 +53,20 @@ main,
   font-size: 36px;
 }
 
+%h3 {
+  font-size: 24px;
+}
+
 .font {
 
   &-small {
     @extend %font-regular;
     font-family: $brand-font-family;
+  }
+
+  &-xsmall {
+    font-family: $brand-font-family;
+    font-weight: 300;
   }
 
   &-xxsmall {
@@ -80,8 +89,16 @@ main,
     color: $lighter-grey;
   }
 
+  &-mid-grey {
+    color: $mid-grey;
+  }
+
   &-purple {
     color: $purple;
+  }
+
+  &-flag-red {
+    color: $flag-red;
   }
 
   &-lig {
@@ -99,6 +116,37 @@ main,
 
 .h1 {
   @extend %h1;
+  letter-spacing: -1px;
+
+  @include media($tablet) {
+    font-size: 36px;
+  }
+
+  @include media($mobile) {
+    font-size: 30px;
+  }
+}
+
+.h2 {
+  font-size: 24px;
+  letter-spacing: -.2px;
+
+  @include media($desktop-only) {
+    font-size: 32px;
+    letter-spacing: -.4px;
+  }
+}
+
+.h3 {
+  @extend %h3;
+
+  @include media($desktop) {
+    font-size: 20px;
+  }
+
+  @include media($mobile) {
+    font-size: 18px;
+  }
 }
 
 h1,
@@ -114,6 +162,63 @@ strong {
 blockquote {
   @extend %font-xxsmall;
   line-height: 25px;
+
+  &.quote-left {
+    padding: 80px 10px 10px;
+    position: relative;
+
+    &:before {
+      color: $mid-grey;
+      content: open-quote;
+      font-family: sans-serif;
+      font-size: 120px;
+      font-weight: 600;
+      left: 0;
+      position: absolute;
+      top: 70px;
+
+      @include media($desktop-only) {
+        font-size: 144px;
+        left: 30px;
+        top: 84px;
+      }
+    }
+
+    &:after {
+      content: close-quote;
+      visibility: hidden;
+    }
+
+    p {
+      font-family: $quote-font-family;
+      font-size: 20px;
+      font-style: italic;
+      line-height: 28px;
+
+      @include media($desktop-only) {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+
+    footer {
+      padding-top: 0;
+
+      @include media($desktop-only) {
+        padding-top: 20px;
+      }
+    }
+
+    @include media($desktop-only) {
+      padding: 109px 40px 50px;
+    }
+  }
+
+  &.quote-white {
+    &:before {
+      color: $white;
+    }
+  }
 }
 
 hr {
@@ -160,7 +265,7 @@ a {
   &--regular {
     @extend %font-regular;
 
-    @include media(mobile) {
+    @include media($mobile) {
       font-size: 15px;
     }
   }
