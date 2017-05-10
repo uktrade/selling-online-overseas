@@ -5,7 +5,6 @@
   }
   color: $white;
   min-height: 370px;
-  overflow: hidden;
   position: relative;
 
   &-content {
@@ -29,6 +28,10 @@
 
       @include media($mobile) {
         content: none;
+      }
+
+      @include media($tablet) {
+        width: 700px;
       }
     }
   }
