@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load thumbnail %}
+
 {% block content %}
   <section>
     <div class="hero hero-gradient background-image--hero soft--bottom cf">
@@ -50,12 +52,9 @@
       <div class="outer-container">
         <div class="logo-strip-section">
           {% for ran in random_markets %}
-          <div class="col-2"><img class="logo-strip-img" src="{{ ran.logo.base64_logo }}" alt="{{ran}}"></div>
-          {% comment %}
-          <!-- new way of doing things, for if/when the image cropper is integrated -->
-          <!-- requires the {% load thumbnail %} at the top -->
-          <div class="col-2"><img class="logo-strip-img" src="{% thumbnail ran.logo.image 75x50 box=ran.logo.cropping crop detail %}" alt="{{ran}}"></div>
-          {% endcomment %}
+            <div class="col-2">
+              <img class="logo-strip-img" src="{% thumbnail ran.logo.image 110x83 box=ran.logo.cropping crop detail %}" alt="{{ ran }}">
+            </div>
           {% endfor %}
         </div>
       </div>
