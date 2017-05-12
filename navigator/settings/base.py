@@ -170,6 +170,7 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Custom',
         'format_tags': 'p',
         'forcePasteAsPlainText': True,
+        'disableNativeSpellChecker': False,
         'toolbar_Custom': [
             ['Format', 'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'],
             ['BulletedList', 'NumberedList'],
