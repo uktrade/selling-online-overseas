@@ -21,7 +21,7 @@ describe('Thumber', function() {
     });
 
 
-    it('Should send feedback message', function() {
+    xit('Should send feedback message', function() {
         thumber.thankComments.sendKeys('Awesome page');
         thumber.sendButton.click();
         browser.sleep(10000);

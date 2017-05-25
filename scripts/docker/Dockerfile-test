@@ -1,0 +1,33 @@
+FROM python:3.6
+
+RUN mkdir -p /project
+WORKDIR /project
+
+# Install wget and curl (TODO: should only need one or other, not both)
+RUN apt-get update && apt-get install -y curl && apt-get install -y wget
+
+## Install node
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+    apt-get install -y nodejs build-essential
+
+# Install dockerize https://github.com/jwilder/dockerize
+ENV DOCKERIZE_VERSION v0.4.0
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
+ADD gulpfile.babel.js .babelrc karma.conf.js package.json projectpath.babel.js /project/
+
+RUN npm install
+RUN npm rebuild node-sass
+
+
+ADD scripts/requirements.txt /project/
+ADD scripts/requirements_for_test.txt /project/
+RUN pip install -r /project/requirements_for_test.txt
+
+ADD scripts/docker/run-tests.sh scripts/docker/test.env setup.cfg /project/
+
+RUN mkdir -p /project/app
+ADD app/ /project/app/
+
+CMD ["/project/run-tests.sh"]

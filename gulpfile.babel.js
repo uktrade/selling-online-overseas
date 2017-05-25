@@ -99,9 +99,9 @@ gulp.task('lint',
 );
 
 gulp.task('protractor:e2e', (callback) => gulp
-    .src(['assets/test/e2e/specs/*-spec.js'])
+    .src(['app/assets/test/e2e/specs/*-spec.js'])
     .pipe(protractor({
-        'configFile': 'assets/test/e2e/conf.js',
+        'configFile': 'app/assets/test/e2e/conf.js',
     })).on('error', function(e) {
         console.log(e);
     }).on('end', function (callback) {
@@ -150,5 +150,13 @@ gulp.task('test',
     [
      'lint',
      'unit-tests'
+    ]
+);
+
+gulp.task('testfull',
+    [
+     'lint',
+     'unit-tests',
+     'protractor:e2e'
     ]
 );

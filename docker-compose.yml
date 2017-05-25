@@ -1,0 +1,51 @@
+version: '2'
+services:
+
+    web:
+        build:
+            context: .
+            dockerfile: scripts/docker/Dockerfile-dev
+        environment:
+            DATABASE_URL: postgresql://postgres:postgres@postgres/navigator
+            DJANGO_SETTINGS_MODULE: navigator.settings.dev
+            SECRET_KEY: DEV_SECRET_KEY
+            STORAGE_TYPE: local
+        links: [postgres]
+        depends_on: [postgres]
+        ports: ["8000:8000"]
+        entrypoint: dockerize -wait tcp://postgres:5432 -timeout 60s
+        tty: true
+        volumes:
+            - ./app:/project/app
+        command: /project/web-start.sh
+
+    test:
+        build:
+            context: .
+            dockerfile: scripts/docker/Dockerfile-test
+        environment:
+            DATABASE_URL: postgresql://postgres:postgres@postgres/navigator
+            DJANGO_SETTINGS_MODULE: navigator.settings.test
+            SECRET_KEY: TEST_SECRET_KEY
+            STORAGE_TYPE: local
+        links: [postgres]
+        depends_on: [postgres]
+        entrypoint: dockerize -wait tcp://postgres:5432 -timeout 60s
+        command: /project/run-tests.sh
+
+    build:
+        build:
+            context: .
+            dockerfile: scripts/docker/Dockerfile-build
+        environment:
+            DJANGO_SETTINGS_MODULE: navigator.settings.prod
+            SECRET_KEY: FAKE_SECRET_KEY
+        tty: true
+
+    postgres:
+        image: postgres:9.5.2
+        restart: always
+        environment:
+            POSTGRES_DB: navigator
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres

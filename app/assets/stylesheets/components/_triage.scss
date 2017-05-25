@@ -1,0 +1,25 @@
+.triage {
+  &-header {
+
+    @include media($mobile) {
+      display: flex;
+      flex-flow: column;
+
+      .col-5 {
+        order: 1;
+      }
+
+      .col-7 {
+        order: 2;
+      }
+    }
+  }
+
+  &-back-button {
+    text-align: right;
+
+    @include media($mobile) {
+      text-align: left;
+    }
+  }
+}

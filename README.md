@@ -6,81 +6,98 @@
 
 Department of International Trade marketplace navigator.
 
-## Features of this application
-
- - To be added??
-
 ## First-time setup
 
 Languages/applications needed
-- Python 3.5
-- Postgres [postgres](https://www.postgresql.org)
-- Heroku Toolbelt [heroku](https://toolbelt.heroku.com)
+- Python 3
+- Docker & Docker Compose [docker](https://www.docker.com) (optional)
+- Postgres 9 [postgres](https://www.postgresql.org) (required if NOT using docker)
+- Node 6 [node](https://nodejs.org/en/) (required if NOT using docker)
+- Java 8 runtime [java](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) (required if NOT using docker)
 
+## Installation
 
-The app runs within a virtual environment. To [install virtualenv](https://virtualenv.readthedocs.org/en/latest/installation.html), run
-```shell
-    [sudo] pip install virtualenv
-```
+The project runs either locally using virtual environments, or within Docker containers
 
-Install virtualenvwrapper
-```shell
-    [sudo] pip install virtualenvwrapper
-```
+### Docker
 
-Create a local environment.sh file containing the following:
+Create a local file to instruct make that you want to use docker:
 ```shell
 echo "
-export DJANGO_SETTINGS_MODULE='navigator.settings.dev'
-export DATABASE_URL='postgres://localhost/navigator'
-export SECRET_KEY='REPLACE ME WITH AN ACTUAL SECRET KEY'
-export STORAGE_TYPE='local'
-"> environment.sh
+NAV_BUILD_TYPE=docker
+"> build.env
+```
+
+(Optionally) create a local file to store your any custom environment variables:
+```shell
+echo "
+EXAMPLE_VAR=example_val
+"> scripts/docker/vars.env
+```
+
+Set up the containers, build the project, and run the server:
+```shell
+make
+```
+
+### Virtualenv
+
+Ensure you have [Postgres](https://www.postgresql.org), and [Node](https://nodejs.org/en/) installed locally.
+
+Create a local file to instruct make that you want to use local building:
+```shell
+echo "
+NAV_BUILD_TYPE=local
+"> build.env
+```
+
+Create a local file to store your desired environment variables:
+```shell
+echo "
+DATABASE_URL=postgres://localhost/navigator
+DJANGO_SETTINGS_MODULE=navigator.settings.dev
+SECRET_KEY=REPLACE_ME_WITH_AN_ACTUAL_SECRET_KEY
+STORAGE_TYPE=local
+"> scripts/local/vars.env
+```
+
+To [install virtualenv](https://virtualenv.readthedocs.org/en/latest/installation.html), run
+```shell
+    [sudo] pip install virtualenv virtualenvwrapper
 ```
 
 Make a virtual environment for this app:
 ```shell
-    mkvirtualenv -p /usr/local/bin/python3.5 navigator
+    mkvirtualenv -p /usr/local/bin/python3 navigator
 ```
 
-Install dependencies
+Install dependencies, set up the database, and run the project:
 ```shell
-    ./scripts/bootstrap.sh
+    make
 ```
 
-## Running the application
+## Running the project
 
-Running with django runserver:
+To just run the project, execute the following (activating the virtual environment with `workon` is not necessary if using docker):
 ```shell
-    workon navigator
-    python manage.py runserver
+    workon navigator # Only required if running in virtualenv, not docker
+    make run
 ```
+
 Then visit [localhost:8000](http://localhost:8000)
-
-Or through heroku:
-```shell
-    workon navigator
-    heroku local
-```
-Then visit [localhost:5000](http://localhost:5000)
 
 ## Running tests
 
 Tests include a pep8 style check, django test script and coverage report.
 
 ```shell
-    workon navigator
-    ./scripts/run_tests.sh
+    workon navigator # Only required if running in virtualenv, not docker
+    make test
 ```
 
-####To run end to end tests locally
+## Rebuilding
 
-Install the webdriver
+If you need to rebuild the project, wiping the database, run:
 ```shell
-    gulp webdriver_update
-```
-
-Run the tests
-```shell
-    gulp protractor:e2e
+    make rebuild
 ```

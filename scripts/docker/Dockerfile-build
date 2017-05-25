@@ -1,0 +1,24 @@
+FROM tchughesiv/cf-mini:latest
+FROM python:3.6
+
+RUN mkdir -p /project/app
+WORKDIR /project
+
+# Install curl
+RUN apt-get update && apt-get install -y curl
+
+## Install node
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+    apt-get install -y nodejs build-essential
+
+ADD gulpfile.babel.js .babelrc karma.conf.js package.json projectpath.babel.js /project/
+
+RUN npm install
+RUN npm rebuild node-sass
+RUN npm run build
+
+ADD scripts/requirements.txt /project/
+RUN pip install -r /project/requirements.txt
+
+ADD app/ /project/app/
+RUN python app/manage.py collectstatic --noinput 
