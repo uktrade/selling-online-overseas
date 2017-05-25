@@ -92,7 +92,7 @@ ENV/
 *.icloud
 
 build.env
-vars.env
+scripts/docker/vars.env
 
 # static files
 staticfiles/
@@ -105,7 +105,7 @@ node_modules/
 .idea/
 
 # Js test coverage
-app/assets/test/unit/coverage/
+assets/test/unit/coverage/
 
 # Whoosh search index
 whoosh_index*

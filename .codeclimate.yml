@@ -1,0 +1,24 @@
+engines:
+  radon:
+    enabled: true
+  pep8:
+    enabled: true
+  fixme:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - python:
+ratings:
+  paths:
+    - "**.py"
+exclude_paths:
+  - "app/assets/test/"
+  - "**/tests/"
+  - "**/migrations/"
+  - "**/Dockerfile*"
+  - "README.md"
+  - "LICENCE"
+  - "*.yml"
+  - "whoosh_index*/"

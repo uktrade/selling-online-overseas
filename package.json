@@ -8,6 +8,8 @@
   },
   "scripts": {
     "test": "gulp test",
+    "e2e": "gulp protractor:e2e",
+    "webdriver_update": "gulp webdriver_update",
     "build": "gulp",
     "watch": "gulp watch"
   },
