@@ -1,0 +1,20 @@
+.git
+
+# OSX
+.DS_Store
+
+# Python
+*.py[cod]
+__pycache__
+*.egg-info
+
+# JS
+node_modules
+
+# npm
+package.json
+gulpfile.babel.js 
+.babelrc 
+karma.conf.js 
+package.json 
+projectpath.babel.js

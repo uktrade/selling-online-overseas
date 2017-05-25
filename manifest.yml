@@ -1,0 +1,8 @@
+--- 
+applications: 
+  -
+    memory: 1G
+    name: navigator
+    disk_quota: 2G
+    buildpack: python_buildpack
+    command: python app/manage.py runserver 0:$PORT

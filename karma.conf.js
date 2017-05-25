@@ -13,18 +13,18 @@ module.exports = function (config) {
 
 
             /* MOCHA */
-            'assets/test/unit/**/*.spec.js',
+            'app/assets/test/unit/**/*.spec.js',
 
-            'assets/javascripts/**/*.js'
+            'app/assets/javascripts/**/*.js'
         ],
 
         preprocessors : {
-            'assets/javascripts/**/*.js': 'coverage'
+            'app/assets/javascripts/**/*.js': 'coverage'
         },
 
         coverageReporter: {
             type : 'html',
-            dir : 'assets/test/unit/coverage/'
+            dir : 'app/assets/test/unit/coverage/'
         },
 
         // web server port
