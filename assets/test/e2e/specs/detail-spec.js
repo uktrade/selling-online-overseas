@@ -3,7 +3,7 @@ var settings = require('../settings/settings'),
     detail = require('../settings/detail');
 
 
-describe('list page', function() {
+describe('details page', function() {
 
     beforeEach(function () {
         browser.ignoreSynchronization = true;
