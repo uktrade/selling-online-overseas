@@ -3,10 +3,6 @@
 
     &--large {
       width: 100%;
-
-      @include media($mobile) {
-        height: 230px;
-      }
     }
   }
 
