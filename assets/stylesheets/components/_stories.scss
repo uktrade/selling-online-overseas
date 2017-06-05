@@ -13,10 +13,6 @@
         height: 230px;
       }
     }
-
-    @include media($mobile) {
-      height: 230px;
-    }
   }
 
   .col-4 {

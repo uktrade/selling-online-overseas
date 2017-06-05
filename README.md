@@ -1,4 +1,6 @@
 [![CircleCI](https://circleci.com/gh/uktrade/navigator.svg?style=svg)](https://circleci.com/gh/uktrade/navigator)
+[![dependencies Status](https://david-dm.org/uktrade/navigator/status.svg)](https://david-dm.org/uktrade/navigator)
+[![devDependencies Status](https://david-dm.org/uktrade/navigator/dev-status.svg)](https://david-dm.org/uktrade/navigator?type=dev)
 
 # navigator
 
@@ -69,4 +71,16 @@ Tests include a pep8 style check, django test script and coverage report.
 ```shell
     workon navigator
     ./scripts/run_tests.sh
+```
+
+####To run end to end tests locally
+
+Install the webdriver
+```shell
+    gulp webdriver_update
+```
+
+Run the tests
+```shell
+    gulp protractor:e2e
 ```

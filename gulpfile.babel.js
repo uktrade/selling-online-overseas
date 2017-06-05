@@ -116,11 +116,9 @@ gulp.task('lint',
 );
 
 gulp.task('protractor:e2e', (callback) => gulp
-    .src(['example_spec.js'])
+    .src(['assets/test/e2e/specs/*-spec.js'])
     .pipe(protractor({
         'configFile': 'assets/test/e2e/conf.js',
-        'debug': false,
-        'autoStartStopServer': true
     })).on('error', function(e) {
         console.log(e);
     }).on('end', function (callback) {

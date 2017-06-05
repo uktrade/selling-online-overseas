@@ -3,4 +3,9 @@
   .button {
     margin-top: 0;
   }
+
+  &-section--button,
+  &-section {
+    width: 30%;
+  }
 }

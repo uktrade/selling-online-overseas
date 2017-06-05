@@ -34,9 +34,10 @@ var tooltip = (function ($) {
         $(element ).attr({
             role: 'dialog',
             'aria-labelledby': 'tooltip-title',
-            class: 'tooltip-text',
             'data-tooltip': data
         });
+
+        $(element).addClass('tooltip-text');
     }
 
 

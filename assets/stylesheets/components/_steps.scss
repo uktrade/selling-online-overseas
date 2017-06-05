@@ -100,4 +100,13 @@
     }
   }
 
+  &-sub-section {
+
+    @include media($tablet) {
+      .col-6 {
+        @include span-columns(12 of 12);
+      }
+    }
+  }
+
 }
