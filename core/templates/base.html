@@ -137,7 +137,7 @@
           <section>
             <div class="outer-container push--ends soft--ends">
               <div class="col-12 push--top">
-                <a href="{{ HELP_HOST }}feedback/selling_online_overseas" class="link link--regular" id="feedback">Help us improve this service</a>
+                {% block thumber_feedback %}{% endblock %}
               </div>
             </div>
           </section>
@@ -207,5 +207,6 @@
     {% block footer_javascript %}
       <script src="{% static "javascripts/all.js" %}"></script>
     {% endblock footer_javascript %}
+    {% block extra_js %}{% endblock %}
   </body>
 </html>

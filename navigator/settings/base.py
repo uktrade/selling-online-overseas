@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'markets',
     'geography',
     'products',
+    'thumber',
 ]
 
 MIDDLEWARE_CLASSES = [
