@@ -57,28 +57,5 @@
 
   &--white {
     border-color: $mid-grey;
-
-    .button-border {
-      color: $grey;
-
-      &:hover {
-        border-color: $aqua;
-        color: $aqua;
-      }
-
-      &:active,
-      &:focus {
-        color: $white;
-      }
-
-      &:disabled {
-        background-color: $lighter-grey;
-        color: $grey;
-
-        &:hover {
-          border-color: $white;
-        }
-      }
-    }
   }
 }
