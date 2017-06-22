@@ -54,13 +54,14 @@
   }
 }
 
+
 .shake {
   @include prefix((transform: translate3d(0, 0, 0)), webkit ms);
   backface-visibility: hidden;
   perspective: 1000px;
 
   &-horizontal {
-    @include prefix((animation: shake-horizontal .82s cubic-bezier(.36, .07, .19, .97) both), webkit);
+    @include prefix((animation: shake-horizontal 1s cubic-bezier(.36, .07, .19, .97) both), webkit);
   }
 
   &-vertical {

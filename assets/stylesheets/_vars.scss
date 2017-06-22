@@ -48,6 +48,7 @@ $button-blue-bg-color--hover: $navy;
 $button-blue-color: $white;
 $button-blue-color-hover: $white;
 $button-blue-outline: 0;
+$button-blue-focus-color: $white;
 
 $button-transparent-bg-color: $link-colour;
 $button-transparent-bg-color--visited: transparent;
@@ -55,6 +56,7 @@ $button-transparent-bg-color--hover: transparent;
 $button-transparent-color: $link-colour;
 $button-transparent-color-hover: $link-colour;
 $button-transparent-outline: 0;
+$button-transparent-focus-color: $white;
 
 $button-white-bg-color: $white;
 $button-white-bg-color--visited: $white;
@@ -62,6 +64,7 @@ $button-white-bg-color--hover: $white;
 $button-white-color: $link-colour;
 $button-white-color-hover: $link-colour;
 $button-white-outline: 0;
+$button-white-focus-color: $white;
 
 $button-grey-bg-color: $grey-3;
 $button-grey-bg-color--visited: $white;
@@ -69,20 +72,31 @@ $button-grey-bg-color--hover: $white;
 $button-grey-color: $link-colour;
 $button-grey-color-hover: $link-colour;
 $button-grey-outline: 0;
+$button-grey-focus-color: $white;
 
 $button-border-bg-color: transparent;
 $button-border-bg-color--visited: transparent;
 $button-border-bg-color--hover: $white;
-$button-border-color: $white;
+$button-border-color: $grey;
 $button-border-color-hover: $aqua;
 $button-border-outline: 0;
+$button-border-focus-color: $white;
 
 $button-border-blue-bg-color: transparent;
 $button-border-blue-bg-color--visited: transparent;
 $button-border-blue-bg-color--hover: transparent;
 $button-border-blue-color: $mid-blue;
-$button-border-blue-color-hover: $aqua;
+$button-border-blue-color-hover: $mid-blue;
 $button-border-blue-outline: 0;
+$button-border-blue-focus-color: $white;
+
+$button-border-red-bg-color: transparent;
+$button-border-red-bg-color--visited: transparent;
+$button-border-red-bg-color--hover: transparent;
+$button-border-red-color: $great-secondary;
+$button-border-red-color-hover: $flag-red;
+$button-border-red-outline: 0;
+$button-border-red--focus-color: $white;
 
 $button-red-bg-color: $great-secondary;
 $button-red-bg-color--visited: $flag-red;
@@ -90,6 +104,7 @@ $button-red-bg-color--hover: $flag-red;
 $button-red-color: $white;
 $button-red-color-hover: $white;
 $button-red-outline: 0;
+$button-red-focus-color: $white;
 
 
 $backgrounds: (
@@ -108,6 +123,7 @@ $backgrounds: (
   'great-blue' $great-primary,
   'dark-blue' $dark-blue,
   'light-blue' $mid-blue,
+  'bright-grey' $bright-grey,
   'bright-grey-opacity' $bright-grey,
   'bright-grey-opacity' $bright-grey-opacity,
   'light-aqua' $light-aqua,
@@ -127,13 +143,14 @@ $backgrounds-image: (
 );
 
 $button: (
-  'blue' $button-blue-bg-color $button-blue-bg-color--visited $button-blue-bg-color--hover $button-blue-color $button-blue-color-hover null $button-blue-outline,
-  'transparent' $button-transparent-bg-color $button-transparent-bg-color--visited $button-transparent-bg-color--hover $button-transparent-color $button-transparent-color-hover null $button-transparent-outline,
-  'white' $button-white-bg-color $button-white-bg-color--visited $button-white-bg-color--hover $button-white-color $button-white-color-hover null $button-white-outline,
-  'grey' $button-grey-bg-color $button-grey-bg-color--visited $button-grey-bg-color--hover $button-grey-color $button-grey-color-hover null $button-grey-outline,
-  'border' $button-border-bg-color $button-border-bg-color--visited $button-border-bg-color--hover $button-border-color $button-border-color-hover null $button-border-outline,
-  'border-blue' $button-border-blue-bg-color $button-border-blue-bg-color--visited $button-border-blue-bg-color--hover $button-border-blue-color $button-border-blue-color-hover null $button-border-blue-outline,
-  'red' $button-red-bg-color $button-red-bg-color--visited $button-red-bg-color--hover $button-red-color $button-red-color-hover null $button-red-outline
+  'blue' $button-blue-bg-color $button-blue-bg-color--visited $button-blue-bg-color--hover $button-blue-color $button-blue-color-hover null $button-blue-outline $aqua $button-blue-focus-color,
+  'transparent' $button-transparent-bg-color $button-transparent-bg-color--visited $button-transparent-bg-color--hover $button-transparent-color $button-transparent-color-hover null $button-transparent-outline $aqua $button-transparent-focus-color,
+  'white' $button-white-bg-color $button-white-bg-color--visited $button-white-bg-color--hover $button-white-color $button-white-color-hover null $button-white-outline $aqua $button-white-focus-color,
+  'grey' $button-grey-bg-color $button-grey-bg-color--visited $button-grey-bg-color--hover $button-grey-color $button-grey-color-hover null $button-grey-outline $aqua $button-grey-focus-color,
+  'border' $button-border-bg-color $button-border-bg-color--visited $button-border-bg-color--hover $button-border-color $button-border-color-hover null $button-border-outline $aqua $button-border-focus-color,
+  'border--blue' $button-border-blue-bg-color $button-border-blue-bg-color--visited $button-border-blue-bg-color--hover $button-border-blue-color $button-border-blue-color-hover null $button-border-outline $aqua $button-border-blue-focus-color,
+  'border--red' $button-border-red-bg-color $button-border-red-bg-color--visited $button-border-red-bg-color--hover $button-border-red-color $button-border-red-color-hover null $button-border-red-outline $aqua $button-border-red--focus-color,
+  'red' $button-red-bg-color $button-red-bg-color--visited $button-red-bg-color--hover $button-red-color $button-red-color-hover null $button-red-outline $aqua $button-red-focus-color
 );
 
 

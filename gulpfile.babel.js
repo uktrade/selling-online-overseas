@@ -26,23 +26,6 @@ let debugMode = false ? { mangle: false, compress: false, output: { beautify: tr
 // TASKS
 // - - - - - - - - - - - - - - -
 
-gulp.task('copy:govuk_template:css', () => gulp.src(paths.template + 'assets/stylesheets/**/*.css')
-  .pipe(plugins.sass({
-    outputStyle: 'compressed'
-  }))
-  .on('error', plugins.sass.logError)
-  .pipe(plugins.cssUrlAdjuster({
-    prependRelative: '/static/',
-  }))
-  .pipe(gulp.dest(paths.dist + 'stylesheets/'))
-);
-
-gulp.task('copy:govuk_template:js', () => gulp.src(paths.template + 'assets/javascripts/**/*.js')
-  .pipe(plugins.uglify())
-  .pipe(gulp.dest(paths.dist + 'javascripts/'))
-);
-
-
 gulp.task('javascripts', () => gulp
   .src([
     paths.src + 'javascripts/**/*.js'
@@ -144,8 +127,6 @@ gulp.task('watch-unit-tests', () => {
 // Default: compile everything
 gulp.task('default',
   [
-    'copy:govuk_template:css',
-    'copy:govuk_template:js',
     'javascripts',
     'sass',
     'imagemin'

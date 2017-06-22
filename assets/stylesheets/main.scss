@@ -2,7 +2,6 @@
 $path: '/static/images/';
 
 @import 'govuk_elements/govuk-elements';
-@import 'govuk_elements/govuk-frontend-toolkit';
 @import 'node_modules/slick-carousel/slick/slick.scss';
 
 // bourbon grid
@@ -21,7 +20,6 @@ $path: '/static/images/';
 @import 'new_styles/utilities/typography';
 
 @import 'base/background';
-@import 'base/choices';
 @import 'base/list';
 @import 'base/typography';
 @import 'base/headings';

@@ -6,6 +6,8 @@ main,
   color: $grey;
   font-family: $brand-font-family;
   font-size: 15px;
+  margin: 0;
+  padding: 0;
   position: relative;
   @include prefix((font-smoothing: inherit), webkit moz-osx);
 }
@@ -139,10 +141,7 @@ main,
 
 .h3 {
   @extend %h3;
-
-  @include media($desktop) {
-    font-size: 20px;
-  }
+  line-height: 28px;
 
   @include media($mobile) {
     font-size: 18px;

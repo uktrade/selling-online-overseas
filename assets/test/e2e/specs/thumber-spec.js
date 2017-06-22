@@ -24,7 +24,7 @@ describe('Thumber', function() {
     it('Should send feedback message', function() {
         thumber.thankComments.sendKeys('Awesome page');
         thumber.sendButton.click();
-        browser.sleep(4000);
+        browser.sleep(10000);
         expect(thumber.thankYouHeader.getText()).toEqual(thumber.thankYouMessage);
     });
 

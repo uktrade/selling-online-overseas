@@ -59,24 +59,6 @@ class HomepageView(MarketFilterMixin, TemplateView):
 
 
 @thumber_feedback
-class SearchView(MarketFilterMixin, TemplateView):
-    """
-    The first step in the tool, used to pre-filter the marketplaces
-    """
-
-    template_name = 'markets/search.html'
-
-    def get_context_data(self, *args, **kwargs):
-        """
-        Include the starting results_count in the rendering as the total count of Markets
-        """
-
-        context = super().get_context_data(*args, **kwargs)
-        context['results_count'] = self.markets.count()
-        return context
-
-
-@thumber_feedback
 class MarketListView(MarketFilterMixin, ListView):
     """
     View for producing a list of Markets based on some user-selected filtering

@@ -8,18 +8,15 @@
     padding-bottom: 30px;
     position: relative;
 
-    &--dotted {
-      border: 1px dotted $great-primary;
-      padding-bottom: 0;
+    &--first {
+      @include media ($desktop-only) {
+        margin-top: 0;
+      }
     }
-  }
 
-  &--info {
-    @include media ($tablet) {
-      height: auto;
-      margin-right: 0;
-      margin-top: 30px;
-      padding-bottom: 0;
+    @include media ($mobile) {
+      border: 0;
+      margin-top: 50px;
     }
 
   }
@@ -39,8 +36,11 @@
   }
 
   &--terms {
-    border: 1px solid $great-primary;
-    margin-top: 65px;
+    @include span-columns(12 of 12);
+    border: 1px dashed $mid-grey;
+    clear: both;
+    padding: 20px 20px 40px;
+    position: relative;
 
     @include media ($tablet) {
       margin-right: 0;
@@ -52,33 +52,86 @@
     }
 
     &--header {
-      font-size: 24px;
+      padding-left: 40px;
+    }
 
-      @include media ($mobile) {
-        font-size: 19px;
+    &--arrow {
+
+      background: $great-secondary;
+      display: block;
+      height: 26px;
+      left: -10px;
+      position: absolute;
+      width: 34px;
+
+
+      &:after {
+        border: {
+          bottom: 13px solid transparent;
+          left: 16px solid $great-secondary;
+          top: 13px solid transparent;
+        }
+        content: '';
+        height: 0;
+        position: absolute;
+        right: -16px;
+        width: 0;
+      }
+
+      @include media($mobile) {
+        top: 15px;
+      }
+
+    }
+
+    &--divider {
+      margin-top: -10px;
+    }
+
+    &--info {
+      @include media($tablet) {
+        @include span-columns(6 of 12);
+        padding-right: 30px;
       }
     }
 
-  }
-
-  &-content {
-    margin: 0;
-    padding: 25px 50px 0;
-
-    @include media ($tablet) {
-      padding: 30px 0;
-    }
-
-    @include media ($mobile) {
-      padding-top: 10px;
-    }
-
-    &--head {
-      padding: 30px 20px;
-      @include media ($mobile) {
-        padding: 20px 10px;
+    &--button {
+      @include media($tablet) {
+        @include span-columns(6 of 12);
       }
     }
+
+    @include media ($desktop-only) {
+      @include span-columns(4 of 12);
+      clear: none;
+    }
+
+    &--right {
+      @include media ($desktop-only) {
+        bottom: 300px;
+        position: absolute;
+        right: 0;
+      }
+
+      @include media($tablet) {
+        padding-bottom: 10px;
+
+        .separator {
+          @include span-columns(2 of 12);
+          padding-top: 15px;
+        }
+
+        .button-section {
+          @include span-columns(5 of 12);
+        }
+
+        .detail-section--terms--button,
+        .detail-section--terms--info {
+          @include span-columns(12 of 12);
+        }
+      }
+    }
+
   }
 
   h3 {
@@ -140,33 +193,21 @@
     }
   }
 
-
-  &-consider {
-    margin-right: 70px;
+  @include media ($mobile) {
+    border-top: 1px solid $mid-grey;
+    margin-top: 40px;
   }
 
-  &-next {
-    position: relative;
+}
 
-    .button-section {
-      bottom: 40px;
-      left: 0;
-      padding: 0 20px;
-      position: absolute;
-      right: 0;
-    }
+.detail-container {
+  @include media ($desktop-only) {
+    @include span-columns(8 of 12);
+    padding-right: 20px;
+
   }
+}
 
-  .col-3 {
-    @include media ($tablet) {
-      @include span-columns(4 of 12);
-    }
-
-    &.last {
-      @include media ($tablet) {
-        @include span-columns(12 of 12);
-      }
-    }
-  }
-
+.detail-sub-section {
+  position: relative;
 }
