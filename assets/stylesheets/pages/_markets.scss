@@ -1,7 +1,7 @@
 .markets {
 
   &-details {
-    h3,
+
     .button {
       display: none;
     }
@@ -13,29 +13,9 @@
       }
     }
 
-    .markets-info {
-      @include media ($mobile) {
-        padding-left: 0;
-      }
-    }
-
-    .markets-group {
-      @include media ($mobile) {
-        display: flex;
-        flex-flow: column;
-      }
-    }
-
-    .markets-image,
-    .markets-item-logoholder {
-      @include media ($mobile) {
-        order: 2;
-        width: 100%;
-      }
-    }
-
     .markets-item--url {
       display: block;
+      margin-top: 10px;
     }
 
     .markets-item {
@@ -45,9 +25,77 @@
       }
     }
 
+    .markets-item--highlight--section {
+      @include span-columns(6 of 12);
+      margin: 0;
+
+      @include media ($desktop-only) {
+        float: none;
+        width: 100%;
+      }
+
+      @include media ($mobile) {
+
+        dl {
+          height: 60px;
+        }
+      }
+    }
+
+    .markets-item--list {
+      @include media ($tablet) {
+        padding: 70px 0 0 20px;
+      }
+
+      @include media ($mobile) {
+        padding: 0;
+      }
+    }
+
+    .markets-info {
+      @include media ($mobile) {
+        @include span-columns(12 of 12);
+        padding-left: 0;
+      }
+    }
+
+    .markets-image {
+      @include media ($mobile) {
+        float: none;
+        margin-top: 20px;
+        order: 1;
+        padding-right: 0;
+      }
+
+    }
+
+    .markets-item--highlight--right {
+      @include media ($mobile) {
+        border: {
+          bottom: 1px solid $mid-grey;
+          top: 1px solid $mid-grey;
+        }
+        float: left;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+      }
+    }
+
+    .markets-group {
+      @include media($mobile) {
+        display: flex;
+        flex-flow: column;
+      }
+    }
+
     @include media ($mobile) {
       clear: both;
       padding-top: 10px;
+    }
+
+    @include media ($desktop-only) {
+      padding-right: 40px;
+      @include span-columns(8 of 12);
     }
   }
 
@@ -77,9 +125,9 @@
 
     &-logo {
       border: 1px solid $lighter-grey;
-      height: 151px;
+      height: 194px;
       vertical-align: middle;
-      width: 200px;
+      width: 260px;
 
       @include media ($tablet) {
         height: 140px;
@@ -121,11 +169,6 @@
       @include media ($tablet) {
         padding: 0;
       }
-
-      @include media ($mobile) {
-        margin-top: 30px;
-      }
-
     }
 
     @include media ($tablet) {
@@ -148,20 +191,26 @@
 
   }
 
+  &-item--highlight--no-background {
+
+    .markets-item--highlight--section {
+      border: 0;
+    }
+
+    &:after {
+      content: none;
+    }
+  }
+
   &-item--highlight--section {
     background-position: 0 10px;
     background-size: 40px;
     border-bottom: 1px solid $white;
-    margin: 0;
     padding: 10px 0 15px;
     position: relative;
 
     dl {
       padding-left: 50px;
-
-      @include media ($mobile) {
-        padding-left: 70px;
-      }
 
       .heading-large {
         margin: 0;
@@ -178,49 +227,43 @@
       width: 80%;
     }
 
+    @include media ($desktop-only) {
+      float: none;
+      width: 100%;
+    }
+
   }
 
-  &-info--left {
-    padding-left: 0;
-
-    p {
-      @include media($mobile) {
-        margin-bottom: 0;
-        padding-bottom: 0;
-      }
-    }
-
-    @include media($mobile) {
-      padding: 0;
-    }
-
+  &-info {
+    @include span-columns(5 of 12);
+    padding-left: 20px;
   }
 
   &-image {
-    @include span-columns(4 of 12);
+    float: left;
+  }
 
-    @include media($tablet) {
-      @include span-columns(6 of 12);
+  &-description {
+    @include media($desktop-only) {
+      @include span-columns(8 of 12);
+      padding-right: 30px;
     }
 
-    @include media($mobile) {
+    @include media($tablet) {
+      @include span-columns(5 of 12);
+    }
+
+  }
+
+  &-features {
+    @include media($desktop-only) {
       @include span-columns(4 of 12);
     }
-  }
-
-
-
-  &-info {
-    @include span-columns(8 of 12);
-    padding-left: 0;
 
     @include media($tablet) {
-      @include span-columns(6 of 12);
-    }
-
-    @include media ($mobile) {
-      @include span-columns(8 of 12);
+      @include span-columns(7 of 12);
     }
   }
+
 
 }

@@ -74,11 +74,6 @@ describe('Selling Online Overseas homepage', function() {
             expect(settings.pageHeader.getText()).toContain(numberOfMarketplace);
         });
 
-        it('Should navigate to feedback form', function () {
-            element(by.css('#feedback')).click();
-            expect(settings.pageHeader.getText()).toContain('Help us improve this service');
-        });
-
     });
 
 });

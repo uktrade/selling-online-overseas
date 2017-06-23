@@ -1,46 +1,35 @@
-@each $name, $bg-color, $visited, $hover, $color, $color-hover, $bg-image, $outline in $button {
-  .button {
-    @include prefix((border-radius: 3px), webkit moz);
-    box-shadow: none;
-    font-family: $brand-font-family;
-    font-weight: 900;
-
-    &-#{$name} {
-      background-color: $bg-color;
-      @if $bg-image != null {
-        background-image: url($bg-image);
-      }
-      color: $color;
-      outline: $outline;
-
-      &:link,
-      &:visited {
-        background-color: $visited;
-        color: $color-hover;
-      }
-
-      &:hover {
-        background-color: $hover;
-        color: $color-hover;
-      }
-
-      &:focus,
-      &:active {
-        background-color: $aqua;
-      }
-    }
-  }
-}
-
 .button {
-  &-large {
-    @extend %font-regular;
-    padding: 15px 30px;
+  @include prefix((border-radius: 3px), webkit moz);
+  @include prefix((box-sizing: border-box), webkit moz);
+  @include prefix((font-smoothing: antialiased), webkit moz-osx);
+  -webkit-appearance: none;
+  border: 0;
+  box-shadow: none;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  display: -moz-inline-stack;
+  font-family: $brand-font-family;
+  font-weight: 900;
+  position: relative;
+  text-decoration: none;
+  vertical-align: top;
+
+  &:focus {
+    outline: 3px solid $focus-yellow;
+  }
+
+  &:disabled {
+    border: 0;
+    cursor: default;
+    filter: alpha(opacity=50);
+    opacity: .5;
+    zoom: 1;
   }
 
   &-medium {
     @extend %font-regular;
-    padding: 13px 38px;
+    padding: 16px 30px;
   }
 
   &-close {
@@ -70,48 +59,15 @@
     font-size: 18px;
     padding: 14px;
     text-align: center;
+    width: 100%;
   }
 
   &-border {
     border: 2px solid;
     padding: {
-      bottom: 10px;
-      top: 10px;
+      bottom: 14px;
+      top: 14px;
     };
-
-    &:hover {
-      border-color: $white;
-    }
-
-    &:disabled {
-      background-color: $white;
-      border-color: $white;
-      color: $aqua;
-
-      &:hover {
-        background-color: $white;
-      }
-    }
-
-    &:focus {
-      color: $white;
-    }
-  }
-
-  &-border-blue {
-    border: 2px solid;
-    padding: {
-      bottom: 10px;
-      top: 10px;
-    };
-
-    &:hover {
-      border-color: $aqua;
-    }
-
-    &:focus {
-      color: $white;
-    }
   }
 
   &-block {
@@ -126,5 +82,35 @@
 .js-enabled {
   .button-submit {
     display: none;
+  }
+}
+
+@each $name, $bg-color, $visited, $hover, $color, $color-hover, $bg-image, $outline, $active, $focus-color in $button {
+  .button {
+
+    &-#{$name} {
+      background-color: $bg-color;
+      @if $bg-image != null {
+        background-image: url($bg-image);
+      }
+      color: $color;
+      outline: $outline;
+
+      &:visited {
+        background-color: $visited;
+        color: $color-hover;
+      }
+
+      &:hover {
+        background-color: $hover;
+        color: $color-hover;
+      }
+
+      &:focus,
+      &:active {
+        background-color: $active;
+        color: $focus-color;
+      }
+    }
   }
 }
