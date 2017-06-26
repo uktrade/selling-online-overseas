@@ -100,7 +100,8 @@ var autoComplete =(function ($) {
                 option = (typeof(request[i]) === 'string') ? request[i] : request[i][0],
                 isSelected = _.contains(cachedTags[$(element).data('field')], option) ? 'form-dropdown-option--selected' : '';
 
-            list.append('<li class="form-dropdown-list" role="option"><a href="" class="form-dropdown-option '+isSelected+'" data-option-id="' + option + '">' + content + '</li></a></li>');
+
+            list.append('<li class="form-dropdown-list" role="option"><a href="" id='+list[0].id+'-'+i+' class="form-dropdown-option '+isSelected+'" data-option-id="' + option + '">' + content + '</li></a></li>');
         }
 
         list.show();
@@ -169,14 +170,20 @@ var autoComplete =(function ($) {
             'data-button-id': buttonId,
             'data-option-id': optionId,
             'data-item': checkboxOption,
+            'aria-label': 'close '+optionId+'  tag',
             html: "x"
         }),
         li = $('<li>', {
             html: optionId + button[0].outerHTML
         });
 
+        $('.autocomplete-status').empty();
+
         li.addClass(checkboxOption==='operating_countries' ? 'background--light-aqua' : 'background--stone');
+        li.attr('aria-label', "option");
         $(li[0].children).addClass('form-dropdown-tags--close');
+
+        $('.autocomplete-status').text(optionId+' tag added');
 
 
         container.append(li);

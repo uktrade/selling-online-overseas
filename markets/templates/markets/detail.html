@@ -4,6 +4,10 @@
 {% load static utils humanize %}
 {% load static utils thumbnail %}
 
+{% block title %}Marketplace details | {{ market.name }} | Selling online overseas{% endblock title %}
+
+{% block head_meta_description %}Read what it takes to get on {{ market.name }}.{% endblock head_meta_description %}
+
 {% block content %}
 
 <div class="outer-container detail-section--top push--top soft--top">
@@ -217,9 +221,9 @@
           <dd>{{ market.membership_fees_display }}</dd>
         </dl>
         <dl class="col-4">
-          <dt class="font-reg">Listing fee {% if market.fee_per_listing_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="listing-fee"></button>{% endif %}</dt>
+          <dt class="font-reg">Listing fee {% if market.fee_per_listing_notes %}<button class="tooltip-button" aria-expanded="false" aria-controls="listing-fee" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="listing-fee"></button>{% endif %}</dt>
           <dd>{{ market.fee_per_listing | formatvalue:'required' }}</dd>
-          <dialog data-tooltip="listing-fee"></dialog>
+          <dialog data-tooltip="listing-fee" aria-hidden="true" id="listing-fee"></dialog>
         </dl>
       </div>
       <div>
@@ -299,10 +303,10 @@
           <h3 class="font-brand header-icon">What help do they give sellers like me?</h3>
         </div>
       </div>
-      <div class="col-8">
+      <dl class="col-8">
         <dt class="font-reg">Marketing and merchandising</dt>
         <dd class="col-9">{{ market.marketing_merchandising | safe }}</dd>
-      </div>
+      </dl>
       <div class="cf col-4 push--bottom">
         <h4 class="detail-section-title font-reg">Seller support</h4>
         <dl>

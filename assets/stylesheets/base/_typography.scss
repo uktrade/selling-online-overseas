@@ -235,6 +235,7 @@ a {
 
   &:focus {
     background-color: transparent;
+    outline: 3px solid $focus-yellow;
   }
 }
 
