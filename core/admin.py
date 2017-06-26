@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.contrib.admin.forms import AdminAuthenticationForm
 from django import forms
 
+from thumber.models import ContentFeedback
+
 
 class NavigatorLoginForm(AdminAuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'autocomplete': 'off'}))
@@ -32,3 +34,10 @@ def get_actions_replacer(orig_func):
     return fixed_get_actions
 
 admin.ModelAdmin.get_actions = get_actions_replacer(admin.ModelAdmin.get_actions)
+
+
+@admin.register(ContentFeedback)
+class ContentFeedbackAdmin(admin.ModelAdmin):
+
+    list_display = ['created', 'satisfied', 'view_name', 'comment']
+    ordering = ['created']
