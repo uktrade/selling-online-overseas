@@ -517,3 +517,13 @@
     display: block;
   }
 }
+
+input,
+textarea,
+select,
+button {
+
+  &:focus {
+    outline: 3px solid $focus-yellow;
+  }
+}

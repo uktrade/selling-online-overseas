@@ -9,9 +9,10 @@ var tooltip = (function ($) {
             selector = 'dialog[data-tooltip="' + selected + '"]',
             target = $(event.target);
 
+        target.attr('aria-expanded', !(/^true$/i.test(target.attr("aria-expanded"))));
 
         if(target.hasClass('tooltip-button--expanded')) {
-            $(event.target).removeClass('tooltip-button--expanded');
+            target.removeClass('tooltip-button--expanded');
             removeDialog(selector);
         } else {
             target.addClass('tooltip-button--expanded');
@@ -27,14 +28,15 @@ var tooltip = (function ($) {
     }
 
     function removeDialog(selector) {
-        $(selector).children().remove();
+        $(selector).attr('aria-hidden', true).children().remove();
     }
 
     function setAttributes(element, data) {
         $(element ).attr({
             role: 'dialog',
             'aria-labelledby': 'tooltip-title',
-            'data-tooltip': data
+            'data-tooltip': data,
+            'aria-hidden': false
         });
 
         $(element).addClass('tooltip-text');

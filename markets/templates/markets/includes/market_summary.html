@@ -6,7 +6,7 @@
       <div class="markets-image">
         <div class="markets-item-logoholder">
           <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
-            <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="{{ market.name }} logo">
+            <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="Navigate to full profile of {{ market.name }}">
           </a>
         </div>
       </div>
@@ -28,7 +28,7 @@
       </div>
     </div>
     <p class="soft-half--ends hard--left">{{ market.e_marketplace_description|safe }}</p>
-    <a class="button button-blue button-medium markets-item--button push--top" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">Full profile</a>
+    <a class="button button-blue button-medium markets-item--button push--top" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">Full profile of {{ market.name }}</a>
   </div>
   <div class="col-1">&nbsp;</div>
   <div class="col-4 markets-item--highlight--right">
