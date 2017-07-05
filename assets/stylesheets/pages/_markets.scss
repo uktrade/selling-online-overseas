@@ -120,7 +120,6 @@
 
     @include media ($mobile) {
       clear: both;
-      padding-top: 10px;
     }
 
     @include media ($desktop-only) {
@@ -341,7 +340,11 @@
   }
 
   &-countries {
-    display: table;
+
+    @include media($tablet) {
+      display: table;
+      min-width: 50%;
+    }
 
     @include media($mobile) {
       float: left;
@@ -382,7 +385,7 @@
   }
 
   &-deal {
-    @extend %regular;
+    @extend %medium;
     background-color: $great-secondary;
     color: $white;
     float: right;
@@ -396,11 +399,11 @@
       border: {
         color: transparent $great-secondary transparent transparent;
         style: solid;
-        width: 14px 14px 14px 0;
+        width: 16px 16px 16px 0;
       }
       content: '';
       height: 0;
-      left: -14px;
+      left: -16px;
       position: absolute;
       top: 0;
       width: 0;

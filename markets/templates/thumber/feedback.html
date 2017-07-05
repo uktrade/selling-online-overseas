@@ -8,7 +8,7 @@
       <i class="icon icon-feedback--grey">
         <span class="visuallyhidden">feedback</span>
       </i>
-      <h3 class="heading-small font-med audit-header">{{ satisfied_wording }}</h3>
+      <h3 class="h3 font-med audit-header">{{ satisfied_wording }}</h3>
       <form action="{{ request.get_full_path }}" method="post" class="audit-form thumber-form">
         {% csrf_token %}
         {{ thumber_form.thumber_token }}
@@ -39,13 +39,13 @@
       <i class="icon icon-thankyou--grey">
         <span class="visuallyhidden">Thank you</span>
       </i>
-      <h3 class="heading-small font-med audit-header">{{ thanks_message }}</h3>
+      <h3 class="font-large font-med audit-header">{{ thanks_message }}</h3>
     </div>
     <div class="audit-error hide">
       <i class="icon icon-error--grey">
         <span class="visuallyhidden">error</span>
       </i>
-      <h3 class="heading-small font-med audit-header">{{ error_message}}</h3>
+      <h3 class="font-large font-med audit-header">{{ error_message}}</h3>
       <p>Please try again later, or <a href="https://contact-us.export.great.gov.uk/feedback/selling_online_overseas/" title="feedback">use the feedback form</a></p>
     </div>
   </div>
@@ -58,6 +58,6 @@
   <i class="icon icon-thankyou--grey">
     <span class="visuallyhidden">Thank you</span>
   </i>
-  <h3 class="heading-small font-med audit-header">{{ thanks_message }}</h3>
+  <h3 class="font-large font-med audit-header">{{ thanks_message }}</h3>
 </div>
 {% endblock %}

@@ -1,22 +1,18 @@
-body,
-main,
-.main {
-  @extend %light;
+@import url($font-family-url);
+
+body {
+  @extend %font-base;
   background-color: $body-background-color;
   color: $grey;
   font-family: $brand-font-family;
-  font-size: 15px;
+  line-height: 22px;
   margin: 0;
   padding: 0;
   position: relative;
-  @include prefix((font-smoothing: inherit), webkit moz-osx);
+  @include prefix((font-smoothing: antialiased), webkit moz-osx);
 }
 
 // FONT WEIGHT
-%light {
-  font-weight: 300;
-}
-
 %regular {
   font-weight: 400;
 }
@@ -26,24 +22,20 @@ main,
 }
 
 // FONT SIZES
-%lede {
-  font-size: 24px;
-}
-
-%font-regular {
-  font-size: 18px;
-}
-
-%font-headline {
-  font-size: 19px;
-}
-
-%font-xxsmall {
+%font-base {
   font-size: 15px;
 }
 
-%font-xxxsmall {
-  font-size: 14px;
+%font-xlarge {
+  font-size: 24px;
+}
+
+%font-large {
+  font-size: 18px;
+}
+
+%font-small {
+  font-size: 13px;
 }
 
 // HEADERS
@@ -52,7 +44,7 @@ main,
 }
 
 %h2 {
-  font-size: 36px;
+  font-size: 32px;
 }
 
 %h3 {
@@ -62,21 +54,21 @@ main,
 .font {
 
   &-small {
-    @extend %font-regular;
-    font-family: $brand-font-family;
+    @extend %font-small;
+    line-height: 20px;
   }
 
-  &-xsmall {
-    font-family: $brand-font-family;
-    font-weight: 300;
+  &-large {
+    @extend %font-large;
+    line-height: 25px;
   }
 
-  &-xxsmall {
-    @extend %font-xxsmall;
+  &-xlarge {
+    @extend %font-xlarge;
   }
 
-  &-xxxsmall {
-    @extend %font-xxxsmall;
+  &-body {
+    @extend %font-base;
   }
 
   &-white {
@@ -107,10 +99,6 @@ main,
     color: $mid-blue;
   }
 
-  &-lig {
-    @extend %light;
-  }
-
   &-reg {
     @extend %regular;
   }
@@ -122,49 +110,55 @@ main,
 
 .h1 {
   @extend %h1;
+  @extend %medium;
   letter-spacing: -1px;
+  line-height: 55px;
 
   @include media($tablet) {
     font-size: 36px;
   }
 
   @include media($mobile) {
-    font-size: 30px;
+    font-size: 32px;
+    letter-spacing: -.9px;
+    line-height: 39px;
   }
 }
 
 .h2 {
-  font-size: 24px;
-  letter-spacing: -.2px;
+  @extend %h2;
+  @extend %medium;
+  letter-spacing: -.7px;
+  line-height: 39px;
 
-  @include media($desktop-only) {
-    font-size: 32px;
-    letter-spacing: -.4px;
+  @include media($mobile) {
+    font-size: 24px;
+    letter-spacing: -.6px;
+    line-height: 31px;
   }
 }
 
 .h3 {
   @extend %h3;
-  line-height: 28px;
+  @extend %regular;
+  letter-spacing: 0;
+  line-height: 31px;
 
   @include media($mobile) {
-    font-size: 18px;
+    font-size: 20px;
+    letter-spacing: -.2px;
+    line-height: 25px;
   }
 }
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6,
 strong {
   @extend %medium;
 }
 
 blockquote {
-  @extend %font-xxsmall;
-  line-height: 25px;
+  @extend %font-base;
 
   &.quote-left {
     padding: 80px 10px 10px;
@@ -226,11 +220,11 @@ blockquote {
 
 hr {
   background: $purple;
-}
-
-p {
-  @extend %light;
-  line-height: 23px;
+  border: 0;
+  height: 1px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding: 0;
 }
 
 a {
@@ -267,7 +261,7 @@ a {
   }
 
   &--regular {
-    @extend %font-regular;
+    @extend %font-large;
 
     @include media($mobile) {
       font-size: 15px;
@@ -301,4 +295,8 @@ a {
     display: inline-block;
     margin-top: 21px;
   }
+}
+
+p {
+  margin-bottom: 20px;
 }
