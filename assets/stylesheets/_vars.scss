@@ -86,7 +86,7 @@ $button-border-blue-bg-color: transparent;
 $button-border-blue-bg-color--visited: transparent;
 $button-border-blue-bg-color--hover: transparent;
 $button-border-blue-color: $mid-blue;
-$button-border-blue-color-hover: $mid-blue;
+$button-border-blue-color-hover: $aqua;
 $button-border-blue-outline: 0;
 $button-border-blue-focus-color: $white;
 
@@ -97,6 +97,14 @@ $button-border-red-color: $great-secondary;
 $button-border-red-color-hover: $flag-red;
 $button-border-red-outline: 0;
 $button-border-red--focus-color: $white;
+
+$button-border-white-bg-color: transparent;
+$button-border-white-bg-color--visited: transparent;
+$button-border-white-bg-color--hover: $white;
+$button-border-white-color: $white;
+$button-border-white-color-hover: $aqua;
+$button-border-white-outline: 0;
+$button-border-white--focus-color: $white;
 
 $button-red-bg-color: $great-secondary;
 $button-red-bg-color--visited: $flag-red;
@@ -150,9 +158,11 @@ $button: (
   'border' $button-border-bg-color $button-border-bg-color--visited $button-border-bg-color--hover $button-border-color $button-border-color-hover null $button-border-outline $aqua $button-border-focus-color,
   'border--blue' $button-border-blue-bg-color $button-border-blue-bg-color--visited $button-border-blue-bg-color--hover $button-border-blue-color $button-border-blue-color-hover null $button-border-outline $aqua $button-border-blue-focus-color,
   'border--red' $button-border-red-bg-color $button-border-red-bg-color--visited $button-border-red-bg-color--hover $button-border-red-color $button-border-red-color-hover null $button-border-red-outline $aqua $button-border-red--focus-color,
+  'border--white' $button-border-white-bg-color $button-border-white-bg-color--visited $button-border-white-bg-color--hover $button-border-white-color $button-border-white-color-hover null $button-border-white-outline $aqua $button-border-white--focus-color,
   'red' $button-red-bg-color $button-red-bg-color--visited $button-red-bg-color--hover $button-red-color $button-red-color-hover null $button-red-outline $aqua $button-red-focus-color
 );
 
 
 //FORMS
 $form-field-height: 40px;
+$form-tab-color: #777;

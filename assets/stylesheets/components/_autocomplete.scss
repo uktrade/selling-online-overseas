@@ -54,6 +54,11 @@
     order: 1;
   }
 
+  .form-hint {
+    @extend %regular;
+    color: $grey;
+  }
+
   &-form-group {
     display: inline-flex;
     flex-flow: column;
