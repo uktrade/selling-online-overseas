@@ -45,14 +45,13 @@
 
   &-header {
     display: inline-block;
-    font-size: 20px;
     margin-bottom: 25px;
     margin-left: 10px;
   }
 
   .button {
     @extend %medium;
-    font-size: 18px;
+    @extend %font-large;
   }
 
   &--white {

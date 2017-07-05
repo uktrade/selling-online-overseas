@@ -198,12 +198,11 @@
   }
 
   &-main-button {
-    @include prefix((font-smoothing: inherit), webkit moz-osx);
+    @extend %medium;
     background-color: $mid-blue;
     border-left: 2px solid $black;
     border-radius: 0;
     font-size: 15px;
-    font-weight: 400;
     line-height: 25px;
     padding: 8px 10px 5px;
     position: absolute;

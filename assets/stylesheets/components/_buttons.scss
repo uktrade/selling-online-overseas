@@ -1,7 +1,7 @@
 .button {
+  @extend %medium;
   @include prefix((border-radius: 3px), webkit moz);
   @include prefix((box-sizing: border-box), webkit moz);
-  @include prefix((font-smoothing: antialiased), webkit moz-osx);
   -webkit-appearance: none;
   border: 0;
   box-shadow: none;
@@ -10,7 +10,7 @@
   display: inline-block;
   display: -moz-inline-stack;
   font-family: $brand-font-family;
-  font-weight: 900;
+  line-height: 25px;
   position: relative;
   text-decoration: none;
   vertical-align: top;
@@ -32,7 +32,7 @@
   }
 
   &-medium {
-    @extend %font-regular;
+    @extend %font-large;
     padding: 16px 30px;
   }
 
@@ -46,7 +46,7 @@
     }
 
     &:before {
-      @extend %font-regular;
+      @extend %font-large;
       color: $flag-red;
       content: 'X';
       font-size: 24px;
