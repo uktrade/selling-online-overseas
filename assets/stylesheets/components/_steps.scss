@@ -52,17 +52,6 @@
 
   &-image-section {
 
-    @include media($mobile) {
-      @include span-columns(5 of 12);
-      text-align: left;
-
-      img {
-        width: 139px;
-      }
-    }
-
-
-
     &-with-arrow {
       position: relative;
 
@@ -93,10 +82,8 @@
       padding: 20px;
     }
 
-
     @include media($mobile) {
-      padding: 0;
-      @include span-columns(7 of 12);
+      padding: 0 10px;
     }
   }
 
