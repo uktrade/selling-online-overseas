@@ -1,6 +1,11 @@
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from ..models import Market, PublishedMarket
+from django.core.exceptions import ValidationError
+
+from ..models import (
+    Market, Logo, PublishedMarket, SupportChannel, UploadMethod, Currency, Brand, SellerModel, LogisticsModel,
+    Language, Type
+)
 from . import create_market
 
 
@@ -102,3 +107,56 @@ class MarketModelTests(TestCase):
         market = markets[0]
         self.assertEqual(market.pk, market3.pk)
         self.assertEqual(market.pk, published_market.pk)
+
+    def test_market_publishing_validation(self):
+        # Create a market and check that it produces ValidationErrors
+        market = create_market()
+        with self.assertRaises(ValidationError):
+            market.validate_for_publishing()
+
+        # Set all the simple attributes
+        market.number_of_registered_users = 'number_of_registered_users'
+        market.customer_support_hours = 'customer_support_hours'
+        market.seller_support_hours = 'seller_support_hours'
+        market.customer_demographics = 'customer_demographics'
+        market.marketing_merchandising = 'marketing_merchandising'
+        market.sale_to_payment_duration = 'sale_to_payment_duration'
+        market.dit_special_terms = 'dit_special_terms'
+        market.dit_advisor_tip = 'dit_advisor_tip'
+        market.explore_the_marketplace = 'http://explore_the_marketplace.com'
+
+        # Still raises errors
+        with self.assertRaises(ValidationError):
+            market.validate_for_publishing()
+
+        # Create the models required to link to the marketplace
+        logistics_structure = LogisticsModel(name='logistics_structure')
+        product_positioning = Type(name='product_positioning', sort_order=1)
+        currency_of_payments = Currency(code='currency_of_payments')
+        seller_model = SellerModel(name='seller_model')
+        famous_brand_on_marketplace = Brand(name='famous_brands_on_marketplace')
+        support_channel = SupportChannel(name='support_channel')
+        product_details_upload_method = UploadMethod(name='product_details_upload_method')
+        language = Language(name='language')
+        logistics_structure.save()
+        product_positioning.save()
+        currency_of_payments.save()
+        seller_model.save()
+        famous_brand_on_marketplace.save()
+        support_channel.save()
+        product_details_upload_method.save()
+        language.save()
+
+        # Set all the ForeignKey and ManyToMany fields
+        market.language = language
+        market.currency_of_payments = (currency_of_payments,)
+        market.logistics_structure = (logistics_structure,)
+        market.product_positioning = (product_positioning,)
+        market.seller_model = (seller_model,)
+        market.famous_brands_on_marketplace = (famous_brand_on_marketplace,)
+        market.customer_support_channels = (support_channel,)
+        market.seller_support_channels = (support_channel,)
+        market.product_details_upload_method = (product_details_upload_method,)
+
+        # Now it no longer raises a ValidationError
+        market.validate_for_publishing()

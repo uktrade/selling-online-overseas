@@ -15,7 +15,8 @@ from image_cropping import ImageCroppingMixin
 from reversion.admin import VersionAdmin
 
 from .models import (
-    Market, Logo, PublishedMarket, SupportChannel, UploadMethod, Currency, Brand, SellerModel, LogisticsModel
+    Market, Logo, PublishedMarket, SupportChannel, UploadMethod, Currency, Brand, SellerModel, LogisticsModel,
+    Language
 )
 
 
@@ -25,6 +26,7 @@ admin.site.register(Currency)
 admin.site.register(Brand)
 admin.site.register(SellerModel)
 admin.site.register(LogisticsModel)
+admin.site.register(Language)
 
 
 class MarketForm(forms.ModelForm):
@@ -81,8 +83,9 @@ class MarketAdmin(VersionAdmin):
             'fields': (
                 ('name', 'slug', 'logo'),
                 'operating_countries',
-                'web_address',
+                ('web_address', 'language'),
                 'e_marketplace_description',
+
             )
         }),
         ('Department of International Trade tips and terms', {
