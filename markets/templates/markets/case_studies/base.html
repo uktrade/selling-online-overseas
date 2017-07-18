@@ -8,6 +8,11 @@
       <span class="heading-sub font-mid-grey">Case study</span>
       <h1 class="heading-xlarge push--bottom flush--top">{% block story_title %}{% endblock %}</h1>
 
+      <dl class="read-time push--top">
+        <dt>Reading time:</dt>
+        <dd>{% block story_title_reading_time %}{% endblock %}</dd>
+      </dl>
+
       <p class="heading-sub">{% block story_subtitle %}{% endblock %}</p>
     </div>
     <div class="cf">
@@ -46,24 +51,24 @@
 
     <div class="cf push--top border-top soft--top stories-more">
       <h3 class="h3 font-med flush--top push--bottom">More success stories</h3>
-      <a href="/markets/story/{% block story_more_link%}{% endblock %}" class="col-6 soft--bottom" title="">
+      <div class="section-clickable col-6 soft--bottom">
         <div class="stories-more-image">
-          <img src="/static/images/case-story/{% block story_more_image%}{% endblock %}"  alt=""/>
+          <img src="/static/images/case-story/{% block story_more_image%}{% endblock %}"  alt="{% block story_more_image_alt%}{% endblock %}"/>
         </div>
         <div class="stories-more-info">
-          <h4 class="font-small font-brand">{% block story_more_title%}{% endblock %}</h4>
+          <a href="/markets/story/{% block story_more_link%}{% endblock %}" title="{% block story_more_link_title%}{% endblock %}"><h4 class="font-small font-brand">{% block story_more_title%}{% endblock %}</h4></a>
           <p class="font-brand">{% block story_more_content%}{% endblock %}</p>
         </div>
-      </a>
-      <a href="/markets/story/{% block story_2_more_link%}{% endblock %}" class="col-6 soft--bottom" title="">
+      </div>
+      <div class="section-clickable col-6 soft--bottom">
         <div class="stories-more-image">
-          <img src="/static/images/case-story/{% block story_2_more_image%}{% endblock %}" alt=""/>
+          <img src="/static/images/case-story/{% block story_2_more_image%}{% endblock %}" alt="{% block story_2_more_image_alt%}{% endblock %}"/>
         </div>
         <div class="stories-more-info">
-          <h4 class="font-small font-brand">{% block story_2_more_title%}{% endblock %}</h4>
+          <a href="/markets/story/{% block story_2_more_link%}{% endblock %}" title="{% block story_2_more_link_title%}{% endblock %}"><h4 class="font-small font-brand">{% block story_2_more_title%}{% endblock %}</h4></a>
           <p class="font-brand">{% block story_2_more_content%}{% endblock %}</p>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 

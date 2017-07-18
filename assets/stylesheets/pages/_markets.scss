@@ -53,6 +53,12 @@
     }
 
     .markets-info {
+      @include span-columns(8 of 12);
+
+      @include media ($tablet) {
+        @include span-columns(9 of 12);
+      }
+
       @include media ($mobile) {
         @include span-columns(12 of 12);
         padding-left: 0;
@@ -60,7 +66,12 @@
     }
 
     .markets-image {
+      @include media ($tablet) {
+        @include span-columns(3 of 12);
+      }
+
       @include media ($mobile) {
+        @include span-columns(12 of 12);
         float: none;
         margin-top: 20px;
         order: 1;
@@ -125,9 +136,8 @@
 
     &-logo {
       border: 1px solid $lighter-grey;
-      height: 194px;
       vertical-align: middle;
-      width: 260px;
+      width: 100%;
 
       @include media ($tablet) {
         height: 140px;
@@ -240,6 +250,11 @@
   }
 
   &-image {
+
+    @include media($desktop-only) {
+      @include span-columns(4 of 12);
+    }
+
     float: left;
   }
 

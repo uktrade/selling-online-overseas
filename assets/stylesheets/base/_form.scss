@@ -53,7 +53,8 @@
 
   &-hint {
     @extend %font-xxsmall;
-    color: $grey;
+    @extend %light;
+    color: $mid-grey;
     font-family: $brand-font-family;
     margin: 5px 0 0;
   }
@@ -125,7 +126,7 @@
     }
 
     a {
-      color: $light-grey;
+      color: $form-tab-color;
       position: absolute;
 
       &.form-tab-link {
@@ -514,5 +515,15 @@
   .form-tab-button,
   .search-companies {
     display: block;
+  }
+}
+
+input,
+textarea,
+select,
+button {
+
+  &:focus {
+    outline: 3px solid $focus-yellow;
   }
 }

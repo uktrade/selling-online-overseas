@@ -25,6 +25,11 @@
     filter: alpha(opacity=50);
     opacity: .5;
     zoom: 1;
+
+    &:hover {
+      background-color: transparent;
+      color: inherit;
+    }
   }
 
   &-medium {

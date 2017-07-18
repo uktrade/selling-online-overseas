@@ -29,7 +29,7 @@ class UserBehavior(TaskSet):
 
     @task(4)
     def listing_page(self):
-        base_url = '/markets/search'
+        base_url = '/markets/results'
 
         category_count = random.randint(0, 5)
         categories = []

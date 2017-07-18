@@ -210,6 +210,16 @@
 
   a {
     @extend %whole-section-clickable;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  &:hover {
+    a,
+    h4 {
+      color: $aqua;
+      text-decoration: underline;
+    }
   }
 }
 
