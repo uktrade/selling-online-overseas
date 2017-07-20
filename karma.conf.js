@@ -9,6 +9,7 @@ module.exports = function (config) {
         files: [
             'node_modules/jquery/dist/jquery.js',
             'node_modules/underscore/underscore-min.js',
+            'node_modules/slick-carousel/slick/slick.js',
 
 
             /* MOCHA */
