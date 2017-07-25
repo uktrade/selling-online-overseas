@@ -103,6 +103,10 @@ main,
     color: $flag-red;
   }
 
+  &-mid-blue {
+    color: $mid-blue;
+  }
+
   &-lig {
     @extend %light;
   }
@@ -267,6 +271,29 @@ a {
 
     @include media($mobile) {
       font-size: 15px;
+    }
+  }
+
+  &--top {
+    &:before {
+      border: {
+        color: transparent transparent $mid-blue;
+        style: solid;
+        width: 0 8px 8px 8px;
+      }
+      content: '';
+      display: inline-block;
+      height: 0;
+      margin-right: 5px;
+      position: relative;
+      top: -3px;
+      width: 0;
+    }
+
+    &:hover {
+      &:before {
+        border-color: transparent transparent $aqua;
+      }
     }
   }
 

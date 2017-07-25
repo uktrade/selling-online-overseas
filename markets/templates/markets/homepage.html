@@ -19,36 +19,38 @@
         <div class="outer-container">
           <div class="background--bright-grey-opacity soft--sides soft--top soft-half--bottom autocomplete">
             <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}' data-form-type="autocomplete">
-              <div role="group" class="autocomplete-form-group">
-                <legend class="visuallyhidden">Please select countries and products</legend>
-                <div class="autocomplete-section push--bottom">
-                  <div class="form-dropdown">
-                    <label class="form-label" for="search-product">What do you sell?
-                      <span class="form-hint">Enter your product type and pick a category</span>
-                    </label>
-                    <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off" placeholder="Product type (for example: shoes)" aria-owns="search-product-dropdown">
-                    <ul class="form-dropdown-results" role="listbox" id="search-product-dropdown" aria-live="polite"></ul>
+              <fieldset>
+                <div role="group" class="autocomplete-form-group">
+                  <legend class="visuallyhidden">Please select countries and products</legend>
+                  <div class="autocomplete-section push--bottom">
+                    <div class="form-dropdown">
+                      <label class="form-label" for="search-product">What do you sell?
+                        <span class="form-hint">Enter your product type and pick a category</span>
+                      </label>
+                      <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off" placeholder="Product type (for example: shoes)" aria-owns="search-product-dropdown">
+                      <ul class="form-dropdown-results" role="listbox" id="search-product-dropdown" aria-live="polite"></ul>
+                    </div>
+                  </div>
+                  <div class="autocomplete-section push--bottom">
+                    <div class="form-dropdown">
+                      <label class="form-label" for="search-country">Where do you want to sell?
+                        <span class="form-hint">Leave this empty if you are not sure</span>
+                      </label>
+                      <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="/geography/api/" data-field="operating_countries" autocomplete="off" placeholder="Country name (for example: China)" aria-owns="search-country-dropdown">
+                      <ul class="form-dropdown-results" role="listbox" aria-live="polite" id="search-country-dropdown"></ul>
+                      <ul class="form-dropdown-checkbox hide"></ul>
+                    </div>
+                  </div>
+                  <div class="autocomplete-section autocomplete-section--button push--bottom">
+                    <div id='results-count'>
+                      <button class='button button-red button-medium' type='submit'>Find marketplaces (<span class="results-count">{{results_count}}</span>)</button>
+                    </div>
+                  </div>
+                  <div class="cf autocomplete-tags">
+                    <ul class="form-dropdown-tags"></ul>
                   </div>
                 </div>
-                <div class="autocomplete-section push--bottom">
-                  <div class="form-dropdown">
-                    <label class="form-label" for="search-country">Where do you want to sell?
-                      <span class="form-hint">Leave this empty if you are not sure</span>
-                    </label>
-                    <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="/geography/api/" data-field="operating_countries" autocomplete="off" placeholder="Country name (for example: China)" aria-owns="search-country-dropdown">
-                    <ul class="form-dropdown-results" role="listbox" aria-live="polite" id="search-country-dropdown"></ul>
-                    <ul class="form-dropdown-checkbox hide"></ul>
-                  </div>
-                </div>
-                <div class="autocomplete-section autocomplete-section--button push--bottom">
-                  <div id='results-count'>
-                    <button class='button button-red button-medium' type='submit'>Find marketplaces (<span class="results-count">{{results_count}}</span>)</button>
-                  </div>
-                </div>
-                <div class="cf autocomplete-tags">
-                  <ul class="form-dropdown-tags"></ul>
-                </div>
-              </div>
+              </fieldset>
               <div class="autocomplete-status" role="listbox" aria-live="polite"></div>
             </form>
           </div>

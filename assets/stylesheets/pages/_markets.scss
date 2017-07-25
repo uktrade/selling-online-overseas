@@ -1,12 +1,11 @@
 .markets {
 
   &-details {
-
-    .button {
-      display: none;
-    }
+    margin-bottom: 40px;
 
     .markets-item-logo {
+      border: 1px solid $lighter-grey;
+
       @include media ($mobile) {
         height: 100%;
         width: 100%;
@@ -43,8 +42,10 @@
     }
 
     .markets-item--list {
+      margin-top: 20px;
+
       @include media ($tablet) {
-        padding: 70px 0 0 20px;
+        padding: 35px 0 0 20px;
       }
 
       @include media ($mobile) {
@@ -53,15 +54,28 @@
     }
 
     .markets-info {
-      @include span-columns(8 of 12);
+      @include span-columns(7 of 12);
+      padding-left: 40px;
 
       @include media ($tablet) {
         @include span-columns(9 of 12);
+        padding-left: 10px;
       }
 
       @include media ($mobile) {
         @include span-columns(12 of 12);
-        padding-left: 0;
+        padding: {
+          left: 0;
+          top: 0;
+        };
+      }
+    }
+
+    .markets-item-logoholder {
+      @include span-columns(5 of 12);
+
+      @include media ($mobile) {
+        @include span-columns(12 of 12);
       }
     }
 
@@ -80,6 +94,10 @@
 
     }
 
+    .markets-item--highlight {
+      display: inline-block;
+    }
+
     .markets-item--highlight--right {
       @include media ($mobile) {
         border: {
@@ -88,7 +106,8 @@
         }
         float: left;
         margin-bottom: 20px;
-        padding-bottom: 20px;
+        padding-top: 20px;
+        width: 100%;
       }
     }
 
@@ -111,23 +130,21 @@
   }
 
   &-item {
-    border-bottom: 1px solid $great-primary;
-    padding: 30px 0;
-
-    @include media ($mobile) {
-      padding-bottom: 100px;
-      position: relative;
-    }
-
-    &--button {
-      @include media ($mobile) {
-        bottom: 30px;
-        position: absolute;
-      }
-    }
+    border-bottom: 1px solid $mid-grey;
+    padding: 30px 20px;
 
     &--list {
-      padding: 5px 35px 15px;
+      margin-top: 40px;
+      padding-left: 20px;
+
+      @include media ($desktop) {
+        padding-left: 0;
+      }
+
+      @include media ($tablet) {
+        margin-top: 0;
+      }
+
 
       @include media ($mobile) {
         padding: 5px 15px;
@@ -135,32 +152,48 @@
     }
 
     &-logo {
-      border: 1px solid $lighter-grey;
+      height: 120px;
       vertical-align: middle;
-      width: 100%;
+      width: 160px;
 
-      @include media ($tablet) {
-        height: 140px;
-        width: 185px;
-      }
-
-      @include media ($mobile) {
-        height: 76px;
-        width: 100px;
+      @include media ($desktop-only) {
+        height: auto;
+        width: 100%;
       }
     }
 
     &-logoholder {
+      @include media ($desktop-only) {
+        @include span-columns(3 of 12);
+      }
 
       @include media ($mobile) {
-        height: 100%;
-        margin-bottom: 10px;
+        padding-right: 0;
       }
     }
 
     &--url {
       display: none;
     }
+
+
+    &:hover {
+      h3,
+      a {
+        color: $aqua;
+      }
+    }
+
+    @include media ($mobile) {
+      padding: 10px;
+      position: relative;
+    }
+
+    @include media ($tablet) {
+      padding: 20px 20px 10px;
+    }
+
+
   }
 
   .markets-item-no-result {
@@ -169,14 +202,15 @@
   }
 
   &-item--highlight {
-    padding: 20px 0;
     position: relative;
     width: 100%;
 
 
     &--right {
+      @include span-columns(4 of 12);
 
       @include media ($tablet) {
+        @include span-columns(12 of 12);
         padding: 0;
       }
     }
@@ -187,18 +221,9 @@
       width: 100%;
     }
 
-    &:after {
-      background-color: $body-background-color;
-      border-left: 30px solid transparent;
-      border-top: 30px solid $flag-red;
-      bottom: 0;
-      content: '';
-      height: 0;
-      left: 0;
-      position: absolute;
-      width: 0;
+    @include media ($mobile) {
+      display: none;
     }
-
   }
 
   &-item--highlight--no-background {
@@ -216,8 +241,12 @@
     background-position: 0 10px;
     background-size: 40px;
     border-bottom: 1px solid $white;
-    padding: 10px 0 15px;
+    padding: 10px 0;
     position: relative;
+
+    @include media ($tablet) {
+      @include span-columns(6 of 12);
+    }
 
     dl {
       padding-left: 50px;
@@ -245,17 +274,32 @@
   }
 
   &-info {
-    @include span-columns(5 of 12);
-    padding-left: 20px;
-  }
 
-  &-image {
+    p {
+      clear: both;
+      float: left;
+      margin: {
+        bottom: 0;
+        top: 10px;
+      };
 
-    @include media($desktop-only) {
-      @include span-columns(4 of 12);
+      @include media($mobile) {
+        margin-bottom: 10px;
+      }
     }
 
-    float: left;
+    a {
+      display: inline;
+    }
+
+    @include media($desktop-only) {
+      @include span-columns(5 of 12);
+    }
+
+    @include media($mobile) {
+      padding-top: 25px;
+    }
+
   }
 
   &-description {
@@ -280,5 +324,60 @@
     }
   }
 
+  &-list {
+    padding-left: 20px;
 
+    @include media($desktop-only) {
+      @include span-columns(9 of 12);
+    }
+
+    @include media($tablet) {
+      @include span-columns(8 of 12);
+    }
+
+    @include media($mobile) {
+      padding-left: 0;
+    }
+  }
+
+  &-countries {
+    display: table;
+
+    @include media($mobile) {
+      float: left;
+      margin-top: 20px;
+      width: 100%;
+    }
+  }
+
+  &-buttons {
+    display: none;
+
+    @include media($mobile) {
+      display: block;
+    }
+
+    .button {
+      @extend %medium;
+      background-color: $white;
+      border: 1px solid $mid-grey;
+      color: $mid-blue;
+      font-family: $brand-font-family;
+      padding: 8px;
+
+      &:hover {
+        color: $aqua;
+        text-decoration: underline;
+      }
+
+      .icon {
+        bottom: 0;
+        height: 21px;
+        margin: auto 0 auto 10px;
+        position: absolute;
+        top: 0;
+        width: 21px;
+      }
+    }
+  }
 }

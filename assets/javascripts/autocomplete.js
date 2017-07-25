@@ -2,6 +2,7 @@ var autoComplete =(function ($) {
 
     var searchField = $('.form-dropdown .form-dropdown-input'),
         results = $('.form-dropdown-results'),
+        clearButton = $('a[data-action="clear-fields"]'),
         cachedTags = {
             'operating_countries': [],
             'product_categories': []
@@ -13,6 +14,7 @@ var autoComplete =(function ($) {
 
             searchField.keyup(inputEvent);
             results.keyup(dropdown.manualSelect);
+            clearButton.click(clearForm);
             searchField.keypress(function (event) {
                 // User press enter
                 if (event.which === 13 && $('.form-dropdown-option').length > 0) {
@@ -216,6 +218,7 @@ var autoComplete =(function ($) {
     }
 
     function deleteTag(event) {
+
         var optionId = $(this).data('option-id');
 
         event.preventDefault();
@@ -258,6 +261,26 @@ var autoComplete =(function ($) {
                 }
             });
         }
+    }
+
+    function deleteAllTags() {
+        if(sessionStorage.getItem('tags')) {
+            sessionStorage.removeItem('tags');
+            $('.form-dropdown-tags').empty();
+            cachedTags = {
+                'operating_countries': [],
+                'product_categories': []
+            };
+        }
+    }
+
+    function clearForm(event) {
+        event.preventDefault();
+        $(event.target).closest('form')[0].reset();
+        deleteAllTags();
+        $('.form-dropdown-option').removeClass('form-dropdown-option--selected');
+        $('.form-dropdown-checkbox').empty();
+        resultCount.update_count();
     }
 
     return {

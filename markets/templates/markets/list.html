@@ -8,17 +8,53 @@
 
 {% block content %}
   <div class="outer-container push--top soft--top">
-    <div class="col-12 heading">
-      <h1 class="heading-xlarge push--bottom flush--top heading-results">{{ markets_list.count }} marketplace{{markets_list|pluralize}}
+    <aside class="background--bright-grey-opacity soft-half autocomplete-aside modal" data-modal-id="search">
+      <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}' data-form-type="autocomplete">
+        <fieldset>
+          <a href="#" data-action="clear-fields" class="clear-all link">Clear all</a>
+          <a href="#" data-action="close-modal" class="modal-close"><i class="icon icon-close--blue"></i></a>
+          <div role="group" class="autocomplete-form-group">
+            <legend class="h3 font-med soft-half--ends push--bottom">Search</legend>
+            <div class="push--bottom">
+              <div class="form-dropdown">
+                <label class="form-label" for="search-product">What do you sell?</label>
+                <input class="form-control form-control--full form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off" placeholder="Product type" aria-owns="search-product-dropdown">
+                <ul class="form-dropdown-results" role="listbox" id="search-product-dropdown" aria-live="polite"></ul>
+              </div>
+            </div>
+            <div class="push--bottom soft-half--top">
+              <div class="form-dropdown">
+                <label class="form-label" for="search-country">Where do you want to sell?</label>
+                <input class="form-control form-control--full form-dropdown-input" id="search-country" type="text" data-url="/geography/api/" data-field="operating_countries" autocomplete="off" placeholder="Country name" aria-owns="search-country-dropdown">
+                <ul class="form-dropdown-results" role="listbox" aria-live="polite" id="search-country-dropdown"></ul>
+                <ul class="form-dropdown-checkbox hide"></ul>
+              </div>
+            </div>
+            <div class="cf autocomplete-tags">
+              <ul class="form-dropdown-tags"></ul>
+            </div>
+            <div class="push--bottom soft-half--top">
+              <div id='results-count' class="modal-button">
+                <button class='button button-red button-medium button-full' type='submit'>Find marketplaces (<span class="results-count">{{results_count}}</span>)</button>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="autocomplete-status" role="listbox" aria-live="polite"></div>
+      </form>
+    </aside>
+    <div class="markets-list">
+      <div class="markets-buttons push-half--bottom">
+        <button class="button button-border push--bottom" data-modal-button="search">Search<i class="icon icon-search" data-modal-button="search"></i></button>
+      </div>
+      <h1 class="h3 push--bottom">{{ markets_list.count }} marketplace{{markets_list|pluralize}}
         {% if markets_list.count == 0 %} match your search {% else %} found {% endif %}
       </h1>
+      <ul class="markets" id="scroll-top">
+        {% include "markets/includes/market_list.html" %}
+      </ul>
+      <a class="link link--top" data-scrollto="scroll-top">Go to top</a>
     </div>
-  </div>
-
-  <div class="outer-container">
-    <ul class="list markets">
-      {% include "markets/includes/market_list.html" %}
-    </ul>
   </div>
 
 {% endblock content %}

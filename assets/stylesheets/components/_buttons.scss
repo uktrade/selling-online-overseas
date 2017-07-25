@@ -20,7 +20,6 @@
   }
 
   &:disabled {
-    border: 0;
     cursor: default;
     filter: alpha(opacity=50);
     opacity: .5;

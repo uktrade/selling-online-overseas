@@ -91,6 +91,10 @@
 
   &-close {
     background-image: url('#{$image-path}icons/close-white.svg');
+
+    &--blue {
+      background-image: url('#{$image-path}icons/close.svg');
+    }
   }
 
   &-thankyou {
@@ -123,6 +127,10 @@
 
   &-sign-out {
     background-image: url('#{$image-path}icons/signout.svg');
+  }
+
+  &-search {
+    background-image: url('#{$image-path}icons/search.svg');
   }
 
   &-header {
