@@ -5,7 +5,7 @@ import csv
 from django.http import JsonResponse, HttpResponse
 from django.views.generic import ListView, DetailView, FormView, TemplateView
 from django.forms import TypedChoiceField
-from django.db.models import Max, Case, When, FloatField, ExpressionWrapper, Count, F
+from django.db.models import Max, Case, When, FloatField, ExpressionWrapper, Count, F, functions
 from django.http import Http404
 
 from thumber.decorators import thumber_feedback
@@ -120,6 +120,8 @@ class MarketListView(MarketFilterMixin, ListView):
         # Get the cleaned get parameters
         get_params = self._clean_params()
 
+        order_by = get_params.pop('sort', ['relevance'])[0]
+
         # Initialise a form with the cleaned GET data
         form = MarketListFilterForm(get_params)
 
@@ -152,11 +154,21 @@ class MarketListView(MarketFilterMixin, ListView):
                 # Ignore GET params that aren't on the model
                 pass
 
-        markets = self._order_markets(_filter)
+        markets = self._filter_and_order_markets(order_by, _filter)
 
         return markets
 
-    def _order_markets(self, orig_filter):
+    def _filter_and_order_markets(self, order_by, orig_filter):
+        if order_by == 'users':
+            return self.markets.filter(**orig_filter).order_by('-number_of_registered_users')
+        elif order_by == 'commission':
+            markets = self.markets.filter(**orig_filter)
+            annotated = markets.annotate(commision_null=functions.Coalesce('commission_lower', -1))
+            return annotated.order_by('commision_null', 'commission_lower')
+        else:
+            return self._order_markets_by_relevance(orig_filter)
+
+    def _order_markets_by_relevance(self, orig_filter):
         # We will need to apply a different filter to the query than the original passed in, store it here
         new_filter = {}
         # Build annotations for each of the __in filters
