@@ -117,6 +117,16 @@ class SetupRequirement(models.Model):
         ordering = ('ordering',)
 
 
+class Language(models.Model):
+    name = models.CharField(max_length=200, unique=True,)
+
+    def __str__(self):
+        return "{0}".format(self.name)
+
+    class Meta:
+        ordering = ('name',)
+
+
 class BaseMarket(models.Model):
 
     class Meta:
@@ -165,6 +175,8 @@ class BaseMarket(models.Model):
 
     currency_of_payments = models.ManyToManyField(Currency, blank=True,
                                                   verbose_name="Payment terms - Currency of payments")
+
+    language = models.ForeignKey(Language, null=True, blank=True, verbose_name="Language of Marketplace")
 
     logistics_structure = models.ManyToManyField(LogisticsModel, blank=True)
     logistics_structure_notes = models.TextField(blank=True, null=True, verbose_name='notes')
@@ -252,6 +264,13 @@ class BaseMarket(models.Model):
 
     def __str__(self):
         return "{0}".format(self.name)
+
+    @property
+    def language_display(self):
+        if self.language is not None:
+            return "This marketplace is in {0}".format(self.language)
+
+        return ""
 
     @property
     def commission_display(self):
@@ -346,6 +365,7 @@ class Market(BaseMarket):
         'seller_model',
         'explore_the_marketplace',
         'famous_brands_on_marketplace',
+        'language'
     ]
 
     def validate_for_publishing(self):

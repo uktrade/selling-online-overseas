@@ -96,6 +96,7 @@
       <span class="text--center background--bright-grey soft-half">or</span>
       <hr class="detail-section--terms--divider background--lighter-grey" />
       <a href="{{ market.web_address }}" id="go-to-marketplace" class="button button-border button-border--red button-medium button-full text--center" title="Go to marketplace">Go directly to marketplace</a>
+      <p class="push-half--top font-mid-grey">{{ market.language_display }}</p>
     </div>
   </div>
 </div>
@@ -331,7 +332,7 @@
     <div class="detail-section--terms--button text--center">
       <div class="button-section">
         <a href="{{ HELP_HOST }}triage/soo/?market={{ market.name|urlencode }}" id="bottom-apply-to-join" class="button button-red button-medium button-full text--center" title="apply now">Apply now via DIT</a>
-        <p class="push-half--top font-mid-grey">To get this deal</p>
+        <p class="push-half--top font-mid-grey">To get the exclusive deal</p>
       </div>
       <div class="separator">
         <span class="text--center background--bright-grey soft-half">or</span>
@@ -339,6 +340,8 @@
       </div>
       <div class="button-section">
         <a href="{{ market.web_address }}" class="button button-border button-border--red button-medium button-full text--center" title="Go to marketplace" id="bottom-go-to-marketplace">Go directly to marketplace</a>
+
+        <p class="push-half--top font-mid-grey">{{ market.language_display }}</p>
       </div>
     </div>
   </div>
