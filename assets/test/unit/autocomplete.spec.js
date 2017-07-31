@@ -93,20 +93,30 @@ describe('Autocomplete', function () {
 
         });
 
-        xit('close list', function () {
-            expect(true).to.equal(true);
+        it('close list', function () {
+            dropdown.closeDropdown();
+            expect($('.form-dropdown-results li').length).to.equal(0);
+
         });
 
     });
 
-    xdescribe('tags', function () {
+    describe('tags', function () {
 
         it('create a tag', function () {
-            expect(true).to.equal(true);
+           autoComplete.createTag($('ul.form-dropdown-tags'), 'product_categories', 'Health & Beauty',38319153556);
+            expect($('.form-dropdown-tags li').length > 0).to.equal(true);
         });
 
         it('delete a tag', function () {
-            expect(true).to.equal(true);
+
+            var button = "<button data-button-id='38319153556' data-option-id='Health &amp; Beauty' data-item='product_categories' aria-label='close Health &amp; Beauty  tag' class='form-dropdown-tags--close'>x</button>";
+
+            var event = $('button');
+
+            autoComplete.deleteTag.call(event, {preventDefault: sinon.spy()})
+
+            expect($('.form-dropdown-tags li').length).to.equal(0);
         });
 
     });
