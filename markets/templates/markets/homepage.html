@@ -24,9 +24,9 @@
                 <div class="autocomplete-section push--bottom">
                   <div class="form-dropdown">
                     <label class="form-label" for="search-product">What do you sell?
-                      <span class="form-hint">Enter your product name and pick a category</span>
+                      <span class="form-hint">Enter your product type and pick a category</span>
                     </label>
-                    <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off" placeholder="Product name" aria-owns="search-product-dropdown">
+                    <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off" placeholder="Product type (for example: shoes)" aria-owns="search-product-dropdown">
                     <ul class="form-dropdown-results" role="listbox" id="search-product-dropdown" aria-live="polite"></ul>
                   </div>
                 </div>
@@ -35,7 +35,7 @@
                     <label class="form-label" for="search-country">Where do you want to sell?
                       <span class="form-hint">Leave this empty if you are not sure</span>
                     </label>
-                    <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="/geography/api/" data-field="operating_countries" autocomplete="off" placeholder="Country name" aria-owns="search-country-dropdown">
+                    <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="/geography/api/" data-field="operating_countries" autocomplete="off" placeholder="Country name (for example: China)" aria-owns="search-country-dropdown">
                     <ul class="form-dropdown-results" role="listbox" aria-live="polite" id="search-country-dropdown"></ul>
                     <ul class="form-dropdown-checkbox hide"></ul>
                   </div>

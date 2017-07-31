@@ -57,29 +57,66 @@ describe('Autocomplete', function () {
             $('.form-dropdown-results, .form-dropdown-tags').empty();
         });
 
-        xit('populates list', function () {
+        it('populates autocomplete  list', function () {
 
-            var input = $('.form-dropdown-input');
+            var input = $('.form-dropdown-input'),
+                data = {
+                'suggestion': null,
+                'categories': [
+                    ['Health & Beauty', 'Medical Tests, Drugs Tests, HIV Tests, Pregnancy Tests,...'],
+                    ['Business & Industrial', 'Test Tubes, Test Tube Racks'],
+                    ['Hardware', 'Electrical Testing Tools, Electrical Testing Tool Accessories']],
+                'query': 'test'
+            },
+            inputEvent;
+
+            sinon.stub($, "ajax").callsFake( function(event) {
+                var result = $.Deferred();
+                result.args = event;
+                return result;
+            });
 
             autoComplete.inputEvent.call(input,event);
 
-            expect(true).to.equal(true);
+            inputEvent = $.ajax.getCall(0).returnValue;
+
+            inputEvent.args;
+
+
+            inputEvent.resolve(data);
+
+            expect($('.form-dropdown-results li').length > 0).to.equal(true);
+
+            expect($.ajax.calledOnce).to.be.true;
+
+            $.ajax.restore();
+
         });
 
-        xit('close list', function () {
-            expect(true).to.equal(true);
+        it('close list', function () {
+            dropdown.closeDropdown();
+            expect($('.form-dropdown-results li').length).to.equal(0);
+
         });
 
     });
 
-    xdescribe('tags', function () {
+    describe('tags', function () {
 
         it('create a tag', function () {
-            expect(true).to.equal(true);
+           autoComplete.createTag($('ul.form-dropdown-tags'), 'product_categories', 'Health & Beauty',38319153556);
+            expect($('.form-dropdown-tags li').length > 0).to.equal(true);
         });
 
         it('delete a tag', function () {
-            expect(true).to.equal(true);
+
+            var button = "<button data-button-id='38319153556' data-option-id='Health &amp; Beauty' data-item='product_categories' aria-label='close Health &amp; Beauty  tag' class='form-dropdown-tags--close'>x</button>";
+
+            var event = $('button');
+
+            autoComplete.deleteTag.call(event, {preventDefault: sinon.spy()})
+
+            expect($('.form-dropdown-tags li').length).to.equal(0);
         });
 
     });

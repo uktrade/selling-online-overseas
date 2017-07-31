@@ -39,7 +39,7 @@
     @include span-columns(12 of 12);
     border: 1px dashed $mid-grey;
     clear: both;
-    padding: 20px 20px 40px;
+    padding: 20px 20px 10px;
     position: relative;
 
     @include media ($tablet) {

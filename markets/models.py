@@ -3,6 +3,7 @@ import base64
 import datetime
 import json
 import reversion
+import re
 
 from django.db import models
 from django.utils import timezone
@@ -11,6 +12,7 @@ from django.core.exceptions import ValidationError
 from django.utils.numberformat import format
 from django.core import serializers
 from django.contrib.contenttypes.models import ContentType
+from django.utils.html import strip_tags, strip_entities
 
 from reversion.models import Version
 from ckeditor.fields import RichTextField
@@ -117,6 +119,16 @@ class SetupRequirement(models.Model):
         ordering = ('ordering',)
 
 
+class Language(models.Model):
+    name = models.CharField(max_length=200, unique=True,)
+
+    def __str__(self):
+        return "{0}".format(self.name)
+
+    class Meta:
+        ordering = ('name',)
+
+
 class BaseMarket(models.Model):
 
     class Meta:
@@ -165,6 +177,8 @@ class BaseMarket(models.Model):
 
     currency_of_payments = models.ManyToManyField(Currency, blank=True,
                                                   verbose_name="Payment terms - Currency of payments")
+
+    language = models.ForeignKey(Language, null=True, blank=True, verbose_name="Language of Marketplace")
 
     logistics_structure = models.ManyToManyField(LogisticsModel, blank=True)
     logistics_structure_notes = models.TextField(blank=True, null=True, verbose_name='notes')
@@ -215,6 +229,23 @@ class BaseMarket(models.Model):
     dit_advisor_tip = RichTextField(null=True, blank=True,
                                     verbose_name="Department of International Trade advisor tip")
 
+    def strip(self, string):
+        no_html_entities = re.sub(r'&(?:\w+|#\d+);', '', string)
+        no_tags_or_entities = strip_tags(no_html_entities)
+        return no_tags_or_entities.strip()
+
+    @property
+    def has_special_terms(self):
+        empty = self.dit_special_terms is None or self.strip(self.dit_special_terms) == ''
+        return not empty
+
+    @property
+    def special_terms(self):
+        if self.has_special_terms:
+            return self.dit_special_terms
+        else:
+            return "We’re working hard to get a deal in place."
+
     def save(self, *args, **kwargs):
         """
         Populate the slug based on the marketplace's name on save
@@ -252,6 +283,13 @@ class BaseMarket(models.Model):
 
     def __str__(self):
         return "{0}".format(self.name)
+
+    @property
+    def language_display(self):
+        if self.language is not None:
+            return "This marketplace is in {0}".format(self.language)
+
+        return ""
 
     @property
     def commission_display(self):
@@ -341,11 +379,11 @@ class Market(BaseMarket):
         'currency_of_payments',
         'logistics_structure',
         'product_positioning',
-        'dit_special_terms',
         'dit_advisor_tip',
         'seller_model',
         'explore_the_marketplace',
         'famous_brands_on_marketplace',
+        'language'
     ]
 
     def validate_for_publishing(self):
