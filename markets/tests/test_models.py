@@ -108,6 +108,24 @@ class MarketModelTests(TestCase):
         self.assertEqual(market.pk, market3.pk)
         self.assertEqual(market.pk, published_market.pk)
 
+    def test_special_terms(self):
+        # Create a market, without special terms, and check that the special terms is a known phrase
+        known_phrase = "We’re working hard to get a deal in place."
+        market = create_market()
+        self.assertEquals(market.special_terms, known_phrase)
+
+        # Add some special terms to the actual field
+        market.dit_special_terms = "Some special terms"
+        self.assertEquals(market.special_terms, "Some special terms")
+
+        # Add some empty special terms, and check that it ignores it, and uses the predetermined phrase again
+        market.dit_special_terms = "     "
+        self.assertEquals(market.special_terms, known_phrase)
+
+        # The special terms also supports HTML, check that it strips the HTML and still detects empty special terms
+        market.dit_special_terms = " <p>  <i> &nbsp; </i> \r\n \n </p>  "
+        self.assertEquals(market.special_terms, known_phrase)
+
     def test_market_publishing_validation(self):
         # Create a market and check that it produces ValidationErrors
         market = create_market()
@@ -121,7 +139,6 @@ class MarketModelTests(TestCase):
         market.customer_demographics = 'customer_demographics'
         market.marketing_merchandising = 'marketing_merchandising'
         market.sale_to_payment_duration = 'sale_to_payment_duration'
-        market.dit_special_terms = 'dit_special_terms'
         market.dit_advisor_tip = 'dit_advisor_tip'
         market.explore_the_marketplace = 'http://explore_the_marketplace.com'
 
