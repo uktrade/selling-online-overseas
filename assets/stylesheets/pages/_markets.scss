@@ -380,4 +380,40 @@
       }
     }
   }
+
+  &-deal {
+    @extend %regular;
+    background-color: $great-secondary;
+    color: $white;
+    float: right;
+    padding: 5px 15px;
+    position: relative;
+    right: -20px;
+    top: -20px;
+
+
+    &:after {
+      border: {
+        color: transparent $great-secondary transparent transparent;
+        style: solid;
+        width: 14px 14px 14px 0;
+      }
+      content: '';
+      height: 0;
+      left: -14px;
+      position: absolute;
+      top: 0;
+      width: 0;
+    }
+
+    @include media($desktop-only) {
+      position: absolute;
+      right: 0;
+      top: 23px;
+    }
+
+    @include media($mobile) {
+      top: -10px;
+    }
+  }
 }
