@@ -10,7 +10,7 @@
 
 {% block content %}
 
-<div class="outer-container detail-section--top push--top soft--top">
+<div class="outer-container detail-section--top push--ends soft--top">
   <div class="col-12">
     <div class="text--right detail-section--back soft--bottom">
       <a href="javascript:utilities.navigateBack()" class="link link--back" title="Return to marketplaces">&lt; Return to marketplaces</a>
@@ -42,7 +42,6 @@
           </ul>
         </div>
       </div>
-      <a class="button button-blue button-medium markets-item--button push--top" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">Full profile</a>
     </div>
     <div>
       <div class="markets-description">

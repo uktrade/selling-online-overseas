@@ -1,63 +1,41 @@
 {% load static utils thumbnail %}
 
-<li class="markets-item cf">
-  <div class="col-7 markets-info--left">
-    <div class="cf markets-group">
-      <div class="markets-image">
-        <div class="markets-item-logoholder">
-          <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
-            <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="Navigate to full profile of {{ market.name }}">
-          </a>
-        </div>
-      </div>
-      <div class="markets-info">
-        <h3 class="heading-small font-med flush--ends soft-half--bottom">{{ market.name }}</h3>
-        <ul>
-          <li>
-            <dl>
-              <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
-              {% if market.operating_countries.count > 20 %}
-                <dd>Global</dd>
-              {% else %}
-                <dd>{{ market | csl:'operating_countries' }}</dd>
-              {% endif %}
-            </dl>
-          </li>
-          <li class="soft-half--ends markets-item--url"><a href="{{ market.web_address }}" class="link" target="_blank">{{ market.web_address }}</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="soft-half--ends hard--left">{{ market.e_marketplace_description|safe }}</p>
-    <a class="button button-blue button-medium markets-item--button push--top" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">Full profile of {{ market.name }}</a>
+<li class="markets-item cf background--white push--bottom section-clickable">
+  <div class="markets-item-logoholder float--left push--right soft-half--right">
+    <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="Navigate to full profile of {{ market.name }}">
   </div>
-  <div class="col-1">&nbsp;</div>
-  <div class="col-4 markets-item--highlight--right">
-    <div class="background--stone markets-item--highlight">
+  <div class="markets-info">
+    <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
+      <h3 class="heading-small font-med flush--ends soft--bottom font-mid-blue">{{ market.name }}</h3>
+    </a>
+    <ul class="markets-countries">
+      <li>
+        <dl>
+          <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
+          {% if market.operating_countries.count > 20 %}
+          <dd>Global</dd>
+          {% else %}
+          <dd>{{ market | csl:'operating_countries' }}</dd>
+          {% endif %}
+        </dl>
+      </li>
+      <li class="soft-half--ends markets-item--url"><a href="{{ market.web_address }}" class="link" target="_blank">{{ market.web_address }}</a></li>
+    </ul>
+    <p class="soft-half--top hard--left">{{ market.e_marketplace_description|safe|truncatewords:15 }}</p>
+  </div>
+  <div class="markets-item--highlight--right">
+    <div class="markets-item--highlight">
       <ul class="markets-item--list">
-        <li class="list markets-item--highlight--section background-image--users">
+        <li class="markets-item--highlight--section background-image--users">
           <dl>
             <dt><strong>Registered users:</strong></dt>
             <dd>{{ market.number_of_registered_users_display }}</dd>
           </dl>
         </li>
-        <li class="list markets-item--highlight--section background-image--commission">
+        <li class="markets-item--highlight--section background-image--commission">
           <dl>
             <dt><strong>Commission:</strong></dt>
             <dd>{{ market.commission_display }}</dd>
-          </dl>
-        </li>
-        <li class="list markets-item--highlight--section background-image--fees">
-          <dl>
-            <dt><strong>Membership fee:</strong></dt>
-            <dd>{{ market.membership_fees_display }}</dd>
-          </dl>
-        </li>
-        <li class="list markets-item--highlight--section background-image--logistics">
-          <dl>
-            <dt><strong>Logistics support</strong></dt>
-            {% for model in market.logistics_structure.all %}
-            <dd>{{ model.name }}</dd>
-            {% endfor %}
           </dl>
         </li>
       </ul>

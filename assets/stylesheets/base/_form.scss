@@ -61,7 +61,6 @@
 
   &-control {
     @extend %light;
-    background: $light-stone;
     border: 1px solid $secondary-text-colour;
     font-family: $brand-font-family;
     font-size: 16px;
@@ -95,6 +94,10 @@
     }
 
     @include media($mobile) {
+      width: 100%;
+    }
+
+    &--full {
       width: 100%;
     }
   }

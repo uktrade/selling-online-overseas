@@ -15,11 +15,6 @@ var resultCount = (function ($) {
       });
     }
 
-    $('#results-count').each(function(){
-        var $form = $('#results-form');
-        $('input,select', $form).on('change', update_count);
-    });
-
     $(document).ready(update_count);
 
     return {
