@@ -87,4 +87,47 @@
     white-space: nowrap;
     width: 1px;
   }
+
+  &-aside {
+    @include prefix((border-radius: 3px), webkit moz);
+    border: 1px solid $mid-grey;
+    position: relative;
+
+    legend {
+      border-bottom: 1px solid $lightest-grey;
+      width: 100%;
+    }
+
+    .clear-all {
+      position: absolute;
+      right: 10px;
+      top: 25px;
+
+      @include media($mobile) {
+        left: 0;
+        margin: auto;
+        right: 0;
+        text-align: center;
+        width: max-content;
+        width: -webkit-max-content;
+      }
+
+    }
+
+    @include media($desktop-only) {
+      @include span-columns(3 of 12);
+    }
+
+    @include media($tablet) {
+      @include span-columns(4 of 12);
+    }
+
+    .autocomplete-tags {
+      order: 0;
+    }
+
+    .form-dropdown-tags {
+      width: 100%;
+    }
+  }
 }
