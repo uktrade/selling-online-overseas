@@ -133,6 +133,10 @@
     background-image: url('#{$image-path}icons/search.svg');
   }
 
+  &-sort {
+    background-image: url('#{$image-path}icons/results_sort.svg');
+  }
+
   &-header {
     background-size: contain;
     height: 45px;
