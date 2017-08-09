@@ -51,9 +51,10 @@
       <div class="markets-buttons push-half--bottom">
         <button class="button button-border push--bottom" data-modal-button="search">Search<i class="icon icon-search" data-modal-button="search"></i></button>
       </div>
-      <h1 class="h3 push--bottom">{{ markets_list.count }} marketplace{{markets_list|pluralize}}
+      <h1 class="h3 push-half--bottom">{{ markets_list.count }} marketplace{{markets_list|pluralize}}
         {% if markets_list.count == 0 %} match your search {% else %} found {% endif %}
       </h1>
+      <p class="markets-deal--header">All deals are exclusive for UK Businesses</p>
       <ul class="markets" id="scroll-top">
         {% include "markets/includes/market_list.html" %}
       </ul>
