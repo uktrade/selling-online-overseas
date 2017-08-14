@@ -294,6 +294,7 @@
 
     @include media($desktop-only) {
       @include span-columns(5 of 12);
+      position: relative;
     }
 
     @include media($mobile) {
@@ -469,13 +470,32 @@
   }
 
   &-shortlist {
+
+    @include media($desktop-only) {
+      position: absolute;
+    }
+
     background-color: transparent;
     border: 0;
+    cursor: pointer;
     display: block;
     font-size: 15px;
-    padding: 0;
+    margin-bottom: 20px;
+    padding-left: 26px;
     position: relative;
+    right: 0;
+    top: 0;
     z-index: 2;
+
+    .icon {
+      bottom: 0;
+      height: 21px;
+      left: 0;
+      margin: auto 0;
+      position: absolute;
+      top: 0;
+      width: 21px;
+    }
 
   }
 }
