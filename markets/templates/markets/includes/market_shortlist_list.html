@@ -3,13 +3,13 @@
 <li class="markets-item cf background--white push--bottom section-clickable">
   {% if market.has_special_terms %}<div class="col-12 cf"><div class="markets-deal">Exclusive UK deal</div></div>{% endif%}
   <div class="markets-item-logoholder float--left push--right soft-half--right">
-    <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="Navigate to full profile of {{ market.name }}">
+    <img src="{% thumbnail market.logo.image 168x127 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="Navigate to full profile of {{ market.name }}">
   </div>
   <div class="markets-info">
     <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
       <h3 class="h3 font-med flush--ends soft--bottom font-mid-blue">{{ market.name }}</h3>
     </a>
-    <button type="button" class="shortlist-button markets-shortlist font-mid-blue" data-slug="{{market.slug }}">Shortlist <i class="icon icon-shortlist shortlist-icon"></i></button>
+    <button type="button" class="shortlist-button markets-shortlist font-mid-blue" data-slug="{{market.slug }}">Shortlist <i class="icon icon-shortlist shortlist-icon" data-modal-button="sorting"></i></button>
     <ul class="markets-countries">
       <li>
         <dl>
@@ -17,7 +17,7 @@
           {% if market.operating_countries.count > 20 %}
           <dd>Global</dd>
           {% else %}
-          <dd>{{ market | csl:'operating_countries' }}</dd>
+          <dd>{{ market | csl:'operating_countries'|safe|truncatewords:10 }}</dd>
           {% endif %}
         </dl>
       </li>
@@ -38,6 +38,12 @@
           <dl>
             <dt><strong>Commission:</strong></dt>
             <dd>{{ market.commission_display }}</dd>
+          </dl>
+        </li>
+        <li class="list markets-item--highlight--section background-image--fees">
+          <dl>
+            <dt><strong>Membership fee:</strong></dt>
+            <dd>{{ market.membership_fees_display }}</dd>
           </dl>
         </li>
       </ul>

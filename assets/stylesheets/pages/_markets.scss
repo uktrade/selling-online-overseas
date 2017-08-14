@@ -293,6 +293,11 @@
 
     @include media($desktop-only) {
       @include span-columns(5 of 12);
+      position: relative;
+
+      h3 {
+        padding-right: 90px;
+      }
     }
 
     @include media($mobile) {
@@ -340,12 +345,16 @@
 
     &-header {
       @include media($desktop-only) {
-        @include span-columns(4 of 11);
+        @include span-columns(3 of 12);
       }
 
 
       @include media($tablet) {
         @include span-columns(12 of 12);
+      }
+
+      @include media($mobile) {
+        @include span-columns(6 of 12);
       }
     }
 
@@ -354,12 +363,17 @@
       label {
         @include media($tablet) {
           display: block;
-          margin-bottom: 10px;
+        }
+      }
+
+      .form-group {
+        @include media($mobile) {
+          display: none;
         }
       }
 
       @include media($desktop-only) {
-        @include span-columns(7 of 11);
+        @include span-columns(9 of 12);
       }
 
       @include media($tablet) {
@@ -367,8 +381,10 @@
       }
 
       @include media($mobile) {
-        display: none;
+        @include span-columns(6 of 12);
+        text-align: right;
       }
+
     }
   }
 
@@ -444,7 +460,7 @@
     @include media($desktop-only) {
       position: absolute;
       right: 0;
-      top: 23px;
+      top: 32px;
     }
 
     @include media($mobile) {
@@ -454,5 +470,178 @@
 
   &-sort {
     display: none;
+  }
+
+  &-shortlist {
+
+    @include media($desktop-only) {
+      position: absolute;
+      right: -20px;
+    }
+
+    display: block;
+    margin-bottom: 20px;
+    padding-left: 26px;
+    position: relative;
+    right: 0;
+    top: 6px;
+  }
+
+  &-grid {
+
+    &--two {
+      .markets-item {
+        @include span-columns(6 of 12);
+      }
+    }
+
+    &--three {
+      .markets-item {
+        @include span-columns(4 of 12);
+
+        &:nth-child(3n+3) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .markets-item {
+      border-bottom: 2px solid $mid-grey;
+      min-height: 653px;
+      padding-bottom: 0;
+
+      @include media($tablet) {
+        min-height: 738px;
+      }
+
+      @include media($mobile) {
+        @include span-columns(12 of 12);
+        min-height: 307px;
+      }
+
+      &--add {
+        background: transparent;
+        border: {
+          bottom: 0;
+          color: $light-grey;
+          style: dashed;
+          width: 1px;
+        }
+        padding-top: 80px;
+
+        @include media($mobile) {
+          @include span-columns(12 of 12);
+          padding-top: 40px;
+        }
+      }
+
+      @include media($mobile) {
+        @include span-columns(12 of 12);
+        min-height: 307px;
+      }
+    }
+
+    .markets-info,
+    .markets-item--highlight--right,
+    .markets-item-logoholder {
+      @include span-columns(12 of 12);
+      position: initial;
+    }
+
+    .markets-item--list {
+      margin-top: 15px;
+      padding-left: 0;
+
+      @include media($mobile) {
+        margin-top: 0;
+      }
+    }
+
+    .markets-shortlist {
+      left: 16px;
+      position: absolute;
+      top: 15px;
+
+      @include media($mobile) {
+        left: inherit;
+        position: relative;
+        top: inherit;
+      }
+
+      @include media($tablet) {
+        text-indent: -9999px;
+      }
+
+    }
+
+    .markets-info {
+      margin-top: 20px;
+
+      @include media($mobile) {
+        float: none;
+        margin-top: 0;
+        padding-top: 15px;
+      }
+
+      @include media($desktop-only) {
+        min-height: 210px;
+
+        h3 {
+          padding-right: 0;
+        }
+      }
+
+      @include media($tablet) {
+        min-height: 270px;
+      }
+    }
+
+    .markets-item-logoholder {
+      margin-top: 30px;
+      text-align: center;
+
+      @include media($mobile) {
+        margin: {
+          right: 15px;
+          top: 15px;
+        }
+        width: auto;
+      }
+    }
+
+    .markets-item-logo {
+      height: 127px;
+      width: 168px;
+    }
+
+
+    .markets-item--highlight {
+      @include media($mobile) {
+        display: block;
+      }
+    }
+
+    .markets-item--highlight--section {
+      @include media($tablet) {
+        @include span-columns(12 of 12);
+      }
+
+      @include media($mobile) {
+        background-size: 34px;
+        padding: 5px 0;
+      }
+    }
+
+    .markets-deal {
+
+      @include media($desktop-only) {
+        top: 10px;
+      }
+
+      @include media($tablet) {
+        top: -10px;
+      }
+    }
+
   }
 }

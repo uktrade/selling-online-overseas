@@ -137,6 +137,18 @@
     background-image: url('#{$image-path}icons/results_sort.svg');
   }
 
+  &-shortlist {
+    background-image: url('#{$image-path}icons/shortlist.svg');
+  }
+
+  &-shortlisted {
+    background-image: url('#{$image-path}icons/shortlisted.svg');
+
+    &--black {
+      background-image: url('#{$image-path}icons/shortlisted_black.svg');
+    }
+  }
+
   &-header {
     background-size: contain;
     height: 45px;
