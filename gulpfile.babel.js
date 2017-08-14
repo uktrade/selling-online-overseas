@@ -21,7 +21,7 @@ gulp.task('webdriver_update', webdriver_update);
 gulp.task('webdriver_standalone', webdriver_standalone);
 
 // set debugMode to true to use non uglified and compressed js versions
-let debugMode = false ? { mangle: false, compress: false, output: { beautify: true } } : null;
+let debugMode = true ? { mangle: false, compress: false, output: { beautify: true } } : null;
 
 // TASKS
 // - - - - - - - - - - - - - - -
