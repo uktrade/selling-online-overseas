@@ -13,8 +13,8 @@ var sortList = (function () {
         event.preventDefault();
 
         var element = $(event.target),
-            icon = $($(event.target)[0].lastChild),
-            slug = $(event.target).data('slug');
+            icon = $(element[0].lastChild),
+            slug = element.data('slug');
 
 
         if(element.hasClass('markets-shortlist--shortlisted')) {
