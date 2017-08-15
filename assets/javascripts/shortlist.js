@@ -12,25 +12,31 @@ var sortList = (function () {
     function shortList(event) {
         event.preventDefault();
 
-        var slug = $(event.target).data('slug');
+        var element = $(event.target),
+            icon = $($(event.target)[0].lastChild),
+            slug = $(event.target).data('slug');
 
 
-        if($(event.target).hasClass('markets-shortlist--shortlisted')) {
-            $.ajax({
-                url: '/markets/api/shortlist/remove/'+slug,
-                type: 'GET',
-                success:function(result) {
-                    console.log('remove to shortlist');
-                }
-            });
+        if(element.hasClass('markets-shortlist--shortlisted')) {
+            element.removeClass('markets-shortlist--shortlisted');
+            icon.removeClass('icon-shortlisted');
+            // $.ajax({
+            //     url: '/markets/api/shortlist/remove/'+slug,
+            //     type: 'GET',
+            //     success:function(result) {
+            //         console.log('remove to shortlist');
+            //     }
+            // });
         } else {
-            $.ajax({
-                url: '/markets/api/shortlist/add/'+slug,
-                type: 'GET',
-                success:function(result) {
-                    console.log('added to shortlist');
-                }
-            });
+            element.addClass('markets-shortlist--shortlisted');
+            icon.addClass('icon-shortlisted');
+            // $.ajax({
+            //     url: '/markets/api/shortlist/add/'+slug,
+            //     type: 'GET',
+            //     success:function(result) {
+            //         console.log('added to shortlist');
+            //     }
+            // });
         }
 
     }
