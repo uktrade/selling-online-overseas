@@ -1,0 +1,25 @@
+.shortlist {
+  &-items {
+    height: 20px;
+    width: 100%;
+
+    &--short {
+      margin-top: 35px;
+      width: auto;
+
+      @include media($mobile) {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  &-icon {
+    bottom: 0;
+    height: 21px;
+    left: 0;
+    margin: auto 0 auto 5px;
+    position: relative;
+    top: -2px;
+    width: 21px;
+  }
+}

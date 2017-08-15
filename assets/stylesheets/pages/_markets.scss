@@ -342,26 +342,33 @@
 
     &-header {
       @include media($desktop-only) {
-        @include span-columns(4 of 11);
+        @include span-columns(3 of 12);
       }
 
 
       @include media($tablet) {
         @include span-columns(12 of 12);
       }
+
+      @include media($mobile) {
+        @include span-columns(6 of 12);
+      }
     }
 
     &-options {
 
       label {
-        @include media($tablet) {
-          display: block;
-          margin-bottom: 10px;
+        display: block;
+      }
+
+      .form-group {
+        @include media($mobile) {
+          display: none;
         }
       }
 
       @include media($desktop-only) {
-        @include span-columns(7 of 11);
+        @include span-columns(9 of 12);
       }
 
       @include media($tablet) {
@@ -369,8 +376,10 @@
       }
 
       @include media($mobile) {
-        display: none;
+        @include span-columns(6 of 12);
+        text-align: right;
       }
+
     }
   }
 
@@ -488,13 +497,9 @@
     z-index: 2;
 
     .icon {
-      bottom: 0;
-      height: 21px;
-      left: 0;
       margin: auto 0;
       position: absolute;
       top: 0;
-      width: 21px;
     }
 
   }

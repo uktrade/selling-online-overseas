@@ -14,7 +14,7 @@ var sortList = (function () {
                         icon = $(element[0].lastChild);
                     element.addClass('markets-shortlist--shortlisted');
                     icon.addClass('icon-shortlisted');
-                })
+                });
             }
         });
     }
@@ -29,23 +29,22 @@ var sortList = (function () {
 
 
         if(element.hasClass('markets-shortlist--shortlisted')) {
-            element.removeClass('markets-shortlist--shortlisted');
-            icon.removeClass('icon-shortlisted');
+
             $.ajax({
                 url: '/markets/api/shortlist/?slug='+slug,
                 type: 'DELETE',
-                success:function(result) {
-                    console.log('remove to shortlist');
+                success:function() {
+                    element.removeClass('markets-shortlist--shortlisted');
+                    icon.removeClass('icon-shortlisted');
                 }
             });
         } else {
-            element.addClass('markets-shortlist--shortlisted');
-            icon.addClass('icon-shortlisted');
             $.ajax({
                 url: '/markets/api/shortlist/?slug='+slug,
                 type: 'POST',
-                success:function(result) {
-                    console.log('added to shortlist');
+                success:function() {
+                    element.addClass('markets-shortlist--shortlisted');
+                    icon.addClass('icon-shortlisted');
                 }
             });
         }

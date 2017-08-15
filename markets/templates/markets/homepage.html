@@ -42,7 +42,13 @@
                     </div>
                   </div>
                   <div class="autocomplete-section autocomplete-section--button push--bottom">
-                    <a href="{% url 'markets:shortlist' %}">Go to your shortlist: {{ shortlist_count }}</a>
+                    <div class="push--bottom shortlist-items text--right">
+                      <dl class="float--right">
+                        <dt class="float--left push-half--right"><a href="{% url 'markets:shortlist' %}" class="link">Go to your shortlist:</a></dt>
+                        <dd class="font-mid-blue float--left"><strong>{{ shortlist_count }}</strong><i class="icon icon-shortlisted float--right shortlist-icon" data-modal-button="sorting"></i></dd>
+                      </dl>
+                    </div>
+
                     <div id='results-count'>
                       <button class='button button-red button-medium' type='submit'>Find marketplaces (<span class="results-count">{{results_count}}</span>)</button>
                     </div>

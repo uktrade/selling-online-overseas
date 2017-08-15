@@ -81,8 +81,8 @@
           </h1>
         </div>
         <div class="markets-list-options">
-          <div class="form-group">
-            <label class="font-mid-grey push-half--right" for="sort-select">Sort by:</label>
+          <div class="form-group col-6">
+            <label class="font-mid-grey push-half--right push-half--bottom" for="sort-select">Sort by:</label>
             <div class="form-select--wrapper">
               <select class="form-select" id="sort-select" name="sort">
                 <option value="" selected="selected">Relevance</option>
@@ -90,6 +90,12 @@
                 <option value="commission">Commission (low to high)</option>
               </select>
             </div>
+          </div>
+          <div class="shortlist-items shortlist-items--short col-6">
+            <dl class="float--right">
+              <dt class="float--left push-half--right"><a href="/markets/shortlist" class="link">Shortlist:</a></dt>
+              <dd class="font-mid-blue float--left"><strong>{{ shortlist_count }}</strong><i class="icon icon-shortlisted float--right shortlist-icon" data-modal-button="sorting"></i></dd>
+            </dl>
           </div>
         </div>
       </div>
