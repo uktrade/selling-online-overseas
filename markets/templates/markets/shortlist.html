@@ -8,19 +8,17 @@
 
 {% block content %}
   <div class="outer-container push--top soft--top">
-    <div class="markets-list">
+    <div class="">
       <div class="cf">
-        <div class="markets-list-header">
-          <h1 class="push--bottom"><span class="h3">{{ markets_list.count }}</span> <span class="font-reg">marketplace{{markets_list|pluralize}}</span>
-            {% if markets_list.count == 0 %} match your search {% endif %}
+          <h1 class="push--bottom h3">
+            Your shortlisted marketplaces
           </h1>
-        </div>
+          <div class="font-mid-blue float--left"><strong>{{ shortlist_count }}</strong><i class="icon icon-shortlisted float--right shortlist-icon" data-modal-button="sorting"></i></div>
       </div>
 
-      <ul class="markets" id="scroll-top">
+      <ul class="shortlist-list" id="scroll-top">
         {% include "markets/includes/market_list.html" %}
       </ul>
-      <a class="link link--top" data-scrollto="scroll-top">Go to top</a>
     </div>
   </div>
 
