@@ -245,7 +245,7 @@ class MarketListView(MarketFilterMixin, ListView):
 class MarketShortlistView(MarketFilterMixin, TemplateView):
 
     template_name = 'markets/shortlist.html'
-    
+
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         market_slugs = self.request.session.get('market_slugs', [])
@@ -255,7 +255,7 @@ class MarketShortlistView(MarketFilterMixin, TemplateView):
 
 
 class MarketShortlistAPI(View):
-    
+
     def get(self, request):
         return self._standard_response()
 
@@ -278,8 +278,7 @@ class MarketShortlistAPI(View):
 
         self.request.session['market_slugs'] = market_slugs
         return self._standard_response()
-        
-    
+
     def delete(self, request):
         slug, market_slugs = self._get_market_slugs()
         if slug in market_slugs:
