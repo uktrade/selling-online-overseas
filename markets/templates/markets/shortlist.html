@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Shortlist | Selling online overseas{% endblock title %}
+
+{% block head_meta_description %}Read and review the results. Compare, then select online marketplaces that are suitable for your products.{% endblock head_meta_description %}
+
+{% load static utils %}
+
+{% block content %}
+  <div class="outer-container push--top soft--top">
+    <div class="markets-list">
+      <div class="cf">
+        <div class="markets-list-header">
+          <h1 class="push--bottom"><span class="h3">{{ markets_list.count }}</span> <span class="font-reg">marketplace{{markets_list|pluralize}}</span>
+            {% if markets_list.count == 0 %} match your search {% endif %}
+          </h1>
+        </div>
+      </div>
+
+      <ul class="markets" id="scroll-top">
+        {% include "markets/includes/market_list.html" %}
+      </ul>
+      <a class="link link--top" data-scrollto="scroll-top">Go to top</a>
+    </div>
+  </div>
+
+{% endblock content %}

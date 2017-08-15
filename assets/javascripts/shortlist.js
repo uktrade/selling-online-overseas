@@ -5,7 +5,18 @@ var sortList = (function () {
     shortlist.click(shortList);
 
     function init() {
-
+        $.ajax({
+            url: '/markets/api/shortlist/',
+            type: 'GET',
+            success:function(result) {
+                result.market_slugs.forEach(function(slug){
+                    var element = $('[data-slug=' + slug + ']'),
+                        icon = $(element[0].lastChild);
+                    element.addClass('markets-shortlist--shortlisted');
+                    icon.addClass('icon-shortlisted');
+                })
+            }
+        });
     }
 
 
@@ -20,23 +31,23 @@ var sortList = (function () {
         if(element.hasClass('markets-shortlist--shortlisted')) {
             element.removeClass('markets-shortlist--shortlisted');
             icon.removeClass('icon-shortlisted');
-            // $.ajax({
-            //     url: '/markets/api/shortlist/remove/'+slug,
-            //     type: 'GET',
-            //     success:function(result) {
-            //         console.log('remove to shortlist');
-            //     }
-            // });
+            $.ajax({
+                url: '/markets/api/shortlist/?slug='+slug,
+                type: 'DELETE',
+                success:function(result) {
+                    console.log('remove to shortlist');
+                }
+            });
         } else {
             element.addClass('markets-shortlist--shortlisted');
             icon.addClass('icon-shortlisted');
-            // $.ajax({
-            //     url: '/markets/api/shortlist/add/'+slug,
-            //     type: 'GET',
-            //     success:function(result) {
-            //         console.log('added to shortlist');
-            //     }
-            // });
+            $.ajax({
+                url: '/markets/api/shortlist/?slug='+slug,
+                type: 'POST',
+                success:function(result) {
+                    console.log('added to shortlist');
+                }
+            });
         }
 
     }

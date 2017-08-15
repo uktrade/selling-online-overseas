@@ -42,7 +42,7 @@
                     </div>
                   </div>
                   <div class="autocomplete-section autocomplete-section--button push--bottom">
-                    <a href="">Go to your shortlist: 2</a>
+                    <a href="{% url 'markets:shortlist' %}">Go to your shortlist: {{ shortlist_count }}</a>
                     <div id='results-count'>
                       <button class='button button-red button-medium' type='submit'>Find marketplaces (<span class="results-count">{{results_count}}</span>)</button>
                     </div>
