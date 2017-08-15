@@ -43,10 +43,12 @@
                   </div>
                   <div class="autocomplete-section autocomplete-section--button push--bottom">
                     <div class="push--bottom shortlist-items text--right">
-                      <dl class="float--right">
-                        <dt class="float--left push-half--right"><a href="{% url 'markets:shortlist' %}" class="link">Go to your shortlist:</a></dt>
-                        <dd class="font-mid-blue float--left"><strong>{{ shortlist_count }}</strong><i class="icon icon-shortlisted float--right shortlist-icon" data-modal-button="sorting"></i></dd>
-                      </dl>
+                      {% if shortlist_count %}
+                        <dl class="float--right">
+                          <dt class="float--left push-half--right"><a href="{% url 'markets:shortlist' %}" class="link">Go to your shortlist:</a></dt>
+                          <dd class="font-mid-blue float--left"><strong>{{ shortlist_count }}</strong><i class="icon icon-shortlisted float--right shortlist-icon" data-modal-button="sorting"></i></dd>
+                        </dl>
+                      {% endif %}
                     </div>
 
                     <div id='results-count'>
