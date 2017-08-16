@@ -9,15 +9,16 @@
 {% block content %}
   <div class="outer-container push--top soft--top">
     <div class="">
-      <div class="cf">
+      <div class="cf push--bottom">
           <h1 class="push--bottom h3">
             Your shortlisted marketplaces
           </h1>
-          <div class="font-mid-blue float--left"><strong>{{ shortlist_count }}</strong><i class="icon icon-shortlisted float--right shortlist-icon" data-modal-button="sorting"></i></div>
+          <div class="font-mid-blue float--left"><strong>{{ shortlist_count }}</strong><i class="icon icon-shortlisted--black float--right shortlist-icon shortlist-icon--large" data-modal-button="sorting"></i></div>
       </div>
 
-      <ul class="shortlist-list" id="scroll-top">
+      <ul class="markets-grid markets-grid--four shortlist-list">
         {% include "markets/includes/market_list.html" %}
+        <li class="markets-item markets-item--add cf background--white push--bottom font-mid-grey">Add more marketplaces to your shortlist</li>
       </ul>
     </div>
   </div>

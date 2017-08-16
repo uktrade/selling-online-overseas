@@ -503,4 +503,52 @@
     }
 
   }
+
+  &-grid {
+
+    &--two {
+      .markets-item {
+        @include span-columns(6 of 12);
+      }
+    }
+
+    &--four {
+      .markets-item {
+        @include span-columns(3 of 12);
+      }
+    }
+
+    .markets-item {
+      border-bottom: 2px solid $mid-grey;
+      min-height: 570px;
+
+      &--add {
+        background: transparent;
+        border: {
+          bottom: 0;
+          color: $light-grey;
+          style: dashed;
+          width: 1px;
+        }
+        padding-top: 80px;
+      }
+    }
+
+    .markets-info,
+    .markets-item--highlight--right,
+    .markets-item-logoholder {
+      @include span-columns(12 of 12);
+      position: initial;
+    }
+
+    .markets-item--list {
+      padding-left: 0;
+    }
+
+    .markets-shortlist {
+      left: 10px;
+      top: 10px;
+    }
+
+  }
 }

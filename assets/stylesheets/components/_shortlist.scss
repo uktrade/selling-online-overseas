@@ -21,27 +21,10 @@
     position: relative;
     top: -2px;
     width: 21px;
-  }
 
-  &-list {
-    .markets-item {
-      @include span-columns(3 of 12);
-    }
-
-    .markets-info,
-    .markets-item--highlight--right,
-    .markets-item-logoholder {
-      @include span-columns(12 of 12);
-      position: initial;
-    }
-
-    .markets-item--list {
-      padding-left: 0;
-    }
-
-    .markets-shortlist {
-      left: 10px;
-      top: 10px;
+    &--large {
+      height: 35px;
+      width: 35px;
     }
   }
 }

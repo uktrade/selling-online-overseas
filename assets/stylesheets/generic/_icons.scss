@@ -143,6 +143,10 @@
 
   &-shortlisted {
     background-image: url('#{$image-path}icons/shortlisted.svg');
+
+    &--black {
+      background-image: url('#{$image-path}icons/shortlisted_black.svg');
+    }
   }
 
   &-header {
