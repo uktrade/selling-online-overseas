@@ -409,6 +409,36 @@
       width: 0;
     }
 
+    &--header {
+      padding-left: 45px;
+      position: relative;
+
+      &:after {
+        background: $great-secondary;
+        content: '';
+        height: 20px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 24px;
+      }
+
+      &:before {
+        border: {
+          bottom: 10px solid transparent;
+          left: 10px solid $great-secondary;
+          top: 10px solid transparent;
+        }
+
+        content: '';
+        height: 0;
+        left: 24px;
+        position: absolute;
+        top: 0;
+        width: 0;
+      }
+    }
+
     @include media($desktop-only) {
       position: absolute;
       right: 0;
