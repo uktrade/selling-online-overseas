@@ -12,8 +12,8 @@
 
 <div class="outer-container detail-section--top push--ends soft--top">
   <div class="col-12">
-    <div class="text--right detail-section--back soft--bottom">
-      <a href="javascript:utilities.navigateBack()" class="link link--back" title="Return to marketplaces">&lt; Return to marketplaces</a>
+    <div class="text--right detail-section--back">
+      <a href="javascript:utilities.navigateBack()" class="link link--back" title="Return to marketplaces">&lt; Go back to results</a>
     </div>
   </div>
 
@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="markets-info">
-          <h1 class='heading-xlarge push-half--bottom flush--top'>{{ market.name }}</h1>
+          <h1 class='h1 push-half--bottom flush--top'>{{ market.name }}</h1>
           <ul>
             <li class="soft-half--bottom markets-item--url"><a href="{{ market.web_address }}" class="link" target="_blank">{{ market.web_address }}</a></li>
             <li>
@@ -45,7 +45,7 @@
     </div>
     <div>
       <div class="markets-description">
-        <h2 class="font-brand header-icon heading-small font-med">About this marketplace</h2>
+        <h2 class="font-brand header-icon h3 font-med soft--ends">About this marketplace</h2>
         <p class="soft-half--ends hard--left">{{ market.e_marketplace_description|safe }}</p>
       </div>
       <div class="markets-features markets-item--highlight--right">
@@ -85,13 +85,13 @@
   <div class="detail-section--terms">
     <div class="detail-section--terms--info">
       <span class="detail-section--terms--arrow shake-horizontal"></span>
-      <h4 class="h3 detail-section--terms--header  push-half--bottom font-med hard--top">Exclusive deal</h4>
+      <h4 class="h3 detail-section--terms--header  push-half--bottom font-med hard--top">Exclusive deal for UK businesses</h4>
       {{ market.special_terms|safe }}
     </div>
 
     <div class="detail-section--terms--button text--center">
       <a href="{{ HELP_HOST }}triage/soo/?market={{ market.name|urlencode }}" id="apply-to-join" class="button button-red button-medium button-full push-half--top text--center" title="apply now">Apply now via DIT</a>
-      <p class="push-half--top font-mid-grey">To get this deal</p>
+      <p class="push-half font-mid-grey">To get this deal</p>
       <span class="text--center background--bright-grey soft-half">or</span>
       <hr class="detail-section--terms--divider background--lighter-grey" />
       <a href="{{ market.web_address }}" id="go-to-marketplace" class="button button-border button-border--red button-medium button-full text--center" title="Go to marketplace">Go directly to marketplace</a>
@@ -109,7 +109,7 @@
           <i class="icon icon-header icon-header--left icon-adviser">
             <span class="visuallyhidden">E-commerce adviser tip</span>
           </i>
-          <h3 class="font-brand header-icon cf">E-commerce adviser tip</h3>
+          <h3 class="h3 font-brand header-icon cf">E-commerce adviser tip</h3>
         </div>
       </div>
       <div class="cf soft-half--bottom">
@@ -123,7 +123,7 @@
           <i class="icon icon-header icon-header--left icon-products">
             <span class="visuallyhidden">more about this marketplace</span>
           </i>
-          <h3 class="font-brand header-icon">More about this marketplace</h3>
+          <h3 class="h3 font-brand header-icon">More about this marketplace</h3>
         </div>
       </div>
       <div class="cf">
@@ -156,7 +156,7 @@
           <i class="icon icon-header icon-header--left icon-users">
             <span class="visuallyhidden">users</span>
           </i>
-          <h3 class="font-brand header-icon">Who are the customers?</h3>
+          <h3 class="h3 font-brand header-icon">Who are the customers?</h3>
         </div>
       </div>
       <div class="cf push--bottom">
@@ -184,7 +184,7 @@
           <i class="icon icon-header icon-header--left icon-logistics">
             <span class="visuallyhidden">logistics</span>
           </i>
-          <h3 class="font-brand header-icon">How about fulfilment and delivery?</h3>
+          <h3 class="h3 font-brand header-icon">How about fulfilment and delivery?</h3>
         </div>
       </div>
       <div class="cf push--bottom">
@@ -207,7 +207,7 @@
           <i class="icon icon-header icon-header--left icon-fees">
             <span class="visuallyhidden">fees</span>
           </i>
-          <h3 class="font-brand header-icon">What costs will I pay this marketplace?</h3>
+          <h3 class="h3 font-brand header-icon">What costs will I pay this marketplace?</h3>
         </div>
       </div>
       <div class="push--bottom">
@@ -246,7 +246,7 @@
           <i class="icon icon-header icon-header--left icon-on-boarding">
             <span class="visuallyhidden">on boarding</span>
           </i>
-          <h3 class="font-brand header-icon">What does the marketplace need me to do?</h3>
+          <h3 class="h3 font-brand header-icon">What does the marketplace need me to do?</h3>
         </div>
       </div>
       <div class="cf">
@@ -279,7 +279,7 @@
           <i class="icon icon-header icon-header--left icon-bank">
             <span class="visuallyhidden">bank</span>
           </i>
-          <h3 class="font-brand header-icon">How will I get paid?</h3>
+          <h3 class="h3 font-brand header-icon">How will I get paid?</h3>
         </div>
       </div>
       <div class="cf push--bottom">
@@ -300,7 +300,7 @@
           <i class="icon icon-header icon-header--left icon-support">
             <span class="visuallyhidden">support</span>
           </i>
-          <h3 class="font-brand header-icon">What help do they give sellers like me?</h3>
+          <h3 class="h3 font-brand header-icon">What help do they give sellers like me?</h3>
         </div>
       </div>
       <dl class="col-8">
@@ -325,19 +325,19 @@
 
   <div class="detail-section--terms detail-section--terms--bottom detail-section--terms--right">
     <div class="detail-section--terms--info">
-      <h4 class="h3 push--bottom font-med hard--top">Interested in this marketplace?</h4>
+      <h4 class="h3 font-med hard--top">Interested in this marketplace?</h4>
     </div>
 
     <div class="detail-section--terms--button text--center">
-      <div class="button-section">
+      <div class="button-section push--top">
         <a href="{{ HELP_HOST }}triage/soo/?market={{ market.name|urlencode }}" id="bottom-apply-to-join" class="button button-red button-medium button-full text--center" title="apply now">Apply now via DIT</a>
         <p class="push-half--top font-mid-grey">To get the exclusive deal</p>
       </div>
-      <div class="separator">
+      <div class="separator push-half--top">
         <span class="text--center background--bright-grey soft-half">or</span>
         <hr class="detail-section--terms--divider background--lighter-grey" />
       </div>
-      <div class="button-section">
+      <div class="button-section push--top">
         <a href="{{ market.web_address }}" class="button button-border button-border--red button-medium button-full text--center" title="Go to marketplace" id="bottom-go-to-marketplace">Go directly to marketplace</a>
 
         <p class="push-half--top font-mid-grey">{{ market.language_display }}</p>

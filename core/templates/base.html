@@ -20,7 +20,7 @@
       <link rel="icon" type="image/png" href="{% static "images/favicon.ico" %}">
     {% endblock head_favicon %}
     {% block head_css %}
-      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+      <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">-->
       <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
       <!--[if IE 8]><link href="{% static "stylesheets/ie8.css" %}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     {% endblock head_css %}
@@ -54,14 +54,14 @@
               <ul class="list-inline list-separators">
                 <li class="float--left soft-half--right navigation-skip-to"><a class="link link--grey" href="#content" title="Skip to main content"><strong>Skip to main content</strong></a></li>
                 <li class="float--left soft-half--right"><a class="logo-hmg" href="https://www.gov.uk/" title="Go to the GOV.UK homepage"><img src="/static/images/hm_government_logo_horizontal.svg" alt="HM Government logo"></a></li>
-                <li class="float--left soft-half--left"><a class="link link--white" href="https://www.great.gov.uk/" title="part of great.gov.uk"><span class="hide-mobile font-light-grey font-lig">Part of </span><span class="font-reg">great.gov.uk</span></a></li>
+                <li class="float--left soft-half--left"><a class="link link--white" href="https://www.great.gov.uk/" title="part of great.gov.uk"><span class="hide-mobile font-light-grey font-lig">Part of </span><span class="font-med">great.gov.uk</span></a></li>
               </ul>
 
-              <ul class="list-inline list-separators float--right navigation-login font-reg" id="sso-signin">
+              <ul class="list-inline list-separators float--right navigation-login font-med" id="sso-signin">
                 <li class="float--left soft-half--right"><a class="link--white" href="{{ SSO_HOST }}accounts/login/?next={{ SOO_HOST }}" title="Sign in"><i class="icon icon--left icon-sign-in"></i><span class="hide-mobile">Sign in</span></a></li>
                 <li class="float--left soft-half--left hide-mobile"><a class="link--white" href="{{ SSO_HOST }}accounts/signup/" title="Register"><span>Register</span></a></li>
               </ul>
-              <ul class="list-inline list-separators float--right navigation-login font-reg" id="sso-signout" style="display:none">
+              <ul class="list-inline list-separators float--right navigation-login font-med" id="sso-signout" style="display:none">
                 <li class="float--left soft-half--right"><a class="link--white" href="{{ PROFILE_HOST }}selling-online-overseas/" title="Profile"><i class="icon icon--left icon-sign-out"></i><span class="hide-mobile">Profile</span></a></li>
                 <li class="float--left soft-half--left hide-mobile"><a class="link--white" href="{{ SSO_HOST }}accounts/logout/?next={{ SOO_HOST }}" title="Sign out"><span>Sign out</span></a></li>
               </ul>
@@ -78,9 +78,9 @@
             <div class="navigation-main-section outer-container">
               <nav>
                 <ul class="list-inline list-separators navigation-main-menu">
-                  <li><a title="new to exporting" href="https://www.export.great.gov.uk/new/" class="navigation-main-link navigation-main-link--primary background--light-blue font-reg">New to exporting</a></li>
-                  <li><a title="occasional exporter" href="https://www.export.great.gov.uk/occasional/" class="navigation-main-link navigation-main-link--primary background--light-blue font-reg">Occasional exporter</a></li>
-                  <li><a title="regular exporter" href="https://www.export.great.gov.uk/regular/" class="navigation-main-link navigation-main-link--primary background--light-blue font-reg">Regular exporter</a></li>
+                  <li><a title="new to exporting" href="https://www.export.great.gov.uk/new/" class="navigation-main-link navigation-main-link--primary background--light-blue font-med">New to exporting</a></li>
+                  <li><a title="occasional exporter" href="https://www.export.great.gov.uk/occasional/" class="navigation-main-link navigation-main-link--primary background--light-blue font-med">Occasional exporter</a></li>
+                  <li><a title="regular exporter" href="https://www.export.great.gov.uk/regular/" class="navigation-main-link navigation-main-link--primary background--light-blue font-med">Regular exporter</a></li>
                   <li><a href="https://www.export.great.gov.uk/opportunities" title="Export opportunities" class="navigation-main-link navigation-main-link--secondary">Export opportunities</a></li>
                   <li><a href="http://find-a-buyer.export.great.gov.uk/" title="Find a buyer" class="navigation-main-link navigation-main-link--secondary">Find a buyer</a></li>
                   <li><a href="{{ SOO_HOST }}markets/" title="Selling online overseas" class="navigation-main-link navigation-main-link--secondary navigation-main-link--active">Selling online overseas</a></li>
@@ -95,7 +95,7 @@
                 <div class="col-3">
                   <div class="navigation-toggle-services-section">
                     <h3 class="font-large font-lig font-light-grey push--bottom hide-mobile">Export readiness</h3>
-                    <ul class="font-reg">
+                    <ul class="font-med">
                       <li class="navigation-toggle-item navigation-toggle-services"><a title="new to exporting" href="https://www.export.great.gov.uk/new/">New to exporting</a></li>
                       <li class="navigation-toggle-item navigation-toggle-services"><a title="occasional exporter" href="https://www.export.great.gov.uk/occasional/">Occasional exporter</a></li>
                       <li class="navigation-toggle-item navigation-toggle-services"><a title="regular exporter" href="https://www.export.great.gov.uk/regular/" class="last">Regular exporter</a></li>
@@ -159,7 +159,7 @@
                 </div>
 
                 <div class="col-4">
-                  <ul class="footer-links footer-links--border font-reg">
+                  <ul class="footer-links footer-links--border font-med">
                     <li class="push-half--bottom"><a href="https://www.export.great.gov.uk/new/" title="New to exporting">New to exporting</a></li>
                     <li class="push-half--bottom"><a href="https://www.export.great.gov.uk/occasional/" title="Occasional exporter">Occasional exporter</a></li>
                     <li><a href="https://www.export.great.gov.uk/regular/" title="Regular exporter">Regular exporter</a></li>
@@ -195,7 +195,7 @@
                 <div class="navigation-strip">
                   <ul class="list-inline list-separators">
                     <li class="float--left soft-half--right"><a class="logo-hmg" href="https://www.gov.uk/" title="Go to the GOV.UK homepage"><img src="/static/images/hm_government_logo_horizontal.svg" alt="HM Government logo"></a></li>
-                    <li class="float--left soft-half--left footer-links--border"><a class="link link--white"  href="https://www.great.gov.uk/" title="part of great.gov.uk"><span class="hide-mobile font-light-grey font-lig">Part of </span><span class="font-reg">great.gov.uk</span></a></li>
+                    <li class="float--left soft-half--left footer-links--border"><a class="link link--white"  href="https://www.great.gov.uk/" title="part of great.gov.uk"><span class="hide-mobile font-light-grey font-lig">Part of </span><span class="font-med">great.gov.uk</span></a></li>
                   </ul>
                 </div>
                 <div class="footer-copy font-light-grey font-xsmall">

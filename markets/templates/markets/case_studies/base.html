@@ -6,7 +6,7 @@
 
     <div class="stories-header">
       <span class="heading-sub font-mid-grey">Case study</span>
-      <h1 class="heading-xlarge push--bottom flush--top">{% block story_title %}{% endblock %}</h1>
+      <h1 class="h1 push--bottom flush--top">{% block story_title %}{% endblock %}</h1>
 
       <dl class="read-time push--top">
         <dt>Reading time:</dt>
@@ -23,8 +23,8 @@
         <aside>
           <blockquote class="background--light-stone soft quote-left">
             <p class="">{% block story_blockquote_top_content%}{% endblock %}</p>
-            <footer class="font-lig ">
-              <strong class="font-small">{% block story_blockquote_top_author%}{% endblock %}</strong>
+            <footer class="font-lig">
+              <strong>{% block story_blockquote_top_author%}{% endblock %}</strong>
               <br />
               <span>Founder | <a href="{% block story_blockquote_top_link%}{% endblock %}" class="link" title="" target="_blank">{% block story_blockquote_top_founder%}{% endblock %}</a> </span>
             </footer>
@@ -39,7 +39,7 @@
         <blockquote class="background--light-stone soft quote-left push--ends">
           <p class="">{% block story_blockquote_bottom_content%}{% endblock %}</p>
           <footer class="font-lig push--top soft--top">
-            <strong class="font-small">{% block story_blockquote_bottom_author%}{% endblock %}</strong>
+            <strong>{% block story_blockquote_bottom_author%}{% endblock %}</strong>
             <br />
             <span>Founder | <a href="{% block story_blockquote_bottom_link%}{% endblock %}" class="link" title="" target="_blank">{% block story_blockquote_bottom_founder%}{% endblock %}</a> </span>
           </footer>
@@ -56,7 +56,7 @@
           <img src="/static/images/case-story/{% block story_more_image%}{% endblock %}"  alt="{% block story_more_image_alt%}{% endblock %}"/>
         </div>
         <div class="stories-more-info">
-          <a href="/markets/story/{% block story_more_link%}{% endblock %}" title="{% block story_more_link_title%}{% endblock %}"><h4 class="font-small font-brand">{% block story_more_title%}{% endblock %}</h4></a>
+          <a href="/markets/story/{% block story_more_link%}{% endblock %}" title="{% block story_more_link_title%}{% endblock %}"><h4 class="font-large font-brand push-half--bottom">{% block story_more_title%}{% endblock %}</h4></a>
           <p class="font-brand">{% block story_more_content%}{% endblock %}</p>
         </div>
       </div>
@@ -65,7 +65,7 @@
           <img src="/static/images/case-story/{% block story_2_more_image%}{% endblock %}" alt="{% block story_2_more_image_alt%}{% endblock %}"/>
         </div>
         <div class="stories-more-info">
-          <a href="/markets/story/{% block story_2_more_link%}{% endblock %}" title="{% block story_2_more_link_title%}{% endblock %}"><h4 class="font-small font-brand">{% block story_2_more_title%}{% endblock %}</h4></a>
+          <a href="/markets/story/{% block story_2_more_link%}{% endblock %}" title="{% block story_2_more_link_title%}{% endblock %}"><h4 class="font-large font-brand push-half--bottom">{% block story_2_more_title%}{% endblock %}</h4></a>
           <p class="font-brand">{% block story_2_more_content%}{% endblock %}</p>
         </div>
       </div>

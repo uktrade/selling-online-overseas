@@ -1,13 +1,13 @@
 {% load static utils thumbnail %}
 
 <li class="markets-item cf background--white push--bottom section-clickable">
-  {% if market.has_special_terms %}<div class="col-12 cf"><div class="markets-deal">Exclusive deal</div></div>{% endif%}
+  {% if market.has_special_terms %}<div class="col-12 cf"><div class="markets-deal">Exclusive deal for UK businesses</div></div>{% endif%}
   <div class="markets-item-logoholder float--left push--right soft-half--right">
     <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="Navigate to full profile of {{ market.name }}">
   </div>
   <div class="markets-info">
     <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
-      <h3 class="heading-small font-med flush--ends soft--bottom font-mid-blue">{{ market.name }}</h3>
+      <h3 class="h3 font-med flush--ends soft--bottom font-mid-blue">{{ market.name }}</h3>
     </a>
     <ul class="markets-countries">
       <li>

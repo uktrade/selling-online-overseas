@@ -91,7 +91,6 @@
     }
 
     &--close {
-      @extend %light;
       background-color: $mid-blue;
       border: 0;
       border-radius: 10px;

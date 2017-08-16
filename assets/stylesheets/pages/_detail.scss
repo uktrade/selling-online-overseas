@@ -24,14 +24,18 @@
   &--top {
     @include media ($mobile) {
       padding-top: 70px;
+      position: relative;
     }
   }
 
   &--back {
     @include media ($mobile) {
-      left: 15px;
       position: absolute;
       top: 0;
+    }
+
+    @include media ($desktop-only) {
+      padding-bottom: 20px;
     }
   }
 
@@ -137,7 +141,6 @@
   h3 {
     @extend %medium;
     background: $bright-grey;
-    font-size: 24px;
     margin-bottom: 20px;
     padding: 0 10px 0 0;
     position: absolute;
@@ -146,7 +149,6 @@
     &.header-icon {
       padding-left: 70px;
       @include media ($mobile) {
-        font-size: 19px;
         padding-left: 42px;
         padding-right: 5px;
       }
@@ -156,22 +158,21 @@
   &.detail-section--format {
     dt,
     dd {
-      @extend %font-regular;
+      @extend %font-large;
     }
   }
 
   dt,
   &-title {
-    font-size: 19px;
-    padding: 20px 0 10px;
+    @extend %font-large;
+    padding: 30px 0 10px;
 
     @include media ($mobile) {
-      font-size: 15px;
       font-weight: 500;
     }
 
     &.subtitle {
-      @extend %font-xxsmall;
+      @extend %font-base;
       @extend %medium;
       padding-top: 10px;
     }
@@ -186,7 +187,6 @@
   }
 
   dd {
-    line-height: 23px;
 
     p {
       margin-bottom: 0;
