@@ -17,7 +17,9 @@
       </div>
 
       <ul class="markets-grid markets-grid--four shortlist-list">
-        {% include "markets/includes/market_list.html" %}
+        {% if markets_list %}
+          {% include "markets/includes/market_list.html" %}
+        {% endif %}
         <li class="markets-item markets-item--add cf background--white push--bottom font-mid-grey">Add more marketplaces to your shortlist</li>
       </ul>
     </div>
