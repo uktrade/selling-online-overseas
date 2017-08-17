@@ -522,6 +522,11 @@
       border-bottom: 2px solid $mid-grey;
       min-height: 570px;
 
+      @include media($mobile) {
+        @include span-columns(12 of 12);
+        min-height: 307px;
+      }
+
       &--add {
         background: transparent;
         border: {
@@ -531,6 +536,16 @@
           width: 1px;
         }
         padding-top: 80px;
+
+        @include media($mobile) {
+          @include span-columns(12 of 12);
+          padding-top: 40px;
+        }
+      }
+
+      @include media($mobile) {
+        @include span-columns(12 of 12);
+        min-height: 307px;
       }
     }
 
@@ -543,11 +558,40 @@
 
     .markets-item--list {
       padding-left: 0;
+
+      @include media($mobile) {
+        margin-top: 0;
+      }
     }
 
     .markets-shortlist {
       left: 10px;
+      position: absolute;
       top: 10px;
+
+      @include media($mobile) {
+        left: inherit;
+        position: relative;
+        top: inherit;
+      }
+    }
+
+    .markets-info {
+      @include media($mobile) {
+        float: none;
+      }
+    }
+
+    .markets-item-logoholder {
+      @include media($mobile) {
+        width: auto;
+      }
+    }
+
+    .markets-item--highlight {
+      @include media($mobile) {
+        display: block;
+      }
     }
 
   }
