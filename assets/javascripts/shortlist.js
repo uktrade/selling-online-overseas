@@ -1,17 +1,18 @@
 var sortList = (function () {
 
     var shortlist = $('.markets-shortlist'),
-        removeAllButton = $('.shortlist-remove');
+        removeAllButton = $('.shortlist-remove'),
+        apiUrl = '/markets/api/shortlist/';
 
     shortlist.click(shortList);
     removeAllButton.click(removeAll);
 
     function init() {
         $.ajax({
-            url: '/markets/api/shortlist/',
+            url: apiUrl,
             type: 'GET',
             success:function(result) {
-                result.market_slugs.forEach(function(slug){
+                result.market_slugs.forEach(function(slug) {
                     var element = $('[data-slug=' + slug + ']'),
                         icon = $(element[0].lastChild);
                     element.addClass('markets-shortlist--shortlisted');
@@ -46,7 +47,7 @@ var sortList = (function () {
         if(element.hasClass('markets-shortlist--shortlisted')) {
 
             $.ajax({
-                url: '/markets/api/shortlist/?slug='+slug,
+                url: apiUrl+'?slug='+slug,
                 type: 'DELETE',
                 success:function() {
                     element.removeClass('markets-shortlist--shortlisted');
@@ -56,7 +57,7 @@ var sortList = (function () {
             });
         } else {
             $.ajax({
-                url: '/markets/api/shortlist/?slug='+slug,
+                url: apiUrl+'?slug='+slug,
                 type: 'POST',
                 success:function() {
                     element.addClass('markets-shortlist--shortlisted');
@@ -70,7 +71,7 @@ var sortList = (function () {
     function removeAll(event) {
         event.preventDefault();
         // $.ajax({
-        //     url: '/markets/api/shortlist/',
+        //     url: apiUrl,
         //     type: 'REMOVE',
         //     success:function() {
         //         location.reload();
