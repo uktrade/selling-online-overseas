@@ -256,23 +256,20 @@ class MarketShortlistView(MarketFilterMixin, TemplateView):
 
 class MarketShortlistAPI(View):
 
+    def _standard_response(self):
+        market_slugs = self.request.session.get('market_slugs', [])
+        return JsonResponse({'success': True, 'market_slugs': market_slugs})
+
     def get(self, request):
         return self._standard_response()
 
-    def _get_market_slugs(self):
+    def post(self, request):
         slug = self.request.GET.get('slug', None)
         if slug is None:
             return JsonResponse({'success': False, 'error': 'no slug supplied'})
 
         market_slugs = self.request.session.get('market_slugs', [])
-        return slug, market_slugs
 
-    def _standard_response(self):
-        market_slugs = self.request.session.get('market_slugs', [])
-        return JsonResponse({'success': True, 'market_slugs': market_slugs})
-
-    def post(self, request):
-        slug, market_slugs = self._get_market_slugs()
         if slug not in market_slugs:
             market_slugs.append(slug)
 
@@ -280,7 +277,13 @@ class MarketShortlistAPI(View):
         return self._standard_response()
 
     def delete(self, request):
-        slug, market_slugs = self._get_market_slugs()
+        slug = self.request.GET.get('slug', None)
+        if slug is None:
+            self.request.session['market_slugs'] = []
+            return self._standard_response()
+
+        market_slugs = self.request.session.get('market_slugs', [])
+
         if slug in market_slugs:
             market_slugs.remove(slug)
 
