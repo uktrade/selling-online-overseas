@@ -28,7 +28,7 @@
     }
   }
 
-  &--notify {
+  &-notify {
     background-color: $mid-blue;
     color: $white;
     left: 0;
@@ -53,6 +53,20 @@
 
     @include media($mobile) {
       width: auto;
+    }
+  }
+
+  &-button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 15px;
+    z-index: 2;
+
+    .icon {
+      margin: auto 0;
+      position: absolute;
+      top: 0;
     }
   }
 }

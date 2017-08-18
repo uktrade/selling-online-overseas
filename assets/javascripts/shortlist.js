@@ -1,8 +1,10 @@
 var sortList = (function () {
 
-    var shortlist = $('.markets-shortlist');
+    var shortlist = $('.markets-shortlist'),
+        removeAllButton = $('.shortlist-remove');
 
     shortlist.click(shortList);
+    removeAllButton.click(removeAll);
 
     function init() {
         $.ajax({
@@ -49,7 +51,7 @@ var sortList = (function () {
                 success:function() {
                     element.removeClass('markets-shortlist--shortlisted');
                     icon.removeClass('icon-shortlisted');
-                    notify('shortlist--notify','marketplace removed from your shortlist', element );
+                    notify('shortlist-notify','marketplace removed from your shortlist', element );
                 }
             });
         } else {
@@ -59,10 +61,21 @@ var sortList = (function () {
                 success:function() {
                     element.addClass('markets-shortlist--shortlisted');
                     icon.addClass('icon-shortlisted');
-                    notify('shortlist--notify','marketplace added to your shortlist', element );
+                    notify('shortlist-notify','marketplace added to your shortlist', element );
                 }
             });
         }
+
+    }
+    function removeAll(event) {
+        event.preventDefault();
+        // $.ajax({
+        //     url: '/markets/api/shortlist/',
+        //     type: 'REMOVE',
+        //     success:function() {
+        //         location.reload();
+        //     }
+        // });
 
     }
 

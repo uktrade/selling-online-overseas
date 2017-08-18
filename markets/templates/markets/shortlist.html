@@ -13,7 +13,13 @@
           <h1 class="push--bottom h3">
             Your shortlisted marketplaces
           </h1>
-          <div class="font-mid-blue float--left"><strong>{{ shortlist_count }}</strong><i class="icon icon-shortlisted--black float--right shortlist-icon shortlist-icon--large" data-modal-button="sorting"></i></div>
+          <div class="float--left">
+            <div class="float--left">
+              <strong class="h3">2</strong>
+              <i class="icon icon-shortlisted--black float--right shortlist-icon shortlist-icon--large" data-modal-button="sorting"></i>
+            </div>
+            <button type="button" class="shortlist-remove shortlist-button font-mid-blue float--left link hard--sides push-half--left" data-slug="{{market.slug }}">Remove all</button>
+          </div>
       </div>
 
       <ul class="markets-grid markets-grid--four shortlist-list">
