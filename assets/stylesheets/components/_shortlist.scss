@@ -27,4 +27,32 @@
       width: 35px;
     }
   }
+
+  &--notify {
+    background-color: $mid-blue;
+    color: $white;
+    left: 0;
+    padding: 10px;
+    position: absolute;
+    top: 30px;
+    width: 275px;
+
+    &:before {
+      border: {
+        bottom: 10px solid $mid-blue;
+        left: 8px solid transparent;
+        right: 8px solid transparent;
+      }
+      content: '';
+      height: 0;
+      left: 50px;
+      position: absolute;
+      top: -10px;
+      width: 0;
+    }
+
+    @include media($mobile) {
+      width: auto;
+    }
+  }
 }

@@ -19,6 +19,19 @@ var sortList = (function () {
         });
     }
 
+    function notify(classname, text, element) {
+        var notify = $('<span>', {
+            html: text,
+            'class': classname
+        });
+
+
+        element.append(notify);
+
+        setTimeout(function() {
+            notify.remove();
+            }, 800);
+    }
 
     function shortList(event) {
         event.preventDefault();
@@ -36,6 +49,7 @@ var sortList = (function () {
                 success:function() {
                     element.removeClass('markets-shortlist--shortlisted');
                     icon.removeClass('icon-shortlisted');
+                    notify('shortlist--notify','marketplace removed from your shortlist', element );
                 }
             });
         } else {
@@ -45,6 +59,7 @@ var sortList = (function () {
                 success:function() {
                     element.addClass('markets-shortlist--shortlisted');
                     icon.addClass('icon-shortlisted');
+                    notify('shortlist--notify','marketplace added to your shortlist', element );
                 }
             });
         }
