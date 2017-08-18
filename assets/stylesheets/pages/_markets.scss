@@ -293,6 +293,7 @@
 
     @include media($desktop-only) {
       @include span-columns(5 of 12);
+      position: relative;
     }
 
     @include media($mobile) {
@@ -337,6 +338,48 @@
     @include media($mobile) {
       padding-left: 0;
     }
+
+    &-header {
+      @include media($desktop-only) {
+        @include span-columns(3 of 12);
+      }
+
+
+      @include media($tablet) {
+        @include span-columns(12 of 12);
+      }
+
+      @include media($mobile) {
+        @include span-columns(6 of 12);
+      }
+    }
+
+    &-options {
+
+      label {
+        display: block;
+      }
+
+      .form-group {
+        @include media($mobile) {
+          display: none;
+        }
+      }
+
+      @include media($desktop-only) {
+        @include span-columns(9 of 12);
+      }
+
+      @include media($tablet) {
+        @include span-columns(12 of 12);
+      }
+
+      @include media($mobile) {
+        @include span-columns(6 of 12);
+        text-align: right;
+      }
+
+    }
   }
 
   &-countries {
@@ -354,7 +397,11 @@
   }
 
   &-buttons {
+    @include prefix((border-radius: 3px), webkit moz);
+    background-color: $white;
+    border: 1px solid $mid-grey;
     display: none;
+    padding: 8px;
 
     @include media($mobile) {
       display: block;
@@ -362,11 +409,21 @@
 
     .button {
       @extend %medium;
-      background-color: $white;
-      border: 1px solid $mid-grey;
+      @include prefix((border-radius: 0), webkit moz);
+      border: 0;
+      border-right: 1px solid $mid-grey;
       color: $mid-blue;
       font-family: $brand-font-family;
-      padding: 8px;
+      padding: 0;
+      width: 49%;
+
+      &:focus {
+        background-color: transparent;
+      }
+
+      &:last-child {
+        border: 0;
+      }
 
       &:hover {
         color: $aqua;
@@ -418,5 +475,115 @@
     @include media($mobile) {
       top: -10px;
     }
+  }
+
+  &-sort {
+    display: none;
+  }
+
+  &-shortlist {
+
+    @include media($desktop-only) {
+      position: absolute;
+    }
+
+    display: block;
+    margin-bottom: 20px;
+    padding-left: 26px;
+    position: relative;
+    right: 0;
+    top: 0;
+  }
+
+  &-grid {
+
+    &--two {
+      .markets-item {
+        @include span-columns(6 of 12);
+      }
+    }
+
+    &--four {
+      .markets-item {
+        @include span-columns(3 of 12);
+      }
+    }
+
+    .markets-item {
+      border-bottom: 2px solid $mid-grey;
+      min-height: 570px;
+
+      @include media($mobile) {
+        @include span-columns(12 of 12);
+        min-height: 307px;
+      }
+
+      &--add {
+        background: transparent;
+        border: {
+          bottom: 0;
+          color: $light-grey;
+          style: dashed;
+          width: 1px;
+        }
+        padding-top: 80px;
+
+        @include media($mobile) {
+          @include span-columns(12 of 12);
+          padding-top: 40px;
+        }
+      }
+
+      @include media($mobile) {
+        @include span-columns(12 of 12);
+        min-height: 307px;
+      }
+    }
+
+    .markets-info,
+    .markets-item--highlight--right,
+    .markets-item-logoholder {
+      @include span-columns(12 of 12);
+      position: initial;
+    }
+
+    .markets-item--list {
+      padding-left: 0;
+
+      @include media($mobile) {
+        margin-top: 0;
+      }
+    }
+
+    .markets-shortlist {
+      left: 10px;
+      position: absolute;
+      top: 10px;
+
+      @include media($mobile) {
+        left: inherit;
+        position: relative;
+        top: inherit;
+      }
+    }
+
+    .markets-info {
+      @include media($mobile) {
+        float: none;
+      }
+    }
+
+    .markets-item-logoholder {
+      @include media($mobile) {
+        width: auto;
+      }
+    }
+
+    .markets-item--highlight {
+      @include media($mobile) {
+        display: block;
+      }
+    }
+
   }
 }

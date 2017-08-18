@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Shortlist | Selling online overseas{% endblock title %}
+
+{% block head_meta_description %}Read and review the results. Compare, then select online marketplaces that are suitable for your products.{% endblock head_meta_description %}
+
+{% load static utils %}
+
+{% block content %}
+  <div class="outer-container push--top soft--top">
+    <div class="">
+      <div class="cf push--bottom">
+          <h1 class="push--bottom h3">
+            Your shortlisted marketplaces
+          </h1>
+          <div class="float--left">
+            <div class="float--left">
+              <strong class="h3">2</strong>
+              <i class="icon icon-shortlisted--black float--right shortlist-icon shortlist-icon--large" data-modal-button="sorting"></i>
+            </div>
+            <button type="button" class="shortlist-remove shortlist-button font-mid-blue float--left link hard--sides push-half--left" data-slug="{{market.slug }}">Remove all</button>
+          </div>
+      </div>
+
+      <ul class="markets-grid markets-grid--four shortlist-list">
+        {% if markets_list %}
+          {% include "markets/includes/market_list.html" %}
+        {% endif %}
+        <li class="markets-item markets-item--add cf background--white push--bottom font-mid-grey">Add more marketplaces to your shortlist</li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock content %}

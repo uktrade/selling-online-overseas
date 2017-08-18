@@ -9,6 +9,7 @@
     <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
       <h3 class="h3 font-med flush--ends soft--bottom font-mid-blue">{{ market.name }}</h3>
     </a>
+    <button type="button" class="shortlist-button markets-shortlist font-mid-blue" data-slug="{{market.slug }}">Shortlist <i class="icon icon-shortlist shortlist-icon" data-modal-button="sorting"></i></button>
     <ul class="markets-countries">
       <li>
         <dl>

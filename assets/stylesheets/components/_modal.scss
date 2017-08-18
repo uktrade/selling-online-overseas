@@ -9,7 +9,12 @@
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 2;
+    z-index: 10;
+  }
+
+  &-header {
+    border-bottom: 1px solid $lightest-grey;
+    width: 100%;
   }
 
   &-close {
