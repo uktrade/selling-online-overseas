@@ -10,7 +10,7 @@
 
     &-error--message {
       @extend %medium;
-      @extend %font-regular ;
+      @extend %font-large ;
       color: $great-secondary;
       display: block;
       margin-bottom: 15px;
@@ -39,28 +39,24 @@
   }
 
   &-label {
-    @extend %font-regular;
+    @extend %font-large;
     @extend %medium;
     color: $grey;
     display: table;
     font-family: $brand-font-family;
     margin-bottom: 10px;
-
-    @include media($mobile) {
-      font-size: 19px;
-    }
   }
 
   &-hint {
-    @extend %font-xxsmall;
-    @extend %light;
+    @extend %font-base;
     color: $mid-grey;
     font-family: $brand-font-family;
+    line-height: 22px;
     margin: 5px 0 0;
   }
 
   &-control {
-    @extend %light;
+    background: $light-stone;
     border: 1px solid $secondary-text-colour;
     font-family: $brand-font-family;
     font-size: 16px;
@@ -147,7 +143,7 @@
           }
           display: inline-block;
           margin-right: 5px;
-          padding: 3px 8px;
+          padding: 2px 8px;
           text-align: center;
 
           @include media($mobile) {
@@ -221,7 +217,7 @@
     &-back {
       margin-right: 40px;
       position: relative;
-      top: 11px;
+      top: 16px;
 
       @include media($mobile) {
         bottom: 40px;
@@ -263,7 +259,6 @@
   &-steps {
 
     &-header {
-      font-size: 24px;
       margin-top: 25px;
     }
 
@@ -328,7 +323,7 @@
       line-height: 17px;
 
       a {
-        @extend %regular;
+        @extend %medium;
         color: $white;
       }
     }
@@ -341,6 +336,42 @@
       border-bottom: 1px solid $lighter-grey;
       padding-bottom: 20px;
     }
+  }
+
+  &-select {
+    @include prefix((appearance: none), o ms moz webkit);
+    background-color: transparent;
+    border: 1px solid $mid-grey;
+    border-radius: 0;
+    font-size: 13px;
+    height: 35px;
+    letter-spacing: -.2px;
+    padding: 8px 27px 8px 10px;
+    position: relative;
+    z-index: 1;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &--wrapper {
+      display: inline-block;
+      position: relative;
+
+      &:after {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid $grey;
+        content: '';
+        height: 0;
+        position: absolute;
+        right: 12px;
+        top: 17px;
+        width: 0;
+      }
+
+    }
+
   }
 }
 
@@ -402,11 +433,11 @@
 
     span {
       @extend %regular;
+      @extend %h3;
       border: 2px solid $white;
       border-radius: 100px;
       box-sizing: initial;
       display: block;
-      font-size: 25px;
       height: 40px;
       line-height: 40px;
       margin: 0 auto 15px;

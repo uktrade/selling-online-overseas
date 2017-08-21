@@ -120,7 +120,6 @@
 
     @include media ($mobile) {
       clear: both;
-      padding-top: 10px;
     }
 
     @include media ($desktop-only) {
@@ -338,10 +337,47 @@
     @include media($mobile) {
       padding-left: 0;
     }
+
+    &-header {
+      @include media($desktop-only) {
+        @include span-columns(4 of 11);
+      }
+
+
+      @include media($tablet) {
+        @include span-columns(12 of 12);
+      }
+    }
+
+    &-options {
+
+      label {
+        @include media($tablet) {
+          display: block;
+          margin-bottom: 10px;
+        }
+      }
+
+      @include media($desktop-only) {
+        @include span-columns(7 of 11);
+      }
+
+      @include media($tablet) {
+        @include span-columns(12 of 12);
+      }
+
+      @include media($mobile) {
+        display: none;
+      }
+    }
   }
 
   &-countries {
-    display: table;
+
+    @include media($tablet) {
+      display: table;
+      min-width: 50%;
+    }
 
     @include media($mobile) {
       float: left;
@@ -351,7 +387,11 @@
   }
 
   &-buttons {
+    @include prefix((border-radius: 3px), webkit moz);
+    background-color: $white;
+    border: 1px solid $mid-grey;
     display: none;
+    padding: 8px;
 
     @include media($mobile) {
       display: block;
@@ -359,11 +399,21 @@
 
     .button {
       @extend %medium;
-      background-color: $white;
-      border: 1px solid $mid-grey;
+      @include prefix((border-radius: 0), webkit moz);
+      border: 0;
+      border-right: 1px solid $mid-grey;
       color: $mid-blue;
       font-family: $brand-font-family;
-      padding: 8px;
+      padding: 0;
+      width: 49%;
+
+      &:focus {
+        background-color: transparent;
+      }
+
+      &:last-child {
+        border: 0;
+      }
 
       &:hover {
         color: $aqua;
@@ -382,7 +432,7 @@
   }
 
   &-deal {
-    @extend %regular;
+    @extend %medium;
     background-color: $great-secondary;
     color: $white;
     float: right;
@@ -396,11 +446,11 @@
       border: {
         color: transparent $great-secondary transparent transparent;
         style: solid;
-        width: 14px 14px 14px 0;
+        width: 16px 16px 16px 0;
       }
       content: '';
       height: 0;
-      left: -14px;
+      left: -16px;
       position: absolute;
       top: 0;
       width: 0;
@@ -415,5 +465,9 @@
     @include media($mobile) {
       top: -10px;
     }
+  }
+
+  &-sort {
+    display: none;
   }
 }

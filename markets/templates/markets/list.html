@@ -14,7 +14,7 @@
           <a href="#" data-action="clear-fields" class="clear-all link">Clear all</a>
           <a href="#" data-action="close-modal" class="modal-close"><i class="icon icon-close--blue"></i></a>
           <div role="group" class="autocomplete-form-group">
-            <legend class="h3 font-med soft-half--ends push--bottom">Search</legend>
+            <legend class="h3 modal-header font-med soft-half--ends push--bottom">Search</legend>
             <div class="push--bottom">
               <div class="form-dropdown">
                 <label class="form-label" for="search-product">What do you sell?
@@ -47,13 +47,57 @@
         <div class="autocomplete-status" role="listbox" aria-live="polite"></div>
       </form>
     </aside>
+    <div class="modal markets-sort" id="sort" data-modal-id="sorting">
+      <form class="cf soft-half" method="get" action="{% url 'markets:list' %}">
+        <a href="#" data-action="close-modal" class="modal-close"><i class="icon icon-close--blue"></i></a>
+        <div class="form-group">
+          <legend class="h3 modal-header font-med soft-half--ends push-half--bottom">Sort by</legend>
+          <div class="soft--top">
+
+            <label class="block-label selection-button-radio" for="sort_0">
+              <input id="sort_0" type="radio" name="sort" value="">
+              Relevance
+            </label>
+
+            <label class="block-label selection-button-radio" for="sort_1">
+              <input id="sort_1" type="radio" name="sort" value="users">
+              Registered users (high to low)
+            </label>
+
+            <label class="block-label selection-button-radio" for="sort_4">
+              <input id="sort_4" type="radio" name="sort" value="commission">
+              Commission (low to high)
+            </label>
+          </div>
+
+        </div>
+      </form>
+    </div>
     <div class="markets-list">
       <div class="markets-buttons push-half--bottom">
-        <button class="button button-border push--bottom" data-modal-button="search">Search<i class="icon icon-search" data-modal-button="search"></i></button>
+        <button class="button button-border" data-modal-button="search">Search<i class="icon icon-search" data-modal-button="search"></i></button>
+        <button class="button button-border" data-modal-button="sorting">Sort<i class="icon icon-sort" data-modal-button="sorting"></i></button>
       </div>
-      <h1 class="h3 push--bottom">{{ markets_list.count }} marketplace{{markets_list|pluralize}}
-        {% if markets_list.count == 0 %} match your search {% else %} found {% endif %}
-      </h1>
+      <div class="cf">
+        <div class="markets-list-header">
+          <h1 class="push--bottom"><span class="h3">{{ markets_list.count }}</span> <span class="font-reg">marketplace{{markets_list|pluralize}}</span>
+            {% if markets_list.count == 0 %} match your search {% endif %}
+          </h1>
+        </div>
+        <div class="markets-list-options">
+          <div class="form-group">
+            <label class="font-mid-grey push-half--right" for="sort-select">Sort by:</label>
+            <div class="form-select--wrapper">
+              <select class="form-select" id="sort-select" name="sort">
+                <option value="" selected="selected">Relevance</option>
+                <option value="users">Registered users (high to low)</option>
+                <option value="commission">Commission (low to high)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <ul class="markets" id="scroll-top">
         {% include "markets/includes/market_list.html" %}
       </ul>
