@@ -337,6 +337,42 @@
       padding-bottom: 20px;
     }
   }
+
+  &-select {
+    @include prefix((appearance: none), o ms moz webkit);
+    background-color: transparent;
+    border: 1px solid $mid-grey;
+    border-radius: 0;
+    font-size: 13px;
+    height: 35px;
+    letter-spacing: -.2px;
+    padding: 8px 27px 8px 10px;
+    position: relative;
+    z-index: 1;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &--wrapper {
+      display: inline-block;
+      position: relative;
+
+      &:after {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid $grey;
+        content: '';
+        height: 0;
+        position: absolute;
+        right: 12px;
+        top: 17px;
+        width: 0;
+      }
+
+    }
+
+  }
 }
 
 .errorlist {
