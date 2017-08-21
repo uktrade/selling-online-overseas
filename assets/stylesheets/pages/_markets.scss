@@ -441,21 +441,6 @@
     right: -20px;
     top: -20px;
 
-
-    &:after {
-      border: {
-        color: transparent $great-secondary transparent transparent;
-        style: solid;
-        width: 16px 16px 16px 0;
-      }
-      content: '';
-      height: 0;
-      left: -16px;
-      position: absolute;
-      top: 0;
-      width: 0;
-    }
-
     @include media($desktop-only) {
       position: absolute;
       right: 0;
