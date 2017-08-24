@@ -149,6 +149,14 @@
     }
   }
 
+  &-grid {
+    background-image: url('#{$image-path}icons/gridview.svg');
+  }
+
+  &-list {
+    background-image: url('#{$image-path}icons/listview.svg');
+  }
+
   &-header {
     background-size: contain;
     height: 45px;

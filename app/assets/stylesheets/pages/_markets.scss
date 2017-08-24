@@ -331,16 +331,22 @@
   &-list {
     padding-left: 20px;
 
-    @include media($desktop-only) {
-      @include span-columns(9 of 12);
-    }
+    .markets-grid--three {
+      .markets-item--highlight--right {
+        display: none;
+      }
 
-    @include media($tablet) {
-      @include span-columns(8 of 12);
-    }
+      .markets-item {
+        min-height: 530px;
 
-    @include media($mobile) {
-      padding-left: 0;
+        @include media($tablet) {
+          @include span-columns(6 of 12);
+
+          &:nth-child(2n+2) {
+            margin-right: 0;
+          }
+        }
+      }
     }
 
     &-header {
@@ -385,6 +391,18 @@
         text-align: right;
       }
 
+    }
+
+    @include media($desktop-only) {
+      @include span-columns(9 of 12);
+    }
+
+    @include media($tablet) {
+      @include span-columns(8 of 12);
+    }
+
+    @include media($mobile) {
+      padding-left: 0;
     }
   }
 
@@ -641,6 +659,43 @@
 
       @include media($tablet) {
         top: -10px;
+      }
+    }
+
+  }
+
+  &-views {
+    text-align: right;
+
+    button {
+      background-color: transparent;
+      border: 1px solid $mid-grey;
+      padding: 5px 6px;
+      position: relative;
+    }
+
+    .icon {
+      height: 16px;
+      width: 16px;
+    }
+
+    @include media($tablet) {
+      margin-top: 30px;
+    }
+
+    @include media($mobile) {
+      display: none;
+    }
+
+    &--active {
+      &:before {
+        border-top: 4px solid $flag-red;
+        content: '';
+        height: 0;
+        left: 0;
+        position: absolute;
+        top: -1px;
+        width: 100%;
       }
     }
 
