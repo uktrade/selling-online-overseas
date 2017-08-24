@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Shortlist | Selling online overseas{% endblock title %}
+
+{% block head_meta_description %}Read and review the results. Compare, then select online marketplaces that are suitable for your products.{% endblock head_meta_description %}
+
+{% load static utils %}
+
+{% block content %}
+  <div class="outer-container push--top soft--top">
+    <div class="cf push--bottom">
+      <div class="cf link--back--section">
+        <div class="col-7 link--back--header">
+          <h1 class="push--bottom h3">
+            Your shortlisted marketplaces
+          </h1>
+        </div>
+        <div class="col-5 link--back--top">
+          <div class="soft--bottom">
+            <a href="javascript:utilities.navigateBack()" class="link link--back" title="Go back" data-external="true">&lt; Go back</a>
+          </div>
+        </div>
+      </div>
+      <div class="float--left">
+        <div class="float--left">
+          <strong class="h3 shortlist-count"></strong>
+          <i class="icon icon-shortlisted--black float--right shortlist-icon shortlist-icon--large" data-modal-button="sorting"></i>
+        </div>
+        <button type="button" class="shortlist-remove shortlist-button font-mid-blue float--left link hard--sides push--left" data-slug="{{market.slug }}">Remove all</button>
+      </div>
+    </div>
+
+    <ul class="markets-grid markets-grid--three shortlist-list" id="scroll-top">
+      {% if markets_list %}
+        {% for market in markets_list %}
+          {% include "markets/includes/market_shortlist_list.html" %}
+        {% endfor %}
+      {% endif %}
+      <li class="markets-item markets-item--add cf background--white push--bottom font-mid-grey">Add more marketplaces to your shortlist</li>
+    </ul>
+    <div class=" col-12 cf">
+      <a class="link link--top" data-scrollto="scroll-top">Go to top</a>
+    </div>
+  </div>
+
+{% endblock content %}
