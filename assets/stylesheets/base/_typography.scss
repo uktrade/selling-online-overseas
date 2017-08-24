@@ -294,7 +294,37 @@ a {
   &--back {
     display: inline-block;
     margin-top: 21px;
+
+    &--top {
+      text-align: right;
+
+      .link--back {
+        margin-top: 7px;
+      }
+
+      @include media($mobile) {
+        text-align: left;
+      }
+    }
+
+    &--header {
+      @include media($mobile) {
+        order: 2;
+      }
+    }
+
+    &--section {
+      @include media($mobile) {
+        display: flex;
+        flex-flow: column;
+      }
+    }
+
+    @include media($mobile) {
+      order: 1;
+    }
   }
+
 }
 
 p {

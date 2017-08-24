@@ -3,7 +3,7 @@ import ast
 import csv
 
 from django.http import JsonResponse, HttpResponse
-from django.views.generic import ListView, DetailView, FormView, TemplateView
+from django.views.generic import ListView, DetailView, FormView, TemplateView, View
 from django.forms import TypedChoiceField
 from django.db.models import Max, Case, When, FloatField, ExpressionWrapper, Count, F, functions
 from django.http import Http404
@@ -55,6 +55,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
         context['market_count'] = self.markets.count()
         context['last_updated'] = self.markets.aggregate(Max('last_modified'))['last_modified__max']
         context['random_markets'] = self.markets.order_by('?')[:6]
+
         return context
 
 
@@ -239,6 +240,55 @@ class MarketListView(MarketFilterMixin, ListView):
         return matches, score
 
 
+class MarketShortlistView(MarketFilterMixin, TemplateView):
+
+    template_name = 'markets/shortlist.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        market_slugs = self.request.session.get('market_slugs', [])
+        context['markets_list'] = self.markets.filter(slug__in=market_slugs)
+
+        return context
+
+
+class MarketShortlistAPI(View):
+
+    def _standard_response(self):
+        market_slugs = self.request.session.get('market_slugs', [])
+        return JsonResponse({'success': True, 'market_slugs': market_slugs})
+
+    def get(self, request):
+        return self._standard_response()
+
+    def post(self, request):
+        slug = self.request.GET.get('slug', None)
+        if slug is None:
+            return JsonResponse({'success': False, 'error': 'no slug supplied'})
+
+        market_slugs = self.request.session.get('market_slugs', [])
+
+        if slug not in market_slugs:
+            market_slugs.append(slug)
+
+        self.request.session['market_slugs'] = market_slugs
+        return self._standard_response()
+
+    def delete(self, request):
+        slug = self.request.GET.get('slug', None)
+        if slug is None:
+            self.request.session['market_slugs'] = []
+            return self._standard_response()
+
+        market_slugs = self.request.session.get('market_slugs', [])
+
+        if slug in market_slugs:
+            market_slugs.remove(slug)
+
+        self.request.session['market_slugs'] = market_slugs
+        return self._standard_response()
+
+
 class MarketCountView(MarketListView):
     """
     A simple AJAX view that the filtering page calls to query the number of Markets will result from the currently
@@ -271,14 +321,6 @@ class MarketStatsUpdateView(MarketListView):
         last_updated_max = self.markets.aggregate(Max('last_modified'))['last_modified__max']
         data = {'item': [{'text': last_updated_max.strftime('%d %b %Y'), 'type': 2}]}
         return JsonResponse(data, **response_kwargs)
-
-
-class MarketAPIView(MarketListView):
-    """
-    API view for rendering just the markets list, that can be embedded into the page asynchronously
-    """
-
-    template_name = 'markets/includes/market_list.html'
 
 
 @thumber_feedback
