@@ -1,7 +1,6 @@
 var settings = require('../settings/settings'),
-    list = require('../settings/list');
+    list = require('../settings/list'),
     detail = require('../settings/detail');
-
 
 describe('details page', function() {
 
@@ -11,7 +10,7 @@ describe('details page', function() {
 
     it('Should be on the details page', function() {
         browser.get(settings.navigate.list);
-        list.resultsList.first().element(by.tagName('.button-blue')).click();
+        list.resultsList.first().element(by.tagName('.markets-info')).click();
         expect(browser.getCurrentUrl()).toContain('/markets/details/');
 
     });
@@ -26,7 +25,7 @@ describe('details page', function() {
 
         it('Should click on the bottom apply button', function () {
             browser.get(settings.navigate.list);
-            list.resultsList.first().element(by.tagName('.button-blue')).click();
+            list.resultsList.first().element(by.tagName('.markets-info')).click();
             var marketplaceName = settings.pageHeader.getText();
             detail.bottomApplyButton.click();
             expect(settings.pageHeader.getText()).toEqual(marketplaceName);
@@ -38,12 +37,13 @@ describe('details page', function() {
         it('Should click on the go to marketplace button', function () {
 
             browser.get(settings.navigate.list);
-            list.resultsList.first().element(by.tagName('.button-blue')).click();
+            list.resultsList.first().element(by.tagName('.markets-info')).click();
 
             detail.goToMarketplaceButton.each(function (element) {
-                element.getAttribute('href').then(function(attr) {;
+                element.getAttribute('href').then(function(attr) {
+                    var url = attr.replace(/(^\w+:|^)\/\//, '');
                     detail.goToMarketplaceButton.click();
-                    expect(browser.getCurrentUrl()).toEqual(attr);
+                    expect(browser.getCurrentUrl()).toContain(url);
                 });
             });
         })

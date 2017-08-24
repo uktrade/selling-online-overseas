@@ -1,5 +1,6 @@
 var settings = require('../settings/settings'),
-    home = require('../settings/home');
+    home = require('../settings/home'),
+    list = require('../settings/list');
 
 describe('Selling Online Overseas homepage', function() {
 
@@ -71,7 +72,7 @@ describe('Selling Online Overseas homepage', function() {
         it('Should navigate to list page', function () {
             var numberOfMarketplace = home.results.getText();
             home.findMarketplaceButton.click();
-            expect(settings.pageHeader.getText()).toContain(numberOfMarketplace);
+            expect(list.marketsCount.getText()).toContain(numberOfMarketplace);
         });
 
     });
