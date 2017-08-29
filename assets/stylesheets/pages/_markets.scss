@@ -560,6 +560,7 @@
     .markets-shortlist {
       left: 16px;
       position: absolute;
+      right: inherit;
       top: 15px;
 
       @include media($mobile) {
