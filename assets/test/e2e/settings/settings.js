@@ -2,9 +2,8 @@ var url = process.env.TRAVIS ? 'http://ukti-navigator-staging.herokuapp.com' : '
 
 module.exports = {
     navigate: {
-        home: url+'/markets/',
-        filtering: url+'/markets/filter/',
-        list: url+'/markets/search'
+        home: url+'/',
+        list: url+'/markets/results/'
     },
     pageHeader: element(by.css('h1.h1'))
 };
