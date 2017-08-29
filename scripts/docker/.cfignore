@@ -1,0 +1,47 @@
+.git
+
+# OSX
+.DS_Store
+
+# Python
+*.py[cod]
+__pycache__
+*.egg-info
+
+# JS
+node_modules
+
+# npm
+package.json
+gulpfile.babel.js 
+.babelrc 
+karma.conf.js 
+package.json 
+projectpath.babel.js
+
+# pyenv
+.python-version
+
+# dotenv
+.env
+
+*.DS_Store
+*.icloud
+
+scripts/
+
+# nodes #
+node_modules/
+
+# uncompiled assets
+app/assets/
+
+# uncollected static
+app/static/
+app/fixstatic/
+
+# Js test coverage
+app/assets/test/unit/coverage/
+
+# Media files
+app/media/

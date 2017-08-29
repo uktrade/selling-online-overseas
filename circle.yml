@@ -3,22 +3,16 @@ machine:
     version: 6.10.3
   python:
     version: 3.5.0
+  java:
+    version: oraclejdk8
 
 dependencies:
   pre:
-    - pip install -r requirements_for_test.txt
+    - echo "NAV_BUILD_TYPE=local"> build.env
+    - cp scripts/local/test.env scripts/local/vars.env
   override:
-    - npm install
-  post:
-    - npm rebuild node-sass
-    - npm run build
+    - make
 
 test:
   override:
-    - ./scripts/run_tests.sh
-
-deployment:
-  staging:
-    branch: master
-    heroku:
-      appname: dit-navigator-staging
+    - make test

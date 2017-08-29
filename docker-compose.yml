@@ -1,0 +1,62 @@
+version: '2'
+services:
+    dev:
+        build:
+            context: .
+            dockerfile: scripts/docker/Dockerfile-dev
+        environment:
+            DATABASE_URL: postgresql://postgres:postgres@postgres-dev/navigator
+            DJANGO_SETTINGS_MODULE: navigator.settings.dev
+            SECRET_KEY: DEV_SECRET_KEY
+            STORAGE_TYPE: local
+            DEV_PORT: ${DEV_PORT}
+        links: [postgres-dev]
+        depends_on: [postgres-dev]
+        ports: ["${DEV_PORT}:${DEV_PORT}"]
+        entrypoint: dockerize -wait tcp://postgres:5432 -timeout 60s
+        tty: true
+        volumes:
+            - ./app:/project/app
+        command: /project/web-start.sh
+
+    test:
+        build:
+            context: .
+            dockerfile: scripts/docker/Dockerfile-test
+        environment:
+            DATABASE_URL: postgresql://postgres:postgres@postgres-testing/navigator
+            DJANGO_SETTINGS_MODULE: navigator.settings.test
+            SECRET_KEY: TEST_SECRET_KEY
+            STORAGE_TYPE: local
+            TEST_PORT: ${TEST_PORT}
+        links: [postgres-testing]
+        depends_on: [postgres-testing]
+        ports: ["${TEST_PORT}:${TEST_PORT}"]
+        tty: true
+        entrypoint: dockerize -wait tcp://postgres:5432 -timeout 60s
+        command: /project/run-tests.sh
+
+    build:
+        build:
+            context: .
+            dockerfile: ./scripts/docker/Dockerfile-deploy
+        env_file:
+            - vars.env
+        tty: true
+        command: /project/deploy.sh
+
+    postgres-dev:
+        image: postgres:9.5.2
+        restart: always
+        environment:
+            POSTGRES_DB: navigator
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+
+    postgres-testing:
+        image: postgres:9.5.2
+        restart: always
+        environment:
+            POSTGRES_DB: navigator
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
