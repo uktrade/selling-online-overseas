@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = ['selling-online-overseas.export.staging.uktrade.io', 'dit-navigator-staging.herokuapp.com', 'navigator-staging.cloudapps.digital']
+ALLOWED_HOSTS = ['selling-online-overseas.export.staging.uktrade.io', 'dit-navigator-staging.herokuapp.com', 'selling-online-overseas.export.staging.uktrade.io']
 ADMINS = (('David Downes', 'david@downes.co.uk'),)
 
 RESTRICT_IPS = True
