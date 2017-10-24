@@ -73,7 +73,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.hosts',
-                'core.context_processors.feature_flags',
+                'core.context_processors.sso_processor',
             ],
         },
     },
@@ -201,7 +201,7 @@ SSO_HOST = os.environ.get('SSO_HOST', 'https://sso.trade.great.gov.uk/')
 PROFILE_HOST = os.environ.get('PROFILE_HOST', 'https://profile.great.gov.uk/')
 SSO_PROXY_LOGIN_URL = os.environ.get('SSO_PROXY_LOGIN_URL', 'https://sso.trade.great.gov.uk/accounts/login/')
 SSO_PROXY_SIGNUP_URL = os.environ.get('SSO_PROXY_SIGNUP_URL', 'https://sso.trade.great.gov.uk/accounts/signup/')
-SSO_PROFILE_URL = os.environ.get('SSO_PROXY_SIGNUP_URL', 'https://sso.trade.great.gov.uk/accounts/signup/')
+SSO_PROFILE_URL = os.environ.get('SSO_PROFILE_URL', 'https://profile.great.gov.uk/selling-online-overseas')
 
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',

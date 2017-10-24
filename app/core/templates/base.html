@@ -46,7 +46,8 @@
     </noscript>
   {% endblock google_tag_manager_noscript %}
 
-  {% if features.FEATURE_NEW_SHARED_HEADER_ENABLED %}
+  <!-- enabling new header/footer for dev purposes -->
+  {% if True %}
     {% include 'directory_header_footer/header.html' %}
   {% else %}
     <header role="banner"  class="">
@@ -151,7 +152,7 @@
       </div>
     </main>
 
-    {% if features.FEATURE_NEW_SHARED_HEADER_ENABLED %}
+    {% if True %}
       {% include 'directory_header_footer/footer.html' %}
     {% else %}
       <footer role="contentinfo">

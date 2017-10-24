@@ -22,13 +22,13 @@ def feature_flags(request):
 
 def sso_processor(request):
     url = request.build_absolute_uri()
-    login_url = settings.SSO_PROXY_LOGIN_URL
+    sso_host = settings.SSO_HOST
+    soo_host = settings.SOO_HOST
     return {
-        'sso_user': request.sso_user,
-        'sso_is_logged_in': request.sso_user is not None,
-        'sso_login_url': '{0}?next={1}'.format(login_url, url),
-        'sso_register_url': settings.SSO_PROXY_SIGNUP_URL,
-        'sso_logout_url': settings.SSO_PROXY_LOGOUT_URL,
+        'sso_is_logged_in': request.user.is_authenticated,
+        'sso_login_url': '{0}accounts/login/?next={1}'.format(sso_host, soo_host),
+        'sso_register_url': '{0}accounts/signup/'.format(sso_host),
+        'sso_logout_url': '{0}accounts/logout/?next={1}'.format(sso_host, soo_host),
         'sso_profile_url': settings.SSO_PROFILE_URL,
     }
 
