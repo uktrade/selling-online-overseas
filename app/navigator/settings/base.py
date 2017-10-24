@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'geography',
     'products',
     'thumber',
+    'directory_header_footer'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -72,10 +73,20 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.hosts',
+                'directory_header_footer.context_processors.sso_processor',
+                ('directory_header_footer.context_processors.'
+                'header_footer_context_processor'),
             ],
         },
     },
 ]
+
+HEADER_FOOTER_CONTACT_US_URL = os.getenv(
+    'HEADER_FOOTER_CONTACT_US_URL',
+    'https://contact-us.export.great.gov.uk/directory',
+)
+
+HEADER_FOOTER_CSS_ACTIVE_CLASSES = {'soo': True}
 
 WSGI_APPLICATION = 'navigator.wsgi.application'
 
@@ -186,6 +197,7 @@ SOO_HOST = os.environ.get('SOO_HOST', 'https://selling-online-overseas.export.gr
 HELP_HOST = os.environ.get('HELP_HOST', 'https://contact-us.export.great.gov.uk/')
 SSO_HOST = os.environ.get('SSO_HOST', 'https://sso.trade.great.gov.uk/')
 PROFILE_HOST = os.environ.get('PROFILE_HOST', 'https://profile.great.gov.uk/')
+SSO_PROXY_LOGIN_URL = ''
 
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',

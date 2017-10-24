@@ -10,3 +10,8 @@ def hosts(request):
     }
 
     return hosts
+
+def feature_flags(request):
+    return {
+        features: {}
+    }
