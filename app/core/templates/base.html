@@ -46,8 +46,7 @@
     </noscript>
   {% endblock google_tag_manager_noscript %}
 
-  <!-- enabling new header/footer for dev purposes -->
-  {% if True %}
+  {% if False %}
     {% include 'directory_header_footer/header.html' %}
   {% else %}
     <header role="banner"  class="">
@@ -152,7 +151,7 @@
       </div>
     </main>
 
-    {% if True %}
+    {% if False %}
       {% include 'directory_header_footer/footer.html' %}
     {% else %}
       <footer role="contentinfo">
