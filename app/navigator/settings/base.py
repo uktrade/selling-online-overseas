@@ -74,6 +74,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.hosts',
                 'core.context_processors.sso_processor',
+                ('directory_header_footer.context_processors.'
+                 'urls_processor'),
             ],
         },
     },
@@ -86,12 +88,7 @@ HEADER_FOOTER_CONTACT_US_URL = os.getenv(
 
 HEADER_FOOTER_CSS_ACTIVE_CLASSES = {'soo': True}
 
-FEATURE_NEW_SHARED_HEADER_ENABLED = os.getenv(
-    'FEATURE_NEW_SHARED_HEADER_ENABLED'
-) == 'true'
-
 WSGI_APPLICATION = 'navigator.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -105,16 +102,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'NumericPasswordValidator',
     },
 ]
 
@@ -186,7 +187,8 @@ CKEDITOR_CONFIGS = {
         'forcePasteAsPlainText': True,
         'disableNativeSpellChecker': False,
         'toolbar_Custom': [
-            ['Format', 'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'],
+            ['Format', 'Bold', 'Italic', 'Underline', 'Strike',
+                'RemoveFormat'],
             ['BulletedList', 'NumberedList'],
             ['Link', 'Unlink'],
             ['Source']
@@ -195,13 +197,19 @@ CKEDITOR_CONFIGS = {
 }
 
 # Hosts for various services, used in templates
-SOO_HOST = os.environ.get('SOO_HOST', 'https://selling-online-overseas.export.great.gov.uk/')
-HELP_HOST = os.environ.get('HELP_HOST', 'https://contact-us.export.great.gov.uk/')
+SOO_HOST = os.environ.get(
+    'SOO_HOST', 'https://selling-online-overseas.export.great.gov.uk/')
+HELP_HOST = os.environ.get(
+    'HELP_HOST', 'https://contact-us.export.great.gov.uk/')
 SSO_HOST = os.environ.get('SSO_HOST', 'https://sso.trade.great.gov.uk/')
 PROFILE_HOST = os.environ.get('PROFILE_HOST', 'https://profile.great.gov.uk/')
-SSO_PROXY_LOGIN_URL = os.environ.get('SSO_PROXY_LOGIN_URL', 'https://sso.trade.great.gov.uk/accounts/login/')
-SSO_PROXY_SIGNUP_URL = os.environ.get('SSO_PROXY_SIGNUP_URL', 'https://sso.trade.great.gov.uk/accounts/signup/')
-SSO_PROFILE_URL = os.environ.get('SSO_PROFILE_URL', 'https://profile.great.gov.uk/selling-online-overseas')
+SSO_PROXY_LOGIN_URL = os.environ.get(
+    'SSO_PROXY_LOGIN_URL', 'https://sso.trade.great.gov.uk/accounts/login/')
+SSO_PROXY_SIGNUP_URL = os.environ.get(
+    'SSO_PROXY_SIGNUP_URL', 'https://sso.trade.great.gov.uk/accounts/signup/')
+SSO_PROFILE_URL = os.environ.get(
+    'SSO_PROFILE_URL', 'https://profile.great.gov.uk/selling-online-overseas')
+
 
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
