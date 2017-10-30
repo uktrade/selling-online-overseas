@@ -11,24 +11,17 @@ def hosts(request):
 
     return hosts
 
-def feature_flags(request):
-    return {
-        'features': {
-            'FEATURE_NEW_SHARED_HEADER_ENABLED': (
-                settings.FEATURE_NEW_SHARED_HEADER_ENABLED
-            )
-        }
-    }
 
 def sso_processor(request):
-    url = request.build_absolute_uri()
     sso_host = settings.SSO_HOST
     soo_host = settings.SOO_HOST
+    url = request.build_absolute_uri()
+    login_url = settings.SSO_PROXY_LOGIN_URL
     return {
         'sso_is_logged_in': request.user.is_authenticated,
-        'sso_login_url': '{0}accounts/login/?next={1}'.format(sso_host, soo_host),
+        'sso_login_url': '{0}?next={1}'.format(login_url, url),
         'sso_register_url': '{0}accounts/signup/'.format(sso_host),
-        'sso_logout_url': '{0}accounts/logout/?next={1}'.format(sso_host, soo_host),
+        'sso_logout_url': '{0}accounts/logout/?next={1}'.format(sso_host, url),
         'sso_profile_url': settings.SSO_PROFILE_URL,
     }
 
