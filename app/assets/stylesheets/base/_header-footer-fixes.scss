@@ -25,10 +25,13 @@ main {
   }
 }
 #footer {
-  font-family: Roboto;
-  margin-bottom: -22px;
   a {
     line-height: inherit;
+  }
+  font-family: Roboto;
+  margin-bottom: -22px;
+  .list-heading {
+    font-weight: 600;
   }
 }
 #menu {
