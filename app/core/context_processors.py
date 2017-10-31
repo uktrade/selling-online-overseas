@@ -14,7 +14,6 @@ def hosts(request):
 
 def sso_processor(request):
     sso_host = settings.SSO_HOST
-    soo_host = settings.SOO_HOST
     url = request.build_absolute_uri()
     login_url = settings.SSO_PROXY_LOGIN_URL
     return {
@@ -23,12 +22,4 @@ def sso_processor(request):
         'sso_register_url': '{0}accounts/signup/'.format(sso_host),
         'sso_logout_url': '{0}accounts/logout/?next={1}'.format(sso_host, url),
         'sso_profile_url': settings.SSO_PROFILE_URL,
-    }
-
-
-def header_footer_context_processor(request):
-    active_classes = getattr(settings, 'HEADER_FOOTER_CSS_ACTIVE_CLASSES', {})
-    return {
-        'header_footer_contact_us_url': settings.HEADER_FOOTER_CONTACT_US_URL,
-        'header_footer_css_active_classes': active_classes,
     }

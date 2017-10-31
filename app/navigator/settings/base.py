@@ -76,6 +76,8 @@ TEMPLATES = [
                 'core.context_processors.sso_processor',
                 ('directory_header_footer.context_processors.'
                  'urls_processor'),
+                ('directory_header_footer.context_processors.'
+                    'header_footer_context_processor')
             ],
         },
     },
