@@ -53,12 +53,7 @@
     </noscript>
   {% endblock google_tag_manager_noscript %}
 
-  <!-- if using new header -->
-  {% if True %}
-    {% include 'directory_header_footer/header.html' %}
-  {% else %}
-    {% include 'directory_header_footer/header_old.html' %}
-  {% endif %}
+  {% include 'directory_header_footer/header.html' %}
 
     <main role="main">
       <div class="main" id="content">
@@ -76,12 +71,7 @@
       </div>
     </main>
 
-    <!-- if using new footer -->
-    {% if True %}
-      {% include 'directory_header_footer/footer.html' %}
-    {% else %}
-      {% include 'directory_header_footer/footer_old.html' %}
-    {% endif %}
+  {% include 'directory_header_footer/footer.html' %}
 
     {% block footer_javascript %}
       <script src="{% static "javascripts/all.js" %}"></script>
