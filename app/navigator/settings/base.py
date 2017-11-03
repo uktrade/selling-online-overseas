@@ -104,20 +104,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.'
-        'UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.'
-        'MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.'
-        'CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.'
-        'NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -211,6 +207,26 @@ SSO_PROXY_SIGNUP_URL = os.environ.get(
     'SSO_PROXY_SIGNUP_URL', 'https://sso.trade.great.gov.uk/accounts/signup/')
 SSO_PROFILE_URL = os.environ.get(
     'SSO_PROFILE_URL', 'https://profile.great.gov.uk/selling-online-overseas')
+
+# SSO
+SSO_PROXY_SIGNATURE_SECRET = os.environ.get(
+    'SSO_PROXY_SIGNATURE_SECRET', 'proxy_signature_debug')
+SSO_PROXY_API_CLIENT_BASE_URL = os.environ.get(
+    'SSO_PROXY_API_CLIENT_BASE_URL', 'http://sso.trade.great.dev:8004/')
+SSO_PROXY_LOGIN_URL = os.environ.get(
+    'SSO_PROXY_LOGIN_URL', 'http://sso.trade.great.dev:8004/accounts/login/')
+SSO_PROXY_LOGOUT_URL = os.environ.get(
+    'SSO_PROXY_LOGOUT_URL', 'http://sso.trade.great.dev:8004/accounts/'
+    'logout/?next=http://soo.trade.great.dev:8001')
+SSO_PROXY_SIGNUP_URL = os.environ.get(
+    'SSO_PROXY_SIGNUP_URL', 'http://sso.trade.great.dev:8004/accounts/signup/')
+SSO_PROFILE_URL = os.environ.get(
+    'SSO_PROFILE_URL',
+    'http://profile.trade.great.dev:8006/selling-online-overseas/')
+SSO_PROXY_REDIRECT_FIELD_NAME = os.environ.get(
+    'SSO_PROXY_REDIRECT_FIELD_NAME', 'next')
+SSO_PROXY_SESSION_COOKIE = os.environ.get(
+    'SSO_PROXY_SESSION_COOKIE', 'debug_sso_session_cookie')
 
 
 THUMBNAIL_PROCESSORS = (
