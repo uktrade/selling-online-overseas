@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 import dj_database_url
 from easy_thumbnails.conf import Settings as thumbnail_settings
+from directory_constants.constants import urls as default_urls
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -196,9 +197,9 @@ CKEDITOR_CONFIGS = {
 
 # Hosts for various services, used in templates
 SOO_HOST = os.environ.get(
-    'SOO_HOST', 'https://selling-online-overseas.export.great.gov.uk/')
+    'SOO_HOST', default_urls.SERVICES_SOO)
 HELP_HOST = os.environ.get(
-    'HELP_HOST', 'https://contact-us.export.great.gov.uk/')
+    'HELP_HOST', default_urls.INFO_CONTACT_US_DIRECTORY)
 SSO_HOST = os.environ.get('SSO_HOST', 'https://sso.trade.great.gov.uk/')
 PROFILE_HOST = os.environ.get('PROFILE_HOST', 'https://profile.great.gov.uk/')
 SSO_PROXY_LOGIN_URL = os.environ.get(
