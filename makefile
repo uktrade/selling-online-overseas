@@ -1,6 +1,6 @@
 include build.env
 
-setenv PORT=${DEV_PORT}
+export PORT := ${DEV_PORT}
 
 build: build_${NAV_BUILD_TYPE}
 
