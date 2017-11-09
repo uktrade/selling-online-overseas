@@ -78,7 +78,7 @@ var autoComplete =(function ($) {
             data: {q: $(element).val()}
         });
 
-        $.when(categories)
+        categories
             .done(function (categories) {
                 var data = categories.countries ? categories.countries : categories.categories;
 
