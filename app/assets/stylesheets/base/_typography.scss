@@ -1,5 +1,3 @@
-@import url($font-family-url);
-
 body {
   @extend %font-base;
   background-color: $body-background-color;

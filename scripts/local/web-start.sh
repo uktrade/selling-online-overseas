@@ -4,8 +4,8 @@ set -a
 source scripts/local/vars.env
 set +a
 
-if [ -z "${DEV_PORT}" ]; then 
-  PORT=8000
+if [ -z "${DEV_PORT}" ]; then
+  PORT=8008
 else
   PORT=${DEV_PORT}
 fi
