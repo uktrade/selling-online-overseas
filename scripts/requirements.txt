@@ -8,7 +8,6 @@ django-appconf==1.0.1
 django-ckeditor==5.0.3
 django-grappelli==2.8.3
 django-image-cropping==1.0.4
-django-ip-restriction==1.0.0
 django-reversion==2.0.8
 django-storages==1.5.2
 django-thumber==1.0.0
@@ -26,3 +25,4 @@ s3transfer==0.1.10
 six==1.10.0
 whitenoise==3.2.1
 Whoosh==2.7.4
+-e git+https://github.com/uktrade/dit-ip.git@v1.1.0#egg=ip_restriction
