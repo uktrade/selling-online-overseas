@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 import dj_database_url
 from easy_thumbnails.conf import Settings as thumbnail_settings
+from directory_constants.constants import urls as default_urls
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'geography',
     'products',
     'thumber',
+    'directory_header_footer'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -56,6 +58,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'ip_restriction.IpWhitelister',
+    'sso.middleware.SSOUserMiddleware',
 ]
 
 ROOT_URLCONF = 'navigator.urls'
@@ -72,13 +75,23 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.hosts',
+                'directory_header_footer.context_processors.sso_processor',
+                'directory_header_footer.context_processors.urls_processor',
+                ('directory_header_footer.context_processors.'
+                    'header_footer_context_processor')
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'navigator.wsgi.application'
+HEADER_FOOTER_CONTACT_US_URL = os.getenv(
+    'HEADER_FOOTER_CONTACT_US_URL',
+    'https://contact-us.export.great.gov.uk/directory',
+)
 
+HEADER_FOOTER_CSS_ACTIVE_CLASSES = {'soo': True}
+
+WSGI_APPLICATION = 'navigator.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -173,7 +186,8 @@ CKEDITOR_CONFIGS = {
         'forcePasteAsPlainText': True,
         'disableNativeSpellChecker': False,
         'toolbar_Custom': [
-            ['Format', 'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'],
+            ['Format', 'Bold', 'Italic', 'Underline', 'Strike',
+                'RemoveFormat'],
             ['BulletedList', 'NumberedList'],
             ['Link', 'Unlink'],
             ['Source']
@@ -182,10 +196,39 @@ CKEDITOR_CONFIGS = {
 }
 
 # Hosts for various services, used in templates
-SOO_HOST = os.environ.get('SOO_HOST', 'https://selling-online-overseas.export.great.gov.uk/')
-HELP_HOST = os.environ.get('HELP_HOST', 'https://contact-us.export.great.gov.uk/')
+SOO_HOST = os.environ.get(
+    'SOO_HOST', default_urls.SERVICES_SOO)
+HELP_HOST = os.environ.get(
+    'HELP_HOST', default_urls.INFO_CONTACT_US_DIRECTORY)
 SSO_HOST = os.environ.get('SSO_HOST', 'https://sso.trade.great.gov.uk/')
 PROFILE_HOST = os.environ.get('PROFILE_HOST', 'https://profile.great.gov.uk/')
+SSO_PROXY_LOGIN_URL = os.environ.get(
+    'SSO_PROXY_LOGIN_URL', 'https://sso.trade.great.gov.uk/accounts/login/')
+SSO_PROXY_SIGNUP_URL = os.environ.get(
+    'SSO_PROXY_SIGNUP_URL', 'https://sso.trade.great.gov.uk/accounts/signup/')
+SSO_PROFILE_URL = os.environ.get(
+    'SSO_PROFILE_URL', 'https://profile.great.gov.uk/selling-online-overseas')
+
+# SSO
+SSO_PROXY_SIGNATURE_SECRET = os.environ.get(
+    'SSO_PROXY_SIGNATURE_SECRET', 'proxy_signature_debug')
+SSO_PROXY_API_CLIENT_BASE_URL = os.environ.get(
+    'SSO_PROXY_API_CLIENT_BASE_URL', 'http://sso.trade.great.dev:8004/')
+SSO_PROXY_LOGIN_URL = os.environ.get(
+    'SSO_PROXY_LOGIN_URL', 'http://sso.trade.great.dev:8004/accounts/login/')
+SSO_PROXY_LOGOUT_URL = os.environ.get(
+    'SSO_PROXY_LOGOUT_URL', 'http://sso.trade.great.dev:8004/accounts/'
+    'logout/?next=http://soo.trade.great.dev:8001')
+SSO_PROXY_SIGNUP_URL = os.environ.get(
+    'SSO_PROXY_SIGNUP_URL', 'http://sso.trade.great.dev:8004/accounts/signup/')
+SSO_PROFILE_URL = os.environ.get(
+    'SSO_PROFILE_URL',
+    'http://profile.trade.great.dev:8006/selling-online-overseas/')
+SSO_PROXY_REDIRECT_FIELD_NAME = os.environ.get(
+    'SSO_PROXY_REDIRECT_FIELD_NAME', 'next')
+SSO_PROXY_SESSION_COOKIE = os.environ.get(
+    'SSO_PROXY_SESSION_COOKIE', 'debug_sso_session_cookie')
+
 
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
