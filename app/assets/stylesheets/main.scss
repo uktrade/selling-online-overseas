@@ -28,8 +28,6 @@ $path: '/static/images/';
 
 @import 'components/buttons';
 @import 'components/tooltip';
-@import 'components/navigation';
-@import 'components/footer';
 @import 'components/dynamic-dropdown';
 @import 'components/nav-intro';
 @import 'components/audit';
@@ -47,3 +45,5 @@ $path: '/static/images/';
 
 @import 'pages/detail';
 @import 'pages/markets';
+
+@import 'base/header-footer-fixes'; // overrides for any broken header/footer styling
