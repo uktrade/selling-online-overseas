@@ -58,7 +58,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'ip_restriction.IpWhitelister',
-    'sso.middleware.SSOUserMiddleware',
 ]
 
 ROOT_URLCONF = 'navigator.urls'
@@ -75,7 +74,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.hosts',
-                'directory_header_footer.context_processors.sso_processor',
+                'sso.context_processors.sso_processor',
                 'directory_header_footer.context_processors.urls_processor',
                 ('directory_header_footer.context_processors.'
                     'header_footer_context_processor')
