@@ -53,7 +53,7 @@
     </noscript>
   {% endblock google_tag_manager_noscript %}
 
-  {% include 'directory_header_footer/header.html' %}
+  {% include 'directory_header_footer/header_static.html' %}
 
     <main role="main">
       <div class="main" id="content">
@@ -71,7 +71,7 @@
       </div>
     </main>
 
-  {% include 'directory_header_footer/footer.html' %}
+  {% include 'directory_header_footer/footer_static.html' %}
 
     {% block footer_javascript %}
       <script src="{% static "javascripts/all.js" %}"></script>
