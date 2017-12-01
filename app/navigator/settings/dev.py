@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG = True
-ALLOWED_HOSTS = ['soo.trade.great.dev']
+ALLOWED_HOSTS = ['localhost', 'soo.trade.great.dev']
 
 # Local SSO urls
 SOO_HOST = 'http://soo.trade.great.dev:8008/'
@@ -49,7 +49,7 @@ SSO_PROXY_API_CLIENT_BASE_URL = 'http://sso.trade.great.dev:8004/'
 SSO_PROXY_LOGIN_URL = 'http://sso.trade.great.dev:8004/accounts/login/'
 SSO_PROXY_LOGOUT_URL = (
     'http://sso.trade.great.dev:8004/accounts/logout/'
-    '?next=http://soo.trade.great.dev:8001')
+    '?next=http://soo.trade.great.dev:8008')
 SSO_PROXY_SIGNUP_URL = 'http://sso.trade.great.dev:8004/accounts/signup/'
 SSO_PROFILE_URL = (
     'http://profile.trade.great.dev:8006/selling-online-overseas/')
