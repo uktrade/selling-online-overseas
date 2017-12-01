@@ -33,9 +33,7 @@ GUIDANCE_OPERATIONS_AND_COMPLIANCE = (
 # SERVICES
 SERVICES_EXOPPS = 'http://opportunities.export.great.gov.uk'
 SERVICES_FAB = 'http://buyer.trade.great.dev:8001'
-SERVICES_GET_FINANCE = (
-    'http://exred.trade.great.dev:8007/'
-    'finance/get-finance-support-from-government')
+SERVICES_GET_FINANCE = 'http://exred.trade.great.dev:8007/get-finance'
 SERVICES_SOO = 'http://soo.trade.great.dev:8008'
 
 # INFO
