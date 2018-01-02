@@ -27,7 +27,7 @@ s3transfer==0.1.10
 six==1.10.0
 whitenoise==3.2.1
 Whoosh==2.7.4
--e git+https://github.com/uktrade/directory-header-footer.git@v2.9.4#egg=directory_header_footer
+-e git+https://github.com/uktrade/directory-header-footer.git@v2.10.0#egg=directory_header_footer
 -e git+https://github.com/uktrade/directory-constants.git@v6.0.0#egg=directory_constants
 -e git+https://github.com/uktrade/directory-sso-api-client.git@v2.0.0#egg=directory_sso_api_client
 -e git+https://github.com/uktrade/directory-signature-auth.git@v2.0.0#egg=sigauth
