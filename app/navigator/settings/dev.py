@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG = True
-ALLOWED_HOSTS = ['soo.trade.great']
+ALLOWED_HOSTS = ['localhost', 'soo.trade.great']
 
 # Local SSO urls
 SOO_HOST = 'http://soo.trade.great:8008/'
@@ -33,9 +33,7 @@ GUIDANCE_OPERATIONS_AND_COMPLIANCE = (
 # SERVICES
 SERVICES_EXOPPS = 'http://opportunities.export.great.gov.uk'
 SERVICES_FAB = 'http://buyer.trade.great:8001'
-SERVICES_GET_FINANCE = (
-    'http://exred.trade.great:8007/'
-    'finance/get-finance-support-from-government')
+SERVICES_GET_FINANCE = 'http://exred.trade.great:8007/get-finance'
 SERVICES_SOO = 'http://soo.trade.great:8008'
 
 # INFO
@@ -51,7 +49,7 @@ SSO_PROXY_API_CLIENT_BASE_URL = 'http://sso.trade.great:8004/'
 SSO_PROXY_LOGIN_URL = 'http://sso.trade.great:8004/accounts/login/'
 SSO_PROXY_LOGOUT_URL = (
     'http://sso.trade.great:8004/accounts/logout/'
-    '?next=http://soo.trade.great:8001')
+    '?next=http://soo.trade.great:8008')
 SSO_PROXY_SIGNUP_URL = 'http://sso.trade.great:8004/accounts/signup/'
 SSO_PROFILE_URL = (
     'http://profile.trade.great:8006/selling-online-overseas/')
