@@ -5,32 +5,3 @@ main {
   z-index: 0;
   position:relative;
 }
-.lg-5 {
-  width: calc(100% / 5);
-}
-.lg-6 {
-  width: calc(100% / 6);
-}
-.lg-3 {
-  width: calc(100% / 3);
-}
-#header-menu {
-  img {
-    margin-bottom: -3px;
-  }
-}
-.account-links {
-  li:nth-child(3) a:before {
-    height: 0 !important;
-  }
-}
-#footer {
-  a {
-    line-height: inherit;
-  }
-  font-family: Roboto;
-  margin-bottom: -22px;
-  .list-heading {
-    font-weight: 600;
-  }
-}
