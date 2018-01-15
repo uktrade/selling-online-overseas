@@ -1,16 +1,13 @@
 .shortlist {
   &-items {
     height: 20px;
-    width: 100%;
 
     &--short {
       margin-top: 5px;
-      width: auto;
 
       @include media($tablet) {
         margin-top: 35px;
       }
-
 
       @include media($mobile) {
         margin-top: 5px;
