@@ -18,9 +18,10 @@
     {% endblock head_meta %}
     {% block head_favicon %}
       <link rel="icon" type="image/png" href="{% static "images/favicon.ico" %}">
+      <link rel="apple-touch-icon-precomposed" sizes="192x192" href="{% static 'images/favicon-192x192.png' %}">
     {% endblock head_favicon %}
     {% block head_css %}
-      <link href="https://fonts.googleapis.com/css?family=Roboto:400,600" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
       <link href="{% static 'Dit-Pattern-Styling/public/css/main.css' %}" media="all" rel="stylesheet" />
       <link href="{% static 'Dit-Pattern-Styling/public/css/compatibility.css' %}" media="all" rel="stylesheet" />
       <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
@@ -53,7 +54,7 @@
     </noscript>
   {% endblock google_tag_manager_noscript %}
 
-  {% include 'directory_header_footer/header.html' %}
+  {% include 'directory_header_footer/header_static.html' %}
 
     <main role="main">
       <div class="main" id="content">
@@ -71,7 +72,7 @@
       </div>
     </main>
 
-  {% include 'directory_header_footer/footer.html' %}
+  {% include 'directory_header_footer/footer_static.html' %}
 
     {% block footer_javascript %}
       <script src="{% static "javascripts/all.js" %}"></script>
