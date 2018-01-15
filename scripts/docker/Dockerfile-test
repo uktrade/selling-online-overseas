@@ -38,8 +38,8 @@ RUN pip3 install -r /project/requirements.txt
 RUN apt-get install -y default-jre
 
 # Add and install additional python packages for test
-ADD requirements_for_test.txt /project/
-RUN pip3 install -r /project/requirements_for_test.txt
+ADD requirements_test.txt /project/
+RUN pip3 install -r /project/requirements_test.txt
 
 # Copy in necessary files for test run
 ADD scripts/docker/run-tests.sh scripts/docker/test.env setup.cfg /project/
