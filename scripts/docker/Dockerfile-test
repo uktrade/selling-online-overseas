@@ -27,7 +27,7 @@ RUN npm install
 RUN npm rebuild node-sass
 
 # Add project python requirements and install
-ADD scripts/requirements.txt /project/
+ADD requirements.txt /project/
 RUN pip3 install -r /project/requirements.txt
 
 ###########################
@@ -38,7 +38,7 @@ RUN pip3 install -r /project/requirements.txt
 RUN apt-get install -y default-jre
 
 # Add and install additional python packages for test
-ADD scripts/requirements_for_test.txt /project/
+ADD requirements_for_test.txt /project/
 RUN pip3 install -r /project/requirements_for_test.txt
 
 # Copy in necessary files for test run

@@ -12,7 +12,7 @@ source scripts/local/vars.env
 set +a
 
 # Install Python development dependencies
-pip3 install -r scripts/requirements.txt
+pip3 install -r requirements.txt
 
 # Create Postgres databases
 createdb navigator
