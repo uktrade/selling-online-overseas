@@ -50,7 +50,7 @@ display_result $? 5 "Code style check"
 npm run test
 display_result $? 6 "Front end code tested and style check"
 
-pip install -r ./scripts/requirements_for_test.txt --src /usr/local/src
+pip install -r ./requirements_test.txt --src /usr/local/src
 
 cd app && python3 manage.py test --noinput && cd -
 display_result $? 7 "Unit tests"
