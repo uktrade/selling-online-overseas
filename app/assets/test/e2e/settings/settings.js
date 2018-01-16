@@ -1,4 +1,4 @@
-var url = 'http://localhost:' + process.env.PORT;
+var url = 'http://soo.trade.great:8008';
 
 module.exports = {
     navigate: {
