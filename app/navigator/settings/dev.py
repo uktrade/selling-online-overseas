@@ -5,6 +5,7 @@ ALLOWED_HOSTS = ['localhost', 'soo.trade.great']
 
 # Local SSO urls
 SOO_HOST = 'http://soo.trade.great:8008/'
+HELP_HOST = 'http://contact.trade.great:8009/'
 SSO_HOST = 'http://sso.trade.great:8004/'
 PROFILE_HOST = 'https://profile.trade.great:8006/'
 SSO_PROXY_LOGIN_URL = 'http://sso.trade.great:8004/accounts/login/'
