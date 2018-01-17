@@ -17,7 +17,7 @@ else
   export PORT=${TEST_PORT}
 fi
 
-pip install -r scripts/requirements_for_test.txt
+pip install -r requirements_test.txt
 
 npm run build
 

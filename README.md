@@ -92,7 +92,21 @@ To just run the project, execute the following (activating the virtual environme
     make run
 ```
 
-Then visit [localhost:8000](http://localhost:8000)
+Then visit [localhost:8008](http://localhost:8008)
+
+## SSO
+To make sso work locally add the following to your machine's `/etc/hosts`:
+
+| IP Adress | URL                  |
+| --------  | -------------------- |
+| 127.0.0.1 | buyer.trade.great    |
+| 127.0.0.1 | supplier.trade.great |
+| 127.0.0.1 | sso.trade.great      |
+| 127.0.0.1 | api.trade.great      |
+| 127.0.0.1 | profile.trade.great  |
+| 127.0.0.1 | exred.trade.great    |
+
+Then log into `directory-sso` via `sso.trade.great:8001`, and use `navigator` on `soo.trade.great:8008`
 
 ## Running tests
 
