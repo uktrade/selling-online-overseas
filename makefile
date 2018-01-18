@@ -16,7 +16,7 @@ deploy:
 	docker-compose run build /project/deploy.sh
 
 
-build_docker: 
+build_docker:
 	docker-compose rm -f && \
 	docker-compose pull
 	docker-compose build test
@@ -28,7 +28,7 @@ build_local:
 
 rebuild_docker:
 	docker-compose rm -f
-	docker images -q navigator_* | xargs docker rmi -f 
+	docker images -q navigator_* | xargs docker rmi -f
 	make build_docker
 
 rebuild_local:
@@ -36,8 +36,10 @@ rebuild_local:
 	./scripts/local/bootstrap.sh && \
 	./scripts/local/web-start.sh
 
+debug_webserver:
+	make run_local
 
-run_docker: 
+run_docker:
 	docker-compose up --build dev
 
 run_local:
