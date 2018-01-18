@@ -1,1 +1,1 @@
-web: cd app && python manage.py migrate --noinput && gunicorn navigator.wsgi
+web: python app/manage.py runserver 0:$PORT
