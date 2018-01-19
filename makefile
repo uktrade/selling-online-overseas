@@ -11,7 +11,6 @@ DEBUG_SET_ENV_VARS:= \
 	export DEBUG=True; \
 	export DATABASE_URL=postgres://localhost/navigator; \
 	export SECRET_KEY=debug; \
-	export DJANGO_SETTINGS_MODULE=navigator.settings.dev; \
 	export STORAGE_TYPE=local; \
 	export ALLOWED_HOSTS=localhost,soo.trade.great; \
 	export SOO_HOST=http://soo.trade.great:8008/; \
@@ -49,9 +48,13 @@ DEBUG_SET_ENV_VARS:= \
 	export SSO_PROXY_SESSION_COOKIE=debug_sso_session_cookie
 
 TEST_SET_ENV_VARS:= \
+	export SECRET_KEY=test; \
+	export RESTRICT_IPS=false; \
+	export STORAGE_TYPE=local; \
+	export DATABASE_URL=postgres://localhost/navigator; \
 	export DEBUG=True; \
 	export ALLOWED_HOSTS=*; \
-	export ADMINS=David Downes,david@downes.co.uk; \
+	export ADMINS=('David Downes', 'david@downes.co.uk'); \
 	export ALLOW_AUTHENTICATED=True; \
 	export ALLOW_ADMIN=True
 
@@ -113,4 +116,7 @@ test_docker:
 	docker-compose up --build test
 
 test_local:
-	./scripts/local/run_tests.sh
+	pep8 . --exclude .venv,node_modules
+	npm test
+	$(TEST_SET_ENV_VARS) && python app/manage.py collectstatic --noinput
+	$(TEST_SET_ENV_VARS) && coverage run --source='.' app/manage.py test
