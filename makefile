@@ -76,8 +76,16 @@ build_docker:
 	docker-compose build dev
 
 build_local:
-	./scripts/local/bootstrap.sh
-
+	createdb navigator
+	pip3 install -r requirements.txt
+	$(DEBUG_SET_ENV_VARS) && \
+	python app/manage.py migrate
+	$(DEBUG_SET_ENV_VARS) && \
+	python app/manage.py build_index
+	npm install && npm run build
+	npm run webdriver_update
+	$(DEBUG_SET_ENV_VARS) && \
+	python app/manage.py collectstatic --noinput
 
 rebuild_docker:
 	docker-compose rm -f
@@ -86,8 +94,8 @@ rebuild_docker:
 
 rebuild_local:
 	dropdb navigator
-	./scripts/local/bootstrap.sh && \
-	./scripts/local/web-start.sh
+	make build_local && \
+	make run_local
 
 debug_webserver:
 	make run_local
@@ -97,7 +105,7 @@ run_docker:
 
 run_local:
 	$(DEBUG_SET_ENV_VARS) && \
-	python app/manage.py collectstatic --noinput --settings=navigator.settings.base && \
+	python app/manage.py collectstatic --noinput && \
 	python app/manage.py runserver 0.0.0.0:$$PORT
 
 
