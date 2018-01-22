@@ -53,7 +53,6 @@ TEST_SET_ENV_VARS:= \
 	export DATABASE_URL=postgres://localhost/navigator; \
 	export DEBUG=True; \
 	export ALLOWED_HOSTS=*; \
-	export ADMINS=('David Downes', 'david@downes.co.uk'); \
 	export ALLOW_AUTHENTICATED=True; \
 	export ALLOW_ADMIN=True
 
