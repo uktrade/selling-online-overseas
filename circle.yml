@@ -10,6 +10,7 @@ dependencies:
   override:
     - make
     - make test_requirements
+    - npm run build
 
 test:
   override:
