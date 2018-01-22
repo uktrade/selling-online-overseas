@@ -22,7 +22,6 @@ export RESTRICT_IPS=false
 export STORAGE_TYPE=local
 export DATABASE_URL=postgres://localhost/navigator
 export DEBUG=True
-export ALLOWED_HOSTS=*
 export ALLOW_AUTHENTICATED=True
 export ALLOW_ADMIN=True
 

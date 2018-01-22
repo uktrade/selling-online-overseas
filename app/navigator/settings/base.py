@@ -24,6 +24,10 @@ BASE_DIR = os.path.dirname(PROJECT_ROOT)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+# As the app is running behind a host-based router supplied by Heroku or other
+# PaaS, we can open ALLOWED_HOSTS
+ALLOWED_HOSTS = ['*']
+
 # Application definition
 
 INSTALLED_APPS = [
