@@ -221,6 +221,8 @@ SSO_PROXY_REDIRECT_FIELD_NAME = os.environ.get(
 SSO_PROXY_SESSION_COOKIE = os.environ.get(
     'SSO_PROXY_SESSION_COOKIE', 'debug_sso_session_cookie')
 
+HEADER_FOOTER_CONTACT_US_URL = os.environ.get('HEADER_FOOTER_CONTACT_US_URL')
+
 
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
