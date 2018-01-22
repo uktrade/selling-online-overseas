@@ -119,3 +119,7 @@ test_local:
 	$(TEST_SET_ENV_VARS) && python app/manage.py collectstatic --noinput
 	$(TEST_SET_ENV_VARS) && coverage run --source='.' app/manage.py test
 	$(TEST_SET_ENV_VARS) && cd app && python manage.py test --noinput && cd -
+
+
+test_requirements:
+	pip install -r requirements_test.txt
