@@ -11,11 +11,21 @@ set -a
 source scripts/local/test.env
 set +a
 
-if [ -z "${TEST_PORT}" ]; then 
+if [ -z "${TEST_PORT}" ]; then
   export PORT=9000
 else
   export PORT=${TEST_PORT}
 fi
+
+export PORT=9000
+export SECRET_KEY=test
+export RESTRICT_IPS=false
+export STORAGE_TYPE=local
+export DATABASE_URL=postgres://localhost/navigator
+export DEBUG=True
+export ALLOWED_HOSTS=*
+export ALLOW_AUTHENTICATED=True
+export ALLOW_ADMIN=True
 
 pip install -r requirements_test.txt
 

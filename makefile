@@ -46,16 +46,6 @@ DEBUG_SET_ENV_VARS:= \
 	export SSO_PROXY_REDIRECT_FIELD_NAME=next; \
 	export SSO_PROXY_SESSION_COOKIE=debug_sso_session_cookie
 
-TEST_SET_ENV_VARS:= \
-	export SECRET_KEY=test; \
-	export RESTRICT_IPS=false; \
-	export STORAGE_TYPE=local; \
-	export DATABASE_URL=postgres://localhost/navigator; \
-	export DEBUG=True; \
-	export ALLOWED_HOSTS=*; \
-	export ALLOW_AUTHENTICATED=True; \
-	export ALLOW_ADMIN=True
-
 build: build_${NAV_BUILD_TYPE}
 
 run: run_${NAV_BUILD_TYPE}
@@ -114,12 +104,8 @@ test_docker:
 	docker-compose up --build test
 
 test_local:
-	pep8 . --exclude .venv,node_modules
-	npm test
-	$(TEST_SET_ENV_VARS) && python app/manage.py collectstatic --noinput
-	$(TEST_SET_ENV_VARS) && coverage run --source='.' app/manage.py test
-	$(TEST_SET_ENV_VARS) && cd app && python manage.py test --noinput && cd -
-
+	./scripts/local/run_tests.sh
 
 test_requirements:
 	pip install -r requirements_test.txt
+	npm run build
