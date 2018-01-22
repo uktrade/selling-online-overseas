@@ -17,7 +17,6 @@ else
   export PORT=${TEST_PORT}
 fi
 
-export PORT=9000
 export SECRET_KEY=test
 export RESTRICT_IPS=false
 export STORAGE_TYPE=local
