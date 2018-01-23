@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'geography',
     'products',
     'thumber',
-    'directory_header_footer'
+    'directory_header_footer',
+    'directory_components',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -77,7 +78,8 @@ TEMPLATES = [
                 'sso.context_processors.sso_processor',
                 'directory_header_footer.context_processors.urls_processor',
                 ('directory_header_footer.context_processors.'
-                    'header_footer_context_processor')
+                    'header_footer_context_processor'),
+                'directory_components.context_processors.analytics',
             ],
         },
     },
@@ -248,3 +250,8 @@ INFO_ABOUT = os.getenv('INFO_ABOUT')
 INFO_CONTACT_US_DIRECTORY = os.getenv('INFO_CONTACT_US_DIRECTORY')
 INFO_PRIVACY_AND_COOKIES = os.getenv('INFO_PRIVACY_AND_COOKIES')
 INFO_TERMS_AND_CONDITIONS = os.getenv('INFO_TERMS_AND_CONDITIONS')
+
+# Google tag manager
+GOOGLE_TAG_MANAGER_ID = os.getenv('GOOGLE_TAG_MANAGER_ID', 'GTM-PB37DC')
+GOOGLE_TAG_MANAGER_ENV = os.getenv('GOOGLE_TAG_MANAGER_ENV', '')
+UTM_COOKIE_DOMAIN = None

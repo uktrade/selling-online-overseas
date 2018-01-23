@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block body_class %}details3{% endblock %}
+{% block body_attributes %}class="details3"{% endblock %}
 {% load static utils humanize %}
 {% load static utils thumbnail %}
 
-{% block title %}Marketplace details | {{ market.name }} | Selling online overseas{% endblock title %}
+{% block head_title %}Marketplace details | {{ market.name }} | Selling online overseas{% endblock head_title %}
 
 {% block head_meta_description %}Read what it takes to get on {{ market.name }}.{% endblock head_meta_description %}
 
