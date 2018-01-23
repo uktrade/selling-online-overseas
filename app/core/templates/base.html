@@ -1,66 +1,17 @@
-{% load staticfiles %}
-<!doctype html>
-<!--[if IE 8]>    <html lang="en-us" class="ie8"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
-  <head>
-    <title>{% block title %} Selling online overseas {% endblock title %}</title>
-    {% block head_meta %}
-      <meta name="description" content="{% block head_meta_description %} Selling online overseas {% endblock head_meta_description %}">
-      {% block head_meta_charset %}
-        <meta charset="utf-8">
-      {% endblock head_meta_charset %}
-      {% block head_meta_viewport %}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      {% endblock head_meta_viewport %}
-      {% block head_meta_google_verification %}
-        <meta name="google-site-verification" content="UsYPpFjZgK_HPJX0BmyaiSEFr6VDk-8kD4NARXzhhCE" />
-      {% endblock head_meta_google_verification %}
-    {% endblock head_meta %}
-    {% block head_favicon %}
-      <link href='{% static 'images/favicon-192x192.png' %}' rel='shortcut icon' type='image/png'>
-      <!--[if IE]> <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" /> <![endif]-->
-    {% endblock head_favicon %}
-    {% block head_css %}
-      <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
-      <link href="{% static 'Dit-Pattern-Styling/public/css/main.css' %}" media="all" rel="stylesheet" />
-      <link href="{% static 'Dit-Pattern-Styling/public/css/compatibility.css' %}" media="all" rel="stylesheet" />
-      <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
-      <!--[if IE 8]><link href="{% static "stylesheets/ie8.css" %}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    {% endblock head_css %}
-    <!-- if using new header/footer -->
-    {% if True %}
-      <script src="{% static 'Dit-Pattern-Styling/public/js/third-party.js' %}"></script>
-      <script src="{% static 'Dit-Pattern-Styling/public/js/script.js' %}"></script>
-    {% endif %}
+{% extends 'directory_components/base.html' %}
 
-    {% block google_tag_manager %}
-      <script>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-PB37DC');
-      </script>
-    {% endblock google_tag_manager %}
+{% load static from staticfiles %}
 
-  </head>
-  <body class='{% block body_class %}{% endblock %}'>
+{% block head_css %}
+  {{ block.super }}
+  <link href="{% static 'stylesheets/main.css' %}" rel="stylesheet" media="screen">  }
+{% endblock %}
 
-  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-
-  {% block google_tag_manager_noscript %}
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB37DC" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-  {% endblock google_tag_manager_noscript %}
-
-  {% include 'directory_header_footer/header_static.html' %}
-
+{% block body_content_container %}
     <main role="main">
       <div class="main" id="content">
         {% block content %}{% endblock content %}
-
-        {% block feedback %}
+        {% block feedback_reporter %}
           <section>
             <div class="outer-container push--ends soft--ends">
               <div class="col-12 push--top">
@@ -71,12 +22,4 @@
         {% endblock %}
       </div>
     </main>
-
-  {% include 'directory_header_footer/footer_static.html' %}
-
-    {% block footer_javascript %}
-      <script src="{% static "javascripts/all.js" %}"></script>
-    {% endblock footer_javascript %}
-    {% block extra_js %}{% endblock %}
-  </body>
-</html>
+{% endblock %}

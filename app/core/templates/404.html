@@ -1,20 +1,15 @@
-{% extends "base.html" %}
+{% extends "directory_components/404.html" %}
+
+{% load static from staticfiles %}
+
+{% block head_css %}
+	{{ block.super }}
+	<link href="{% static 'stylesheets/404.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 
 {% block content %}
-<div class="outer-container push--top soft--top min-height">
-  <div class="soft--bottom push--bottom">
-    <div class="col-12 soft--bottom">
-      <h1 class="heading-xlarge flush--top push--bottom">Page not found</h1>
-      <ul class="list-regular soft-half--ends">
-        <li>If you typed in a web address, check if it was entered correctly.</li>
-        <li>If you followed a link here, <a class="link" href="{{ HELP_HOST }}feedback/selling_online_overseas/" title="report a broken link">report the broken link</a>.</li>
-        <li>Return to the <a class="link" href="{{ SOO_HOST }}" title="return to homepage">homepage</a>.</li>
-      </ul>
-      <hr class="push--bottom" />
-      <p class="soft--bottom push--bottom flush--top">HTTP 404 Error Code - Page not found</p>
-    </div>
-  </div>
-</div>
-{% block feedback %}{% endblock feedback %}
-
+	<div class="outer-container">
+		{{ block.super }}
+	</div>
 {% endblock content %}
