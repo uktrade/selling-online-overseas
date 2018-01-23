@@ -24,6 +24,10 @@ BASE_DIR = os.path.dirname(PROJECT_ROOT)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+# As the app is running behind a host-based router supplied by Heroku or other
+# PaaS, we can open ALLOWED_HOSTS
+ALLOWED_HOSTS = ['*']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -82,13 +86,6 @@ TEMPLATES = [
         },
     },
 ]
-
-HEADER_FOOTER_CONTACT_US_URL = os.getenv(
-    'HEADER_FOOTER_CONTACT_US_URL',
-    'https://contact-us.export.great.gov.uk/directory',
-)
-
-HEADER_FOOTER_CSS_ACTIVE_CLASSES = {'soo': True}
 
 WSGI_APPLICATION = 'navigator.wsgi.application'
 
@@ -228,12 +225,9 @@ SSO_PROXY_REDIRECT_FIELD_NAME = os.environ.get(
 SSO_PROXY_SESSION_COOKIE = os.environ.get(
     'SSO_PROXY_SESSION_COOKIE', 'debug_sso_session_cookie')
 
-
-THUMBNAIL_PROCESSORS = (
-    'image_cropping.thumbnail_processors.crop_corners',
-) + thumbnail_settings.THUMBNAIL_PROCESSORS
-
 # HEADER/FOOTER URLS
+HEADER_FOOTER_CONTACT_US_URL = os.environ.get('HEADER_FOOTER_CONTACT_US_URL')
+GREAT_HOME = os.getenv('GREAT_HOME')
 GREAT_EXPORT_HOME = os.getenv('GREAT_EXPORT_HOME')
 
 # EXPORTING PERSONAS
@@ -261,3 +255,7 @@ INFO_ABOUT = os.getenv('INFO_ABOUT')
 INFO_CONTACT_US_DIRECTORY = os.getenv('INFO_CONTACT_US_DIRECTORY')
 INFO_PRIVACY_AND_COOKIES = os.getenv('INFO_PRIVACY_AND_COOKIES')
 INFO_TERMS_AND_CONDITIONS = os.getenv('INFO_TERMS_AND_CONDITIONS')
+
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
