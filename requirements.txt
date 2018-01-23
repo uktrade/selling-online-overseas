@@ -33,3 +33,4 @@ Whoosh==2.7.4
 -e git+https://github.com/uktrade/directory-signature-auth.git@v2.0.0#egg=sigauth
 -e git+https://github.com/uktrade/directory-validators.git@v4.1.0#egg=directory_validators
 -e git+https://github.com/uktrade/dit-ip.git@v1.1.0#egg=ip_restriction
+-e git+https://github.com/uktrade/directory-components.git@v0.3.1#egg=directory_components
