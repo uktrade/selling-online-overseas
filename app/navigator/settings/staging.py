@@ -4,7 +4,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['selling-online-overseas.export.staging.uktrade.io',
                  'dit-navigator-staging.herokuapp.com',
-                 'navigator-staging.cloudapps.digital']
+                 'navigator-staging.cloudapps.digital',
+                 'enav-navigator-dev.cloudapps.digital']
 
 ADMINS = (('David Downes', 'david@downes.co.uk'),)
 
