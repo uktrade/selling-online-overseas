@@ -93,7 +93,6 @@ vars.env
 
 # static files
 staticfiles/
-compiled_assets/
 
 # nodes #
 node_modules/
