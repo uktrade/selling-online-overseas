@@ -60,7 +60,8 @@ jobs:
           command: |
             . venv/bin/activate
             python app/manage.py collectstatic --noinput
-            python app/manage.py test app/
+            python coverage run --source='app' app/manage.py test app/
+            codecov
 
       - run:
           name: Build Whoosh index
