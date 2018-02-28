@@ -62,8 +62,8 @@ jobs:
             python app/manage.py test
 
       - run:
-        name: Build Whoosh index
-        command: |
+          name: Build Whoosh index
+          command: |
             . venv/bin/activate
             python app/manage.py build_index > /dev/null
 
