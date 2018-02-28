@@ -45,7 +45,6 @@ run_docker:
 run_local:
 	./scripts/local/web-start.sh
 
-
 test_docker:
 	docker-compose up --build test
 
