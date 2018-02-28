@@ -1,0 +1,78 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6-jessie-node-browsers
+        environment:
+          DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
+          DJANGO_SETTINGS_MODULE: navigator.settings.test
+          PHANTOMJS_BIN: node_modules/phantomjs/bin/phantomjs
+          SECRET_KEY: foobar
+          RESTRICT_IPS: false
+          STORAGE_TYPE: local
+
+      # Service container image available at `host: localhost`
+      - image: circleci/postgres:9.5
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+
+    working_directory: ~/navigator
+
+    steps:
+      - checkout
+
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+            name: Install node packages
+            command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements_test.txt" }}
+      - run:
+          name: Install python dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements_test.txt
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements_test.txt" }}
+          paths:
+            - "venv"
+
+      - run:
+          name: Run Django tests
+          command: |
+            . venv/bin/activate
+            python app/manage.py test
+
+      - run:
+          name: Build Whoosh index
+          command: |
+            . venv/bin/activate
+            python app/manage.py build_index > /dev/null
+
+      - run:
+          name: Run PEP8 checks
+          command: |
+            . venv/bin/activate
+            pep8 app
+
+      - run:
+          name: Run FE tests
+          command: npm run test
