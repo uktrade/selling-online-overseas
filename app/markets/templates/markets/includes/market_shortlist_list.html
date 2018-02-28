@@ -1,7 +1,7 @@
 {% load static utils thumbnail %}
 
 <li class="markets-item cf background--white push--bottom section-clickable">
-  {% if market.has_special_terms %}<div class="col-12 cf"><div class="markets-deal">Exclusive UK deal</div></div>{% endif%}
+  {% if market.has_special_terms %}<div class="col-12 cf"><div class="markets-deal">Special deal</div></div>{% endif%}
   <div class="markets-item-logoholder float--left push--right soft-half--right">
     <img src="{% thumbnail market.logo.image 168x127 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="Navigate to full profile of {{ market.name }}">
   </div>
