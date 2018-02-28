@@ -1,15 +1,3 @@
-include build.env
-
-export PORT := ${DEV_PORT}
-
-build: build_${NAV_BUILD_TYPE}
-
-run: run_${NAV_BUILD_TYPE}
-
-test: test_${NAV_BUILD_TYPE}
-
-rebuild: rebuild_${NAV_BUILD_TYPE}
-
 deploy:
 	docker-compose pull
 	docker-compose build build
@@ -47,6 +35,3 @@ run_local:
 
 test_docker:
 	docker-compose up --build test
-
-test_local:
-	./scripts/local/run_tests.sh

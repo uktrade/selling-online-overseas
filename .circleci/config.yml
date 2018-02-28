@@ -8,7 +8,6 @@ jobs:
           DJANGO_SETTINGS_MODULE: navigator.settings.test
           PHANTOMJS_BIN: node_modules/phantomjs/bin/phantomjs
           SECRET_KEY: foobar
-          RESTRICT_IPS: false
           STORAGE_TYPE: local
 
       # Service container image available at `host: localhost`
@@ -60,7 +59,7 @@ jobs:
           command: |
             . venv/bin/activate
             python app/manage.py collectstatic --noinput
-            coverage run --source='app' app/manage.py test app/
+            coverage run app/manage.py test app/
             codecov
 
       - run:
