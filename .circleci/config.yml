@@ -60,7 +60,7 @@ jobs:
           command: |
             . venv/bin/activate
             python app/manage.py collectstatic --noinput
-            python coverage run --source='app' app/manage.py test app/
+            coverage run --source='app' app/manage.py test app/
             codecov
 
       - run:
