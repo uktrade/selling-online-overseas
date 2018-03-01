@@ -57,4 +57,3 @@ SSO_PROFILE_URL = (
 SSO_PROXY_REDIRECT_FIELD_NAME = 'next'
 SSO_PROXY_SESSION_COOKIE = 'debug_sso_session_cookie'
 
-RESTRICT_ADMIN = False
