@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/uktrade/navigator.svg?style=svg)](https://circleci.com/gh/uktrade/navigator)
-[![dependencies Status](https://david-dm.org/uktrade/navigator/status.svg)](https://david-dm.org/uktrade/navigator)
-[![devDependencies Status](https://david-dm.org/uktrade/navigator/dev-status.svg)](https://david-dm.org/uktrade/navigator?type=dev)
+[![codecov](https://codecov.io/gh/uktrade/navigator/branch/master/graph/badge.svg)](https://codecov.io/gh/uktrade/navigator)
+[![gemnasium](https://gemnasium.com/badges/github.com/uktrade/navigator.svg)](https://gemnasium.com/github.com/uktrade/navigator)
 
 # navigator
 

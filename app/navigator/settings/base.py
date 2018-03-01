@@ -58,7 +58,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'ip_restriction.IpWhitelister',
+    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware'
 ]
 
 ROOT_URLCONF = 'navigator.urls'
@@ -272,3 +272,9 @@ INFO_DIT = os.getenv('INFO_DIT')
 GOOGLE_TAG_MANAGER_ID = os.getenv('GOOGLE_TAG_MANAGER_ID', 'GTM-PB37DC')
 GOOGLE_TAG_MANAGER_ENV = os.getenv('GOOGLE_TAG_MANAGER_ENV', '')
 UTM_COOKIE_DOMAIN = None
+
+# Admin restrictor
+RESTRICT_ADMIN_BY_IPS = os.getenv('RESTRICT_ADMIN_BY_IPS')
+RESTRICT_ADMIN = RESTRICT_ADMIN_BY_IPS == 'true'
+ALLOWED_ADMIN_IPS = os.getenv('ALLOWED_ADMIN_IPS', [])
+ALLOWED_ADMIN_IP_RANGES = os.getenv('ALLOWED_ADMIN_IP_RANGES', [])

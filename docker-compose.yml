@@ -33,7 +33,7 @@ services:
         depends_on: [postgres-testing]
         ports: ["${TEST_PORT}:${TEST_PORT}"]
         tty: true
-        entrypoint: dockerize -wait tcp://postgres:5432 -timeout 60s
+        entrypoint: dockerize -wait tcp://postgres-testing:5432 -timeout 60s
         command: /project/run-tests.sh
 
     build:
