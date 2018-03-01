@@ -92,4 +92,4 @@ class MarketAdminTests(TestCase):
             market_data = get_market_data()
             response = self.client.post(reverse('admin:markets_market_add'),
                                         market_data)
-            assert response.status_code == 401
+            self.assertEqual(response.status_code, 404)
