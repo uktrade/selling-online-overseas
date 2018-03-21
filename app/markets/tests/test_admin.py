@@ -90,6 +90,9 @@ class MarketAdminTests(TestCase):
             self.assertEquals(Market.objects.count(), 0)
 
             market_data = get_market_data()
-            response = self.client.post(reverse('admin:markets_market_add'),
-                                        market_data)
+            response = self.client.post(
+                reverse('admin:markets_market_add'),
+                market_data,
+                **{'HTTP_X_FORWARDED_FOR': '74.125.224.72'}
+            )
             self.assertEqual(response.status_code, 404)

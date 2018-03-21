@@ -9,7 +9,6 @@ jobs:
           PHANTOMJS_BIN: node_modules/phantomjs/bin/phantomjs
           SECRET_KEY: foobar
           STORAGE_TYPE: local
-          RESTRICT_ADMIN_BY_IPS: false
 
       # Service container image available at `host: localhost`
       - image: circleci/postgres:9.5
@@ -59,7 +58,7 @@ jobs:
           name: Run Django tests
           command: |
             . venv/bin/activate
-            python app/manage.py collectstatic --noinput
+            python app/manage.py collectstatic --noinput --verbosity 0
             coverage run app/manage.py test app/
             codecov
 
