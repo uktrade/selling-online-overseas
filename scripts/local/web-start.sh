@@ -10,4 +10,4 @@ else
   PORT=${DEV_PORT}
 fi
 
-python app/manage.py runserver 0:${PORT}
+python app/manage.py collectstatic --no-input && python app/manage.py runserver 0:${PORT}

@@ -1,10 +1,17 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block head_title %}Welcome to Selling online overseas{% endblock head_title %}
 
 {% block head_meta_description %}Sell your products overseas online. Use our search and find online marketplaces. Find overseas customers across the world. Grow your business with our help.{% endblock head_meta_description %}
 
 {% load thumbnail %}
+
+{% block head_css %}
+  {{ block.super }}
+  <link href="{% static 'stylesheets/pages/landing-page.css' %}" rel="stylesheet" media="screen">
+{% endblock %}
 
 {% block content %}
   <section>
