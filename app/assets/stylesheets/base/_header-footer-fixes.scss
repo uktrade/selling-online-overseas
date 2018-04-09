@@ -1,7 +1,14 @@
-header {
+#header {
   position: relative;
 }
 main {
   z-index: 0;
   position:relative;
+  clear: both;
+}
+
+#footer {
+  li {
+    list-style: none;
+  }
 }

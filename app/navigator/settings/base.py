@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'geography',
     'products',
     'thumber',
-    'directory_header_footer',
     'directory_components',
+    'export_elements',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -76,19 +76,14 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.hosts',
                 'sso.context_processors.sso_processor',
-                'directory_header_footer.context_processors.urls_processor',
-                ('directory_header_footer.context_processors.'
-                    'header_footer_context_processor'),
+                'directory_components.context_processors.urls_processor',
+                ('directory_components.context_processors.'
+                    'header_footer_processor'),
                 'directory_components.context_processors.analytics',
             ],
         },
     },
 ]
-
-HEADER_FOOTER_CONTACT_US_URL = os.getenv(
-    'HEADER_FOOTER_CONTACT_US_URL',
-    'https://contact-us.export.great.gov.uk/directory',
-)
 
 HEADER_FOOTER_CSS_ACTIVE_CLASSES = {'soo': True}
 
@@ -236,37 +231,10 @@ THUMBNAIL_PROCESSORS = (
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 # HEADER/FOOTER URLS
-GREAT_EXPORT_HOME = os.getenv('GREAT_EXPORT_HOME')
-GREAT_HOME = os.getenv('GREAT_HOME')
-CUSTOM_PAGE = os.getenv('CUSTOM_PAGE')
-
-# EXPORTING PERSONAS
-EXPORTING_NEW = os.getenv('EXPORTING_NEW')
-EXPORTING_REGULAR = os.getenv('EXPORTING_REGULAR')
-EXPORTING_OCCASIONAL = os.getenv('EXPORTING_OCCASIONAL')
-
-# GUIDANCE/ARTICLE SECTIONS
-GUIDANCE_MARKET_RESEARCH = os.getenv('GUIDANCE_MARKET_RESEARCH')
-GUIDANCE_CUSTOMER_INSIGHT = os.getenv('GUIDANCE_CUSTOMER_INSIGHT')
-GUIDANCE_FINANCE = os.getenv('GUIDANCE_FINANCE')
-GUIDANCE_BUSINESS_PLANNING = os.getenv('GUIDANCE_BUSINESS_PLANNING')
-GUIDANCE_GETTING_PAID = os.getenv('GUIDANCE_GETTING_PAID')
-GUIDANCE_OPERATIONS_AND_COMPLIANCE = os.getenv(
-    'GUIDANCE_OPERATIONS_AND_COMPLIANCE')
-
-# SERVICES
-SERVICES_EXOPPS = os.getenv('SERVICES_EXOPPS')
-SERVICES_FAB = os.getenv('SERVICES_FAB')
-SERVICES_GET_FINANCE = os.getenv('SERVICES_GET_FINANCE')
-SERVICES_SOO = os.getenv('SERVICES_SOO')
-SERVICES_EVENTS = os.getenv('SERVICES_EVENTS')
-
-# FOOTER LINKS
-INFO_ABOUT = os.getenv('INFO_ABOUT')
-INFO_CONTACT_US_DIRECTORY = os.getenv('INFO_CONTACT_US_DIRECTORY')
-INFO_PRIVACY_AND_COOKIES = os.getenv('INFO_PRIVACY_AND_COOKIES')
-INFO_TERMS_AND_CONDITIONS = os.getenv('INFO_TERMS_AND_CONDITIONS')
-INFO_DIT = os.getenv('INFO_DIT')
+HEADER_FOOTER_URLS_GREAT_HOME = os.getenv("HEADER_FOOTER_URLS_GREAT_HOME")
+HEADER_FOOTER_URLS_FAB = os.getenv("HEADER_FOOTER_URLS_FAB")
+HEADER_FOOTER_URLS_SOO = os.getenv("HEADER_FOOTER_URLS_SOO")
+HEADER_FOOTER_URLS_CONTACT_US = os.getenv("HEADER_FOOTER_URLS_CONTACT_US")
 
 # Google tag manager
 GOOGLE_TAG_MANAGER_ID = os.getenv('GOOGLE_TAG_MANAGER_ID', 'GTM-PB37DC')

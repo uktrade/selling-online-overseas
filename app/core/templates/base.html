@@ -9,17 +9,15 @@
 
 {% block body_content_container %}
     <main role="main">
-      <div class="main" id="content">
-        {% block content %}{% endblock content %}
-        {% block feedback_reporter %}
-          <section>
-            <div class="outer-container push--ends soft--ends">
-              <div class="col-12 push--top">
-                {% block thumber_feedback %}{% endblock %}
-              </div>
-            </div>
-          </section>
-        {% endblock %}
-      </div>
+    {% block content %}{% endblock content %}
+    {% block feedback_reporter %}
+      <section>
+        <div class="outer-container push--ends soft--ends">
+          <div class="col-12 push--top">
+            {% block thumber_feedback %}{% endblock %}
+          </div>
+        </div>
+      </section>
+    {% endblock %}
     </main>
 {% endblock %}
