@@ -233,6 +233,10 @@ a {
     background-color: transparent;
     outline: 3px solid $focus-yellow;
   }
+
+  &:active {
+    background-color: $focus-yellow;
+  }
 }
 
 
