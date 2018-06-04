@@ -1,0 +1,5 @@
+-r requirements.in
+
+coverage
+pep8
+codecov
