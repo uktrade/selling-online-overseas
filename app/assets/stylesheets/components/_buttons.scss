@@ -1,3 +1,21 @@
+@import '../../../staticfiles/export_elements/stylesheets/govuk-elements-styles';
+
+.button-ghost-red {
+  @extend .button-ghost-blue;
+  border-color: $flag-red;
+  color: $flag-red;
+  @include prefix((border-radius: 3px), webkit moz);
+
+  &:link, &:visited {
+    color: $flag-red;
+  }
+
+  &:hover {
+    background-color: $flag-red;
+    color: $white;
+  }
+}
+
 .button {
   @extend %medium;
   @include prefix((border-radius: 3px), webkit moz);
