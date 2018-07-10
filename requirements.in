@@ -5,6 +5,7 @@ dj-database-url==0.4.1
 Django==1.9.13
 django-appconf==1.0.1
 django-ckeditor==5.0.3
+django-environ==0.4.5
 django-grappelli==2.8.3
 django-image-cropping==1.0.4
 django-reversion==2.0.8
@@ -27,7 +28,7 @@ six==1.10.0
 whitenoise==3.2.1
 Whoosh==2.7.4
 django-admin-ip-restrictor==0.1.0
-directory-components==2.5.1
+directory-components==2.8.1
 export-elements==0.10.6
 directory-constants==6.8.0
 directory-sso-api-client==2.5.1

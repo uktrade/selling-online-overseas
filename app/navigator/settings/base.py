@@ -9,9 +9,15 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+
 import dj_database_url
 from easy_thumbnails.conf import Settings as thumbnail_settings
+import environ
 from directory_constants.constants import urls as default_urls
+
+
+env = environ.Env()
+
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,7 +28,7 @@ BASE_DIR = os.path.dirname(PROJECT_ROOT)
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = env.str('SECRET_KEY')
 
 # Application definition
 
@@ -49,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
+    'directory_components.middleware.MaintenanceModeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,7 +65,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware'
+    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
+    'directory_components.middleware.RobotsIndexControlHeaderMiddlware',
 ]
 
 ROOT_URLCONF = 'navigator.urls'
@@ -152,12 +160,12 @@ STORAGE_CLASSES = {
     'default': 'storages.backends.s3boto3.S3Boto3Storage',
     'local': 'django.core.files.storage.FileSystemStorage',
 }
-STORAGE_CLASS_NAME = os.getenv('STORAGE_TYPE', 'default')
+STORAGE_CLASS_NAME = env.str('STORAGE_TYPE', 'default')
 DEFAULT_FILE_STORAGE = STORAGE_CLASSES[STORAGE_CLASS_NAME]
 THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_KEY')
+AWS_STORAGE_BUCKET_NAME = env.str('AWS_STORAGE_BUCKET_NAME', '')
+AWS_ACCESS_KEY_ID = env.str('AWS_KEY_ID', '')
+AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_KEY', '')
 AWS_DEFAULT_ACL = 'public-read'
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_ENCRYPTION = False
@@ -192,38 +200,50 @@ CKEDITOR_CONFIGS = {
 }
 
 # Hosts for various services, used in templates
-SOO_HOST = os.environ.get(
-    'SOO_HOST', default_urls.SERVICES_SOO)
-HELP_HOST = os.environ.get(
-    'HELP_HOST', default_urls.INFO_CONTACT_US_DIRECTORY)
-SSO_HOST = os.environ.get('SSO_HOST', 'https://sso.trade.great.gov.uk/')
-PROFILE_HOST = os.environ.get('PROFILE_HOST', 'https://profile.great.gov.uk/')
-SSO_PROXY_LOGIN_URL = os.environ.get(
-    'SSO_PROXY_LOGIN_URL', 'https://sso.trade.great.gov.uk/accounts/login/')
-SSO_PROXY_SIGNUP_URL = os.environ.get(
-    'SSO_PROXY_SIGNUP_URL', 'https://sso.trade.great.gov.uk/accounts/signup/')
-SSO_PROFILE_URL = os.environ.get(
-    'SSO_PROFILE_URL', 'https://profile.great.gov.uk/selling-online-overseas')
+SOO_HOST = env.str('SOO_HOST', default_urls.SERVICES_SOO)
+HELP_HOST = env.str('HELP_HOST', default_urls.INFO_CONTACT_US_DIRECTORY)
+SSO_HOST = env.str('SSO_HOST', 'https://sso.trade.great.gov.uk/')
+PROFILE_HOST = env.str('PROFILE_HOST', 'https://profile.great.gov.uk/')
+SSO_PROXY_LOGIN_URL = env.str(
+    'SSO_PROXY_LOGIN_URL', 'https://sso.trade.great.gov.uk/accounts/login/'
+)
+SSO_PROXY_SIGNUP_URL = env.str(
+    'SSO_PROXY_SIGNUP_URL', 'https://sso.trade.great.gov.uk/accounts/signup/'
+)
+SSO_PROFILE_URL = env.str(
+    'SSO_PROFILE_URL', 'https://profile.great.gov.uk/selling-online-overseas'
+)
 
 # SSO
-SSO_PROXY_SIGNATURE_SECRET = os.environ.get(
-    'SSO_PROXY_SIGNATURE_SECRET', 'proxy_signature_debug')
-SSO_PROXY_API_CLIENT_BASE_URL = os.environ.get(
-    'SSO_PROXY_API_CLIENT_BASE_URL', 'http://sso.trade.great:8004/')
-SSO_PROXY_LOGIN_URL = os.environ.get(
-    'SSO_PROXY_LOGIN_URL', 'http://sso.trade.great:8004/accounts/login/')
-SSO_PROXY_LOGOUT_URL = os.environ.get(
-    'SSO_PROXY_LOGOUT_URL', 'http://sso.trade.great:8004/accounts/'
-    'logout/?next=http://soo.trade.great:8001')
-SSO_PROXY_SIGNUP_URL = os.environ.get(
-    'SSO_PROXY_SIGNUP_URL', 'http://sso.trade.great:8004/accounts/signup/')
-SSO_PROFILE_URL = os.environ.get(
+SSO_PROXY_SIGNATURE_SECRET = env.str(
+    'SSO_PROXY_SIGNATURE_SECRET', 'proxy_signature_debug'
+)
+SSO_PROXY_API_CLIENT_BASE_URL = env.str(
+    'SSO_PROXY_API_CLIENT_BASE_URL', 'http://sso.trade.great:8004/'
+)
+SSO_PROXY_LOGIN_URL = env.str(
+    'SSO_PROXY_LOGIN_URL', 'http://sso.trade.great:8004/accounts/login/'
+)
+SSO_PROXY_LOGOUT_URL = env.str(
+    'SSO_PROXY_LOGOUT_URL',
+    (
+        'http://sso.trade.great:8004/accounts/'
+        'logout/?next=http://soo.trade.great:8001'
+    )
+)
+SSO_PROXY_SIGNUP_URL = env.str(
+    'SSO_PROXY_SIGNUP_URL', 'http://sso.trade.great:8004/accounts/signup/'
+)
+SSO_PROFILE_URL = env.str(
     'SSO_PROFILE_URL',
-    'http://profile.trade.great:8006/selling-online-overseas/')
-SSO_PROXY_REDIRECT_FIELD_NAME = os.environ.get(
-    'SSO_PROXY_REDIRECT_FIELD_NAME', 'next')
-SSO_PROXY_SESSION_COOKIE = os.environ.get(
-    'SSO_PROXY_SESSION_COOKIE', 'debug_sso_session_cookie')
+    'http://profile.trade.great:8006/selling-online-overseas/'
+)
+SSO_PROXY_REDIRECT_FIELD_NAME = env.str(
+    'SSO_PROXY_REDIRECT_FIELD_NAME', 'next'
+)
+SSO_PROXY_SESSION_COOKIE = env.str(
+    'SSO_PROXY_SESSION_COOKIE', 'debug_sso_session_cookie'
+)
 
 
 THUMBNAIL_PROCESSORS = (
@@ -231,18 +251,32 @@ THUMBNAIL_PROCESSORS = (
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 # HEADER/FOOTER URLS
-HEADER_FOOTER_URLS_GREAT_HOME = os.getenv("HEADER_FOOTER_URLS_GREAT_HOME")
-HEADER_FOOTER_URLS_FAB = os.getenv("HEADER_FOOTER_URLS_FAB")
-HEADER_FOOTER_URLS_SOO = os.getenv("HEADER_FOOTER_URLS_SOO")
-HEADER_FOOTER_URLS_CONTACT_US = os.getenv("HEADER_FOOTER_URLS_CONTACT_US")
+HEADER_FOOTER_URLS_GREAT_HOME = env.str("HEADER_FOOTER_URLS_GREAT_HOME", '')
+HEADER_FOOTER_URLS_FAB = env.str("HEADER_FOOTER_URLS_FAB", '')
+HEADER_FOOTER_URLS_SOO = env.str("HEADER_FOOTER_URLS_SOO", '')
+HEADER_FOOTER_URLS_CONTACT_US = env.str("HEADER_FOOTER_URLS_CONTACT_US", '')
 
 # Google tag manager
-GOOGLE_TAG_MANAGER_ID = os.getenv('GOOGLE_TAG_MANAGER_ID', 'GTM-PB37DC')
-GOOGLE_TAG_MANAGER_ENV = os.getenv('GOOGLE_TAG_MANAGER_ENV', '')
+GOOGLE_TAG_MANAGER_ID = env.str('GOOGLE_TAG_MANAGER_ID', 'GTM-PB37DC')
+GOOGLE_TAG_MANAGER_ENV = env.str('GOOGLE_TAG_MANAGER_ENV', '')
 UTM_COOKIE_DOMAIN = None
 
 # Admin restrictor
-RESTRICT_ADMIN_BY_IPS = os.getenv('RESTRICT_ADMIN_BY_IPS')
-RESTRICT_ADMIN = RESTRICT_ADMIN_BY_IPS == 'true'
-ALLOWED_ADMIN_IPS = os.getenv('ALLOWED_ADMIN_IPS', [])
-ALLOWED_ADMIN_IP_RANGES = os.getenv('ALLOWED_ADMIN_IP_RANGES', [])
+RESTRICT_ADMIN_BY_IPS = env.bool('RESTRICT_ADMIN_BY_IPS', False)
+RESTRICT_ADMIN = RESTRICT_ADMIN_BY_IPS
+ALLOWED_ADMIN_IPS = env.list('ALLOWED_ADMIN_IPS', default=[])
+ALLOWED_ADMIN_IP_RANGES = env.list('ALLOWED_ADMIN_IP_RANGES', default=[])
+
+RAVEN_CONFIG = {
+    'dsn': env.str('SENTRY_DSN', ''),
+}
+
+# feature flags
+FEATURE_FLAGS = {
+    # used by directory-components
+    'MAINTENANCE_MODE_ON': env.bool('FEATURE_MAINTENANCE_MODE_ENABLED', False),
+    # used by directory-components
+    'SEARCH_ENGINE_INDEXING_OFF': env.bool(
+        'FEATURE_SEARCH_ENGINE_INDEXING_DISABLED', False
+    )
+}
