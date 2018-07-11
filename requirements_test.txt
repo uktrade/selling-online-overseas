@@ -13,7 +13,7 @@ codecov==2.0.15
 contextlib2==0.5.4
 coverage==4.5.1
 directory-client-core==0.2.1  # via directory-sso-api-client
-directory-components==2.5.1
+directory-components==2.8.1
 directory-constants==6.8.0
 directory-sso-api-client==2.5.1
 directory-validators==5.0.0
@@ -21,6 +21,7 @@ dj-database-url==0.4.1
 django-admin-ip-restrictor==0.1.0
 django-appconf==1.0.1
 django-ckeditor==5.0.3
+django-environ==0.4.5
 django-grappelli==2.8.3
 django-image-cropping==1.0.4
 django-ipware==2.1.0      # via django-admin-ip-restrictor
