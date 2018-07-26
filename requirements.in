@@ -29,8 +29,10 @@ whitenoise==3.2.1
 Whoosh==2.7.4
 django-admin-ip-restrictor==0.1.0
 directory-components==2.8.1
-export-elements==0.10.6
+export-elements==0.13.0
 directory-constants==6.8.0
 directory-sso-api-client==2.5.1
 directory-validators==5.0.0
 sigauth==2.1.2
+markdown2==2.3.5
+beautifulsoup4==4.6.0
