@@ -15,6 +15,7 @@ class CaseStudy:
         seconds = helpers.time_to_read_in_seconds(self)
         return helpers.time_to_read_in_minutes(seconds)
 
+    @cached_property
     def html(self):
         html = helpers.markdown_to_html(
             markdown_file_path=self.markdown_file_path,

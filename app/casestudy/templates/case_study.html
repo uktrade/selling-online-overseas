@@ -28,7 +28,9 @@
       <section>
         <div class="grid-row">
           <div class="column-two-thirds story-image">
-            <img width="100%" src="/static/images/case-story/{{ story.html.metadata.image }}" alt="{{ story.html.metadata.company_name }}"/>
+            {% with 'images/case-story/'|add:story.html.metadata.image as image_url %}
+            <img width="100%" src="{% static image_url %}" alt="{{ story.html.metadata.company_name }}"/>
+            {% endwith %}
           </div>
         </div>
 
