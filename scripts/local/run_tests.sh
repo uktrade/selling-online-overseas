@@ -50,7 +50,7 @@ display_result $? 4 "Code style check"
 npm run test
 display_result $? 5 "Front end code tested and style check"
 
-cd app && pytest . -vv --cov=. --cov-config=.coveragerc --capture=no --cov-report=html && cd -
+cd app && pytest . -v --cov=. --cov-config=.coveragerc --capture=no --cov-report=html && cd -
 display_result $? 6 "Code coverage"
 
 #deactivate end to end tests for now, since they dont run in CircleCI
