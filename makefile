@@ -64,5 +64,12 @@ debug_shell:
 test_requirements:
 	pip install -r requirements_test.txt
 
+PYTEST := pytest ./app -v --ignore=node_modules --cov=./app --cov-config=.coveragerc --capture=no $(pytest_args)
+COLLECT_STATIC := python ./app/manage.py collectstatic --noinput
+CODECOV := \
+	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
+	   codecov --token=$$CODECOV_REPO_TOKEN ;\
+	fi
+
 test:
-	$(DEBUG_SET_ENV_VARS) && pytest ./app/casestudy -v --cov=. --cov-config=.coveragerc --capture=no --cov-report=html
+	$(COLLECT_STATIC) && pep8 app && $(PYTEST) && $(CODECOV)
