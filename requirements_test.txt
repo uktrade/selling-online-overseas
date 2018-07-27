@@ -16,7 +16,7 @@ codecov==2.0.15
 contextlib2==0.5.4
 coverage==4.5.1
 directory-client-core==0.2.1  # via directory-sso-api-client
-directory-components==2.8.1
+directory-components==2.11.0
 directory-constants==6.8.0
 directory-sso-api-client==2.5.1
 directory-validators==5.0.0
@@ -37,7 +37,6 @@ docker-py==1.2.1
 docutils==0.13.1
 easy-thumbnails==2.3
 export-elements==0.13.0
-flake8==3.5.0
 freezegun==0.3.10
 gunicorn==19.6.0
 idna==2.6                 # via requests
