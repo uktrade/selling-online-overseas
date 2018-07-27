@@ -1,5 +1,9 @@
 #header {
   position: relative;
+
+  a:focus {
+    background-color: transparent;
+  }
 }
 main {
   z-index: 0;
