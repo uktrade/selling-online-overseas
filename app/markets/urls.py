@@ -22,7 +22,6 @@ urlpatterns = [
     url(r'^stats/count$', views.MarketStatsCountView.as_view(), name='stats_count'),
     url(r'^stats/update$', views.MarketStatsUpdateView.as_view(), name='stats_update'),
     url(r'^details/(?P<slug>[\w-]+)/$', views.MarketDetailView.as_view(), name='detail'),
-    url(r'^story/(?P<slug>[\w-]+)/$', views.CaseStoryView.as_view(), name='case_story'),
     url(r'^shortlist/$', views.MarketShortlistView.as_view(), name='shortlist'),
     url(r'^api/shortlist/$', csrf_exempt(views.MarketShortlistAPI.as_view()), name='api_shortlist'),
 ]
