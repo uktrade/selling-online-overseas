@@ -58,9 +58,7 @@ jobs:
           name: Run Django tests
           command: |
             . venv/bin/activate
-            python app/manage.py collectstatic --noinput --verbosity 0
-            coverage run app/manage.py test app/
-            codecov
+            pytest ./app -v --cov=. --cov-config=.coveragerc --capture=no --cov-report=html
 
       - run:
           name: Build Whoosh index

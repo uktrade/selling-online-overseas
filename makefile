@@ -65,4 +65,4 @@ test_requirements:
 	pip install -r requirements_test.txt
 
 test:
-	$(DEBUG_SET_ENV_VARS) && pytest ./app -v --cov=. --cov-config=.coveragerc --capture=no --cov-report=html
+	$(DEBUG_SET_ENV_VARS) && pytest ./app/casestudy -v --cov=. --cov-config=.coveragerc --capture=no --cov-report=html
