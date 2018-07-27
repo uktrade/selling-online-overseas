@@ -52,7 +52,7 @@ display_result $? 6 "Front end code tested and style check"
 
 pip install -r ./requirements_test.txt --src /usr/local/src
 
-cd app && python3 manage.py test --noinput && cd -
+cd app && pytest . -vv --cov=. --cov-config=.coveragerc --capture=no --cov-report=html && cd -
 display_result $? 7 "Unit tests"
 
 npm run e2e
