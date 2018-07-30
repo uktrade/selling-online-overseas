@@ -3,3 +3,9 @@
 coverage
 pep8
 codecov
+pytest
+pytest-cov
+pytest-django
+pytest-sugar
+requests_mock
+freezegun

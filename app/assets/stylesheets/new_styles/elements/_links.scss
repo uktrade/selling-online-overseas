@@ -1,5 +1,9 @@
 a {
 
+  &:focus {
+    background-color: transparent;
+  }
+
   &.link {
     @extend %regular;
     border-bottom: 1px solid;

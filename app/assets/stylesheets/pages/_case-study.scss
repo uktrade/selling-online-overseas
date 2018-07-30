@@ -1,0 +1,78 @@
+@import '../vars';
+@import '../new_styles/vars';
+
+section.case-study {
+  margin-top: 0;
+  color: $grey;
+  padding-bottom: 0;
+}
+
+.more-stories {
+  h2 {
+    font-weight: 400;
+  }
+}
+
+.story-image {
+  margin-bottom: 30px;
+}
+
+article section {
+  position: relative;
+  padding-bottom: 0;
+}
+
+.story-top-quote {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(100% / 3);
+}
+
+.subtitle {
+  color: $mid-grey;
+  margin-bottom: 0.25em;
+}
+
+blockquote.quote {
+  background-color: $light-stone;
+  padding: 45px 45px 30px 45px;
+  margin-top: 0;
+  font-size: 22px;
+  position: relative;
+  text-indent: 45px;
+
+  &:before {
+    color: $mid-grey;
+    content: '\201C';
+    font-family: sans-serif;
+    font-size: 90px;
+    font-weight: 600;
+    left: -15px;
+    position: absolute;
+    top: 15px;
+  }
+
+  footer {
+    margin-top: 1em;
+    font-family: $brand-font-family;
+    font-style: normal;
+    text-indent: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .story-top-quote {
+    position: static;
+    width: 100%;
+  }
+  .column-two-thirds {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  blockquote.quote {
+    font-size: 19px;
+  }
+}
