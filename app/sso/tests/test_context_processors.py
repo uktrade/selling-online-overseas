@@ -13,7 +13,7 @@ def test_context_processor():
     request = RequestFactory().get('/')
     actual = context_processors.sso_processor(request)
     assert actual == {
-        'sso_login_url': 'http://logout.com?next=/',
+        'sso_login_url': 'http://login.com?next=http://testserver/',
         'sso_register_url': 'http://signup.com',
         'sso_logout_url': 'http://logout.com',
         'sso_profile_url': 'http://profile.com',

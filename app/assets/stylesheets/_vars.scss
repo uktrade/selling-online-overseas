@@ -9,6 +9,12 @@ $image-path: '/static/images/';
 $brand-font-family: 'Roboto', arial, helvetica, sans-serif;
 
 // BRAND COLOURS
+$grey: #adb0be;
+$blue: #1fc8fa;
+$grey-2: #333;
+$grey-3: #444;
+$grey-3: #444;
+$white: #fff;
 $great-primary: #1e1348;
 $great-secondary: #e41f13;
 $flag-red: #b00d23;
@@ -54,6 +60,7 @@ $button-blue-color: $white;
 $button-blue-color-hover: $white;
 $button-blue-outline: 0;
 $button-blue-focus-color: $white;
+$link-colour: $mid-blue;
 
 $button-transparent-bg-color: $link-colour;
 $button-transparent-bg-color--visited: transparent;
@@ -123,7 +130,7 @@ $button-red-focus-color: $white;
 $backgrounds: (
   'grey' $grey-3,
   'grey-dark' $grey-2,
-  'grey-darker' $secondary-text-colour,
+  'grey-darker' $grey-2,
   'grey-darkest' $grey,
   'blue' $link-colour,
   'stone' $stone,

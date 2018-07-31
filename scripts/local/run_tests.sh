@@ -17,7 +17,7 @@ else
   export PORT=${TEST_PORT}
 fi
 
-pip install -r scripts/requirements_for_test.txt
+pip install -r requirements_test.txt
 
 npm run build
 
@@ -50,7 +50,7 @@ display_result $? 4 "Code style check"
 npm run test
 display_result $? 5 "Front end code tested and style check"
 
-cd app && python manage.py test --noinput && cd -
+cd app && pytest . -v --cov=. --cov-config=.coveragerc --capture=no --cov-report=html && cd -
 display_result $? 6 "Code coverage"
 
 #deactivate end to end tests for now, since they dont run in CircleCI

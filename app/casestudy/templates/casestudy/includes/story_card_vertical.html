@@ -1,0 +1,9 @@
+<a class="story-card-vertical" href="/markets/story/{{ story.slug }}">
+  <img width="100%" src="/static/images/case-story/{{ story.html.metadata.image }}"  alt="{{ story.html.metadata.title }}"/>
+  <h3 class="font-small">{{ story.html.metadata.title }}</h3>
+  <p class="font-xsmall">{{ story.html.metadata.subtitle|default:story.html.metadata.meta_description }}</p>
+  <dl class="read-time font-xsmall">
+    <dt>Reading time:</dt>
+    <dd>{{ story.time_to_read }}</dd>
+  </dl>
+</a>
