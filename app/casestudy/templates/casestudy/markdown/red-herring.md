@@ -5,7 +5,7 @@ slug: red-herring-games-take-their-mysteries-overseas-through-amazon
 subtitle: Grimsby-based murder mystery company, Red Herring Games, transformed their business with international success through global giant Amazon.
 image: red_herring.jpg
 company_name: Red Herring
-website_url:
+company_website: https://www.red-herring-games.com/
 quote_one_content: We had support from our DIT International Trade Advisor, looking at exporting and how to expand the business in different ways. I really don’t think we’d be where we are now without DIT’s help.
 quote_one_author: Jo Smedley
 quote_one_author_title: Founder

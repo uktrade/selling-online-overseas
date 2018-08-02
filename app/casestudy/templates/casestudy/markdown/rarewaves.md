@@ -5,7 +5,7 @@ slug: chiswick-retailer-strikes-deal-with-amazon-australia
 subtitle: Support from DIT helped Rarewaves become one of the fastest growing online retailers in the world.
 image: rarewaves.png
 company_name: Rarewaves
-website_url: http://rarewavesgroup.com/
+company_website: http://rarewavesgroup.com/
 quote_one_content: From market advice to information on how best to deliver our products, we’ve found that the help we’ve received from DIT has really helped us smooth our thought process and been a big arm around our shoulders! When launching in more complicated markets like China, we’ve found DIT’s help a hugely important part of this.
 quote_one_author: Brad Aspes
 quote_one_author_title: Founder
