@@ -220,24 +220,19 @@ SSO_PROXY_SIGNATURE_SECRET = env.str(
     'SSO_PROXY_SIGNATURE_SECRET', 'proxy_signature_debug'
 )
 SSO_PROXY_API_CLIENT_BASE_URL = env.str(
-    'SSO_PROXY_API_CLIENT_BASE_URL', 'http://sso.trade.great:8004/'
+    'SSO_PROXY_API_CLIENT_BASE_URL', ''
 )
 SSO_PROXY_LOGIN_URL = env.str(
-    'SSO_PROXY_LOGIN_URL', 'http://sso.trade.great:8004/accounts/login/'
+    'SSO_PROXY_LOGIN_URL', ''
 )
 SSO_PROXY_LOGOUT_URL = env.str(
-    'SSO_PROXY_LOGOUT_URL',
-    (
-        'http://sso.trade.great:8004/accounts/'
-        'logout/?next=http://soo.trade.great:8001'
-    )
+    'SSO_PROXY_LOGOUT_URL', ''
 )
 SSO_PROXY_SIGNUP_URL = env.str(
-    'SSO_PROXY_SIGNUP_URL', 'http://sso.trade.great:8004/accounts/signup/'
+    'SSO_PROXY_SIGNUP_URL', ''
 )
 SSO_PROFILE_URL = env.str(
-    'SSO_PROFILE_URL',
-    'http://profile.trade.great:8006/selling-online-overseas/'
+    'SSO_PROFILE_URL', ''
 )
 SSO_PROXY_REDIRECT_FIELD_NAME = env.str(
     'SSO_PROXY_REDIRECT_FIELD_NAME', 'next'
