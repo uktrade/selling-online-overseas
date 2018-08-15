@@ -12,10 +12,10 @@ certifi==2018.4.16        # via requests
 chardet==3.0.4            # via requests
 contextlib2==0.5.4
 directory-client-core==0.2.1  # via directory-sso-api-client
-directory-components==2.15.1
 directory-constants==6.8.0
 directory-sso-api-client==2.5.1
 directory-validators==5.0.0
+directory_components==2.17.2
 dj-database-url==0.4.1
 django-admin-ip-restrictor==0.1.0
 django-appconf==1.0.1
@@ -32,7 +32,7 @@ djangorestframework==3.8.2  # via sigauth
 docker-py==1.2.1
 docutils==0.13.1
 easy-thumbnails==2.3
-export-elements==0.15.1   # via directory-components
+export-elements==0.17.3
 gunicorn==19.6.0
 idna==2.6                 # via requests
 jmespath==0.9.1

@@ -38,19 +38,11 @@ test_docker:
 
 compile_requirements:
 	pip-compile requirements.in
+	pip-compile requirements_test.in
 
 upgrade_requirements:
 	pip-compile --upgrade requirements.in
-
-compile_test_requirements:
-	pip-compile requirements_test.in
-
-upgrade_test_requirements:
 	pip-compile --upgrade requirements_test.in
-
-compile_all_requirements: compile_requirements compile_test_requirements
-
-upgrade_all_requirements: upgrade_requirements upgrade_test_requirements
 
 DEBUG_SET_ENV_VARS := \
 	export DATABASE_URL=postgres://localhost/navigator; \
