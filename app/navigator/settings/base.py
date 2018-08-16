@@ -86,6 +86,7 @@ TEMPLATES = [
                 'core.context_processors.hosts',
                 'sso.context_processors.sso_processor',
                 'directory_components.context_processors.urls_processor',
+                'directory_components.context_processors.cookie_notice',
                 ('directory_components.context_processors.'
                     'header_footer_processor'),
                 'directory_components.context_processors.analytics',
@@ -256,6 +257,7 @@ HEADER_FOOTER_URLS_CONTACT_US = env.str("HEADER_FOOTER_URLS_CONTACT_US", '')
 GOOGLE_TAG_MANAGER_ID = env.str('GOOGLE_TAG_MANAGER_ID', 'GTM-PB37DC')
 GOOGLE_TAG_MANAGER_ENV = env.str('GOOGLE_TAG_MANAGER_ENV', '')
 UTM_COOKIE_DOMAIN = None
+PRIVACY_COOKIE_DOMAIN = env.str('PRIVACY_COOKIE_DOMAIN', '')
 
 # Admin restrictor
 RESTRICT_ADMIN_BY_IPS = env.bool('RESTRICT_ADMIN_BY_IPS', False)
