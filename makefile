@@ -48,7 +48,8 @@ DEBUG_SET_ENV_VARS := \
 	export DATABASE_URL=postgres://localhost/navigator; \
 	export DJANGO_SETTINGS_MODULE=navigator.settings.dev; \
 	export SECRET_KEY=secret; \
-	export STORAGE_TYPE=local
+	export STORAGE_TYPE=local; \
+	export PRIVACY_COOKIE_DOMAIN=.trade.great
 
 debug_shell:
 	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py shell
