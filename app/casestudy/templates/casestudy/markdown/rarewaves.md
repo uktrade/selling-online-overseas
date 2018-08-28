@@ -18,4 +18,4 @@ London-based company, Rarewaves, started when founder Brad Aspess noticed a gap 
 
 The company sourced 600,000 different products from 150 different suppliers, selling items ranging from entertainment goods, books, gadgets, games and even coffee and tea. Rarewaves exported to consumers in over 170 countries in the first 12 months of exporting – using marketplaces like Rakuten, Amazon Worldwide, Fnac, Price Minster and GAME to extend their reach.
 
-After signing a deal with Amazon Australia, Rarewaves securined £60,000 worth of sales to Australian customers in its first four weeks of exporting. With support from the Department for International Trade (DIT), the company expects to see annual turnover double to more than £20m in the next 12 months and to take exporting activities even further.
+After signing a deal with Amazon Australia, Rarewaves secured £60,000 worth of sales to Australian customers in its first four weeks of exporting. With support from the Department for International Trade (DIT), the company expects to see annual turnover double to more than £20m in the next 12 months and to take exporting activities even further.
