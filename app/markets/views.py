@@ -1,20 +1,26 @@
-import json
 import ast
-import csv
 
-from django.http import JsonResponse, HttpResponse
-from django.views.generic import ListView, DetailView, FormView, TemplateView, View
-from django.forms import TypedChoiceField
-from django.db.models import Max, Case, When, FloatField, ExpressionWrapper, Count, F, functions
+from django.http import JsonResponse
+from django.views.generic import ListView, TemplateView, View
+from django.db.models import (
+    Max,
+    Case,
+    When,
+    FloatField,
+    ExpressionWrapper,
+    Count,
+    F,
+    functions
+)
 from django.http import Http404
 
 from thumber.decorators import thumber_feedback
 
+from casestudy.casestudies import CASE_STUDIES
+
 from .models import Market, PublishedMarket
 from .forms import MarketListFilterForm
 from core.forms import QueryChoiceMixin
-from products.models import Category
-from geography.models import Country
 
 
 class MarketFilterMixin(object):
@@ -51,12 +57,14 @@ class HomepageView(MarketFilterMixin, TemplateView):
         Include the count of markets in the context data for showing on the homepage
         """
 
-        context = super().get_context_data(*args, **kwargs)
-        context['market_count'] = self.markets.count()
-        context['last_updated'] = self.markets.aggregate(Max('last_modified'))['last_modified__max']
-        context['random_markets'] = self.markets.order_by('?')[:6]
-
-        return context
+        return super().get_context_data(
+            *args, **kwargs,
+            case_studies=CASE_STUDIES.values(),
+            market_count=self.markets.count(),
+            last_updated=self.markets.aggregate(
+                Max('last_modified'))['last_modified__max'],
+            random_markets=self.markets.order_by('?')[:6]
+            )
 
 
 @thumber_feedback
@@ -347,17 +355,3 @@ class MarketDetailView(MarketFilterMixin, TemplateView):
             raise Http404('Market does not exist')
 
         return context
-
-
-@thumber_feedback
-class CaseStoryView(TemplateView):
-    """
-    The simple view for a case story page
-    """
-
-    comment_placeholder = "We are sorry to hear that. Would you tell us why?"
-    submit_wording = "Send feedback"
-
-    def get_template_names(self):
-        story_name = self.kwargs['slug']
-        return ['markets/case_studies/{}.html'.format(story_name)]

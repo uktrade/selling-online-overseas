@@ -38,19 +38,31 @@ test_docker:
 
 compile_requirements:
 	pip-compile requirements.in
+	pip-compile requirements_test.in
 
 upgrade_requirements:
 	pip-compile --upgrade requirements.in
-
-compile_test_requirements:
-	pip-compile requirements_test.in
-
-upgrade_test_requirements:
 	pip-compile --upgrade requirements_test.in
 
-compile_all_requirements: compile_requirements compile_test_requirements
+DEBUG_SET_ENV_VARS := \
+	export DATABASE_URL=postgres://localhost/navigator; \
+	export DJANGO_SETTINGS_MODULE=navigator.settings.dev; \
+	export SECRET_KEY=secret; \
+	export STORAGE_TYPE=local; \
+	export PRIVACY_COOKIE_DOMAIN=.trade.great
 
-upgrade_all_requirements: upgrade_requirements upgrade_test_requirements
+debug_shell:
+	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py shell
 
 test_requirements:
 	pip install -r requirements_test.txt
+
+PYTEST := pytest ./app -v --ignore=node_modules --cov=./app --cov-config=.coveragerc --capture=no $(pytest_args)
+COLLECT_STATIC := python ./app/manage.py collectstatic --noinput
+CODECOV := \
+	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
+	   codecov --token=$$CODECOV_REPO_TOKEN ;\
+	fi
+
+test:
+	$(COLLECT_STATIC) && pep8 app && $(PYTEST) && $(CODECOV)

@@ -1,7 +1,6 @@
 // Path to assets for use with file-url()
 $path: '/static/images/';
 
-@import 'govuk_elements/govuk-elements';
 @import 'node_modules/slick-carousel/slick/slick.scss';
 
 // bourbon grid
@@ -38,6 +37,7 @@ $path: '/static/images/';
 @import 'components/carousel';
 @import 'components/autocomplete';
 @import 'components/toggle';
+@import 'components/story-cards';
 @import 'components/read-time';
 @import 'components/triage';
 @import 'components/modal';
@@ -45,5 +45,6 @@ $path: '/static/images/';
 
 @import 'pages/detail';
 @import 'pages/markets';
+@import 'pages/case-study';
 
 @import 'base/header-footer-fixes'; // overrides for any broken header/footer styling

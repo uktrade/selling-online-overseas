@@ -109,3 +109,6 @@ whoosh_index*
 
 # Media files
 media/
+
+coverage_html_report
+.pytest_cache

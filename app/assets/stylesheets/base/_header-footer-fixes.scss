@@ -1,5 +1,9 @@
 #header {
   position: relative;
+
+  a:focus {
+    background-color: transparent;
+  }
 }
 main {
   z-index: 0;
@@ -12,3 +16,10 @@ main {
     list-style: none;
   }
 }
+
+#menu {
+  p, .body-text {
+    margin: 0;
+  }
+}
+

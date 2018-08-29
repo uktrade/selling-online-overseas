@@ -1,0 +1,70 @@
+@import '../vars';
+
+%story-card {
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+
+  h2 {
+    font-weight: 400;
+  }
+
+  h3 {
+    margin-top: 15px;
+  }
+
+  h3, p {
+    color: $grey;
+  }
+
+  &:focus {
+    outline: 3px solid $focus-yellow;
+  }
+
+  &:hover h3 {
+    color: $aqua;
+    text-decoration: underline;
+  }
+
+  .read-time {
+    color: $grey;
+  }
+}
+
+.story-card-vertical {
+  @extend %story-card;
+}
+
+.story-card-horizontal {
+  @extend %story-card;
+
+  img {
+    width: 50%;
+  }
+
+  .card-content {
+    width: 50%;
+    float: right;
+    padding-left: 15px;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .story-card-horizontal {
+    img, .card-content {
+      width: 100%;
+    }
+
+    h3 {
+      margin-top: 15px;
+    }
+
+    .card-content {
+      padding: 0;
+    }
+  }
+}

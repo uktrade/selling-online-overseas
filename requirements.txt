@@ -5,20 +5,22 @@
 #    pip-compile --output-file requirements.txt requirements.in
 #
 appdirs==1.4.3
+beautifulsoup4==4.6.0
 boto3==1.7.31
 botocore==1.10.32         # via boto3, s3transfer
 certifi==2018.4.16        # via requests
 chardet==3.0.4            # via requests
 contextlib2==0.5.4
 directory-client-core==0.2.1  # via directory-sso-api-client
-directory-components==1.8.2
 directory-constants==6.8.0
 directory-sso-api-client==2.5.1
 directory-validators==5.0.0
+directory_components==2.18.0
 dj-database-url==0.4.1
 django-admin-ip-restrictor==0.1.0
 django-appconf==1.0.1
 django-ckeditor==5.0.3
+django-environ==0.4.5
 django-grappelli==2.8.3
 django-image-cropping==1.0.4
 django-ipware==2.1.0      # via django-admin-ip-restrictor
@@ -30,10 +32,11 @@ djangorestframework==3.8.2  # via sigauth
 docker-py==1.2.1
 docutils==0.13.1
 easy-thumbnails==2.3
-export-elements==0.10.5
+export-elements==0.17.3
 gunicorn==19.6.0
 idna==2.6                 # via requests
 jmespath==0.9.1
+markdown2==2.3.5
 mohawk==0.3.4             # via sigauth
 monotonic==1.5            # via directory-client-core
 olefile==0.44             # via directory-validators, pillow

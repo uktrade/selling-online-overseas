@@ -58,9 +58,7 @@ jobs:
           name: Run Django tests
           command: |
             . venv/bin/activate
-            python app/manage.py collectstatic --noinput --verbosity 0
-            coverage run app/manage.py test app/
-            codecov
+            make test
 
       - run:
           name: Build Whoosh index

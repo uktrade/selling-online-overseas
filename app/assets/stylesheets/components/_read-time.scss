@@ -1,8 +1,10 @@
+@import '../vars';
+
 .read-time {
-  @extend %font-small;
   border-top: 3px solid $stone;
   display: table;
   padding-top: 5px;
+  margin: 1em 0;
 
   dt {
     color: $mid-grey;
