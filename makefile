@@ -57,6 +57,7 @@ debug_shell:
 test_requirements:
 	pip install -r requirements_test.txt
 
+FLAKE8 := flake8 app --exclude=migrations,.venv
 PYTEST := pytest ./app -v --ignore=node_modules --cov=./app --cov-config=.coveragerc --capture=no $(pytest_args)
 COLLECT_STATIC := python ./app/manage.py collectstatic --noinput
 CODECOV := \
@@ -65,4 +66,4 @@ CODECOV := \
 	fi
 
 test:
-	$(COLLECT_STATIC) && pep8 app && $(PYTEST) && $(CODECOV)
+	$(DEBUG_SET_ENV_VARS) && $(COLLECT_STATIC) && pep8 app && $(PYTEST) && $(CODECOV)

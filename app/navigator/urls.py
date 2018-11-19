@@ -9,7 +9,8 @@ from markets.views import HomepageView
 
 
 urlpatterns = [
-    url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
+    url(r'^robots\.txt$', TemplateView.as_view(
+        template_name='robots.txt', content_type='text/plain')),
     url(r'^ping\.json$', PingView.as_view(), name='ping'),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
