@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 # the first element needs to end with a slash
 redirects = [
     (
-        '/markets/story/global-marketplaces-drive-burlingham-london-to-success/', # noqa
+        '/markets/story/global-marketplaces-drive-burlingham-london-to-success/',  # noqa
         '/'
     ),
     (
