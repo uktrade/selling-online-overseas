@@ -17,7 +17,7 @@ class CaseStudyView(TemplateView):
 
     def dispatch(self, *args, **kwargs):
         try:
-            self.story = CASE_STUDIES.get(self.kwargs['slug'])
+            self.story = CASE_STUDIES[self.kwargs['slug']]
             return super().dispatch(*args, **kwargs)
         except:
             return redirect('/')
