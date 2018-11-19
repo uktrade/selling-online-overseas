@@ -28,6 +28,7 @@ redirects = [
 ]
 
 
+@pytest.mark.django_db(transaction=False)
 @pytest.mark.parametrize('url,expected', redirects)
 def test_redirects(url, expected, client):
     response = client.get(url)

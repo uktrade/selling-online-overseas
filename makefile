@@ -33,7 +33,7 @@ run_docker:
 run_local:
 	./scripts/local/web-start.sh
 
-test_docker:
+docker_test:
 	docker-compose up --build test
 
 compile_requirements:
@@ -66,4 +66,7 @@ CODECOV := \
 	fi
 
 test:
+	$(COLLECT_STATIC) && pep8 app && $(PYTEST) && $(CODECOV)
+
+debug_test:
 	$(DEBUG_SET_ENV_VARS) && $(COLLECT_STATIC) && pep8 app && $(PYTEST) && $(CODECOV)
