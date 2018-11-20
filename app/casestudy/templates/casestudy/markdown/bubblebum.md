@@ -2,7 +2,7 @@
 meta_description: To strengthen their e-commerce strategy, Bubblebum sought expert advice and support from the Department for International Trade (DIT)
 title: Selling online overseas sees Bubblebum increase export sales by 15%
 slug: selling-online-overseas-sees-bubblebum-increase-export-sales-by-15-percent
-subtitle: Northern Ireland business, Bubblegum, provides inflatable car booster seats for children - now selling in 27 different markets worldwide.
+subtitle: Northern Ireland business, Bubblebum, provides inflatable car booster seats for children - now selling in 27 different markets worldwide.
 image: bubblebum.jpg
 company_name: Bubblebum
 company_website: https://www.bubblebum.co/
