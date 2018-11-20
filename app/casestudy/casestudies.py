@@ -15,7 +15,6 @@ class CaseStudy:
         seconds = helpers.time_to_read_in_seconds(self)
         return helpers.time_to_read_in_minutes(seconds)
 
-    @cached_property
     def html(self):
         html = helpers.markdown_to_html(
             markdown_file_path=self.markdown_file_path,
@@ -28,10 +27,12 @@ RED_HERRING = CaseStudy(
     markdown_file_path=(
         'casestudy/markdown/red-herring.md')
 )
-BURLINGHAM = CaseStudy(
-    slug='global-marketplaces-drive-burlingham-london-to-success',
+BUBBLEBUM = CaseStudy(
+    slug=(
+        'selling-online-overseas-sees-bubblebum-increase-export-'
+        'sales-by-15-percent'),
     markdown_file_path=(
-        'casestudy/markdown/burlingham.md')
+        'casestudy/markdown/bubblebum.md')
 )
 RAREWAVES = CaseStudy(
     slug='chiswick-retailer-strikes-deal-with-amazon-australia',
@@ -41,6 +42,6 @@ RAREWAVES = CaseStudy(
 
 CASE_STUDIES = {
     RED_HERRING.slug: RED_HERRING,
-    BURLINGHAM.slug: BURLINGHAM,
+    BUBBLEBUM.slug: BUBBLEBUM,
     RAREWAVES.slug: RAREWAVES
 }

@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
+from django.shortcuts import redirect
 
 from thumber.decorators import thumber_feedback
 from casestudy.casestudies import CASE_STUDIES
@@ -14,6 +15,13 @@ class CaseStudyView(TemplateView):
     submit_wording = "Send feedback"
     template_name = 'case_study.html'
 
+    def dispatch(self, *args, **kwargs):
+        try:
+            self.story = CASE_STUDIES[self.kwargs['slug']]
+            return super().dispatch(*args, **kwargs)
+        except:
+            return redirect('/')
+
     def get_other_stories(self):
         other_stories = []
         for key, value in CASE_STUDIES.items():
@@ -23,7 +31,7 @@ class CaseStudyView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         return super().get_context_data(
-            *args, **kwargs,
-            story=CASE_STUDIES[self.kwargs['slug']],
-            other_stories=self.get_other_stories()
+            story=self.story,
+            other_stories=self.get_other_stories(),
+            *args, **kwargs
         )

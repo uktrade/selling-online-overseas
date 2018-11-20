@@ -6,12 +6,16 @@ subtitle: Grimsby-based murder mystery company, Red Herring Games, transformed 
 image: red_herring.jpg
 company_name: Red Herring
 company_website: https://www.red-herring-games.com/
+
 quote_one_content: We had support from our DIT International Trade Advisor, looking at exporting and how to expand the business in different ways. I really don’t think we’d be where we are now without DIT’s help.
 quote_one_author: Jo Smedley
 quote_one_author_title: Founder
+
 quote_two_content: Sales of our products have increased astronomically. Products that we sell five to seven of in the UK, over there, they’re selling 480. Around 50% of our sales comes from exporting. This year, we’re going to hit about 75% just with Amazon.
 quote_two_author: Jo Smedley
 quote_two_author_title: Founder
+
+footer: <p>Find out how you can sell through online marketplaces like Amazon and eBay by using the <a href="/" class="link" title="Selling Online Overseas">Selling Online Overseas Service</a>.</p>
 ---
 
 Jo Smedley launched the business ten years ago from her spare room. Red Herring Games is now preparing to ship 500 boxsets to Amazon’s warehouse in Illinois.

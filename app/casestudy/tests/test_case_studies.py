@@ -25,5 +25,4 @@ def test_case_study_html():
         '<p>Lorem ipsum dolor sit amet.</p>'
         '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>'
         )
-    print(html)
     assert html == exp_html

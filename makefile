@@ -33,7 +33,7 @@ run_docker:
 run_local:
 	./scripts/local/web-start.sh
 
-test_docker:
+docker_test:
 	docker-compose up --build test
 
 compile_requirements:
@@ -57,6 +57,7 @@ debug_shell:
 test_requirements:
 	pip install -r requirements_test.txt
 
+FLAKE8 := flake8 app --exclude=migrations,.venv
 PYTEST := pytest ./app -v --ignore=node_modules --cov=./app --cov-config=.coveragerc --capture=no $(pytest_args)
 COLLECT_STATIC := python ./app/manage.py collectstatic --noinput
 CODECOV := \
@@ -66,3 +67,6 @@ CODECOV := \
 
 test:
 	$(COLLECT_STATIC) && pep8 app && $(PYTEST) && $(CODECOV)
+
+debug_test:
+	$(DEBUG_SET_ENV_VARS) && $(COLLECT_STATIC) && pep8 app && $(PYTEST) && $(CODECOV)

@@ -6,12 +6,16 @@ subtitle: Support from DIT helped Rarewaves become one of the fastest growing on
 image: rarewaves.png
 company_name: Rarewaves
 company_website: http://rarewavesgroup.com/
+
 quote_one_content: From market advice to information on how best to deliver our products, we’ve found that the help we’ve received from DIT has really helped us smooth our thought process and been a big arm around our shoulders! When launching in more complicated markets like China, we’ve found DIT’s help a hugely important part of this.
 quote_one_author: Brad Aspes
 quote_one_author_title: Founder
+
 quote_two_content: The UK is one part of a global market. If you are a UK retailer only selling domestically, you are missing a massive trick. I would advise speaking to DIT to form an overseas e-commerce strategy, there is a world of opportunity out there and DIT is helping to fill in the gaps with British Businesses.
 quote_two_author: Brad Aspes
 quote_two_author_title: Founder
+
+footer: <p>Find out how you can sell through online marketplaces like Amazon and eBay by using the <a href="/" class="link" title="Selling Online Overseas">Selling Online Overseas Service</a>.</p>
 ---
 
 London-based company, Rarewaves, started when founder Brad Aspess noticed a gap in the market for selling music products online. With more than 100,000 vinyl records in his collection he setup a UK shop through eBay but within 12 months the company was exporting to Germany, France, the US and Australia.

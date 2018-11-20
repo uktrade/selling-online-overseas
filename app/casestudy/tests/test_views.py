@@ -3,7 +3,7 @@ import pytest
 # from casestudy.casestudies import CaseStudy
 from django.core.urlresolvers import reverse_lazy
 from casestudy.casestudies import (
-    BURLINGHAM,
+    BUBBLEBUM,
     RAREWAVES,
 )
 
@@ -16,4 +16,4 @@ def test_other_stories(client):
             'red-herring-games-take-their-mysteries-overseas-through-amazon')
         })
     response = client.get(url)
-    assert response.context['other_stories'] == [BURLINGHAM, RAREWAVES]
+    assert response.context['other_stories'] == [BUBBLEBUM, RAREWAVES]
