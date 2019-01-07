@@ -27,10 +27,7 @@ s3transfer==0.1.10
 six==1.10.0
 whitenoise==3.2.1
 Whoosh==2.7.4
-django-admin-ip-restrictor==0.1.0
-directory_components==2.18.0
-export_elements==0.17.3
-directory-constants==6.8.0
+directory_components==3.6.1
 directory-sso-api-client==2.5.1
 directory-validators==5.0.0
 sigauth==2.1.2
