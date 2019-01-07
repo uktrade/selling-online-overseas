@@ -90,6 +90,7 @@ TEMPLATES = [
                 ('directory_components.context_processors.'
                     'header_footer_processor'),
                 'directory_components.context_processors.analytics',
+                'directory_components.context_processors.feature_flags'
             ],
         },
     },
