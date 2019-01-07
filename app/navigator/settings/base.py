@@ -13,7 +13,6 @@ import os
 import dj_database_url
 from easy_thumbnails.conf import Settings as thumbnail_settings
 import environ
-from directory_constants.constants import urls as default_urls
 
 
 env = environ.Env()
@@ -202,8 +201,6 @@ CKEDITOR_CONFIGS = {
 }
 
 # Hosts for various services, used in templates
-SOO_HOST = env.str('SOO_HOST', default_urls.SERVICES_SOO)
-HELP_HOST = env.str('HELP_HOST', default_urls.INFO_CONTACT_US_DIRECTORY)
 SSO_HOST = env.str('SSO_HOST', 'https://sso.trade.great.gov.uk/')
 PROFILE_HOST = env.str('PROFILE_HOST', 'https://profile.great.gov.uk/')
 SSO_PROXY_LOGIN_URL = env.str(
