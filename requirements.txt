@@ -27,11 +27,11 @@ django-ipware==2.1.0      # via django-admin-ip-restrictor
 django-reversion==2.0.8
 django-storages==1.5.2
 django-thumber==1.0.0
-django==1.9.13
+django==1.11.17
 djangorestframework==3.8.2  # via sigauth
 docker-py==1.2.1
 docutils==0.13.1
-easy-thumbnails==2.3
+easy-thumbnails==2.5
 export-elements==1.0.0    # via directory-components
 gunicorn==19.6.0
 idna==2.6                 # via requests
@@ -46,7 +46,7 @@ pillow==4.2.1
 psycopg2==2.6.2
 pyparsing==2.2.0
 python-dateutil==2.6.0
-pytz==2017.2              # via directory-validators
+pytz==2017.2              # via directory-validators, django
 raven==5.31.0
 requests==2.18.4
 s3transfer==0.1.10

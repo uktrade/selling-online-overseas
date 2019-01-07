@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
+    'directory_components.middleware.IPRestrictorMiddleware',
     'directory_components.middleware.MaintenanceModeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -65,7 +66,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
     'directory_components.middleware.RobotsIndexControlHeaderMiddlware',
 ]
 
