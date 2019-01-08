@@ -202,7 +202,6 @@ CKEDITOR_CONFIGS = {
 }
 
 # Hosts for various services, used in templates
-SSO_HOST = env.str('SSO_HOST', 'https://sso.trade.great.gov.uk/')
 PROFILE_HOST = env.str('PROFILE_HOST', 'https://profile.great.gov.uk/')
 SSO_PROXY_LOGIN_URL = env.str(
     'SSO_PROXY_LOGIN_URL', 'https://sso.trade.great.gov.uk/accounts/login/'

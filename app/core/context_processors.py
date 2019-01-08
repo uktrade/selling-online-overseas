@@ -1,11 +1,12 @@
+from directory_constants.constants import urls
 from django.conf import settings
 
 
 def hosts(request):
     hosts = {
-        'SOO_HOST': settings.SOO_HOST,
-        'HELP_HOST': settings.HELP_HOST,
-        'SSO_HOST': settings.SSO_HOST,
+        'SOO_HOST': urls.SERVICES_SOO,
+        'HELP_HOST': urls.CONTACT_US,
+        'SSO_HOST': urls.SERVICES_SSO,
         'PROFILE_HOST': settings.PROFILE_HOST
     }
 
