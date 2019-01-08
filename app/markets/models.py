@@ -14,7 +14,7 @@ from django.core.exceptions import ValidationError
 from django.utils.numberformat import format
 from django.core import serializers
 from django.contrib.contenttypes.models import ContentType
-from django.utils.html import strip_tags, strip_entities
+from django.utils.html import strip_tags
 
 from reversion.models import Version
 from ckeditor.fields import RichTextField

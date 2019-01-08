@@ -2,7 +2,7 @@ appdirs==1.4.3
 boto3==1.7.31
 contextlib2==0.5.4
 dj-database-url==0.4.1
-Django==1.9.13
+Django==1.11.17
 django-appconf==1.0.1
 django-ckeditor==5.0.3
 django-environ==0.4.5
@@ -13,7 +13,7 @@ django-storages==1.5.2
 django-thumber==1.0.0
 docutils==0.13.1
 docker-py==1.2.1
-easy-thumbnails==2.3
+easy-thumbnails==2.5
 gunicorn==19.6.0
 jmespath==0.9.1
 packaging==16.8
@@ -27,10 +27,7 @@ s3transfer==0.1.10
 six==1.10.0
 whitenoise==3.2.1
 Whoosh==2.7.4
-django-admin-ip-restrictor==0.1.0
-directory_components==2.18.0
-export_elements==0.17.3
-directory-constants==6.8.0
+directory_components==3.6.1
 directory-sso-api-client==2.5.1
 directory-validators==5.0.0
 sigauth==2.1.2

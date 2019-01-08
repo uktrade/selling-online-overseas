@@ -13,7 +13,6 @@ import os
 import dj_database_url
 from easy_thumbnails.conf import Settings as thumbnail_settings
 import environ
-from directory_constants.constants import urls as default_urls
 
 
 env = environ.Env()
@@ -56,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
+    'directory_components.middleware.IPRestrictorMiddleware',
     'directory_components.middleware.MaintenanceModeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -66,7 +66,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
     'directory_components.middleware.RobotsIndexControlHeaderMiddlware',
 ]
 
@@ -90,6 +89,7 @@ TEMPLATES = [
                 ('directory_components.context_processors.'
                     'header_footer_processor'),
                 'directory_components.context_processors.analytics',
+                'directory_components.context_processors.feature_flags'
             ],
         },
     },
@@ -202,9 +202,6 @@ CKEDITOR_CONFIGS = {
 }
 
 # Hosts for various services, used in templates
-SOO_HOST = env.str('SOO_HOST', default_urls.SERVICES_SOO)
-HELP_HOST = env.str('HELP_HOST', default_urls.INFO_CONTACT_US_DIRECTORY)
-SSO_HOST = env.str('SSO_HOST', 'https://sso.trade.great.gov.uk/')
 PROFILE_HOST = env.str('PROFILE_HOST', 'https://profile.great.gov.uk/')
 SSO_PROXY_LOGIN_URL = env.str(
     'SSO_PROXY_LOGIN_URL', 'https://sso.trade.great.gov.uk/accounts/login/'
@@ -248,11 +245,28 @@ THUMBNAIL_PROCESSORS = (
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 # HEADER/FOOTER URLS
-HEADER_FOOTER_URLS_GREAT_HOME = env.str("HEADER_FOOTER_URLS_GREAT_HOME", '')
-HEADER_FOOTER_URLS_FAB = env.str("HEADER_FOOTER_URLS_FAB", '')
-HEADER_FOOTER_URLS_SOO = env.str("HEADER_FOOTER_URLS_SOO", '')
-HEADER_FOOTER_URLS_CONTACT_US = env.str("HEADER_FOOTER_URLS_CONTACT_US", '')
-HEADER_FOOTER_URLS_EVENTS = env.str("HEADER_FOOTER_URLS_EVENTS", '')
+DIRECTORY_CONSTANTS_URL_EXPORT_READINESS = env.str(
+    'DIRECTORY_CONSTANTS_URL_EXPORT_READINESS', ''
+)
+DIRECTORY_CONSTANTS_URL_EXPORT_OPPORTUNITIES = env.str(
+    'DIRECTORY_CONSTANTS_URL_EXPORT_OPPORTUNITIES', ''
+)
+DIRECTORY_CONSTANTS_URL_SELLING_ONLINE_OVERSEAS = env.str(
+    'DIRECTORY_CONSTANTS_URL_SELLING_ONLINE_OVERSEAS', ''
+)
+DIRECTORY_CONSTANTS_URL_EVENTS = env.str(
+    'DIRECTORY_CONSTANTS_URL_EVENTS', ''
+)
+DIRECTORY_CONSTANTS_URL_INVEST = env.str('DIRECTORY_CONSTANTS_URL_INVEST', '')
+DIRECTORY_CONSTANTS_URL_FIND_A_SUPPLIER = env.str(
+    'DIRECTORY_CONSTANTS_URL_FIND_A_SUPPLIER', ''
+)
+DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON = env.str(
+    'DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON', ''
+)
+DIRECTORY_CONSTANTS_URL_FIND_A_BUYER = env.str(
+    'DIRECTORY_CONSTANTS_URL_FIND_A_BUYER', ''
+)
 
 # Google tag manager
 GOOGLE_TAG_MANAGER_ID = env.str('GOOGLE_TAG_MANAGER_ID', 'GTM-PB37DC')
@@ -277,5 +291,7 @@ FEATURE_FLAGS = {
     # used by directory-components
     'SEARCH_ENGINE_INDEXING_OFF': env.bool(
         'FEATURE_SEARCH_ENGINE_INDEXING_DISABLED', False
-    )
+    ),
+    'EXPORT_JOURNEY_ON': env.bool(
+        'FEATURE_EXPORT_JOURNEY_ENABLED', True),
 }
