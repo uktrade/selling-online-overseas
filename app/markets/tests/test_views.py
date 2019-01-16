@@ -211,10 +211,14 @@ class MarketTests(TestCase):
         food = create_category('food')
 
         # Create 4 markets with differing numbers of countries and categories
-        country_vertical = create_market(operating_countries=[uk], product_categories=[sport])
-        global_vertical = create_market(operating_countries=[uk, fr, de], product_categories=[sport])
-        country_generalist = create_market(operating_countries=[uk], product_categories=[sport, food])
-        global_generalist = create_market(operating_countries=[uk, fr, de], product_categories=[sport, food])
+        country_vertical = create_market(
+            operating_countries=[uk], product_categories=[sport], name='foo')
+        global_vertical = create_market(
+            operating_countries=[uk, fr, de], product_categories=[sport], name='bar')
+        country_generalist = create_market(
+            operating_countries=[uk], product_categories=[sport, food], name='xyz')
+        global_generalist = create_market(
+            operating_countries=[uk, fr, de], product_categories=[sport, food], name='abc')
 
         # Searching one category and one country should return all markets with those items
         # But ordered by country-specific vertical first
