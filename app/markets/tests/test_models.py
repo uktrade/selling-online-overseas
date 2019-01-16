@@ -75,9 +75,9 @@ class MarketModelTests(TestCase):
 
     def test_market_delete(self):
         # Create 3 markets and publish 2 of them
-        market1 = create_market()
-        market2 = create_market()
-        market3 = create_market()
+        market1 = create_market(name='foo', slug='foo')
+        market2 = create_market(name='bar', slug='bar')
+        market3 = create_market(name='xyz', slug='xyz')
         market2.publish()
         market3.publish()
 
