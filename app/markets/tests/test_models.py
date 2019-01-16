@@ -1,10 +1,9 @@
-from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 
 from ..models import (
-    Market, Logo, PublishedMarket, SupportChannel, UploadMethod, Currency, Brand, SellerModel, LogisticsModel,
-    Language, Type
+    Market, PublishedMarket, SupportChannel, UploadMethod, Currency, Brand,
+    SellerModel, LogisticsModel, Language, Type
 )
 from . import create_market
 
