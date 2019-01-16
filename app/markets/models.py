@@ -139,8 +139,8 @@ class BaseMarket(models.Model):
 
     last_modified = models.DateTimeField(auto_now=True)
 
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
 
     logo = models.ForeignKey('Logo', null=True, blank=True)
     e_marketplace_description = RichTextField(verbose_name="e-Marketplace Description")
