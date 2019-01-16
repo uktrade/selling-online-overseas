@@ -24,9 +24,6 @@ rebuild_local:
 	./scripts/local/bootstrap.sh && \
 	./scripts/local/web-start.sh
 
-debug_webserver:
-	make run_local
-
 run_docker:
 	docker-compose up --build dev
 
@@ -45,17 +42,26 @@ upgrade_requirements:
 	pip-compile --upgrade requirements_test.in
 
 DEBUG_SET_ENV_VARS := \
+	export PORT=8008; \
 	export DATABASE_URL=postgres://localhost/navigator; \
 	export DJANGO_SETTINGS_MODULE=navigator.settings.dev; \
 	export SECRET_KEY=secret; \
 	export STORAGE_TYPE=local; \
 	export PRIVACY_COOKIE_DOMAIN=.trade.great; \
+	export FEATURE_EXPORT_JOURNEY_ENABLED=false; \
 	export DIRECTORY_CONSTANTS_URL_EXPORT_READINESS=http://exred.trade.great:8007; \
 	export DIRECTORY_CONSTANTS_URL_FIND_A_BUYER=http://buyer.trade.great:8001; \
 	export DIRECTORY_CONSTANTS_URL_SELLING_ONLINE_OVERSEAS=http://soo.trade.great:8008; \
 	export DIRECTORY_CONSTANTS_URL_FIND_A_SUPPLIER=http://supplier.trade.great:8005; \
 	export DIRECTORY_CONSTANTS_URL_INVEST=http://invest.trade.great:8012; \
 	export DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON=http://sso.trade.great:8004
+
+DJANGO_WEBSERVER := \
+	python ./app/manage.py collectstatic --noinput && \
+	python ./app/manage.py runserver 0.0.0.0:$$PORT
+
+debug_webserver:
+	$(DEBUG_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
 
 debug_shell:
 	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py shell

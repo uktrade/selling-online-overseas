@@ -8,6 +8,10 @@
   min-height: 370px;
   position: relative;
 
+  .hero-subheading {
+    max-width: 475px;
+  }
+
   &-content {
     position: relative;
     z-index: 2;

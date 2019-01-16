@@ -10,7 +10,7 @@ describe('Selling Online Overseas homepage', function() {
 
     it('Should be on the homepage', function() {
         browser.get(settings.navigate.home);
-        expect(home.pageHeader.getText()).toEqual('Find online marketplaces');
+        expect(home.pageHeader.getText()).toEqual('Find online global marketplaces');
     });
 
     describe('Marketplace filter', function () {
@@ -82,4 +82,3 @@ describe('Selling Online Overseas homepage', function() {
     });
 
 });
-
