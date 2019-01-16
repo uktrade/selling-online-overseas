@@ -262,3 +262,16 @@ class MarketTests(TestCase):
         markets2 = response.context_data['object_list']
 
         self.assertEqual(markets1, markets2)
+
+    def test_market_detail_page(self):
+        create_market(
+            name="Ebay",
+            product_exclusivity_required=False,
+            sale_to_payment_duration=30)
+
+        url = reverse('markets:detail', kwargs={'slug': 'ebay'})
+        response = self.client.get(url)
+
+        assert response.status_code == 200
+        assert 'Go directly to marketplace' not in str(response.content)
+        assert 'Apply now via DIT' in str(response.content)
