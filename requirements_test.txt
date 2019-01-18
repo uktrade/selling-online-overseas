@@ -41,7 +41,7 @@ freezegun==0.3.10
 gunicorn==19.6.0
 idna==2.6                 # via requests
 jmespath==0.9.1
-markdown2==2.3.5
+markdown2==2.3.6
 mohawk==0.3.4             # via directory-components, sigauth
 monotonic==1.5            # via directory-client-core
 more-itertools==4.2.0     # via pytest
