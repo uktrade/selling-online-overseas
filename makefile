@@ -64,7 +64,7 @@ debug_webserver:
 	$(DEBUG_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
 
 debug_shell:
-	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py shell
+	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py makemigrations
 
 test_requirements:
 	pip install -r requirements_test.txt
