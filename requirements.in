@@ -32,5 +32,5 @@ directory_components==3.6.1
 directory-sso-api-client==2.5.1
 directory-validators==5.0.0
 sigauth==2.1.2
-markdown2==2.3.5
+markdown2==2.3.6
 beautifulsoup4==4.6.0
