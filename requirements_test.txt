@@ -25,7 +25,7 @@ django-admin-ip-restrictor==1.0.0  # via directory-components
 django-appconf==1.0.1
 django-ckeditor==5.0.3
 django-environ==0.4.5
-django-grappelli==2.8.3
+django-grappelli==2.10.4
 django-image-cropping==1.0.4
 django-ipware==2.1.0      # via django-admin-ip-restrictor
 django-reversion==2.0.8

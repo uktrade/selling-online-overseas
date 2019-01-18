@@ -6,7 +6,7 @@ Django==1.11.18
 django-appconf==1.0.1
 django-ckeditor==5.0.3
 django-environ==0.4.5
-django-grappelli==2.8.3
+django-grappelli==2.10.4
 django-image-cropping==1.0.4
 django-reversion==2.0.8
 django-storages==1.5.2
