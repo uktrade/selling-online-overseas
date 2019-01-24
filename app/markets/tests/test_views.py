@@ -211,10 +211,14 @@ class MarketTests(TestCase):
         food = create_category('food')
 
         # Create 4 markets with differing numbers of countries and categories
-        country_vertical = create_market(operating_countries=[uk], product_categories=[sport])
-        global_vertical = create_market(operating_countries=[uk, fr, de], product_categories=[sport])
-        country_generalist = create_market(operating_countries=[uk], product_categories=[sport, food])
-        global_generalist = create_market(operating_countries=[uk, fr, de], product_categories=[sport, food])
+        country_vertical = create_market(
+            operating_countries=[uk], product_categories=[sport], name='foo')
+        global_vertical = create_market(
+            operating_countries=[uk, fr, de], product_categories=[sport], name='bar')
+        country_generalist = create_market(
+            operating_countries=[uk], product_categories=[sport, food], name='xyz')
+        global_generalist = create_market(
+            operating_countries=[uk, fr, de], product_categories=[sport, food], name='abc')
 
         # Searching one category and one country should return all markets with those items
         # But ordered by country-specific vertical first
@@ -262,3 +266,16 @@ class MarketTests(TestCase):
         markets2 = response.context_data['object_list']
 
         self.assertEqual(markets1, markets2)
+
+    def test_market_detail_page(self):
+        create_market(
+            name="Ebay",
+            product_exclusivity_required=False,
+            sale_to_payment_duration=30)
+
+        url = reverse('markets:detail', kwargs={'slug': 'ebay'})
+        response = self.client.get(url)
+
+        assert response.status_code == 200
+        assert 'Go directly to marketplace' not in str(response.content)
+        assert 'Apply now via DIT' in str(response.content)

@@ -2,10 +2,15 @@
   background: {
     repeat: no-repeat;
     size: cover;
+    position: right;
   }
   color: $white;
   min-height: 370px;
   position: relative;
+
+  .hero-subheading {
+    max-width: 475px;
+  }
 
   &-content {
     position: relative;

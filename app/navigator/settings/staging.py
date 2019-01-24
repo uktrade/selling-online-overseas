@@ -12,6 +12,10 @@ ALLOWED_HOSTS = ['selling-online-overseas.export.staging.uktrade.io',
 
 ADMINS = (('David Downes', 'david@downes.co.uk'),)
 
+INSTALLED_APPS += [
+    'raven.contrib.django.raven_compat'
+]
+
 RESTRICT_IPS = True
 ALLOW_AUTHENTICATED = True
 ALLOW_ADMIN = True

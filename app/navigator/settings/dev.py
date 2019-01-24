@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', 'soo.trade.great']
+ALLOWED_HOSTS = ['*']
 
 # Local SSO urls
 SOO_HOST = 'http://soo.trade.great:8008/'
