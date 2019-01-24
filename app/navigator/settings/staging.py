@@ -7,6 +7,7 @@ ALLOWED_HOSTS = ['selling-online-overseas.export.staging.uktrade.io',
                  'navigator-staging.cloudapps.digital',
                  'enav-navigator-dev.cloudapps.digital',
                  'navigator-dev.london.cloudapps.digital',
+                 'navigator-uat.london.cloudapps.digital',
                  'navigator-staging.london.cloudapps.digital']
 
 ADMINS = (('David Downes', 'david@downes.co.uk'),)
