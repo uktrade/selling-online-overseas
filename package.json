@@ -21,7 +21,7 @@
   "license": "MIT",
   "homepage": "https://github.com/uktrade/navigator#readme",
   "dependencies": {
-    "babel-core": "6.3.26",
+    "babel-core": "6.9.0",
     "babel-preset-es2015": "6.3.13",
     "bourbon-neat": "1.8.0",
     "diff-dom": "^2.1.0",
