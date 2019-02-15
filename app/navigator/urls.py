@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 
 from core.views import PingView
 from markets.views import HomepageView
-
+from activitystream.views import ActivityStreamViewSet
 
 urlpatterns = [
     url(r'^robots\.txt$', TemplateView.as_view(
@@ -18,4 +18,7 @@ urlpatterns = [
     url(r'^markets/', include('markets.urls'), name="markets"),
     url(r'^products/', include('products.urls'), name="products"),
     url(r'^geography/', include('geography.urls'), name="geography"),
+    url(r'^activity-stream/',
+        ActivityStreamViewSet.as_view({'get': 'list'}),
+        name='activity-stream'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

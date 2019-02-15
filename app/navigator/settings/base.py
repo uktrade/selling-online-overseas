@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'thumber',
     'directory_components',
     'export_elements',
+    'activitystream.apps.ActivityStreamConfig',
 ]
 
 MIDDLEWARE_CLASSES = [

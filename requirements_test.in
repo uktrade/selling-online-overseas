@@ -9,3 +9,4 @@ pytest-django
 pytest-sugar
 requests_mock
 freezegun
+factory-boy

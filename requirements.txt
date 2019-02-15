@@ -43,7 +43,7 @@ olefile==0.44             # via directory-validators, pillow
 packaging==16.8
 phonenumberslite==7.7.4   # via directory-validators
 pillow==4.2.1
-psycopg2==2.6.2
+psycopg2==2.7.1
 pyparsing==2.2.0
 python-dateutil==2.6.0
 pytz==2017.2              # via directory-validators, django
