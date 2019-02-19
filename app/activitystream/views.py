@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 NO_CREDENTIALS_MESSAGE = 'Authentication credentials were not provided.'
 INCORRECT_CREDENTIALS_MESSAGE = 'Incorrect authentication credentials.'
-MAX_PER_PAGE = 500
+MAX_PER_PAGE = 250
 
 
 def lookup_credentials(access_key_id):
@@ -65,7 +65,6 @@ def seen_nonce(access_key_id, nonce, _):
 
 def authorise(request):
     """Raises a HawkFail if the passed request cannot be authenticated"""
-    
     return Receiver(
         lookup_credentials,
         request.META['HTTP_AUTHORIZATION'],
@@ -180,7 +179,7 @@ class ActivityStreamViewSet(ViewSet):
                     'id': 'dit:navigator:Market:' + str(market.id),
                     'name': market.name,
                     'summary': market.e_marketplace_description,
-                    'url': request.build_absolute_uri(reverse('markets:detail', market.slug))
+                    'url': request.build_absolute_uri(reverse('markets:detail', kwargs={'slug':market.slug} ))
                 },
             })
         return market_objects

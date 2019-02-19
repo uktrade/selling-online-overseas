@@ -9,6 +9,8 @@ from rest_framework.test import APIClient
 from django.conf import settings
 
 from markets.tests.factories import PublishedMarketFactory
+import math
+from activitystream import views
 
 @pytest.fixture
 def api_client():
@@ -176,114 +178,46 @@ def test_lists_published_markets_in_stream_in_date_then_seq_order(api_client):
     assert get_market_name(items[2]) == 'Amazon'
     assert get_market_id(items[2]) == id_prefix + str(market_b.id)
 
+@pytest.mark.django_db
+def test_pagination(api_client, django_assert_num_queries):
+    """The requests are paginated, ending on a page without a next key
+    """
 
-# @pytest.mark.django_db
-# def test_if_verified_with_code_then_deleted_not_in_stream(api_client):
-#     """If the company verified_with_code, then deleted, then not in the stream
+    with freeze_time('2012-01-14 12:00:02'):
+        for i in range(0, 250):
+            PublishedMarketFactory(
+                name='market_' + str(i), e_marketplace_description='online shop',
+                last_modified=datetime.datetime.now())
 
-#     This may need to be changed, but this confirms/documents behaviour, and
-#     ensures that the endpoint doesn't break in this case
-#     """
+    with freeze_time('2012-01-14 12:00:01'):
+        for i in range(250, 501):
+            PublishedMarketFactory(
+                name='market_' + str(i), e_marketplace_description='online shop',
+                last_modified=datetime.datetime.now())
 
-#     # Set up the fail...
-#     to_delete = CompanyFactory(number=10000001, verified_with_code=True)
-#     CompanyFactory(number=10000002, verified_with_code=True)
+    items = []
+    next_url = _url()
+    num_pages = 0
 
-#     to_delete.delete()
+    queries = math.ceil(500/views.MAX_PER_PAGE) + 2
 
-#     # get response
-#     sender = _auth_sender()
-#     response = api_client.get(
-#         _url(),
-#         content_type='',
-#         HTTP_AUTHORIZATION=sender.request_header,
-#         HTTP_X_FORWARDED_FOR='1.2.3.4, 123.123.123.123',
-#     )
-#     items = response.json()['orderedItems']
+    with django_assert_num_queries(queries):
+        while next_url:
+            num_pages += 1
+            sender = _auth_sender(url=lambda: next_url)
+            response = api_client.get(
+                next_url,
+                content_type='',
+                HTTP_AUTHORIZATION=sender.request_header,
+                HTTP_X_FORWARDED_FOR='1.2.3.4, 123.123.123.123',
+            )
+            response_json = response.json()
+            items += response_json['orderedItems']
+            next_url = \
+                response_json['next'] if 'next' in response_json else \
+                None
 
-#     # Test
-#     assert len(items) == 1
-#     assert get_companies_house_number(items[0]) == '10000002'
-
-
-# @pytest.mark.django_db
-# def test_if_verified_with_companies_house_oauth2_in_stream(api_client):
-#     """If the company verified_with_companies_house_oauth2, then it's n the
-#     activity stream
-#     """
-
-#     CompanyFactory(number=10000000, verified_with_companies_house_oauth2=True)
-
-#     sender = _auth_sender()
-#     response = api_client.get(
-#         _url(),
-#         content_type='',
-#         HTTP_AUTHORIZATION=sender.request_header,
-#         HTTP_X_FORWARDED_FOR='1.2.3.4, 123.123.123.123',
-#     )
-#     items = response.json()['orderedItems']
-
-#     assert len(items) == 1
-#     assert get_companies_house_number(items[0]) == '10000000'
-
-
-# @pytest.mark.django_db
-# def test_if_verified_with_preverified_enrolment_in_stream(api_client):
-#     """If the company verified_with_preverified_enrolment, then it's in the
-#     activity stream
-#     """
-
-#     CompanyFactory(number=10000000, verified_with_preverified_enrolment=True)
-
-#     sender = _auth_sender()
-#     response = api_client.get(
-#         _url(),
-#         content_type='',
-#         HTTP_AUTHORIZATION=sender.request_header,
-#         HTTP_X_FORWARDED_FOR='1.2.3.4, 123.123.123.123',
-#     )
-#     items = response.json()['orderedItems']
-
-#     assert len(items) == 1
-#     assert get_companies_house_number(items[0]) == '10000000'
-
-
-# @pytest.mark.django_db
-# def test_pagination(api_client, django_assert_num_queries):
-#     """The requests are paginated, ending on a page without a next key
-#     """
-
-#     with freeze_time('2012-01-14 12:00:02'):
-#         for i in range(0, 250):
-#             CompanyFactory(number=10000000 + i,
-#                            verified_with_preverified_enrolment=True)
-
-#     with freeze_time('2012-01-14 12:00:01'):
-#         for i in range(250, 501):
-#             CompanyFactory(number=10000000 + i,
-#                            verified_with_preverified_enrolment=True)
-
-#     items = []
-#     next_url = _url()
-#     num_pages = 0
-
-#     with django_assert_num_queries(9):
-#         while next_url:
-#             num_pages += 1
-#             sender = _auth_sender(url=lambda: next_url)
-#             response = api_client.get(
-#                 next_url,
-#                 content_type='',
-#                 HTTP_AUTHORIZATION=sender.request_header,
-#                 HTTP_X_FORWARDED_FOR='1.2.3.4, 123.123.123.123',
-#             )
-#             response_json = response.json()
-#             items += response_json['orderedItems']
-#             next_url = \
-#                 response_json['next'] if 'next' in response_json else \
-#                 None
-
-#     assert num_pages == 5
-#     assert len(items) == 501
-#     assert len(set([item['id'] for item in items])) == 501
-#     assert get_companies_house_number(items[500]) == '10000249'
+    assert num_pages == queries
+    assert len(items) == 501
+    assert len(set([item['id'] for item in items])) == 501
+    assert get_market_name(items[500]) == 'market_249'
