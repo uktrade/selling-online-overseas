@@ -1,9 +1,9 @@
---- 
-applications: 
+---
+applications:
   -
     memory: 1G
     name: navigator
     instances: 2
     disk_quota: 2G
-    buildpack: python_buildpack
+    buildpack: https://github.com/cloudfoundry/python-buildpack.git#v1.6.25
     command: python app/manage.py runserver 0:$PORT
