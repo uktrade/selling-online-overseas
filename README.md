@@ -3,23 +3,23 @@
 
 # Selling Online Overseas
 
-Welcome to the Department of International Trade's Selling Online Overseas service. This was originally internally called the "marketplace navigator".
+Welcome to the Department of International Trade's Selling Online Overseas service. This was originally named the "marketplace navigator".
 
 ## Installation
 
-First install
+Locally install:
 - Python 3
 - Postgres 9 [postgres](https://www.postgresql.org)
 - Node 6 [node](https://nodejs.org/en/)
 - Java 8 runtime [java](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)
 - Virtualenv [VirtualEnv](https://virtualenv.pypa.io)
-- A local database management app for example postgresapp on Mac [postgresapp](https://postgresapp.com/)
+- A database management app. On Mac a good option is [postgresapp](https://postgresapp.com/)
 
-In the project root folder create a new Virtual Environment using ```$ virtualenv ENV```
+...And create a new Virtual Environment using ```$ virtualenv ENV``` in the project root folder.
 
-### Adding environment variables to your virtual environment
+### Add local environment variables
 
-You will need to add the following environment variables to your local environment.
+Add the following environment variables to your local environment.
 ```
 DATABASE_URL=postgres://localhost/navigator
 DJANGO_SETTINGS_MODULE=navigator.settings.dev
@@ -52,7 +52,7 @@ export STORAGE_TYPE=local
 
 Activate the virtual environment using ```$ source env/bin/activate```. You will each time you start a new terminal window.
 
-### Runnning the set up scripts
+### Run the set up scripts
 
 Start your local database management app.
 
@@ -60,9 +60,19 @@ Scripts to manage the project are inside the make file in the root folder.
 
 Run ```$ make build_local``` to run the "build_local" script. If this raises any errors, you can debug by running the individual commands within this script which are listing or referenced in the make file.
 
-### Running the local server
+### Run the local server
 
 Run ```$ make run_local``` to run the local server. This will be available at [localhost:8008](http://localhost:8008)
+
+### Run tests
+
+The test script runs a pep8 style check, django tests and a coverage report.
+
+```$ make test```
+
+You are now in a position to contribute to the repository.
+
+# Other Utilities
 
 ## Enabling Single Sign On (SSO)
 
@@ -79,11 +89,6 @@ To make the sso features work locally add the following to your machine's `/etc/
 
 Then log into `directory-sso` via `sso.trade.great:8001`, and use `navigator` on `soo.trade.great:8008`
 
-## Running tests
-
-The test script runs a pep8 style check, django tests and a coverage report.
-
-```$ make test```
 
 ## Rebuilding the project
 
