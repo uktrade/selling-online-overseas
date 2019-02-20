@@ -7,8 +7,6 @@ from django.core.cache import cache
 from django.utils.crypto import constant_time_compare
 from django.utils.decorators import decorator_from_middleware
 
-from markets.models import PublishedMarket
-
 from mohawk import Receiver
 from mohawk.exc import HawkFail
 from rest_framework.authentication import BaseAuthentication
@@ -17,13 +15,15 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.viewsets import ViewSet
 
-# from company.models import Company
+from markets.models import PublishedMarket
 
 logger = logging.getLogger(__name__)
 
 NO_CREDENTIALS_MESSAGE = 'Authentication credentials were not provided.'
 INCORRECT_CREDENTIALS_MESSAGE = 'Incorrect authentication credentials.'
 MAX_PER_PAGE = 250
+
+# --- Hawk Authorisation Helper Functions ---
 
 
 def lookup_credentials(access_key_id):
@@ -76,6 +76,9 @@ def authorise(request):
     )
 
 
+# --- Hawk Authorisation Middleware ---
+
+
 class ActivityStreamAuthentication(BaseAuthentication):
 
     def authenticate_header(self, request):
@@ -101,9 +104,7 @@ class ActivityStreamAuthentication(BaseAuthentication):
         try:
             hawk_receiver = authorise(request)
         except HawkFail as e:
-            logger.warning('Failed authentication {e}'.format(
-                e=e,
-            ))
+            logger.warning('Failed authentication {e}'.format(e=e))
             raise AuthenticationFailed(INCORRECT_CREDENTIALS_MESSAGE)
 
         return (None, hawk_receiver)
@@ -115,14 +116,14 @@ class ActivityStreamHawkResponseMiddleware:
     """
 
     def process_response(self, viewset, response):
-        """Adds the Server-Authorization header to the response, so the originator
-        of the request can authenticate the response
-        """
         response['Server-Authorization'] = viewset.request.auth.respond(
             content=response.content,
             content_type=response['Content-Type'],
         )
         return response
+
+
+# --- Activity Stream Business Logic ---
 
 
 class ActivityStreamViewSet(ViewSet):
@@ -152,18 +153,6 @@ class ActivityStreamViewSet(ViewSet):
         )
 
     @staticmethod
-    def _company_in_db(companies_by_id, item):
-        return int(item.object_id) in companies_by_id
-
-    @staticmethod
-    def _was_company_verified(item):
-        return item.field_value and item.field_name in [
-            'verified_with_code',
-            'verified_with_companies_house_oauth2',
-            'verified_with_preverified_enrolment',
-        ]
-
-    @staticmethod
     def _build_market_objects(request, markets):
         market_objects = []
         for market in markets:
@@ -179,65 +168,37 @@ class ActivityStreamViewSet(ViewSet):
                     'id': 'dit:navigator:Market:' + str(market.id),
                     'name': market.name,
                     'summary': market.e_marketplace_description,
-                    'url': request.build_absolute_uri(reverse('markets:detail', kwargs={'slug':market.slug} ))
+                    'url': request.build_absolute_uri(reverse('markets:detail', kwargs={'slug': market.slug}))
                 },
             })
         return market_objects
 
     @decorator_from_middleware(ActivityStreamHawkResponseMiddleware)
     def list(self, request):
-        """A single page of activities
-        The last page is the page without a 'next' key. A page can be empty,
-        but still have a 'next' key for the next page: The activity stream
-        allows this.
-
-        This is to allow post-db filtering of results, without blocking the
-        request while a "full" page of results is found, which would take a
-        non-constant number of queries. Ideally all filtering would be in the
-        database, but it might be extremely awkward (.e.g. having to query on
-        contents of a json field). Fields are only in FieldHistory because we
-        then show them in the activity stream, so the amount of rows returned
-        from the db that we then don't show in the activity _won't_ increase
-        with unreleated development/fields added to models
-
-        The db query is also kept as simple as possible to make it more likely
-        that the db will use an index
-        """
+        """A single page of activities"""
         after_ts, after_id = self._parse_after(request)
         market_qs_all = PublishedMarket.objects.filter(
             Q(last_modified=after_ts, id__gt=after_id) |
             Q(last_modified__gt=after_ts)
         ).order_by('last_modified', 'id')
+
         market_qs = market_qs_all[:MAX_PER_PAGE]
         markets = list(market_qs)
         market_objects = self._build_market_objects(request, markets)
 
-        # prefetch_related / prefetch_related_objects fetches _all_ the fields
-        # from the related table if using a GenericForeignKey, which Field
-        # History uses. To only fetch the fields needed, we do our own join
-        # in-code. This is what prefetch_related does anyway under the hood,
-        # so is likely not worse.
-
-        # company_ids = [item.object_id for item in history]
-        # companies = Company.objects.all().filter(
-        #     id__in=company_ids).values('id', 'number', 'name')
-        # companies_by_id = dict(
-        #     (company['id'], company) for company in companies
-        # )
-
         items = {
-            '@context': [
-                'https://www.w3.org/ns/activitystreams', {
-                    'dit': 'https://www.trade.gov.uk/ns/activitystreams/v1',
-                },
-            ],
+            '@context': 'https://www.w3.org/ns/activitystreams',
             'type': 'Collection',
             'orderedItems': market_objects
         }
-        next_page = {
-            'next': self._build_after(request, markets[-1].last_modified,
-                                      markets[-1].id)
-        } if markets else {}
+
+        if markets:
+            next_page = {
+                'next': self._build_after(request, markets[-1].last_modified,
+                                          markets[-1].id)
+            }
+        else:
+            next_page = {}
 
         return Response({
             **items,

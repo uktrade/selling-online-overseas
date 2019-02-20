@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^markets/', include('markets.urls'), name="markets"),
     url(r'^products/', include('products.urls'), name="products"),
     url(r'^geography/', include('geography.urls'), name="geography"),
-    url(r'^activity-stream/',
+    url(r'^activity-stream/v1/',
         ActivityStreamViewSet.as_view({'get': 'list'}),
         name='activity-stream'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

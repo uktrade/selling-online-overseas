@@ -1,4 +1,5 @@
 import datetime
+import math
 
 import mohawk
 import pytest
@@ -9,8 +10,11 @@ from rest_framework.test import APIClient
 from django.conf import settings
 
 from markets.tests.factories import PublishedMarketFactory
-import math
 from activitystream import views
+
+
+# --- Helper Functions ---
+
 
 @pytest.fixture
 def api_client():
@@ -41,21 +45,17 @@ def get_market_id(activity):
     return activity['object']['id']
 
 
-# UPDATE THIS
 def _empty_collection():
     return {
-        '@context': [
-            'https://www.w3.org/ns/activitystreams', {
-                'dit': 'https://www.trade.gov.uk/ns/activitystreams/v1',
-            }
-        ],
+        '@context': 'https://www.w3.org/ns/activitystreams',
         'type': 'Collection',
         'orderedItems': [],
     }
 
 
-def _auth_sender(key_id=settings.ACTIVITY_STREAM_ACCESS_KEY_ID, secret_key=settings.ACTIVITY_STREAM_SECRET_ACCESS_KEY, url=_url,
-                 method='GET', content='', content_type=''):
+def _auth_sender(key_id=settings.ACTIVITY_STREAM_ACCESS_KEY_ID,
+                 secret_key=settings.ACTIVITY_STREAM_SECRET_ACCESS_KEY,
+                 url=_url, method='GET', content='', content_type=''):
     credentials = {
         'id': key_id,
         'key': secret_key,
@@ -70,7 +70,8 @@ def _auth_sender(key_id=settings.ACTIVITY_STREAM_ACCESS_KEY_ID, secret_key=setti
         content_type=content_type,
     )
 
-# Authentication tests
+
+# --- Authentication tests ---
 
 
 @pytest.mark.django_db
@@ -89,9 +90,8 @@ def test_empty_object_returned_with_authentication(api_client):
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == _empty_collection()
 
-    # Just asserting that accept_response doesn't raise is a bit weak,
-    # so we also assert that it raises if the header, content, or
-    # content_type are incorrect
+    # sender.accept_response will raise an error if the
+    # inputs are not valid
     sender.accept_response(
         response_header=response['Server-Authorization'],
         content=response.content,
@@ -116,6 +116,32 @@ def test_empty_object_returned_with_authentication(api_client):
             content_type='incorrect',
         )
 
+
+@pytest.mark.django_db
+def test_authentication_fails_if_url_mismatched(api_client):
+    """Creates a Hawk header with incorrect domain"""
+    sender = _auth_sender(url=_url_incorrect_domain)
+    response = api_client.get(
+        _url(),
+        content_type='',
+        HTTP_AUTHORIZATION=sender.request_header,
+        HTTP_X_FORWARDED_FOR='1.2.3.4, 123.123.123.123',
+    )
+
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+    """Creates a Hawk header with incorrect path"""
+    sender = _auth_sender(url=_url_incorrect_path)
+    response = api_client.get(
+        _url(),
+        content_type='',
+        HTTP_AUTHORIZATION=sender.request_header,
+        HTTP_X_FORWARDED_FOR='1.2.3.4, 123.123.123.123',
+    )
+
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+
 @pytest.mark.django_db
 def test_if_61_seconds_in_past_401_returned(api_client):
     """If the Authorization header is generated 61 seconds in the past, then a
@@ -135,7 +161,9 @@ def test_if_61_seconds_in_past_401_returned(api_client):
     error = {'detail': 'Incorrect authentication credentials.'}
     assert response.json() == error
 
-# Content tests
+
+# --- Content tests ---
+
 
 @pytest.mark.django_db
 def test_lists_published_markets_in_stream_in_date_then_seq_order(api_client):
@@ -177,6 +205,7 @@ def test_lists_published_markets_in_stream_in_date_then_seq_order(api_client):
     assert items[2]['published'] == '2012-01-14T12:00:02+00:00'
     assert get_market_name(items[2]) == 'Amazon'
     assert get_market_id(items[2]) == id_prefix + str(market_b.id)
+
 
 @pytest.mark.django_db
 def test_pagination(api_client, django_assert_num_queries):
