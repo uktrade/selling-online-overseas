@@ -1,22 +1,25 @@
+[![CircleCI](https://circleci.com/gh/uktrade/navigator.svg?style=svg)](https://circleci.com/gh/uktrade/navigator)
+[![codecov](https://codecov.io/gh/uktrade/navigator/branch/master/graph/badge.svg)](https://codecov.io/gh/uktrade/navigator)
+
 # Selling Online Overseas
 
 Welcome to the Department of International Trade's Selling Online Overseas service. This was originally internally called the "marketplace navigator".
 
-## First-time setup
-
 ## Installation
 
-You will need first to install
+First install
 - Python 3
 - Postgres 9 [postgres](https://www.postgresql.org)
 - Node 6 [node](https://nodejs.org/en/)
 - Java 8 runtime [java](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)
-- Virtualenv [Virtualenv] https://virtualenv.pypa.io
+- Virtualenv [VirtualEnv](https://virtualenv.pypa.io)
+- A local database management app for example postgresapp on Mac [postgresapp](https://postgresapp.com/)
 
-In terminal, in the main folder for this project, create a new Virtual Environment
-```$ virtualenv ENV```
+In the project root folder create a new Virtual Environment using ```$ virtualenv ENV```
 
-Add the following environment variables to your virtual environment:
+### Adding environment variables to your virtual environment
+
+You will need to add the following environment variables to your local environment.
 ```
 DATABASE_URL=postgres://localhost/navigator
 DJANGO_SETTINGS_MODULE=navigator.settings.dev
@@ -24,7 +27,7 @@ SECRET_KEY=REPLACE_ME_WITH_AN_ACTUAL_SECRET_KEY
 STORAGE_TYPE=local
 ```
 
-One approach to this without any further installation, is as follows. Inside the `ENV/bin/activate` script, add environment variable setting (at the bottom) and unsetting (in the deactivate function)
+One approach is to add these to the `ENV/bin/activate` script. You will need to add environment variable setting at the bottom of the file and unsetting in the deactivate function.
 ```
   deactivate () {
     ...
@@ -47,16 +50,22 @@ export SECRET_KEY=lasdadslkdaslk
 export STORAGE_TYPE=local
 ```
 
-Each time you enter the repository in terminal, or start a new terminal window, you will need to activate the virtual environment using
-```source env/bin/activate```
+Activate the virtual environment using ```$ source env/bin/activate```. You will each time you start a new terminal window.
 
-Next, run the scripts to set up the project. You will need a local database management app running, for example postgresapp on Mac [postgresapp](https://postgresapp.com/).
+### Runnning the set up scripts
 
-A set of scripts to manage the project are inside the make file. Running ```$ make build_local``` itself will run the "build_local" script inside make file that sets up the project. If this command raises any errors, you can debug this by reviewing and runing the individual commands within the make_file.
+Start your local database management app.
 
-```$ make run_local``` will build and run the local server. This will be available in your browser at [localhost:8008](http://localhost:8008)
+Scripts to manage the project are inside the make file in the root folder.
+
+Run ```$ make build_local``` to run the "build_local" script. If this raises any errors, you can debug by running the individual commands within this script which are listing or referenced in the make file.
+
+### Running the local server
+
+Run ```$ make run_local``` to run the local server. This will be available at [localhost:8008](http://localhost:8008)
 
 ## Enabling Single Sign On (SSO)
+
 To make the sso features work locally add the following to your machine's `/etc/hosts`:
 
 | IP Adress | URL                  |
@@ -72,25 +81,22 @@ Then log into `directory-sso` via `sso.trade.great:8001`, and use `navigator` on
 
 ## Running tests
 
-Tests include a pep8 style check, django test script and coverage report.
+The test script runs a pep8 style check, django tests and a coverage report.
 
 ```$ make test```
 
-## Rebuilding
+## Rebuilding the project
 
 If you need to rebuild the project, wiping the database, run:
 ```$ make rebuild```
 
+--------
 
-## Links
+# Legacy Documentation for Reference
 
-[![CircleCI](https://circleci.com/gh/uktrade/navigator.svg?style=svg)](https://circleci.com/gh/uktrade/navigator)
-[![codecov](https://codecov.io/gh/uktrade/navigator/branch/master/graph/badge.svg)](https://codecov.io/gh/uktrade/navigator)
-[![gemnasium](https://gemnasium.com/badges/github.com/uktrade/navigator.svg)](https://gemnasium.com/github.com/uktrade/navigator)
+These older instructions are kept here for reference as of 20 Feb 2019.
 
-
-
-# Legacy Installation Instructions, for Reference
+## Installation Instructions
 
 It  either locally using virtual environments, or within Docker containers
 
@@ -135,8 +141,6 @@ make
 
 ## Legacy Virtual Env Installation Instructions
 
-These outdated instructions are kept here for reference as of 20 Feb 2019.
-
 Create a local file to instruct make that you want to use local building:
 ```shell
 echo "
@@ -169,7 +173,7 @@ Install dependencies, set up the database, and run the project:
     make
 ```
 
-## Running the project
+## Legacy Running the project
 
 To just run the project, execute the following (activating the virtual environment with `workon` is not necessary if using docker):
 ```shell
