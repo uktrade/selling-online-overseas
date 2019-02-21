@@ -36,14 +36,8 @@ def _url_incorrect_path():
         'incorrect/'
     )
 
-
-def get_market_name(activity):
-    return activity['object']['name']
-
-
-def get_market_id(activity):
-    return activity['object']['id']
-
+def market_attribute(activity, attribute):
+    return activity['object'][attribute]
 
 def _empty_collection():
     return {
@@ -172,17 +166,17 @@ def test_lists_published_markets_in_stream_in_date_then_seq_order(api_client):
     with freeze_time('2012-01-14 12:00:02'):
         market_a = PublishedMarketFactory(
             name='eBay', e_marketplace_description='online shop',
-            last_modified=datetime.datetime.now())
+            last_modified=datetime.datetime.now(), slug='ebay')
 
     with freeze_time('2012-01-14 12:00:02'):
         market_b = PublishedMarketFactory(
             name='Amazon', e_marketplace_description='online shop',
-            last_modified=datetime.datetime.now())
+            last_modified=datetime.datetime.now(), slug='amazon')
 
     with freeze_time('2012-01-14 12:00:01'):
         market_c = PublishedMarketFactory(
             name='Alibaba', e_marketplace_description='online shop',
-            last_modified=datetime.datetime.now())
+            last_modified=datetime.datetime.now(), slug='alibaba')
 
     sender = _auth_sender()
     response = api_client.get(
@@ -197,14 +191,16 @@ def test_lists_published_markets_in_stream_in_date_then_seq_order(api_client):
 
     assert len(items) == 3
     assert items[0]['published'] == '2012-01-14T12:00:01+00:00'
-    assert get_market_name(items[0]) == 'Alibaba'
-    assert get_market_id(items[0]) == id_prefix + str(market_c.id)
+    assert market_attribute(items[0], 'name') == 'Alibaba'
+    assert market_attribute(items[0], 'id') == id_prefix + str(market_c.id)
+    assert market_attribute(items[0], 'summary') == 'online shop'
+    assert market_attribute(items[0], 'url') == 'http://testserver/markets/details/alibaba/'
     assert items[1]['published'] == '2012-01-14T12:00:02+00:00'
-    assert get_market_name(items[1]) == 'eBay'
-    assert get_market_id(items[1]) == id_prefix + str(market_a.id)
+    assert market_attribute(items[1], 'name') == 'eBay'
+    assert market_attribute(items[1], 'id') == id_prefix + str(market_a.id)
     assert items[2]['published'] == '2012-01-14T12:00:02+00:00'
-    assert get_market_name(items[2]) == 'Amazon'
-    assert get_market_id(items[2]) == id_prefix + str(market_b.id)
+    assert market_attribute(items[2], 'name') == 'Amazon'
+    assert market_attribute(items[2], 'id') == id_prefix + str(market_b.id)
 
 
 @pytest.mark.django_db
