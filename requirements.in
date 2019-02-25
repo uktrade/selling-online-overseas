@@ -2,11 +2,11 @@ appdirs==1.4.3
 boto3==1.7.31
 contextlib2==0.5.4
 dj-database-url==0.4.1
-Django==1.11.17
+Django==1.11.18
 django-appconf==1.0.1
-django-ckeditor==5.0.3
+django-ckeditor==5.6.1
 django-environ==0.4.5
-django-grappelli==2.8.3
+django-grappelli==2.10.4
 django-image-cropping==1.0.4
 django-reversion==2.0.8
 django-storages==1.5.2
@@ -22,7 +22,8 @@ psycopg2==2.7.1
 pyparsing==2.2.0
 python-dateutil==2.6.0
 raven==5.31.0
-requests>=2.6.1
+urllib3>=1.23.0<2.0.0
+requests>=2.21.0
 s3transfer==0.1.10
 six==1.10.0
 whitenoise==3.2.1
@@ -31,5 +32,5 @@ directory_components==3.6.1
 directory-sso-api-client==2.5.1
 directory-validators==5.0.0
 sigauth==2.1.2
-markdown2==2.3.5
+markdown2==2.3.6
 beautifulsoup4==4.6.0
