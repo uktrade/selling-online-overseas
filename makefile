@@ -58,13 +58,16 @@ DEBUG_SET_ENV_VARS := \
 
 DJANGO_WEBSERVER := \
 	python ./app/manage.py collectstatic --noinput && \
-	python ./app/manage.py runserver 0.0.0.0:$$PORT
+	python ./app/manage.py runserver 0.0.0.0:$$PORT --settings=navigator.settings.dev
 
 debug_webserver:
 	$(DEBUG_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
 
 debug_shell:
 	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py shell
+
+debug_manage:
+	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py $(cmd)
 
 test_requirements:
 	pip install -r requirements_test.txt
