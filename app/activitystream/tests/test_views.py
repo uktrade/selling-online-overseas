@@ -245,4 +245,4 @@ def test_pagination(api_client, django_assert_num_queries):
     assert num_pages == queries
     assert len(items) == 501
     assert len(set([item['id'] for item in items])) == 501
-    assert get_market_name(items[500]) == 'market_249'
+    assert market_attribute(items[500], 'name') == 'market_249'

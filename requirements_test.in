@@ -10,3 +10,4 @@ pytest-sugar
 requests_mock
 freezegun
 factory-boy
+django-extensions
