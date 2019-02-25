@@ -31,13 +31,13 @@ def _url_incorrect_domain():
 
 def _url_incorrect_path():
     return (
-        'http://testserver' +
-        reverse('activity-stream') +
-        'incorrect/'
+        'http://testserver' + reverse('activity-stream') + 'incorrect/'
     )
+
 
 def market_attribute(activity, attribute):
     return activity['object'][attribute]
+
 
 def _empty_collection():
     return {
@@ -224,7 +224,7 @@ def test_pagination(api_client, django_assert_num_queries):
     next_url = _url()
     num_pages = 0
 
-    queries = math.ceil(500/views.MAX_PER_PAGE) + 2
+    queries = math.ceil(500 / views.MAX_PER_PAGE) + 2
 
     with django_assert_num_queries(queries):
         while next_url:

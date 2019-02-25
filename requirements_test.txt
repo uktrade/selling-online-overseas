@@ -47,11 +47,11 @@ monotonic==1.5            # via directory-client-core
 more-itertools==4.2.0     # via pytest
 olefile==0.44             # via directory-validators, pillow
 packaging==16.8
-pep8==1.7.1
+pycodestyle
 phonenumberslite==7.7.4   # via directory-validators
 pillow==4.2.1
 pluggy==0.6.0             # via pytest
-psycopg2==2.6.2
+psycopg2
 py==1.5.4                 # via pytest
 pyparsing==2.2.0
 pytest-cov==2.5.1
@@ -70,3 +70,4 @@ termcolor==1.1.0          # via pytest-sugar
 urllib3==1.22             # via requests
 whitenoise==3.2.1
 whoosh==2.7.4
+django_extensions

@@ -44,7 +44,7 @@ def delete_model_duplicates(Model, unique_attr):
     for duplicate in duplicates:
         name = duplicate[unique_attr]
         count = duplicate["{0}__count".format(unique_attr)]
-        model_to_delete = Model.objects.filter(name=name)[count-1:]
+        model_to_delete = Model.objects.filter(name=name)[count - 1:]
         for model in model_to_delete:
             model.delete()
 

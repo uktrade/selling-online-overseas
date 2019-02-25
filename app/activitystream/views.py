@@ -145,8 +145,7 @@ class ActivityStreamViewSet(ViewSet):
         return (
             request.build_absolute_uri(
                 reverse('activity-stream')
-            ) +
-            '?after={}_{}'.format(
+            ) + '?after={}_{}'.format(
                 str(after_ts.timestamp()),
                 str(after_id)
             )
@@ -158,8 +157,7 @@ class ActivityStreamViewSet(ViewSet):
         for market in markets:
             market_objects.append({
                 'id': (
-                    'dit:navigator:Market:' + str(market.id) +
-                    ':Create'
+                    'dit:navigator:Market:' + str(market.id) + ':Create'
                 ),
                 'type': 'Create',
                 'published': market.last_modified.isoformat('T'),
@@ -178,8 +176,7 @@ class ActivityStreamViewSet(ViewSet):
         """A single page of activities"""
         after_ts, after_id = self._parse_after(request)
         market_qs_all = PublishedMarket.objects.filter(
-            Q(last_modified=after_ts, id__gt=after_id) |
-            Q(last_modified__gt=after_ts)
+            Q(last_modified=after_ts, id__gt=after_id) | Q(last_modified__gt=after_ts)
         ).order_by('last_modified', 'id')
 
         market_qs = market_qs_all[:MAX_PER_PAGE]
