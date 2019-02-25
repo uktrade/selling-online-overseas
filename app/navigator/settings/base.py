@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'thumber',
     'directory_components',
     'export_elements',
+    'activitystream.apps.ActivityStreamConfig',
+    'django_extensions'
 ]
 
 MIDDLEWARE_CLASSES = [

@@ -81,7 +81,7 @@ CODECOV := \
 	fi
 
 test:
-	$(COLLECT_STATIC) && pep8 app && $(PYTEST) && $(CODECOV)
+	$(COLLECT_STATIC) && pycodestyle && $(PYTEST) && $(CODECOV)
 
 debug_test:
-	$(DEBUG_SET_ENV_VARS) && $(COLLECT_STATIC) && pep8 app && $(PYTEST) && $(CODECOV)
+	$(DEBUG_SET_ENV_VARS) && $(COLLECT_STATIC) && pycodestyle && $(PYTEST) && $(CODECOV)

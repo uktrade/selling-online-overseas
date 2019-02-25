@@ -70,7 +70,7 @@ jobs:
           name: Run PEP8 checks
           command: |
             . venv/bin/activate
-            pep8 app
+            pycodestyle
 
       - run:
           name: Run FE tests

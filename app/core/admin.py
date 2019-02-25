@@ -31,4 +31,5 @@ def get_actions_replacer(orig_func):
         return actions
     return fixed_get_actions
 
+
 admin.ModelAdmin.get_actions = get_actions_replacer(admin.ModelAdmin.get_actions)

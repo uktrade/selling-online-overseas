@@ -54,7 +54,7 @@ class Command(BaseCommand):
             for index in range(2, len(row)):
                 # When you find an empty column, the PREVIOUS column was a leaf sub-category for the main category
                 if row[index] == '':
-                    sub_category = row[index-1]
+                    sub_category = row[index - 1]
                     break
             else:
                 # At end of the row's columns without finding a blank column, it means the leaf is in the last column

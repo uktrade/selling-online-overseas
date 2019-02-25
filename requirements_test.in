@@ -1,7 +1,7 @@
 -r requirements.in
 
 coverage
-pep8
+pycodestyle
 codecov
 pytest
 pytest-cov
@@ -9,3 +9,5 @@ pytest-django
 pytest-sugar
 requests_mock
 freezegun
+factory-boy
+django-extensions
