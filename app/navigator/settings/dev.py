@@ -30,7 +30,3 @@ SSO_PROFILE_URL = (
     'http://profile.trade.great:8006/selling-online-overseas/')
 SSO_PROXY_REDIRECT_FIELD_NAME = 'next'
 SSO_PROXY_SESSION_COOKIE = 'debug_sso_session_cookie'
-
-# Activity Stream API
-ACTIVITY_STREAM_ACCESS_KEY_ID = "access-key-123"
-ACTIVITY_STREAM_SECRET_ACCESS_KEY = "secret-key-123"
