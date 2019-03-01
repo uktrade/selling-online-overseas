@@ -12,8 +12,6 @@ ALLOWED_HOSTS = ['selling-online-overseas.export.staging.uktrade.io',
                  'navigator-uat.london.cloudapps.digital',
                  'navigator-staging.london.cloudapps.digital']
 
-ADMINS = (('David Downes', 'david@downes.co.uk'),)
-
 INSTALLED_APPS += [
     'raven.contrib.django.raven_compat'
 ]
