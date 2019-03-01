@@ -91,12 +91,15 @@ class Migration(migrations.Migration):
                 ('membership_fees', models.FloatField(default=0, verbose_name='Membership fees')),
                 ('membership_fees_frequency', models.CharField(blank=True,
                                                                choices=[
-                                                                ('D', 'daily'),
-                                                                ('W', 'weekly'),
-                                                                ('M', 'monthly'),
-                                                                ('Q', 'quarterly'),
-                                                                ('Y', 'annually')],
-                                                               max_length=1, null=True)),
+                                                                    ('D', 'daily'),
+                                                                    ('W', 'weekly'),
+                                                                    ('M', 'monthly'),
+                                                                    ('Q', 'quarterly'),
+                                                                    ('Y', 'annually')
+                                                               ],
+                                                               max_length=1,
+                                                               null=True
+                                                               )),
                 ('deposit', models.FloatField(default=0)),
                 ('deposit_notes', models.CharField(blank=True, max_length=255, null=True, verbose_name='Notes')),
                 ('shipping_tracking_required', models.BooleanField(choices=[(True, 'Yes'), (False, 'No')],
