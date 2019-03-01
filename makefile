@@ -54,7 +54,9 @@ DEBUG_SET_ENV_VARS := \
 	export DIRECTORY_CONSTANTS_URL_SELLING_ONLINE_OVERSEAS=http://soo.trade.great:8008; \
 	export DIRECTORY_CONSTANTS_URL_FIND_A_SUPPLIER=http://supplier.trade.great:8005; \
 	export DIRECTORY_CONSTANTS_URL_INVEST=http://invest.trade.great:8012; \
-	export DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON=http://sso.trade.great:8004
+	export DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON=http://sso.trade.great:8004; \
+	export ACTIVITY_STREAM_ACCESS_KEY_ID=1234-id-key; \
+	export ACTIVITY_STREAM_SECRET_ACCESS_KEY=1234-secret-key
 
 DJANGO_WEBSERVER := \
 	python ./app/manage.py collectstatic --noinput && \
