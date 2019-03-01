@@ -58,7 +58,7 @@ jobs:
           name: Run Django tests
           command: |
             . venv/bin/activate
-            make test
+            make debug_test
 
       - run:
           name: Build Whoosh index
