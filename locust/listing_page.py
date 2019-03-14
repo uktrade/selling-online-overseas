@@ -9,7 +9,7 @@ class UserBehavior(TaskSet):
 
     @task(1)
     def listing_page(self):
-        base_url = '/markets/results'
+        base_url = '/selling-online-overseas/markets/results'
 
         category_count = random.randint(0, 5)
         categories = []
