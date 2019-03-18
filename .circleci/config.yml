@@ -9,6 +9,7 @@ jobs:
           PHANTOMJS_BIN: node_modules/phantomjs/bin/phantomjs
           SECRET_KEY: foobar
           STORAGE_TYPE: local
+          SSO_SESSION_COOKIE: debug_sso_session_cookie
 
       # Service container image available at `host: localhost`
       - image: circleci/postgres:9.5

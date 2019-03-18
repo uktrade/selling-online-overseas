@@ -56,6 +56,14 @@ DEBUG_SET_ENV_VARS := \
 	export STORAGE_TYPE=local; \
 	export PRIVACY_COOKIE_DOMAIN=.trade.great; \
 	export FEATURE_EXPORT_JOURNEY_ENABLED=false; \
+	export DIRECTORY_SSO_API_CLIENT_BASE_URL=http://sso.trade.great:8004/; \
+	export DIRECTORY_SSO_API_CLIENT_API_KEY=api_signature_debug; \
+	export SSO_PROXY_LOGIN_URL=http://sso.trade.great:8004/accounts/login/?next=http://soo.trade.great:8008; \
+	export SSO_PROXY_LOGOUT_URL=http://sso.trade.great:8004/accounts/logout/?next=http://soo.trade.great:8008; \
+	export SSO_PROXY_SIGNUP_URL=http://sso.trade.great:8004/accounts/signup/?next=http://soo.trade.great:8008; \
+	export SSO_PROFILE_URL=http://profile.trade.great:8006/selling-online-overseas/; \
+	export SSO_PROXY_REDIRECT_FIELD_NAME=next; \
+	export SSO_SESSION_COOKIE=debug_sso_session_cookie; \
 	export DIRECTORY_CONSTANTS_URL_EXPORT_READINESS=http://exred.trade.great:8007; \
 	export DIRECTORY_CONSTANTS_URL_FIND_A_BUYER=http://buyer.trade.great:8001; \
 	export DIRECTORY_CONSTANTS_URL_SELLING_ONLINE_OVERSEAS=http://soo.trade.great:8008; \
@@ -66,6 +74,8 @@ DEBUG_SET_ENV_VARS := \
 	export ACTIVITY_STREAM_SECRET_ACCESS_KEY=1234-secret-key
 
 DJANGO_WEBSERVER := \
+	python app/manage.py migrate && \
+	python app/manage.py build_index && \
 	python ./app/manage.py collectstatic --noinput && \
 	python ./app/manage.py runserver 0.0.0.0:$$PORT --settings=navigator.settings.dev
 
@@ -93,4 +103,4 @@ test:
 	$(COLLECT_STATIC) && pycodestyle && $(PYTEST) && $(CODECOV)
 
 debug_test:
-	$(DEBUG_SET_ENV_VARS) && $(COLLECT_STATIC) && pycodestyle && $(PYTEST) && $(CODECOV)
+	$(DEBUG_SET_ENV_VARS) && $(COLLECT_STATIC) && pycodestyle --exclude=.venv,node_modules && $(PYTEST) && $(CODECOV)
