@@ -29,7 +29,7 @@ class UserBehavior(TaskSet):
 
     @task(4)
     def listing_page(self):
-        base_url = '/markets/results'
+        base_url = '/selling-online-overseas/markets/results'
 
         category_count = random.randint(0, 5)
         categories = []
@@ -49,7 +49,7 @@ class UserBehavior(TaskSet):
 
     @task(3)
     def details_page(self):
-        base_url = '/markets/details'
+        base_url = '/selling-online-overseas/markets/details'
 
         slug = random.choice(market_slugs)
         url = '{0}/{1}'.format(base_url, slug)
