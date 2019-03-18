@@ -34,5 +34,5 @@ def test_sso_account_state_required(rf):
 
     assert response.status_code == 302
     assert response.url == (
-        'http://sso.trade.great:8004/accounts/login/?next=http%3A//testserver/'
+        'http://sso.trade.great:8004/accounts/login/?next=http%3A//testserver/selling-online-overseas/'
     )
