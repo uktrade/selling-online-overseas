@@ -15,7 +15,7 @@ quote_two_content: Sales of our products have increased astronomically. Products
 quote_two_author: Jo Smedley
 quote_two_author_title: Founder
 
-footer: <p>Find out how you can sell through online marketplaces like Amazon and eBay by using the <a href="/" class="link" title="Selling Online Overseas">Selling Online Overseas Service</a>.</p>
+footer: <p>Find out how you can sell through online marketplaces like Amazon and eBay by using the <a href="/selling-online-overseas/" class="link" title="Selling Online Overseas">Selling Online Overseas Service</a>.</p>
 ---
 
 Jo Smedley launched the business ten years ago from her spare room. Red Herring Games is now preparing to ship 500 boxsets to Amazon’s warehouse in Illinois.

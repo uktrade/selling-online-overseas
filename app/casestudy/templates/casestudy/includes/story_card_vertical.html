@@ -1,6 +1,6 @@
 {% load static %}
 
-<a class="story-card-vertical" href="/markets/story/{{ story.slug }}">
+<a class="story-card-vertical" href="{% url 'markets:case_story' story.slug %}">
   <img width="100%" src="{% get_static_prefix %}images/case-story/{{ story.html.metadata.image }}"  alt="{{ story.html.metadata.title }}"/>
   <h3 class="font-small">{{ story.html.metadata.title }}</h3>
   <p class="font-xsmall">{{ story.html.metadata.subtitle|default:story.html.metadata.meta_description }}</p>
