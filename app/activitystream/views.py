@@ -162,7 +162,7 @@ class ActivityStreamViewSet(ViewSet):
                 'type': 'Create',
                 'published': market.last_modified.isoformat('T'),
                 'object': {
-                    'type': ['Document', 'dit:navigator:Market'],
+                    'type': 'Market',
                     'id': 'dit:navigator:Market:' + str(market.id),
                     'name': market.name,
                     'summary': market.e_marketplace_description,
