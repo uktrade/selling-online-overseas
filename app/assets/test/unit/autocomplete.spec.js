@@ -2,7 +2,7 @@ describe('Autocomplete', function () {
 
     var event, result, html = '<form class="form">' +
                 '<label class="heading-small form-dropdown-header font-med flush--top" for="search-product">What kind of products do you sell? (optional)</label>'+
-                '<input class="form-control form-dropdown-input column-one-whole" id="search-product" type="text" data-url="/products/api/" data-field="product_categories" autocomplete="off">'+
+                '<input class="form-control form-dropdown-input column-one-whole" id="search-product" type="text" data-url="/selling-online-overseas/products/api/" data-field="product_categories" autocomplete="off">'+
                 '<ul class="form-dropdown-results" role="presentation"></ul>'+
                 '<ul class="form-dropdown-tags"></ul>'+
                 '<button class="button button-blue button-large push--top" type="submit">See results</button>'+

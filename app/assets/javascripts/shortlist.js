@@ -2,7 +2,7 @@ var sortList = (function () {
 
     var shortlist = $('.markets-shortlist'),
         removeAllButton = $('.shortlist-remove'),
-        apiUrl = '/markets/api/shortlist/';
+        apiUrl = '/selling-online-overseas/markets/api/shortlist/';
 
     shortlist.click(shortList);
     removeAllButton.click(removeAll);

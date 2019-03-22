@@ -194,7 +194,7 @@ def test_lists_published_markets_in_stream_in_date_then_seq_order(api_client):
     assert market_attribute(items[0], 'name') == 'Alibaba'
     assert market_attribute(items[0], 'id') == id_prefix + str(market_c.id)
     assert market_attribute(items[0], 'summary') == 'online shop'
-    assert market_attribute(items[0], 'url') == 'http://testserver/markets/details/alibaba/'
+    assert market_attribute(items[0], 'url') == 'http://testserver/selling-online-overseas/markets/details/alibaba/'
     assert items[1]['published'] == '2012-01-14T12:00:02+00:00'
     assert market_attribute(items[1], 'name') == 'eBay'
     assert market_attribute(items[1], 'id') == id_prefix + str(market_a.id)

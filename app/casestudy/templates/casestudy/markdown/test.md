@@ -11,7 +11,7 @@ quote_one_author: Test
 quote_two_content: Lorem ipsum dolor sit amet.
 quote_two_author: Test
 
-footer: <p>Find out how you can sell through online marketplaces like Amazon and eBay by using the <a href="/" class="link" title="Selling Online Overseas">Selling Online Overseas Service</a>.</p>
+footer: <p>Find out how you can sell through online marketplaces like Amazon and eBay by using the <a href="/selling-online-overseas/" class="link" title="Selling Online Overseas">Selling Online Overseas Service</a>.</p>
 ---
 
 Lorem ipsum dolor sit amet.

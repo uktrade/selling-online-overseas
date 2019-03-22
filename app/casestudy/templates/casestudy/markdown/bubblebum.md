@@ -15,7 +15,7 @@ quote_two_content: <p>The Selling Online Overseas tool is a fantastic support fo
 quote_two_author: Eoin McGahon
 quote_two_author_title: E-Commerce Executive
 
-footer: Discover and apply to sell with global marketplaces, like Fruugo and Rakuten, by visiting the <a href="/" class="link" title="Selling Online Overseas">Selling Online Overseas Service</a> or arrange your free meeting with an E-commerce Adviser by finding <a href="https://www.contactus.trade.gov.uk/office-finder/" class="link" title="Find your nearest Department For International Trade office">your nearest Department For International Trade office</a>.
+footer: Discover and apply to sell with global marketplaces, like Fruugo and Rakuten, by visiting the <a href="/selling-online-overseas/" class="link" title="Selling Online Overseas">Selling Online Overseas Service</a> or arrange your free meeting with an E-commerce Adviser by finding <a href="https://www.contactus.trade.gov.uk/office-finder/" class="link" title="Find your nearest Department For International Trade office">your nearest Department For International Trade office</a>.
 
 ---
 
