@@ -15,9 +15,9 @@ chardet==3.0.4            # via requests
 codecov==2.0.15
 contextlib2==0.5.4
 coverage==4.5.2
-directory-client-core==0.3.1  # via directory-sso-api-client
+directory-client-core==4.3.0  # via directory-api-client, directory-ch-client, directory-sso-api-client
 directory-constants==11.5.0  # via directory-components
-directory-sso-api-client==2.5.1
+directory-sso-api-client==4.1.1
 directory-validators==5.0.0
 directory_components==3.6.1
 dj-database-url==0.4.1
@@ -68,7 +68,7 @@ raven==5.31.0
 requests-mock==1.5.2
 requests==2.21.0
 s3transfer==0.1.10
-sigauth==2.1.2
+sigauth==4.0.1            # via directory-client-core
 six==1.10.0
 termcolor==1.1.0          # via pytest-sugar
 text-unidecode==1.2       # via faker

@@ -15,7 +15,7 @@ quote_two_content: The UK is one part of a global market. If you are a UK retail
 quote_two_author: Brad Aspes
 quote_two_author_title: Founder
 
-footer: <p>Find out how you can sell through online marketplaces like Amazon and eBay by using the <a href="/" class="link" title="Selling Online Overseas">Selling Online Overseas Service</a>.</p>
+footer: <p>Find out how you can sell through online marketplaces like Amazon and eBay by using the <a href="/selling-online-overseas/" class="link" title="Selling Online Overseas">Selling Online Overseas Service</a>.</p>
 ---
 
 London-based company, Rarewaves, started when founder Brad Aspess noticed a gap in the market for selling music products online. With more than 100,000 vinyl records in his collection he setup a UK shop through eBay but within 12 months the company was exporting to Germany, France, the US and Australia.

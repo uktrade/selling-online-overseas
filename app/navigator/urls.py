@@ -8,9 +8,9 @@ from core.views import PingView
 from markets.views import HomepageView
 from activitystream.views import ActivityStreamViewSet
 
-urlpatterns = [
+urlpatterns_unprefixed = [
     url(r'^robots\.txt$', TemplateView.as_view(
-        template_name='robots.txt', content_type='text/plain')),
+        template_name='robots.txt', content_type='text/plain'), name='robots'),
     url(r'^ping\.json$', PingView.as_view(), name='ping'),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
@@ -21,4 +21,9 @@ urlpatterns = [
     url(r'^activity-stream/v1/',
         ActivityStreamViewSet.as_view({'get': 'list'}),
         name='activity-stream'),
+]
+
+# to display thumbnails properly MEDIA_URL needs to have added prefix separately
+urlpatterns = [
+    url(r'^selling-online-overseas/', include(urlpatterns_unprefixed))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
