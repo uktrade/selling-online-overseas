@@ -6,23 +6,23 @@ from django.core.urlresolvers import reverse
 # the first element needs to end with a slash
 redirects = [
     (
-        '/markets/story/global-marketplaces-drive-burlingham-london-to-success/',  # noqa
+        '/selling-online-overseas/markets/story/global-marketplaces-drive-burlingham-london-to-success/',  # noqa
         '/'
     ),
     (
-        '/markets/story/online-marketplaces-propel-freestyle-xtreme-sales/',
+        '/selling-online-overseas/markets/story/online-marketplaces-propel-freestyle-xtreme-sales/',
         '/'
     ),
     (
-        '/markets/story/hello-babys-rapid-online-growth/',
+        '/selling-online-overseas/markets/story/hello-babys-rapid-online-growth/',
         '/'
     ),
     (
-        '/markets/story/york-bag-retailer-goes-global-via-e-commerce/',
+        '/selling-online-overseas/markets/story/york-bag-retailer-goes-global-via-e-commerce/',
         '/'
     ),
     (
-        '/markets/story/incorrect-case-study-slug/',
+        '/selling-online-overseas/markets/story/incorrect-case-study-slug/',
         '/'
     ),
 ]

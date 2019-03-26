@@ -64,8 +64,9 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'sso.middleware.SSOUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'directory_components.middleware.RobotsIndexControlHeaderMiddlware',
@@ -85,7 +86,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.hosts',
-                'sso.context_processors.sso_processor',
+                'directory_components.context_processors.sso_processor',
                 'directory_components.context_processors.urls_processor',
                 'directory_components.context_processors.cookie_notice',
                 ('directory_components.context_processors.'
@@ -145,7 +146,8 @@ CSRF_COOKIE_HTTPONLY = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_HOST = env.str('STATIC_HOST', '/selling-online-overseas')
+STATIC_URL = STATIC_HOST + '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
@@ -157,7 +159,7 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Media file storage
-MEDIA_URL = '/media/'
+MEDIA_URL = '/selling-online-overseas/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STORAGE_CLASSES = {
@@ -205,14 +207,15 @@ CKEDITOR_CONFIGS = {
 
 # Hosts for various services, used in templates
 PROFILE_HOST = env.str('PROFILE_HOST', 'https://profile.great.gov.uk/')
-SSO_PROXY_LOGIN_URL = env.str(
-    'SSO_PROXY_LOGIN_URL', 'https://sso.trade.great.gov.uk/accounts/login/'
+
+# SSO API Client
+DIRECTORY_SSO_API_CLIENT_BASE_URL = env.str('DIRECTORY_SSO_API_CLIENT_BASE_URL', '')
+DIRECTORY_SSO_API_CLIENT_API_KEY = env.str('DIRECTORY_SSO_API_CLIENT_API_KEY', '')
+DIRECTORY_SSO_API_CLIENT_SENDER_ID = env.str(
+    'DIRECTORY_SSO_API_CLIENT_SENDER_ID', 'directory'
 )
-SSO_PROXY_SIGNUP_URL = env.str(
-    'SSO_PROXY_SIGNUP_URL', 'https://sso.trade.great.gov.uk/accounts/signup/'
-)
-SSO_PROFILE_URL = env.str(
-    'SSO_PROFILE_URL', 'https://profile.great.gov.uk/selling-online-overseas'
+DIRECTORY_SSO_API_CLIENT_DEFAULT_TIMEOUT = env.int(
+    'DIRECTORY_SSO_API_CLIENT_DEFAULT_TIMEOUT', 5
 )
 
 # SSO
@@ -240,7 +243,7 @@ SSO_PROXY_REDIRECT_FIELD_NAME = env.str(
 SSO_PROXY_SESSION_COOKIE = env.str(
     'SSO_PROXY_SESSION_COOKIE', 'debug_sso_session_cookie'
 )
-
+SSO_SESSION_COOKIE = env.str('SSO_SESSION_COOKIE')
 
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
