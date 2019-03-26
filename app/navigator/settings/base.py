@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'products',
     'thumber',
     'directory_components',
-    'export_elements',
     'activitystream.apps.ActivityStreamConfig',
     'django_extensions'
 ]
@@ -146,7 +145,7 @@ CSRF_COOKIE_HTTPONLY = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_HOST = env.str('STATIC_HOST', '/selling-online-overseas')
+STATIC_HOST = env.str('STATIC_HOST', '')
 STATIC_URL = STATIC_HOST + '/static/'
 
 # Extra places for collectstatic to find static files.
@@ -297,6 +296,9 @@ FEATURE_FLAGS = {
     'SEARCH_ENGINE_INDEXING_OFF': env.bool(
         'FEATURE_SEARCH_ENGINE_INDEXING_DISABLED', False
     ),
-    'EXPORT_JOURNEY_ON': env.bool(
-        'FEATURE_EXPORT_JOURNEY_ENABLED', True),
+    'EXPORT_JOURNEY_ON': env.bool('FEATURE_EXPORT_JOURNEY_ENABLED', True),
+    'NEW_HEADER_FOOTER_ON': env.bool(
+        'FEATURE_NEW_HEADER_FOOTER_ENABLED', False
+    ),
+    'HEADER_SEARCH_ON': env.bool('FEATURE_HEADER_SEARCH_ENABLED', False),
 }
