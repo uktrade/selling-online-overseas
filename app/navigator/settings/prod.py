@@ -4,7 +4,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'selling-online-overseas.export.great.gov.uk',
     'navigator.cloudapps.digital',
-    'navigator.london.cloudapps.digital']
+    'navigator.london.cloudapps.digital',
+    'www.great.gov.uk']
 
 INSTALLED_APPS += [
     'raven.contrib.django.raven_compat'
