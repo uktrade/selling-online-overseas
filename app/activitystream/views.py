@@ -165,7 +165,7 @@ class ActivityStreamViewSet(ViewSet):
                     'type': 'Market',
                     'id': 'dit:navigator:Market:' + str(market.id),
                     'name': market.name,
-                    'summary': market.e_marketplace_description,
+                    'content': market.e_marketplace_description,
                     'url': request.build_absolute_uri(reverse('markets:detail', kwargs={'slug': market.slug}))
                 },
             })
