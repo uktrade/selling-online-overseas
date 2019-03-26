@@ -15,11 +15,11 @@ chardet==3.0.4            # via requests
 codecov==2.0.15
 contextlib2==0.5.4
 coverage==4.5.2
-directory-client-core==4.3.0  # via directory-api-client, directory-ch-client, directory-sso-api-client
-directory-constants==11.5.0  # via directory-components
+directory-client-core==4.4.0  # via directory-sso-api-client
+directory-constants==14.4.0  # via directory-components
 directory-sso-api-client==4.1.1
 directory-validators==5.0.0
-directory_components==3.6.1
+directory_components==7.2.0
 dj-database-url==0.4.1
 django-admin-ip-restrictor==1.0.0  # via directory-components
 django-appconf==1.0.1
@@ -33,12 +33,11 @@ django-js-asset==1.2.2    # via django-ckeditor
 django-reversion==2.0.8
 django-storages==1.5.2
 django-thumber==1.0.0
-django==1.11.18
+django==1.11.20
 djangorestframework==3.9.1  # via sigauth
 docker-py==1.2.1
 docutils==0.13.1
 easy-thumbnails==2.5
-export-elements==1.1.0    # via directory-components
 factory-boy==2.11.1
 faker==1.0.2              # via factory-boy
 freezegun==0.3.11
@@ -54,7 +53,7 @@ packaging==16.8
 phonenumberslite==7.7.4   # via directory-validators
 pillow==4.2.1
 pluggy==0.9.0             # via pytest
-psycopg2==2.7.1
+psycopg2==2.7.3.2
 py==1.8.0                 # via pytest
 pycodestyle==2.5.0
 pyparsing==2.2.0
@@ -68,10 +67,11 @@ raven==5.31.0
 requests-mock==1.5.2
 requests==2.21.0
 s3transfer==0.1.10
-sigauth==4.0.1            # via directory-client-core
+sigauth==4.0.1
 six==1.10.0
 termcolor==1.1.0          # via pytest-sugar
 text-unidecode==1.2       # via faker
 urllib3==1.24.1
+w3lib==1.20.0             # via directory-client-core
 whitenoise==3.2.1
 whoosh==2.7.4
