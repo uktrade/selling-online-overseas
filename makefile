@@ -71,7 +71,9 @@ DEBUG_SET_ENV_VARS := \
 	export DIRECTORY_CONSTANTS_URL_INVEST=http://invest.trade.great:8012; \
 	export DIRECTORY_CONSTANTS_URL_SINGLE_SIGN_ON=http://sso.trade.great:8004; \
 	export ACTIVITY_STREAM_ACCESS_KEY_ID=1234-id-key; \
-	export ACTIVITY_STREAM_SECRET_ACCESS_KEY=1234-secret-key
+	export ACTIVITY_STREAM_SECRET_ACCESS_KEY=1234-secret-key; \
+	export FEATURE_NEW_HEADER_FOOTER_ENABLED=true; \
+	export FEATURE_HEADER_SEARCH_ENABLED=false
 
 DJANGO_WEBSERVER := \
 	python app/manage.py migrate && \
