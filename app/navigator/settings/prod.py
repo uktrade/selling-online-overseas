@@ -1,10 +1,10 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = [
-    'selling-online-overseas.export.great.gov.uk',
-    'navigator.cloudapps.digital',
-    'navigator.london.cloudapps.digital']
+
+# As the app is running behind a host-based router supplied by Heroku or other
+# PaaS, we can open ALLOWED_HOSTS
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS += [
     'raven.contrib.django.raven_compat'
