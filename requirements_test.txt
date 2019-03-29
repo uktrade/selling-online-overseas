@@ -19,7 +19,7 @@ directory-client-core==4.4.0  # via directory-sso-api-client
 directory-constants==14.4.0  # via directory-components
 directory-sso-api-client==4.1.1
 directory-validators==5.0.0
-directory_components==7.2.0
+directory_components==8.2.0
 dj-database-url==0.4.1
 django-admin-ip-restrictor==1.0.0  # via directory-components
 django-appconf==1.0.1
