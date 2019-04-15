@@ -15,61 +15,54 @@
 {% endblock %}
 
 {% block content %}
-  <section>
-    <div class="hero hero-gradient background-image--hero soft--bottom cf">
-      <div class="hero-content">
-        <a name="anchor"></a>
-        <div class="outer-container soft-half--top text-shadow">
-          <h1 class="h1 font-reg soft--top soft-half--bottom">Find online global marketplaces</h1>
-          <p class="h3 font-lig soft--bottom hero-subheading">Identify and apply to sell with marketplaces to reach international consumers</p>
-        </div>
-        <div class="outer-container">
-          <div class="background--bright-grey-opacity soft--sides soft--top soft-half--bottom autocomplete">
-            <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}' data-form-type="autocomplete">
-              <fieldset>
-                <div role="group" class="autocomplete-form-group">
-                  <legend class="visuallyhidden">Please select countries and products</legend>
-                  <div class="autocomplete-section push--bottom">
-                    <div class="form-dropdown">
-                      <label class="form-label" for="search-product">What do you sell?
-                        <span class="form-hint">Enter your product type and pick a category</span>
-                      </label>
-                      <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="{% url 'products:api' %}" data-field="product_categories" autocomplete="off" placeholder="Product type (for example: shoes)" aria-owns="search-product-dropdown">
-                      <ul class="form-dropdown-results" role="listbox" id="search-product-dropdown" aria-live="polite"></ul>
-                    </div>
-                  </div>
-                  <div class="autocomplete-section push--bottom">
-                    <div class="form-dropdown">
-                      <label class="form-label" for="search-country">Where do you want to sell?
-                        <span class="form-hint">Leave this empty if you are not sure</span>
-                      </label>
-                      <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="{% url 'geography:api' %}" data-field="operating_countries" autocomplete="off" placeholder="Country name (for example: China)" aria-owns="search-country-dropdown">
-                      <ul class="form-dropdown-results" role="listbox" aria-live="polite" id="search-country-dropdown"></ul>
-                      <ul class="form-dropdown-checkbox hide"></ul>
-                    </div>
-                  </div>
-                  <div class="autocomplete-section autocomplete-section--button push--bottom">
-                    <div class="push--bottom shortlist-items text--right">
-                      <dl id="homepage-shortlist-info" class="float--right hide">
-                        <dt class="float--left push-half--right"><a href="{% url 'markets:shortlist' %}" class="link">Go to your shortlist:</a></dt>
-                        <dd class="font-mid-blue float--left"><strong class="shortlist-count"></strong><i class="icon icon-shortlisted float--right shortlist-icon" data-modal-button="sorting"></i></dd>
-                      </dl>
-                    </div>
-
-                    <div id='results-count'>
-                      <button class='button button-red button-medium' type='submit'>Start your search now (<span class="results-count">{{results_count}}</span>)</button>
-                    </div>
-                  </div>
-                  <div class="cf autocomplete-tags">
-                    <ul class="form-dropdown-tags"></ul>
-                  </div>
-                </div>
-              </fieldset>
-              <div class="autocomplete-status" role="listbox" aria-live="polite"></div>
-            </form>
-          </div>
-        </div>
-      </div>
+  <section class="hero-section search-section background-image--hero" id="hero-banner">
+    <div class="container">
+      <p class="breadcrumbs">
+          <span class="label verbose">You are here:</span>
+          <a href="{{ SERVICES_GREAT_DOMESTIC }}">Home</a>
+          <span class="separator">,</span>
+          <span class="current">
+              Selling online overseas
+          </span>
+      </p>
+      <h1>Get help to sell online worldwide</h1>
+      <p>Let us help you reach millions of online buyers around the world</p>
+      <form
+        class="search-form"
+        id='results-form'
+        method="get"
+        action="{% url 'markets:list' %}"
+        data-count-action='{% url "markets:count" %}'
+        data-form-type="autocomplete"
+      >
+          <label class="term">
+              <span class="verbose">Product or service keyword</span>
+              <select autocomplete="off" name="product_categories__name">
+                  <option value="">
+                      Select your category
+                  </option>
+                  {% for category in categories %}
+                  <option value="{{ category.name }}">
+                      {{ category.name }}
+                  </option>
+                  {% endfor %}
+              </select>
+          </label>
+          <label class="filter">
+              <span class="verbose">Filter by country (optional)</span>
+              <select autocomplete="off" name="operating_countries__name">
+                  <option value="">
+                      All regions and countries
+                  </option>
+                  {% for country in countries %}
+                  <option value="{{ country.name }}">
+                      {{ country.name }}
+                  </option>
+                  {% endfor %}
+              </select>
+          </label>
+          <input class="button submit" name="commit" type="submit" value="Find a marketplace">
+      </form>
     </div>
   </section>
 
@@ -219,22 +212,6 @@
             </div>
           </li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="soft--bottom soft-half--top top-chevron">
-      <div class="outer-container">
-        <div class="steps-sub-section soft--top">
-          <div class="col-6">
-            <h1 class="font-large">Find online global marketplaces </h1>
-            <p>Identify and apply to sell with marketplaces to reach international consumers</p>
-          </div>
-          <div class="col-6">
-            <button class="button button-red button-medium push--top" data-scrollTo="search-product">Start your search now</button>
-          </div>
-        </div>
       </div>
     </div>
   </section>

@@ -1,0 +1,191 @@
+@import "../config";
+@import "../components/sharing-links";
+@import "../components/simple_text_display_restrictor";
+
+
+@mixin content {
+  clear: left;
+  float: left;
+  width: $cols-8;
+}
+
+h1 {
+  margin-bottom: $spacing-2;
+}
+
+.bid {
+  @include content;
+  margin-bottom: $spacing-1;
+
+  a {
+    margin-top: $spacing-3;
+  }
+}
+
+.breadcrumbs {
+  margin-bottom: $spacing-1;
+}
+
+.buyer {
+  @include content;
+  margin-bottom: $spacing-1;
+}
+
+.details {
+  float: right;
+  padding-left: $spacing-3;
+  width: $cols-3;
+
+  dd {
+    @include body-s;
+  }
+
+  dt {
+    @include body-s;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    @include access-hidden;
+  }
+}
+
+.description {
+  @include content;
+  margin-bottom: $spacing-1;
+
+  dl {
+    padding-top: $spacing-3;
+  }
+
+  h2 {
+    @include body-m;
+    font-weight: bold;
+  }
+}
+
+.disclaimer {
+  margin-bottom: $spacing-2;
+  padding-top: $spacing-3;
+
+  p {
+    @include body-s;
+  }
+}
+
+.opportunity {
+  margin-bottom: $spacing-1;
+  padding-left: $cols-2;
+  position: relative;
+  
+
+  dd {
+    margin-bottom: $spacing-3;
+  }
+
+  dt {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .action {
+    padding-bottom: $spacing-3;
+  }
+
+  .source {
+    @include body-s;
+    color: $mid-grey;
+    display: none;
+    margin-bottom: $spacing-1;
+
+    img {
+      display: block;
+      max-width: 200px;
+      width: 100%;
+    }
+
+    &.open-opps {
+      clear: both;
+      display: block;
+    }
+  }
+
+  .report {
+    @include body-s;
+    display: inline-block;
+    margin: $spacing-3 0;
+  }
+
+  .type {
+    color: $mid-grey;
+    margin-bottom: 0;
+  }  
+}
+
+.sharing-links {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.sign-of {
+  &-0 {
+    @include heading-m;
+    margin-bottom: $spacing-3;
+  }
+
+  &-1 {
+    margin-bottom: $spacing-2;
+  }
+}
+
+.summary {
+  @include body-s;
+  border-bottom: $light-grey solid 2px;
+  margin-bottom: $spacing-1;
+  padding-bottom: $spacing-3;
+}
+
+.teaser {
+  @include content;
+  @include body-l;
+  margin-bottom: $spacing-3;
+}
+
+
+// RESPONSIVE
+@media screen and (max-width: 767px) {
+  .bid,
+  .buyer,
+  .description,
+  .teaser {
+    float: none;
+    width: auto;
+  }
+
+  .details {
+    float: none;
+    margin-bottom: $spacing-1;
+    padding-left: 0;
+    width: auto;
+  }
+
+  .opportunity {
+    padding-left: 0;
+
+    dd {
+      margin-bottom: $spacing-3-m;
+    }
+  }
+
+  .report {
+    bottom: -90px;
+    position: absolute;
+    right: 0;
+  }
+
+  .sharing-links {
+    position: static;
+  }
+}

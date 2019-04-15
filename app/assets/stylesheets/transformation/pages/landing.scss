@@ -1,17 +1,13 @@
-// copied from transformation/pages/landing
-@import '../transformation/config';
-@import '../transformation/forms';
-// EDIT transformation/pages/landing
-@import '../transformation/components/breadcrumbs';
-// END EDIT
-@import '../transformation/components/opportunity_list';
-@import '../transformation/components/search_form';
-@import '../transformation/components/steps_indicator';
-@import '../transformation/components/quote';
-@import '../transformation/components/summary_list';
-@import '../transformation/components/filter_select';
-@import '../transformation/effects/carousel';
-@import '../transformation/effects/tabbed_area';
+@import '../config';
+@import '../forms';
+@import '../components/opportunity_list';
+@import '../components/search_form';
+@import '../components/steps_indicator';
+@import '../components/quote';
+@import '../components/summary_list';
+@import '../components/filter_select';
+@import '../effects/carousel';
+@import '../effects/tabbed_area';
 
 section {
   padding: $spacing-1 0;
@@ -55,13 +51,10 @@ section {
 }
 
 .hero-section {
-  // EDITED:
-  // background-position: top left;
-  // background-repeat: no-repeat;
-  // background-size: cover;
+  background-image: asset_url("backgrounds/ExOpps_HeroBanner1290x400_27@2x.jpg");
+  background-position: top left;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right;
   padding: 0 0 $spacing-3 0;
 
   h1 {
@@ -171,9 +164,7 @@ section {
 }
 
 #service-promotion {
-  // EDIT
-  // background: $great-blue image_url('backgrounds/ExOpps_Benefits1290x830_3@2x.jpg') no-repeat center;
-  // END EDIT
+  background: $great-blue image_url('backgrounds/ExOpps_Benefits1290x830_3@2x.jpg') no-repeat center;
   background-size: 100%;
   overflow: hidden;
   padding: $spacing-1 0;
@@ -243,7 +234,7 @@ section {
       width: auto;
     }
   }
-
+  
   .Carousel {
     width: auto;
   }
@@ -288,27 +279,3 @@ section {
   }
 }
 
-// EDIT transformation/pages/landing
-.verbose {
-  @include access-hidden;
-}
-// END EDIT
-// EDIT ../transformation/components/search_form
-@media screen and (min-width:660px) {
-  // remove double bourder (in exopps there is one select so they overlap)
-  .term {
-    select {
-      left: 0px;
-    }
-  }
-}
-// END EDIT
-
-// OLD
-// section {
-//   padding-bottom: 0;
-// }
-
-// #content {
-//   padding-top: 0;
-// }
