@@ -10,7 +10,7 @@ var autoComplete =(function ($) {
 
     function init() {
 
-        if($('form').data('form-type') === "autocomplete") {
+        if($('form#results-form').data('form-type') === "autocomplete") {
 
             searchField.keyup(inputEvent);
             results.keyup(dropdown.manualSelect);
