@@ -6,6 +6,15 @@
 
 {% load static utils %}
 
+{% block head_js_ga360 %}
+  {{ block.super }}
+  <script src="{% static 'javascripts/dit.tagging.js' %}"></script>
+  <script>
+    window.dataLayer.push({ 'pageCategory': 'SearchResultsPage' });
+    dit.tagging.soo.init('SearchResultsPage');
+  </script>
+{% endblock %}
+
 {% block content %}
   <div class="outer-container push--top soft--top">
     <aside class="background--bright-grey-opacity soft-half autocomplete-aside modal" data-modal-id="search">
