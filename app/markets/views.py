@@ -17,6 +17,8 @@ from django.http import Http404
 from thumber.decorators import thumber_feedback
 
 from casestudy.casestudies import CASE_STUDIES
+from geography.models import Country
+from products.models import Category
 
 from .models import Market, PublishedMarket
 from .forms import MarketListFilterForm
@@ -59,11 +61,13 @@ class HomepageView(MarketFilterMixin, TemplateView):
 
         return super().get_context_data(
             *args, **kwargs,
+            countries=Country.objects.all().order_by('name'),
+            categories=Category.objects.all(),
             case_studies=CASE_STUDIES.values(),
             market_count=self.markets.count(),
             last_updated=self.markets.aggregate(
                 Max('last_modified'))['last_modified__max'],
-            random_markets=self.markets.order_by('?')[:6]
+            random_markets=self.markets.order_by('?')[:3]
         )
 
 

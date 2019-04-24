@@ -1,0 +1,36 @@
+<form
+class="search-form"
+id='results-form'
+method="get"
+action="{% url 'markets:list' %}"
+data-count-action='{% url "markets:count" %}'
+data-form-type="autocomplete"
+>
+  <label class="term">
+      <span class="verbose">Product or service keyword</span>
+      <select autocomplete="off" name="product_categories__name">
+          <option value="">
+              Select your category
+          </option>
+          {% for category in categories %}
+          <option value="{{ category.name }}">
+              {{ category.name }}
+          </option>
+          {% endfor %}
+      </select>
+  </label>
+  <label class="filter">
+      <span class="verbose">Filter by country (optional)</span>
+      <select autocomplete="off" name="operating_countries__name">
+          <option value="">
+              All regions and countries
+          </option>
+          {% for country in countries %}
+          <option value="{{ country.name }}">
+              {{ country.name }}
+          </option>
+          {% endfor %}
+      </select>
+  </label>
+  <input class="button submit" name="commit" type="submit" value="Find a marketplace">
+</form>
