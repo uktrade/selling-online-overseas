@@ -163,6 +163,7 @@ class ActivityStreamViewSet(ViewSet):
                 'published': market.last_modified.isoformat('T'),
                 'object': {
                     'type': 'Market',
+                    'dit:greatDomesticUI:searchResultType': 'Market',
                     'id': 'dit:navigator:Market:' + str(market.id),
                     'name': market.name,
                     'content': market.e_marketplace_description,
