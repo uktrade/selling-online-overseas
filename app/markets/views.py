@@ -67,7 +67,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
             market_count=self.markets.count(),
             last_updated=self.markets.aggregate(
                 Max('last_modified'))['last_modified__max'],
-            random_markets=self.markets.order_by('?')[:6]
+            random_markets=self.markets.order_by('?')[:3]
         )
 
 
