@@ -63,20 +63,16 @@
           <legend class="h3 modal-header font-med soft-half--ends push-half--bottom">Sort by</legend>
           <div class="soft--top">
 
-            <label class="block-label selection-button-radio" for="sort_0">
-              <input id="sort_0" type="radio" name="sort" value="">
-              Relevance
-            </label>
-
-            <label class="block-label selection-button-radio" for="sort_1">
-              <input id="sort_1" type="radio" name="sort" value="users">
-              Registered users (high to low)
-            </label>
-
-            <label class="block-label selection-button-radio" for="sort_4">
-              <input id="sort_4" type="radio" name="sort" value="commission">
-              Commission (low to high)
-            </label>
+    {% for market in markets_list %}
+      <div class="market-item {% if market.has_special_terms %}has-special-terms{% endif %}">
+        {% if market.has_special_terms %}
+        <div class="special-terms-container">
+          <div class="special-terms-summary">
+            {% if market.dit_special_terms_summary %}
+              <strong>SPECIAL DEAL &nbsp | &nbsp</strong> {{ market.dit_special_terms_summary }}
+            {% else %}
+              <strong>SPECIAL DEAL</strong>
+            {% endif %}
           </div>
 
         </div>
@@ -93,15 +89,12 @@
             {% if markets_list.count == 0 %} match your search {% endif %}
           </h1>
         </div>
-        <div class="markets-list-options">
-          <div class="form-group col-7">
-            <label class="font-mid-grey push-half--right push-half--bottom" for="sort-select">Sort by:</label>
-            <div class="form-select--wrapper">
-              <select class="form-select" id="sort-select" name="sort">
-                <option value="" selected="selected">Relevance</option>
-                <option value="users">Registered users (high to low)</option>
-                <option value="commission">Commission (low to high)</option>
-              </select>
+        {% endif %}
+        <div class="market-item-inner">
+          <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="market-item-img" alt="Navigate to full profile of {{ market.name }}" />
+          <div class="market-item-body">
+            <div class="add-to-compare markets-shortlist font-mid-blue" data-slug="{{ market.slug }}">
+              Add to compare
             </div>
           </div>
           <div class="shortlist-items shortlist-items--short col-5">
