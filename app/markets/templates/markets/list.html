@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
+{% load static utils thumbnail %}
+
 {% block head_title %}Search results | Selling online overseas{% endblock head_title %}
 
 {% block head_meta_description %}Read and review the results. Compare, then select online marketplaces that are suitable for your products.{% endblock head_meta_description %}
 
-{% load static utils %}
+{% block head_css %}
+  {{ block.super }}
+  <link href="{% static 'stylesheets/main_redesign.css' %}" rel="stylesheet" media="screen">
+{% endblock %}
 
 {% block head_js_ga360 %}
   {{ block.super }}
@@ -16,110 +21,49 @@
 {% endblock %}
 
 {% block content %}
-  <div class="outer-container push--top soft--top">
-    <aside class="background--bright-grey-opacity soft-half autocomplete-aside modal" data-modal-id="search">
-      <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}' data-form-type="autocomplete">
-        <fieldset>
-          <a href="#" data-action="clear-fields" class="clear-all link">Clear all</a>
-          <a href="#" data-action="close-modal" class="modal-close"><i class="icon icon-close--blue"></i></a>
-          <div role="group" class="autocomplete-form-group">
-            <legend class="h3 modal-header font-med soft-half--ends push--bottom">Search</legend>
-            <div class="push--bottom">
-              <div class="form-dropdown">
-                <label class="form-label" for="search-product">What do you sell?
-                  <span class="form-hint">Enter your product type and pick a category</span>
-                </label>
-                <input class="form-control form-control--full form-dropdown-input" id="search-product" type="text" data-url="{% url 'products:api' %}" data-field="product_categories" autocomplete="off" placeholder="Product type" aria-owns="search-product-dropdown">
-                <ul class="form-dropdown-results" role="listbox" id="search-product-dropdown" aria-live="polite"></ul>
-              </div>
-            </div>
-            <div class="push--bottom soft-half--top">
-              <div class="form-dropdown">
-                <label class="form-label" for="search-country">Where do you want to sell?
-                  <span class="form-hint">Leave this empty if you are not sure</span>
-                </label>
-                <input class="form-control form-control--full form-dropdown-input" id="search-country" type="text" data-url="{% url 'geography:api' %}" data-field="operating_countries" autocomplete="off" placeholder="Country name" aria-owns="search-country-dropdown">
-                <ul class="form-dropdown-results" role="listbox" aria-live="polite" id="search-country-dropdown"></ul>
-                <ul class="form-dropdown-checkbox hide"></ul>
-              </div>
-            </div>
-            <div class="cf autocomplete-tags">
-              <ul class="form-dropdown-tags"></ul>
-            </div>
-            <div class="push--bottom soft-half--top">
-              <div id='results-count' class="modal-button">
-                <button class='button button-red button-medium button-full' type='submit'>Start your search now (<span class="results-count">{{results_count}}</span>)</button>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-        <div class="autocomplete-status" role="listbox" aria-live="polite"></div>
-      </form>
-    </aside>
-    <div class="modal markets-sort" id="sort" data-modal-id="sorting">
-      <form class="cf soft-half" method="get" action="{% url 'markets:list' %}">
-        <a href="#" data-action="close-modal" class="modal-close"><i class="icon icon-close--blue"></i></a>
-        <div class="form-group">
-          <legend class="h3 modal-header font-med soft-half--ends push-half--bottom">Sort by</legend>
-          <div class="soft--top">
-
-            <label class="block-label selection-button-radio" for="sort_0">
-              <input id="sort_0" type="radio" name="sort" value="">
-              Relevance
-            </label>
-
-            <label class="block-label selection-button-radio" for="sort_1">
-              <input id="sort_1" type="radio" name="sort" value="users">
-              Registered users (high to low)
-            </label>
-
-            <label class="block-label selection-button-radio" for="sort_4">
-              <input id="sort_4" type="radio" name="sort" value="commission">
-              Commission (low to high)
-            </label>
-          </div>
-
-        </div>
-      </form>
+  <section class="breadcrumbs-section narrow-section">
+    <div class="container">
+      <p class="breadcrumbs">
+          <span class="label verbose">You are here:</span>
+          <a href="{% url 'home' %}">Home</a>
+          <span class="separator">,</span>
+          <span class="current">
+            Results
+          </span>
+      </p>
     </div>
-    <div class="markets-list">
-      <div class="markets-buttons push-half--bottom">
-        <button class="button button-border" data-modal-button="search">Search<i class="icon icon-search" data-modal-button="search"></i></button>
-        <button class="button button-border" data-modal-button="sorting">Sort<i class="icon icon-sort" data-modal-button="sorting"></i></button>
-      </div>
-      <div class="cf">
-        <div class="markets-list-header">
-          <h1 class="push--bottom"><span class="h3">{{ markets_list.count }}</span> <span class="font-reg">marketplace{{markets_list|pluralize}}</span>
-            {% if markets_list.count == 0 %} match your search {% endif %}
-          </h1>
-        </div>
-        <div class="markets-list-options">
-          <div class="form-group col-7">
-            <label class="font-mid-grey push-half--right push-half--bottom" for="sort-select">Sort by:</label>
-            <div class="form-select--wrapper">
-              <select class="form-select" id="sort-select" name="sort">
-                <option value="" selected="selected">Relevance</option>
-                <option value="users">Registered users (high to low)</option>
-                <option value="commission">Commission (low to high)</option>
-              </select>
-            </div>
-          </div>
-          <div class="shortlist-items shortlist-items--short col-5">
-            <a href="{% url 'markets:shortlist' %}">
-              <dl class="float--right font-mid-blue">
-                <dt class="float--left push-half--right link">Shortlist:</dt>
-                <dd class="float--left"><strong class="shortlist-count"></strong><i class="icon icon-shortlisted float--right shortlist-icon"></i></dd>
-              </dl>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <ul class="markets" id="scroll-top">
-        {% include "markets/includes/market_list.html" %}
-      </ul>
-      <a class="link link--top" data-scrollto="scroll-top">Go to top</a>
+  </section>
+  <section class="market-list-search-section background-stone-30">
+    <div class="container">
+      <h1 class="market-list-count">
+        <strong>{{ market_list.count }} marketplace{{market_list|pluralize}} have been found</strong>
+      </h1>
+      {% include 'markets/includes/search_form.html' %}
     </div>
-  </div>
+  </section>
+  <section class="narrow-section">
+    <div class="container">
+      <div class="compare-navigation">
+        <strong>
+          Compare marketplaces: <span class="shortlist-count"></span>
+        </strong>
+        |
+        <a href="{% url 'markets:shortlist' %}">View compare list</a>
+      </div>
+    </div>
+  </section>
+  <section class="market-list-section">
+    <div class="container">
+      {% if not market_list %}
+      <div class="markets-item markets-item-no-result heading-headline cf">
+        <p>We couldn't exactly match your search. Please select different product category or country.</p>
+        <p>Find out more about the right overseas markets for your products in <a class="link" href="https://www.gov.uk/government/collections/exporting-country-guides" title="Exporting country guides">exporting country guides</a>.</p>
+      </div>
+      {% endif %}
 
+      {% for market in market_list %}
+        {% include "markets/includes/market_summary.html" %}
+      {% endfor %}
+    </div>
+  </section>
 {% endblock content %}

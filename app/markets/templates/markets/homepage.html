@@ -10,7 +10,7 @@
 
 {% block head_css %}
   {{ block.super }}
-  <link href="{% static 'stylesheets/pages/landing-page.css' %}" rel="stylesheet" media="screen">
+  <link href="{% static 'stylesheets/main_redesign.css' %}" rel="stylesheet" media="screen">
   <link href="{% static 'stylesheets/pages/case-study.css' %}" media="all" rel="stylesheet" />
 {% endblock %}
 
@@ -37,7 +37,7 @@
       <h1>Get help to sell online worldwide</h1>
       <p>Let us help you reach millions of online buyers around the world.</p>
 
-      {% include 'markets/includes/search_box.html' %}
+      {% include 'markets/includes/search_form.html' %}
     </div>
   </section>
 

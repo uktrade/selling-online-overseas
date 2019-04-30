@@ -1,46 +1,61 @@
 {% load static utils thumbnail %}
 
-<li class="markets-item cf background--white push--bottom section-clickable">
-  {% if market.has_special_terms %}<div class="col-12 cf"><div class="markets-deal">Special deal</div></div>{% endif%}
-  <div class="markets-item-logoholder float--left push--right soft-half--right">
-    <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="Navigate to full profile of {{ market.name }}">
-  </div>
-  <div class="markets-info">
-    <a href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
-      <h3 class="h3 font-med flush--ends soft--bottom font-mid-blue">{{ market.name }}</h3>
-    </a>
-    <button type="button" class="shortlist-button markets-shortlist font-mid-blue" data-slug="{{market.slug }}">Shortlist <i class="icon icon-shortlist shortlist-icon"></i></button>
-    <ul class="markets-countries">
-      <li>
-        <dl>
-          <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
-          {% if market.operating_countries.count > 20 %}
-          <dd>Global</dd>
-          {% else %}
-          <dd>{{ market | csl:'operating_countries' }}</dd>
-          {% endif %}
-        </dl>
-      </li>
-      <li class="soft-half--ends markets-item--url"><a href="{{ market.web_address }}" class="link" target="_blank">{{ market.web_address }}</a></li>
-    </ul>
-    <p class="soft-half--top hard--left">{{ market.e_marketplace_description|safe|truncatewords:15 }}</p>
-  </div>
-  <div class="markets-item--highlight--right">
-    <div class="markets-item--highlight">
-      <ul class="markets-item--list">
-        <li class="markets-item--highlight--section background-image--users">
-          <dl>
-            <dt><strong>Registered users:</strong></dt>
-            <dd>{{ market.number_of_registered_users_display }}</dd>
-          </dl>
-        </li>
-        <li class="markets-item--highlight--section background-image--commission">
-          <dl>
-            <dt><strong>Commission:</strong></dt>
-            <dd>{{ market.commission_display }}</dd>
-          </dl>
-        </li>
-      </ul>
+{% if market.has_special_terms %}
+<div class="market-item has-special-terms">
+  <div class="special-terms-container">
+    <div class="special-terms-summary">
+      {% if market.dit_special_terms_summary %}
+        <strong>SPECIAL DEAL &nbsp | &nbsp</strong> {{ market.dit_special_terms_summary }}
+      {% else %}
+        <strong>SPECIAL DEAL</strong>
+      {% endif %}
     </div>
   </div>
-</li>
+{% else %}
+<div class="market-item">
+{% endif %}
+  <div class="market-item-inner">
+    <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="market-item-img" alt="Navigate to full profile of {{ market.name }}" />
+    <div class="market-item-body">
+      <div class="add-to-compare markets-shortlist font-mid-blue" data-slug="{{ market.slug }}">
+        Add to compare
+      </div>
+      <a class="market-header-link" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
+        <span class="underline">{{ market.name }}</span>
+      </a>
+      <p class="market-description-summary">
+        {{ market.e_marketplace_description|safe|truncatewords:15 }}
+      </p>
+      <p class="market-operating-countries overflow-text">
+        <span class="strong">Markets:</span>
+        {% if market.operating_countries.count > 20 %}
+          Global
+        {% else %}
+          {{ market | csl:'operating_countries' }}
+        {% endif %}
+      </p>
+      <div class="market-stats">
+        <div class="stat reg-users-stat">
+          <div class="stat-header">Registered users</div>
+          <div>{{ market.number_of_registered_users_display }}</div>
+        </div>
+        <div class="stat commision-stat">
+          <div class="stat-header">Commision</div>
+          <div>{{ market.commission_display }}</div>
+        </div>
+        <div class="stat logistics-support-stat">
+          <div class="stat-header">Logistics support</div>
+          <div>
+            {% for model in market.logistics_structure.all %}
+              <span class="stat-value">{{ model.name }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="stat membership-stat">
+          <div class="stat-header">Membership</div>
+          <div>{{ market.membership_fees_display }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
