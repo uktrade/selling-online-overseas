@@ -46,10 +46,10 @@
   <section class="market-list-section">
     <div class="container">
       {% if not market_list %}
-      <li class="markets-item markets-item-no-result heading-headline cf">
-        <p>We couldn't exactly match your search. <a class="link" title="search again" href="{{ SOO_HOST }}markets/filter/">Please search again</a> using different products or countries, or adding more products or countries.</p>
-        <p>Find out more about the right overseas markets for your products <br /><a class="link" href="https://www.gov.uk/government/collections/exporting-country-guides" title="Exporting country guides">Exporting country guides</a>.</p>
-        </li>
+      <div class="markets-item markets-item-no-result heading-headline cf">
+        <p>We couldn't exactly match your search. Please select different product category or country.</p>
+        <p>Find out more about the right overseas markets for your products in <a class="link" href="https://www.gov.uk/government/collections/exporting-country-guides" title="Exporting country guides">exporting country guides</a>.</p>
+      </div>
       {% endif %}
 
       {% for market in market_list %}
