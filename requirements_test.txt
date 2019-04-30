@@ -50,6 +50,7 @@ monotonic==1.5            # via directory-client-core
 more-itertools==6.0.0     # via pytest
 olefile==0.44             # via directory-validators, pillow
 packaging==16.8
+pathlib2==2.3.3           # via pytest
 phonenumberslite==7.7.4   # via directory-validators
 pillow==4.2.1
 pluggy==0.9.0             # via pytest
@@ -71,7 +72,7 @@ sigauth==4.0.1
 six==1.10.0
 termcolor==1.1.0          # via pytest-sugar
 text-unidecode==1.2       # via faker
-urllib3==1.24.1
+urllib3==1.24.2
 w3lib==1.20.0             # via directory-client-core
 whitenoise==3.2.1
 whoosh==2.7.4
