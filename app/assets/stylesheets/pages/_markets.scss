@@ -557,22 +557,22 @@
       }
     }
 
-    // .markets-shortlist {
-    //   left: 16px;
-    //   position: absolute;
-    //   right: inherit;
-    //   top: 15px;
+    .markets-shortlist {
+      left: 16px;
+      position: absolute;
+      right: inherit;
+      top: 15px;
 
-    //   @include media($mobile) {
-    //     left: inherit;
-    //     position: relative;
-    //     top: inherit;
-    //   }
+      @include media($mobile) {
+        left: inherit;
+        position: relative;
+        top: inherit;
+      }
 
-    //   @include media($tablet) {
-    //     text-indent: -9999px;
-    //   }
-    // }
+      @include media($tablet) {
+        text-indent: -9999px;
+      }
+    }
 
     .markets-info {
       margin-top: 20px;

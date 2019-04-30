@@ -8,7 +8,7 @@
 
 {% block head_css %}
   {{ block.super }}
-  <link href="{% static 'stylesheets/pages/landing-page.css' %}" rel="stylesheet" media="screen">
+  <link href="{% static 'stylesheets/main_redesign.css' %}" rel="stylesheet" media="screen">
 {% endblock %}
 
 {% block content %}
@@ -43,74 +43,18 @@
       </div>
     </div>
   </section>
-  <div class="container">
-    {% if not market_list %}
-    <li class="markets-item markets-item-no-result heading-headline cf">
-      <p>We couldn't exactly match your search. <a class="link" title="search again" href="{{ SOO_HOST }}markets/filter/">Please search again</a> using different products or countries, or adding more products or countries.</p>
-      <p>Find out more about the right overseas markets for your products <br /><a class="link" href="https://www.gov.uk/government/collections/exporting-country-guides" title="Exporting country guides">Exporting country guides</a>.</p>
-      </li>
-    {% endif %}
-
-    {% for market in market_list %}
-      {% if market.has_special_terms %}
-      <div class="market-item has-special-terms">
-        <div class="special-terms-container">
-          <div class="special-terms-summary">
-            {% if market.dit_special_terms_summary %}
-              <strong>SPECIAL DEAL &nbsp | &nbsp</strong> {{ market.dit_special_terms_summary }}
-            {% else %}
-              <strong>SPECIAL DEAL</strong>
-            {% endif %}
-          </div>
-        </div>
-      {% else %}
-      <div class="market-item">
+  <section class="market-list-section">
+    <div class="container">
+      {% if not market_list %}
+      <li class="markets-item markets-item-no-result heading-headline cf">
+        <p>We couldn't exactly match your search. <a class="link" title="search again" href="{{ SOO_HOST }}markets/filter/">Please search again</a> using different products or countries, or adding more products or countries.</p>
+        <p>Find out more about the right overseas markets for your products <br /><a class="link" href="https://www.gov.uk/government/collections/exporting-country-guides" title="Exporting country guides">Exporting country guides</a>.</p>
+        </li>
       {% endif %}
-        <div class="market-item-inner">
-          <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="market-item-img" alt="Navigate to full profile of {{ market.name }}" />
-          <div class="market-item-body">
-            <div class="add-to-compare markets-shortlist font-mid-blue" data-slug="{{ market.slug }}">
-              Add to compare
-            </div>
-            <a class="market-header-link" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
-              <span class="underline">{{ market.name }}</span>
-            </a>
-            <p class="market-description-summary overflow-text">
-              {{ market.e_marketplace_description|safe|truncatewords:15 }}
-            </p>
-            <p class="market-operating-countries overflow-text">
-              <span class="strong">Markets:</span>
-              {% if market.operating_countries.count > 20 %}
-                Global
-              {% else %}
-                {{ market | csl:'operating_countries' }}
-              {% endif %}
-            </p>
-            <table class="market-stats">
-              <tbody>
-                <tr>
-                  <th style="width: 20%">Registered users</th>
-                  <th style="width: 20%">Commision</th>
-                  <th style="width: 30%">Logistics support</th>
-                  <th style="width: 30%">Membership</th>
-                </tr>
-                <tr>
-                  <td style="width: 20%">{{ market.number_of_registered_users_display }}</td>
-                  <td style="width: 20%">{{ market.commission_display }}</td>
-                  <td style="width: 30%">
-                    {% for model in market.logistics_structure.all %}
-                      <div>
-                        {{ model.name }}
-                      </div>
-                    {% endfor %}
-                  </td>
-                  <td style="width: 30%">{{ market.membership_fees_display }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
+
+      {% for market in market_list %}
+        {% include "markets/includes/market_summary.html" %}
+      {% endfor %}
+    </div>
+  </section>
 {% endblock content %}
