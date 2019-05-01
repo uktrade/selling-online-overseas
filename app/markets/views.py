@@ -54,6 +54,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
     comment_placeholder = "We are sorry to hear that. Would you tell us why?"
     submit_wording = "Send feedback"
     satisfied_wording = "Do you find this service useful?"
+    page_type = 'LandingFoo1'
 
     def get_context_data(self, *args, **kwargs):
         """
@@ -62,6 +63,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
 
         return super().get_context_data(
             *args, **kwargs,
+            page_type = 'LandingPage',
             countries=Country.objects.all().order_by('name'),
             categories=Category.objects.all().order_by('name'),
             case_studies=CASE_STUDIES.values(),
@@ -96,6 +98,7 @@ class NewMarketListView(MarketFilterMixin, TemplateView):
             qs = qs.filter(operating_countries__id=country_id)
 
         context = {
+            'page_type': 'SearchResultsPage',
             'market_list': qs,
             'selected_country_id': country_id,
             'selected_category_id': category_id,
@@ -390,6 +393,7 @@ class MarketDetailView(MarketFilterMixin, TemplateView):
         slug = self.kwargs['slug']
 
         try:
+            context['page_type'] = 'MarketplacePage'
             context['market'] = self.markets.get(slug=slug)
         except (Market.DoesNotExist, PublishedMarket.DoesNotExist):
             raise Http404('Market does not exist')

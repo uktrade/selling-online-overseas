@@ -58,7 +58,7 @@ dit.tagging.soo = (new function() {
         'eventAction': 'Search',
         'eventCategory': 'Marketplace',
         'eventLabel': 'SearchForm',
-        'eventValue': $(this).find("#search-product").val() + "|" + $(this).find("#search-country").val()
+        'eventValue': $(this).find("[name='category_id']").val() + "|" + $(this).find("[name='country_id']").val()
       });
     });
 
