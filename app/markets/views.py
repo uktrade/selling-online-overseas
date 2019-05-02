@@ -54,7 +54,6 @@ class HomepageView(MarketFilterMixin, TemplateView):
     comment_placeholder = "We are sorry to hear that. Would you tell us why?"
     submit_wording = "Send feedback"
     satisfied_wording = "Do you find this service useful?"
-    page_type = 'LandingFoo1'
 
     def get_context_data(self, *args, **kwargs):
         """
