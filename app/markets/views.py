@@ -62,7 +62,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
 
         return super().get_context_data(
             *args, **kwargs,
-            page_type = 'LandingPage',
+            page_type='LandingPage',
             countries=Country.objects.all().order_by('name'),
             categories=Category.objects.all().order_by('name'),
             case_studies=CASE_STUDIES.values(),
