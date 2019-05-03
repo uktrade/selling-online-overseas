@@ -33,7 +33,6 @@ class MarketPublishingTests(TestCase):
         self.assertEqual(len(markets), 1)
         self.assertEqual(markets[0], self.market)
 
-
     # TODO: remove
     def _test_filter_market_list_by_name(self):
         # Filter the list of markets on it's name, check we get 200 and the market in the response
