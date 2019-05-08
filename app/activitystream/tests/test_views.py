@@ -1,5 +1,6 @@
 import datetime
 import math
+import environ
 
 import mohawk
 import pytest
@@ -12,6 +13,7 @@ from django.conf import settings
 from markets.tests.factories import PublishedMarketFactory
 from activitystream import views
 
+env = environ.Env()
 
 # --- Helper Functions ---
 
@@ -22,7 +24,7 @@ def api_client():
 
 
 def _url():
-    return 'http://testserver' + reverse('activity-stream')
+    return env.str('STATIC_DOMAIN', '') + reverse('activity-stream')
 
 
 def _url_incorrect_domain():
@@ -31,7 +33,7 @@ def _url_incorrect_domain():
 
 def _url_incorrect_path():
     return (
-        'http://testserver' + reverse('activity-stream') + 'incorrect/'
+        env.str('STATIC_DOMAIN', '') + reverse('activity-stream') + 'incorrect/'
     )
 
 

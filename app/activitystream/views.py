@@ -1,5 +1,6 @@
 from datetime import datetime
 import logging
+import environ
 
 from django.db.models import Q
 from django.conf import settings
@@ -18,6 +19,7 @@ from rest_framework.viewsets import ViewSet
 from markets.models import PublishedMarket
 
 logger = logging.getLogger(__name__)
+env = environ.Env()
 
 NO_CREDENTIALS_MESSAGE = 'Authentication credentials were not provided.'
 INCORRECT_CREDENTIALS_MESSAGE = 'Incorrect authentication credentials.'
@@ -167,7 +169,7 @@ class ActivityStreamViewSet(ViewSet):
                     'id': 'dit:navigator:Market:' + str(market.id),
                     'name': market.name,
                     'content': market.e_marketplace_description,
-                    'url': request.build_absolute_uri(reverse('markets:detail', kwargs={'slug': market.slug}))
+                    'url': env.str('STATIC_DOMAIN', '') + reverse('markets:detail', kwargs={'slug': market.slug})
                 },
             })
         return market_objects

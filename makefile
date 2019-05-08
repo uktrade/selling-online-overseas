@@ -74,7 +74,8 @@ DEBUG_SET_ENV_VARS := \
 	export ACTIVITY_STREAM_SECRET_ACCESS_KEY=1234-secret-key; \
 	export FEATURE_NEW_HEADER_FOOTER_ENABLED=true; \
 	export FEATURE_HEADER_SEARCH_ENABLED=false; \
-	export STATIC_HOST=http://0.0.0.0:$$PORT/selling-online-overseas
+	export STATIC_HOST=http://0.0.0.0:$$PORT/selling-online-overseas; \
+	export STATIC_DOMAIN=http://testserver
 
 DJANGO_WEBSERVER := \
 	python app/manage.py migrate && \
