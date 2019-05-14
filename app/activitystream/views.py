@@ -169,7 +169,7 @@ class ActivityStreamViewSet(ViewSet):
                     'id': 'dit:navigator:Market:' + str(market.id),
                     'name': market.name,
                     'content': market.e_marketplace_description,
-                    'url': env.str('STATIC_DOMAIN', '') + reverse('markets:detail', kwargs={'slug': market.slug})
+                    'url': settings.STATIC_DOMAIN + reverse('markets:detail', kwargs={'slug': market.slug})
                 },
             })
         return market_objects

@@ -296,3 +296,7 @@ FEATURE_FLAGS = {
     ),
     'HEADER_SEARCH_ON': env.bool('FEATURE_HEADER_SEARCH_ENABLED', False),
 }
+
+# Search domain - n.b. no trailing slash
+
+STATIC_DOMAIN = env.str('STATIC_DOMAIN', '')
