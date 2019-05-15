@@ -44,6 +44,7 @@ dit.tagging.soo = (new function() {
   function addTaggingForStories() {
     $(".more-stories a").on("click", function() {
       window.dataLayer.push({
+        'event': 'gaEvent',
         'action': 'Cta',
         'type': 'ExporterStory',
         'element': 'Link',
@@ -55,6 +56,7 @@ dit.tagging.soo = (new function() {
   function addTaggingForSearch() {
     $("#results-form").on("submit", function() {
       window.dataLayer.push({
+        'event': 'gaEvent',
         'action': 'Search',
         'type': 'Marketplace',
         'element': 'SearchForm',
@@ -65,6 +67,7 @@ dit.tagging.soo = (new function() {
     // Only applicable to Home page.
     $("button:contains('Start your search now')[data-scrollto]").on("click", function() {
       window.dataLayer.push({
+        'event': 'gaEvent',
         'action': 'Cta',
         'type': 'Search',
         'element': 'Link',
@@ -76,6 +79,7 @@ dit.tagging.soo = (new function() {
   function addTaggingForApply() {
     $("#apply-to-join").on("click", function() {
       window.dataLayer.push({
+        'event': 'gaEvent',
         'action': 'Cta',
         'type': 'MarketApplication',
         'element': 'Link',
@@ -84,6 +88,7 @@ dit.tagging.soo = (new function() {
     });
     $("#bottom-apply-to-join").on("click", function() {
       window.dataLayer.push({
+        'event': 'gaEvent',
         'action': 'Cta',
         'type': 'MarketApplication',
         'element': 'Link',
@@ -95,6 +100,7 @@ dit.tagging.soo = (new function() {
   function addTaggingForMarketLink() {
     $(".markets-group .link").on("click", function() {
       window.dataLayer.push({
+        'event': 'gaEvent',
         'action': 'ContentLink',
         'type': 'Marketplace',
         'element': 'MarketDetailsLink',
@@ -107,6 +113,7 @@ dit.tagging.soo = (new function() {
   function addTaggingForFeedbackForm() {
     $(".thumber-form button").on("click", function() {
       window.dataLayer.push({
+        'event': 'gaEvent',
         'action': 'Cta',
         'type': 'Feedback',
         'element': 'ThumberButton',
