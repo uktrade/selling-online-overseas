@@ -50,7 +50,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
     The landing page for the e-marketplace finding tool, offering advice on it's use
     """
 
-    template_name = 'markets/homepage.html'
+    template_name = 'markets/homepage_redesign.html'
     comment_placeholder = "We are sorry to hear that. Would you tell us why?"
     submit_wording = "Send feedback"
     satisfied_wording = "Do you find this service useful?"
