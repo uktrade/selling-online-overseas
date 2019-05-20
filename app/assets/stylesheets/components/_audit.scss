@@ -1,20 +1,23 @@
 @import '../generic/mixins';
 
 .audit {
-  border-top: 1px solid $white;
+  border-top: 3px solid $stone;
   margin-top: 20px;
-  padding-top: 10px;
+  padding-top: 30px;
   position: relative;
 
   &-button {
-    width: 50%;
+    width: 42%;
 
     .button {
-      width: 85%;
-
+      width: 100%;
+      background-color: $gradient-end;
+      border: 2px solid $active-blue;
+      color: $active-blue;
       @include media ($tablet) {
         width: 90%;
       }
+
     }
 
     &--send {
@@ -30,6 +33,11 @@
         }
       }
     }
+  }
+
+  &-content{
+    width: 50%;
+    margin: 0 auto;
   }
 
   .form-textarea {
@@ -48,7 +56,7 @@
   &-header {
     display: inline-block;
     margin-bottom: 25px;
-    margin-left: 10px;
+    font-weight: bold;
   }
 
   .button {
