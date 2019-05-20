@@ -7,7 +7,7 @@
       {% if market.dit_special_terms_summary %}
         <strong>SPECIAL DEAL &nbsp | &nbsp</strong> {{ market.dit_special_terms_summary }}
       {% else %}
-        <strong>SPECIAL DEAL</strong>
+        <strong>SPECIAL DEAL </strong>
       {% endif %}
     </div>
   </div>
@@ -41,7 +41,7 @@
         </div>
         <div class="stat commision-stat">
           <div class="stat-header">Commision</div>
-          <div>{{ market.commission_display }}</div>
+          <div>{{ market.commission_display|default:"" }}</div>
         </div>
         <div class="stat logistics-support-stat">
           <div class="stat-header">Logistics support</div>
@@ -53,7 +53,7 @@
         </div>
         <div class="stat membership-stat">
           <div class="stat-header">Membership</div>
-          <div>{{ market.membership_fees_display }}</div>
+          <div>{{ market.membership_fees_display|default:"" }}</div>
         </div>
       </div>
     </div>

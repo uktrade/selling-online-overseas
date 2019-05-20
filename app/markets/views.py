@@ -50,10 +50,10 @@ class HomepageView(MarketFilterMixin, TemplateView):
     The landing page for the e-marketplace finding tool, offering advice on it's use
     """
 
-    template_name = 'markets/homepage_redesign.html'
+    template_name = 'markets/homepage.html'
     comment_placeholder = "We are sorry to hear that. Would you tell us why?"
     submit_wording = "Send feedback"
-    satisfied_wording = "Do you find this service useful?"
+    satisfied_wording = "Was this service useful?"
 
     def get_context_data(self, *args, **kwargs):
         """

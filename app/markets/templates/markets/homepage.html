@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% block content %}
-  <section class="hero-section search-section background-image--hero" id="hero-banner">
+  <section class="hero-section search-section background-image--hero2" id="hero-banner">
     <div class="container">
       <p class="breadcrumbs">
           <span class="label verbose">You are here:</span>
@@ -53,9 +53,10 @@
       <div class="grid-row">
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
-            <div class="card-image"
-              style="background-image: url('{% static "images/infographics/exporting.svg" %}');"
-              role="image">
+            <div class="card-image">
+              <img src="{% static "images/infographics/tab-into-our-knowledge.png" %}"
+                   alt="Tap into our knowledge"
+                   height="60">
             </div>
             <div class="card-inner">
               <h3 class="heading">Tap into our knowledge</h3>
@@ -69,9 +70,10 @@
         </div>
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
-            <div class="card-image"
-              style="background-image: url('{% static "images/infographics/exclusivedeals.svg" %}');"
-              role="image">
+            <div class="card-image">
+              <img src="{% static "images/infographics/getting-started.png" %}"
+                   alt="Tap into our knowledge"
+                   height="60">
             </div>
             <div class="card-inner">
               <h3 class="heading">Getting started</h3>
@@ -85,9 +87,10 @@
         </div>
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
-            <div class="card-image"
-              style="background-image: url('{% static "images/infographics/growyourbusiness.svg" %}');"
-              role="image">
+            <div class="card-image">
+              <img src="{% static "images/infographics/continuing-benefits.png" %}"
+                   alt="Tap into our knowledge"
+                   height="60">
             </div>
             <div class="card-inner">
               <h3 class="heading">Continuing benefits</h3>
@@ -200,7 +203,9 @@
           </div>
         </div>
       </div>
-      <a href="{% url 'markets:list' %}" class="button submit" type="submit">Find your marketplace</a>
+      <div class="grid-row margin-top-60-l">
+        <a href="{% url 'markets:list' %}" class="button button-medium submit" type="submit">Find your marketplace</a>
+      </div>
     </div>
   </section>
 
