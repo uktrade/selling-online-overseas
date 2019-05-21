@@ -6,11 +6,17 @@
   <div class="col-8">
     <div class="audit audit--white" id="audit">
       <div class="audit-content">
-        <i class="icon icon-feedback--grey">
-          <span class="visuallyhidden">feedback</span>
-        </i>
-        <h3 class="h3 font-med audit-header margin-left-30-l">{{ satisfied_wording }}</h3>
-        <form action="{{ request.get_full_path }}" method="post" class="audit-form thumber-form margin-top-60">
+        <div class="grid-row">
+          <div class="col-2">
+            <i class="icon icon-feedback">
+              <span class="visuallyhidden">feedback</span>
+            </i>
+          </div>
+          <div class="col-10">
+            <h3 class="h3 font-med audit-header margin-left-15-l margin-top-15">{{ satisfied_wording }}</h3>
+          </div>
+        </div>
+        <form action="{{ request.get_full_path }}" method="post" class="audit-form thumber-form margin-top-60-l">
           {% csrf_token %}
           {{ thumber_form.thumber_token }}
           <div class="thumber-radio-inputs">
@@ -25,7 +31,7 @@
             </div>
           </div>
           <div class="audit-text-section ">
-            <fieldset>
+            <fieldset class="margin-bottom-0">
               <div class="push--bottom">
                 <textarea class="form-control form-textarea col-12" id="thumber_comment" name="comment" cols="40" rows="5" placeholder="{{ comment_placeholder }}"></textarea>
               </div>

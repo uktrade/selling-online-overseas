@@ -7,17 +7,17 @@
   position: relative;
 
   &-button {
-    width: 42%;
+    width: 46.2%;
 
     .button {
       width: 100%;
       background-color: $gradient-end;
       border: 2px solid $active-blue;
       color: $active-blue;
-      @include media ($tablet) {
-        width: 90%;
-      }
+    }
 
+    @media screen and (max-width: 980px) {
+      width: 100%;
     }
 
     &--send {
@@ -27,10 +27,7 @@
 
       .button {
         width: 100%;
-
-        @include media($desktop-only) {
-          width: 70%;
-        }
+        line-height: 18px;
       }
     }
   }
@@ -45,12 +42,12 @@
   }
 
   .icon {
-    background-size: 30px;
+    background-size: 60px;
     display: inline-block;
-    height: 30px;
+    height: 60px;
+    width: 60px;
     position: relative;
     top: 7px;
-    width: 30px;
   }
 
   &-header {
