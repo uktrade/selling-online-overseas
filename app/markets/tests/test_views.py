@@ -284,5 +284,25 @@ class MarketTests(TestCase):
         response = self.client.get(url)
 
         assert response.status_code == 200
+        assert response.context_data['page_type'] == 'MarketplacePage'
         assert 'Go directly to marketplace' not in str(response.content)
         assert 'Apply now via DIT' in str(response.content)
+
+    def test_market_list_page(self):
+        create_market(
+            name="Ebay",
+            product_exclusivity_required=False,
+            sale_to_payment_duration=30)
+
+        response = self.client.get(reverse('markets:list'))
+
+        assert response.status_code == 200
+        assert response.context_data['page_type'] == 'SearchResultsPage'
+        assert 'Ebay' in str(response.content)
+
+    def test_home_page(self):
+        response = self.client.get(reverse('home'))
+
+        assert response.status_code == 200
+        assert response.context_data['page_type'] == 'LandingPage'
+        assert 'Selling online overseas' in str(response.content)

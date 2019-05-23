@@ -14,15 +14,6 @@
   <link href="{% static 'stylesheets/pages/case-study.css' %}" media="all" rel="stylesheet" />
 {% endblock %}
 
-{% block head_js_ga360 %}
-  {{ block.super }}
-  <script src="{% static 'javascripts/dit.tagging.js' %}"></script>
-  <script>
-    window.dataLayer.push({ 'pageCategory': 'LandingPage' });
-    dit.tagging.soo.init('home');
-  </script>
-{% endblock %}
-
 {% block content %}
   <section class="hero-section search-section background-image--hero" id="hero-banner">
     <div class="container">

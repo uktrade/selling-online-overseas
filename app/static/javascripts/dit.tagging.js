@@ -42,12 +42,13 @@ dit.tagging.soo = (new function() {
   }
 
   function addTaggingForStories() {
-    $(".more-stories a").on("click", function() {
+    $("#exporter-stories a").on("click", function() {
       window.dataLayer.push({
-        'eventAction': 'Cta',
-        'eventCategory': 'ExporterStory',
-        'eventLabel': 'Link',
-        'eventValue': $(this).find("h3").text()
+        'event': 'gaEvent',
+        'action': 'Cta',
+        'type': 'ExporterStory',
+        'element': 'Link',
+        'value': $(this).find("h3").text()
       });
     });
   }
@@ -55,20 +56,11 @@ dit.tagging.soo = (new function() {
   function addTaggingForSearch() {
     $("#results-form").on("submit", function() {
       window.dataLayer.push({
-        'eventAction': 'Search',
-        'eventCategory': 'Marketplace',
-        'eventLabel': 'SearchForm',
-        'eventValue': $(this).find("#search-product").val() + "|" + $(this).find("#search-country").val()
-      });
-    });
-
-    // Only applicable to Home page.
-    $("button:contains('Start your search now')[data-scrollto]").on("click", function() {
-      window.dataLayer.push({
-        'eventAction': 'Cta',
-        'eventCategory': 'Search',
-        'eventLabel': 'Link',
-        'eventValue': $(this).text()
+        'event': 'gaEvent',
+        'action': 'Search',
+        'type': 'Marketplace',
+        'element': 'SearchForm',
+        'value': $(this).find("[name='category_id']").val() + "|" + $(this).find("[name='country_id']").val()
       });
     });
   }
@@ -76,18 +68,20 @@ dit.tagging.soo = (new function() {
   function addTaggingForApply() {
     $("#apply-to-join").on("click", function() {
       window.dataLayer.push({
-        'eventAction': 'Cta',
-        'eventCategory': 'MarketApplication',
-        'eventLabel': 'Link',
-        'eventValue': $(this).attr("href").replace(/.*\?market=([\w\s]+)/, "$1")
+        'event': 'gaEvent',
+        'action': 'Cta',
+        'type': 'MarketApplication',
+        'element': 'Link',
+        'value': $(this).attr("href").replace(/.*\?market=([\w\s]+)/, "$1")
       });
     });
     $("#bottom-apply-to-join").on("click", function() {
       window.dataLayer.push({
-        'eventAction': 'Cta',
-        'eventCategory': 'MarketApplication',
-        'eventLabel': 'Link',
-        'eventValue': $(this).attr("href").replace(/.*\?market=([\w\s]+)/, "$1")
+        'event': 'gaEvent',
+        'action': 'Cta',
+        'type': 'MarketApplication',
+        'element': 'Link',
+        'value': $(this).attr("href").replace(/.*\?market=([\w\s]+)/, "$1")
       });
     });
   }
@@ -95,10 +89,11 @@ dit.tagging.soo = (new function() {
   function addTaggingForMarketLink() {
     $(".markets-group .link").on("click", function() {
       window.dataLayer.push({
-        'eventAction': 'ContentLink',
-        'eventCategory': 'Marketplace',
-        'eventLabel': 'MarketDetailsLink',
-        'eventValue': $(this).text()
+        'event': 'gaEvent',
+        'action': 'ContentLink',
+        'type': 'Marketplace',
+        'element': 'MarketDetailsLink',
+        'value': $(this).text()
       });
     });
   }
@@ -107,10 +102,11 @@ dit.tagging.soo = (new function() {
   function addTaggingForFeedbackForm() {
     $(".thumber-form button").on("click", function() {
       window.dataLayer.push({
-        'eventAction': 'Cta',
-        'eventCategory': 'Feedback',
-        'eventLabel': 'ThumberButton',
-        'eventValue': $(this).text()
+        'event': 'gaEvent',
+        'action': 'Cta',
+        'type': 'Feedback',
+        'element': 'ThumberButton',
+        'value': $(this).text()
       });
     });
   }
