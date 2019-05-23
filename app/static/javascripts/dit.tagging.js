@@ -42,7 +42,7 @@ dit.tagging.soo = (new function() {
   }
 
   function addTaggingForStories() {
-    $(".more-stories a").on("click", function() {
+    $("#exporter-stories a").on("click", function() {
       window.dataLayer.push({
         'event': 'gaEvent',
         'action': 'Cta',
