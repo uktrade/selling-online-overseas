@@ -63,17 +63,6 @@ dit.tagging.soo = (new function() {
         'value': $(this).find("[name='category_id']").val() + "|" + $(this).find("[name='country_id']").val()
       });
     });
-
-    // Only applicable to Home page.
-    $("button:contains('Start your search now')[data-scrollto]").on("click", function() {
-      window.dataLayer.push({
-        'event': 'gaEvent',
-        'action': 'Cta',
-        'type': 'Search',
-        'element': 'Link',
-        'value': $(this).text()
-      });
-    });
   }
 
   function addTaggingForApply() {
