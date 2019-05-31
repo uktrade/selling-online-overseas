@@ -126,6 +126,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# To enable URLs to correctly using the user facing domain
+
+USE_X_FORWARDED_HOST = True
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 

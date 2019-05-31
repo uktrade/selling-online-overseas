@@ -11,15 +11,6 @@
   <link href="{% static 'stylesheets/main_redesign.css' %}" rel="stylesheet" media="screen">
 {% endblock %}
 
-{% block head_js_ga360 %}
-  {{ block.super }}
-  <script src="{% static 'javascripts/dit.tagging.js' %}"></script>
-  <script>
-    window.dataLayer.push({ 'pageCategory': 'SearchResultsPage' });
-    dit.tagging.soo.init('SearchResultsPage');
-  </script>
-{% endblock %}
-
 {% block content %}
   <section class="breadcrumbs-section narrow-section">
     <div class="container">
