@@ -16,7 +16,7 @@ urlpatterns = [
     ),
     url(r'^$', RedirectView.as_view(url=reverse_lazy('home'), permanent=True)),
     url(r'^filter/$', RedirectView.as_view(url=reverse_lazy('home'), permanent=True)),
-    url(r'^results/$', views.MarketListView.as_view(), name='list'),
+    url(r'^results/$', views.NewMarketListView.as_view(), name='list'),
     url(r'^search/$', RedirectView.as_view(url=reverse_lazy('markets:list'), permanent=True)),
     url(r'^count\.json$', views.MarketCountView.as_view(), name='count'),
     url(r'^stats/count$', views.MarketStatsCountView.as_view(), name='stats_count'),

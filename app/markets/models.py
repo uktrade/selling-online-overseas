@@ -192,6 +192,7 @@ class BaseMarket(models.Model):
     commission_upper = models.FloatField(null=True, blank=True)
     commission_notes = models.TextField(null=True, blank=True)
 
+    dit_special_terms_summary = models.CharField(max_length=128, null=True, blank=True)
     dit_special_terms = RichTextField(null=True, blank=True,
                                       verbose_name="Department of International Trade special terms")
 

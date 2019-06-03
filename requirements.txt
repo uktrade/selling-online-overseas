@@ -53,7 +53,7 @@ requests==2.21.0
 s3transfer==0.1.10
 sigauth==4.0.1
 six==1.10.0
-urllib3==1.24.1
+urllib3==1.24.2
 w3lib==1.20.0             # via directory-client-core
 whitenoise==3.2.1
 whoosh==2.7.4

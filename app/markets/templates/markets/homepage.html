@@ -10,233 +10,214 @@
 
 {% block head_css %}
   {{ block.super }}
-  <link href="{% static 'stylesheets/pages/landing-page.css' %}" rel="stylesheet" media="screen">
+  <link href="{% static 'stylesheets/main_redesign.css' %}" rel="stylesheet" media="screen">
   <link href="{% static 'stylesheets/pages/case-study.css' %}" media="all" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
-  <section>
-    <div class="hero hero-gradient background-image--hero soft--bottom cf">
-      <div class="hero-content">
-        <a name="anchor"></a>
-        <div class="outer-container soft-half--top text-shadow">
-          <h1 class="h1 font-reg soft--top soft-half--bottom">Find online global marketplaces</h1>
-          <p class="h3 font-lig soft--bottom hero-subheading">Identify and apply to sell with marketplaces to reach international consumers</p>
-        </div>
-        <div class="outer-container">
-          <div class="background--bright-grey-opacity soft--sides soft--top soft-half--bottom autocomplete">
-            <form id='results-form' method="get" action="{% url 'markets:list' %}" data-count-action='{% url "markets:count" %}' data-form-type="autocomplete">
-              <fieldset>
-                <div role="group" class="autocomplete-form-group">
-                  <legend class="visuallyhidden">Please select countries and products</legend>
-                  <div class="autocomplete-section push--bottom">
-                    <div class="form-dropdown">
-                      <label class="form-label" for="search-product">What do you sell?
-                        <span class="form-hint">Enter your product type and pick a category</span>
-                      </label>
-                      <input class="form-control form-dropdown-input" id="search-product" type="text" data-url="{% url 'products:api' %}" data-field="product_categories" autocomplete="off" placeholder="Product type (for example: shoes)" aria-owns="search-product-dropdown">
-                      <ul class="form-dropdown-results" role="listbox" id="search-product-dropdown" aria-live="polite"></ul>
-                    </div>
-                  </div>
-                  <div class="autocomplete-section push--bottom">
-                    <div class="form-dropdown">
-                      <label class="form-label" for="search-country">Where do you want to sell?
-                        <span class="form-hint">Leave this empty if you are not sure</span>
-                      </label>
-                      <input class="form-control form-dropdown-input" id="search-country" type="text" data-url="{% url 'geography:api' %}" data-field="operating_countries" autocomplete="off" placeholder="Country name (for example: China)" aria-owns="search-country-dropdown">
-                      <ul class="form-dropdown-results" role="listbox" aria-live="polite" id="search-country-dropdown"></ul>
-                      <ul class="form-dropdown-checkbox hide"></ul>
-                    </div>
-                  </div>
-                  <div class="autocomplete-section autocomplete-section--button push--bottom">
-                    <div class="push--bottom shortlist-items text--right">
-                      <dl id="homepage-shortlist-info" class="float--right hide">
-                        <dt class="float--left push-half--right"><a href="{% url 'markets:shortlist' %}" class="link">Go to your shortlist:</a></dt>
-                        <dd class="font-mid-blue float--left"><strong class="shortlist-count"></strong><i class="icon icon-shortlisted float--right shortlist-icon" data-modal-button="sorting"></i></dd>
-                      </dl>
-                    </div>
+  <section class="hero-section search-section background-image--hero" id="hero-banner">
+    <div class="container">
+      <p class="breadcrumbs">
+          <span class="label verbose">You are here:</span>
+          <a href="{{ SERVICES_GREAT_DOMESTIC }}">Home</a>
+          <span class="separator">,</span>
+          <span class="current">
+            Selling online overseas
+          </span>
+      </p>
+      <h1>Get help to sell online worldwide</h1>
+      <p>Let us help you export your products to online markets worldwide.</p>
 
-                    <div id='results-count'>
-                      <button class='button button-red button-medium' type='submit'>Start your search now (<span class="results-count">{{results_count}}</span>)</button>
-                    </div>
-                  </div>
-                  <div class="cf autocomplete-tags">
-                    <ul class="form-dropdown-tags"></ul>
-                  </div>
-                </div>
-              </fieldset>
-              <div class="autocomplete-status" role="listbox" aria-live="polite"></div>
-            </form>
+      {% include 'markets/includes/search_form.html' %}
+    </div>
+  </section>
+
+  <section id="how-can-we-help-you">
+    <div class="container">
+      <div class="grid-row">
+        <div class="column-full column-two-thirds-m column-half-l">
+            <h2 class="heading-large">How can we help you</h2>
+            <p class="body-text">Finding and understanding
+              international online markets takes time and effort. We've done the hard work for you.</p>
+        </div>
+      </div>
+      <div class="grid-row">
+        <div class="column-third-l column-full-m">
+          <div class="card help-benefit">
+            <div class="card-image"
+              style="background-image: url('{% static "images/infographics/exporting.svg" %}');"
+              role="image">
+            </div>
+            <div class="card-inner">
+              <h3 class="heading">Tap into our knowledge</h3>
+              <p class="description">Get free support from our UK-based e-commerce advisors.
+                Their in-depth knowledge of exporting to international markets means you’ll get
+                tailored advice. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column-third-l column-full-m">
+          <div class="card help-benefit">
+            <div class="card-image"
+              style="background-image: url('{% static "images/infographics/exclusivedeals.svg" %}');"
+              role="image">
+            </div>
+            <div class="card-inner">
+              <h3 class="heading">Getting started</h3>
+              <p class="description">Once you’ve found the best places to sell online, 
+                we’ll work with you on your e-commerce journey. We’ll help you understand 
+                the rules of your new online outlets and support you as you grow. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column-third-l column-full-m">
+          <div class="card help-benefit">
+            <div class="card-image"
+              style="background-image: url('{% static "images/infographics/growyourbusiness.svg" %}');"
+              role="image">
+            </div>
+            <div class="card-inner">
+              <h3 class="heading">Continuing benefits</h3>
+              <p class="description">Connect to international markets through us and you’ll enjoy the benefits. 
+                Our connections mean you might get reduced commission rates and ‘try for free’ periods. 
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="logo-strip background--white text--center overflow--hidden">
-      <div class="outer-container">
-        <div class="logo-strip-section">
-          {% for ran in random_markets %}
-            <div class="col-2">
-              <img class="logo-strip-img" src="{% thumbnail ran.logo.image 220x166 box=ran.logo.cropping crop detail %}" alt="{{ ran }}">
-            </div>
-          {% endfor %}
+  <section class="background-stone-30" id="exporter-stories">
+    <div class="container">
+      <div class="grid-row">
+        <div class="column-full column-two-thirds-m column-half-l">
+          <h2 class="heading-large">Exporters share their story</h2>
         </div>
       </div>
-      <p class="font-small font-mid-grey push-half--ends">Randomly loaded marketplaces from our database</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="soft--bottom soft-half--top">
-      <div class="outer-container">
-        <h3 class="h2 font-reg flush--top push--bottom soft-half--bottom soft--top">How this tool can help your business</h3>
-        <ul>
-          <li class="steps-content--section soft--bottom">
-            <div class="steps-image-section">
-              <img class="steps-image" src="{% static 'images/infographics/exporting.svg' %}" alt="Exporting online">
-            </div>
-            <div class="cf push--top text--left steps-info">
-              <h4 class="h3 font-lig">Selling online</h4>
-              <p class="font-xsmall">Access helpful information and tips to sell with global marketplaces in one place.</p>
-            </div>
-          </li>
-          <li class="steps-content--section soft--bottom">
-            <div class="steps-image-section">
-              <img class="steps-image" src="{% static 'images/infographics/exclusivedeals.svg' %}" alt="Department of International Trade">
-            </div>
-            <div class="cf push--top text--left steps-info">
-              <h4 class="h3 font-lig">Special deals</h4>
-              <p class="font-xsmall">DIT negotiates special deals for eligible UK businesses from a wide range of marketplaces.</p>
-            </div>
-          </li>
-          <li class="steps-content--section soft--bottom">
-            <div class="steps-image-section">
-              <img class="steps-image" src="{% static 'images/infographics/growyourbusiness.svg' %}" alt="Grow your business">
-            </div>
-            <div class="cf push--top text--left steps-info">
-              <h4 class="h3 font-lig">Grow your business</h4>
-              <p class="font-xsmall">Receive e-commerce export related support and advice through DIT’s regional network.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div>
-      <ul class="carousel font-white">
-        <li class="carousel-panel tinted-image background-image--carousel-msb">
-          <blockquote class="soft quote-left quote-white push--ends">
-            <p>Exporting overseas has allowed us to grow our business by 300% in 3 years.</p>
-            <footer class="font-lig push--top soft--top">
-              <strong>William Forshaw</strong>
-              <br />
-              <span>Founder | Maxwell Scott Bags </span>
-            </footer>
-          </blockquote>
-        </li>
-        <li class="carousel-panel background-image--carousel-hb">
-          <blockquote class="soft quote-left quote-white push--ends">
-            <p>At least 50% of our profits come from exporting via e-marketplaces. If we didn’t export online, we wouldn’t have a business.</p>
-            <footer class="font-lig push--top soft--top">
-              <strong>Trevor Ginn, Hello Baby</strong>
-              <br />
-              <span>Founder | Hello Baby </span>
-            </footer>
-          </blockquote>
-        </li>
-        <li class="carousel-panel background-image--carousel-fx">
-          <blockquote class="soft quote-left quote-white push--ends">
-            <p>My advice to brands is that you have to try e-marketplaces, because nobody could have convinced me of the success we are having now.</p>
-            <footer class="font-lig push--top soft--top">
-              <strong>Shaun Loughlin</strong>
-              <br />
-              <span>Managing Director | Freestyle Xtreme </span>
-            </footer>
-          </blockquote>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="more-stories">
-    <div class="container">
-      <h2 class="heading-large">E-commerce success stories</h2>
-      <div class="grid-row">
+      <div class="card-grid">
         {% for story in case_studies %}
-          <div class="column-third">
-            {% include 'casestudy/includes/story_card_vertical.html' with story=story %}
+          <div class="column-third-l column-full-m">
+            <div class="card">
+              <a class="card-link" href="{% url 'markets:case_story' story.slug %}">
+                <div class="card-image"
+                  style="background-image: url('{% get_static_prefix %}images/case-story/{{ story.html.metadata.image }}');"
+                  role="image" alt="{{ story.html.metadata.title }}">
+                </div>
+                <div class="card-inner">
+                  <p class="description subheading">Case study</p>
+                  <h3 class="heading-large">{{ story.html.metadata.title }}</h3>
+                  <p class="description">{{ story.html.metadata.subtitle|default:story.html.metadata.meta_description }}</p>
+                </div>
+              </a>
+            </div>
           </div>
         {% endfor %}
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="steps soft--bottom soft-half--top background--white">
-      <div class="outer-container">
-        <h3 class="h2 font-reg flush--top push--bottom soft--top">Start selling</h3>
-        <ul class="cf">
-          <li class="col-4 soft--bottom">
-            <div class="steps-image-section-with-arrow">
-              <img class="steps-image" src="{% static 'images/infographics/searchandcompare.svg' %}" alt="Search and Compare">
-            </div>
-            <div class="cf push--top">
-              <span class="steps-number font-med font-grey float--left push-half--right">1</span>
-              <div class="steps-content float--left">
-                <h4 class="h3 font-lig">Search and compare</h4>
-                <p class="font-xsmall">Identify the right marketplaces for your business.</p>
-              </div>
-            </div>
-          </li>
-
-          <li class="col-4 soft--bottom">
-            <div class="steps-image-section-with-arrow">
-              <img class="steps-image" src="{% static 'images/infographics/selectandapply.svg' %}" alt="Select and Apply">
-            </div>
-            <div class="cf push--top">
-              <span class="steps-number font-med font-grey float--left push-half--right">2</span>
-              <div class="steps-content float--left">
-                <h4 class="h3 font-lig">Select and apply</h4>
-                <p class="font-xsmall">Apply through DIT to benefit from special deals and e-commerce support where applicable. </p>
-              </div>
-            </div>
-          </li>
-
-          <li class="col-4 soft--bottom">
-            <div>
-              <img class="steps-image" src="{% static 'images/infographics/startselling.svg' %}" alt="Start Selling">
-            </div>
-            <div class="cf push--top">
-              <span class="steps-number font-med font-grey float--left push-half--right">3</span>
-              <div class="steps-content float--left">
-                <h4 class="h3 font-lig">Sell your products</h4>
-                <p class="font-xsmall">Reach international consumers looking for your products.</p>
-              </div>
-            </div>
-          </li>
-        </ul>
+  <section id="how-can-we-help-you-online">
+    <div class="container">
+      <div class="grid-row">
+        <div class="column-full column-two-thirds-m column-half-l">
+          <h2 class="heading-large">How can we help you sell online worldwide</h2>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="soft--bottom soft-half--top top-chevron">
-      <div class="outer-container">
-        <div class="steps-sub-section soft--top">
-          <div class="col-6">
-            <h1 class="font-large">Find online global marketplaces </h1>
-            <p>Identify and apply to sell with marketplaces to reach international consumers</p>
+      <div class="grid-row">
+        <div class="column-third-l column-full-m">
+          <div class="card help-benefit">
+            <div class="card-inner">
+              <h3 class="heading">Working for you</h3>
+              <p class="description">We employ people around the world to look for
+                opportunities for UK businesses. They have a deep understanding of local
+                rules, culture and preferences, so you can make informed decisions.
+              </p>
+            </div>
           </div>
-          <div class="col-6">
-            <button class="button button-red button-medium push--top" data-scrollTo="search-product">Start your search now</button>
+        </div>
+        <div class="column-third-l column-full-m">
+          <div class="card help-benefit">
+            <div class="card-inner">
+              <h3 class="heading">Tailor-made advice</h3>
+              <p class="description">Our experts are there to share their knowledge. 
+                We’ll work with you to develop an e-commerce export strategy and identify 
+                the right online marketplaces for your business. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column-third-l column-full-m">
+          <div class="card help-benefit">
+            <div class="card-inner">
+              <h3 class="heading">Taking the first step</h3>
+              <p class="description">We’ll help simplify the process of joining global online markets. 
+                Our experience and knowledge mean we can support you as you set up.  
+              </p>
+            </div>
           </div>
         </div>
       </div>
+      <div class="grid-row">
+        <div class="column-third-l column-full-m">
+          <div class="card help-benefit">
+            <div class="card-inner">
+              <h3 class="heading">Stronger together</h3>
+              <p class="description">You can benefit from our network of relationships 
+                with global online marketplaces. You could get special deals, such as 
+                reduced commission rates and ‘try for free’ periods.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column-third-l column-full-m">
+          <div class="card help-benefit">
+            <div class="card-inner">
+              <h3 class="heading">Support to grow</h3>
+              <p class="description">Work with us and you’ll have a dedicated contact 
+                to help you make the most of all your new opportunities. 
+                Whether you’re taking your first steps in a new environment, 
+                or looking for ideas to further expand, we’re here to help.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="{% url 'markets:list' %}" class="button submit" type="submit">Find your marketplace</a>
     </div>
   </section>
 
+  <section class="background-stone-30" id="random-markets">
+    <div class="container">
+        <div class="grid-row">
+          <div class="column-full column-two-thirds-m column-half-l">
+            <h2 class="heading-large">Just some of the online markets within you reach</h2>
+            <p class="body-text">Join forces with us to sell your products on the world’s best commercial websites.
+            </p>
+          </div>
+        </div>
+        <div class="card-grid">
+          {% for market in random_markets %}
+            <div class="column-third-l column-full-m">
+              <div class="card">
+                <a class="card-link" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
+                  <div class="card-image"
+                    style="background-image: url('{% thumbnail market.logo.image 220x166 box=market.logo.cropping crop detail %}');"
+                    role="image" alt="{{ market }}">
+                  </div>
+                  <div class="card-inner">
+                    <p class="description subheading">{{ market.operating_countries.first.name }}</p>
+                    <h3 class="heading-large">{{ market.name }}</h3>
+                    Registered users: {{ market.number_of_registered_users_display }}
+                    Membership fee: {{ market.membership_fees_display }}
+                  </div>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
 {% endblock content %}

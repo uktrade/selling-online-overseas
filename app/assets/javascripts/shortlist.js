@@ -33,7 +33,7 @@ var sortList = (function () {
         market_slugs.forEach(function(slug) {
             var element = $('[data-slug=' + slug + ']'),
                 icon = $(element[0].lastChild);
-            updateState(element, icon, 'Shortlisted');
+            updateState(element, icon, 'Remove');
         });
     }
 
@@ -65,9 +65,9 @@ var sortList = (function () {
                 url: apiUrl+'?slug='+slug,
                 type: 'DELETE',
                 success:function() {
-                    updateState(element, icon, 'Shortlist');
+                    updateState(element, icon, 'Add to compare');
                     if(sessionStorage.getItem('notify') !== '2') {
-                        notify('shortlist-notify','Marketplace removed from your shortlist', element );
+                        notify('shortlist-notify','Marketplace removed from the compare list', element );
                         sessionStorage.setItem('notify', 2);
                     }
                     updateShortlistedCount();
@@ -78,9 +78,9 @@ var sortList = (function () {
                 url: apiUrl+'?slug='+slug,
                 type: 'POST',
                 success:function() {
-                    updateState(element, icon, 'Shortlisted');
+                    updateState(element, icon, 'Remove');
                     if(!sessionStorage.getItem('notify')) {
-                        notify('shortlist-notify','Marketplace added to your shortlist', element );
+                        notify('shortlist-notify','Marketplace added to the compare list', element );
                         sessionStorage.setItem('notify', 1);
                     }
                     updateShortlistedCount();
@@ -91,7 +91,7 @@ var sortList = (function () {
     }
 
     function updateState(element, icon, action) {
-        if (action === 'Shortlisted') {
+        if (action === 'Remove') {
             element.addClass('markets-shortlist--shortlisted');
             icon.addClass('icon-shortlisted');
         } else {
