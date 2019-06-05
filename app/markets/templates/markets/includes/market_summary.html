@@ -23,7 +23,7 @@
       <a class="market-header-link" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
         <span class="underline">{{ market.name }}</span>
       </a>
-      <p class="market-description-summary">
+      <p class="market-description-summary margin-top-30">
         {{ market.e_marketplace_description|safe|truncatewords:15 }}
       </p>
       <p class="market-operating-countries overflow-text">
@@ -44,7 +44,7 @@
           <div>{{ market.commission_display|default:"" }}</div>
         </div>
         <div class="stat logistics-support-stat">
-          <div class="stat-header">Logistics support</div>
+          <div class="stat-header">Fullfilled by marketplace</div>
           <div>
             {% for model in market.logistics_structure.all %}
               <span class="stat-value">{{ model.name }}</span>
