@@ -36,17 +36,16 @@
     <div class="container">
       <div class="grid-row">
         <div class="column-full column-two-thirds-m column-half-l">
-            <h2 class="heading-large">How can we help you</h2>
+            <h2 class="heading-large margin-top-15-l">How we can help you</h2>
             <p class="body-text">Finding and understanding
               international online markets takes time and effort. We've done the hard work for you.</p>
         </div>
       </div>
-      <div class="grid-row">
+      <div class="grid-row margin-top-60-l">
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
-            <div class="card-image"
-              style="background-image: url('{% static "images/infographics/exporting.svg" %}');"
-              role="image">
+            <div class="card-image">
+              <img src="{% static "images/infographics/tab-into-our-knowledge.png" %}" alt="Tap into our knowledge" height="60">
             </div>
             <div class="card-inner">
               <h3 class="heading">Tap into our knowledge</h3>
@@ -59,9 +58,10 @@
         </div>
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
-            <div class="card-image"
-              style="background-image: url('{% static "images/infographics/exclusivedeals.svg" %}');"
-              role="image">
+            <div class="card-image">
+              <img src="{% static "images/infographics/getting-started.png" %}"
+                   alt="Tap into our knowledge"
+                   height="60">
             </div>
             <div class="card-inner">
               <h3 class="heading">Getting started</h3>
@@ -74,9 +74,10 @@
         </div>
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
-            <div class="card-image"
-              style="background-image: url('{% static "images/infographics/growyourbusiness.svg" %}');"
-              role="image">
+            <div class="card-image">
+              <img src="{% static "images/infographics/continuing-benefits.png" %}"
+                   alt="Tap into our knowledge"
+                   height="60">
             </div>
             <div class="card-inner">
               <h3 class="heading">Continuing benefits</h3>
@@ -121,7 +122,7 @@
 
   <section id="how-can-we-help-you-online">
     <div class="container">
-      <div class="grid-row">
+      <div class="grid-row margin-bottom-90-l margin-bottom-60-m">
         <div class="column-full column-two-thirds-m column-half-l">
           <h2 class="heading-large">How can we help you sell online worldwide</h2>
         </div>
@@ -185,7 +186,9 @@
           </div>
         </div>
       </div>
-      <a href="{% url 'markets:list' %}" class="button submit" type="submit">Find your marketplace</a>
+      <div class="grid-row margin-top-60">
+        <a href="{% url 'markets:list' %}" class="button button-medium submit" type="submit">Find your marketplace</a>
+      </div>
     </div>
   </section>
 
