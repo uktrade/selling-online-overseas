@@ -25,7 +25,6 @@ def unload_fixture(apps, schema_editor):
     safe_load_fixture(apps, fixture_path)
 
 
-
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -35,4 +34,3 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(load_fixture, reverse_code=unload_fixture),
     ]
-
