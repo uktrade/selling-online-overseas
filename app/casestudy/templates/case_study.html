@@ -3,6 +3,11 @@
 
 {% block head_meta_description %}{{ story.html.metadata.meta_description }}{% endblock %}
 
+{% block head_css %}
+	{{ block.super }}
+	<link href="{% static 'stylesheets/pages/case-study.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 {% block content %}
 <section class="case-study">
   <div class="container">

@@ -53,6 +53,7 @@ blockquote.quote {
     top: 15px;
   }
 
+
   footer {
     margin-top: 1em;
     font-family: $brand-font-family;
@@ -71,8 +72,17 @@ blockquote.quote {
   }
 }
 
-@media (max-width: 640px) {
-  blockquote.quote {
-    font-size: 19px;
+// Case Study Detail New Styles
+.case-study {
+  @media (min-width: 641px) {
+    .font-xlarge{
+      font-size: 48px;
+      line-height: 1.04167;
+    }
+
+    .font-medium{
+      font-size: 24px;
+      line-height: 1.25;
+    }
   }
 }
