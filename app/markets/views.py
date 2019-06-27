@@ -53,7 +53,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
     template_name = 'markets/homepage.html'
     comment_placeholder = "We are sorry to hear that. Would you tell us why?"
     submit_wording = "Send feedback"
-    satisfied_wording = "Do you find this service useful?"
+    satisfied_wording = "Was this service useful?"
 
     def get_context_data(self, *args, **kwargs):
         """
