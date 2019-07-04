@@ -2,10 +2,12 @@
 
 ## Pre-release
 
-**Implemented enhancements:**
-- XOT-635 - SOO landing page content updates.
+### Implemented enhancements
+- XOT-635 - SOO Design updated for landing and search results page. 
 
-**Fixed bugs:**
+### Fixed bugs
 - Upgraded urllib3 to fix [vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2019-11324)
 - XOT-828 - GA360 tagging key name and selector corrections
 - XOT-840 - display correct link to marketplace
+- No ticket - Upgrade vulnerable django version to django 1.11.22
+- No ticket - Upgrade vulnerable django rest framework version
