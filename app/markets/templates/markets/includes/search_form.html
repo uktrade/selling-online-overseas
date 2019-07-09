@@ -6,8 +6,8 @@
   data-count-action='{% url "markets:count" %}'
   data-form-type="autocomplete"
 >
-  <label class="term">
-    <span class="verbose">Product or service keyword</span>
+  <div class="term">
+    <label class="visually-hidden">Product or service keyword</label>
     <select autocomplete="off" name="category_id">
         <option value="">
           Select your category
@@ -18,9 +18,9 @@
         </option>
         {% endfor %}
     </select>
-  </label>
-  <label class="filter">
-    <span class="verbose">Filter by country (optional)</span>
+  </div>
+  <div class="filter">
+    <label class="visually-hidden">Filter by country (optional)</label>
     <select autocomplete="off" name="country_id">
       <option value="">
         All regions and countries
@@ -31,6 +31,6 @@
       </option>
       {% endfor %}
     </select>
-  </label>
-  <input class="button submit" name="commit" type="submit" value="Find a marketplace">
+  </div>
+  <button class="button button-arrow-small arrow-button" name="commit" type="submit" value="">Find a marketplace</button>
 </form>

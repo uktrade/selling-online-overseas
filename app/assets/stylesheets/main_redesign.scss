@@ -188,7 +188,7 @@ section {
 
     .term {
       margin-left: $spacing-4;
-      width: calc(50% - #{$spacing-4});
+      width:  $cols-6;// calc(50% - #{$spacing-4});
     }
   }
 }
@@ -317,19 +317,19 @@ section {
   }
 }
 
-@media screen and (max-width:768px) {
-  section {
-    padding-top: $spacing-2;
-  }
+// @media screen and (max-width:768px) {
+//   section {
+//    // padding-top: $spacing-2;
+//   }
 
-  .quote {
-    width: 75%;
-  }
+//   .quote {
+//     width: 75%;
+//   }
 
-  #recent-opportunities {
-    padding-bottom: $spacing-2;
-  }
-}
+//   #recent-opportunities {
+//     padding-bottom: $spacing-2;
+//   }
+// }
 
 @media screen and (max-width:480px) {
   .hero-section {
@@ -353,221 +353,244 @@ section {
 }
 // END EDIT
 // EDIT ../transformation/components/search_form
-@media screen and (min-width:660px) {
-  .search-form .term {
-    select {
-      left: 0px;
-    }
-  }
-}
-@media screen and (max-width:660px) {
-  // remove double bourder (in exopps there is one select so they overlap)
-  .search-form .term, .search-form .filter {
-    select {
-      left: 0px;
-    }
-  }
-}
-// END EDIT
+// @media screen and (min-width:660px) {
+//   .search-form .term, .search-form .filter {  
+//     select {
+//       left: 0px;
+//     }
+//   }
+// }
 
-// market list page
-.market-list-search-section {
-  .search-form {
-    background-color: transparent;
-    padding: 0;
-  }
-  .market-list-count {
-    margin-bottom: $spacing-4;
 
-    strong{
-      font-weight: bold;
-    }
-  }
-}
-.market-list-section {
-  padding: 0;
-}
-.narrow-section {
-  padding: $spacing-4 0;
-}
 
-.breadcrumbs-section {
-  .breadcrumbs {
-    padding: 0;
-    margin: 0;
-  }
-}
+// // market list page
+// .market-list-search-section {
+//   padding: 60px 0 30px;
+//   .search-form {
+//     background-color: transparent;
+//     padding: 0;
+//   }
+//   .market-list-count {
+//     margin-bottom: $spacing-4;
 
-.compare-navigation {
-  float: right;
-  strong{
-    font-weight: bold;
-  }
-}
+//     strong{
+//       font-weight: bold;
+//     }
+//   }
+// }
+// .narrow-section {
+//   padding: $spacing-4 0;
+// }
 
-$lime-color: #2daaa1;
-$market-item-padding: 20px;
-$market-logo-width: 250px;
+// .breadcrumbs-section {
+//   .breadcrumbs {
+//     padding: 0;
+//     margin: 0;
+//   }
+// }
 
-.market-item {
-  margin-bottom: $spacing-3;
+// .compare-navigation {
+//   float: right;
+//   strong{
+//     font-weight: bold;
+//   }
+// }
 
-  &.has-special-terms {
-    .special-terms-container {
-      background-color: $lime-color;
-    }
-    .market-item-inner {
-      border-color: $lime-color;
-    }
-  }
-}
 
-.special-terms-container {
-  padding: 8px $spacing-3;
-  font-size: $font-size-s;
-  display: inline-block;
-  display: hidden;
-  background-color: $stone-30;
-  color: white;
 
-  strong {
-    font-weight: bold;
-  }
-}
 
-.market-item-inner {
-  border: 2px solid $stone-30;
-  padding: $market-item-padding;
-}
+// //// markets ///
 
-.market-operating-countries {
-  .strong {
-    font-weight: bold;
-  }
-}
+// $special-terms-bg: #006cd3;
+// $market-item-padding: 20px;
+// $market-logo-width: 250px;
 
-.overflow-text {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
+// .market-item {
+//   margin-bottom: $spacing-3;
 
-.market-item-body {
-  margin-left: 2 * $market-item-padding + $market-logo-width;
-  position: relative;
-}
+//   &.has-special-terms {
+//     .special-terms-container {
+//       width: 100%;
+//       background-color: $special-terms-bg;
+//     }
+//     .market-item-inner {
+//       border-color: $special-terms-bg;
+//     }
+//   }
+// }
 
-.market-item-img {
-  float: left;
-  width: $market-logo-width;
-  vertical-align: middle;
-  border-style: none;
-}
+// .special-terms-container {
+//   padding: 15px 15px 15px 45px;
+//   font-size: 15px;
+//   display: inline-block;
+//   display: hidden;
+//   background-color: $stone-30;
+//   color: white;
 
-@media screen and (min-width: 767px) and (max-width: 959px) {
-  $market-logo-width: 150px;
-  .market-item-body {
-    margin-left: 2 * $market-item-padding + $market-logo-width;
-    position: relative;
-  }
+//   strong {
+//     font-weight: bold;
+//   }
+// }
 
-  .market-item-img {
-    float: left;
-    width: $market-logo-width;
-    vertical-align: middle;
-    border-style: none;
-  }
-}
+// .market-item-inner {
+//   border: 2px solid $stone-30;
+//   padding: $market-item-padding;
+// }
 
-@media screen and (max-width: 767px) {
-  .market-item-body {
-    margin: 0;
-    position: relative;
-    display: block;
-  }
+// .market-operating-countries {
+//   .strong {
+//     font-weight: bold;
+//   }
+// }
 
-  .market-item-img {
-    display: block;
-    float: initial;
-    margin: 0 auto 30px auto;
-    border-style: none;
-  }
-}
+// .overflow-text {
+//   text-overflow: ellipsis;
+//   overflow: hidden;
+//   white-space: nowrap;
+// }
 
-.market-header-link {
-  line-height: 1;
-  font-size: 32px;
-  font-weight: bold;
-  text-decoration: none;
-  color: $active-blue;
+// .market-item-body {
+//   margin-left: 2 * $market-item-padding + $market-logo-width;
+//   position: relative;
+// }
 
-  .underline {
-    line-height: 0.9;
-    display: inline-block;
-    border-bottom: 2px solid $active-blue;
-  }
-}
+// .market-item-img {
+//   float: left;
+//   width: $market-logo-width;
+//   vertical-align: middle;
+//   border-style: none;
+// }
 
-.market-stats {
-  width: 90%;
-  display: table;
+// @media screen and (min-width: 767px) and (max-width: 959px) {
+//   $market-logo-width: 150px;
+//   .market-item-body {
+//     margin-left: 2 * $market-item-padding + $market-logo-width;
+//     position: relative;
+//   }
 
-  .stat {
-    display: table-cell;
-    font-weight: bold;
+//   .market-item-img {
+//     float: left;
+//     width: $market-logo-width;
+//     vertical-align: middle;
+//     border-style: none;
+//   }
+// }
 
-    .stat-header {
-      font-weight: normal;
-      color: $grey-2;
-      font-size: $font-size-s;
-    }
+// @media screen and (max-width: 767px) {
+//   .market-item-body {
+//     margin: 0;
+//     position: relative;
+//     display: block;
+//   }
 
-    &.reg-users-stat {
-      width: 20%;
-    }
-    &.commision-stat {
-      width: 20%;
-    }
-    &.logistics-support-stat {
-      width: 30%;
-    }
-    &.membership-stat {
-      width: 30%;
-    }
-  }
-}
+//   .market-item-img {
+//     display: block;
+//     float: initial;
+//     margin: 0 auto 30px auto;
+//     border-style: none;
+//   }
+// }
 
-@media screen and (max-width: 767px) and (max-width: 959px) {
-  .market-stats {
-    width: 100%;
-  }
-}
+// .market-header-link {
+//   line-height: 1;
+//   font-size: 36px;
+//   text-decoration: none;
+//   color: $active-blue;
 
-@media screen and (max-width: 767px) {
-  .market-stats {
-    display: block;
-    width: 100%;
+//   .underline {
+//     line-height: 0.9;
+//     display: inline-block;
+//     border-bottom: 2px solid $active-blue;
+//   }
+// }
 
-    .stat {
-      width: 100% !important;
-      display: block;
+// .market-item-stats {
+//   width: 90%;
+//   display: table;
 
-      .stat-header:after {
-        content: ':';
-      }
-      .stat-value:after {
-        content: ', ';
-      }
-      .stat-value:last-child:after {
-        content: '';
-      }
+//   .stat {
+//     display: table-cell;
+//     font-weight: bold;
 
-      > div {
-        display: inline;
-      }
-    }
-  }
-}
+//     .stat-header {
+//       font-weight: normal;
+//       color: $grey-2;
+//       font-size: $font-size-s;
+//     }
+
+//     &.reg-users-stat {
+//       width: 20%;
+//     }
+//     &.commision-stat {
+//       width: 20%;
+//     }
+//     &.logistics-support-stat {
+//       width: 30%;
+//     }
+//     &.membership-stat {
+//       width: 30%;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 767px) and (max-width: 959px) {
+//   .market-item-stats {
+//     width: 100%;
+//   }
+// }
+
+// @media screen and (max-width: 767px) {
+//   .market-item-stats {
+//     display: block;
+//     width: 100%;
+
+//     .stat {
+//       width: 100% !important;
+//       display: block;
+
+//       .stat-header:after {
+//         content: ':';
+//       }
+//       .stat-value:after {
+//         content: ', ';
+//       }
+//       .stat-value:last-child:after {
+//         content: '';
+//       }
+
+//       > div {
+//         display: inline;
+//       }
+//     }
+//   }
+// }
+
+
+
+
+
+
+// @media screen and (min-width: 960px) {
+//   .special-terms-container {
+//     padding-left: 70px;
+//     font-size: $font-size-m;
+//   }
+// }
+
+// // end markets
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Update shortlist functionality
 .add-to-compare {

@@ -14,6 +14,7 @@ from django.db.models import (
     functions
 )
 from django.http import Http404
+from django.core.paginator import EmptyPage, Paginator
 
 from thumber.decorators import thumber_feedback
 
@@ -127,7 +128,9 @@ class MarketListView(MarketFilterMixin, ListView):
         """
 
         context = super().get_context_data(*args, **kwargs)
+        paginator = Paginator(context['markets_list'], 10)
         context['form'] = MarketListFilterForm(self.request.GET)
+        context['pagination'] = paginator.page(form.cleaned_data['page'])
         return context
 
     def _clean_params(self):

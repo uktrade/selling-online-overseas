@@ -149,6 +149,10 @@
     }
   }
 
+  &-deal {
+    background-image: url('#{$image-path}icons/pngs/icon-deal.png');
+  }
+
   &-header {
     background-size: contain;
     height: 45px;

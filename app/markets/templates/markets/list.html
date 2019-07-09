@@ -32,17 +32,7 @@
       {% include 'markets/includes/search_form.html' %}
     </div>
   </section>
-  <section class="narrow-section">
-    <div class="container">
-      <div class="compare-navigation">
-        <strong>
-          Compare marketplaces: <span class="shortlist-count"></span>
-        </strong>
-        |
-        <a href="{% url 'markets:shortlist' %}">View compare list</a>
-      </div>
-    </div>
-  </section>
+ 
   <section class="market-list-section">
     <div class="container">
       {% if not market_list %}
@@ -51,10 +41,13 @@
         <p>Find out more about the right overseas markets for your products in <a class="link" href="https://www.gov.uk/government/collections/exporting-country-guides" title="Exporting country guides">exporting country guides</a>.</p>
       </div>
       {% endif %}
-
+      
       {% for market in market_list %}
         {% include "markets/includes/market_summary.html" %}
       {% endfor %}
+     
     </div>
+
+    
   </section>
 {% endblock content %}
