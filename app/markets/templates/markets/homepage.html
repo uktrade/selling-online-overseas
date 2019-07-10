@@ -15,29 +15,37 @@
 {% endblock %}
 
 {% block content %}
-  <section class="hero-section search-section background-image--hero" id="hero-banner">
-    <div class="container">
-      <p class="breadcrumbs">
-          <span class="label verbose">You are here:</span>
-          <a href="{{ SERVICES_GREAT_DOMESTIC }}">Home</a>
-          <span class="separator">,</span>
-          <span class="current">
-            Selling online overseas
-          </span>
-      </p>
-      <h1>Get help to sell online worldwide</h1>
-      <p>Let our experts help you set up and sell on online marketplaces around the world.</p>
 
-      {% include 'markets/includes/search_form.html' %}
+  <div class="hero-section  background-image--hero" id="hero-banner">
+    <section class="breadcrumbs-section narrow-section">     
+      <div class="container">
+        <p class="breadcrumbs">
+            <span class="label verbose">You are here:</span>
+            <a href="{{ SERVICES_GREAT_DOMESTIC }}">Home</a>
+            <span class="separator">,</span>
+            <span class="current">
+              Selling online overseas
+            </span>
+        </p>
+    </div>
+    </section>
+    <section class="search-section background-stone-30">
+        <div class="container">
+          <h1>Get help to sell online worldwide</h1>
+          <p>Let us help you export your products to consumers around the world through online markets.</p>
+    
+          {% include 'markets/includes/search_form.html' %}
+        </div>
+    </section>
     </div>
   </section>
 
-  <section id="how-can-we-help-you">
+  <section id="how-can-we-help-you" class="how-can-we-help-you">
     <div class="container">
       <div class="grid-row">
-        <div class="column-full column-two-thirds-m column-half-l">
-            <h2 class="heading-large margin-top-15-l">How we can help you</h2>
-            <p class="body-text">Finding and understanding
+        <div class="column-full column-two-thirds-xl">
+            <h2 class="heading-large margin-bottom-0">How we can help you</h2>
+            <p class="body-text margin-top-10 margin-bottom-0">Finding and understanding
               international online marketplaces takes time and effort. We've done the hard work for you.</p>
         </div>
       </div>
@@ -91,12 +99,12 @@
     </div>
   </section>
 
-  <section class="background-stone-30" id="exporter-stories">
+  <section class="exporter-stories background-stone-30" id="exporter-stories">
     <div class="container">
       <div class="grid-row">
         <div class="column-full column-two-thirds-m column-half-l">
-          <h2 class="heading-large">Exporters share their stories</h2>
-          <p class="description">How other UK businesses have developed their e-commerce plans with our help.
+          <h2 class="heading-large margin-bottom-0">Exporters share their stories</h2>
+          <p class="description margin-top-10 margin-bottom-0">How other UK businesses have developed their e-commerce plans with our help.
           </p>
         </div>
       </div>
@@ -112,7 +120,7 @@
                 <div class="card-inner">
                   <p class="description subheading">Case study</p>
                   <h3 class="heading-large">{{ story.html.metadata.title }}</h3>
-                  <p class="description">{{ story.html.metadata.subtitle|default:story.html.metadata.meta_description }}</p>
+                  <p class="description case-study-intro">{{ story.html.metadata.subtitle|default:story.html.metadata.meta_description }}</p>
                 </div>
               </a>
             </div>
@@ -122,18 +130,18 @@
     </div>
   </section>
 
-  <section id="how-can-we-help-you-online">
+  <section id="how-can-we-help-you-online" class="how-can-we-help-you-online">
     <div class="container">
-      <div class="grid-row margin-bottom-90-l margin-bottom-60-m">
+      <div class="grid-row">
         <div class="column-full column-two-thirds-m column-half-l">
-          <h2 class="heading-large">How we can help you sell online worldwide</h2>
+          <h2 class="heading-large margin-bottom-0">How we can help you sell online worldwide</h2>
         </div>
       </div>
-      <div class="grid-row">
+      <div class="card-grid">
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
             <div class="card-inner">
-              <h3 class="heading">Working for you</h3>
+              <h3 class="heading-large">Working for you</h3>
               <p class="description">We employ people around the world to look for
                 opportunities for UK businesses. They have a deep understanding of local
                 rules, culture and preferences, so you can make informed decisions.
@@ -144,7 +152,7 @@
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
             <div class="card-inner">
-              <h3 class="heading">Tailor-made advice</h3>
+              <h3 class="heading-large">Tailor-made advice</h3>
               <p class="description">Our experts are there to share their knowledge. 
                 We’ll work with you to develop an e-commerce export strategy and identify 
                 the right online marketplaces for your business. 
@@ -155,19 +163,17 @@
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
             <div class="card-inner">
-              <h3 class="heading">Taking the first step</h3>
+              <h3 class="heading-large">Taking the first step</h3>
               <p class="description">We’ll help simplify the process of selling on online marketplaces. 
                 Our experience and knowledge mean we can support you as you set up.  
               </p>
             </div>
           </div>
         </div>
-      </div>
-      <div class="grid-row">
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
             <div class="card-inner">
-              <h3 class="heading">Stronger together</h3>
+              <h3 class="heading-large">Stronger together</h3>
               <p class="description">You can benefit from our partnerships with global online marketplaces. 
                 You could get special deals, such as reduced commission rates or ‘try for free’ periods.
               </p>
@@ -177,7 +183,7 @@
         <div class="column-third-l column-full-m">
           <div class="card help-benefit">
             <div class="card-inner">
-              <h3 class="heading">Support to grow</h3>
+              <h3 class="heading-large">Support to grow</h3>
               <p class="description">Whether you're taking your first e-commerce exporting steps or 
                 looking to expand your online strategy, we can advise you all the way. We're here to help.
               </p>
@@ -185,18 +191,16 @@
           </div>
         </div>
       </div>
-      <div class="grid-row margin-top-60">
-        <a href="{% url 'markets:list' %}" class="button button-medium submit" type="submit">Find your marketplace</a>
-      </div>
+       <a href="{% url 'markets:list' %}" class="button button-medium margin-top-30 margin-bottom-30">Find your marketplace</a>
     </div>
   </section>
 
-  <section class="background-stone-30" id="random-markets">
+  <section class="random-markets background-stone-30" id="random-markets">
     <div class="container">
         <div class="grid-row">
           <div class="column-full column-two-thirds-m column-half-l">
-            <h2 class="heading-large">Worldwide marketplaces within your reach</h2>
-            <p class="body-text">Join forces with us and these are just some of the brands that could feature your products.
+            <h2 class="heading-large margin-bottom-0">Worldwide marketplaces within your reach</h2>
+            <p class="body-text margin-top-10">Join forces with us and these are just some of the brands that could feature your products.
             </p>
           </div>
         </div>
@@ -212,8 +216,8 @@
                   <div class="card-inner">
                     <p class="description subheading">{{ market.operating_countries.first.name }}</p>
                     <h3 class="heading-large">{{ market.name }}</h3>
-                    Registered users: {{ market.number_of_registered_users_display }}
-                    Membership fee: {{ market.membership_fees_display }}
+                    <p class="description subheading">Registered users: {{ market.number_of_registered_users_display }}</p>
+                    <p class="margin-top-10 margin-bottom-0">Membership fee: {{ market.membership_fees_display }}</p>
                   </div>
                 </a>
               </div>
