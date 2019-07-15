@@ -17,10 +17,10 @@
 {% block content %}
 
   <div class="hero-section  background-image--hero" id="hero-banner">
-    <section class="breadcrumbs-section narrow-section">     
+    <section class="breadcrumbs-section narrow-section">
       <div class="container">
         <p class="breadcrumbs">
-            <span class="label verbose">You are here:</span>
+            <span class="label visually-hidden">You are here:</span>
             <a href="{{ SERVICES_GREAT_DOMESTIC }}">Home</a>
             <span class="separator">,</span>
             <span class="current">
@@ -32,8 +32,8 @@
     <section class="search-section background-stone-30">
         <div class="container">
           <h1>Get help to sell online worldwide</h1>
-          <p>Let us help you export your products to consumers around the world through online markets.</p>
-    
+          <p class="margin-bottom-30">Let us help you export your products to consumers around the world through online markets.</p>
+
           {% include 'markets/includes/search_form.html' %}
         </div>
     </section>
@@ -44,8 +44,8 @@
     <div class="container">
       <div class="grid-row">
         <div class="column-full column-two-thirds-xl">
-            <h2 class="heading-large margin-bottom-0">How we can help you</h2>
-            <p class="body-text margin-top-10 margin-bottom-0">Finding and understanding
+            <h2 class="heading-large">How we can help you</h2>
+            <p class="body-text margin-top-10 margin-bottom-0 mobile-hidden">Finding and understanding
               international online marketplaces takes time and effort. We've done the hard work for you.</p>
         </div>
       </div>
@@ -56,10 +56,10 @@
               <img src="{% static "images/infographics/tab-into-our-knowledge.png" %}" alt="Tap into our knowledge" height="60">
             </div>
             <div class="card-inner">
-              <h3 class="heading">Tap into our knowledge</h3>
+              <h3 class="heading-large">Tap into our knowledge</h3>
               <p class="description">Get free support from our UK-based e-commerce advisors.
                 Their in-depth knowledge of exporting to international markets means you’ll get
-                tailored advice. 
+                tailored advice.
               </p>
             </div>
           </div>
@@ -72,10 +72,10 @@
                    height="60">
             </div>
             <div class="card-inner">
-              <h3 class="heading">Getting started</h3>
-              <p class="description">Once you’ve found the best places to sell online, 
-                we’ll work with you on your e-commerce journey. We’ll help you understand 
-                the rules of your new marketplace and support you as you grow. 
+              <h3 class="heading-large">Getting started</h3>
+              <p class="description">Once you’ve found the best places to sell online,
+                we’ll work with you on your e-commerce journey. We’ll help you understand
+                the rules of your new marketplace and support you as you grow.
               </p>
             </div>
           </div>
@@ -88,9 +88,9 @@
                    height="60">
             </div>
             <div class="card-inner">
-              <h3 class="heading">Continuing benefits</h3>
-              <p class="description">Connect to international marketplaces through us and you’ll enjoy the benefits. 
-                Our connections mean you might get reduced commission rates and ‘try for free’ periods. 
+              <h3 class="heading-large">Continuing benefits</h3>
+              <p class="description">Connect to international marketplaces through us and you’ll enjoy the benefits.
+                Our connections mean you might get reduced commission rates and ‘try for free’ periods.
               </p>
             </div>
           </div>
@@ -103,14 +103,14 @@
     <div class="container">
       <div class="grid-row">
         <div class="column-full column-two-thirds-m column-half-l">
-          <h2 class="heading-large margin-bottom-0">Exporters share their stories</h2>
-          <p class="description margin-top-10 margin-bottom-0">How other UK businesses have developed their e-commerce plans with our help.
+          <h2 class="heading-large">Exporters share their stories</h2>
+          <p class="description margin-top-10 margin-bottom-0 mobile-hidden">How other UK businesses have developed their e-commerce plans with our help.
           </p>
         </div>
       </div>
-      <div class="card-grid">
+      <div class="card-grid margin-bottom-15 margin-bottom-30-l">
         {% for story in case_studies %}
-          <div class="column-third-l column-full-m">
+          <div class="column-full-m column-third-l ">
             <div class="card">
               <a class="card-link" href="{% url 'markets:case_story' story.slug %}">
                 <div class="card-image"
@@ -134,7 +134,7 @@
     <div class="container">
       <div class="grid-row">
         <div class="column-full column-two-thirds-m column-half-l">
-          <h2 class="heading-large margin-bottom-0">How we can help you sell online worldwide</h2>
+          <h2 class="heading-large">How we can help you sell online worldwide</h2>
         </div>
       </div>
       <div class="card-grid">
@@ -153,9 +153,9 @@
           <div class="card help-benefit">
             <div class="card-inner">
               <h3 class="heading-large">Tailor-made advice</h3>
-              <p class="description">Our experts are there to share their knowledge. 
-                We’ll work with you to develop an e-commerce export strategy and identify 
-                the right online marketplaces for your business. 
+              <p class="description">Our experts are there to share their knowledge.
+                We’ll work with you to develop an e-commerce export strategy and identify
+                the right online marketplaces for your business.
               </p>
             </div>
           </div>
@@ -164,8 +164,8 @@
           <div class="card help-benefit">
             <div class="card-inner">
               <h3 class="heading-large">Taking the first step</h3>
-              <p class="description">We’ll help simplify the process of selling on online marketplaces. 
-                Our experience and knowledge mean we can support you as you set up.  
+              <p class="description">We’ll help simplify the process of selling on online marketplaces.
+                Our experience and knowledge mean we can support you as you set up.
               </p>
             </div>
           </div>
@@ -174,7 +174,7 @@
           <div class="card help-benefit">
             <div class="card-inner">
               <h3 class="heading-large">Stronger together</h3>
-              <p class="description">You can benefit from our partnerships with global online marketplaces. 
+              <p class="description">You can benefit from our partnerships with global online marketplaces.
                 You could get special deals, such as reduced commission rates or ‘try for free’ periods.
               </p>
             </div>
@@ -184,14 +184,14 @@
           <div class="card help-benefit">
             <div class="card-inner">
               <h3 class="heading-large">Support to grow</h3>
-              <p class="description">Whether you're taking your first e-commerce exporting steps or 
+              <p class="description">Whether you're taking your first e-commerce exporting steps or
                 looking to expand your online strategy, we can advise you all the way. We're here to help.
               </p>
             </div>
           </div>
         </div>
       </div>
-       <a href="{% url 'markets:list' %}" class="button button-medium margin-top-30 margin-bottom-30">Find your marketplace</a>
+       <a href="{% url 'markets:list' %}" class="button button-medium margin-top-30 margin-bottom-30 mobile-hidden">Find your marketplace</a>
     </div>
   </section>
 
@@ -199,14 +199,14 @@
     <div class="container">
         <div class="grid-row">
           <div class="column-full column-two-thirds-m column-half-l">
-            <h2 class="heading-large margin-bottom-0">Worldwide marketplaces within your reach</h2>
-            <p class="body-text margin-top-10">Join forces with us and these are just some of the brands that could feature your products.
+            <h2 class="heading-large">Worldwide marketplaces within your reach</h2>
+            <p class="body-text margin-top-10 mobile-hidden">Join forces with us and these are just some of the brands that could feature your products.
             </p>
           </div>
         </div>
-        <div class="card-grid">
+        <div class="card-grid margin-bottom-15 margin-bottom-30-l">
           {% for market in random_markets %}
-            <div class="column-third-l column-full-m">
+            <div class="column-third-l column-full-m column-full">
               <div class="card">
                 <a class="card-link" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
                   <div class="card-image"

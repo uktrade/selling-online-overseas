@@ -14,7 +14,7 @@ from django.db.models import (
     functions
 )
 from django.http import Http404
-from django.core.paginator import EmptyPage, Paginator
+from django.core.paginator import Paginator
 
 from thumber.decorators import thumber_feedback
 
@@ -97,6 +97,8 @@ class NewMarketListView(MarketFilterMixin, TemplateView):
             country_id = int(country_id)
             qs = qs.filter(operating_countries__id=country_id)
 
+        paginator = Paginator(qs, 6)
+        pagination_page = paginator.page(self.request.GET.get('page', 1))
         context = {
             'page_type': 'SearchResultsPage',
             'market_list': qs,
@@ -104,6 +106,7 @@ class NewMarketListView(MarketFilterMixin, TemplateView):
             'selected_category_id': category_id,
             'countries': Country.objects.all().order_by('name'),
             'categories': Category.objects.all().order_by('name'),
+            'pagination_page': pagination_page,
         }
         context = self.get_context_data(**context)
         return self.render_to_response(context)

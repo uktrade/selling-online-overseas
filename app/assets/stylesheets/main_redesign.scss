@@ -17,6 +17,32 @@
 
 $body-background-color: $white;
 
+
+.card-grid,.flex-grid {
+  margin: 0 -15px;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap
+}
+
+.card-grid,.card-grid>*,.flex-grid,.flex-grid>* {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex
+}
+
+.card-grid>*,.flex-grid>* {
+  padding: 0 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+ // width: 100%
+}
+
+.card {
+  min-height: auto;
+}
+
 #content {
   padding-top: 0;
 }
@@ -29,6 +55,12 @@ section {
 
 
 // END EDIT
+
+.mobile-hidden {
+  @media screen and (max-width: 767px) {
+    @include access-hidden;
+  }
+}
 
 .button-medium {
   font-weight: bold;
@@ -72,7 +104,7 @@ section {
 }
 //error
 .search-section {
-  padding-bottom: 10px;
+  // padding-bottom: 10px;
 
   p {
     width: $cols-6;
@@ -120,12 +152,7 @@ section {
 }
 
 
-@media screen and (min-width: 768px) {
-  .heading-large {
-    margin-top: 30px;
-    line-height: 1.2;
-  }
-}
+
 
 .non-breadcrumb {
   margin-bottom: $spacing-4;
@@ -145,417 +172,23 @@ section {
   margin: 0 auto;
   width: $cols-6;
 }
-.verbose {
-  @include access-hidden;
+
+.pagination a {
+  margin-bottom: 15px;
 }
 
-// #create-opportunities {
-//   background-color: $offwhite;
-//   position: relative;
-
-//   .heading {
-//     margin-bottom: $spacing-1;
-//   }
-
-//   &:before {
-//     @include section-connector($white, $offwhite);
-//   }
-// }
-
-// #featured-industries {
-//   background-color: $stone-light;
-// }
-
-// #recent-opportunities {
-//   form,
-//   .information,
-//   .pagination {
-//     display: none;
-//   }
-// }
-
-// #how-it-works {
-//   .intro {
-//     margin-bottom: $spacing-3;
-//   }
-// }
-
-// #service-promotion {
-//   // EDIT
-//   // background: $great-blue image_url('backgrounds/ExOpps_Benefits1290x830_3@2x.jpg') no-repeat center;
-//   // END EDIT
-//   background-size: 100%;
-//   overflow: hidden;
-//   padding: $spacing-1 0;
-
-//   h2, ul {
-//     color: $white;
-//     max-width: 545px;
-//     width: $cols-8;
-//   }
-
-//   img {
-//     float: right;
-//     width: $cols-5;
-//   }
-
-//   li {
-//     @include items(2, $spacing-3);
-//     @include body-s;
-//     border-top: 4px solid $great-red;
-//     color: $white;
-//     margin-bottom: $spacing-3;
-//     padding-top: $spacing-4;
-//   }
-
-//   strong {
-//     @include body-l;
-//     color: $white;
-//     display: block;
-//     margin-bottom: $spacing-4;
-//   }
-// }
-
-// #testimonials {
-//   background-color: $stone-30;
-//   padding: 70px 0 $spacing-3 0;
-//   position: relative;
-
-//   .Carousel {
-//     padding-bottom: 0;
-//   }
-
-//   .controls {
-//     @include access-hidden;
-//   }
-// }
-
-// RESPONSIVE
-// @media screen and (max-width: 1200px) {
-//   #service-promotion {
-//     background-size: auto 100%;
-//   }
-// }
-
-// @media screen and (max-width: 767px) {
-//   .benefit {
-//     float: none;
-//     margin-left: 0;
-//     padding-top: $spacing-3;
-//     width: auto;
-//   }
-
-//   .companies {
-//      margin-bottom: $spacing-1;
-//     .company {
-//       float: none;
-//       margin-left: 0;
-//       width: auto;
-//     }
-//   }
-
-//   .Carousel {
-//     width: auto;
-//   }
-
-
-//   #service-promotion {
-//     background-image: none;
-//     h2, ul {
-//       max-width: none;
-//       width: auto;
-//     }
-//   }
-// }
-
-// @media screen and (max-width:768px) {
-//   section {
-//    // padding-top: $spacing-2;
-//   }
-
-//   .quote {
-//     width: 75%;
-//   }
-
-//   #recent-opportunities {
-//     padding-bottom: $spacing-2;
-//   }
-// }
-
-// @media screen and (max-width:480px) {
-//   .hero-section {
-//     h1 {
-//       @include heading-hero-mob;
-//     }
-
-//     p {
-//       width: auto;
-//     }
-//   }
-
-//   .quote {
-//     width: auto;
-//   }
-// }
-
-// EDIT transformation/pages/landing
-
-// END EDIT
-// EDIT ../transformation/components/search_form
-// @media screen and (min-width:660px) {
-//   .search-form .term, .search-form .filter {  
-//     select {
-//       left: 0px;
-//     }
-//   }
-// }
-
-
-
-// // market list page
-// .market-list-search-section {
-//   padding: 60px 0 30px;
-//   .search-form {
-//     background-color: transparent;
-//     padding: 0;
-//   }
-//   .market-list-count {
-//     margin-bottom: $spacing-4;
-
-//     strong{
-//       font-weight: bold;
-//     }
-//   }
-// }
-// .narrow-section {
-//   padding: $spacing-4 0;
-// }
-
-// .breadcrumbs-section {
-//   .breadcrumbs {
-//     padding: 0;
-//     margin: 0;
-//   }
-// }
-
-// .compare-navigation {
-//   float: right;
-//   strong{
-//     font-weight: bold;
-//   }
-// }
-
-
-
-
-// //// markets ///
-
-// $special-terms-bg: #006cd3;
-// $market-item-padding: 20px;
-// $market-logo-width: 250px;
-
-// .market-item {
-//   margin-bottom: $spacing-3;
-
-//   &.has-special-terms {
-//     .special-terms-container {
-//       width: 100%;
-//       background-color: $special-terms-bg;
-//     }
-//     .market-item-inner {
-//       border-color: $special-terms-bg;
-//     }
-//   }
-// }
-
-// .special-terms-container {
-//   padding: 15px 15px 15px 45px;
-//   font-size: 15px;
-//   display: inline-block;
-//   display: hidden;
-//   background-color: $stone-30;
-//   color: white;
-
-//   strong {
-//     font-weight: bold;
-//   }
-// }
-
-// .market-item-inner {
-//   border: 2px solid $stone-30;
-//   padding: $market-item-padding;
-// }
-
-// .market-operating-countries {
-//   .strong {
-//     font-weight: bold;
-//   }
-// }
-
-// .overflow-text {
-//   text-overflow: ellipsis;
-//   overflow: hidden;
-//   white-space: nowrap;
-// }
-
-// .market-item-body {
-//   margin-left: 2 * $market-item-padding + $market-logo-width;
-//   position: relative;
-// }
-
-// .market-item-img {
-//   float: left;
-//   width: $market-logo-width;
-//   vertical-align: middle;
-//   border-style: none;
-// }
-
-// @media screen and (min-width: 767px) and (max-width: 959px) {
-//   $market-logo-width: 150px;
-//   .market-item-body {
-//     margin-left: 2 * $market-item-padding + $market-logo-width;
-//     position: relative;
-//   }
-
-//   .market-item-img {
-//     float: left;
-//     width: $market-logo-width;
-//     vertical-align: middle;
-//     border-style: none;
-//   }
-// }
-
-// @media screen and (max-width: 767px) {
-//   .market-item-body {
-//     margin: 0;
-//     position: relative;
-//     display: block;
-//   }
-
-//   .market-item-img {
-//     display: block;
-//     float: initial;
-//     margin: 0 auto 30px auto;
-//     border-style: none;
-//   }
-// }
-
-// .market-header-link {
-//   line-height: 1;
-//   font-size: 36px;
-//   text-decoration: none;
-//   color: $active-blue;
-
-//   .underline {
-//     line-height: 0.9;
-//     display: inline-block;
-//     border-bottom: 2px solid $active-blue;
-//   }
-// }
-
-// .market-item-stats {
-//   width: 90%;
-//   display: table;
-
-//   .stat {
-//     display: table-cell;
-//     font-weight: bold;
-
-//     .stat-header {
-//       font-weight: normal;
-//       color: $grey-2;
-//       font-size: $font-size-s;
-//     }
-
-//     &.reg-users-stat {
-//       width: 20%;
-//     }
-//     &.commision-stat {
-//       width: 20%;
-//     }
-//     &.logistics-support-stat {
-//       width: 30%;
-//     }
-//     &.membership-stat {
-//       width: 30%;
-//     }
-//   }
-// }
-
-// @media screen and (max-width: 767px) and (max-width: 959px) {
-//   .market-item-stats {
-//     width: 100%;
-//   }
-// }
-
-// @media screen and (max-width: 767px) {
-//   .market-item-stats {
-//     display: block;
-//     width: 100%;
-
-//     .stat {
-//       width: 100% !important;
-//       display: block;
-
-//       .stat-header:after {
-//         content: ':';
-//       }
-//       .stat-value:after {
-//         content: ', ';
-//       }
-//       .stat-value:last-child:after {
-//         content: '';
-//       }
-
-//       > div {
-//         display: inline;
-//       }
-//     }
-//   }
-// }
-
-
-
-
-
-
-// @media screen and (min-width: 960px) {
-//   .special-terms-container {
-//     padding-left: 70px;
-//     font-size: $font-size-m;
-//   }
-// }
-
-// // end markets
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Update shortlist functionality
-// .add-to-compare {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   cursor: pointer;
-// }
-
-// .shortlist-notify {
-//   right: 0;
-//   left: auto;
-//   top: 40px;
-// }
-
-// .shortlist-notify:before {
-//   right: 25px;
-//   left: auto;
-// }
+@media screen and (min-width: 769px) {
+  .heading-large {
+    margin-top: 30px;
+    line-height: 1.2;
+  }
+
+  .pagination {
+    width: 75%;
+    margin: 0 auto;
+
+    a {
+      margin-bottom: 0;
+    }
+  }
+}

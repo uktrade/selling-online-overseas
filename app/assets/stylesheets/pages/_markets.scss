@@ -1,10 +1,8 @@
-
 @import 'transformation/config';
-
 
 // market list page
 .market-list-search-section {
-  padding: 60px 0 30px;
+  padding: 30px 0 30px;
   .search-form {
     background-color: transparent;
     padding: 0;
@@ -18,7 +16,7 @@
   }
 }
 .narrow-section {
-  padding: $spacing-4 0;
+  padding:  30px 0;
 }
 
 .breadcrumbs-section {
@@ -26,6 +24,12 @@
   .breadcrumbs {
     padding: 0;
     margin: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .market-list-search-section {
+    padding-top: 60px;
   }
 }
 
@@ -59,13 +63,10 @@ $special-terms-bg: #006cd3;
 
     .icon {
       position: absolute;
-      //left: 30px;
       left: 15px;
       top: 16px;
       height: 20px;
       width: 20px;
-      // height: 24px;
-      // width: 24px;
       background-size: 20px 20px;
     }
   }
@@ -122,9 +123,9 @@ $special-terms-bg: #006cd3;
 
     &.has-special-terms {
       .special-terms-container {
-  
+
       .icon {
-        
+
         left: 30px;
         height: 24px;
         width: 24px;
@@ -133,7 +134,7 @@ $special-terms-bg: #006cd3;
       }
     }
 
-    .market-item-inner { 
+    .market-item-inner {
       display: block;
       display: flex;
       padding-left: 0;
@@ -145,38 +146,38 @@ $special-terms-bg: #006cd3;
       width: 300px;
       float:left;
     }
-  
+
     .market-item-img {
       max-width: 270px;
       max-height: none;
     }
-  
+
     .market-item-body {
       width: calc(100% - 300px);
       float: left;
     }
-  
+
     .market-header-link {
       line-height: 1.6;
       font-size: $font-size-xl;
       border-bottom: none;
     }
-  
+
     .market-item-description {
       width: 70%;
       float: left;
       padding-right: 5%;
     }
-  
+
     .market-item-stats {
       width: 30%;
       float: left;
-  
+
       p {
         margin-bottom: 15px;
       }
     }
-  
+
     .stat {
       float: none;
       width: 100%;
@@ -191,7 +192,6 @@ $special-terms-bg: #006cd3;
       }
     }
   }
-
 }
 
 .special-terms-container {
@@ -208,8 +208,6 @@ $special-terms-bg: #006cd3;
 
 }
 
-
-
 .market-operating-countries {
   .strong {
     font-weight: bold;
@@ -222,125 +220,17 @@ $special-terms-bg: #006cd3;
   white-space: nowrap;
 }
 
-
-
-
 // search
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 769px) {
   .special-terms-container {
     padding-left: 70px;
     font-size: $font-size-m;
   }
 }
 
-
-// .market-item-img {
-//   float: left;
-//   width: $market-logo-width;
-//   vertical-align: middle;
-//   border-style: none;
-// }
-
-@media screen and (min-width: 767px) and (max-width: 959px) {
-  // $market-logo-width: 150px;
-  // .market-item-body {
-  //   margin-left: 2 * $market-item-padding + $market-logo-width;
-  //   position: relative;
-  // }
-
-  // .market-item-img {
-  //   float: left;
-  //   width: $market-logo-width;
-  //   vertical-align: middle;
-  //   border-style: none;
-  // }
-}
-
-@media screen and (max-width: 767px) {
-  .market-item-body {
-    margin: 0;
-    position: relative;
-    display: block;
-  }
-
-  // .market-item-img {
-  //   display: block;
-  //   float: initial;
-  //   margin: 0 auto 30px auto;
-  //   border-style: none;
-  // }
-}
-
-
-
-// .market-item-stats {
-  
-
-//   // .stat {
-//   //   display: table-cell;
-//   //   font-weight: bold;
-
-//   //   .stat-header {
-//   //     font-weight: normal;
-//   //     color: $grey-2;
-//   //     font-size: $font-size-s;
-//   //   }
-
-//   //   &.reg-users-stat {
-//   //     width: 20%;
-//   //   }
-//   //   &.commision-stat {
-//   //     width: 20%;
-//   //   }
-//   //   &.logistics-support-stat {
-//   //     width: 30%;
-//   //   }
-//   //   &.membership-stat {
-//   //     width: 30%;
-//   //   }
-//   // }
-// }
-
-// @media screen and (max-width: 767px) and (max-width: 959px) {
-//   .market-item-stats {
-//     width: 100%;
-//   }
-// }
-
-// @media screen and (max-width: 767px) {
-//   .market-item-stats {
-//     display: block;
-//     width: 100%;
-
-//     .stat {
-//       // width: 100% !important;
-//       // display: block;
-
-//       .stat-header:after {
-//         content: ':';
-//       }
-//       .stat-value:after {
-//         content: ', ';
-//       }
-//       .stat-value:last-child:after {
-//         content: '';
-//       }
-
-//       > div {
-//         display: inline;
-//       }
-//     }
-//   }
-// }
-
-
-
-
 // end markets
 
-
-
-
+// market detail
 
 .markets {
 

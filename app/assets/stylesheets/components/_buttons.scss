@@ -89,22 +89,6 @@
   }
 }
 
-.arrow-button {
-  padding: 15px 75px 15px 15px;
-  text-align: left;
-
-  &:after {
-    padding-right: 15px;
-    text-align: right;
-  }
-
-  @media screen and (min-width: 960px) {
-    padding-left: 20px;
-    &:after {
-      padding-right: 20px;
-    }
-  }
-}
 
 @each $name, $bg-color, $visited, $hover, $color, $color-hover, $bg-image, $outline, $active, $focus-color in $button {
   .button {
