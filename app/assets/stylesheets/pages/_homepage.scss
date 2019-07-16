@@ -69,6 +69,7 @@
         .card-image {
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             height: 200px;
         }
     }
@@ -115,6 +116,12 @@
     }
 }
 
+.random-markets {
+    .card .card-image {
+        background-size: auto;
+    }
+}
+
 
 @media screen and (min-width: 769px) {
     .random-markets, .how-can-we-help-you-online, .exporter-stories, .how-can-we-help-you {
@@ -122,7 +129,7 @@
         .card {
             margin-bottom: 0;
         }
-        .card-grid {
+        .flex-grid {
             margin-top: 60px;
         }
 

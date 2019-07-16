@@ -17,28 +17,6 @@
 
 $body-background-color: $white;
 
-
-.card-grid,.flex-grid {
-  margin: 0 -15px;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap
-}
-
-.card-grid,.card-grid>*,.flex-grid,.flex-grid>* {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex
-}
-
-.card-grid>*,.flex-grid>* {
-  padding: 0 15px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
- // width: 100%
-}
-
 .card {
   min-height: auto;
 }
