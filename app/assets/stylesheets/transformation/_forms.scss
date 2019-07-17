@@ -18,8 +18,6 @@ fieldset {
 }
 
 form {
-  margin-bottom: $spacing-3;
-
   .description,
   .helptext {
     color: $mid-grey;
@@ -66,7 +64,7 @@ legend {
   margin-bottom: $spacing-3;
 }
 
-option { 
+option {
   background-color: $white;
 }
 
@@ -275,7 +273,7 @@ textarea {
   padding: 4px 0 0 45px;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  
+
   input {
     cursor: pointer;
     left: 0;
@@ -286,12 +284,12 @@ textarea {
     top: 0;
     width: 36px;
   }
-  
+
   label {
     cursor: pointer;
     font-weight: normal;
     margin-bottom: 0;
-    
+
     &:before {
       background: transparent;
       border: 2px solid $black;
@@ -346,7 +344,7 @@ textarea {
       z-index: 0;
     }
   }
-  
+
   label::before {
     border-radius: 50%;
   }

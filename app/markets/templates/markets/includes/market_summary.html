@@ -3,10 +3,16 @@
 {% if market.has_special_terms %}
 <div class="market-item has-special-terms">
   <div class="special-terms-container">
+      
     <div class="special-terms-summary">
+        <i class="icon icon-deal">
+          <span class="visuallyhidden">Special terms</span>
+        </i>
       {% if market.dit_special_terms_summary %}
-        <strong>SPECIAL DEAL &nbsp | &nbsp</strong> {{ market.dit_special_terms_summary }}
+       
+        <strong><strong>SPECIAL DEAL &nbsp | &nbsp</strong> {{ market.dit_special_terms_summary }}
       {% else %}
+       
         <strong>SPECIAL DEAL </strong>
       {% endif %}
     </div>
@@ -15,16 +21,26 @@
 <div class="market-item">
 {% endif %}
   <div class="market-item-inner">
-    <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="market-item-img" alt="Navigate to full profile of {{ market.name }}" />
+    <div class="market-item-logo">
+      <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="market-item-img" alt="Navigate to full profile of {{ market.name }}" />
+    </div>
+    
     <div class="market-item-body">
-      <div class="add-to-compare markets-shortlist font-mid-blue" data-slug="{{ market.slug }}">
-        Add to compare
-      </div>
-      <a class="market-header-link" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
-        <span class="underline">{{ market.name }}</span>
-      </a>
-      <p class="market-description-summary margin-top-30">
+     
+      <h2>
+        <a class="market-header-link" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
+          {{ market.name }}
+        </a>
+      </h2>
+
+    <div class="market-item-description">
+
+
+      <p class="market-description-summary">
         {{ market.e_marketplace_description|safe|truncatewords:15 }}
+        <a class="" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
+            Read more
+          </a>
       </p>
       <p class="market-operating-countries overflow-text">
         <span class="strong">Markets:</span>
@@ -34,16 +50,19 @@
           {{ market | csl:'operating_countries' }}
         {% endif %}
       </p>
-      <div class="market-stats">
+    </div>
+
+
+    <div class="market-item-stats">
         <div class="stat reg-users-stat">
-          <div class="stat-header">Registered users</div>
-          <div>{{ market.number_of_registered_users_display }}</div>
+          <h3 class="stat-header">Registered users</h3>
+          <p>{{ market.number_of_registered_users_display }}</p>
         </div>
         <div class="stat commision-stat">
-          <div class="stat-header">Commision</div>
-          <div>{{ market.commission_display|default:"" }}</div>
+          <h3 class="stat-header">Commision</h3>
+          <p>{{ market.commission_display|default:"" }}</p>
         </div>
-        <div class="stat logistics-support-stat">
+        <!-- <div class="stat logistics-support-stat">
           <div class="stat-header">Fullfilled by marketplace</div>
           <div>
             {% for model in market.logistics_structure.all %}
@@ -54,8 +73,11 @@
         <div class="stat membership-stat">
           <div class="stat-header">Membership</div>
           <div>{{ market.membership_fees_display|default:"" }}</div>
-        </div>
+        </div> -->
       </div>
+    
+
+
     </div>
   </div>
 </div>

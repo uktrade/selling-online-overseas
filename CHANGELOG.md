@@ -3,7 +3,10 @@
 ## Pre-release
 
 ### Implemented enhancements
-- XOT-635 - SOO Design updated for landing and search results page. 
+- XOT-635 - SOO Design - more dates  for landing and search results page, updated directory components version to 26.1.0, added pagination to search results landing.
+
+### Implemented enhancements
+- XOT-635 - SOO Design updated for landing and search results page.
 
 ### Fixed bugs
 - Upgraded urllib3 to fix [vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2019-11324)

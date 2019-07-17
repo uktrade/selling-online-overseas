@@ -33,8 +33,13 @@ class MarketPublishingTests(TestCase):
         self.assertEqual(len(markets), 1)
         self.assertEqual(markets[0], self.market)
 
+        paginator = response.context_data['pagination_page']
+        self.assertEqual(paginator.paginator.per_page, 6)
+        self.assertEqual(paginator.paginator.object_list, markets)
+
     # TODO: remove
     def _test_filter_market_list_by_name(self):
+
         # Filter the list of markets on it's name, check we get 200 and the market in the response
         response = self.client.get(reverse('markets:list'), {'name': self.market.name})
         markets = response.context_data['market_list']
