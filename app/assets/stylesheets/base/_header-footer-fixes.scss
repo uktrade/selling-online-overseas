@@ -1,25 +1,13 @@
-#header {
-  position: relative;
-
-  a:focus {
-    background-color: transparent;
-  }
-}
 main {
   z-index: 0;
   position:relative;
   clear: both;
 }
 
-#footer {
-  li {
-    list-style: none;
-  }
+#great-header-search-form button[type=submit] {
+    background-image: url(/selling-online-overseas/static/directory_components/images/search.svg);
 }
 
-#menu {
-  p, .body-text {
-    margin: 0;
-  }
-}
+
+
 
