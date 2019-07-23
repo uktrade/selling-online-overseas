@@ -291,7 +291,7 @@ class MarketTests(TestCase):
         assert response.status_code == 200
         assert response.context_data['page_type'] == 'MarketplacePage'
         assert 'Go directly to marketplace' not in str(response.content)
-        assert 'Apply now via DIT' in str(response.content)
+        assert 'Apply now' in str(response.content)
 
     def test_market_list_page(self):
         create_market(
