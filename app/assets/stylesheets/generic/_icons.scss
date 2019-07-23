@@ -1,3 +1,5 @@
+@import '../transformation/colours';
+
 .icon {
 
   &-information {
@@ -20,6 +22,22 @@
   &-ok {
     background-image: url('#{$image-path}icons/tick_yes.svg');
   }
+
+  &-available {
+    &:after {
+      content: '✔';
+      color: $light-green;
+    }
+  }
+
+  &-not-available {
+    &:after {
+      content: 'X';
+      color: $flag-red;
+    }
+  }
+
+
 
   &-users {
     background-image: url('#{$image-path}icons/registered_users.svg');
@@ -151,6 +169,9 @@
 
   &-deal {
     background-image: url('#{$image-path}icons/pngs/icon-deal.png');
+    &--flagred {
+      background-image: url('#{$image-path}icons/icon-deal-red.svg');
+    }
   }
 
   &-header {

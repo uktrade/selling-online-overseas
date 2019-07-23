@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "directory_components/base.html" %}
 
 {% load static utils thumbnail %}
 {% load pagination from directory_components %}
@@ -8,6 +8,7 @@
 
 {% block head_css %}
   {{ block.super }}
+  <link href="{% static 'stylesheets/main.css' %}" rel="stylesheet" media="screen">
   <link href="{% static 'stylesheets/main_redesign.css' %}" rel="stylesheet" media="screen">
 {% endblock %}
 
