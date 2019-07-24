@@ -44,6 +44,9 @@
             background-color: transparent;
             color: $white;
             padding: $spacing-3 0;
+            a, a:visited {
+                color: $white;
+            }
         }
         .search-section {
             background-color: transparent;
@@ -92,8 +95,8 @@
 }
 
 .how-can-we-help-you-online {
-    .card {
-        .card-inner {
+    .help-benefit {
+        .inner {
             margin-bottom: 0;
             padding: 0 0 30px;
         }

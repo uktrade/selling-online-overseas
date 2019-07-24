@@ -2,62 +2,66 @@
 
 {% block thumber_form %}
 <div class="cf">
-  <div class="col-2">&nbsp;</div>
-  <div class="col-8">
     <div class="audit audit--white" id="audit">
-      <div class="container">
+      <div class="container padding-top-30 margin-top-90-m margin-bottom-90-m">
         <div class="grid-row">
-          <div class="col-2">
+            <div class="feedback-header col-12">
             <i class="icon icon-feedback">
               <span class="visuallyhidden">feedback</span>
             </i>
-          </div>
-          <div class="col-10">
             <h3 class="h3 font-med audit-header margin-left-15-l margin-top-15">{{ satisfied_wording }}</h3>
           </div>
+
         </div>
-        <form action="{{ request.get_full_path }}" method="post" class="audit-form thumber-form margin-top-60-l">
+        <form action="{{ request.get_full_path }}" method="post" class="audit-form thumber-form">
           {% csrf_token %}
           {{ thumber_form.thumber_token }}
           <div class="thumber-radio-inputs">
             {{ thumber_form.satisfied }}
           </div>
-          <div class="thumber-radio-buttons" style="display:none;">
-            <div class="audit-button float--left text--left margin-right-30">
-              <button class="button button-border push--bottom" data-value="True" data-scrollTo="audit">{{ yes_wording }}</button>
-            </div>
-            <div class="audit-button float--left text--right">
-              <button class="button button-border push--bottom" data-value="False" data-scrollTo="audit">{{ no_wording }}</button>
-            </div>
+          <div class="thumber-radio-buttons margin-bottom-30-m" style="display:none;">
+
+              <button class="button-ghost-blue margin-right-30" data-value="True" data-scrollTo="audit">{{ yes_wording }}</button>
+
+              <button class="button-ghost-blue" data-value="False" data-scrollTo="audit">{{ no_wording }}</button>
+
           </div>
-          <div class="audit-text-section ">
+          <div class="audit-text-section">
             <fieldset class="margin-bottom-0">
               <div class="push--bottom">
                 <textarea class="form-control form-textarea col-12" id="thumber_comment" name="comment" cols="40" rows="5" placeholder="{{ comment_placeholder }}"></textarea>
               </div>
             </fieldset>
-            <div class="audit-button audit-button--send text--right float--right hard--right">
-              <input class="button button-border" type="submit" value="{{ submit_wording }}" />
+            <div class="audit-button audit-button--send text--right float--right hard--right"></div>
+              <input class="button-ghost-blue" type="submit" value="{{ submit_wording }}" />
             </div>
           </div>
         </form>
       </div>
     </div>
+
+
     <div class="audit-thank hide">
-      <i class="icon icon-thankyou--grey">
-        <span class="visuallyhidden">Thank you</span>
-      </i>
-      <h3 class="font-large font-med audit-header">{{ thanks_message }}</h3>
+      <div class="container padding-top-30 margin-top-90-m margin-bottom-90-m">
+        <i class="icon icon-thankyou--grey">
+          <span class="visuallyhidden">Thank you</span>
+        </i>
+        <h3 class="font-large font-med audit-header">{{ thanks_message }}</h3>
+    </div>
     </div>
     <div class="audit-error hide">
-      <i class="icon icon-error--grey">
-        <span class="visuallyhidden">error</span>
-      </i>
-      <h3 class="font-large font-med audit-header">{{ error_message}}</h3>
-      <p>Please try again later, or <a href="{{ services_urls.feedback }}" title="feedback">use the feedback form</a></p>
+      <div class="container padding-top-30 margin-top-90-m margin-bottom-90-m">
+        <i class="icon icon-error--grey">
+          <span class="visuallyhidden">error</span>
+        </i>
+        <h3 class="font-large font-med audit-header">{{ error_message}}</h3>
+        <p>Please try again later, or <a href="{{ services_urls.feedback }}" title="feedback">use the feedback form</a></p>
+        </div>
     </div>
-  </div>
-  <div class="col-2">&nbsp;</div>
+
+
+
+
 </div>
 {% endblock %}
 
