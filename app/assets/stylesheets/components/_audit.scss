@@ -1,35 +1,10 @@
 @import '../generic/mixins';
 
 .audit {
-  border-top: 3px solid $stone;
-  margin-top: 20px;
-  padding-top: 30px;
   position: relative;
 
-  &-button {
-    width: 46.2%;
-
-    .button {
-      width: 100%;
-      background-color: $gradient-end;
-      border: 2px solid $active-blue;
-      color: $active-blue;
-    }
-
-    @media screen and (max-width: 980px) {
-      width: 100%;
-    }
-
-    &--send {
-      @include media($mobile) {
-        width: 100%;
-      }
-
-      .button {
-        width: 100%;
-        line-height: 18px;
-      }
-    }
+  .button-ghost-blue {
+    min-width: 170px;
   }
 
   &-content{
@@ -63,5 +38,25 @@
 
   &--white {
     border-color: $mid-grey;
+  }
+
+
+
+  @media screen and (min-width: 641px) {
+
+    .feedback-header {
+      text-align: center;
+    }
+    &-form {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      border-top: 1px solid $stone;
+    }
   }
 }

@@ -39,12 +39,8 @@
     <main role="main" id="content">
     {% block content %}{% endblock content %}
     {% block feedback_reporter %}
-      <section>
-        <div class="outer-container push--ends soft--ends">
-          <div class="col-12 push--top">
-            {% block thumber_feedback %}{% endblock %}
-          </div>
-        </div>
+      <section class="padding-0">
+          {% block thumber_feedback %}{% endblock %}
       </section>
     {% endblock %}
     </main>

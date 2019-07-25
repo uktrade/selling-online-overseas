@@ -3,6 +3,7 @@
 ## Pre-release
 
 ### Implemented enhancements
+- XOT-951 - homepage and search page reviews fixes
 - XOT-975 - homepage content changes
 - XOT-917 - build redesigned market detail page
 - XOT-635 - SOO Design - more dates  for landing and search results page, updated directory components version to 26.1.0, added pagination to search results landing.
