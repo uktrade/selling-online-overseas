@@ -39,7 +39,6 @@ def render_field_options(obj, attr):
     for val in possible_vals:
         icon = tick_cross_format_field(val in actual_vals)
         resp += "<dd>{1}<span>{0}</span></dd>".format(icon, val)
-        print(icon)
 
     return mark_safe(resp)
 
