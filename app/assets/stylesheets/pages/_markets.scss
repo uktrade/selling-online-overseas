@@ -111,6 +111,19 @@ $special-terms-bg: $active-blue;
 
   .stat-header {
     font-weight: bold;
+    font-family: $brand-font-alternative;
+  }
+
+  .market-item-description .stat-header {
+    float: left;
+    margin-right: 5px;
+  }
+
+  @media screen and (min-width:641px) {
+    .stat-header {
+      line-height: 28px;
+    }
+
   }
 
   @media screen and (min-width: 769px) {
@@ -161,6 +174,7 @@ $special-terms-bg: $active-blue;
       width: 70%;
       float: left;
       padding-right: 5%;
+
     }
 
     .market-item-stats {
