@@ -4,7 +4,7 @@
 
 
 ### Implemented enhancements
-- XOT-976 - market detail page - design review changes and add utility classes to markup to reduce cssw
+- XOT-976 - market detail page - design review changes and add utility classes to markup to reduce css
 - XOT-951 - homepage and search page reviews fixes
 - XOT-975 - homepage content changes
 - XOT-917 - build redesigned market detail page

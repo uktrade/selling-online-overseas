@@ -19,7 +19,7 @@ directory-client-core==4.4.0  # via directory-sso-api-client
 directory-constants==18.3.0  # via directory-components
 directory-sso-api-client==4.1.1
 directory-validators==5.0.0
-directory_components==27.1.1
+directory_components==27.1.2
 dj-database-url==0.4.1
 django-admin-ip-restrictor==1.0.0
 django-appconf==1.0.1
@@ -73,6 +73,7 @@ sigauth==4.0.1
 six==1.12.0
 termcolor==1.1.0          # via pytest-sugar
 text-unidecode==1.2       # via faker
+uk-postcode-utils==1.0
 urllib3==1.24.2
 w3lib==1.20.0             # via directory-client-core
 whitenoise==3.2.1
