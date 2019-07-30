@@ -78,3 +78,6 @@ urllib3==1.24.2
 w3lib==1.20.0             # via directory-client-core
 whitenoise==3.2.1
 whoosh==2.7.4
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools==41.0.1        # via jsonschema, pytest
