@@ -24,6 +24,8 @@ from . import PAYMENT_FREQUENCIES, BOOL_CHOICES
 from geography.models import Country
 from products.models import Type, Category, ProhibitedItem
 
+REMOVE_TRAILING_0_REGEX = re.compile(r'^\d*\.?((0)|(00))?$')
+
 
 class LogisticsModel(models.Model):
     name = models.CharField(max_length=200, unique=True)
@@ -259,6 +261,13 @@ class BaseMarket(models.Model):
 
         super().save(*args, **kwargs)
 
+    def clear_trailing_0(self, float):
+        if REMOVE_TRAILING_0_REGEX.match(str(float)):
+            cleaned_float = "{:.0f}".format(float)
+            return int(cleaned_float)
+        else:
+            return float
+
     def clean(self, *args, **kwargs):
         """
         Do some manual error checking for the Market, in particular, that if a amount of money has been specified
@@ -303,6 +312,9 @@ class BaseMarket(models.Model):
         lower = min(val for val in values if val is not None)
         upper = max(val for val in values if val is not None)
 
+        lower = self.clear_trailing_0(lower)
+        upper = self.clear_trailing_0(upper)
+
         if lower == upper:
             commission = "{0}%".format(lower)
         else:
@@ -328,7 +340,9 @@ class BaseMarket(models.Model):
 
     @property
     def number_of_registered_users_display(self):
+        self.clear_trailing_0(self.number_of_registered_users)
         if self.number_of_registered_users != 0:
+            self.number_of_registered_users = self.clear_trailing_0(self.number_of_registered_users)
             return "{0} million".format(self.number_of_registered_users)
 
         return "Not available"
@@ -336,7 +350,11 @@ class BaseMarket(models.Model):
     def _value_display(self, attr):
         value = getattr(self, attr, 0)
         if value > 0:
-            formatted_value = format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
+            value = self.clear_trailing_0(value)
+            if type(value) == int:
+                formatted_value = format(value, '.', grouping=3, thousand_sep=',', force_grouping=True)
+            else:
+                formatted_value = format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
             currency = getattr(self, "{0}_currency".format(attr)).code
             display_str = "{0} {1}".format(currency, formatted_value)
         else:
