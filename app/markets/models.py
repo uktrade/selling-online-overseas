@@ -24,8 +24,6 @@ from . import PAYMENT_FREQUENCIES, BOOL_CHOICES
 from geography.models import Country
 from products.models import Type, Category, ProhibitedItem
 
-REMOVE_TRAILING_0_REGEX = re.compile(r'^\d*\.?((0)|(00))?$')
-
 
 class LogisticsModel(models.Model):
     name = models.CharField(max_length=200, unique=True)
@@ -261,12 +259,12 @@ class BaseMarket(models.Model):
 
         super().save(*args, **kwargs)
 
-    def clear_trailing_0(self, float):
-        if REMOVE_TRAILING_0_REGEX.match(str(float)):
-            cleaned_float = "{:.0f}".format(float)
-            return int(cleaned_float)
+    def format_float(self, val):
+        if(val).is_integer():
+            val = int(val)
+            return val
         else:
-            return float
+            return val
 
     def clean(self, *args, **kwargs):
         """
@@ -312,8 +310,8 @@ class BaseMarket(models.Model):
         lower = min(val for val in values if val is not None)
         upper = max(val for val in values if val is not None)
 
-        lower = self.clear_trailing_0(lower)
-        upper = self.clear_trailing_0(upper)
+        lower = self.format_float(lower)
+        upper = self.format_float(upper)
 
         if lower == upper:
             commission = "{0}%".format(lower)
@@ -341,16 +339,15 @@ class BaseMarket(models.Model):
     @property
     def number_of_registered_users_display(self):
         if self.number_of_registered_users != 0:
-            self.number_of_registered_users = self.clear_trailing_0(self.number_of_registered_users)
-            return "{0} million".format(self.number_of_registered_users)
+            return "{0}".format(self.number_of_registered_users)
 
         return "Not available"
 
     def _value_display(self, attr):
         value = getattr(self, attr, 0)
         if value > 0:
-            value = self.clear_trailing_0(value)
-            if type(value) == int:
+            if (value).is_integer():
+                value = int(value)
                 formatted_value = format(value, '.', grouping=3, thousand_sep=',', force_grouping=True)
             else:
                 formatted_value = format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)

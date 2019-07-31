@@ -125,13 +125,13 @@ class MarketModelTests(TestCase):
         market.dit_special_terms = " <p>  <i> &nbsp; </i> \r\n \n </p>  "
         self.assertEquals(market.special_terms, known_phrase)
 
-    def test_clear_trailing_0(self):
+    def test_format_float(self):
         market = create_market()
         # only the last 0, 00 should be removed
-        self.assertEquals(market.clear_trailing_0(12.00), 12)
-        self.assertEquals(market.clear_trailing_0(12.05), 12.05)
-        self.assertEquals(market.clear_trailing_0(12.00), 12)
-        self.assertEquals(market.clear_trailing_0(12.050), 12.05)
+        self.assertEquals(market.format_float(12.00), 12)
+        self.assertEquals(market.format_float(12.05), 12.05)
+        self.assertEquals(market.format_float(12.00), 12)
+        self.assertEquals(market.format_float(12.050), 12.05)
 
     def test_market_publishing_validation(self):
         # Create a market and check that it produces ValidationErrors
