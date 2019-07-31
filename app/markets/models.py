@@ -345,9 +345,9 @@ class BaseMarket(models.Model):
 
     def _value_display(self, attr):
         value = getattr(self, attr, 0)
+        value = self.format_float(value)
         if value > 0:
-            if (value).is_integer():
-                value = int(value)
+            if isinstance(value, int):
                 formatted_value = format(value, '.', grouping=3, thousand_sep=',', force_grouping=True)
             else:
                 formatted_value = format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
