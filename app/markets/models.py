@@ -340,7 +340,6 @@ class BaseMarket(models.Model):
 
     @property
     def number_of_registered_users_display(self):
-        self.clear_trailing_0(self.number_of_registered_users)
         if self.number_of_registered_users != 0:
             self.number_of_registered_users = self.clear_trailing_0(self.number_of_registered_users)
             return "{0} million".format(self.number_of_registered_users)
