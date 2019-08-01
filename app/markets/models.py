@@ -259,12 +259,10 @@ class BaseMarket(models.Model):
 
         super().save(*args, **kwargs)
 
-    def format_float(self, val):
-        if(val).is_integer():
-            val = int(val)
-            return val
-        else:
-            return val
+    def format_float(self, value):
+        if value.is_integer():
+            value = int(value)
+        return value
 
     def clean(self, *args, **kwargs):
         """
