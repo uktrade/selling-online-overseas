@@ -4,6 +4,7 @@
 
 
 ### Implemented enhancements
+- XOT-980 - remove trailing zeros from search results float values
 - XOT-976 - add missing test requirement and update verson number
 - XOT-976 - market detail page - design review changes and add utility classes to markup to reduce css
 - XOT-951 - homepage and search page reviews fixes
