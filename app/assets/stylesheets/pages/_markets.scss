@@ -95,6 +95,7 @@ $special-terms-bg: $active-blue;
   .market-header-link {
     line-height: 1;
     font-size: $font-size-l;
+    font-family: $brand-font-alternative;
     text-decoration: none;
     color: $active-blue;
     border-bottom: 2px solid $active-blue;
@@ -167,7 +168,6 @@ $special-terms-bg: $active-blue;
     .market-header-link {
       line-height: 1.6;
       font-size: $font-size-xl;
-      border-bottom: none;
     }
 
     .market-item-description {
