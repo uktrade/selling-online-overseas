@@ -339,7 +339,8 @@ class BaseMarket(models.Model):
     @property
     def number_of_registered_users_display(self):
         if self.number_of_registered_users != 0:
-            return "{0}".format(self.number_of_registered_users)
+            self.number_of_registered_users = self.format_float(self.number_of_registered_users)
+            return "{0} million".format(self.number_of_registered_users)
 
         return "Not available"
 
