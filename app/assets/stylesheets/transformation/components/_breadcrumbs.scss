@@ -7,6 +7,10 @@
   a {
     color: $grey;
     text-decoration: underline;
+
+    &.active-blue-text {
+      color: $active-blue;
+    }
   }
 
   .separator {
@@ -26,7 +30,7 @@
 @media screen and (max-width: 480px) {
   .breadcrumbs {
     padding: $spacing-4 0;
-    
+
     a,
     span {
       @include body-s-mob;
