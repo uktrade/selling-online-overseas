@@ -74,8 +74,7 @@
                   <i class="icon icon-deal--flagred">
                     <span class="visuallyhidden">Special terms</span>
                   </i>
-                  <p class="margin-bottom-0"><strong>Get 2% off sellers' fees</strong> when you apply with Department for International Trade
-                  </p>
+                  {{ market.special_terms|safe }}
                   <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" class="button button-arrow-small margin-top-30" title="Apply now">Apply now</a>
                 </div>
 
@@ -212,8 +211,8 @@
               <i class="icon icon-deal--flagred">
                 <span class="visuallyhidden">Special terms</span>
               </i>
-              <p class="margin-bottom-0"><strong>Get 2% off sellers' fees</strong> when you apply with Department for International Trade
-              </p>
+              {{ market.special_terms|safe }}
+
               <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" class="button button-arrow-small margin-top-30" title="Apply now">Apply now</a>
             </div>
       </div>
