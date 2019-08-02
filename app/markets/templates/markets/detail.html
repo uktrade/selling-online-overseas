@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "directory_components/base.html" %}
 
 {% block body_attributes %}class="details3"{% endblock %}
 {% load static utils humanize %}
@@ -7,328 +7,231 @@
 {% block head_title %}Marketplace details | {{ market.name }} | Selling online overseas{% endblock head_title %}
 
 {% block head_meta_description %}Read what it takes to get on {{ market.name }}.{% endblock head_meta_description %}
+
+
+{% block head_css %}
+{{ block.super }}
+<link href="{% static 'stylesheets/main.css' %}" rel="stylesheet" media="screen">
+<link href="{% static 'stylesheets/main_redesign.css' %}" rel="stylesheet" media="screen">
+{% endblock %}
 {% block content %}
-<div class="outer-container detail-section--top push--ends soft--top">
-  <div class="col-12">
-    <div class="text--right detail-section--back">
-      <a href="javascript:utilities.navigateBack()" class="link link--back" title="Return to marketplaces">&lt; Go back to results</a>
-    </div>
+<section class="breadcrumbs-section narrow-section">
+  <div class="container">
+    <p class="breadcrumbs">
+      <span class="label visually-hidden">You are here: {{ market.name }} market details</span>
+      <span class="label visually-hidden">Back to search results</span>
+      Back to <a href="javascript:utilities.navigateBack()" title="Back to search results" class="active-blue-text">search results</a>
+    </p>
   </div>
+</section>
 
-  <div class="markets markets-details">
-    <div class="col-12">
-      <div class="markets-group cf">
-        <div class="markets-image soft-half--right">
-          <div class="markets-item-logoholder">
-            <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}" class="markets-item-logo" alt="{{ market.name }} logo">
+
+<div class="market-detail ">
+  <div class="container">
+    <div class="grid-row">
+
+      <!-- content -->
+
+
+        <!-- market header -->
+        <section class="padding-top-0 padding-bottom-60">
+          <div class="market-item">
+
+            <div class="market-item-inner">
+                <div class="market-detail-description">
+                    <div class="market-detail-logo">
+                        <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}"
+                          class="market-detail-img" alt="Navigate to full profile of {{ market.name }}" />
+                      </div>
+                      <h1 class="market-detail-heading margin-top-0 margin-bottom-15">{{ market.name }}</h1>
+                  <dl class="market-details">
+                    <dt>Website:</dt>
+                    <dd><a href="{{ market.web_address }}" class="link"
+                        target="_blank">{{ market.web_address }}</a></dd>
+                    <dt>Markets:</dt>
+                    <dd>{% if market.operating_countries.count > 20 %}
+                        Global
+                        {% else %}
+                        {{ market | csl:'operating_countries' }}
+                        {% endif %}</dd>
+                  </dl>
+
+
+
+              </div>
+
+                <div class="market-item-stats highlighted-info-box padding-top-15-l">
+                  <dl class="stats-details">
+                    <dt>Registered users:</dt>
+                    <dd>{{ market.number_of_registered_users_display }}</dd>
+                    <dt>Commision:</dt>
+                    <dd>{{ market.commission_display|default:"" }}</dd>
+                    <dt>Membership fee:</dt>
+                    <dd>{{ market.membership_fees_display }}</dd>
+                  </dl>
+                </div>
+                <div class="deal-section">
+                  <i class="icon icon-deal--flagred">
+                    <span class="visuallyhidden">Special terms</span>
+                  </i>
+                  <p class="margin-bottom-0"><strong>Get 2% off sellers' fees</strong> when you apply with Department for International Trade
+                  </p>
+                  <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" class="button button-arrow-small margin-top-30" title="Apply now">Apply now</a>
+                </div>
+
+            </div>
           </div>
-        </div>
-        <div class="markets-info">
-          <h1 class='h1 push-half--bottom flush--top'>{{ market.name }}</h1>
-          <ul>
-            <li class="soft-half--bottom markets-item--url"><a href="{{ market.web_address }}" class="link" target="_blank">{{ market.web_address }}</a></li>
-            <li>
-              <dl>
-                <dt class="float--left push-half--right"><strong>Markets:</strong></dt>
-                {% if market.operating_countries.count > 20 %}
-                <dd>Global</dd>
-                {% else %}
-                <dd>{{ market | csl:'operating_countries' }}</dd>
-                {% endif %}
-              </dl>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="markets-description">
-        <h2 class="font-brand header-icon h3 font-med soft--ends">About this marketplace</h2>
-        <p class="soft-half--ends hard--left">{{ market.e_marketplace_description|safe }}</p>
-      </div>
-      <div class="markets-features markets-item--highlight--right">
-        <div class="markets-item--highlight markets-item--highlight--no-background">
-          <ul class="markets-item--list">
-            <li class="list markets-item--highlight--section background-image--users">
-              <dl>
-                <dt><strong>Registered users:</strong></dt>
-                <dd>{{ market.number_of_registered_users_display }}</dd>
-              </dl>
-            </li>
-            <li class="list markets-item--highlight--section background-image--commission">
-              <dl>
-                <dt><strong>Commission:</strong></dt>
-                <dd>{{ market.commission_display }}</dd>
-              </dl>
-            </li>
-            <li class="list markets-item--highlight--section background-image--fees">
-              <dl>
-                <dt><strong>Membership fee:</strong></dt>
-                <dd>{{ market.membership_fees_display }}</dd>
-              </dl>
-            </li>
-            <li class="list markets-item--highlight--section background-image--logistics">
-              <dl>
-                <dt><strong>Logistics support</strong></dt>
-                {% for model in market.logistics_structure.all %}
-                <dd>{{ model.name }}</dd>
-                {% endfor %}
-              </dl>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="detail-section--terms">
-    <div class="detail-section--terms--info">
-      <span class="detail-section--terms--arrow shake-horizontal"></span>
-      <h4 class="h3 detail-section--terms--header  push-half--bottom font-med hard--top">Special deal for UK businesses</h4>
-      {{ market.special_terms|safe }}
-    </div>
+        </section>
 
-    <div class="detail-section--terms--button text--center">
-      <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" id="apply-to-join" class="button button-red button-medium button-full push-half--top text--center" title="Apply now">Apply now via DIT</a>
-      <p class="push-half font-mid-grey">To get this deal</p>
+
+        <div class="market-detail-content">
+        <!-- about this marketplace -->
+        <section class="padding-top-45 padding-bottom-45">
+          <h2 class="heading-large margin-top-0">About this marketplace</h2>
+          <p class="margin-bottom-0">{{ market.e_marketplace_description|safe }}</p>
+          <div class="grid-row">
+            <dl class="col-6 margin-top-45-l margin-top-30-m">
+              <dt class="heading-small margin-0">Product positioning</dt>
+              {{ market | field_dd:'product_positioning' }}
+            </dl>
+            <dl class="col-6 margin-top-45-l margin-top-30-m">
+              <dt class="heading-small margin-0">Ways to sell</dt>
+              {{ market | field_dd:'seller_model' }}
+            </dl>
+          </div>
+          <h3 class="heading-small margin-top-30">Who else sells here?</h3>
+          <p>{{ market | csl:'famous_brands_on_marketplace' }}</p>
+        </section>
+
+
+        <!-- e-commerce -->
+        <section>
+          <h2 class="heading-large margin-top-0">E-commerce adviser tip</h2>
+          <p>{{ market.dit_advisor_tip | safe }}</p>
+        </section>
+
+        <!-- about customers -->
+        <section class="padding-top-45 padding-bottom-45">
+          <h2 class="heading-large margin-top-0">About the customers</h2>
+
+          <p class="margin-bottom-0">{{ market.customer_demographics|safe }}</p>
+
+          <div class="grid-row">
+            <dl class="col-6 margin-top-45-l margin-top-30-m">
+              <dt class="heading-small margin-0">Customer support</dt>
+              {{ market | field_dd:'customer_support_channels' }}
+            </dl>
+            <div class="col-6 margin-top-45-l margin-top-30-m">
+              <h3 class="heading-small margin-0">Open times</h3>
+              <p>{{ market.seller_support_hours }}</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- fullfilment -->
+        <section class="padding-top-45 padding-bottom-45">
+          <h2 class="heading-large margin-top-0 margin-bottom-0">About fulfilment and delivery</h2>
+          <div class="grid-row">
+            <dl class="col-6 margin-top-45-l margin-top-30-m">
+              <dt class="heading-small margin-0">Logistics support</dt>
+              {{ market | field_dd:'logistics_structure' }}
+            </dl>
+            <div class="col-6 margin-top-45-l margin-top-30-m">
+              <h3 class="heading-small margin-0">Parcel tracking required by the marketplace</h3>
+              <p>{{ market.get_shipping_tracking_required_display }}</p>
+            </div>
+          </div>
+        </section>
+
+
+         <!-- how to join -->
+         <section class="padding-top-45 padding-bottom-45">
+          <h2 class="heading-large margin-top-0 margin-bottom-0">How you can join</h2>
+          <div class="grid-row">
+            <dl class="col-6 margin-top-45-l margin-top-30-m">
+              <dt class="heading-small margin-0">Organise translation</dt>
+              {{ market | field_dd:'translation_requirements' }}
+            </dl>
+            <dl class="col-6 margin-top-45-l margin-top-30-m">
+              <dt class="heading-small margin-0">Upload product details via</dt>
+              {{ market | field_dd:'product_details_upload_method' }}
+            </dl>
+          </div>
+          <div class="grid-row margin-top-30">
+            <dl class="col-6 margin-top-45-l margin-top-30-m">
+              <dt class="heading-small margin-0">Set up</dt>
+              {{ market | field_dd:'setup_requirements' }}
+            </dl>
+            <dl class="col-6 margin-top-45-l margin-top-30-m">
+              <dt class="heading-small margin-0">Agree to</dt>
+              <dd>Product exclusivity terms <span>{{ market.exclusivity_required | formatvalue:'tick' }}</span></dd>
+            </dl>
+          </div>
+        </section>
+
+         <!-- how get paid -->
+         <section class="padding-top-45 padding-bottom-45">
+          <h2 class="heading-large margin-top-0 margin-bottom-0">How you'll get paid</h2>
+          <div class="grid-row">
+            <dl class="dl-tabular col-6 margin-top-45-l margin-top-30-m">
+              <dt >Payments terms</dt>
+              <dd><span>{{ market.sale_to_payment_duration_display }}</span></dd>
+              <dt class="font-reg">Currency</dt>
+              <dd><span>{{ market | csl:'currency_of_payments' }}</span></dd>
+            </dl>
+          </div>
+          </section>
+
+          <!-- How they’ll help you -->
+          <section class="padding-top-45 padding-bottom-45">
+            <h2 class="heading-large margin-top-0">How they'll help you</h2>
+
+            <h3 class="heading-small margin-top-30">Marketing and merchandising</h3>
+            <p class="margin-bottom-0">{{ market.marketing_merchandising | safe }}</p>
+            <div class="grid-row">
+              <dl class="col-6 margin-top-45-l margin-top-30-m">
+                <dt class="heading-small margin-0">Seller support</dt>
+                {{ market | field_dd:'seller_support_channels' }}
+              </dl>
+              <div class="col-6 margin-top-45-l margin-top-30-m">
+                <h3 class="heading-small margin-0">Open times</h3>
+                <p>{{ market.seller_support_hours }}</p>
+              </div>
+            </div>
+            </section>
+      </div>
+
+
+      <!-- /content -->
+
+      <div class="aside-content highlighted-info-box padding-left-0-l padding-right-0-l padding-top-15 margin-right-15-l">
+          <img src="{% thumbnail market.logo.image 400x302 box=market.logo.cropping crop detail %}"
+          class="market-detail-img" alt="Navigate to full profile of {{ market.name }}" />
+          <img class="dit-logo" src="/selling-online-overseas/static/images/DIT-stacked-logo.svg" />
+          <div class="deal-section">
+              <i class="icon icon-deal--flagred">
+                <span class="visuallyhidden">Special terms</span>
+              </i>
+              <p class="margin-bottom-0"><strong>Get 2% off sellers' fees</strong> when you apply with Department for International Trade
+              </p>
+              <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" class="button button-arrow-small margin-top-30" title="Apply now">Apply now</a>
+            </div>
+      </div>
+
+
     </div>
   </div>
+
 </div>
 
-<div class="outer-container detail-sub-section">
-  <div class="detail-container">
-
-    <div class='detail-section'>
-      <div class="col-12">
-        <div class="detail-section-header detail-section-header--first">
-          <i class="icon icon-header icon-header--left icon-adviser">
-            <span class="visuallyhidden">E-commerce adviser tip</span>
-          </i>
-          <h3 class="h3 font-brand header-icon cf">E-commerce adviser tip</h3>
-        </div>
-      </div>
-      <div class="cf soft-half--bottom">
-        <blockquote class="font-lig font-brand">{{ market.dit_advisor_tip | safe }}</blockquote>
-      </div>
-    </div>
-
-    <div class='detail-section'>
-      <div class="col-12">
-        <div class="detail-section-header">
-          <i class="icon icon-header icon-header--left icon-products">
-            <span class="visuallyhidden">more about this marketplace</span>
-          </i>
-          <h3 class="h3 font-brand header-icon">More about this marketplace</h3>
-        </div>
-      </div>
-      <div class="cf">
-        <dl class="col-6">
-          <dt class="font-reg">Registered users</dt>
-          <dd>{{ market.number_of_registered_users_display }}</dd>
-        </dl>
-        {% if market.famous_brands_on_marketplace.all %}
-        <dl class="col-6">
-          <dt class="font-reg">Who else sells here?</dt>
-          <dd>{{ market | csl:'famous_brands_on_marketplace' }}</dd>
-        </dl>
-        {% endif %}
-      </div>
-      <div class="cf push--bottom">
-        <dl class="col-6">
-          <dt class="font-reg">Product positioning</dt>
-          {{ market | field_dd:'product_positioning' }}
-        </dl>
-        <dl class="col-6">
-          <dt class="font-reg">Ways to sell</dt>
-          {{ market | field_dd:'seller_model' }}
-        </dl>
-      </div>
-    </div>
-
-    <div class='detail-section'>
-      <div class="col-12">
-        <div class="detail-section-header">
-          <i class="icon icon-header icon-header--left icon-users">
-            <span class="visuallyhidden">users</span>
-          </i>
-          <h3 class="h3 font-brand header-icon">Who are the customers?</h3>
-        </div>
-      </div>
-      <div class="cf push--bottom">
-        <dl class="col-8">
-          <dt class="font-reg">About the customers</dt>
-          <dd class="col-9">{{ market.customer_demographics|safe }}</dd>
-        </dl>
-        <div class="col-4">
-          <h4 class="detail-section-title font-reg">Customer support</h4>
-          <dl>
-            <dt class="subtitle">Channels:</dt>
-            {{ market | field_dd:'customer_support_channels' }}
-          </dl>
-          <dl>
-            <dt class="subtitle">Hours:</dt>
-            <dd>{{ market.customer_support_hours }}</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-
-    <div class='detail-section'>
-      <div class="col-12">
-        <div class="detail-section-header">
-          <i class="icon icon-header icon-header--left icon-logistics">
-            <span class="visuallyhidden">logistics</span>
-          </i>
-          <h3 class="h3 font-brand header-icon">How about fulfilment and delivery?</h3>
-        </div>
-      </div>
-      <div class="cf push--bottom">
-        <dl class="col-6">
-          <dt class="font-reg">Logistics support {% if market.logistics_structure_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.logistics_structure_notes }}" data-tooltip="logistics"></button>{% endif %}</dt>
-          {{ market | field_dd:'logistics_structure' }}
-          <dialog data-tooltip="logistics"></dialog>
-        </dl>
-        <dl class="col-6">
-          <dt class="font-reg">Parcel tracking required by the marketplace {% if market.shipping_tracking_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.shipping_tracking_required_notes }}" data-tooltip="shipping"></button>{% endif %}</dt>
-          <dd>{{ market.get_shipping_tracking_required_display }}</dd>
-          <dialog data-tooltip="shipping"></dialog>
-        </dl>
-      </div>
-    </div>
-
-    <div class='detail-section'>
-      <div class="col-12">
-        <div class="detail-section-header">
-          <i class="icon icon-header icon-header--left icon-fees">
-            <span class="visuallyhidden">fees</span>
-          </i>
-          <h3 class="h3 font-brand header-icon">What costs will I pay this marketplace?</h3>
-        </div>
-      </div>
-      <div class="push--bottom">
-        <dl class="col-4">
-          <dt class="font-reg">One-off registration fee {% if market.one_off_registration_fee_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.one_off_registration_fee_notes }}" data-tooltip="registration-fee"></button>{% endif %}</dt>
-          <dd>{{ market.one_off_registration_fee_display  }}</dd>
-          <dialog data-tooltip="registration-fee"></dialog>
-        </dl>
-        <dl class="col-4">
-          <dt class="font-reg">Membership fee</dt>
-          <dd>{{ market.membership_fees_display }}</dd>
-        </dl>
-        <dl class="col-4">
-          <dt class="font-reg">Listing fee {% if market.fee_per_listing_notes %}<button class="tooltip-button" aria-expanded="false" aria-controls="listing-fee" data-tooltip-text="{{ market.fee_per_listing_notes }}" data-tooltip="listing-fee"></button>{% endif %}</dt>
-          <dd>{{ market.fee_per_listing | formatvalue:'required' }}</dd>
-          <dialog data-tooltip="listing-fee" aria-hidden="true" id="listing-fee"></dialog>
-        </dl>
-      </div>
-      <div>
-        <dl class="col-4">
-          <dt class="font-reg">Commission {% if market.commission_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.commission_notes }}" data-tooltip="commission"></button>{% endif %}</dt>
-          <dd>{{ market.commission_display }}</dd>
-          <dialog data-tooltip="commission"></dialog>
-        </dl>
-        <dl class="col-4">
-          <dt class="font-reg">Deposit {% if market.deposit_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.deposit_notes }}" data-tooltip="deposit"></button>{% endif %}</dt>
-          <dd>{{ market.deposit_display }}</dd>
-          <dialog data-tooltip="deposit"></dialog>
-        </dl>
-      </div>
-    </div>
-
-    <div class='detail-section'>
-      <div class="col-12">
-        <div class="detail-section-header">
-          <i class="icon icon-header icon-header--left icon-on-boarding">
-            <span class="visuallyhidden">on boarding</span>
-          </i>
-          <h3 class="h3 font-brand header-icon">What does the marketplace need me to do?</h3>
-        </div>
-      </div>
-      <div class="cf">
-        <dl class="col-4">
-          <dt class="font-reg">Organise translation {% if market.translation_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.translation_notes }}" data-tooltip="translation"></button>{% endif %}</dt>
-          {{ market | field_dd:'translation_requirements' }}
-          <dialog data-tooltip="translation"></dialog>
-        </dl>
-        <dl class="col-4">
-          <dt class="font-reg">Set up {% if market.setup_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.setup_notes }}" data-tooltip="setup-notes"></button>{% endif %}</dt>
-          {{ market | field_dd:'setup_requirements' }}
-          <dialog data-tooltip="setup-notes"></dialog>
-        </dl>
-        <dl class="col-4">
-          <dt class="font-reg">Agree to {% if market.product_exclusivity_required_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.product_exclusivity_required_notes }}" data-tooltip="exclusivity"></button>{% endif %}</dt>
-          <dd>{{ market.exclusivity_required | formatvalue:'tick' }} Product exclusivity terms</dd>
-          <dialog data-tooltip="exclusivity"></dialog>
-        </dl>
-      </div>
-      <dl class="col-4 last">
-        <dt class="font-reg">Upload product details via {% if market.product_details_upload_notes %}<button class="tooltip-button" data-tooltip-text="{{ market.product_details_upload_notes }}" data-tooltip="upload"></button>{% endif %}</dt>
-        {{ market | field_dd:'product_details_upload_method' }}
-        <dialog data-tooltip="upload"></dialog>
-      </dl>
-    </div>
-
-    <div class='detail-section'>
-      <div class="col-12">
-        <div class="detail-section-header">
-          <i class="icon icon-header icon-header--left icon-bank">
-            <span class="visuallyhidden">bank</span>
-          </i>
-          <h3 class="h3 font-brand header-icon">How will I get paid?</h3>
-        </div>
-      </div>
-      <div class="cf push--bottom">
-        <dl class="col-6">
-          <dt class="font-reg">Payments terms</dt>
-          <dd>{{ market.sale_to_payment_duration_display }}</dd>
-        </dl>
-        <dl class="col-6">
-          <dt class="font-reg">Currency</dt>
-          <dd>{{ market | csl:'currency_of_payments' }}</dd>
-        </dl>
-      </div>
-    </div>
-
-    <div class='detail-section'>
-      <div class="col-12">
-        <div class="detail-section-header">
-          <i class="icon icon-header icon-header--left icon-support">
-            <span class="visuallyhidden">support</span>
-          </i>
-          <h3 class="h3 font-brand header-icon">What help do they give sellers like me?</h3>
-        </div>
-      </div>
-      <dl class="col-8">
-        <dt class="font-reg">Marketing and merchandising</dt>
-        <dd class="col-9">{{ market.marketing_merchandising | safe }}</dd>
-      </dl>
-      <div class="cf col-4 push--bottom">
-        <h4 class="detail-section-title font-reg">Seller support</h4>
-        <dl>
-          <dl>
-            <dt class="subtitle">Channels:</dt>
-            {{ market | field_dd:'seller_support_channels' }}
-          </dl>
-          <dl>
-            <dt class="subtitle">Hours:</dt>
-            <dd>{{ market.seller_support_hours }}</dd>
-          </dl>
-        </dl>
-      </div>
-    </div>
+<section class="breadcrumbs-section narrow-section">
+  <div class="container">
+    <p class="breadcrumbs">
+      <span class="label visually-hidden">You are here: {{ market.name }} market details</span>
+      <span class="label visually-hidden">Back to search results</span>
+      Back to <a href="javascript:utilities.navigateBack()" title="Back to search results" class="active-blue-text">search results</a>
+    </p>
   </div>
-
-  <div class="detail-section--terms detail-section--terms--bottom detail-section--terms--right">
-    <div class="detail-section--terms--info">
-      <h4 class="h3 font-med hard--top">Interested in this marketplace?</h4>
-    </div>
-
-    <div class="detail-section--terms--button text--center">
-      <div class="button-section push--top">
-        <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" id="bottom-apply-to-join" class="button button-red button-medium button-full text--center" title="apply now">Apply now via DIT</a>
-        <p class="push-half--top font-mid-grey">To get the special deal</p>
-      </div>
-    </div>
-  </div>
-</div>
+</section>
 
 {% endblock content %}

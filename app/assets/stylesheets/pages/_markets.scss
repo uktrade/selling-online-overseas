@@ -1,647 +1,256 @@
-.markets {
+@import 'transformation/config';
 
-  &-details {
-    margin-bottom: 40px;
-
-    .markets-item-logo {
-      border: 1px solid $lighter-grey;
-
-      @include media ($mobile) {
-        height: 100%;
-        width: 100%;
-      }
-    }
-
-    .markets-item--url {
-      display: block;
-      margin-top: 10px;
-    }
-
-    .markets-item {
-      @include media ($mobile) {
-        padding-bottom: 30px;
-        padding-top: 0;
-      }
-    }
-
-    .markets-item--highlight--section {
-      @include span-columns(6 of 12);
-      margin: 0;
-
-      @include media ($desktop-only) {
-        float: none;
-        width: 100%;
-      }
-
-      @include media ($mobile) {
-
-        dl {
-          height: 60px;
-        }
-      }
-    }
-
-    .markets-item--list {
-      margin-top: 20px;
-
-      @include media ($tablet) {
-        padding: 35px 0 0 20px;
-      }
-
-      @include media ($mobile) {
-        padding: 0;
-      }
-    }
-
-    .markets-info {
-      @include span-columns(7 of 12);
-      padding-left: 40px;
-
-      @include media ($tablet) {
-        @include span-columns(9 of 12);
-        padding-left: 10px;
-      }
-
-      @include media ($mobile) {
-        @include span-columns(12 of 12);
-        padding: {
-          left: 0;
-          top: 0;
-        };
-      }
-    }
-
-    .markets-item-logoholder {
-      @include span-columns(5 of 12);
-
-      @include media ($mobile) {
-        @include span-columns(12 of 12);
-      }
-    }
-
-    .markets-image {
-      @include media ($tablet) {
-        @include span-columns(3 of 12);
-      }
-
-      @include media ($mobile) {
-        @include span-columns(12 of 12);
-        float: none;
-        margin-top: 20px;
-        order: 1;
-        padding-right: 0;
-      }
-
-    }
-
-    .markets-item--highlight {
-      display: inline-block;
-    }
-
-    .markets-item--highlight--right {
-      @include media ($mobile) {
-        border: {
-          bottom: 1px solid $mid-grey;
-          top: 1px solid $mid-grey;
-        }
-        float: left;
-        margin-bottom: 20px;
-        padding-top: 20px;
-        width: 100%;
-      }
-    }
-
-    .markets-group {
-      @include media($mobile) {
-        display: flex;
-        flex-flow: column;
-      }
-    }
-
-    @include media ($mobile) {
-      clear: both;
-    }
-
-    @include media ($desktop-only) {
-      padding-right: 40px;
-      @include span-columns(8 of 12);
-    }
+// market list page
+.market-list-search-section {
+  padding: 30px 0 30px;
+  .search-form {
+    background-color: transparent;
+    padding: 0;
   }
+  .market-list-count {
+    margin-bottom: $spacing-4;
 
-  &-item {
-    border-bottom: 1px solid $mid-grey;
-    padding: 30px 20px;
-
-    &--list {
-      margin-top: 40px;
-      padding-left: 20px;
-
-      @include media ($desktop) {
-        padding-left: 0;
-      }
-
-      @include media ($tablet) {
-        margin-top: 0;
-      }
-
-
-      @include media ($mobile) {
-        padding: 5px 15px;
-      }
+    strong{
+      font-weight: bold;
     }
-
-    &-logo {
-      height: 120px;
-      vertical-align: middle;
-      width: 160px;
-
-      @include media ($desktop-only) {
-        height: auto;
-        width: 100%;
-      }
-    }
-
-    &-logoholder {
-      @include media ($desktop-only) {
-        @include span-columns(3 of 12);
-      }
-
-      @include media ($mobile) {
-        padding-right: 0;
-      }
-    }
-
-    &--url {
-      display: none;
-    }
-
-
-    &:hover {
-      h3,
-      a {
-        color: $aqua;
-      }
-    }
-
-    @include media ($mobile) {
-      padding: 10px;
-      position: relative;
-    }
-
-    @include media ($tablet) {
-      padding: 20px 20px 10px;
-    }
-
-
-  }
-
-  .markets-item-no-result {
-    border: 0;
-    padding-bottom: 0;
-  }
-
-  &-item--highlight {
-    position: relative;
-    width: 100%;
-
-
-    &--right {
-      @include span-columns(4 of 12);
-
-      @include media ($tablet) {
-        @include span-columns(12 of 12);
-        padding: 0;
-      }
-    }
-
-    @include media ($tablet) {
-      margin-left: 0;
-      padding: 10px 0;
-      width: 100%;
-    }
-
-    @include media ($mobile) {
-      display: none;
-    }
-  }
-
-  &-item--highlight--no-background {
-
-    .markets-item--highlight--section {
-      border: 0;
-    }
-
-    &:after {
-      content: none;
-    }
-  }
-
-  &-item--highlight--section {
-    background-position: 0 10px;
-    background-size: 40px;
-    border-bottom: 1px solid $white;
-    padding: 10px 0;
-    position: relative;
-
-    @include media ($tablet) {
-      @include span-columns(6 of 12);
-    }
-
-    dl {
-      padding-left: 50px;
-
-      .heading-large {
-        margin: 0;
-      }
-    }
-
-    &:last-child {
-      border-bottom: 0;
-    }
-
-    p {
-      margin: 0;
-      padding: 0;
-      width: 80%;
-    }
-
-    @include media ($desktop-only) {
-      float: none;
-      width: 100%;
-    }
-
-  }
-
-  &-info {
-
-    p {
-      clear: both;
-      float: left;
-      margin: {
-        bottom: 0;
-        top: 10px;
-      };
-
-      @include media($mobile) {
-        margin-bottom: 10px;
-      }
-    }
-
-    a {
-      display: inline;
-    }
-
-    @include media($desktop-only) {
-      @include span-columns(5 of 12);
-      position: relative;
-
-      h3 {
-        padding-right: 90px;
-      }
-    }
-
-    @include media($mobile) {
-      padding-top: 25px;
-    }
-
-  }
-
-  &-description {
-    @include media($desktop-only) {
-      @include span-columns(8 of 12);
-      padding-right: 30px;
-    }
-
-    @include media($tablet) {
-      @include span-columns(5 of 12);
-    }
-
-  }
-
-  &-features {
-    @include media($desktop-only) {
-      @include span-columns(4 of 12);
-    }
-
-    @include media($tablet) {
-      @include span-columns(7 of 12);
-    }
-  }
-
-  &-list {
-    padding-left: 20px;
-
-    @include media($desktop-only) {
-      @include span-columns(9 of 12);
-    }
-
-    @include media($tablet) {
-      @include span-columns(8 of 12);
-    }
-
-    @include media($mobile) {
-      padding-left: 0;
-    }
-
-    &-header {
-      @include media($desktop-only) {
-        @include span-columns(3 of 12);
-      }
-
-
-      @include media($tablet) {
-        @include span-columns(12 of 12);
-      }
-
-      @include media($mobile) {
-        @include span-columns(6 of 12);
-      }
-    }
-
-    &-options {
-
-      label {
-        @include media($tablet) {
-          display: block;
-        }
-      }
-
-      .form-group {
-        @include media($mobile) {
-          display: none;
-        }
-      }
-
-      @include media($desktop-only) {
-        @include span-columns(9 of 12);
-      }
-
-      @include media($tablet) {
-        @include span-columns(12 of 12);
-      }
-
-      @include media($mobile) {
-        @include span-columns(6 of 12);
-        text-align: right;
-      }
-
-    }
-  }
-
-  &-countries {
-
-    @include media($tablet) {
-      display: table;
-      min-width: 50%;
-    }
-
-    @include media($mobile) {
-      float: left;
-      margin-top: 20px;
-      width: 100%;
-    }
-  }
-
-  &-buttons {
-    @include prefix((border-radius: 3px), webkit moz);
-    background-color: $white;
-    border: 1px solid $mid-grey;
-    display: none;
-    padding: 8px;
-
-    @include media($mobile) {
-      display: block;
-    }
-
-    .button {
-      @extend %medium;
-      @include prefix((border-radius: 0), webkit moz);
-      border: 0;
-      border-right: 1px solid $mid-grey;
-      color: $mid-blue;
-      font-family: $brand-font-family;
-      padding: 0;
-      width: 49%;
-
-      &:focus {
-        background-color: transparent;
-      }
-
-      &:last-child {
-        border: 0;
-      }
-
-      &:hover {
-        color: $aqua;
-        text-decoration: underline;
-      }
-
-      .icon {
-        bottom: 0;
-        height: 21px;
-        margin: auto 0 auto 10px;
-        position: absolute;
-        top: 0;
-        width: 21px;
-      }
-    }
-  }
-
-  &-deal {
-    @extend %medium;
-    background-color: $great-secondary;
-    color: $white;
-    float: right;
-    padding: 5px 15px;
-    position: relative;
-    right: -20px;
-    top: -20px;
-
-    @include media($desktop-only) {
-      position: absolute;
-      right: 0;
-      top: 32px;
-    }
-
-    @include media($mobile) {
-      top: -10px;
-    }
-  }
-
-  &-sort {
-    display: none;
-  }
-
-  &-shortlist {
-
-    @include media($desktop-only) {
-      position: absolute;
-      right: -20px;
-    }
-
-    display: block;
-    margin-bottom: 20px;
-    padding-left: 26px;
-    position: relative;
-    right: 0;
-    top: 6px;
-  }
-
-  &-grid {
-
-    &--two {
-      .markets-item {
-        @include span-columns(6 of 12);
-      }
-    }
-
-    &--three {
-      .markets-item {
-        @include span-columns(4 of 12);
-
-        &:nth-child(3n+3) {
-          margin-right: 0;
-        }
-      }
-    }
-
-    .markets-item {
-      border-bottom: 2px solid $mid-grey;
-      min-height: 653px;
-      padding-bottom: 0;
-
-      @include media($tablet) {
-        min-height: 738px;
-      }
-
-      @include media($mobile) {
-        @include span-columns(12 of 12);
-        min-height: 307px;
-      }
-
-      &--add {
-        background: transparent;
-        border: {
-          bottom: 0;
-          color: $light-grey;
-          style: dashed;
-          width: 1px;
-        }
-        padding-top: 80px;
-
-        @include media($mobile) {
-          @include span-columns(12 of 12);
-          padding-top: 40px;
-        }
-      }
-
-      @include media($mobile) {
-        @include span-columns(12 of 12);
-        min-height: 307px;
-      }
-    }
-
-    .markets-info,
-    .markets-item--highlight--right,
-    .markets-item-logoholder {
-      @include span-columns(12 of 12);
-      position: initial;
-    }
-
-    .markets-item--list {
-      margin-top: 15px;
-      padding-left: 0;
-
-      @include media($mobile) {
-        margin-top: 0;
-      }
-    }
-
-    .markets-shortlist {
-      left: 16px;
-      position: absolute;
-      right: inherit;
-      top: 15px;
-
-      @include media($mobile) {
-        left: inherit;
-        position: relative;
-        top: inherit;
-      }
-
-      @include media($tablet) {
-        text-indent: -9999px;
-      }
-    }
-
-    .markets-info {
-      margin-top: 20px;
-
-      @include media($mobile) {
-        float: none;
-        margin-top: 0;
-        padding-top: 15px;
-      }
-
-      @include media($desktop-only) {
-        min-height: 210px;
-
-        h3 {
-          padding-right: 0;
-        }
-      }
-
-      @include media($tablet) {
-        min-height: 270px;
-      }
-    }
-
-    .markets-item-logoholder {
-      margin-top: 30px;
-      text-align: center;
-
-      @include media($mobile) {
-        margin: {
-          right: 15px;
-          top: 15px;
-        }
-        width: auto;
-      }
-    }
-
-    .markets-item-logo {
-      height: 127px;
-      width: 168px;
-    }
-
-
-    .markets-item--highlight {
-      @include media($mobile) {
-        display: block;
-      }
-    }
-
-    .markets-item--highlight--section {
-      @include media($tablet) {
-        @include span-columns(12 of 12);
-      }
-
-      @include media($mobile) {
-        background-size: 34px;
-        padding: 5px 0;
-      }
-    }
-
-    .markets-deal {
-
-      @include media($desktop-only) {
-        top: 10px;
-      }
-
-      @include media($tablet) {
-        top: -10px;
-      }
-    }
-
   }
 }
+.narrow-section {
+  padding:  30px 0;
+}
+
+.breadcrumbs-section {
+  background: $white;
+  .breadcrumbs {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .market-list-search-section {
+    padding-top: 60px;
+  }
+}
+
+.compare-navigation {
+  float: right;
+  strong{
+    font-weight: bold;
+  }
+}
+
+//// markets ///
+
+$special-terms-bg: $active-blue;
+
+.market-item {
+  margin-bottom: $spacing-3;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.has-special-terms {
+    .special-terms-container {
+      position: relative;
+      width: 100%;
+      background-color: $special-terms-bg;
+    }
+    .market-item-inner {
+      border-color: $special-terms-bg;
+    }
+
+    .icon {
+      position: absolute;
+      left: 15px;
+      top: 16px;
+      height: 20px;
+      width: 20px;
+      background-size: 20px 20px;
+    }
+  }
+
+  .market-item-inner {
+    border: 2px solid $stone-30;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  .market-item-logo {
+    text-align: center;
+  }
+
+  .market-item-img {
+    max-width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto;
+  }
+
+  .market-item-body {
+    position: relative;
+  }
+
+  .market-header-link {
+    line-height: 1;
+    font-size: $font-size-l;
+    font-family: $brand-font-alternative;
+    text-decoration: none;
+    color: $active-blue;
+    border-bottom: 2px solid $active-blue;
+  }
+
+  .stat {
+    width: 50%;
+    float: left;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .stat-header {
+    font-weight: bold;
+    font-family: $brand-font-alternative;
+  }
+
+  .market-item-description .stat-header {
+    float: left;
+    margin-right: 5px;
+  }
+
+  @media screen and (min-width:641px) {
+    .stat-header {
+      line-height: 28px;
+    }
+
+  }
+
+  @media screen and (min-width: 769px) {
+
+    &.has-special-terms {
+      .special-terms-container {
+
+      .icon {
+
+        left: 30px;
+        height: 24px;
+        width: 24px;
+        background-size: 24px 24px;
+        }
+      }
+    }
+
+    .market-item-inner {
+      display: block;
+      display: flex;
+      padding-left: 0;
+    }
+    .market-item-logo {
+      display: block;
+      display: flex;
+      align-items: center;
+      width: 300px;
+      float:left;
+    }
+
+    .market-item-img {
+      max-width: 270px;
+      max-height: none;
+    }
+
+    .market-item-body {
+      width: calc(100% - 300px);
+      float: left;
+    }
+
+    .market-header-link {
+      line-height: 1.6;
+      font-size: $font-size-xl;
+    }
+
+    .market-item-description {
+      width: 70%;
+      float: left;
+      padding-right: 5%;
+
+    }
+
+    .market-item-stats {
+      width: 30%;
+      float: left;
+
+      p {
+        margin-bottom: 15px;
+      }
+    }
+
+    .stat {
+      float: none;
+      width: 100%;
+
+      p {
+        margin-bottom: 15px;
+      }
+      &:last-of-type {
+        P {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.special-terms-container {
+  padding: 15px 15px 15px 45px;
+  font-size: 15px;
+  display: inline-block;
+  display: hidden;
+  background-color: $stone-30;
+  color: white;
+
+  strong {
+    font-weight: bold;
+  }
+
+}
+
+.overflow-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// search
+@media screen and (min-width: 769px) {
+  .special-terms-container {
+    padding-left: 70px;
+    font-size: $font-size-m;
+  }
+}
+
+
+.mobile-hidden {
+  @media screen and (max-width: 767px) {
+    @include access-hidden;
+  }
+}
+
+.pagination a {
+  margin-bottom: 15px;
+}
+
+@media screen and (min-width: 769px) {
+  .pagination {
+    width: 75%;
+    margin: 0 auto;
+
+    a {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// end markets
+

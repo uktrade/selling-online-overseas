@@ -1,13 +1,14 @@
-{% extends "base.html" %}
+{% extends "directory_components/base.html" %}
 
 {% load static utils thumbnail %}
-
+{% load pagination from directory_components %}
 {% block head_title %}Search results | Selling online overseas{% endblock head_title %}
 
 {% block head_meta_description %}Read and review the results. Compare, then select online marketplaces that are suitable for your products.{% endblock head_meta_description %}
 
 {% block head_css %}
   {{ block.super }}
+  <link href="{% static 'stylesheets/main.css' %}" rel="stylesheet" media="screen">
   <link href="{% static 'stylesheets/main_redesign.css' %}" rel="stylesheet" media="screen">
 {% endblock %}
 
@@ -15,7 +16,7 @@
   <section class="breadcrumbs-section narrow-section">
     <div class="container">
       <p class="breadcrumbs">
-          <span class="label verbose">You are here:</span>
+          <span class="label visually-hidden">You are here:</span>
           <a href="{% url 'home' %}">Home</a>
           <span class="separator">,</span>
           <span class="current">
@@ -32,17 +33,7 @@
       {% include 'markets/includes/search_form.html' %}
     </div>
   </section>
-  <section class="narrow-section">
-    <div class="container">
-      <div class="compare-navigation">
-        <strong>
-          Compare marketplaces: <span class="shortlist-count"></span>
-        </strong>
-        |
-        <a href="{% url 'markets:shortlist' %}">View compare list</a>
-      </div>
-    </div>
-  </section>
+
   <section class="market-list-section">
     <div class="container">
       {% if not market_list %}
@@ -52,9 +43,51 @@
       </div>
       {% endif %}
 
-      {% for market in market_list %}
+      {% for market in pagination_page %}
         {% include "markets/includes/market_summary.html" %}
       {% endfor %}
+
+      {% pagination pagination_page=pagination_page %}
+
+    {% if pagination.paginator.num_pages > 1 %}
+    <nav class="pagination">
+        {% if pagination.has_previous %}
+            <a class="button-ghost-blue pagination-previous" href="{{ url }}&{{ page_param_name }}={{ pagination.previous_page_number}}">Previous</a>
+        {% endif %}
+            <ol class="{{ pagination.has_previous|yesno:'has-previous ,' }}{{ pagination.has_next|yesno:'has-next,' }}">
+                {% if pagination.paginator.num_pages <= 6 %}
+
+                    {% for number in pagination.paginator.page_range %}
+                    {% include 'includes/pagination-number.html' %}
+                    {% endfor %}
+                {% elif pagination.number < 5 %}
+
+                    {% for number in pagination.paginator.page_range|slice:':4' %}
+                        {% include 'includes/pagination-number.html' %}
+                    {% endfor %}
+                    {% include 'directory_components/pagination-number.html' with number=pagination.paginator.num_pages ellipsis_before=True %}
+                {% elif pages_after_current < 4 %}
+
+                    {% include 'includes/pagination-number.html' with number='1' ellipsis_after=True %}
+                    {% for number in pagination.paginator.page_range|slice:'-4:' %}
+                        {% include 'directory_components/pagination-number.html' %}
+                    {% endfor %}
+                {% else %}
+                    {% include 'includes/pagination-number.html' with number='1' ellipsis_after=True%}
+                    {% include 'includes/pagination-number.html' with number=pagination.previous_page_number%}
+                    {% include 'includes/pagination-number.html' with number=pagination.number %}
+                    {% include 'includes/pagination-number.html' with number=pagination.next_page_number ellipsis_after=True %}
+                    {% include 'includes/pagination-number.html' with number=pagination.paginator.num_pages %}
+                {% endif %}
+            </ol>
+        {% if pagination.has_next %}
+            <a class="button-ghost-blue pagination-next" href="{{ url }}&{{ page_param_name }}={{ pagination.next_page_number }}">Next</a>
+        {% endif %}
+    </nav>
+{% endif %}
+
     </div>
+
+
   </section>
 {% endblock content %}

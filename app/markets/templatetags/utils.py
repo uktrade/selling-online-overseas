@@ -21,6 +21,7 @@ def comma_separated_list(obj, attr):
 
     value_list = list(set([str(item) for item in all_method()]))
     value_list.sort()
+
     return ", ".join(value_list)
 
 
@@ -37,7 +38,7 @@ def render_field_options(obj, attr):
     actual_vals = field.all()
     for val in possible_vals:
         icon = tick_cross_format_field(val in actual_vals)
-        resp += "<dd>{0} {1}</dd>".format(icon, val)
+        resp += "<dd>{1}<span>{0}</span></dd>".format(icon, val)
 
     return mark_safe(resp)
 
@@ -69,10 +70,10 @@ def required_or_not_format_field(value):
 
 def tick_cross_format_field(value):
     if value:
-        return icon_format_field('ok', 'ok')
+        return icon_format_field('available', 'Available')
     else:
-        return icon_format_field('cross', 'cross')
+        return icon_format_field('not-available', 'Not available')
 
 
 def icon_format_field(icon, text='ok'):
-    return '<i class="icon icon-details icon-' + icon + '"><span class="visuallyhidden">' + text + '</span></i>'
+    return '<span class="icon icon-details icon-' + icon + '"><span class="visuallyhidden">' + text + '</span></span>'
