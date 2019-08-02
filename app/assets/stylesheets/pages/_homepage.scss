@@ -119,6 +119,11 @@
     }
 }
 
+.mobile-footer {
+    .button-arrow-small {
+        width: 100%;
+    }
+}
 
 @media screen and (min-width: 769px) {
     .random-markets, .how-can-we-help-you-online, .exporter-stories, .how-can-we-help-you {
@@ -155,5 +160,8 @@
 
     }
 
+    .mobile-footer {
+        display: none;
+    }
 
 }
