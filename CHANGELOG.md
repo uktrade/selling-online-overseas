@@ -4,7 +4,8 @@
 
 
 ### Implemented enhancements
-- XOT-987 add content changes, add missing separator for detail page, change font for search results heading and add border
+- XOT-987 - last minute design changes and detail.html pulling correct offer text
+- XOT-987 - add content changes, add missing separator for detail page, change font for search results heading and add border
 - XOT-980 - remove trailing zeros from search results float values
 - XOT-976 - add missing test requirement and update verson number
 - XOT-976 - market detail page - design review changes and add utility classes to markup to reduce css
