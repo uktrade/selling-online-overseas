@@ -1,0 +1,127 @@
+.search-form {
+  background-color: transparent;
+  max-width: none;
+  margin-bottom: 0;
+
+  label {
+    margin-bottom: 0;
+  }
+
+  input {
+    height: 54px;
+    margin: 0;
+  }
+
+  select {
+    background-color: $white;
+    float: left;
+    font-size: 16px;
+    margin: 0;
+    position: relative;
+    width: 100%;
+  }
+
+  .filter {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .button-arrow-small {
+    text-align: left;
+    &:after {
+      text-align: center;
+    }
+  }
+
+  .term {
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  &:after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+}
+
+
+@media screen and (min-width: 769px) {
+  .search-form {
+      background-color: $grey-special;
+      padding: $spacing-3;
+      margin-bottom: 30px;
+
+    select {
+      height: 60px;
+      font-size: 19px;
+    }
+    .filter {
+          width: $cols-3;
+          margin-bottom: 0;
+        select {
+          left: -2px;
+        }
+      }
+
+      .term {
+        width:  $cols-9;
+        margin-bottom: 0;
+      }
+
+      .button-arrow-small {
+        width: auto;
+        margin-top: 15px;
+        height: 60px;
+        &:after {
+          bottom: 3px;
+        }
+      }
+  }
+}
+
+
+@media screen and (min-width: 981px) {
+
+  .search-form {
+    padding-bottom: $spacing-3;
+
+    label {
+      margin-bottom: $spacing-3;
+    }
+
+    .filter {
+        width: $cols-3;
+        margin-bottom: 0;
+
+      select {
+        left: -2px;
+      }
+    }
+
+    .button-arrow-small {
+        margin: 0;
+        width: calc(#{$cols-4} - #{$spacing-4});
+        float: right;
+    }
+
+    .term {
+        width:  $cols-5;
+        margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 1060px) {
+  .search-form {
+    .button-arrow-small {
+        width: calc(#{$cols-3} - #{$spacing-4});
+    }
+
+    .term {
+      width:  $cols-6;
+    }
+  }
+}

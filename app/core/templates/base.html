@@ -2,6 +2,34 @@
 
 {% load static from staticfiles %}
 
+{% block head_google_tag_manager %}
+  {% if directory_components_analytics %}
+    <meta id="utmCookieDomain" value="{{ directory_components_analytics.UTM_COOKIE_DOMAIN }}" />
+  {% endif %}
+{% endblock %}
+
+{% block head_js_ga360 %}
+  <script src="{% static 'javascripts/dit.tagging.js' %}"></script>
+  <script type="text/javascript">
+    window.dataLayer = [];
+    window.dataLayer.push({
+      'businessUnit': 'Selling Online Overseas',
+      'siteLanguage': 'en-gb',
+      'userID': '{{ user.id }}',
+      'loginStatus': '{{ sso_is_logged_in }}',
+      'pageCategory': '{{ page_type }}',
+    });
+
+    dit.tagging.soo.init('{{ page_type }}');
+  </script>
+  {% include 'directory_components/google_tag_manager_head.html' %}
+{% endblock %}
+
+{% block body_google_tag_manager %}
+  {% include 'google_tag_manager_body.html' with page_type=page_type %}
+{% endblock %}
+
+
 {% block head_css %}
   {{ block.super }}
   <link href="{% static 'stylesheets/main.css' %}" rel="stylesheet" media="screen">
@@ -11,12 +39,8 @@
     <main role="main" id="content">
     {% block content %}{% endblock content %}
     {% block feedback_reporter %}
-      <section>
-        <div class="outer-container push--ends soft--ends">
-          <div class="col-12 push--top">
-            {% block thumber_feedback %}{% endblock %}
-          </div>
-        </div>
+      <section class="padding-0">
+          {% block thumber_feedback %}{% endblock %}
       </section>
     {% endblock %}
     </main>

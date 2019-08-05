@@ -192,6 +192,7 @@ class BaseMarket(models.Model):
     commission_upper = models.FloatField(null=True, blank=True)
     commission_notes = models.TextField(null=True, blank=True)
 
+    dit_special_terms_summary = models.CharField(max_length=128, null=True, blank=True)
     dit_special_terms = RichTextField(null=True, blank=True,
                                       verbose_name="Department of International Trade special terms")
 
@@ -258,6 +259,11 @@ class BaseMarket(models.Model):
 
         super().save(*args, **kwargs)
 
+    def format_float(self, value):
+        if value.is_integer():
+            value = int(value)
+        return value
+
     def clean(self, *args, **kwargs):
         """
         Do some manual error checking for the Market, in particular, that if a amount of money has been specified
@@ -302,6 +308,9 @@ class BaseMarket(models.Model):
         lower = min(val for val in values if val is not None)
         upper = max(val for val in values if val is not None)
 
+        lower = self.format_float(lower)
+        upper = self.format_float(upper)
+
         if lower == upper:
             commission = "{0}%".format(lower)
         else:
@@ -328,14 +337,19 @@ class BaseMarket(models.Model):
     @property
     def number_of_registered_users_display(self):
         if self.number_of_registered_users != 0:
+            self.number_of_registered_users = self.format_float(self.number_of_registered_users)
             return "{0} million".format(self.number_of_registered_users)
 
         return "Not available"
 
     def _value_display(self, attr):
         value = getattr(self, attr, 0)
+        value = self.format_float(value)
         if value > 0:
-            formatted_value = format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
+            if isinstance(value, int):
+                formatted_value = format(value, '.', grouping=3, thousand_sep=',', force_grouping=True)
+            else:
+                formatted_value = format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
             currency = getattr(self, "{0}_currency".format(attr)).code
             display_str = "{0} {1}".format(currency, formatted_value)
         else:

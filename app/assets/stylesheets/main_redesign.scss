@@ -1,0 +1,32 @@
+// copied from transformation/pages/landing
+
+@import 'transformation/config';
+@import 'transformation/forms';
+// EDIT transformation/pages/landing
+@import 'transformation/components/breadcrumbs';
+// END EDIT
+@import 'transformation/components/opportunity_list';
+@import 'transformation/components/search_form';
+@import 'transformation/components/steps_indicator';
+@import 'transformation/components/quote';
+@import 'transformation/components/summary_list';
+@import 'transformation/components/filter_select';
+@import 'transformation/effects/carousel';
+@import 'transformation/effects/tabbed_area';
+@import 'pages/homepage';
+
+$body-background-color: $white;
+
+.card {
+  min-height: auto;
+}
+
+#content {
+  padding-top: 0;
+}
+
+// EDIT
+section {
+  padding: $spacing-3 0;
+  background-color: white;
+}

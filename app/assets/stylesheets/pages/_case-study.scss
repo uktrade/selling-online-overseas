@@ -1,11 +1,17 @@
 @import '../vars';
 @import '../new_styles/vars';
 
-section.case-study {
+section.case-study,
+.case-study.soo-case-study {
   margin-top: 0;
   color: $grey;
   padding-bottom: 0;
 }
+
+.soo-case-study > .container {
+  display: block;
+}
+
 
 .more-stories {
   h2 {

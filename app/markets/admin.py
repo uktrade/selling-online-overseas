@@ -91,6 +91,7 @@ class MarketAdmin(VersionAdmin):
         ('Department of International Trade tips and terms', {
             'fields': (
                 'dit_special_terms',
+                'dit_special_terms_summary',
                 'dit_advisor_tip',
             )
         }),

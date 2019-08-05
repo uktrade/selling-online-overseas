@@ -1,5 +1,8 @@
-[![CircleCI](https://circleci.com/gh/uktrade/navigator.svg?style=svg)](https://circleci.com/gh/uktrade/navigator)
-[![codecov](https://codecov.io/gh/uktrade/navigator/branch/master/graph/badge.svg)](https://codecov.io/gh/uktrade/navigator)
+[![code-climate-image]][code-climate]
+[![circle-ci-image]][circle-ci]
+[![codecov-image]][codecov]
+[![gitflow-image]][gitflow]
+[![calver-image]][calver]
 
 # Selling Online Overseas
 
@@ -187,3 +190,29 @@ To just run the project, execute the following (activating the virtual environme
 ```
 
 Then visit [localhost:8008](http://localhost:8008)
+
+
+## Helpful links
+* [Developers Onboarding Checklist](https://uktrade.atlassian.net/wiki/spaces/ED/pages/32243946/Developers+onboarding+checklist)
+* [Gitflow branching](https://uktrade.atlassian.net/wiki/spaces/ED/pages/737182153/Gitflow+and+releases)
+* [GDS service standards](https://www.gov.uk/service-manual/service-standard)
+* [GDS design principles](https://www.gov.uk/design-principles)
+ ## Related projects:
+https://github.com/uktrade?q=directory
+https://github.com/uktrade?q=great
+
+
+[code-climate-image]: https://codeclimate.com/github/uktrade/navigator/badges/issue_count.svg
+[code-climate]: https://codeclimate.com/github/uktrade/navigator
+
+[circle-ci-image]: https://circleci.com/gh/uktrade/navigator/tree/master.svg?style=svg
+[circle-ci]: https://circleci.com/gh/uktrade/navigator/tree/master
+
+[codecov-image]: https://codecov.io/gh/uktrade/navigator/branch/master/graph/badge.svg
+[codecov]: https://codecov.io/gh/uktrade/navigator
+
+[gitflow-image]: https://img.shields.io/badge/Branching%20strategy-gitflow-5FBB1C.svg
+[gitflow]: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
+[calver-image]: https://img.shields.io/badge/Versioning%20strategy-CalVer-5FBB1C.svg
+[calver]: https://calver.org

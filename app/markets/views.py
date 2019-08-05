@@ -2,6 +2,7 @@ import ast
 
 from django.http import JsonResponse
 from django.views.generic import ListView, TemplateView, View
+from django.shortcuts import render
 from django.db.models import (
     Max,
     Case,
@@ -13,10 +14,13 @@ from django.db.models import (
     functions
 )
 from django.http import Http404
+from django.core.paginator import Paginator
 
 from thumber.decorators import thumber_feedback
 
 from casestudy.casestudies import CASE_STUDIES
+from geography.models import Country
+from products.models import Category
 
 from .models import Market, PublishedMarket
 from .forms import MarketListFilterForm
@@ -50,7 +54,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
     template_name = 'markets/homepage.html'
     comment_placeholder = "We are sorry to hear that. Would you tell us why?"
     submit_wording = "Send feedback"
-    satisfied_wording = "Do you find this service useful?"
+    satisfied_wording = "Was this service useful?"
 
     def get_context_data(self, *args, **kwargs):
         """
@@ -59,14 +63,56 @@ class HomepageView(MarketFilterMixin, TemplateView):
 
         return super().get_context_data(
             *args, **kwargs,
+            page_type='LandingPage',
+            countries=Country.objects.all().order_by('name'),
+            categories=Category.objects.all().order_by('name'),
             case_studies=CASE_STUDIES.values(),
             market_count=self.markets.count(),
             last_updated=self.markets.aggregate(
                 Max('last_modified'))['last_modified__max'],
-            random_markets=self.markets.order_by('?')[:6]
+            random_markets=self.markets.order_by('?')[:3]
         )
 
 
+@thumber_feedback
+class NewMarketListView(MarketFilterMixin, TemplateView):
+    template_name = 'markets/list.html'
+    # thumber attributes
+    satisfied_wording = 'Did you find what you were looking for?'
+    comment_placeholder = 'We are sorry to hear that. Would you tell us why?'
+    submit_wording = 'Send feedback'
+
+    def get(self, request):
+        params = request.GET.dict()
+        category_id = params.get('category_id')
+        country_id = params.get('country_id')
+
+        MarketModel = PublishedMarket if request.user.is_authenticated() else Market
+        qs = self.markets.all()
+
+        if category_id and category_id.isdigit():
+            category_id = int(category_id)
+            qs = qs.filter(product_categories__id=category_id)
+        if country_id and country_id.isdigit():
+            country_id = int(country_id)
+            qs = qs.filter(operating_countries__id=country_id)
+
+        paginator = Paginator(qs, 6)
+        pagination_page = paginator.page(self.request.GET.get('page', 1))
+        context = {
+            'page_type': 'SearchResultsPage',
+            'market_list': qs,
+            'selected_country_id': country_id,
+            'selected_category_id': category_id,
+            'countries': Country.objects.all().order_by('name'),
+            'categories': Category.objects.all().order_by('name'),
+            'pagination_page': pagination_page,
+        }
+        context = self.get_context_data(**context)
+        return self.render_to_response(context)
+
+
+# TODO: remove
 @thumber_feedback
 class MarketListView(MarketFilterMixin, ListView):
     """
@@ -350,6 +396,7 @@ class MarketDetailView(MarketFilterMixin, TemplateView):
         slug = self.kwargs['slug']
 
         try:
+            context['page_type'] = 'MarketplacePage'
             context['market'] = self.markets.get(slug=slug)
         except (Market.DoesNotExist, PublishedMarket.DoesNotExist):
             raise Http404('Market does not exist')
