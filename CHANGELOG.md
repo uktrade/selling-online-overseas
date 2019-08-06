@@ -16,6 +16,7 @@
 - XOT-635 - SOO Design updated for landing and search results page.
 
 ### Fixed bugs
+- XOT-994 - wrap no deal text in paragraph, upgrade directory components to fix header input bug
 - XOT-976 - add missing test requirement and update verson number
 - Upgraded urllib3 to fix [vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2019-11324)
 - XOT-828 - GA360 tagging key name and selector corrections

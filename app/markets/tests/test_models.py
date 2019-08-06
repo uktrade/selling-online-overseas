@@ -109,7 +109,7 @@ class MarketModelTests(TestCase):
 
     def test_special_terms(self):
         # Create a market, without special terms, and check that the special terms is a known phrase
-        known_phrase = "We’re working hard to get a deal in place."
+        known_phrase = "<p>We’re working hard to get a deal in place.</p>"
         market = create_market()
         self.assertEquals(market.special_terms, known_phrase)
 
