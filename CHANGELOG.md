@@ -2,6 +2,25 @@
 
 ## Pre-release
 
+### Implemented enhancements
+
+### Fixed bugs
+
+
+## [2019.07.15] (https://github.com/uktrade/directory-ui-supplier/releases/tag/2019.08.08)
+[Full Changelog](https://github.com/uktrade/directory-ui-supplier/compare/2019.08.06...2019.08.08)
+
+### Implemented enhancements
+- XOT-994 - wrap no deal text in paragraph
+- XOT-994 - changelog, requirements and small CSS change
+- XOT-994 - update special terms test
+
+### Fixed bugs
+- No ticket - Update header
+
+
+## [2019.07.15] (https://github.com/uktrade/directory-ui-supplier/releases/tag/2019.08.06)
+[Full Changelog](https://github.com/uktrade/directory-ui-supplier/compare/cba35dba000639efa336db8904bc7e5331feef0f..2019.08.06)
 
 ### Implemented enhancements
 - COT-989 - breadcrumb text changes and inject backbutton for no js users
