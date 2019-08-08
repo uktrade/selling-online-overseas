@@ -9,6 +9,7 @@
 ## [2019.08.05](https://github.com/uktrade/navigator/releases/tag/2019.08.05)
 
 ### Implemented enhancements
+- COT-989 - breadcrumb text changes and inject backbutton for no js users
 - XOT-987 - last minute design changes and detail.html pulling correct offer text
 - XOT-987 - add content changes, add missing separator for detail page, change font for search results heading and add border
 - XOT-980 - remove trailing zeros from search results float values
