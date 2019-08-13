@@ -4,6 +4,7 @@
 
 
 ### Implemented enhancements
+- GTRANSFORM - add accessibility helper text to external link
 - COT-989 - breadcrumb text changes and inject backbutton for no js users
 - XOT-987 - last minute design changes and detail.html pulling correct offer text
 - XOT-987 - add content changes, add missing separator for detail page, change font for search results heading and add border
