@@ -1,11 +1,9 @@
 # Changelog
 
-## Pre-release
-
 ### Implemented enhancements
+- GTRANSFORM-346 directory components upgrade for external link helpers in footer
 
 ### Fixed bugs
-
 
 ## [2019.07.15] (https://github.com/uktrade/directory-ui-supplier/releases/tag/2019.08.08)
 [Full Changelog](https://github.com/uktrade/directory-ui-supplier/compare/2019.08.06...2019.08.08)
@@ -23,6 +21,7 @@
 [Full Changelog](https://github.com/uktrade/directory-ui-supplier/compare/cba35dba000639efa336db8904bc7e5331feef0f..2019.08.06)
 
 ### Implemented enhancements
+- GTRANSFORM - add accessibility helper text to external link
 - COT-989 - breadcrumb text changes and inject backbutton for no js users
 - XOT-987 - last minute design changes and detail.html pulling correct offer text
 - XOT-987 - add content changes, add missing separator for detail page, change font for search results heading and add border
