@@ -1,6 +1,7 @@
 # Changelog
 
 ### Implemented enhancements
+- XOT-999 - remove arrow button from new designs and change spelling on homepage
 - GTRANSFORM-346 directory components upgrade for external link helpers in footer
 
 ### Fixed bugs
