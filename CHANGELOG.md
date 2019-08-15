@@ -1,7 +1,10 @@
 # Changelog
 
-## Pre-release
+### Implemented enhancements
+- GTRANSFORM-346 directory components upgrade for external link helpers in footer
 
+## [2019.08.08](https://github.com/uktrade/navigator/releases/tag/2019.08.08)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.08.06...2019.08.08
 
 ### Implemented enhancements
 - GTRANSFORM - add accessibility helper text to external link
