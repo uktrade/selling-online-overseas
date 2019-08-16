@@ -1,6 +1,7 @@
 # Changelog
 
 ### Implemented enhancements
+- GTRANSFORM-352 - search form, change select sizes for accessibility issue on search country filter
 - XOT-999 - remove arrow button from new designs and change spelling on homepage
 - GTRANSFORM-346 directory components upgrade for external link helpers in footer
 
