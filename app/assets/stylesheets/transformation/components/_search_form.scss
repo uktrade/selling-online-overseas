@@ -27,13 +27,6 @@
     margin-bottom: 20px;
   }
 
-  .button-arrow-small {
-    text-align: left;
-    &:after {
-      text-align: center;
-    }
-  }
-
   .term {
     float: left;
     width: 100%;
@@ -71,13 +64,10 @@
         margin-bottom: 0;
       }
 
-      .button-arrow-small {
+      .soo-search-button {
         width: auto;
         margin-top: 15px;
         height: 60px;
-        &:after {
-          bottom: 3px;
-        }
       }
   }
 }
@@ -101,7 +91,7 @@
       }
     }
 
-    .button-arrow-small {
+    .soo-search-button {
         margin: 0;
         width: calc(#{$cols-4} - #{$spacing-4});
         float: right;
@@ -116,7 +106,7 @@
 
 @media screen and (min-width: 1060px) {
   .search-form {
-    .button-arrow-small {
+    .soo-search-button {
         width: calc(#{$cols-3} - #{$spacing-4});
     }
 
