@@ -26,10 +26,11 @@ raven==5.31.0
 urllib3>=1.24.2<2.0.0
 requests>=2.21.0
 s3transfer==0.1.10
-six==1.10.0
+six
 whitenoise==3.2.1
 Whoosh==2.7.4
-directory_components==8.3.1
+directory_components==27.5.0
+directory_constants==18.3.0
 directory-sso-api-client==4.1.1
 directory-validators==5.0.0
 sigauth>=4.0.0,<5.0.0

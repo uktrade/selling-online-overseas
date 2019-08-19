@@ -1,34 +1,31 @@
 {% extends 'directory_components/base.html' %}
 
-{% load static from staticfiles %}
-
-{% block head_title %}Selling online overseas{% endblock head_title %}
-
-{% block head_sharing_metadata %}
-    {{ block.super }}
-    <meta name="description" content="{% block head_meta_description %}Selling online overseas{% endblock head_meta_description %}">
-{% endblock %}
+{% load staticfiles %}
 
 {% block head_css %}
-  {{ block.super }}
-    <!--[if IE 8]><link href="{% static "stylesheets/ie8.css" %}" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+	{{ block.super }}
+    <link href="{% static 'css/main.css' %}" media="all" rel="stylesheet" />
 {% endblock %}
 
-{% block head_other %}
-    <meta name="google-site-verification" content="UsYPpFjZgK_HPJX0BmyaiSEFr6VDk-8kD4NARXzhhCE" />
-{% endblock %}
-
-{% block body_header %}
-    {% include 'directory_components/header_footer/header_static.html' %}
-{% endblock %}
-
-{% block body_footer %}
-  {% include 'directory_components/header_footer/footer.html' %}
-{% endblock %}
+{% block css_layout_class %}enrolment-content{% endblock css_layout_class %}
 
 {% block body_js %}
-  <script src="{% static 'javascripts/all.js' %}"></script>
-  {% block extra_js %}
-    {# needed for thumbor #}
-  {% endblock %}
-{% endblock %}
+    <script type="text/javascript" src="{% static 'javascripts/index.js' %}"></script>
+    <script type="text/javascript">
+        const isAnonymous = document.cookie.indexOf('sso_display_logged_in=true') === -1;
+    const accountLinksContainer = document.getElementsByClassName('extra-links')[0];
+    const account = document.getElementById('header-profile-link');
+    const signOut = document.getElementById('header-sign-out-link');
+    const signIn = document.getElementById('header-sign-in-link');
+    if (isAnonymous) {
+      accountLinksContainer.removeChild(account);
+      accountLinksContainer.removeChild(signOut);
+    } else {
+      account.style.display = 'inline-block';
+      signOut.style.display = 'inline-block';
+      accountLinksContainer.removeChild(signIn);
+    }
+    </script>
+{% endblock body_js %}
+
+{% block feedback_reporter %}{% endblock %}
