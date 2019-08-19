@@ -4,8 +4,6 @@
 
 **Implemented enhancements:**
 - XOT-635 - SOO landing page content updates.
-- XOT-1010 - signed in status in header via cookie
-- security: upgraded django to 1.11.23 CVE-2019-14234 .. 14232, 14233, 14235
 
 **Fixed bugs:**
 - Upgraded urllib3 to fix [vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2019-11324)
