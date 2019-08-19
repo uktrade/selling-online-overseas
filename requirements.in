@@ -3,6 +3,7 @@ boto3==1.7.31
 contextlib2==0.5.4
 dj-database-url==0.4.1
 Django==1.11.23
+django-admin-ip-restrictor==1.0.0
 django-appconf==1.0.1
 django-ckeditor==5.6.1
 django-environ==0.4.5
@@ -36,3 +37,5 @@ directory-validators==5.0.0
 sigauth>=4.0.0,<5.0.0
 markdown2==2.3.6
 beautifulsoup4==4.6.0
+djangorestframework==3.9.1
+uk-postcode-utils==1.0

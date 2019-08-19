@@ -33,8 +33,13 @@ class MarketPublishingTests(TestCase):
         self.assertEqual(len(markets), 1)
         self.assertEqual(markets[0], self.market)
 
+        paginator = response.context_data['pagination_page']
+        self.assertEqual(paginator.paginator.per_page, 6)
+        self.assertEqual(paginator.paginator.object_list, markets)
+
     # TODO: remove
     def _test_filter_market_list_by_name(self):
+
         # Filter the list of markets on it's name, check we get 200 and the market in the response
         response = self.client.get(reverse('markets:list'), {'name': self.market.name})
         markets = response.context_data['market_list']
@@ -286,7 +291,7 @@ class MarketTests(TestCase):
         assert response.status_code == 200
         assert response.context_data['page_type'] == 'MarketplacePage'
         assert 'Go directly to marketplace' not in str(response.content)
-        assert 'Apply now via DIT' in str(response.content)
+        assert 'Apply now' in str(response.content)
 
     def test_market_list_page(self):
         create_market(

@@ -43,8 +43,9 @@ $path: '/selling-online-overseas/static/images/';
 @import 'components/modal';
 @import 'components/shortlist';
 
-@import 'pages/detail';
+
 @import 'pages/markets';
+@import 'pages/market-detail';
 @import 'pages/case-study';
 
 @import 'base/header-footer-fixes'; // overrides for any broken header/footer styling

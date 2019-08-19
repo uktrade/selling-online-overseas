@@ -29,6 +29,7 @@ class MarketListFilterForm(ModelQueryForm):
                                                             required=False, choices=BOOL_CHOICES)
     translation_seller_support = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
                                                            required=False, choices=BOOL_CHOICES)
+    page = forms.CharField(required=False)
 
     class Meta:
         model = Market

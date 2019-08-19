@@ -109,7 +109,7 @@ class MarketModelTests(TestCase):
 
     def test_special_terms(self):
         # Create a market, without special terms, and check that the special terms is a known phrase
-        known_phrase = "We’re working hard to get a deal in place."
+        known_phrase = "<p>We’re working hard to get a deal in place.</p>"
         market = create_market()
         self.assertEquals(market.special_terms, known_phrase)
 
@@ -124,6 +124,14 @@ class MarketModelTests(TestCase):
         # The special terms also supports HTML, check that it strips the HTML and still detects empty special terms
         market.dit_special_terms = " <p>  <i> &nbsp; </i> \r\n \n </p>  "
         self.assertEquals(market.special_terms, known_phrase)
+
+    def test_format_float(self):
+        market = create_market()
+        # only the last 0, 00 should be removed
+        self.assertEquals(market.format_float(12.00), 12)
+        self.assertEquals(market.format_float(12.05), 12.05)
+        self.assertEquals(market.format_float(12.00), 12)
+        self.assertEquals(market.format_float(12.050), 12.05)
 
     def test_market_publishing_validation(self):
         # Create a market and check that it produces ValidationErrors

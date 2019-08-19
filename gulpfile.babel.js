@@ -129,7 +129,8 @@ gulp.task('default',
   [
     'javascripts',
     'sass',
-    'imagemin'
+    'imagemin',
+    'watch'
   ]
 );
 

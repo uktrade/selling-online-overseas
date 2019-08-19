@@ -1,0 +1,168 @@
+.hero-section {
+    h1 {
+      @include heading-hero-mob;
+      margin-bottom: 10px;
+    }
+
+    .search-section p {
+      width: 100%;
+      font-size: $font-size-s;
+    }
+
+    .search-form {
+        margin-top: 10px;
+    }
+
+    .breadcrumbs-section {
+      padding: $spacing-3-m 0;
+    }
+
+    @media screen and (min-width: 769px) {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: right;
+      padding: 0;
+
+        h1 {
+            @include heading-hero;
+            margin-bottom: $spacing-4;
+        }
+
+        .search-section p {
+            width: $cols-8;
+            font-size: $font-size-m;
+        }
+
+        .search-form {
+            margin-top: 0;
+        }
+
+        .number {
+            @include heading-m;
+        }
+        .breadcrumbs-section {
+            background-color: transparent;
+            color: $white;
+            padding: $spacing-3 0;
+            a, a:visited {
+                color: $white;
+            }
+        }
+        .search-section {
+            background-color: transparent;
+            color: $white;
+        }
+    }
+}
+
+.description.case-study-intro {
+    @include body-s;
+}
+
+.exporter-stories {
+    h3.heading-large {
+        margin-bottom: 15px;
+    }
+}
+
+.random-markets, .how-can-we-help-you-online, .exporter-stories, .how-can-we-help-you {
+
+    .card {
+        margin-bottom: 10px;
+        .card-image {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 200px;
+        }
+    }
+
+    h2.heading-large {
+        line-height: 1.3em;
+    }
+
+    h3.heading-large {
+        font-size: 19px;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+        font-family: $brand-font-alternative;
+    }
+
+
+    .subheading {
+        font-size: 16px;
+    }
+}
+
+.how-can-we-help-you-online {
+    .help-benefit {
+        .inner {
+            margin-bottom: 0;
+            padding: 0 0 30px;
+        }
+    }
+}
+.how-can-we-help-you {
+    .card {
+        .card-inner {
+            padding: 15px 0 30px;
+        }
+        .card-image {
+            height: 60px;
+        }
+    }
+}
+
+.random-markets {
+    .card .card-image {
+        background-size: auto;
+    }
+}
+
+.mobile-footer {
+    .button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .random-markets, .how-can-we-help-you-online, .exporter-stories, .how-can-we-help-you {
+        margin-bottom: 0;
+        .card {
+            margin-bottom: 0;
+        }
+        .flex-grid {
+            margin-top: 60px;
+        }
+
+        h2.heading-large {
+            margin-bottom: 0;
+        }
+
+        h3.heading-large {
+            font-size: $font-size-l;
+        }
+
+        .column-third-l:last-child {
+            .card-inner {
+                padding-bottom: 30px;
+            }
+        }
+    }
+
+    .exporter-stories, .random-markets {
+
+        .column-third-l:last-child {
+            .card-inner {
+               padding-bottom: 30px;
+            }
+        }
+
+    }
+
+    .mobile-footer {
+        display: none;
+    }
+
+}

@@ -1,35 +1,19 @@
 @import '../generic/mixins';
 
 .audit {
-  border-top: 1px solid $white;
-  margin-top: 20px;
-  padding-top: 10px;
   position: relative;
 
-  &-button {
+  .container {
+    border-top: 1px solid $stone;
+  }
+
+  .button-ghost-blue {
+    min-width: 170px;
+  }
+
+  &-content{
     width: 50%;
-
-    .button {
-      width: 85%;
-
-      @include media ($tablet) {
-        width: 90%;
-      }
-    }
-
-    &--send {
-      @include media($mobile) {
-        width: 100%;
-      }
-
-      .button {
-        width: 100%;
-
-        @include media($desktop-only) {
-          width: 70%;
-        }
-      }
-    }
+    margin: 0 auto;
   }
 
   .form-textarea {
@@ -37,18 +21,18 @@
   }
 
   .icon {
-    background-size: 30px;
+    background-size: 60px;
     display: inline-block;
-    height: 30px;
+    height: 60px;
+    width: 60px;
     position: relative;
     top: 7px;
-    width: 30px;
   }
 
   &-header {
     display: inline-block;
     margin-bottom: 25px;
-    margin-left: 10px;
+    font-weight: bold;
   }
 
   .button {
@@ -58,5 +42,22 @@
 
   &--white {
     border-color: $mid-grey;
+  }
+
+  @media screen and (min-width: 641px) {
+
+    .feedback-header {
+      text-align: center;
+    }
+    &-form {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }
