@@ -29,7 +29,7 @@ django-js-asset==1.2.2    # via django-ckeditor
 django-reversion==2.0.8
 django-storages==1.5.2
 django-thumber==1.0.0
-django==1.11.22
+django==1.11.23
 django_extensions==2.1.6
 djangorestframework==3.9.1
 docker-py==1.2.1
