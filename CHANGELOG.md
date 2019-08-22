@@ -44,3 +44,9 @@
 - XOT-840 - display correct link to marketplace
 - No ticket - Upgrade vulnerable django version to django 1.11.22
 - No ticket - Upgrade vulnerable django rest framework version
+
+## [2019.06.16](https://github.com/uktrade/navigator/releases/tag/2019.06.16)
+
+**Implemented enhancements:**
+
+- XOT-840 - Links provided to Great.gov search now use user-facing URLs
