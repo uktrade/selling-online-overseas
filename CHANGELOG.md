@@ -1,14 +1,29 @@
 # Changelog
 
-## Pre-release
+### Implemented enhancements
+- GTRANSFORM-352 - search form, change select sizes for accessibility issue on search country filter
+- XOT-999 - remove arrow button from new designs and change spelling on homepage
+- GTRANSFORM-346 directory components upgrade for external link helpers in footer
 
-**Implemented enhancements:**
+### Fixed bugs
 
-**Fixed bugs:**
-
-## [2019.08.05](https://github.com/uktrade/navigator/releases/tag/2019.08.05)
+## [2019.07.15] (https://github.com/uktrade/directory-ui-supplier/releases/tag/2019.08.08)
+[Full Changelog](https://github.com/uktrade/directory-ui-supplier/compare/2019.08.06...2019.08.08)
 
 ### Implemented enhancements
+- XOT-994 - wrap no deal text in paragraph
+- XOT-994 - changelog, requirements and small CSS change
+- XOT-994 - update special terms test
+
+### Fixed bugs
+- No ticket - Update header
+
+
+## [2019.07.15] (https://github.com/uktrade/directory-ui-supplier/releases/tag/2019.08.06)
+[Full Changelog](https://github.com/uktrade/directory-ui-supplier/compare/cba35dba000639efa336db8904bc7e5331feef0f..2019.08.06)
+
+### Implemented enhancements
+- GTRANSFORM - add accessibility helper text to external link
 - COT-989 - breadcrumb text changes and inject backbutton for no js users
 - XOT-987 - last minute design changes and detail.html pulling correct offer text
 - XOT-987 - add content changes, add missing separator for detail page, change font for search results heading and add border
