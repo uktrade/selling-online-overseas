@@ -27,17 +27,14 @@
     margin-bottom: 20px;
   }
 
-  .button-arrow-small {
-    text-align: left;
-    &:after {
-      text-align: center;
-    }
-  }
-
   .term {
     float: left;
     width: 100%;
     margin-bottom: 15px;
+  }
+
+  .soo-search-button {
+    width: 100%;
   }
 
   &:after {
@@ -46,7 +43,6 @@
     display: block;
   }
 }
-
 
 @media screen and (min-width: 769px) {
   .search-form {
@@ -59,7 +55,7 @@
       font-size: 19px;
     }
     .filter {
-          width: $cols-3;
+          width: $cols-5;
           margin-bottom: 0;
         select {
           left: -2px;
@@ -67,23 +63,20 @@
       }
 
       .term {
-        width:  $cols-9;
+        width:  $cols-7;
         margin-bottom: 0;
       }
 
-      .button-arrow-small {
+      .soo-search-button {
         width: auto;
         margin-top: 15px;
         height: 60px;
-        &:after {
-          bottom: 3px;
-        }
       }
   }
 }
 
 
-@media screen and (min-width: 981px) {
+@media screen and (min-width: 961px) {
 
   .search-form {
     padding-bottom: $spacing-3;
@@ -93,7 +86,7 @@
     }
 
     .filter {
-        width: $cols-3;
+        width: $cols-4;
         margin-bottom: 0;
 
       select {
@@ -101,27 +94,15 @@
       }
     }
 
-    .button-arrow-small {
+    .soo-search-button {
         margin: 0;
-        width: calc(#{$cols-4} - #{$spacing-4});
+        width: calc(#{$cols-3} - #{$spacing-4});
         float: right;
     }
 
     .term {
         width:  $cols-5;
         margin-bottom: 0;
-    }
-  }
-}
-
-@media screen and (min-width: 1060px) {
-  .search-form {
-    .button-arrow-small {
-        width: calc(#{$cols-3} - #{$spacing-4});
-    }
-
-    .term {
-      width:  $cols-6;
     }
   }
 }
