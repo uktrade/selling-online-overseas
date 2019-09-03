@@ -13,10 +13,10 @@ import os
 import dj_database_url
 from easy_thumbnails.conf import Settings as thumbnail_settings
 import environ
-
+from django.urls import reverse_lazy
 
 env = environ.Env()
-
+env.read_env()
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'thumber',
     'directory_components',
     'activitystream.apps.ActivityStreamConfig',
-    'django_extensions'
+    'django_extensions',
+    'authbroker_client',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -299,4 +300,19 @@ FEATURE_FLAGS = {
         'FEATURE_NEW_HEADER_FOOTER_ENABLED', False
     ),
     'HEADER_SEARCH_ON': env.bool('FEATURE_HEADER_SEARCH_ENABLED', False),
+    'ENFORCE_STAFF_SSO_ON': env.bool('FEATURE_ENFORCE_STAFF_SSO_ENABLED', False),
 }
+
+if FEATURE_FLAGS['ENFORCE_STAFF_SSO_ON']:
+    AUTHENTICATION_BACKENDS = [
+        'django.contrib.auth.backends.ModelBackend',
+        'authbroker_client.backends.AuthbrokerBackend'
+    ]
+    LOGIN_URL = reverse_lazy('authbroker:login')
+    LOGIN_REDIRECT_URL = 'selling-online-overseas/admin/' 
+
+     # authbroker config
+    AUTHBROKER_URL = env.str('STAFF_SSO_AUTHBROKER_URL')
+    AUTHBROKER_CLIENT_ID = env.str('AUTHBROKER_CLIENT_ID')
+    AUTHBROKER_CLIENT_SECRET = env.str('AUTHBROKER_CLIENT_SECRET')
+
