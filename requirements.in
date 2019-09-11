@@ -30,8 +30,8 @@ s3transfer==0.1.10
 six
 whitenoise==3.2.1
 Whoosh==2.7.4
-directory_components==27.5.0
-directory_constants==18.3.0
+directory_components==29.0.0
+directory_constants==19.1.0
 directory-sso-api-client==4.1.1
 directory-validators==5.0.0
 sigauth>=4.0.0,<5.0.0

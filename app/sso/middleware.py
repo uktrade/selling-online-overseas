@@ -13,7 +13,8 @@ class SSOUserMiddleware:
     MESSAGE_SSO_UNREACHABLE = 'Unable to reach SSO'
 
     def process_request(self, request):
-        request.sso_user = None
+        import pdb; pdb.set_trace()
+        # request.sso_user = None
         session_id = request.COOKIES.get(settings.SSO_SESSION_COOKIE)
 
         if session_id:
