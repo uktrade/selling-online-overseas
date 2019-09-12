@@ -65,7 +65,6 @@
 
 {% block body_js %}
   <script src="{% static 'javascripts/all.js' %}"></script>
-  <script type="text/javascript" src="{% static 'javascripts/index.js' %}"></script>
   <script type="text/javascript">
     const isAnonymous = document.cookie.indexOf('sso_display_logged_in=true') === -1;
     const accountLinksContainer = document.getElementsByClassName('extra-links')[0];
