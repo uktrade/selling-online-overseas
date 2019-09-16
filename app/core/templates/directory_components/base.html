@@ -28,21 +28,6 @@
 
 {% block body_js %}
   <script src="{% static 'javascripts/all.js' %}"></script>
-  <script type="text/javascript">
-    var isAnonymous = document.cookie.indexOf('sso_display_logged_in=true') === -1;
-    var accountLinksContainer = document.getElementsByClassName('extra-links')[0];
-    var account = document.getElementById('header-profile');
-    var signOut = document.getElementById('header-sign-out');
-    var signIn = document.getElementById('header-sign-in');
-    if (isAnonymous) {
-      accountLinksContainer.removeChild(account);
-      accountLinksContainer.removeChild(signOut);
-    } else {
-      account.style.display = 'inline-block';
-      signOut.style.display = 'inline-block';
-      accountLinksContainer.removeChild(signIn);
-    }
-  </script>
   {% block extra_js %}
     {# needed for thumbor #}
   {% endblock %}
