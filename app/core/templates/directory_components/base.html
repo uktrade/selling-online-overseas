@@ -29,11 +29,11 @@
 {% block body_js %}
   <script src="{% static 'javascripts/all.js' %}"></script>
   <script type="text/javascript">
-    const isAnonymous = document.cookie.indexOf('sso_display_logged_in=true') === -1;
-    const accountLinksContainer = document.getElementsByClassName('extra-links')[0];
-    const account = document.getElementById('header-profile');
-    const signOut = document.getElementById('header-sign-out');
-    const signIn = document.getElementById('header-sign-in');
+    var isAnonymous = document.cookie.indexOf('sso_display_logged_in=true') === -1;
+    var accountLinksContainer = document.getElementsByClassName('extra-links')[0];
+    var account = document.getElementById('header-profile');
+    var signOut = document.getElementById('header-sign-out');
+    var signIn = document.getElementById('header-sign-in');
     if (isAnonymous) {
       accountLinksContainer.removeChild(account);
       accountLinksContainer.removeChild(signOut);
