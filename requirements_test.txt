@@ -16,10 +16,10 @@ codecov==2.0.15
 contextlib2==0.5.4
 coverage==4.5.2
 directory-client-core==4.4.0  # via directory-sso-api-client
-directory-constants==18.3.0  # via directory-components
+directory-constants==20.1.0  # via directory-components
 directory-sso-api-client==4.1.1
 directory-validators==5.0.0
-directory_components==27.6.0
+directory_components==32.3.1
 dj-database-url==0.4.1
 django-admin-ip-restrictor==1.0.0
 django-appconf==1.0.1

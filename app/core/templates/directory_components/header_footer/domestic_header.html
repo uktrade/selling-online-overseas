@@ -1,0 +1,18 @@
+{% extends 'directory_components/header_footer/domestic_header.html' %}
+
+{% block login_state %}
+    <ul class="extra-links">
+        {% if request.sso_user %}
+          <li class="authenticated">
+            <a href="{{ sso_profile_url }}" class="account-link profile">Account</a>
+          </li>
+          <li class="authenticated">
+            <a href="{{ sso_logout_url }}" class="account-link signout">Sign out</a>
+          </li>
+        {% else %}
+          <li class="anonymous">
+            <a href="{{ sso_login_url }}" class="account-link signin">Sign in</a>
+          </li>
+        {% endif %}
+    </ul>
+{% endblock %}
