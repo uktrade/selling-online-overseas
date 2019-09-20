@@ -14,7 +14,7 @@
 
 ### Fixed bugs
 
-## [2019.07.15] (https://github.com/uktrade/navigator/releases/tag/2019.08.08)
+## [2019.08.08] (https://github.com/uktrade/navigator/releases/tag/2019.08.08)
 [Full Changelog](https://github.com/uktrade/navigator/compare/2019.08.06...2019.08.08)
 
 ### Implemented enhancements
@@ -26,7 +26,7 @@
 - No ticket - Update header
 
 
-## [2019.07.15] (https://github.com/uktrade/navigator/releases/tag/2019.08.06)
+## [2019.08.06] (https://github.com/uktrade/navigator/releases/tag/2019.08.06)
 [Full Changelog](https://github.com/uktrade/navigator/compare/cba35dba000639efa336db8904bc7e5331feef0f..2019.08.06)
 
 ### Implemented enhancements
