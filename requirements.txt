@@ -9,7 +9,7 @@ attrs==19.1.0             # via jsonschema
 beautifulsoup4==4.6.0
 boto3==1.7.31
 botocore==1.10.84         # via boto3, s3transfer
-certifi==2019.6.16        # via requests
+certifi==2019.9.11        # via requests
 chardet==3.0.4            # via requests
 contextlib2==0.5.4
 directory-client-core==6.1.0  # via directory-sso-api-client
@@ -60,7 +60,7 @@ s3transfer==0.1.10
 sigauth==4.1.1
 six==1.12.0
 uk-postcode-utils==1.0
-urllib3==1.25.3
+urllib3==1.25.5
 w3lib==1.21.0             # via directory-client-core
 whitenoise==3.2.1
 whoosh==2.7.4
