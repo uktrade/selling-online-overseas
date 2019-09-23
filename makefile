@@ -56,7 +56,7 @@ DEBUG_SET_ENV_VARS := \
 	export STORAGE_TYPE=local; \
 	export PRIVACY_COOKIE_DOMAIN=.trade.great; \
 	export FEATURE_EXPORT_JOURNEY_ENABLED=false; \
-	export DIRECTORY_SSO_API_CLIENT_BASE_URL=http://sso.trade.great:8004/; \
+	export DIRECTORY_SSO_API_CLIENT_BASE_URL=http://sso.trade.great:8003/; \
 	export DIRECTORY_SSO_API_CLIENT_API_KEY=api_signature_debug; \
 	export SSO_PROXY_LOGIN_URL=http://sso.trade.great:8004/accounts/login/?next=http://soo.trade.great:8008; \
 	export SSO_PROXY_LOGOUT_URL=http://sso.trade.great:8004/accounts/logout/?next=http://soo.trade.great:8008; \
