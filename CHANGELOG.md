@@ -1,15 +1,32 @@
 # Changelog
 
+## Unreleased
+
+### Implemented enhancements
+- XOT-856 - Staff SSO Integration for Admin Centre
+
+
+## [2019.09.23] (https://github.com/uktrade/navigator/releases/tag/2019.09.23)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.08.22...2019.09.23)
+
+### Implemented enhancements
+- XOT-1010 - Header is fixed for signing in and out
+- GTRANSFORM-372 - upgrade components to 34.0.0 for accessibility footer link
+
+
+## [2019.08.22] (https://github.com/uktrade/navigator/releases/tag/2019.08.22)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.08.08...2019.08.22)
+
 ### Implemented enhancements
 - GTRANSFORM-352 - search form, change select sizes for accessibility issue on search country filter
 - XOT-999 - remove arrow button from new designs and change spelling on homepage
 - GTRANSFORM-346 directory components upgrade for external link helpers in footer
-- XOT-1010 - Header is fixed for signing in and out
 
 ### Fixed bugs
 
-## [2019.07.15] (https://github.com/uktrade/directory-ui-supplier/releases/tag/2019.08.08)
-[Full Changelog](https://github.com/uktrade/directory-ui-supplier/compare/2019.08.06...2019.08.08)
+
+## [2019.08.08] (https://github.com/uktrade/navigator/releases/tag/2019.08.08)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.08.06...2019.08.08)
 
 ### Implemented enhancements
 - XOT-994 - wrap no deal text in paragraph
@@ -20,8 +37,8 @@
 - No ticket - Update header
 
 
-## [2019.07.15] (https://github.com/uktrade/directory-ui-supplier/releases/tag/2019.08.06)
-[Full Changelog](https://github.com/uktrade/directory-ui-supplier/compare/cba35dba000639efa336db8904bc7e5331feef0f..2019.08.06)
+## [2019.08.06] (https://github.com/uktrade/navigator/releases/tag/2019.08.06)
+[Full Changelog](https://github.com/uktrade/navigator/compare/cba35dba000639efa336db8904bc7e5331feef0f..2019.08.06)
 
 ### Implemented enhancements
 - GTRANSFORM - add accessibility helper text to external link

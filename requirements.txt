@@ -13,10 +13,10 @@ certifi==2019.9.11        # via requests
 chardet==3.0.4            # via requests
 contextlib2==0.5.4
 directory-client-core==6.1.0  # via directory-sso-api-client
-directory-constants==18.7.0  # via directory-components
+directory-constants==20.5.0  # via directory-components
 directory-sso-api-client==6.0.1
 directory-validators==5.0.0
-directory_components==27.6.0
+directory_components==34.0.0
 dj-database-url==0.4.1
 django-admin-ip-restrictor==1.0.0
 django-appconf==1.0.1
@@ -60,7 +60,7 @@ s3transfer==0.1.10
 sigauth==4.1.1
 six==1.12.0
 uk-postcode-utils==1.0
-urllib3==1.25.5
+urllib3==1.25.6
 w3lib==1.21.0             # via directory-client-core
 whitenoise==3.2.1
 whoosh==2.7.4

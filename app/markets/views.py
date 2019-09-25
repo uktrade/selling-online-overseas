@@ -60,7 +60,6 @@ class HomepageView(MarketFilterMixin, TemplateView):
         """
         Include the count of markets in the context data for showing on the homepage
         """
-
         return super().get_context_data(
             *args, **kwargs,
             page_type='LandingPage',
