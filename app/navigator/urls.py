@@ -26,8 +26,8 @@ urlpatterns_unprefixed = [
 if settings.FEATURE_FLAGS['ENFORCE_STAFF_SSO_ON']:
     urlpatterns_unprefixed = [
         url('^auth/', include('authbroker_client.urls',
-                               namespace='authbroker',
-                               app_name='authbroker_client')
+                              namespace='authbroker',
+                              app_name='authbroker_client')
             ),
         url(r'^admin/login/$',
             RedirectView.as_view(url=reverse_lazy('authbroker:login'), query_string=True)),
