@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## Pre-release
 
 ### Implemented enhancements
 - XOT-856 - Staff SSO Integration for Admin Centre
