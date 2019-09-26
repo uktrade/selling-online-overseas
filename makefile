@@ -103,7 +103,7 @@ CODECOV := \
 	fi
 
 test:
-	$(COLLECT_STATIC) && pycodestyle && $(PYTEST) && $(CODECOV)
+	$(COLLECT_STATIC) && $(FLAKE8) && $(PYTEST) && $(CODECOV)
 
 debug_test:
-	$(DEBUG_SET_ENV_VARS) && $(COLLECT_STATIC) && pycodestyle --exclude=.venv,node_modules && $(PYTEST) && $(CODECOV)
+	$(DEBUG_SET_ENV_VARS) && $(COLLECT_STATIC) && $(FLAKE8) && $(PYTEST) && $(CODECOV)
