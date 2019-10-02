@@ -101,7 +101,7 @@ CODECOV := \
 	   codecov --token=$$CODECOV_REPO_TOKEN ;\
 	fi
 
-lint:
+flake8:
 	pycodestyle --exclude=.venv,node_modules
 
 test:
