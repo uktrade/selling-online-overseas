@@ -1,5 +1,10 @@
 # Changelog
 
+## Pre-release
+
+### Implemented enhancements
+- XOT-856 - Staff SSO Integration for Admin Centre
+
 
 ## [2019.09.23] (https://github.com/uktrade/navigator/releases/tag/2019.09.23)
 [Full Changelog](https://github.com/uktrade/navigator/compare/2019.08.22...2019.09.23)

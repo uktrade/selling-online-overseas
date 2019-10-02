@@ -2,11 +2,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import TemplateView
-
+from django.views.generic import TemplateView, RedirectView
 from core.views import PingView
 from markets.views import HomepageView
 from activitystream.views import ActivityStreamViewSet
+from django.urls import reverse_lazy
 
 urlpatterns_unprefixed = [
     url(r'^robots\.txt$', TemplateView.as_view(
@@ -22,6 +22,16 @@ urlpatterns_unprefixed = [
         ActivityStreamViewSet.as_view({'get': 'list'}),
         name='activity-stream'),
 ]
+
+if settings.FEATURE_FLAGS['ENFORCE_STAFF_SSO_ON']:
+    urlpatterns_unprefixed = [
+        url('^auth/', include('authbroker_client.urls',
+                              namespace='authbroker',
+                              app_name='authbroker_client')
+            ),
+        url(r'^admin/login/$',
+            RedirectView.as_view(url=reverse_lazy('authbroker:login'), query_string=True)),
+    ] + urlpatterns_unprefixed
 
 # to display thumbnails properly MEDIA_URL needs to have added prefix separately
 urlpatterns = [

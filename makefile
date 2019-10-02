@@ -94,13 +94,15 @@ debug_manage:
 test_requirements:
 	pip install -r requirements_test.txt
 
-FLAKE8 := flake8 app --exclude=migrations,.venv
 PYTEST := pytest ./app -v --ignore=node_modules --cov=./app --cov-config=.coveragerc --capture=no $(pytest_args)
 COLLECT_STATIC := python ./app/manage.py collectstatic --noinput
 CODECOV := \
 	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
 	   codecov --token=$$CODECOV_REPO_TOKEN ;\
 	fi
+
+flake8:
+	pycodestyle --exclude=.venv,node_modules
 
 test:
 	$(COLLECT_STATIC) && pycodestyle && $(PYTEST) && $(CODECOV)
