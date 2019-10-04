@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
+    'core.middleware.AdminPermissionCheckMiddleware',
     'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
     'directory_components.middleware.MaintenanceModeMiddleware',
     'django.middleware.security.SecurityMiddleware',

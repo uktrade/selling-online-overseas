@@ -3,7 +3,7 @@
 ## Pre-release
 
 ### Implemented enhancements
-- XOT-856 - Staff SSO Integration for Admin Centre
+- XOT-856 - Staff SSO Integration for Admin Centre including 401 error if user not given admin rights
 
 
 ## [2019.09.23] (https://github.com/uktrade/navigator/releases/tag/2019.09.23)
