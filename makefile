@@ -78,6 +78,10 @@ DEBUG_SET_ENV_VARS := \
 	export CMS_SIGNATURE_SECRET=debug; \
 	export CMS_URL=http://cms.trade.great:8010
 
+TEST_SET_ENV_VARS := \
+	export CMS_SIGNATURE_SECRET=test; \
+	export CMS_URL=http://cms.trade.great:8010
+
 DJANGO_WEBSERVER := \
 	python app/manage.py migrate && \
 	python app/manage.py build_index && \
@@ -107,7 +111,7 @@ flake8:
 	pycodestyle --exclude=.venv,node_modules
 
 test:
-	pycodestyle && $(PYTEST) && $(CODECOV)
+	$(TEST_SET_ENV_VARS) && pycodestyle && $(PYTEST) && $(CODECOV)
 
 debug_test:
 	$(DEBUG_SET_ENV_VARS) && pycodestyle --exclude=.venv,node_modules && $(PYTEST) && $(CODECOV)
