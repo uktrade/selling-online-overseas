@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load card from directory_components %}
 
 {% block head_title %}Welcome to Selling online overseas{% endblock head_title %}
 
@@ -96,7 +97,7 @@
     </div>
   </section>
 
-  <section class="exporter-stories background-stone-30" id="exporter-stories">
+  <section class="exporter-stories background-stone-30 padding-bottom-60" id="exporter-stories">
     <div class="container">
       <div class="grid-row">
         <div class="column-full column-two-thirds-m column-half-l">
@@ -105,25 +106,15 @@
           </p>
         </div>
       </div>
-      <div class="flex-grid margin-bottom-15 margin-bottom-30-l">
-        {% for story in case_studies %}
-          <div class="column-full-m column-third-l ">
-            <div class="card">
-              <a class="card-link" href="{% url 'markets:case_story' story.slug %}">
-                <div class="card-image"
-                  style="background-image: url('{% get_static_prefix %}images/case-story/{{ story.html.metadata.image }}');"
-                  role="image" alt="{{ story.html.metadata.title }}">
-                </div>
-                <div class="card-inner">
-                  <p class="description subheading">Case study</p>
-                  <h3 class="heading-large">{{ story.html.metadata.title }}</h3>
-                  <p class="description case-study-intro">{{ story.html.metadata.subtitle|default:story.html.metadata.meta_description }}</p>
-                </div>
-              </a>
-            </div>
+
+      <div class="flex-grid">
+        {% for story in success_stories %}
+          <div class="column-third-xl column-half-l">
+            {% card url=story.meta.url img_src=story.hero_image_thumbnail.url title=story.title description=story.teaser %}
           </div>
         {% endfor %}
       </div>
+
     </div>
   </section>
 

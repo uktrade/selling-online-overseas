@@ -2,7 +2,9 @@ import ast
 
 from django.http import JsonResponse
 from django.views.generic import ListView, TemplateView, View
-from django.shortcuts import render
+from django.conf import settings
+from django.utils.functional import cached_property
+
 from django.db.models import (
     Max,
     Case,
@@ -21,6 +23,9 @@ from thumber.decorators import thumber_feedback
 from casestudy.casestudies import CASE_STUDIES
 from geography.models import Country
 from products.models import Category
+
+from directory_cms_client.client import cms_api_client
+from directory_cms_client.helpers import handle_cms_response
 
 from .models import Market, PublishedMarket
 from .forms import MarketListFilterForm
@@ -56,12 +61,22 @@ class HomepageView(MarketFilterMixin, TemplateView):
     submit_wording = "Send feedback"
     satisfied_wording = "Was this service useful?"
 
+    @cached_property
+    def page(self):
+        response = cms_api_client.lookup_by_slug(
+            slug='success-stories',
+            language_code=settings.LANGUAGE_CODE,
+            draft_token=self.request.GET.get('draft_token'),
+        )
+        return handle_cms_response(response)
+
     def get_context_data(self, *args, **kwargs):
         """
         Include the count of markets in the context data for showing on the homepage
         """
         return super().get_context_data(
             *args, **kwargs,
+            success_stories=self.page['child_pages'],
             page_type='LandingPage',
             countries=Country.objects.all().order_by('name'),
             categories=Category.objects.all().order_by('name'),

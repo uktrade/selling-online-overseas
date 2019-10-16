@@ -15,7 +15,8 @@ chardet==3.0.4            # via requests
 codecov==2.0.15
 contextlib2==0.5.4
 coverage==4.5.4
-directory-client-core==6.1.0  # via directory-sso-api-client
+directory-client-core==6.1.0  # via directory-cms-client, directory-sso-api-client
+directory-cms-client==11.0.0
 directory-constants==20.5.0  # via directory-components
 directory-sso-api-client==6.0.1
 directory-validators==5.0.0
@@ -84,3 +85,6 @@ wcwidth==0.1.7            # via pytest
 whitenoise==3.2.1
 whoosh==2.7.4
 zipp==0.6.0               # via importlib-metadata
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools==41.4.0        # via jsonschema
