@@ -41,7 +41,7 @@ class MarketFilterMixin(object):
         if not self.request:
             authenticated = False
         else:
-            authenticated = self.request.user.is_authenticated()
+            authenticated = self.request.user.is_authenticated
 
         if not authenticated:
             # Remove the not published Markets for un-authed users
@@ -101,7 +101,7 @@ class NewMarketListView(MarketFilterMixin, TemplateView):
         category_id = params.get('category_id')
         country_id = params.get('country_id')
 
-        MarketModel = PublishedMarket if request.user.is_authenticated() else Market
+        MarketModel = PublishedMarket if request.user.is_authenticated else Market
         qs = self.markets.all()
 
         if category_id and category_id.isdigit():

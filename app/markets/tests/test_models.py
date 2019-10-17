@@ -111,27 +111,27 @@ class MarketModelTests(TestCase):
         # Create a market, without special terms, and check that the special terms is a known phrase
         known_phrase = "<p>We’re working hard to get a deal in place.</p>"
         market = create_market()
-        self.assertEquals(market.special_terms, known_phrase)
+        self.assertEqual(market.special_terms, known_phrase)
 
         # Add some special terms to the actual field
         market.dit_special_terms = "Some special terms"
-        self.assertEquals(market.special_terms, "Some special terms")
+        self.assertEqual(market.special_terms, "Some special terms")
 
         # Add some empty special terms, and check that it ignores it, and uses the predetermined phrase again
         market.dit_special_terms = "     "
-        self.assertEquals(market.special_terms, known_phrase)
+        self.assertEqual(market.special_terms, known_phrase)
 
         # The special terms also supports HTML, check that it strips the HTML and still detects empty special terms
         market.dit_special_terms = " <p>  <i> &nbsp; </i> \r\n \n </p>  "
-        self.assertEquals(market.special_terms, known_phrase)
+        self.assertEqual(market.special_terms, known_phrase)
 
     def test_format_float(self):
         market = create_market()
         # only the last 0, 00 should be removed
-        self.assertEquals(market.format_float(12.00), 12)
-        self.assertEquals(market.format_float(12.05), 12.05)
-        self.assertEquals(market.format_float(12.00), 12)
-        self.assertEquals(market.format_float(12.050), 12.05)
+        self.assertEqual(market.format_float(12.00), 12)
+        self.assertEqual(market.format_float(12.05), 12.05)
+        self.assertEqual(market.format_float(12.00), 12)
+        self.assertEqual(market.format_float(12.050), 12.05)
 
     def test_market_publishing_validation(self):
         # Create a market and check that it produces ValidationErrors
@@ -173,14 +173,14 @@ class MarketModelTests(TestCase):
 
         # Set all the ForeignKey and ManyToMany fields
         market.language = language
-        market.currency_of_payments = (currency_of_payments,)
-        market.logistics_structure = (logistics_structure,)
-        market.product_positioning = (product_positioning,)
-        market.seller_model = (seller_model,)
-        market.famous_brands_on_marketplace = (famous_brand_on_marketplace,)
-        market.customer_support_channels = (support_channel,)
-        market.seller_support_channels = (support_channel,)
-        market.product_details_upload_method = (product_details_upload_method,)
+        market.currency_of_payments.set((currency_of_payments,))
+        market.logistics_structure.set((logistics_structure,))
+        market.product_positioning.set((product_positioning,))
+        market.seller_model.set((seller_model,))
+        market.famous_brands_on_marketplace.set((famous_brand_on_marketplace,))
+        market.customer_support_channels.set((support_channel,))
+        market.seller_support_channels.set((support_channel,))
+        market.product_details_upload_method.set((product_details_upload_method,))
 
         # Now it no longer raises a ValidationError
         market.validate_for_publishing()
