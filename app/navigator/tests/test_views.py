@@ -1,17 +1,21 @@
-import requests
 import pytest
 
 from unittest import mock
 
 from django.urls import reverse
 
+from helpers import create_response
 
-def create_response(json_body={}, status_code=200, content=None):
-    response = requests.Response()
-    response.status_code = status_code
-    response.json = lambda: json_body
-    response._content = content
-    return response
+
+@pytest.mark.django_db
+@mock.patch('directory_cms_client.client.cms_api_client.lookup_by_slug')
+def test_home_page(mock_cms_page, client):
+    mock_cms_page.return_value = create_response({'child_pages': []})
+    response = client.get(reverse('home'))
+
+    assert response.status_code == 200
+    assert response.context_data['page_type'] == 'LandingPage'
+    assert 'Selling online overseas' in str(response.content)
 
 
 @pytest.mark.django_db
