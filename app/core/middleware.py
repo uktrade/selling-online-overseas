@@ -12,5 +12,5 @@ class AdminPermissionCheckMiddleware(MiddlewareMixin):
         if request.user is not None:
             if request.resolver_match.namespace == 'admin' or \
                request.path_info.startswith('/selling-online-overseas/admin/login'):
-                if not request.user.is_staff and request.user.is_authenticated():
+                if not request.user.is_staff and request.user.is_authenticated:
                     return HttpResponse(self.SSO_UNAUTHORISED_ACCESS_MESSAGE, status=401)

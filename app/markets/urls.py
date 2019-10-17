@@ -4,16 +4,11 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 
 from . import views
-from casestudy.views import CaseStudyView
 
 app_name = 'markets'
 
 urlpatterns = [
-    url(
-        r'^story/(?P<slug>[\w-]+)/$',
-        CaseStudyView.as_view(),
-        name='case_story'
-    ),
+    url(r'^story/(?P<slug>[\w-]+)/$', RedirectView.as_view(url=reverse_lazy('home')), name='case_story_redirect'),
     url(r'^$', RedirectView.as_view(url=reverse_lazy('home'), permanent=True)),
     url(r'^filter/$', RedirectView.as_view(url=reverse_lazy('home'), permanent=True)),
     url(r'^results/$', views.NewMarketListView.as_view(), name='list'),

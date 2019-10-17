@@ -12,7 +12,8 @@ botocore==1.10.84         # via boto3, s3transfer
 certifi==2019.9.11        # via requests
 chardet==3.0.4            # via requests
 contextlib2==0.5.4
-directory-client-core==6.1.0  # via directory-sso-api-client
+directory-client-core==6.1.0  # via directory-cms-client, directory-sso-api-client
+directory-cms-client==11.0.0
 directory-constants==20.5.0  # via directory-components
 directory-sso-api-client==6.0.1
 directory-validators==5.0.0
@@ -64,3 +65,6 @@ urllib3==1.25.6
 w3lib==1.21.0             # via directory-client-core
 whitenoise==3.2.1
 whoosh==2.7.4
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools==41.4.0        # via jsonschema
