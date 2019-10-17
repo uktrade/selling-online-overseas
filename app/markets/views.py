@@ -20,7 +20,6 @@ from django.core.paginator import Paginator
 
 from thumber.decorators import thumber_feedback
 
-from casestudy.casestudies import CASE_STUDIES
 from geography.models import Country
 from products.models import Category
 
@@ -80,7 +79,6 @@ class HomepageView(MarketFilterMixin, TemplateView):
             page_type='LandingPage',
             countries=Country.objects.all().order_by('name'),
             categories=Category.objects.all().order_by('name'),
-            case_studies=CASE_STUDIES.values(),
             market_count=self.markets.count(),
             last_updated=self.markets.aggregate(
                 Max('last_modified'))['last_modified__max'],

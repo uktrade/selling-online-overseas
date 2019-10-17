@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'image_cropping',
     'core',
     'markets',
-    'casestudy',
     'geography',
     'products',
     'thumber',
