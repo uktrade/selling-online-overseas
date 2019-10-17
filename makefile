@@ -111,7 +111,7 @@ flake8:
 	pycodestyle --exclude=.venv,node_modules
 
 test:
-	$(TEST_SET_ENV_VARS) && pycodestyle && $(PYTEST) && $(CODECOV)
+	$(COLLECT_STATIC) && $(TEST_SET_ENV_VARS) && pycodestyle && $(PYTEST) && $(CODECOV)
 
 debug_test:
-	$(DEBUG_SET_ENV_VARS) && pycodestyle --exclude=.venv,node_modules && $(PYTEST) && $(CODECOV)
+	$(COLLECT_STATIC) && $(DEBUG_SET_ENV_VARS) && pycodestyle --exclude=.venv,node_modules && $(PYTEST) && $(CODECOV)
