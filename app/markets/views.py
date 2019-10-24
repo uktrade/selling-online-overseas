@@ -63,7 +63,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
     @cached_property
     def page(self):
         response = cms_api_client.lookup_by_slug(
-            slug='success-stories',
+            slug='selling-online-overseas-homepage',
             language_code=settings.LANGUAGE_CODE,
             draft_token=self.request.GET.get('draft_token'),
         )
@@ -75,7 +75,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
         """
         return super().get_context_data(
             *args, **kwargs,
-            success_stories=self.page['child_pages'],
+            success_stories=self.page['featured_case_studies'],
             page_type='LandingPage',
             countries=Country.objects.all().order_by('name'),
             categories=Category.objects.all().order_by('name'),
@@ -99,7 +99,7 @@ class NewMarketListView(MarketFilterMixin, TemplateView):
         category_id = params.get('category_id')
         country_id = params.get('country_id')
 
-        MarketModel = PublishedMarket if request.user.is_authenticated else Market
+        PublishedMarket if request.user.is_authenticated else Market
         qs = self.markets.all()
 
         if category_id and category_id.isdigit():
@@ -217,7 +217,7 @@ class MarketListView(MarketFilterMixin, ListView):
 
                 # Turn the property into a filter selector, need to use __in since it's a list of values
                 _filter["{}__in".format(key)] = items
-            except:
+            except KeyError:
                 # Ignore GET params that aren't on the model
                 pass
 

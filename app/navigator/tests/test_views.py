@@ -22,7 +22,7 @@ def test_home_page(mock_cms_page, client):
 @mock.patch('directory_cms_client.client.cms_api_client.lookup_by_slug')
 def test_homepage_case_studies_cms(mock_cms_page, client):
     mock_cms_page.return_value = create_response({
-        'child_pages': [
+        'featured_case_studies': [
             {
                 'meta': {'slug': 'the-slug-one'},
                 'hero_image_thumbnail': {'url': 'hero.png'},
