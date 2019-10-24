@@ -55,7 +55,7 @@ def test_sso_middleware_api_response_ok(
 @patch('directory_sso_api_client.client.sso_api_client.user.get_session_user', api_response_bad)
 @patch('directory_cms_client.client.cms_api_client.lookup_by_slug')
 def test_sso_middleware_bad_response(mock_cms_page, settings, client):
-    mock_cms_page.return_value = create_response({'child_pages': []})
+    mock_cms_page.return_value = create_response({'featured_case_studies': []})
     settings.MIDDLEWARE_CLASSES = [
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',

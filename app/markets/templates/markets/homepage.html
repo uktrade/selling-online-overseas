@@ -97,6 +97,7 @@
     </div>
   </section>
 
+  {% if success_stories %}
   <section class="exporter-stories background-stone-30 padding-bottom-60" id="exporter-stories">
     <div class="container">
       <div class="grid-row">
@@ -107,16 +108,17 @@
         </div>
       </div>
 
-      <div class="flex-grid">
+      <div class="flex-grid" id="featured-case-studies">
         {% for story in success_stories %}
-          <div class="column-third-xl column-half-l">
+          <article class="column-third-xl column-half-l">
             {% card url=story.meta.url img_src=story.hero_image_thumbnail.url title=story.title description=story.teaser %}
-          </div>
+          </article>
         {% endfor %}
       </div>
 
     </div>
   </section>
+  {% endif %}
 
   <section id="how-can-we-help-you-online" class="how-can-we-help-you-online">
     <div class="container">
