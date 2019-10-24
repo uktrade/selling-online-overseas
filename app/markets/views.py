@@ -24,7 +24,7 @@ from geography.models import Country
 from products.models import Category
 
 from directory_cms_client.client import cms_api_client
-from directory_cms_client.helpers import handle_cms_response
+from directory_cms_client.helpers import handle_cms_response_allow_404
 
 from .models import Market, PublishedMarket
 from .forms import MarketListFilterForm
@@ -67,15 +67,16 @@ class HomepageView(MarketFilterMixin, TemplateView):
             language_code=settings.LANGUAGE_CODE,
             draft_token=self.request.GET.get('draft_token'),
         )
-        return handle_cms_response(response)
+        return handle_cms_response_allow_404(response)
 
     def get_context_data(self, *args, **kwargs):
         """
         Include the count of markets in the context data for showing on the homepage
         """
+        featured_case_studies = self.page.get('featured_case_studies', [])
         return super().get_context_data(
             *args, **kwargs,
-            success_stories=self.page['featured_case_studies'],
+            success_stories=featured_case_studies,
             page_type='LandingPage',
             countries=Country.objects.all().order_by('name'),
             categories=Category.objects.all().order_by('name'),

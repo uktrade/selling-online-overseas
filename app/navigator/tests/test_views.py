@@ -44,3 +44,13 @@ def test_homepage_case_studies_cms(mock_cms_page, client):
 
     assert 'Title one' in str(response.content)
     assert 'Title two' in str(response.content)
+
+
+@pytest.mark.django_db
+@mock.patch('directory_cms_client.client.cms_api_client.lookup_by_slug')
+def test_homepage_case_studies_cms_404(mock_cms_page, client):
+    mock_cms_page.return_value = create_response(status_code=404)
+
+    response = client.get(reverse('home'))
+
+    assert response.status_code == 200
