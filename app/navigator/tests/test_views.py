@@ -10,7 +10,7 @@ from helpers import create_response
 @pytest.mark.django_db
 @mock.patch('directory_cms_client.client.cms_api_client.lookup_by_slug')
 def test_home_page(mock_cms_page, client):
-    mock_cms_page.return_value = create_response({'child_pages': []})
+    mock_cms_page.return_value = create_response({'featured_case_studies': []})
     response = client.get(reverse('home'))
 
     assert response.status_code == 200
