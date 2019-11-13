@@ -73,6 +73,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
         """
         Include the count of markets in the context data for showing on the homepage
         """
+        import pdb; pdb.set_trace()
         featured_case_studies = self.page.get('featured_case_studies', [])
         return super().get_context_data(
             *args, **kwargs,

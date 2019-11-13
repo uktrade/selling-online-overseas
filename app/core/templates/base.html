@@ -35,13 +35,27 @@
   <link href="{% static 'stylesheets/main.css' %}" rel="stylesheet" media="screen">
 {% endblock %}
 
+{% load banner from directory_components %}
+
 {% block body_content_container %}
     <main role="main" id="content">
-    {% block content %}{% endblock content %}
-    {% block feedback_reporter %}
-      <section class="padding-0">
-          {% block thumber_feedback %}{% endblock %}
-      </section>
-    {% endblock %}
+
+      {% if request.user.is_authenticated and not request.user.has_user_profile %}
+          <div class="margin-top-30">
+              {% if not request.user.company %}
+                  {% url 'enrolment-start' as url %}
+              {% else %}
+                  {% url 'business-profile-personal-details' as url %}
+              {% endif %}
+              {% banner banner_content='Complete your profile to help overseas buyers find you. <a href="'|add:url|add:'">Complete Business Profile</a>.</p>' badge_content='Business Profile incomplete' %}
+          </div>
+      {% endif %}
+
+      {% block content %}{% endblock content %}
+      {% block feedback_reporter %}
+        <section class="padding-0">
+            {% block thumber_feedback %}{% endblock %}
+        </section>
+      {% endblock %}
     </main>
 {% endblock %}
