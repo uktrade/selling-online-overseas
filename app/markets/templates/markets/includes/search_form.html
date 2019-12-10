@@ -23,7 +23,7 @@
     <label class="visually-hidden">Filter by country (optional)</label>
     <select autocomplete="off" name="country_id">
       <option value="">
-        All regions and countries
+        All countries
       </option>
       {% for country in countries %}
       <option value="{{ country.id }}" {% if country.id == selected_country_id %}selected="selected"{% endif %}>

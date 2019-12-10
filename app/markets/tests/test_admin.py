@@ -40,7 +40,7 @@ class MarketAdminTests(TestCase):
     def test_add_no_publish(self):
         self._add_permission(self.add_perm)
         self._add_permission(self.change_perm)
-        self.assertEquals(Market.objects.count(), 0)
+        self.assertEqual(Market.objects.count(), 0)
 
         market_data = get_market_data()
         response = self.client.post(reverse('admin:markets_market_add'),
@@ -48,8 +48,8 @@ class MarketAdminTests(TestCase):
 
         self.assertRedirects(response,
                              reverse('admin:markets_market_changelist'))
-        self.assertEquals(Market.objects.count(), 1)
-        self.assertEquals(PublishedMarket.objects.count(), 0)
+        self.assertEqual(Market.objects.count(), 1)
+        self.assertEqual(PublishedMarket.objects.count(), 0)
 
     def test_publish_button(self):
         market = create_market()
@@ -71,23 +71,23 @@ class MarketAdminTests(TestCase):
         self._add_permission(self.publish_perm)
         self._add_permission(self.change_perm)
 
-        self.assertEquals(PublishedMarket.objects.count(), 0)
+        self.assertEqual(PublishedMarket.objects.count(), 0)
 
         # Try and publish, but validation will mean it won't publish
         response = self.client.post(
             reverse('admin:publish_market', args=[market.pk]))
         self.assertRedirects(response, reverse('admin:markets_market_change',
                                                args=[market.pk]))
-        self.assertEquals(Market.objects.count(), 1)
+        self.assertEqual(Market.objects.count(), 1)
         # XXX: CAn I test the redirected page contains
         # "Failed to publish Market" as a user message?
-        self.assertEquals(PublishedMarket.objects.count(), 0)
+        self.assertEqual(PublishedMarket.objects.count(), 0)
 
     def test_admin_restricted(self):
         with self.settings(RESTRICT_ADMIN=True):
             self._add_permission(self.add_perm)
             self._add_permission(self.change_perm)
-            self.assertEquals(Market.objects.count(), 0)
+            self.assertEqual(Market.objects.count(), 0)
 
             market_data = get_market_data()
             response = self.client.post(

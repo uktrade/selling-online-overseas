@@ -13,10 +13,12 @@ import os
 import dj_database_url
 from easy_thumbnails.conf import Settings as thumbnail_settings
 import environ
+from django.urls import reverse_lazy
 
+from directory_constants import cms
 
 env = environ.Env()
-
+env.read_env()
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -46,16 +48,17 @@ INSTALLED_APPS = [
     'image_cropping',
     'core',
     'markets',
-    'casestudy',
     'geography',
     'products',
     'thumber',
     'directory_components',
     'activitystream.apps.ActivityStreamConfig',
-    'django_extensions'
+    'django_extensions',
+    'authbroker_client',
 ]
 
 MIDDLEWARE_CLASSES = [
+    'core.middleware.AdminPermissionCheckMiddleware',
     'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
     'directory_components.middleware.MaintenanceModeMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -133,7 +136,7 @@ USE_X_FORWARDED_HOST = True
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
 
@@ -299,4 +302,44 @@ FEATURE_FLAGS = {
         'FEATURE_NEW_HEADER_FOOTER_ENABLED', False
     ),
     'HEADER_SEARCH_ON': env.bool('FEATURE_HEADER_SEARCH_ENABLED', False),
+    'ENFORCE_STAFF_SSO_ON': env.bool('FEATURE_ENFORCE_STAFF_SSO_ENABLED', False),
+}
+
+if FEATURE_FLAGS['ENFORCE_STAFF_SSO_ON']:
+    AUTHENTICATION_BACKENDS = [
+        'django.contrib.auth.backends.ModelBackend',
+        'authbroker_client.backends.AuthbrokerBackend'
+    ]
+    LOGIN_URL = reverse_lazy('authbroker:login')
+    LOGIN_REDIRECT_URL = reverse_lazy('admin:index')
+
+    # authbroker config
+    AUTHBROKER_URL = env.str('STAFF_SSO_AUTHBROKER_URL')
+    AUTHBROKER_CLIENT_ID = env.str('AUTHBROKER_CLIENT_ID')
+    AUTHBROKER_CLIENT_SECRET = env.str('AUTHBROKER_CLIENT_SECRET')
+
+
+# directory CMS
+DIRECTORY_CMS_API_CLIENT_BASE_URL = env.str('CMS_URL')
+DIRECTORY_CMS_API_CLIENT_API_KEY = env.str('CMS_SIGNATURE_SECRET')
+DIRECTORY_CMS_API_CLIENT_SENDER_ID = 'directory'
+DIRECTORY_CMS_API_CLIENT_SERVICE_NAME = cms.EXPORT_READINESS
+DIRECTORY_CMS_API_CLIENT_DEFAULT_TIMEOUT = 15
+DIRECTORY_CMS_SITE_ID = env.str('DIRECTORY_CMS_SITE_ID', 3)
+
+# directory clients
+DIRECTORY_CLIENT_CORE_CACHE_EXPIRE_SECONDS = env.int(
+    'DIRECTORY_CLIENT_CORE_CACHE_EXPIRE_SECONDS',
+    60 * 60 * 24 * 30  # 30 days
+)
+
+cache = {
+    'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    'LOCATION': 'unique-snowflake',
+}
+
+CACHES = {
+    'default': cache,
+    'api_fallback': cache,
+    'cms_fallback': cache,
 }

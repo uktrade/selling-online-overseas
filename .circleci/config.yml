@@ -8,6 +8,8 @@ jobs:
           DJANGO_SETTINGS_MODULE: navigator.settings.test
           PHANTOMJS_BIN: node_modules/phantomjs/bin/phantomjs
           SECRET_KEY: foobar
+          CMS_URL: http://cms.trade.great:8010
+          CMS_SIGNATURE_SECRET: test
           STORAGE_TYPE: local
           SSO_SESSION_COOKIE: debug_sso_session_cookie
 
