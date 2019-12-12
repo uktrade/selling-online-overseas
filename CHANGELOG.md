@@ -3,6 +3,7 @@
 ## Pre-release
 
 ### Implemented enhancements
+- DATAPROJECTS-259 - Updated country names and removed UK from find a marketplace search
 - XOT-1119 - small text changes to homepage and search form
 - XOT-856 - Staff SSO Integration for Admin Centre including 401 error if user not given admin rights
 - XOT-1077 - Get case studies from CMS on homepage
