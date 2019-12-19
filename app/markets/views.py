@@ -31,10 +31,6 @@ from .forms import MarketListFilterForm
 from core.forms import QueryChoiceMixin
 
 
-def get_countries():
-    return Country.objects.exclude(name='United Kingdom').order_by('name')
-
-
 class MarketFilterMixin(object):
     """
     """
@@ -82,7 +78,7 @@ class HomepageView(MarketFilterMixin, TemplateView):
             *args, **kwargs,
             success_stories=featured_case_studies,
             page_type='LandingPage',
-            countries=get_countries(),
+            countries=Country.objects.all().order_by('name'),
             categories=Category.objects.all().order_by('name'),
             market_count=self.markets.count(),
             last_updated=self.markets.aggregate(
@@ -121,7 +117,7 @@ class NewMarketListView(MarketFilterMixin, TemplateView):
             'market_list': qs,
             'selected_country_id': country_id,
             'selected_category_id': category_id,
-            'countries': get_countries(),
+            'countries': Country.objects.all().order_by('name'),
             'categories': Category.objects.all().order_by('name'),
             'pagination_page': pagination_page,
         }

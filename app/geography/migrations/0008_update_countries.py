@@ -12,7 +12,7 @@ country_mapping = {
 }
 
 
-def update_country_names(apps, schema_editor):
+def update_countries(apps, schema_editor):
     # Updating country names to be consistent with countries and territories on data workspace
     # https://data.trade.gov.uk/catalogue/reference-data-sets/reference/countries-and-territories
     Country = apps.get_model('geography', 'Country')
@@ -25,6 +25,9 @@ def update_country_names(apps, schema_editor):
         except Country.DoesNotExist:
             pass
 
+    # Remove United Kingdom if present
+    Country.objects.filter(name='United Kingdom').delete()
+
 
 class Migration(migrations.Migration):
 
@@ -33,5 +36,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(update_country_names, migrations.RunPython.noop),
+        migrations.RunPython(update_countries, migrations.RunPython.noop),
     ]

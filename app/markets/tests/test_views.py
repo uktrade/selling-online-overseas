@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 
 from ..models import PublishedMarket
-from . import create_market, create_country
+from . import create_market
 
 
 class MarketPublishingTests(TestCase):
@@ -77,12 +77,6 @@ class MarketPublishingTests(TestCase):
         response = self.client.get(reverse('markets:detail', kwargs={'slug': self.market.slug}))
         self.assertContains(response, self.market.name, status_code=200)
 
-    def test_market_detail_united_kingdom_not_a_valid_option(self):
-        self._publish_market()
-        create_country('United Kingdom')
-        response = self.client.get(reverse('markets:detail', kwargs={'slug': self.market.slug}))
-        self.assertNotContains(response, 'United Kingdom', status_code=200)
-
 
 class MarketTests(TestCase):
 
@@ -139,8 +133,3 @@ class MarketTests(TestCase):
         assert response.status_code == 200
         assert response.context_data['page_type'] == 'SearchResultsPage'
         assert 'Ebay' in str(response.content)
-
-    def test_market_list_united_kingdom_not_a_valid_option(self):
-        create_country('United Kingdom')
-        response = self.client.get(reverse('markets:list'))
-        self.assertNotContains(response, 'United Kingdom', status_code=200)
