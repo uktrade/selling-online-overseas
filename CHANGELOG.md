@@ -9,6 +9,8 @@
 - XOT-1077 - Get case studies from CMS on homepage
 - XOT-856 - Increase Django SSO Staff Client library 
 
+### Fixed bugs
+ - TT-1614 - Set the CSRF and session cooke to secure by default
 
 ## [2019.09.23] (https://github.com/uktrade/navigator/releases/tag/2019.09.23)
 [Full Changelog](https://github.com/uktrade/navigator/compare/2019.08.22...2019.09.23)

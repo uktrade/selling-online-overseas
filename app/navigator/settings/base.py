@@ -147,6 +147,7 @@ USE_L10N = True
 USE_TZ = True
 
 CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', True)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -189,6 +190,7 @@ WHOOSH_INDEX_DIR = os.path.join(BASE_DIR, 'whoosh_index')
 
 DEBUG = False
 SESSION_COOKIE_AGE = 43200  # 12 hours
+SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', True)
 
 # Grappelli settings
 GRAPPELLI_ADMIN_TITLE = "Selling Online Overseas CMS"
