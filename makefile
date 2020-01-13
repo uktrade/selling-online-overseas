@@ -76,7 +76,9 @@ DEBUG_SET_ENV_VARS := \
 	export FEATURE_HEADER_SEARCH_ENABLED=false; \
 	export STATIC_HOST=http://0.0.0.0:$$PORT/selling-online-overseas; \
 	export CMS_SIGNATURE_SECRET=debug; \
-	export CMS_URL=http://cms.trade.great:8010
+	export CMS_URL=http://cms.trade.great:8010; \
+	export SESSION_COOKIE_SECURE=False; \
+	export CSRF_COOKIE_SECURE=False
 
 TEST_SET_ENV_VARS := \
 	export CMS_SIGNATURE_SECRET=test; \

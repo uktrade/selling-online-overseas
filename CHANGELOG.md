@@ -3,11 +3,14 @@
 ## Pre-release
 
 ### Implemented enhancements
+- DATAPROJECTS-259 - Updated country names and removed UK from find a marketplace search
 - XOT-1119 - small text changes to homepage and search form
 - XOT-856 - Staff SSO Integration for Admin Centre including 401 error if user not given admin rights
 - XOT-1077 - Get case studies from CMS on homepage
 - XOT-856 - Increase Django SSO Staff Client library 
 
+### Fixed bugs
+ - TT-1614 - Set the CSRF and session cooke to secure by default
 
 ## [2019.09.23] (https://github.com/uktrade/navigator/releases/tag/2019.09.23)
 [Full Changelog](https://github.com/uktrade/navigator/compare/2019.08.22...2019.09.23)

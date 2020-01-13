@@ -16,7 +16,6 @@ directory-client-core==6.1.0  # via directory-cms-client, directory-sso-api-clie
 directory-cms-client==11.0.0
 directory-constants==20.5.0  # via directory-components
 directory-sso-api-client==6.0.1
-directory-validators==5.0.0
 directory_components==34.0.0
 dj-database-url==0.4.1
 django-admin-ip-restrictor==1.0.0
@@ -45,15 +44,13 @@ markdown2==2.3.6
 mohawk==0.3.4             # via sigauth
 monotonic==1.5            # via directory-client-core
 oauthlib==3.1.0           # via requests-oauthlib
-olefile==0.44             # via directory-validators, pillow
 packaging==16.8
-phonenumberslite==7.7.4   # via directory-validators
-pillow==4.2.1
+pillow==6.2.1
 psycopg2==2.7.3.2
 pyparsing==2.2.0
 pyrsistent==0.15.4        # via jsonschema
 python-dateutil==2.6.0
-pytz==2017.2              # via directory-validators, django
+pytz==2017.2              # via django
 raven==5.31.0
 requests-oauthlib==1.2.0  # via django-staff-sso-client
 requests==2.22.0
@@ -65,3 +62,6 @@ urllib3==1.25.6
 w3lib==1.21.0             # via directory-client-core
 whitenoise==3.2.1
 whoosh==2.7.4
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools
