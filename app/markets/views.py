@@ -3,6 +3,7 @@ import ast
 from django.http import JsonResponse
 from django.views.generic import ListView, TemplateView, View
 from django.conf import settings
+from django.core.exceptions import FieldDoesNotExist
 from django.utils.functional import cached_property
 
 from django.db.models import (
@@ -218,7 +219,7 @@ class MarketListView(MarketFilterMixin, ListView):
 
                 # Turn the property into a filter selector, need to use __in since it's a list of values
                 _filter["{}__in".format(key)] = items
-            except KeyError:
+            except:
                 # Ignore GET params that aren't on the model
                 pass
 
