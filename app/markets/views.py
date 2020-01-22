@@ -3,7 +3,7 @@ import ast
 from django.http import JsonResponse
 from django.views.generic import ListView, TemplateView, View
 from django.conf import settings
-from django.core.exceptions import FieldDoesNotExist
+
 from django.utils.functional import cached_property
 
 from django.db.models import (
