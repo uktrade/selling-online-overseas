@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load card from directory_components %}
 
 {% block head_title %}Welcome to Selling online overseas{% endblock head_title %}
 
@@ -57,7 +58,7 @@
             </div>
             <div class="card-inner">
               <h3 class="heading-large">Tap into our knowledge</h3>
-              <p class="description">Get free support from our UK-based E-Commerce Advisers. Their in-depth knowledge of exporting via e-commerce to international markets means you'll get tailored advice.
+              <p class="description">Get free support from our UK-based E-Commerce Advisers. Their in-depth knowledge of exporting via e-commerce to international marketplaces means you'll get tailored advice.
               </p>
             </div>
           </div>
@@ -71,7 +72,7 @@
             </div>
             <div class="card-inner">
               <h3 class="heading-large">Get connected</h3>
-              <p class="description">Connect to international markets through us and you'll enjoy the benefits. Our connections mean you might get reduced commission rates and 'try for free' periods.
+              <p class="description">Connect to international marketplaces through us and you'll enjoy the benefits. Our connections mean you might get reduced commission rates and 'try for free' periods.
 
 
               </p>
@@ -96,7 +97,8 @@
     </div>
   </section>
 
-  <section class="exporter-stories background-stone-30" id="exporter-stories">
+  {% if success_stories %}
+  <section class="exporter-stories background-stone-30 padding-bottom-60" id="exporter-stories">
     <div class="container">
       <div class="grid-row">
         <div class="column-full column-two-thirds-m column-half-l">
@@ -105,27 +107,18 @@
           </p>
         </div>
       </div>
-      <div class="flex-grid margin-bottom-15 margin-bottom-30-l">
-        {% for story in case_studies %}
-          <div class="column-full-m column-third-l ">
-            <div class="card">
-              <a class="card-link" href="{% url 'markets:case_story' story.slug %}">
-                <div class="card-image"
-                  style="background-image: url('{% get_static_prefix %}images/case-story/{{ story.html.metadata.image }}');"
-                  role="image" alt="{{ story.html.metadata.title }}">
-                </div>
-                <div class="card-inner">
-                  <p class="description subheading">Case study</p>
-                  <h3 class="heading-large">{{ story.html.metadata.title }}</h3>
-                  <p class="description case-study-intro">{{ story.html.metadata.subtitle|default:story.html.metadata.meta_description }}</p>
-                </div>
-              </a>
-            </div>
-          </div>
+
+      <div class="flex-grid" id="featured-case-studies">
+        {% for story in success_stories %}
+          <article class="column-third-xl column-half-l">
+            {% card url=story.meta.url img_src=story.hero_image_thumbnail.url title=story.title description=story.teaser %}
+          </article>
         {% endfor %}
       </div>
+
     </div>
   </section>
+  {% endif %}
 
   <section id="how-can-we-help-you-online" class="how-can-we-help-you-online">
     <div class="container">

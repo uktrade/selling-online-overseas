@@ -7,23 +7,23 @@ from django.core.urlresolvers import reverse
 redirects = [
     (
         '/selling-online-overseas/markets/story/global-marketplaces-drive-burlingham-london-to-success/',  # noqa
-        '/'
+        '/selling-online-overseas/'
     ),
     (
         '/selling-online-overseas/markets/story/online-marketplaces-propel-freestyle-xtreme-sales/',
-        '/'
+        '/selling-online-overseas/'
     ),
     (
         '/selling-online-overseas/markets/story/hello-babys-rapid-online-growth/',
-        '/'
+        '/selling-online-overseas/'
     ),
     (
         '/selling-online-overseas/markets/story/york-bag-retailer-goes-global-via-e-commerce/',
-        '/'
+        '/selling-online-overseas/'
     ),
     (
         '/selling-online-overseas/markets/story/incorrect-case-study-slug/',
-        '/'
+        '/selling-online-overseas/'
     ),
 ]
 

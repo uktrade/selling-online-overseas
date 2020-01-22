@@ -34,8 +34,8 @@ def create_market(**variable_data):
 
     market = Market(**market_data)
     market.save()
-    market.operating_countries = operating_countries
-    market.product_categories = product_categories
+    market.operating_countries.set(operating_countries)
+    market.product_categories.set(product_categories)
     market.logo = logo
     market.save()
     return market

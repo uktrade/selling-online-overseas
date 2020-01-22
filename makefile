@@ -74,7 +74,15 @@ DEBUG_SET_ENV_VARS := \
 	export ACTIVITY_STREAM_SECRET_ACCESS_KEY=1234-secret-key; \
 	export FEATURE_NEW_HEADER_FOOTER_ENABLED=true; \
 	export FEATURE_HEADER_SEARCH_ENABLED=false; \
-	export STATIC_HOST=http://0.0.0.0:$$PORT/selling-online-overseas
+	export STATIC_HOST=http://0.0.0.0:$$PORT/selling-online-overseas; \
+	export CMS_SIGNATURE_SECRET=debug; \
+	export CMS_URL=http://cms.trade.great:8010; \
+	export SESSION_COOKIE_SECURE=False; \
+	export CSRF_COOKIE_SECURE=False
+
+TEST_SET_ENV_VARS := \
+	export CMS_SIGNATURE_SECRET=test; \
+	export CMS_URL=http://cms.trade.great:8010
 
 DJANGO_WEBSERVER := \
 	python app/manage.py migrate && \
@@ -94,13 +102,15 @@ debug_manage:
 test_requirements:
 	pip install -r requirements_test.txt
 
-FLAKE8 := flake8 app --exclude=migrations,.venv
 PYTEST := pytest ./app -v --ignore=node_modules --cov=./app --cov-config=.coveragerc --capture=no $(pytest_args)
 COLLECT_STATIC := python ./app/manage.py collectstatic --noinput
 CODECOV := \
 	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
 	   codecov --token=$$CODECOV_REPO_TOKEN ;\
 	fi
+
+flake8:
+	pycodestyle --exclude=.venv,node_modules
 
 test:
 	$(COLLECT_STATIC) && pycodestyle && $(PYTEST) && $(CODECOV)

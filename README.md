@@ -92,6 +92,19 @@ To make the sso features work locally add the following to your machine's `/etc/
 
 Then log into `directory-sso` via `sso.trade.great:8001`, and use `navigator` on `soo.trade.great:8008`
 
+## Staff SSO
+
+On local machine, SSO is turned off by default.
+If you need to enable, set the `FEATURE_ENFORCE_STAFF_SSO_ENABLED` to `true`.
+You also need to set:
+```
+STAFF_SSO_AUTHBROKER_URL
+AUTHBROKER_CLIENT_ID
+AUTHBROKER_CLIENT_SECRET
+```
+
+ Speak to webops or a team mate for the above values.
+
 
 ## Rebuilding the project
 
