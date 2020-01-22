@@ -335,6 +335,10 @@ DIRECTORY_CLIENT_CORE_CACHE_EXPIRE_SECONDS = env.int(
     60 * 60 * 24 * 30  # 30 days
 )
 
+# Activity Stream API
+ACTIVITY_STREAM_ACCESS_KEY_ID = env.str('ACTIVITY_STREAM_ACCESS_KEY_ID')
+ACTIVITY_STREAM_SECRET_ACCESS_KEY = env.str('ACTIVITY_STREAM_SECRET_ACCESS_KEY')
+
 cache = {
     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     'LOCATION': 'unique-snowflake',
