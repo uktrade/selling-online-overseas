@@ -1,5 +1,11 @@
 # Changelog
 
+## [2019.02.04]
+
+- Upgrade Django from 1.11.23 to 1.11.28
+
+## [2020.01.22]
+
 ## Pre-release
 
 ### Implemented enhancements
