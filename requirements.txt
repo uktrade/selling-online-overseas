@@ -30,7 +30,7 @@ django-reversion==2.0.8
 django-staff-sso-client==0.4.0
 django-storages==1.5.2
 django-thumber==1.0.0
-django==1.11.23
+django==1.11.28
 django_extensions==2.1.6
 djangorestframework==3.9.1
 docker-py==1.2.1
@@ -62,6 +62,3 @@ urllib3==1.25.6
 w3lib==1.21.0             # via directory-client-core
 whitenoise==3.2.1
 whoosh==2.7.4
-
-# The following packages are considered to be unsafe in a requirements file:
-# setuptools
