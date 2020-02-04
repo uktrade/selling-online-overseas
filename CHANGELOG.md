@@ -1,12 +1,20 @@
 # Changelog
 
-## [2019.02.04]
+## Pre-release
 
+### Implemented enhancements
+
+### Fixed bugs
+
+
+## [2019.02.04] (https://github.com/uktrade/navigator/releases/tag/2019.02.04)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2020.01.22-b...2019.02.04)
+
+### Fixed bugs
 - Upgrade Django from 1.11.23 to 1.11.28
 
-## [2020.01.22]
-
-## Pre-release
+## [2020.01.22-b] (https://github.com/uktrade/navigator/releases/tag/2020.01.22-b)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.09.23...2020.01.22-b)
 
 ### Implemented enhancements
 - DATAPROJECTS-259 - Updated country names and removed UK from find a marketplace search
