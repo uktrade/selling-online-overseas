@@ -17,7 +17,7 @@ contextlib2==0.5.4
 coverage==4.5.4
 directory-client-core==6.1.0  # via directory-cms-client, directory-sso-api-client
 directory-cms-client==11.0.0
-directory-components==35.15.1
+directory-components==35.15.2
 directory-constants==20.11.0  # via directory-components
 directory-sso-api-client==6.0.1
 dj-database-url==0.4.1
