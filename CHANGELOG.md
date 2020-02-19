@@ -2,13 +2,7 @@
 
 ## Pre-release
 - no ticket - update components for new cookie banner
-
-## [2020.01.22-b] (https://github.com/uktrade/navigator/releases/tag/2020.01.22-b)
-[Full Changelog](https://github.com/uktrade/navigator/compare/2019.09.23...2020.01.22-b)
-
-### Implemented enhancements
-
-### Fixed bugs
+- MVP-40 - Add GA360 context processor and remove GA360 Middleware
 
 
 ## [2019.02.04] (https://github.com/uktrade/navigator/releases/tag/2019.02.04)
