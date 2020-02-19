@@ -16,7 +16,7 @@ directory-client-core==6.1.0  # via directory-cms-client, directory-sso-api-clie
 directory-cms-client==11.0.0
 directory-constants==20.11.0  # via directory-components
 directory-sso-api-client==6.0.1
-directory_components==35.12.1
+directory_components==35.15.2
 dj-database-url==0.4.1
 django-admin-ip-restrictor==1.0.0
 django-appconf==1.0.1

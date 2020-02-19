@@ -18,12 +18,13 @@ directory-client-core==6.1.0  # via directory-cms-client, directory-sso-api-clie
 directory-cms-client==11.0.0
 directory-constants==20.11.0  # via directory-components
 directory-sso-api-client==6.0.1
-directory_components==35.12.1
+directory_components==35.15.2
 dj-database-url==0.4.1
 django-admin-ip-restrictor==1.0.0
 django-appconf==1.0.1
 django-ckeditor==5.6.1
 django-environ==0.4.5
+django-extensions==2.1.6
 django-grappelli==2.10.4
 django-image-cropping==1.0.4
 django-ipware==2.1.0      # via django-admin-ip-restrictor
@@ -33,7 +34,6 @@ django-staff-sso-client==0.4.0
 django-storages==1.5.2
 django-thumber==1.0.0
 django==1.11.28
-django_extensions==2.1.6
 djangorestframework==3.9.1
 docker-py==1.2.1
 docutils==0.13.1
