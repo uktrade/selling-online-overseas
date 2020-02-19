@@ -27,5 +27,6 @@ class SSOUserMiddleware:
                     request.sso_user = SSOUser(
                         id=sso_user_data['id'],
                         email=sso_user_data['email'],
+                        hashed_uuid=sso_user_data['hashed_uuid'],
                         session_id=session_id,
                     )

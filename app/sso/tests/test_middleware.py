@@ -15,6 +15,7 @@ def api_response_ok(*args, **kwargs):
         json=lambda: {
             'id': 1,
             'email': 'jim@example.com',
+            'hashed_uuid': '999'
         }
     )
 
