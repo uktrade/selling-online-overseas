@@ -11,15 +11,16 @@
 {% block head_js_ga360 %}
   <script src="{% static 'javascripts/dit.tagging.js' %}"></script>
   <script type="text/javascript">
-    window.dataLayer = [];
+    window.dataLayer = window.dataLayer || [];
+    {% if ga360 %}
     window.dataLayer.push({
-      'businessUnit': 'Selling Online Overseas',
-      'siteLanguage': 'en-gb',
-      'userID': '{{ user.id }}',
-      'loginStatus': '{{ sso_is_logged_in }}',
-      'pageCategory': '{{ page_type }}',
+        'businessUnit': '{{ ga360.business_unit }}',
+        'siteSection': '{{ ga360.site_section}}',
+        'siteSubsection': '{{ ga360.site_subsection }}',
+        'siteLanguage': '{{ ga360.site_language }}',
+        'userId': '{{ ga360.user_id }}',
+        'loginStatus': '{{ ga360.login_status }}',
     });
-
     dit.tagging.soo.init('{{ page_type }}');
   </script>
   {% include 'directory_components/google_tag_manager_head.html' %}
