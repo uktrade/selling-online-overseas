@@ -67,8 +67,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'sso.middleware.SSOUserMiddleware',
+    'directory_sso_api_client.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -304,23 +303,20 @@ FEATURE_FLAGS = {
     'NEW_HEADER_FOOTER_ON': env.bool(
         'FEATURE_NEW_HEADER_FOOTER_ENABLED', False
     ),
-    'HEADER_SEARCH_ON': env.bool('FEATURE_HEADER_SEARCH_ENABLED', False),
-    'ENFORCE_STAFF_SSO_ON': env.bool('FEATURE_ENFORCE_STAFF_SSO_ENABLED', False),
+    'HEADER_SEARCH_ON': env.bool('FEATURE_HEADER_SEARCH_ENABLED', False)
 }
 
-if FEATURE_FLAGS['ENFORCE_STAFF_SSO_ON']:
-    AUTHENTICATION_BACKENDS = [
-        'django.contrib.auth.backends.ModelBackend',
-        'authbroker_client.backends.AuthbrokerBackend'
-    ]
-    LOGIN_URL = reverse_lazy('authbroker:login')
-    LOGIN_REDIRECT_URL = reverse_lazy('admin:index')
+AUTHENTICATION_BACKENDS = [
+    'directory_sso_api_client.backends.SSOUserBackend',
+    'authbroker_client.backends.AuthbrokerBackend'
+]
+LOGIN_URL = reverse_lazy('authbroker:login')
+LOGIN_REDIRECT_URL = reverse_lazy('admin:index')
 
-    # authbroker config
-    AUTHBROKER_URL = env.str('STAFF_SSO_AUTHBROKER_URL')
-    AUTHBROKER_CLIENT_ID = env.str('AUTHBROKER_CLIENT_ID')
-    AUTHBROKER_CLIENT_SECRET = env.str('AUTHBROKER_CLIENT_SECRET')
-
+# authbroker config
+AUTHBROKER_URL = env.str('STAFF_SSO_AUTHBROKER_URL')
+AUTHBROKER_CLIENT_ID = env.str('AUTHBROKER_CLIENT_ID')
+AUTHBROKER_CLIENT_SECRET = env.str('AUTHBROKER_CLIENT_SECRET')
 
 # directory CMS
 DIRECTORY_CMS_API_CLIENT_BASE_URL = env.str('CMS_URL')
