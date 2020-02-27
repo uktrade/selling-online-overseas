@@ -80,8 +80,8 @@ flake8:
 test:
 	$(DEBUG_SET_ENV_VARS) && $(PYTEST)
 
-test_with_codecov:
-	$(COLLECT_STATIC) && pycodestyle && $(PYTEST) && $(CODECOV)
+circleci_test:
+	$(COLLECT_STATIC) && $(DEBUG_SET_ENV_VARS) && $(PYTEST)
 
 deploy:
 	docker-compose pull
