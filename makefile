@@ -81,7 +81,7 @@ test:
 	$(DEBUG_SET_ENV_VARS) && $(PYTEST)
 
 circleci_test:
-	$(COLLECT_STATIC) && $(DEBUG_SET_ENV_VARS) && $(PYTEST)
+  $(COLLECT_STATIC) && pycodestyle --exclude=.venv,node_modules && $(PYTEST) && $(CODECOV)
 
 deploy:
 	docker-compose pull
