@@ -39,5 +39,4 @@ def admin_client_sso(db, admin_user):
 def test_admin_permission_middleware_authorised_with_staff(client, settings, admin_user):
     client.force_login(admin_user)
     response = client.get(reverse('authbroker_client:login'))
-
     assert response.status_code == 302
