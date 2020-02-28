@@ -1,21 +1,10 @@
-import ast
-
 from django.http import JsonResponse
-from django.views.generic import ListView, TemplateView, View
+from django.views.generic import TemplateView, View
 from django.conf import settings
 
 from django.utils.functional import cached_property
 
-from django.db.models import (
-    Max,
-    Case,
-    When,
-    FloatField,
-    ExpressionWrapper,
-    Count,
-    F,
-    functions
-)
+from django.db.models import Max
 from django.http import Http404
 from django.core.paginator import Paginator
 
@@ -28,8 +17,6 @@ from directory_cms_client.client import cms_api_client
 from directory_cms_client.helpers import handle_cms_response_allow_404
 
 from .models import Market, PublishedMarket
-from .forms import MarketListFilterForm
-from core.forms import QueryChoiceMixin
 
 
 class MarketFilterMixin(object):

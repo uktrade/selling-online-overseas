@@ -1,10 +1,67 @@
-from unittest.mock import patch, Mock
+import pytest
+from unittest import mock
+import requests
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from django.contrib.auth.models import User
 
 from ..models import PublishedMarket
 from . import create_market
+
+
+def _create_response(json_body={}, status_code=200, content=None):
+    response = requests.Response()
+    response.status_code = status_code
+    response.json = lambda: json_body
+    response._content = content
+    return response
+
+
+@pytest.mark.django_db
+@mock.patch('directory_cms_client.client.cms_api_client.lookup_by_slug')
+def test_homepage(mock_cms_page, client):
+    mock_cms_page.return_value = _create_response({'featured_case_studies': []})
+    response = client.get(reverse('home'))
+
+    assert response.status_code == 200
+    assert response.context_data['page_type'] == 'LandingPage'
+    assert 'Selling online overseas' in str(response.content)
+
+
+@pytest.mark.django_db
+@mock.patch('directory_cms_client.client.cms_api_client.lookup_by_slug')
+def test_homepage_case_studies_cms(mock_cms_page, client):
+    mock_cms_page.return_value = _create_response({
+        'featured_case_studies': [
+            {
+                'meta': {'slug': 'the-slug-one'},
+                'hero_image_thumbnail': {'url': 'hero.png'},
+                'title': 'Title one',
+                'teaser': 'Lorem ipsum one',
+            },
+            {
+                'meta': {'slug': 'the-slug-two'},
+                'hero_image_thumbnail': {'url': 'hero.png'},
+                'title': 'Title two',
+                'teaser': 'Lorem ipsum two',
+            },
+        ]
+    })
+
+    response = client.get(reverse('home'))
+
+    assert response.status_code == 200
+    assert 'Title one' in str(response.content)
+    assert 'Title two' in str(response.content)
+
+
+@pytest.mark.django_db
+@mock.patch('directory_cms_client.client.cms_api_client.lookup_by_slug')
+def test_homepage_case_studies_cms_404(mock_cms_page, client):
+    mock_cms_page.return_value = _create_response(status_code=404)
+
+    response = client.get(reverse('home'))
+
+    assert response.status_code == 200
 
 
 class MarketViewsTests(TestCase):
@@ -17,27 +74,6 @@ class MarketViewsTests(TestCase):
 
     def tearDown(self):
         self.market.delete()
-
-    def test_market_homepage(self):
-        with patch('directory_cms_client.client.cms_api_client') as cms_client:
-            cms_client.return_value = Mock(**{'lookup_by_slug.return_value': {
-                'featured_case_studies': [
-                    {
-                        'meta': {'slug': 'the-slug-one'},
-                        'hero_image_thumbnail': {'url': 'hero.png'},
-                        'title': 'Title one',
-                        'teaser': 'Lorem ipsum one',
-                    },
-                    {
-                        'meta': {'slug': 'the-slug-two'},
-                        'hero_image_thumbnail': {'url': 'hero.png'},
-                        'title': 'Title two',
-                        'teaser': 'Lorem ipsum two',
-                    },
-                ]
-            }})
-            response = self.client.get(reverse('home'))
-            self.assertEqual(response.status_code, 200)
 
     def test_market_list(self):
         response = self.client.get(reverse('markets:list'))

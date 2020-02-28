@@ -39,7 +39,7 @@ DEBUG_SET_ENV_VARS := \
 
 TEST_SET_ENV_VARS := \
 	export CMS_SIGNATURE_SECRET=test; \
-	export CMS_URL=http://cms.trade.great:8010
+	export CMS_URL=debug
 
 DJANGO_WEBSERVER := \
 	python app/manage.py migrate && \
