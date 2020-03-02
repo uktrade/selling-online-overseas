@@ -129,7 +129,6 @@ var autoComplete =(function ($) {
         }
 
         createTag($('.form-dropdown-tags'), checkboxOption, optionId, buttonId);
-        resultCount.update_count();
 
         clearInput(input);
         dropdown.closeDropdown();
@@ -224,7 +223,6 @@ var autoComplete =(function ($) {
         event.preventDefault();
         $(this).parent().remove();
         deleteCheckbox(optionId);
-        resultCount.update_count();
         deleteTagFromStorage($(event.target).data('button-id'));
         deleteCacheTag($(this).data('item'),optionId);
     }
@@ -280,7 +278,6 @@ var autoComplete =(function ($) {
         deleteAllTags();
         $('.form-dropdown-option').removeClass('form-dropdown-option--selected');
         $('.form-dropdown-checkbox').empty();
-        resultCount.update_count();
     }
 
     return {
