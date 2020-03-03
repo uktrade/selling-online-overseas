@@ -1,13 +1,30 @@
 # Changelog
 
 ## Pre-release
+- no ticket - update components for new cookie banner
+- MVP-40 - Add GA360 context processor and remove GA360 Middleware
+- Remove existing SSO Middleware and move to directory-components SSO Middleware
+- Remove feature flagging for Authbroker Staff SSO
+- Remove unneccessary code in Market View
+- Fix Market homepage bug showing unpublished markets to logged-in users
+- Upgrade directory-components to 35.17.0
+
+
+## [2019.02.04] (https://github.com/uktrade/navigator/releases/tag/2019.02.04)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2020.01.22-b...2019.02.04)
+
+### Fixed bugs
+- Upgrade Django from 1.11.23 to 1.11.28
+
+## [2020.01.22-b] (https://github.com/uktrade/navigator/releases/tag/2020.01.22-b)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.09.23...2020.01.22-b)
 
 ### Implemented enhancements
 - DATAPROJECTS-259 - Updated country names and removed UK from find a marketplace search
 - XOT-1119 - small text changes to homepage and search form
 - XOT-856 - Staff SSO Integration for Admin Centre including 401 error if user not given admin rights
 - XOT-1077 - Get case studies from CMS on homepage
-- XOT-856 - Increase Django SSO Staff Client library 
+- XOT-856 - Increase Django SSO Staff Client library
 
 ### Fixed bugs
  - TT-1614 - Set the CSRF and session cooke to secure by default

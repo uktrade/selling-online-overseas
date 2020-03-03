@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-import base64
-import datetime
 import json
 import reversion
 import re
 
 from django.db import models
-from django.utils import timezone
 from django.utils.text import slugify
 from django.core.exceptions import ValidationError
 from django.utils.numberformat import format
