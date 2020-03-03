@@ -209,7 +209,7 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-AUTH_USER_MODEL='directory_sso_api_client.SSOUser'
+AUTH_USER_MODEL = 'directory_sso_api_client.SSOUser'
 
 # Hosts for various services, used in templates
 PROFILE_HOST = env.str('PROFILE_HOST', 'https://profile.great.gov.uk/')
