@@ -7,4 +7,3 @@ def create_response(json_body={}, status_code=200, content=None):
     response.json = lambda: json_body
     response._content = content
     return response
-
