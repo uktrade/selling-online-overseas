@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'activitystream.apps.ActivityStreamConfig',
     'django_extensions',
     'authbroker_client',
-    'directory_sso_api_client',
+    'sso',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -63,8 +63,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'directory_sso_api_client.middleware.AuthenticationMiddleware',
+    'sso.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -209,8 +208,6 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-AUTH_USER_MODEL = 'directory_sso_api_client.SSOUser'
-
 # Hosts for various services, used in templates
 PROFILE_HOST = env.str('PROFILE_HOST', 'https://profile.great.gov.uk/')
 
@@ -305,7 +302,7 @@ FEATURE_FLAGS = {
 }
 
 AUTHENTICATION_BACKENDS = [
-    'directory_sso_api_client.backends.SSOUserBackend',
+    'sso.backends.BusinessSSOUserBackend',
     'authbroker_client.backends.AuthbrokerBackend'
 ]
 LOGIN_URL = reverse_lazy('authbroker:login')
