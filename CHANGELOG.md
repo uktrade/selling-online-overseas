@@ -1,8 +1,14 @@
 # Changelog
 
+## [2020.03.04](https://github.com/uktrade/navigator/releases/tag/2020.03.04)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.02.04...2020.03.04)
+
+### Fixed bugs
+- No Ticket - Incorrectly showing seller support hours as customer support hours on Market detail page
+
+
 ## Pre-release
 
-### Hotfix
 - XOT-1296 - replace cookie banner with cookie modal
 
 ### Implemented enhancements
