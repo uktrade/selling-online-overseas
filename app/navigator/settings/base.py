@@ -25,14 +25,10 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(PROJECT_ROOT)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str('SECRET_KEY')
 
 # Application definition
-
 INSTALLED_APPS = [
     'grappelli',
     'reversion',
@@ -55,6 +51,7 @@ INSTALLED_APPS = [
     'activitystream.apps.ActivityStreamConfig',
     'django_extensions',
     'authbroker_client',
+    'sso',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -66,9 +63,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'sso.middleware.SSOUserMiddleware',
+    'sso.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -88,6 +83,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.hosts',
                 'directory_components.context_processors.sso_processor',
+                'directory_components.context_processors.ga360',
                 'directory_components.context_processors.urls_processor',
                 'directory_components.context_processors.cookie_notice',
                 ('directory_components.context_processors.'
@@ -303,23 +299,19 @@ FEATURE_FLAGS = {
     'NEW_HEADER_FOOTER_ON': env.bool(
         'FEATURE_NEW_HEADER_FOOTER_ENABLED', False
     ),
-    'HEADER_SEARCH_ON': env.bool('FEATURE_HEADER_SEARCH_ENABLED', False),
-    'ENFORCE_STAFF_SSO_ON': env.bool('FEATURE_ENFORCE_STAFF_SSO_ENABLED', False),
 }
 
-if FEATURE_FLAGS['ENFORCE_STAFF_SSO_ON']:
-    AUTHENTICATION_BACKENDS = [
-        'django.contrib.auth.backends.ModelBackend',
-        'authbroker_client.backends.AuthbrokerBackend'
-    ]
-    LOGIN_URL = reverse_lazy('authbroker:login')
-    LOGIN_REDIRECT_URL = reverse_lazy('admin:index')
+AUTHENTICATION_BACKENDS = [
+    'sso.backends.BusinessSSOUserBackend',
+    'authbroker_client.backends.AuthbrokerBackend'
+]
+LOGIN_URL = reverse_lazy('authbroker:login')
+LOGIN_REDIRECT_URL = reverse_lazy('admin:index')
 
-    # authbroker config
-    AUTHBROKER_URL = env.str('STAFF_SSO_AUTHBROKER_URL')
-    AUTHBROKER_CLIENT_ID = env.str('AUTHBROKER_CLIENT_ID')
-    AUTHBROKER_CLIENT_SECRET = env.str('AUTHBROKER_CLIENT_SECRET')
-
+# authbroker config
+AUTHBROKER_URL = env.str('STAFF_SSO_AUTHBROKER_URL')
+AUTHBROKER_CLIENT_ID = env.str('AUTHBROKER_CLIENT_ID')
+AUTHBROKER_CLIENT_SECRET = env.str('AUTHBROKER_CLIENT_SECRET')
 
 # directory CMS
 DIRECTORY_CMS_API_CLIENT_BASE_URL = env.str('CMS_URL')

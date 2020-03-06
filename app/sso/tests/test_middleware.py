@@ -1,89 +1,35 @@
-from unittest.mock import patch, Mock
+from unittest import mock
 
 import pytest
-import requests
+import requests_mock
 
-from django.urls import reverse
-
-from sso import middleware
-from navigator.tests.helpers import create_response
-
-
-def api_response_ok(*args, **kwargs):
-    return Mock(
-        ok=True,
-        json=lambda: {
-            'id': 1,
-            'email': 'jim@example.com',
-        }
-    )
-
-
-def api_response_bad():
-    return Mock(ok=False)
-
-
-def test_sso_middleware_installed(settings):
-    assert 'sso.middleware.SSOUserMiddleware' in settings.MIDDLEWARE_CLASSES
-
-
-@patch('directory_sso_api_client.client.sso_api_client.user.get_session_user')
-def test_sso_middleware_no_cookie(mock_get_session_user, settings, client):
-    settings.MIDDLEWARE_CLASSES = ['sso.middleware.SSOUserMiddleware']
-    response = client.get(reverse('robots'))
-
-    mock_get_session_user.assert_not_called()
-    assert response._request.sso_user is None
-
-
-@patch('directory_sso_api_client.client.sso_api_client.user.get_session_user')
-def test_sso_middleware_api_response_ok(
-    mock_get_session_user, settings, client
-):
-    mock_get_session_user.return_value = api_response_ok()
-    client.cookies[settings.SSO_SESSION_COOKIE] = '123'
-    settings.MIDDLEWARE_CLASSES = ['sso.middleware.SSOUserMiddleware']
-    response = client.get(reverse('robots'))
-
-    mock_get_session_user.assert_called_with('123')
-    assert response._request.sso_user.id == 1
-    assert response._request.sso_user.session_id == '123'
-    assert response._request.sso_user.email == 'jim@example.com'
+from sso.tests.helpers import create_response
 
 
 @pytest.mark.django_db
-@patch('directory_sso_api_client.client.sso_api_client.user.get_session_user', api_response_bad)
-@patch('directory_cms_client.client.cms_api_client.lookup_by_slug')
-def test_sso_middleware_bad_response(mock_cms_page, settings, client):
-    mock_cms_page.return_value = create_response({'featured_case_studies': []})
-    settings.MIDDLEWARE_CLASSES = [
-        'django.contrib.sessions.middleware.SessionMiddleware',
-        'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'sso.middleware.SSOUserMiddleware'
-    ]
-    response = client.get(reverse('home'))
-
-    assert response._request.sso_user is None
-
-
-@pytest.mark.parametrize(
-    'excpetion_class', requests.exceptions.RequestException.__subclasses__()
-)
-@patch('directory_sso_api_client.client.sso_api_client.user.get_session_user')
-def test_sso_middleware_timeout(
-    mock_get_session_user, settings, client, caplog, excpetion_class
-):
-    mock_get_session_user.side_effect = excpetion_class()
+@mock.patch('directory_sso_api_client.sso_api_client.user.get_session_user')
+def test_authenticated(mock_get_session_user, client, settings):
     client.cookies[settings.SSO_SESSION_COOKIE] = '123'
-    settings.MIDDLEWARE_CLASSES = [
-        'django.contrib.sessions.middleware.SessionMiddleware',
-        'sso.middleware.SSOUserMiddleware'
-    ]
+    mock_get_session_user.return_value = create_response({'id': 1, 'email': 'jim@example.com', 'hashed_uuid': 'thing'})
 
-    response = client.get(reverse('robots'))
+    response = client.get('/')
+    request = response.wsgi_request
 
-    assert response.status_code == 200
+    assert request.user.is_authenticated
+    assert request.user.id == 1
+    assert request.user.pk == 1
+    assert request.user.email == 'jim@example.com'
+    assert request.user.hashed_uuid == 'thing'
 
-    log = caplog.records[-1]
-    assert log.levelname == 'ERROR'
-    assert log.msg == middleware.SSOUserMiddleware.MESSAGE_SSO_UNREACHABLE
+
+@pytest.mark.django_db
+@mock.patch('directory_sso_api_client.sso_api_client.user.get_session_user')
+def test_not_authenticated(mock_get_session_user, client, settings):
+    client.cookies[settings.SSO_SESSION_COOKIE] = '123'
+
+    mock_get_session_user.return_value = create_response(status_code=404)
+
+    response = client.get('/')
+
+    request = response.wsgi_request
+    assert not request.user.is_authenticated
