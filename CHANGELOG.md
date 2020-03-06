@@ -8,6 +8,7 @@
 - Remove unneccessary code in Market View
 - Fix Market homepage bug showing unpublished markets to logged-in users
 - Upgrade directory-components to 35.17.0
+- Use standard directory-components header
 
 
 ## [2019.02.04] (https://github.com/uktrade/navigator/releases/tag/2019.02.04)
