@@ -5,7 +5,7 @@
 
 ### Fixed bugs
 - No Ticket - Incorrectly showing seller support hours as customer support hours on Market detail page
-
+- No Ticket - Re-add missing back button to detail page
 
 ## Pre-release
 - no ticket - update components for new cookie banner
