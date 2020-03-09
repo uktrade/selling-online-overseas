@@ -219,24 +219,21 @@
             </div>
       </div>
 
-
     </div>
+    <p class="margin-top-45-l margin-top-30" id="back-btn-container"></p>
+
   </div>
 </div>
 
 
-
-
-{% endblock content %}
-
-{% block extra_js %}
 <script>
 
   $(function(){
       $('#back-btn-container').append($('<a href="javascript:utilities.navigateBack()">Back</a>'));
-    });
+  });
 
 </script>
 
-{% endblock %}
+
+{% endblock content %}
 
