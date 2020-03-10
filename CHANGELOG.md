@@ -1,11 +1,11 @@
 # Changelog
 
-## [2020.03.04](https://github.com/uktrade/navigator/releases/tag/2020.03.04)
-[Full Changelog](https://github.com/uktrade/navigator/compare/2019.02.04...2020.03.04)
+## [2020.03.10](https://github.com/uktrade/navigator/releases/tag/2020.03.10)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.02.04...2020.03.10)
 
 ### Fixed bugs
 - No Ticket - Incorrectly showing seller support hours as customer support hours on Market detail page
-
+- No Ticket - Re-add missing back button to detail page
 
 ## Pre-release
 - no ticket - update components for new cookie banner
