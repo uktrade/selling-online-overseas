@@ -3,10 +3,14 @@
 ## Unreleased
 
 ### Fixed bugs
-- No Ticket - Removed visibility of unpublished markets
 
 ### Pre-release
 
+## [2020.03.19](https://github.com/uktrade/navigator/releases/tag/2020.03.19)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.03.10...2020.03.19)
+
+### Fixed bugs
+- No Ticket - Removed visibility of unpublished markets
 
 ## [2020.03.10](https://github.com/uktrade/navigator/releases/tag/2020.03.10)
 [Full Changelog](https://github.com/uktrade/navigator/compare/2019.02.04...2020.03.10)
