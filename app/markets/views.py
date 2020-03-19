@@ -16,25 +16,11 @@ from products.models import Category
 from directory_cms_client.client import cms_api_client
 from directory_cms_client.helpers import handle_cms_response_allow_404
 
-from .models import Market, PublishedMarket
-
-
-class MarketFilterMixin(object):
-    """
-    """
-
-    @property
-    def markets(self):
-        if self.request and self.request.user.is_authenticated:
-            # Authenticated users can see un-published markets
-            return Market.objects
-        else:
-            # Un-authenticated users can only see published markets
-            return PublishedMarket.objects
+from .models import PublishedMarket
 
 
 @thumber_feedback
-class HomepageView(MarketFilterMixin, TemplateView):
+class HomepageView(TemplateView):
     """
     The landing page for the e-marketplace finding tool, offering advice on it's use
     """
@@ -64,15 +50,15 @@ class HomepageView(MarketFilterMixin, TemplateView):
             page_type='LandingPage',
             countries=Country.objects.all().order_by('name'),
             categories=Category.objects.all().order_by('name'),
-            market_count=self.markets.count(),
-            last_updated=self.markets.aggregate(
+            market_count=PublishedMarket.objects.count(),
+            last_updated=PublishedMarket.objects.aggregate(
                 Max('last_modified'))['last_modified__max'],
-            random_markets=self.markets.order_by('?')[:3]
+            random_markets=PublishedMarket.objects.order_by('?')[:3]
         )
 
 
 @thumber_feedback
-class MarketListView(MarketFilterMixin, TemplateView):
+class MarketListView(TemplateView):
     template_name = 'markets/list.html'
     # thumber attributes
     satisfied_wording = 'Did you find what you were looking for?'
@@ -84,8 +70,7 @@ class MarketListView(MarketFilterMixin, TemplateView):
         category_id = params.get('category_id')
         country_id = params.get('country_id')
 
-        PublishedMarket if request.user.is_authenticated else Market
-        qs = self.markets.all()
+        qs = PublishedMarket.objects.all()
 
         if category_id and category_id.isdigit():
             category_id = int(category_id)
@@ -109,14 +94,14 @@ class MarketListView(MarketFilterMixin, TemplateView):
         return self.render_to_response(context)
 
 
-class MarketShortlistView(MarketFilterMixin, TemplateView):
+class MarketShortlistView(TemplateView):
 
     template_name = 'markets/shortlist.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         market_slugs = self.request.session.get('market_slugs', [])
-        context['markets_list'] = self.markets.filter(slug__in=market_slugs)
+        context['markets_list'] = PublishedMarket.objects.filter(slug__in=market_slugs)
 
         return context
 
@@ -159,7 +144,7 @@ class MarketShortlistAPI(View):
 
 
 @thumber_feedback
-class MarketDetailView(MarketFilterMixin, TemplateView):
+class MarketDetailView(TemplateView):
     """
     The simple view for the details page for individual Markets
     """
@@ -178,8 +163,8 @@ class MarketDetailView(MarketFilterMixin, TemplateView):
 
         try:
             context['page_type'] = 'MarketplacePage'
-            context['market'] = self.markets.get(slug=slug)
-        except (Market.DoesNotExist, PublishedMarket.DoesNotExist):
+            context['market'] = PublishedMarket.objects.get(slug=slug)
+        except PublishedMarket.DoesNotExist:
             raise Http404('Market does not exist')
 
         return context
