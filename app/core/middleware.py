@@ -5,7 +5,7 @@ from django.http import HttpResponse
 class AdminPermissionCheckMiddleware(MiddlewareMixin):
     SSO_UNAUTHORISED_ACCESS_MESSAGE = (
         'This application now uses internal Single Sign On. Please speak '
-        'to the Automation Team so that we can enable your account.'
+        'to the GREAT Team so that we can enable your account.'
     )
 
     def process_view(self, request, view_func, view_args, view_kwarg):
