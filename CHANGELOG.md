@@ -1,5 +1,27 @@
 # Changelog
 
+## Unreleased
+
+### Fixed bugs
+
+### Pre-release
+
+## Hotfix
+- No ticket - v3-cipipeline manifest.yml file fix
+
+## [2020.03.19](https://github.com/uktrade/navigator/releases/tag/2020.03.19)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.03.10...2020.03.19)
+
+### Fixed bugs
+- No Ticket - Removed visibility of unpublished markets
+
+## [2020.03.10](https://github.com/uktrade/navigator/releases/tag/2020.03.10)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.02.04...2020.03.10)
+
+### Fixed bugs
+- No Ticket - Incorrectly showing seller support hours as customer support hours on Market detail page
+- No Ticket - Re-add missing back button to detail page
+
 ## Pre-release
 - no ticket - update components for new cookie banner
 - MVP-40 - Add GA360 context processor and remove GA360 Middleware
@@ -8,15 +30,16 @@
 - Remove unneccessary code in Market View
 - Fix Market homepage bug showing unpublished markets to logged-in users
 - Upgrade directory-components to 35.17.0
+- Use standard directory-components header
 
 
-## [2019.02.04] (https://github.com/uktrade/navigator/releases/tag/2019.02.04)
+## [2019.02.04](https://github.com/uktrade/navigator/releases/tag/2019.02.04)
 [Full Changelog](https://github.com/uktrade/navigator/compare/2020.01.22-b...2019.02.04)
 
 ### Fixed bugs
 - Upgrade Django from 1.11.23 to 1.11.28
 
-## [2020.01.22-b] (https://github.com/uktrade/navigator/releases/tag/2020.01.22-b)
+## [2020.01.22-b](https://github.com/uktrade/navigator/releases/tag/2020.01.22-b)
 [Full Changelog](https://github.com/uktrade/navigator/compare/2019.09.23...2020.01.22-b)
 
 ### Implemented enhancements

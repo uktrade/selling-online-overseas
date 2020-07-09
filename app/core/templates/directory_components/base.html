@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block body_header %}
-    {% include 'directory_components/header_footer/domestic_header.html' %}
+  {% include 'directory_components/header_footer/domestic_header.html' %}
 {% endblock %}
 
 {% block body_footer %}
@@ -27,6 +27,7 @@
 {% endblock %}
 
 {% block body_js %}
+  {{ block.super }}
   <script src="{% static 'javascripts/all.js' %}"></script>
   {% block extra_js %}
     {# needed for thumbor #}
