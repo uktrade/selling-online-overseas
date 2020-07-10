@@ -1,13 +1,22 @@
 # Changelog
 
 ## Unreleased
-
 ### Fixed bugs
-
 ### Pre-release
+## Hotfix
 
+## [2020.07.09](https://github.com/uktrade/navigator/releases/tag/2020.07.09)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.03.19...2020.07.09)
 ## Hotfix
 - No ticket - v3-cipipeline manifest.yml file fix
+- TT-2328 - rename Commision -> commission
+
+## [2020.03.19](https://github.com/uktrade/navigator/releases/tag/2020.03.19)
+[Full Changelog](https://github.com/uktrade/navigator/compare/2019.03.10...2020.03.19)
+
+### Fixed bugs
+- No Ticket - Removed visibility of unpublished markets
+
 
 ## [2020.03.19](https://github.com/uktrade/navigator/releases/tag/2020.03.19)
 [Full Changelog](https://github.com/uktrade/navigator/compare/2019.03.10...2020.03.19)
