@@ -2,7 +2,7 @@ appdirs==1.4.3
 boto3==1.7.31
 contextlib2==0.5.4
 dj-database-url==0.4.1
-Django==1.11.28
+Django==1.11.29
 django-admin-ip-restrictor==1.0.0
 django-appconf==1.0.1
 django-ckeditor==5.6.1
@@ -19,7 +19,7 @@ easy-thumbnails==2.5
 gunicorn==19.6.0
 jmespath==0.9.1
 packaging==16.8
-Pillow>=3.3.2
+Pillow>=7.1.0
 psycopg2==2.7.3.2
 pyparsing==2.2.0
 python-dateutil==2.6.0
@@ -35,7 +35,7 @@ directory-sso-api-client==6.3.0
 django-staff-sso-client==0.4.0
 directory-cms-client==11.0.0
 sigauth>=4.0.0,<5.0.0
-markdown2==2.3.6
+markdown2==2.3.9
 beautifulsoup4==4.6.0
 djangorestframework==3.9.1
 uk-postcode-utils==1.0
