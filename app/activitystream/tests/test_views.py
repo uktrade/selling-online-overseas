@@ -91,7 +91,7 @@ def test_empty_object_returned_with_authentication(api_client):
         content=response.content,
         content_type=response['Content-Type'],
     )
-    with pytest.raises(mohawk.exc.MacMismatch):
+    with pytest.raises(mohawk.exc.BadHeaderValue):
         sender.accept_response(
             response_header=response['Server-Authorization'] + 'incorrect',
             content=response.content,
