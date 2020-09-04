@@ -22,7 +22,7 @@
 [Full Changelog](https://github.com/uktrade/navigator/compare/2019.03.19...2020.07.09)
 
 ## Hotfix
-
+- GAA-13 - Add alt text
 - GAA-17 - An incorrect role value had been applied
 - No ticket - v3-cipipeline manifest.yml file fix
 - TT-2328 - rename Commision -> commission
