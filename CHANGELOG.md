@@ -23,6 +23,7 @@
 
 ## Hotfix
 
+- GAA-17 - An incorrect role value had been applied
 - No ticket - v3-cipipeline manifest.yml file fix
 - TT-2328 - rename Commision -> commission
 
