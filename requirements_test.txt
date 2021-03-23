@@ -59,10 +59,6 @@ django-ckeditor==5.6.1
     # via -r requirements.in
 django-environ==0.4.5
     # via -r requirements.in
-django-extensions==2.1.6
-    # via
-    #   -r requirements.in
-    #   -r requirements_test.in
 django-grappelli==2.10.4
     # via -r requirements.in
 django-image-cropping==1.0.4
@@ -92,6 +88,10 @@ django==2.2.19
     #   djangorestframework
     #   easy-thumbnails
     #   sigauth
+django_extensions==2.1.6
+    # via
+    #   -r requirements.in
+    #   -r requirements_test.in
 djangorestframework==3.12.2
     # via
     #   -r requirements.in
