@@ -1,7 +1,7 @@
 import pytest
 import http
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 # the first element needs to end with a slash
 redirects = [

@@ -139,7 +139,7 @@ class BaseMarket(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
 
-    logo = models.ForeignKey('Logo', null=True, blank=True)
+    logo = models.ForeignKey('Logo', null=True, blank=True, on_delete=models.CASCADE)
     e_marketplace_description = RichTextField(verbose_name="e-Marketplace Description")
     web_address = models.URLField(max_length=200)
     explore_the_marketplace = models.URLField(max_length=200, null=True, blank=True,
@@ -177,7 +177,8 @@ class BaseMarket(models.Model):
     currency_of_payments = models.ManyToManyField(Currency, blank=True,
                                                   verbose_name="Payment terms - Currency of payments")
 
-    language = models.ForeignKey(Language, null=True, blank=True, verbose_name="Language of Marketplace")
+    language = models.ForeignKey(
+        Language, null=True, blank=True, verbose_name="Language of Marketplace", on_delete=models.CASCADE)
 
     logistics_structure = models.ManyToManyField(LogisticsModel, blank=True)
     logistics_structure_notes = models.TextField(blank=True, null=True, verbose_name='notes')
@@ -205,21 +206,39 @@ class BaseMarket(models.Model):
 
     one_off_registration_fee = models.FloatField(default=0, verbose_name="One off registration fee")
     one_off_registration_fee_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
-    one_off_registration_fee_currency = models.ForeignKey(Currency, null=True, blank=True,
-                                                          related_name="%(app_label)s_%(class)s_reg_fees_currency")
+    one_off_registration_fee_currency = models.ForeignKey(
+        Currency,
+        null=True,
+        blank=True,
+        related_name="%(app_label)s_%(class)s_reg_fees_currency",
+        on_delete=models.CASCADE
+    )
 
-    fee_per_listing = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                          verbose_name="Fee per Listing")
+    fee_per_listing = models.BooleanField(
+        choices=BOOL_CHOICES,
+        default=False,
+        verbose_name="Fee per Listing"
+    )
     fee_per_listing_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
     membership_fees = models.FloatField(default=0, verbose_name="Membership fees")
     membership_fees_frequency = models.CharField(choices=PAYMENT_FREQUENCIES, max_length=1, null=True, blank=True)
-    membership_fees_currency = models.ForeignKey(Currency, null=True, blank=True,
-                                                 related_name="%(app_label)s_%(class)s_membership_fees_currency")
+    membership_fees_currency = models.ForeignKey(
+        Currency,
+        null=True,
+        blank=True,
+        related_name="%(app_label)s_%(class)s_membership_fees_currency",
+        on_delete=models.CASCADE
+    )
 
     deposit = models.FloatField(default=0)
-    deposit_currency = models.ForeignKey(Currency, null=True, blank=True,
-                                         related_name="%(app_label)s_%(class)s_deposit_currency")
+    deposit_currency = models.ForeignKey(
+        Currency,
+        null=True,
+        blank=True,
+        related_name="%(app_label)s_%(class)s_deposit_currency",
+        on_delete=models.CASCADE
+    )
     deposit_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
 
     shipping_tracking_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
