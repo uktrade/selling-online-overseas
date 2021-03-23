@@ -1,7 +1,7 @@
 # Changelog
 
 ## Unreleased
-
+- No Ticket - updating team name in error message for internal SSO
 ### Fixed bugs
 
 ### Pre-release
