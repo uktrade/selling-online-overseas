@@ -64,11 +64,11 @@ manage:
 	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py $(cmd)
 
 requirements:
-	pip install -r requirements_test.txt
-
-compile_requirements:
 	pip-compile requirements.in
 	pip-compile requirements_test.in
+
+install_requirements:	
+	pip install -r requirements_test.txt
 
 upgrade_requirements:
 	pip-compile --upgrade requirements.in

@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'sso',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'core.middleware.AdminPermissionCheckMiddleware',
     'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
     'directory_components.middleware.MaintenanceModeMiddleware',
