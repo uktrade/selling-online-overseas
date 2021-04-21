@@ -41,11 +41,11 @@ directory-client-core==6.2.0
     #   directory-sso-api-client
 directory-cms-client==11.0.0
     # via -r requirements.in
-directory-constants==20.14.1
+directory-constants==20.26.0
     # via directory-components
 directory-sso-api-client==6.3.0
     # via -r requirements.in
-directory_components==35.17.1
+directory_components==36.0.0
     # via -r requirements.in
 dj-database-url==0.4.1
     # via -r requirements.in
@@ -59,6 +59,10 @@ django-ckeditor==5.6.1
     # via -r requirements.in
 django-environ==0.4.5
     # via -r requirements.in
+django-extensions==2.1.6
+    # via
+    #   -r requirements.in
+    #   -r requirements_test.in
 django-grappelli==2.10.4
     # via -r requirements.in
 django-image-cropping==1.0.4
@@ -88,10 +92,6 @@ django==2.2.19
     #   djangorestframework
     #   easy-thumbnails
     #   sigauth
-django_extensions==2.1.6
-    # via
-    #   -r requirements.in
-    #   -r requirements_test.in
 djangorestframework==3.12.2
     # via
     #   -r requirements.in
