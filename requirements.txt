@@ -32,11 +32,11 @@ directory-client-core==6.2.0
     #   directory-sso-api-client
 directory-cms-client==11.0.0
     # via -r requirements.in
-directory-constants==20.14.1
+directory-constants==20.26.0
     # via directory-components
 directory-sso-api-client==6.3.0
     # via -r requirements.in
-directory_components==35.17.1
+directory_components==36.0.0
     # via -r requirements.in
 dj-database-url==0.4.1
     # via -r requirements.in
