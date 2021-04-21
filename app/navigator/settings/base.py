@@ -341,3 +341,6 @@ CACHES = {
     'api_fallback': cache,
     'cms_fallback': cache,
 }
+# Flag for loading magna header
+MAGNA_HEADER = env.bool('MAGNA_HEADER', False)
+DIRECTORY_CONSTANTS_URL_GREAT_MAGNA = env.str('DIRECTORY_CONSTANTS_URL_GREAT_MAGNA', 'https://great.gov.uk')
