@@ -30,7 +30,7 @@ s3transfer==0.1.10
 six==1.12.0
 whitenoise==3.2.1
 Whoosh==2.7.4
-directory_components==36.0.0
+directory_components==36.1.0
 directory-sso-api-client==6.3.0
 django-staff-sso-client==0.4.0
 directory-cms-client==11.0.0
