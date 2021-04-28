@@ -1,4 +1,5 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
+from django.urls import include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -12,7 +13,7 @@ urlpatterns_unprefixed = [
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain'), name='robots'),
     url(r'^ping\.json$', PingView.as_view(), name='ping'),
     url(r'^grappelli/', include('grappelli.urls')),
-    url('^auth/', include('authbroker_client.urls', namespace='authbroker', app_name='authbroker_client')),
+    url('^auth/', include('authbroker_client.urls', namespace='authbroker')),
     url(r'^admin/login/$', RedirectView.as_view(url=reverse_lazy('authbroker:login'), query_string=True)),
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomepageView.as_view(), name='home'),

@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+- No Ticket - updating team name in error message for internal SSO
+- GP2-2332 - upgrade directory-components package
 
 ### Fixed bugs
 

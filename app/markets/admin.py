@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.conf.urls import url
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 from django.utils.safestring import mark_safe
