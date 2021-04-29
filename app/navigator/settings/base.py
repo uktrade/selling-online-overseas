@@ -82,6 +82,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.hosts',
+                'core.context_processors.magna_header',
                 'directory_components.context_processors.sso_processor',
                 'directory_components.context_processors.ga360',
                 'directory_components.context_processors.urls_processor',
