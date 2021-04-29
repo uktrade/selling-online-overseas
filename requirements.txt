@@ -32,11 +32,11 @@ directory-client-core==6.2.0
     #   directory-sso-api-client
 directory-cms-client==11.0.0
     # via -r requirements.in
-directory-constants==20.27.0
+directory-constants==20.28.0
     # via directory-components
 directory-sso-api-client==6.3.0
     # via -r requirements.in
-directory_components==36.1.0
+directory_components==36.2.0
     # via -r requirements.in
 dj-database-url==0.4.1
     # via -r requirements.in
@@ -66,7 +66,7 @@ django-storages==1.5.2
     # via -r requirements.in
 django-thumber==2.0.0
     # via -r requirements.in
-django==2.2.19
+django==2.2.20
     # via
     #   -r requirements.in
     #   directory-client-core
