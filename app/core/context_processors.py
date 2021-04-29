@@ -8,3 +8,7 @@ def hosts(request):
     }
 
     return hosts
+
+
+def magna_header(request):
+    return settings.MAGNA_HEADER
