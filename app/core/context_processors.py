@@ -11,4 +11,6 @@ def hosts(request):
 
 
 def magna_header(request):
-    return settings.MAGNA_HEADER
+    return {
+        'magna_header': settings.MAGNA_HEADER
+    }
