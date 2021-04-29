@@ -122,8 +122,6 @@ pillow==8.1.2
     #   easy-thumbnails
 psycopg2==2.7.3.2
     # via -r requirements.in
-py==1.10.0
-    # via -r requirements.in
 pyparsing==2.2.0
     # via
     #   -r requirements.in

@@ -39,4 +39,3 @@ markdown2==2.3.9
 beautifulsoup4==4.6.0
 djangorestframework>=3.11.2
 uk-postcode-utils==1.0
-py>=1.10.0
