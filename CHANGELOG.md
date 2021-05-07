@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- No Ticket - Django version upgrade to 2.2.22
 - GP2-2381 - corrected contact footer link
 - No ticket - added magna header under feature flag
 - No Ticket - updating team name in error message for internal SSO
