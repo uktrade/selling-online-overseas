@@ -201,7 +201,7 @@
                 <a class="card-link" href="{% url 'markets:detail' market.slug %}" title="full profile of {{ market.name }}">
                   <div class="card-image"
                     style="background-image: url('{% thumbnail market.logo.image 220x166 box=market.logo.cropping crop detail %}');"
-                    role="image" alt="{{ market }}">
+                    role="img" alt="{{ market }}">
                   </div>
                   <div class="card-inner">
                     <p class="description subheading">{{ market.operating_countries.first.name }}</p>

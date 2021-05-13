@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'sso',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'core.middleware.AdminPermissionCheckMiddleware',
     'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
     'directory_components.middleware.MaintenanceModeMiddleware',
@@ -82,6 +82,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.hosts',
+                'core.context_processors.magna_header',
                 'directory_components.context_processors.sso_processor',
                 'directory_components.context_processors.ga360',
                 'directory_components.context_processors.urls_processor',
@@ -341,3 +342,6 @@ CACHES = {
     'api_fallback': cache,
     'cms_fallback': cache,
 }
+# Flag for loading magna header
+MAGNA_HEADER = env.bool('MAGNA_HEADER', False)
+DIRECTORY_CONSTANTS_URL_GREAT_MAGNA = env.str('DIRECTORY_CONSTANTS_URL_GREAT_MAGNA', 'https://great.gov.uk')

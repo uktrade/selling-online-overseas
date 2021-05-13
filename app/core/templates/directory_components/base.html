@@ -19,7 +19,11 @@
 {% endblock %}
 
 {% block body_header %}
-  {% include 'directory_components/header_footer/domestic_header.html' %}
+    {%  if magna_header %}
+        {% include 'directory_components/header_footer/magna_header.html' %}
+    {% else %}
+        {% include 'directory_components/header_footer/domestic_header.html' %}
+    {%  endif %}
 {% endblock %}
 
 {% block body_footer %}
