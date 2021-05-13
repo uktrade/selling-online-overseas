@@ -11,3 +11,4 @@ requests_mock
 freezegun
 factory-boy
 django-extensions
+py>=1.10.0
