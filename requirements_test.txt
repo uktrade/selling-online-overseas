@@ -45,7 +45,7 @@ directory-constants==20.28.0
     # via directory-components
 directory-sso-api-client==6.3.0
     # via -r requirements.in
-directory_components==36.2.0
+directory_components==37.2.0
     # via -r requirements.in
 dj-database-url==0.4.1
     # via -r requirements.in
@@ -114,11 +114,6 @@ gunicorn==19.6.0
     # via -r requirements.in
 idna==2.10
     # via requests
-importlib-metadata==1.7.0
-    # via
-    #   jsonschema
-    #   pluggy
-    #   pytest
 iniconfig==1.0.1
     # via pytest
 jmespath==0.9.1
@@ -242,8 +237,6 @@ whitenoise==3.2.1
     # via -r requirements.in
 whoosh==2.7.4
     # via -r requirements.in
-zipp==3.1.0
-    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
