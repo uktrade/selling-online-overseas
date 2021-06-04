@@ -40,17 +40,17 @@ dj-database-url==0.4.1
     # via -r requirements.in
 django-admin-ip-restrictor==1.0.0
     # via -r requirements.in
-django-appconf==1.0.1
+django-appconf==1.0.4
     # via
     #   -r requirements.in
     #   django-image-cropping
-django-ckeditor==5.6.1
+django-ckeditor==6.1.0
     # via -r requirements.in
 django-environ==0.4.5
     # via -r requirements.in
 django-grappelli==2.10.4
     # via -r requirements.in
-django-image-cropping==1.0.4
+django-image-cropping==1.5.0
     # via -r requirements.in
 django-ipware==2.1.0
     # via django-admin-ip-restrictor
@@ -71,6 +71,7 @@ django==2.2.22
     #   directory-components
     #   directory-constants
     #   django-admin-ip-restrictor
+    #   django-appconf
     #   django-reversion
     #   django-staff-sso-client
     #   django-thumber
@@ -89,7 +90,7 @@ docutils==0.13.1
     # via
     #   -r requirements.in
     #   botocore
-easy-thumbnails==2.5
+easy-thumbnails==2.7.1
     # via -r requirements.in
 gunicorn==19.6.0
     # via -r requirements.in
@@ -155,9 +156,7 @@ sigauth==4.2.0
 six==1.12.0
     # via
     #   -r requirements.in
-    #   django-appconf
     #   django-extensions
-    #   django-image-cropping
     #   docker-py
     #   jsonschema
     #   mohawk
