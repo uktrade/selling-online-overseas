@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- GP2-2863 - Uploading/viewing logos fix
+
 ### Pre-release
 
 ### Fixed bugs
