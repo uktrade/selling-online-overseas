@@ -1,12 +1,14 @@
 # Changelog
 
-## Unreleased
-
-- GP2-2863 - Uploading/viewing logos fix
-
 ### Pre-release
 
 ### Fixed bugs
+
+## [3.2.0](https://github.com/uktrade/navigator/releases/tag/3.2.0)
+
+[Full Changelog](https://github.com/uktrade/navigator/compare/3.1.0...3.2.0)
+
+- GP2-2863 - Uploading/viewing logos fix
 
 ## [3.1.0](https://github.com/uktrade/navigator/releases/tag/3.1.0)
 
