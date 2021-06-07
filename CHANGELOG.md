@@ -1,18 +1,25 @@
 # Changelog
 
-## Unreleased
+### Pre-release
+
+### Fixed bugs
+
+## [3.2.0](https://github.com/uktrade/navigator/releases/tag/3.2.0)
+
+[Full Changelog](https://github.com/uktrade/navigator/compare/3.1.0...3.2.0)
+
+- GP2-2863 - Uploading/viewing logos fix
+
+## [3.1.0](https://github.com/uktrade/navigator/releases/tag/3.1.0)
+
+[Full Changelog](https://github.com/uktrade/navigator/compare/2020.07.09...3.1.0)
+
 - No Ticket - Django version upgrade to 2.2.22
 - GP2-2381 - corrected contact footer link
 - No ticket - added magna header under feature flag
 - No Ticket - updating team name in error message for internal SSO
 - GP2-2332 - upgrade directory-components package
 - GP2-2784 - upgrade directory-components package
-
-### Fixed bugs
-
-### Pre-release
-
-## Hotfix
 
 ### Fixed bugs
 
