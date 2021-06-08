@@ -115,7 +115,7 @@ oauthlib==3.1.0
     # via requests-oauthlib
 packaging==16.8
     # via -r requirements.in
-pillow==8.1.2
+pillow==8.2.0
     # via
     #   -r requirements.in
     #   easy-thumbnails
