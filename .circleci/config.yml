@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.9-jessie-node-browsers
+      - image: circleci/python:3.9.5-browsers
         environment:
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
           DJANGO_SETTINGS_MODULE: navigator.settings.test
