@@ -4,6 +4,8 @@
 #
 #    pip-compile requirements.in
 #
+--no-binary psycopg2
+
 appdirs==1.4.3
     # via -r requirements.in
 attrs==20.1.0
@@ -119,7 +121,7 @@ pillow==8.2.0
     # via
     #   -r requirements.in
     #   easy-thumbnails
-psycopg2==2.7.3.2
+psycopg2==2.8.6
     # via -r requirements.in
 pyparsing==2.2.0
     # via
