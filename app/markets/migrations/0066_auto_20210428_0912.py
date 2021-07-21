@@ -7,7 +7,7 @@ import image_cropping.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("markets", "0065_auto_20190426_1255"),
+        ('markets', '0065_auto_20190426_1255'),
     ]
 
     operations = [
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 adapt_rotation=False,
                 allow_fullsize=False,
                 free_crop=False,
-                help_text="Use cropping tool to cut the image to the right format. Always leave enough                                          white space around the edges and try to keep the largest possible size for                                          good image quality.",
+                help_text="Use cropping tool to cut the image to the right format. Always leave enough                                          white space around the edges and try to keep the largest possible size for                                          good image quality.",  # noqa
                 hide_image_field=False,
                 size_warning=False,
                 verbose_name="cropping",
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
             model_name="logo",
             name="image",
             field=models.ImageField(
-                help_text="After choosing an image to upload click 'Save' to access the                                                    'Cropping' tool and edit the image",
+                help_text="After choosing an image to upload click 'Save' to access the                                                    'Cropping' tool and edit the image", # noqa
                 null=True,
                 upload_to="",
             ),
