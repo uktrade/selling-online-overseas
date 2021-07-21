@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
             model_name="logo",
             name="image",
             field=models.ImageField(
-                help_text="After choosing an image to upload click 'Save' to access the                                                    'Cropping' tool and edit the image", # noqa
+                help_text="After choosing an image to upload click 'Save' to access the                                                    'Cropping' tool and edit the image",  # noqa
                 null=True,
                 upload_to="",
             ),
