@@ -77,8 +77,8 @@
                       <i class="icon icon-deal--flagred">
                         <span class="visuallyhidden">Special terms</span>
                       </i>
+                      {{ market.special_terms|safe }}
                     {% endif %}
-                  {{ market.special_terms|safe }}
                   <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" class="button margin-top-30" title="Apply now">Apply now</a>
                 </div>
 
