@@ -35,7 +35,8 @@ DEBUG_SET_ENV_VARS := \
 	export CMS_SIGNATURE_SECRET=debug; \
 	export CMS_URL=http://cms.trade.great:8010; \
 	export SESSION_COOKIE_SECURE=False; \
-	export CSRF_COOKIE_SECURE=False
+	export CSRF_COOKIE_SECURE=False; \
+    export OAUTHLIB_INSECURE_TRANSPORT=1
 
 TEST_SET_ENV_VARS := \
 	export CMS_SIGNATURE_SECRET=test; \
@@ -63,6 +64,12 @@ shell:
 manage:
 	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py $(cmd)
 
+makemigrations:
+	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py makemigrations
+
+migrate:
+	$(DEBUG_SET_ENV_VARS) && python ./app/manage.py migrate
+
 requirements:
 	pip-compile requirements.in
 	pip-compile requirements_test.in
@@ -77,7 +84,7 @@ upgrade_requirements:
 flake8:
 	pycodestyle --exclude=.venv,node_modules
 
-test:
+pytest:
 	$(DEBUG_SET_ENV_VARS) && $(PYTEST)
 
 circleci_test:
