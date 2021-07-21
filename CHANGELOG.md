@@ -1,7 +1,7 @@
 # Changelog
 
 ### Pre-release
-
+- GBAU-947 - Removed default special terms message
 - GP2-2841 - Standardisation of python buildpack
 ### Fixed bugs
 
