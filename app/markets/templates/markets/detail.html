@@ -73,10 +73,12 @@
                   </dl>
                 </div>
                 <div class="deal-section">
-                  <i class="icon icon-deal--flagred">
-                    <span class="visuallyhidden">Special terms</span>
-                  </i>
-                  {{ market.special_terms|safe }}
+                    {% if  market.special_terms %}
+                      <i class="icon icon-deal--flagred">
+                        <span class="visuallyhidden">Special terms</span>
+                      </i>
+                      {{ market.special_terms|safe }}
+                    {% endif %}
                   <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" class="button margin-top-30" title="Apply now">Apply now</a>
                 </div>
 

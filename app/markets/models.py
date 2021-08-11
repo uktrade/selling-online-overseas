@@ -262,8 +262,6 @@ class BaseMarket(models.Model):
     def special_terms(self):
         if self.has_special_terms:
             return self.dit_special_terms
-        else:
-            return "<p>We’re working hard to get a deal in place.</p>"
 
     def save(self, *args, **kwargs):
         """
