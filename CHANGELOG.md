@@ -1,7 +1,8 @@
 # Changelog
 
 ### Pre-release
-
+- GBAU-947 - Removed default special terms message
+- GP2-2841 - Standardisation of python buildpack
 ### Fixed bugs
 
 ## [3.2.0](https://github.com/uktrade/navigator/releases/tag/3.2.0)
