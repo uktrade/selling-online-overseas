@@ -164,7 +164,7 @@ six==1.12.0
     #   pyrsistent
     #   python-dateutil
     #   w3lib
-sqlparse==0.4.1
+sqlparse==0.4.2
     # via django
 uk-postcode-utils==1.0
     # via -r requirements.in
