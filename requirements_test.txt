@@ -139,7 +139,7 @@ packaging==16.8
     #   -r requirements.in
     #   pytest
     #   pytest-sugar
-pillow==8.3.2
+pillow==9.0.0
     # via
     #   -r requirements.in
     #   easy-thumbnails
