@@ -40,7 +40,7 @@ directory-sso-api-client==6.3.0
     # via -r requirements.in
 dj-database-url==0.4.1
     # via -r requirements.in
-django==2.2.26
+django==2.2.27
     # via
     #   -r requirements.in
     #   directory-client-core
@@ -116,9 +116,7 @@ oauthlib==3.1.0
 packaging==16.8
     # via -r requirements.in
 pillow==9.0.0
-    # via
-    #   -r requirements.in
-    #   easy-thumbnails
+    # via easy-thumbnails
 psycopg2==2.8.6
     # via -r requirements.in
 pyparsing==2.2.0
