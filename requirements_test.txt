@@ -49,7 +49,7 @@ directory-sso-api-client==6.3.0
     # via -r requirements.in
 dj-database-url==0.4.1
     # via -r requirements.in
-django==2.2.26
+django==2.2.27
     # via
     #   -r requirements.in
     #   directory-client-core
@@ -140,9 +140,7 @@ packaging==16.8
     #   pytest
     #   pytest-sugar
 pillow==9.0.0
-    # via
-    #   -r requirements.in
-    #   easy-thumbnails
+    # via easy-thumbnails
 pluggy==0.13.1
     # via pytest
 psycopg2==2.8.6
