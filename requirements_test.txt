@@ -41,7 +41,7 @@ directory-client-core==6.2.0
     #   directory-sso-api-client
 directory-cms-client==11.0.0
     # via -r requirements.in
-directory_components==37.2.0
+directory-components==37.2.0
     # via -r requirements.in
 directory-constants==20.28.0
     # via directory-components
@@ -139,7 +139,7 @@ packaging==16.8
     #   -r requirements.in
     #   pytest
     #   pytest-sugar
-pillow==9.0.0
+pillow==9.0.1
     # via easy-thumbnails
 pluggy==0.13.1
     # via pytest
