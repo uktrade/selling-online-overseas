@@ -115,8 +115,10 @@ oauthlib==3.1.0
     # via requests-oauthlib
 packaging==16.8
     # via -r requirements.in
-pillow==9.0.0
-    # via easy-thumbnails
+pillow==9.0.1
+    # via
+    #   -r requirements.in
+    #   easy-thumbnails
 psycopg2==2.8.6
     # via -r requirements.in
 pyparsing==2.2.0
