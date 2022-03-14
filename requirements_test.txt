@@ -73,7 +73,7 @@ django-ckeditor==6.1.0
     # via -r requirements.in
 django-environ==0.4.5
     # via -r requirements.in
-django-extensions==2.1.6
+django_extensions==2.1.6
     # via
     #   -r requirements.in
     #   -r requirements_test.in
@@ -139,8 +139,10 @@ packaging==16.8
     #   -r requirements.in
     #   pytest
     #   pytest-sugar
-pillow==9.0.0
-    # via easy-thumbnails
+pillow==9.0.1
+    # via
+    #   -r requirements.in
+    #   easy-thumbnails
 pluggy==0.13.1
     # via pytest
 psycopg2==2.8.6
