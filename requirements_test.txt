@@ -41,7 +41,7 @@ directory-client-core==6.2.0
     #   directory-sso-api-client
 directory-cms-client==11.0.0
     # via -r requirements.in
-directory_components==37.2.0
+directory-components==37.2.0
     # via -r requirements.in
 directory-constants==20.28.0
     # via directory-components
@@ -49,7 +49,7 @@ directory-sso-api-client==6.3.0
     # via -r requirements.in
 dj-database-url==0.4.1
     # via -r requirements.in
-django==2.2.27
+django==2.2.28
     # via
     #   -r requirements.in
     #   directory-client-core
@@ -73,7 +73,7 @@ django-ckeditor==6.1.0
     # via -r requirements.in
 django-environ==0.4.5
     # via -r requirements.in
-django_extensions==2.1.6
+django-extensions==2.1.6
     # via
     #   -r requirements.in
     #   -r requirements_test.in
