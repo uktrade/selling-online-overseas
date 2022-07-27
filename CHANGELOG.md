@@ -5,7 +5,7 @@
 - GP2-2841 - Standardisation of python buildpack
 
 ### Fixed bugs
-- GLS-328 - Fix typo in commission on markets detail page
+- GLS-328 - Fix a typo in commission on markets detail page
 
 ## [3.2.0](https://github.com/uktrade/navigator/releases/tag/3.2.0)
 
