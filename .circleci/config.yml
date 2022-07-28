@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6-jessie-node-browsers
+      - image: circleci/python:3.9.4-browsers
         environment:
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
           DJANGO_SETTINGS_MODULE: navigator.settings.test
@@ -39,7 +39,10 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
             name: Install node packages
-            command: npm install
+            command: |
+                sudo apt update
+                sudo apt-get install nodejs npm
+                npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:

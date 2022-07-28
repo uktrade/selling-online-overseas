@@ -2,7 +2,7 @@ appdirs==1.4.3
 boto3==1.7.31
 contextlib2==0.5.4
 dj-database-url==0.4.1
-Django>=2.2.24
+Django>=2.2.27
 django-admin-ip-restrictor==1.0.0
 django-appconf==1.0.4
 django-ckeditor==6.1.0
@@ -19,7 +19,6 @@ easy-thumbnails==2.7.1
 gunicorn==19.6.0
 jmespath==0.9.1
 packaging==16.8
-Pillow>=8.1.1
 psycopg2==2.8.* --no-binary psycopg2
 pyparsing==2.2.0
 python-dateutil==2.8.1
@@ -39,3 +38,4 @@ markdown2==2.4.0
 beautifulsoup4==4.6.0
 djangorestframework>=3.11.2
 uk-postcode-utils==1.0
+pillow==9.0.1
