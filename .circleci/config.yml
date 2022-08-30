@@ -1,8 +1,11 @@
-version: 2
+version: 2.1
+orbs: 
+  browser-tools: circleci/browser-tools@1.4.0
+  node: circleci/node@5.0.2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.9.4-browsers
+      - image: cimg/python:3.9.13-browsers
         environment:
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
           DJANGO_SETTINGS_MODULE: navigator.settings.test
@@ -20,11 +23,10 @@ jobs:
           POSTGRES_DB: circle_test
           POSTGRES_HOST_AUTH_METHOD: trust
 
-    working_directory: ~/navigator
+    working_directory: ~/navigator      
 
     steps:
       - checkout
-
       - run:
           name: install dockerize
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
@@ -34,6 +36,15 @@ jobs:
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - node/install:
+          install-yarn: true
+          node-version: "6.10.3"
+      - run: node --version
+
+      - browser-tools/install-chrome
+
+      - browser-tools/install-chromedriver
 
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
