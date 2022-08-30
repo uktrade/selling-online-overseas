@@ -17,7 +17,7 @@ jobs:
           SSO_SESSION_COOKIE: debug_sso_session_cookie
 
       # Service container image available at `host: localhost`
-      - image: circleci/postgres:9.5
+      - image: cimg/postgres:10.18
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
