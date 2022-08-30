@@ -2,6 +2,8 @@
 
 ### Pre-release
 
+- GLS-403 - Upgrade to Python version 3.9.13
+
 ### Fixed bugs
 
 ## [3.3.1](https://github.com/uktrade/navigator/releases/tag/3.3.1)
