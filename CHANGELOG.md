@@ -1,11 +1,24 @@
 # Changelog
 
 ### Pre-release
-- GBAU-947 - Removed default special terms message
-- GP2-2841 - Standardisation of python buildpack
+
+- GLS-403 - Upgrade to Python version 3.9.13
+
+### Fixed bugs
+
+## [3.3.1](https://github.com/uktrade/navigator/releases/tag/3.3.1)
+
+[Full Changelog](https://github.com/uktrade/navigator/compare/3.3.0...3.3.1)
 
 ### Fixed bugs
 - GLS-328 - Fix a typo in commission on markets detail page
+
+## [3.3.0](https://github.com/uktrade/navigator/releases/tag/3.3.0)
+
+[Full Changelog](https://github.com/uktrade/navigator/compare/3.2.0...3.3.0)
+
+- GBAU-947 - Removed default special terms message
+- GP2-2841 - Standardisation of python buildpack
 
 ## [3.2.0](https://github.com/uktrade/navigator/releases/tag/3.2.0)
 
