@@ -2,9 +2,14 @@
 
 ### Pre-release
 
-- GLS-403 - Upgrade to Python version 3.9.13
-
 ### Fixed bugs
+
+## [3.4.0](https://github.com/uktrade/navigator/releases/tag/3.4.0)
+
+[Full Changelog](https://github.com/uktrade/navigator/compare/3.3.1...3.4.0)
+
+- GLS-403 - Upgrade to Python version 3.9.13
+- GLS-372 - Rename repository selling-online-overseas
 
 ## [3.3.1](https://github.com/uktrade/navigator/releases/tag/3.3.1)
 
