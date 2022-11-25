@@ -6,7 +6,9 @@
 
 # Selling Online Overseas
 
-Welcome to the Department of International Trade's Selling Online Overseas service. This was originally named the "marketplace navigator".
+Welcome to the Department of International Trade's Selling Online Overseas service.
+
+This respository was originally named `navigator`, and within the repository the main django app and local database are still named `navigator`.
  
 ## Installation
 
