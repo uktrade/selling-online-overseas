@@ -38,4 +38,4 @@ markdown2==2.4.0
 beautifulsoup4==4.6.0
 djangorestframework>=3.11.2
 uk-postcode-utils==1.0
-pillow==9.0.1
+pillow==9.3.0
