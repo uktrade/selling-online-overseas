@@ -22,7 +22,7 @@ botocore==1.10.84
     # via
     #   boto3
     #   s3transfer
-certifi==2020.6.20
+certifi==2022.12.7
     # via requests
 chardet==3.0.4
     # via requests
