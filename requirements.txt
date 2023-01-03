@@ -21,7 +21,9 @@ botocore==1.10.84
     #   boto3
     #   s3transfer
 certifi==2022.12.7
-    # via requests
+    # via
+    #   -r requirements.in
+    #   requests
 chardet==3.0.4
     # via requests
 contextlib2==0.5.4
