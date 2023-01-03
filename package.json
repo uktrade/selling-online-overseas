@@ -65,5 +65,8 @@
     "selenium-standalone-jar": "3.0.1",
     "sinon": "2.2.0",
     "sinon-chai": "^2.5.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^1.0.0"
   }
 }
