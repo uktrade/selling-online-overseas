@@ -52,7 +52,7 @@ jobs:
             name: Install node packages
             command: |
                 sudo apt update
-                sudo apt-get install nodejs npm
+                sudo apt-get install nodejs=6.10.3 npm=2.15.5
                 npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
