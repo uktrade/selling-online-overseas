@@ -2,6 +2,8 @@
 
 ### Pre-release
 
+- KLS-437 - Apply DBT logo to Great.gov.uk and all other DBT web estate sites (E&I)
+
 ### Fixed bugs
 
 ## [3.4.0](https://github.com/uktrade/navigator/releases/tag/3.4.0)
