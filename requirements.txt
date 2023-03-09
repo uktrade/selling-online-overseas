@@ -20,7 +20,7 @@ botocore==1.10.84
     # via
     #   boto3
     #   s3transfer
-certifi==2020.6.20
+certifi==2022.12.7
     # via requests
 chardet==3.0.4
     # via requests
@@ -32,9 +32,9 @@ directory-client-core==6.2.0
     #   directory-sso-api-client
 directory-cms-client==11.0.0
     # via -r requirements.in
-directory-components==37.2.0
+directory-components==39.0.2
     # via -r requirements.in
-directory-constants==20.28.0
+directory-constants==23.0.0
     # via directory-components
 directory-sso-api-client==6.3.0
     # via -r requirements.in
