@@ -1,0 +1,14 @@
+@import '../colors/colors.scss';
+
+hr {
+    background: $color-grey-background;
+    height: 2px;
+}
+
+.audit--white{
+    border-color: $color-grey-background;
+}
+
+.audit .container {
+    border-top: 2px solid $color-grey-background
+}

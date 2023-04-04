@@ -5,6 +5,7 @@
   action="{% url 'markets:list' %}"
   data-form-type="autocomplete"
 >
+
   <div class="term">
     <label class="visually-hidden">Product or service keyword</label>
     <select autocomplete="off" name="category_id">
@@ -30,6 +31,6 @@
       </option>
       {% endfor %}
     </select>
-  </div>
-  <button class="button soo-search-button padding-left-0-xl padding-right-0-xl" name="commit" type="submit" value="">Find your marketplace</button>
+</div>
+  <button class="button padding-left-0-xl padding-right-0-xl primary-button" name="commit" type="submit" value="">Find your marketplace</button>
 </form>

@@ -1,6 +1,6 @@
 DEBUG_SET_ENV_VARS := \
 	export PORT=8008; \
-	export DATABASE_URL=postgres://debug:debug@localhost/navigator; \
+	export DATABASE_URL=postgres://postgres:postgres@localhost/navigator; \
 	export SSO_SESSION_COOKIE=debug_sso_session_cookie; \
 	export SSO_PROXY_LOGIN_URL=http://sso.trade.great:8004/accounts/login/; \
 	export SSO_PROXY_LOGOUT_URL=http://sso.trade.great:8004/accounts/logout/?next=http://buyer.trade.great:8001; \

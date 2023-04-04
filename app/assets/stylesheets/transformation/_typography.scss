@@ -1,8 +1,9 @@
+@import '../reskin-styles/fonts/main.scss';
 // FONT vars and mixins
 // ------------------------------
-$brand-font-standard: 'Roboto', arial, helvetica, sans-serif;
-$brand-font-alternative: 'Overpass', arial, helvetica, sans-serif;
-$brand-font-serif: georgia, serif;
+$brand-font-standard: $main-text-font;
+$brand-font-alternative: $header-font;
+$brand-font-serif: $main-text-font;
 
 
 $font-size-xxl: 48px;

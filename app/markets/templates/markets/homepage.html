@@ -17,20 +17,10 @@
 
 {% block content %}
 
-  <div class="hero-section  background-image--hero" id="hero-banner">
-    <section class="breadcrumbs-section narrow-section">
-      <div class="container">
-        <p class="breadcrumbs">
-            <span class="label visually-hidden">You are here:</span>
-            <a href="{{ services_urls.exred }}">great.gov.uk</a>
-            <span class="separator">,</span>
-            <span class="current">
-              Selling Online Overseas
-            </span>
-        </p>
-    </div>
-    </section>
-    <section class="search-section background-stone-30">
+{%include 'markets/includes/homepage_header.html' with title='Find online market places' text='Let us help you export your products to consumers around the world through online marketplaces'%}
+  {% comment %} <div class="hero-section  background-image--hero" id="hero-banner">
+   
+    <section class="search-section colored-section">
         <div class="container">
           <h1>Get help to sell online worldwide</h1>
           <p class="margin-bottom-30">Let us help you export your products to consumers around the world through online marketplaces.</p>
@@ -38,15 +28,15 @@
           {% include 'markets/includes/search_form.html' %}
         </div>
     </section>
-    </div>
+    </div>  {% endcomment %}
   </section>
 
   <section id="how-can-we-help-you" class="how-can-we-help-you">
     <div class="container">
       <div class="grid-row">
         <div class="column-full column-two-thirds-xl">
-            <h2 class="heading-large margin-top-30">How we can help you</h2>
-            <p class="body-text margin-top-10 margin-bottom-0 mobile-hidden">Finding and understanding
+            <h2 class="heading-large margin-top-30 page-title">How we can help you</h2>
+            <p class="body-text margin-top-10 margin-bottom-0">Finding and understanding
               international online marketplaces takes time and effort. We've done the hard work for you.</p>
         </div>
       </div>
@@ -98,7 +88,7 @@
   </section>
 
   {% if success_stories %}
-  <section class="exporter-stories background-stone-30 padding-bottom-60" id="exporter-stories">
+  <section class="exporter-stories colored-section padding-bottom-60" id="exporter-stories">
     <div class="container">
       <div class="grid-row">
         <div class="column-full column-two-thirds-m column-half-l">
@@ -119,7 +109,6 @@
     </div>
   </section>
   {% endif %}
-
   <section id="how-can-we-help-you-online" class="how-can-we-help-you-online">
     <div class="container">
       <div class="grid-row">
@@ -181,11 +170,11 @@
           </div>
         </div>
       </div>
-       <a href="{% url 'markets:list' %}" class="button margin-top-30 margin-bottom-30">Find your marketplace</a>
+       <a href="{% url 'markets:list' %}" class="button margin-top-30 margin-bottom-30 primary-button">Find your marketplace</a>
     </div>
   </section>
 
-  <section class="random-markets background-stone-30" id="random-markets">
+  <section class="random-markets colored-section" id="random-markets">
     <div class="container">
         <div class="grid-row">
           <div class="column-full column-two-thirds-m column-half-l">
@@ -222,7 +211,7 @@
           <div>
             <h1 class="heading-large">Get help to sell online worldwide</h1>
             <p class="margin-bottom-30">Let us help you export your products to consumers around the world through online marketplaces.</p>
-            <a href="{% url 'markets:list' %}" class="button">Find your marketplace</a>
+            <a href="{% url 'markets:list' %}" class="button primary-button">Find your marketplace</a>
           </div>
         </div>
       </div>

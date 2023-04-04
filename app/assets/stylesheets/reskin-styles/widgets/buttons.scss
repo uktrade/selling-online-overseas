@@ -1,0 +1,130 @@
+@import "../colors/colors.scss";
+@import "../fonts/main.scss";
+@import "../borders/main.scss";
+
+@mixin primary {
+  background-color: $color-primary-button;
+  color: $color-alternative-text;
+  border: 2px solid $color-primary-button;
+}
+
+@mixin secondary {
+  background-color: $color-main-background;
+  border: 2px solid $color-gov-link;
+  color: $color-gov-link;
+
+  i {
+    color: $color-gov-link;
+  }
+}
+
+.button,
+button {
+  min-height: 50px;
+  height: min-content;
+  border-radius: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-family: $header-font;
+  font-size: $font-size-button;
+  line-height: revert;
+  color: $color-gov-link;
+
+  span + i,
+  i + span {
+    padding-left: $standard-padding;
+  }
+
+  & i {
+    font-size: $icon-large-button-size;
+  }
+
+  cursor: pointer;
+
+  &:active,
+  &:focus {
+    @include focus-state;
+  }
+
+  &.primary-button,
+  &.secondary-button,
+  &.tertiary-button,
+  &.quaternary-button {
+    padding-left: $large-padding;
+    padding-right: $large-padding;
+  }
+
+  &.small-button {
+    height: 40px;
+    min-height: 40px;
+    font-size: 16px;
+    line-height: 10px;
+
+    i {
+      font-size: $icon-small-button-size;
+    }
+  }
+
+  &.medium-button {
+    height: 45px;
+
+    i {
+      font-size: $icon-medium-button-size;
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &.secondary-button {
+    @include secondary();
+
+    & :focus,
+    &:active,
+    &:hover {
+      @include primary();
+    }
+  }
+
+  &.primary-button {
+    @include primary();
+    & :focus,
+    &:active,
+    &:hover {
+      @include secondary();
+    }
+  }
+}
+
+button {
+  padding-left: $standard-padding;
+  padding-right: $standard-padding;
+
+  &.small-button {
+    height: 35px;
+    line-height: 10px;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+
+#great-header-search-form{
+  button{
+    min-height: 40px;
+  }
+}
+
+
+.button-ghost-blue{
+  @include secondary()
+}
+
+a.button{
+  @include primary()
+}

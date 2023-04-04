@@ -1,4 +1,5 @@
-
+@import '../reskin-styles/fonts/main.scss';
+@import '../reskin-styles/colors/colors.scss';
 .market-detail {
 
     .aside-content {
@@ -6,6 +7,9 @@
         .deal-section  {
             width: 100%;
             margin: 0;
+         p{
+            padding:0
+         }
         }
         .button {
             width: 100%;
@@ -22,11 +26,11 @@
     }
 
     .market-detail-content section {
-        border-top: 2px solid $stone;
+        border-top: 2px solid $color-grey-background;
     }
 
     .grid-row section:last-child {
-        border-bottom: 2px solid $flag-red;
+        border-bottom: 2px solid $color-grey-background;
     }
 
     .aside-content .deal-section,
@@ -36,7 +40,7 @@
 
     dd, dt {
         padding: 5px 0;
-        border-bottom: 1px solid $stone;
+        border-bottom: 1px solid $color-grey-background;
 
         span {
             float: right;
@@ -130,14 +134,18 @@
         }
 
         p {
-            padding-left: 35px;
-            color: $flag-red;
+            padding: 10px 0 10px 35px;
             margin-bottom: 0;
+            border-left: 5px solid $color-gov-link;
         }
 
     }
 
     .aside-content {
+
+        p {
+            border-left: none;
+        }
 
         img {
             min-width: 70px;
@@ -207,10 +215,14 @@
         }
 
         .highlighted-info-box {
-            border-top: 8px solid $active-blue;
+            // border-top: 8px solid $active-blue;
             float: right;
             width: $cols-3;
             max-width: 270px;
+
+            dt, dd {
+                font-size: $font-size-p;
+            }
         }
 
         .aside-content {
