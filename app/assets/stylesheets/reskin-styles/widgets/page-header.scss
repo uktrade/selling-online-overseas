@@ -1,8 +1,8 @@
-@import '../colors/colors.scss';
-@import '../fonts/typography.scss';
-@import '../sizes/sizes.scss';
+@import "../colors/colors.scss";
+@import "../fonts/typography.scss";
+@import "../sizes/sizes.scss";
 
-$hero-image: url('/selling-online-overseas/static/images/hero-image.png');
+$hero-image: url("/selling-online-overseas/static/images/hero-image.png");
 @mixin vertical-alignment {
   background: $color-main-background !important;
   height: auto;
@@ -22,21 +22,17 @@ $hero-image: url('/selling-online-overseas/static/images/hero-image.png');
   }
 
   .inner-header {
-
-     @media only screen and (min-width: $mobile-size) {
-   min-height: 355px;
-
-  }
-    
+    @media only screen and (min-width: $mobile-size) {
+      min-height: 355px;
+    }
+    position: relative;
     width: 100%;
     margin: 0;
     padding: 0 1.5 * $standard-padding;
     flex-direction: column;
     gap: $standard-padding;
 
-
-
-    >div:first-child {
+    > div:first-child {
       height: auto;
       min-width: fit-content;
       flex: 1;
@@ -59,8 +55,8 @@ $hero-image: url('/selling-online-overseas/static/images/hero-image.png');
     background: $hero-image;
 
     @media only screen and (max-width: $mobile-size) {
-        display: none;
-      }
+      display: none;
+    }
   }
 }
 
@@ -75,87 +71,86 @@ $hero-image: url('/selling-online-overseas/static/images/hero-image.png');
   flex-wrap: wrap;
   box-sizing: border-box;
 
-
-  .search-bar{
+  .search-bar {
     width: 100%;
-    padding:30px;
-    margin:0;
+    padding: 30px;
+    margin: 0;
+    max-width: 1600px;
 
-     @media only screen and (min-width: (1290px + $x-large-padding)) {
+    @media only screen and (min-width: (1290px + $x-large-padding)) {
       padding: 30px 0;
     }
 
-     
+       @media only screen and (min-width: 1320px) and (max-width: 1600px) {
+      margin-left: calc( (100vw - 1320px)/2 + 60px)
+    }
 
+         @media only screen and (min-width: 1600px) and (max-width: 2000px){
+     margin-left: calc(200px - ((100vw - 1600px)/1600 * 1000) + 30px)
+         }
 
-    .search-form{
+    .search-form {
       width: 100%;
-      padding:30px;
-      background-color: $color-grey-background!important;
+      padding: 30px;
+      background-color: $color-grey-background !important;
       @media only screen and (max-width: $mobile-size) {
-      padding: 15px;
+        padding: 15px;
+      }
     }
+
+    @media only screen and (min-width: $mobile-size) {
+      margin-top: -62px;
+      bottom: 0;
+      position: absolute;
     }
-     
-        @media only screen and (min-width: $mobile-size) {
-   margin-top: -62px;
-   bottom: 0;
-   position: absolute;
 
-  }
-
-  @media only screen and (min-width: $mobile-size) and (max-width: 980px){
-    padding: 20px;
-  padding-bottom: 10px;
-  }
+    @media only screen and (min-width: $mobile-size) and (max-width: 980px) {
+      padding: 20px;
+      padding-bottom: 10px;
+    }
 
     @media only screen and (max-width: $mobile-size) {
-    padding:0;
-    margin-bottom: 15px;
-    padding-bottom: 0;
-    margin-left:0;
-    margin-right: 0;
+      padding: 0;
+      margin-bottom: 15px;
+      padding-bottom: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 
-}
-  
-
-
-  @media only screen and (min-width: 1290px) {
-    margin-left: auto;
-  }
+  // @media only screen and (min-width: 1290px) {
+  //   margin-left: auto;
+  // }
 
   @media only screen and (min-width: 2030px) {
     margin: auto;
     padding-left: 380px;
   }
 
-  @media only screen and (min-width: $max-header-width) and (max-width: 2030px) {
+  @media only screen and (min-width: 1280px) and (max-width: 2030px) {
     margin: auto;
-    padding-left: calc((100vw - $max-header-width) / 2 + 170px);
+    padding-left: calc((100vw - 1280px) / 2);
   }
 
   .inner-header {
-    @media only screen and (min-width: $mobile-size){
-    min-height: 400px;
-    max-width: $max-header-width;
-    width: 100%;
-    height: 100%;
-    margin-left: $x-large-padding;
-    display: inline-flex;
+    @media only screen and (min-width: $mobile-size) {
+      min-height: 400px;
+      max-width: $max-header-width;
+      width: 100%;
+      height: 100%;
+      margin-left: $x-large-padding;
+      display: inline-flex;
     }
 
     @media only screen and (min-width: $mobile-size) and (max-width: 980px) {
       margin-left: $large-padding;
     }
 
-    @media only screen and (min-width: (1290px + $x-large-padding)) {
-      margin-left: calc((100vw - 1290px) / 2 + 43px);
-    }
+    // @media only screen and (min-width: (1290px + (2 * $x-large-padding))) {
+    //   margin-left: calc((100vw - (1290 + $x-large-padding)) / 2 + 43px);
+    // }
 
-   
-
-    >div:first-child {
+    > div:first-child {
       padding-top: 60px;
       padding-bottom: 60px;
       flex: 1;
@@ -215,27 +210,22 @@ $hero-image: url('/selling-online-overseas/static/images/hero-image.png');
 
   &.stack-at-tablet-width {
     @media only screen and (max-width: 900px) {
-      @include vertical-alignment
+      @include vertical-alignment;
     }
   }
 
   @media only screen and (max-width: $mobile-size) {
-    @include vertical-alignment
+    @include vertical-alignment;
   }
-
 }
 
-.mobile-image-container{
+.mobile-image-container {
   display: none;
-   @media only screen and (max-width: $mobile-size) {
-   display: block;
-   height: 280px;
-   background: $hero-image;
-   background-size: cover;
-   background-repeat: no-repeat;
-  
+  @media only screen and (max-width: $mobile-size) {
+    display: block;
+    height: 280px;
+    background: $hero-image;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }
-
-
-
