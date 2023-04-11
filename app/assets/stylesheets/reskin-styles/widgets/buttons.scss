@@ -113,18 +113,21 @@ button {
   }
 }
 
-
-#great-header-search-form{
-  button{
+#great-header-search-form {
+  button {
     min-height: 40px;
   }
 }
 
+.button-ghost-blue {
+  @include secondary();
 
-.button-ghost-blue{
-  @include secondary()
+  &.pagination-next,
+  &.pagination-previous {
+    @include primary();
+  }
 }
 
-a.button{
-  @include primary()
+a.button {
+  @include primary();
 }

@@ -1,8 +1,10 @@
+$font-path: '/selling-online-overseas/static/fonts/';
+
 @font-face {
   font-family: 'FS Lucas';
-  src: url('/assets/fonts/FSLucas-Regular.woff2') format('woff2'),
-    url('/assets/fonts/FSLucas-Regular.woff') format('woff'),
-    url('/assets/fonts/FSLucas-Regular.ttf') format('truetype');
+  src: url('#{$font-path}FSLucas-Regular.woff2') format('woff2'),
+    url('#{$font-path}FSLucas-Regular.woff') format('woff'),
+    url('#{$font-path}FSLucas-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -10,12 +12,12 @@
 // sass-lint:disable-all
 @font-face {
   font-family: 'FS Lucas SemiBold';
-  src: url('/assets/fonts/FSLucas-SemiBold.eot'),
-    url('/assets/fonts/FSLucas-SemiBold.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/FSLucas-SemiBold.woff2') format('woff2'),
-    url('/assets/fonts/FSLucas-SemiBold.woff') format('woff'),
-    url('/assets/fonts/FSLucas-SemiBold.ttf') format('truetype'),
-    url('/assets/fonts/FSLucas-SemiBold.svg#UbuntuBold') format('svg');
+  src: url('#{$font-path}FSLucas-SemiBold.eot'),
+    url('#{$font-path}FSLucas-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('#{$font-path}FSLucas-SemiBold.woff2') format('woff2'),
+    url('#{$font-path}FSLucas-SemiBold.woff') format('woff'),
+    url('#{$font-path}FSLucas-SemiBold.ttf') format('truetype'),
+    url('#{$font-path}FSLucas-SemiBold.svg#UbuntuBold') format('svg');
 }
 
 
@@ -24,12 +26,12 @@
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url('/assets/fonts/fa-solid-900.eot');
-  src: url('/assets/fonts/fa-solid-900.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/fa-solid-900.woff2') format('woff2'),
-    url('/assets/fonts/fa-solid-900.woff') format('woff'),
-    url('/assets/fonts/fa-solid-900.ttf') format('truetype'),
-    url('/assets/fonts/fa-solid-900.svg#fontawesome') format('svg');
+  src: url('#{$font-path}fa-solid-900.eot');
+  src: url('#{$font-path}fa-solid-900.eot?#iefix') format('embedded-opentype'),
+    url('#{$font-path}fa-solid-900.woff2') format('woff2'),
+    url('#{$font-path}fa-solid-900.woff') format('woff'),
+    url('#{$font-path}fa-solid-900.ttf') format('truetype'),
+    url('#{$font-path}fa-solid-900.svg#fontawesome') format('svg');
 }
 
 .fa,

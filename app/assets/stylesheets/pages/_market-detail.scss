@@ -54,6 +54,10 @@
         }
     }
 
+    .stats-details{
+        float: right;
+    }
+
     .dl-tabular dd,
     .dl-tabular dt {
         float: left;
@@ -63,7 +67,7 @@
     .market-item-inner {
         display: block;
         border: none;
-        padding: 20px 0 0;
+        padding: 40px 0 0;
     }
 
     .market-detail-logo {

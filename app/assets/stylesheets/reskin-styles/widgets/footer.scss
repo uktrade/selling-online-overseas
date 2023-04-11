@@ -1,18 +1,23 @@
-@import '../colors/colors.scss';
-@import '../fonts/main.scss';
+@import "../colors/colors.scss";
+@import "../fonts/main.scss";
 
-.great-footer{
-    background-color: $color-footer;
-
-    .great-footer-logo-container{
-        padding:0;
+.great-footer {
+  background-color: $color-footer;
+  .great-footer-links {
+    @media only screen and (min-width: $mobile-size) and (max-width: 1280px) {
+      padding: 0 30px !important;
     }
+  }
 
-    nav{
+  .great-footer-logo-container {
+    padding: 0;
+  }
+
+  nav {
     display: flex;
     justify-content: center;
-    margin:auto;
-    padding:0;
+    margin: auto;
+    padding: 0;
 
     ul {
       margin: 80px 0 $x-large-padding 0;
@@ -26,21 +31,19 @@
         margin: 115px $large-padding 52px $large-padding;
       }
 
-      li{
-        margin:0!important;
+      li {
+        margin: 0 !important;
       }
 
       > li a {
         font-family: $main-text-font;
-        font-size: $font-size-p!important;
+        font-size: $font-size-p !important;
         color: $color-alternative-text;
         text-decoration-line: underline;
         text-decoration-thickness: 1px;
         text-underline-offset: 3px;
         cursor: pointer;
       }
-
-     
     }
   }
 }

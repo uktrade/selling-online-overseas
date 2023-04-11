@@ -81,13 +81,13 @@ $hero-image: url("/selling-online-overseas/static/images/hero-image.png");
       padding: 30px 0;
     }
 
-       @media only screen and (min-width: 1320px) and (max-width: 1600px) {
-      margin-left: calc( (100vw - 1320px)/2 + 60px)
+    @media only screen and (min-width: 1320px) and (max-width: 1600px) {
+      margin-left: calc((100vw - 1320px) / 2 + 60px);
     }
 
-         @media only screen and (min-width: 1600px) and (max-width: 2000px){
-     margin-left: calc(200px - ((100vw - 1600px)/1600 * 1000) + 30px)
-         }
+    @media only screen and (min-width: 1600px) and (max-width: 2000px) {
+      margin-left: calc(200px - ((100vw - 1600px) / 1600 * 1000) + 30px);
+    }
 
     .search-form {
       width: 100%;
@@ -142,13 +142,13 @@ $hero-image: url("/selling-online-overseas/static/images/hero-image.png");
       display: inline-flex;
     }
 
-    @media only screen and (min-width: $mobile-size) and (max-width: 980px) {
+    @media only screen and (min-width: 1280px) {
       margin-left: $large-padding;
     }
 
-    // @media only screen and (min-width: (1290px + (2 * $x-large-padding))) {
-    //   margin-left: calc((100vw - (1290 + $x-large-padding)) / 2 + 43px);
-    // }
+    @media only screen and (min-width: $mobile-size) and (max-width: 980px) {
+      margin-left: $large-padding;
+    }
 
     > div:first-child {
       padding-top: 60px;
