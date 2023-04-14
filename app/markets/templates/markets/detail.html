@@ -205,11 +205,11 @@
       <!-- /content -->
 
       <div class="aside-content highlighted-info-box padding-left-0-l padding-right-0-l padding-top-15 margin-right-15-l">
-          <div class="deal-section">
+          <div class="deal-section {%if market.special_terms is None %}no-deal-available{%endif%}">
             {% if  market.special_terms %}
               {{ market.special_terms|safe }}
             {%endif%}
-              <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" class="button primary-button margin-top-30" title="Apply now">Apply now</a>
+              <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" class="button primary-button {%if market.special_terms%}margin-top-30{%endif%}" title="Apply now">Apply now</a>
             </div>
       </div>
 
