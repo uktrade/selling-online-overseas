@@ -54,10 +54,6 @@
         }
     }
 
-    .stats-details{
-        float: right;
-    }
-
     .dl-tabular dd,
     .dl-tabular dt {
         float: left;
@@ -219,7 +215,7 @@
         }
 
         .highlighted-info-box {
-            // border-top: 8px solid $active-blue;
+            border-top: 8px solid $active-blue;
             float: right;
             width: $cols-3;
             max-width: 270px;

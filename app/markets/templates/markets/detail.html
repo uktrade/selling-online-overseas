@@ -206,9 +206,9 @@
 
       <div class="aside-content highlighted-info-box padding-left-0-l padding-right-0-l padding-top-15 margin-right-15-l">
           <div class="deal-section">
-    
+            {% if  market.special_terms %}
               {{ market.special_terms|safe }}
-
+            {%endif%}
               <a href="{{ services_urls.contact_us }}selling-online-overseas/organisation/?market={{ market.name|urlencode }}" class="button primary-button margin-top-30" title="Apply now">Apply now</a>
             </div>
       </div>
