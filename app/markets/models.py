@@ -26,7 +26,7 @@ class LogisticsModel(models.Model):
     name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
     class Meta:
         ordering = ('name',)
@@ -34,22 +34,22 @@ class LogisticsModel(models.Model):
 
 class Logo(models.Model):
     name = models.CharField(max_length=200)
-    image = models.ImageField(null=True, help_text="After choosing an image to upload click 'Save' to access the\
-                                                    'Cropping' tool and edit the image")
+    image = models.ImageField(null=True, help_text='After choosing an image to upload click "Save" to access the\
+                                                    "Cropping" tool and edit the image')
     cropping = ImageRatioField('image', '400x302',
-                               help_text="Use cropping tool to cut the image to the right format. Always leave enough\
+                               help_text='Use cropping tool to cut the image to the right format. Always leave enough\
                                           white space around the edges and try to keep the largest possible size for\
-                                          good image quality.")
+                                          good image quality.')
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
 
 class SellerModel(models.Model):
     name = models.CharField(max_length=200, unique=True,)
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
     class Meta:
         ordering = ('name',)
@@ -59,7 +59,7 @@ class SupportChannel(models.Model):
     name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
     class Meta:
         ordering = ('name',)
@@ -69,7 +69,7 @@ class UploadMethod(models.Model):
     name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
     class Meta:
         ordering = ('name',)
@@ -79,10 +79,10 @@ class Currency(models.Model):
     code = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
-        return "{0}".format(self.code)
+        return '{0}'.format(self.code)
 
     class Meta:
-        verbose_name_plural = "Currencies"
+        verbose_name_plural = 'Currencies'
         ordering = ('code',)
 
 
@@ -90,7 +90,7 @@ class Brand(models.Model):
     name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
     class Meta:
         ordering = ('name',)
@@ -101,7 +101,7 @@ class TranslationRequirement(models.Model):
     ordering = models.IntegerField()
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
     class Meta:
         ordering = ('ordering',)
@@ -112,7 +112,7 @@ class SetupRequirement(models.Model):
     ordering = models.IntegerField()
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
     class Meta:
         ordering = ('ordering',)
@@ -122,7 +122,7 @@ class Language(models.Model):
     name = models.CharField(max_length=200, unique=True,)
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
     class Meta:
         ordering = ('name',)
@@ -140,50 +140,50 @@ class BaseMarket(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
 
     logo = models.ForeignKey('Logo', null=True, blank=True, on_delete=models.CASCADE)
-    e_marketplace_description = RichTextField(verbose_name="e-Marketplace Description")
+    e_marketplace_description = RichTextField(verbose_name='e-Marketplace Description')
     web_address = models.URLField(max_length=200)
     explore_the_marketplace = models.URLField(max_length=200, null=True, blank=True,
-                                              verbose_name="Explore the marketplace")
+                                              verbose_name='Explore the marketplace')
 
-    operating_countries = models.ManyToManyField(Country, verbose_name="Operating Countries", blank=True)
+    operating_countries = models.ManyToManyField(Country, verbose_name='Operating Countries', blank=True)
     product_categories = models.ManyToManyField(Category, blank=True)
 
-    number_of_registered_users = models.FloatField(default=0, null=True, blank=True, help_text="in millions",
-                                                   verbose_name="Number of registered users")
+    number_of_registered_users = models.FloatField(default=0, null=True, blank=True, help_text='in millions',
+                                                   verbose_name='Number of registered users')
     famous_brands_on_marketplace = models.ManyToManyField(Brand, blank=True)
     seller_model = models.ManyToManyField(SellerModel, blank=True)
 
     customer_support_channels = models.ManyToManyField(SupportChannel, blank=True,
-                                                       related_name="%(app_label)s_%(class)s_customer_related")
+                                                       related_name='%(app_label)s_%(class)s_customer_related')
     customer_support_hours = models.CharField(max_length=150, blank=True, null=True,
-                                              help_text="Format: <br/>9:00am to 6:00pm (GMT+1), Monday - Friday")
+                                              help_text='Format: <br/>9:00am to 6:00pm (GMT+1), Monday - Friday')
 
     seller_support_channels = models.ManyToManyField(SupportChannel, blank=True,
-                                                     related_name="%(app_label)s_%(class)s_seller_related")
+                                                     related_name='%(app_label)s_%(class)s_seller_related')
     seller_support_hours = models.CharField(max_length=150, null=True, blank=True,
-                                            help_text="Format: <br/>9:00am to 6:00pm (GMT+1), Monday - Friday")
+                                            help_text='Format: <br/>9:00am to 6:00pm (GMT+1), Monday - Friday')
 
     customer_demographics = RichTextField(null=True, blank=True)
 
     marketing_merchandising = RichTextField(null=True, blank=True)
 
     product_details_upload_method = models.ManyToManyField(UploadMethod, blank=True,
-                                                           verbose_name="Upload product details via")
-    product_details_upload_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
+                                                           verbose_name='Upload product details via')
+    product_details_upload_notes = models.TextField(null=True, blank=True, verbose_name='Notes')
 
-    sale_to_payment_duration = models.IntegerField(null=True, blank=True, help_text="in days",
-                                                   verbose_name="Payment terms - sale to payment duration")
+    sale_to_payment_duration = models.IntegerField(null=True, blank=True, help_text='in days',
+                                                   verbose_name='Payment terms - sale to payment duration')
 
     currency_of_payments = models.ManyToManyField(Currency, blank=True,
-                                                  verbose_name="Payment terms - Currency of payments")
+                                                  verbose_name='Payment terms - Currency of payments')
 
     language = models.ForeignKey(
-        Language, null=True, blank=True, verbose_name="Language of Marketplace", on_delete=models.CASCADE)
+        Language, null=True, blank=True, verbose_name='Language of Marketplace', on_delete=models.CASCADE)
 
     logistics_structure = models.ManyToManyField(LogisticsModel, blank=True)
     logistics_structure_notes = models.TextField(blank=True, null=True, verbose_name='notes')
 
-    product_positioning = models.ManyToManyField(Type, blank=True, verbose_name="Product Positioning")
+    product_positioning = models.ManyToManyField(Type, blank=True, verbose_name='Product Positioning')
     prohibited_items = models.ManyToManyField(ProhibitedItem, blank=True)
 
     commission_lower = models.FloatField(null=True, blank=True)
@@ -192,42 +192,42 @@ class BaseMarket(models.Model):
 
     dit_special_terms_summary = models.CharField(max_length=128, null=True, blank=True)
     dit_special_terms = RichTextField(null=True, blank=True,
-                                      verbose_name="Department of International Trade special terms")
+                                      verbose_name='Department of International Trade special terms')
 
     product_exclusivity_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                                       verbose_name="Product exclusivity required")
-    product_exclusivity_required_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
+                                                       verbose_name='Product exclusivity required')
+    product_exclusivity_required_notes = models.TextField(null=True, blank=True, verbose_name='Notes')
 
     translation_requirements = models.ManyToManyField(TranslationRequirement, blank=True)
-    translation_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
+    translation_notes = models.TextField(null=True, blank=True, verbose_name='Notes')
 
     setup_requirements = models.ManyToManyField(SetupRequirement, blank=True)
-    setup_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
+    setup_notes = models.TextField(null=True, blank=True, verbose_name='Notes')
 
-    one_off_registration_fee = models.FloatField(default=0, verbose_name="One off registration fee")
-    one_off_registration_fee_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
+    one_off_registration_fee = models.FloatField(default=0, verbose_name='One off registration fee')
+    one_off_registration_fee_notes = models.TextField(null=True, blank=True, verbose_name='Notes')
     one_off_registration_fee_currency = models.ForeignKey(
         Currency,
         null=True,
         blank=True,
-        related_name="%(app_label)s_%(class)s_reg_fees_currency",
+        related_name='%(app_label)s_%(class)s_reg_fees_currency',
         on_delete=models.CASCADE
     )
 
     fee_per_listing = models.BooleanField(
         choices=BOOL_CHOICES,
         default=False,
-        verbose_name="Fee per Listing"
+        verbose_name='Fee per Listing'
     )
-    fee_per_listing_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
+    fee_per_listing_notes = models.TextField(null=True, blank=True, verbose_name='Notes')
 
-    membership_fees = models.FloatField(default=0, verbose_name="Membership fees")
+    membership_fees = models.FloatField(default=0, verbose_name='Membership fees')
     membership_fees_frequency = models.CharField(choices=PAYMENT_FREQUENCIES, max_length=1, null=True, blank=True)
     membership_fees_currency = models.ForeignKey(
         Currency,
         null=True,
         blank=True,
-        related_name="%(app_label)s_%(class)s_membership_fees_currency",
+        related_name='%(app_label)s_%(class)s_membership_fees_currency',
         on_delete=models.CASCADE
     )
 
@@ -236,17 +236,17 @@ class BaseMarket(models.Model):
         Currency,
         null=True,
         blank=True,
-        related_name="%(app_label)s_%(class)s_deposit_currency",
+        related_name='%(app_label)s_%(class)s_deposit_currency',
         on_delete=models.CASCADE
     )
-    deposit_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
+    deposit_notes = models.TextField(null=True, blank=True, verbose_name='Notes')
 
     shipping_tracking_required = models.BooleanField(choices=BOOL_CHOICES, default=False,
-                                                     verbose_name="Shipping Tracking Required")
-    shipping_tracking_required_notes = models.TextField(null=True, blank=True, verbose_name="Notes")
+                                                     verbose_name='Shipping Tracking Required')
+    shipping_tracking_required_notes = models.TextField(null=True, blank=True, verbose_name='Notes')
 
     dit_advisor_tip = RichTextField(null=True, blank=True,
-                                    verbose_name="Department of International Trade advisor tip")
+                                    verbose_name='Department of International Trade advisor tip')
 
     def strip(self, string):
         no_html_entities = re.sub(r'&(?:\w+|#\d+);', '', string)
@@ -304,19 +304,19 @@ class BaseMarket(models.Model):
             raise ValidationError(errors)
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
     @property
     def language_display(self):
         if self.language is not None:
-            return "This marketplace is in {0}".format(self.language)
+            return 'This marketplace is in {0}'.format(self.language)
 
-        return ""
+        return ''
 
     @property
     def commission_display(self):
         if self.commission_lower is None and self.commission_upper is None:
-            return "None"
+            return 'None'
 
         values = [self.commission_lower, self.commission_upper]
         lower = min(val for val in values if val is not None)
@@ -326,17 +326,17 @@ class BaseMarket(models.Model):
         upper = self.format_float(upper)
 
         if lower == upper:
-            commission = "{0}%".format(lower)
+            commission = '{0}%'.format(lower)
         else:
-            commission = "{0} - {1}%".format(lower, upper)
+            commission = '{0} - {1}%'.format(lower, upper)
 
         return commission
 
     @property
     def membership_fees_display(self):
         display_value = self._value_display('membership_fees')
-        if display_value != "None":
-            return "{0} {1}".format(display_value, self.get_membership_fees_frequency_display())
+        if display_value != 'None':
+            return '{0} {1}'.format(display_value, self.get_membership_fees_frequency_display())
         else:
             return display_value
 
@@ -352,9 +352,9 @@ class BaseMarket(models.Model):
     def number_of_registered_users_display(self):
         if self.number_of_registered_users != 0:
             self.number_of_registered_users = self.format_float(self.number_of_registered_users)
-            return "{0} million".format(self.number_of_registered_users)
+            return '{0} million'.format(self.number_of_registered_users)
 
-        return "Not available"
+        return 'Not available'
 
     def _value_display(self, attr):
         value = getattr(self, attr, 0)
@@ -364,10 +364,10 @@ class BaseMarket(models.Model):
                 formatted_value = format(value, '.', grouping=3, thousand_sep=',', force_grouping=True)
             else:
                 formatted_value = format(value, '.', decimal_pos=2, grouping=3, thousand_sep=',', force_grouping=True)
-            currency = getattr(self, "{0}_currency".format(attr)).code
-            display_str = "{0} {1}".format(currency, formatted_value)
+            currency = getattr(self, '{0}_currency'.format(attr)).code
+            display_str = '{0} {1}'.format(currency, formatted_value)
         else:
-            display_str = "None"
+            display_str = 'None'
 
         return display_str
 
@@ -375,19 +375,19 @@ class BaseMarket(models.Model):
     def sale_to_payment_duration_display(self):
         if self.sale_to_payment_duration:
             if self.sale_to_payment_duration == 1:
-                return "1 day"
+                return '1 day'
             else:
-                return "{0} days".format(self.sale_to_payment_duration)
+                return '{0} days'.format(self.sale_to_payment_duration)
         else:
-            return ""
+            return ''
 
 
 class Market(BaseMarket):
 
     class Meta:
         permissions = (
-            ("can_publish", "Can publish Market"),
-            ("can_unpublish", "Can unpublish Market"),
+            ('can_publish', 'Can publish Market'),
+            ('can_unpublish', 'Can unpublish Market'),
         )
 
     live_version = models.IntegerField(null=True)
@@ -448,7 +448,7 @@ class Market(BaseMarket):
 
             # Store the meta-information to say that the model has been published
             reversion.set_user(user)
-            reversion.set_comment("Published")
+            reversion.set_comment('Published')
 
         # Get the latest revision id that was just completed
         latest_version = Version.objects.get_for_object(self)[0]
@@ -462,13 +462,13 @@ class Market(BaseMarket):
 
         # Change it's content type to PublishedMarket
         content_type = ContentType.objects.get_for_model(PublishedMarket)
-        model_name = "{0}.{1}".format(content_type.app_label, content_type.model)
+        model_name = '{0}.{1}'.format(content_type.app_label, content_type.model)
         model_data[0]['model'] = model_name
         # Pop the live_version (which isn't on the PublisheMarket model)
         model_data[0]['fields'].pop('live_version')
 
         # Then deserialise and save the PublishedMarket object
-        published_market = next(serializers.deserialize("json", json.dumps(model_data)))
+        published_market = next(serializers.deserialize('json', json.dumps(model_data)))
         published_market.save()
 
     def unpublish(self, user=None):
@@ -477,7 +477,7 @@ class Market(BaseMarket):
         """
 
         if not self.published:
-            raise ValidationError("Market is not published, so cannot unpublish.")
+            raise ValidationError('Market is not published, so cannot unpublish.')
 
         # Delet the associated PublishedMarket
         PublishedMarket.objects.get(pk=self.pk).delete()
@@ -489,7 +489,7 @@ class Market(BaseMarket):
 
             # Store the meta-information to say that the model has been unpublished
             reversion.set_user(user)
-            reversion.set_comment("Unpublished")
+            reversion.set_comment('Unpublished')
 
     def delete(self):
         """

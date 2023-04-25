@@ -39,11 +39,11 @@ def delete_model_duplicates(Model, unique_attr):
     but one of the models that have clashing unqiue attributes
     """
 
-    _filter = {"{0}__count__gt".format(unique_attr): 1}
+    _filter = {'{0}__count__gt'.format(unique_attr): 1}
     duplicates = Model.objects.values(unique_attr).annotate(Count(unique_attr)).order_by().filter(**_filter)
     for duplicate in duplicates:
         name = duplicate[unique_attr]
-        count = duplicate["{0}__count".format(unique_attr)]
+        count = duplicate['{0}__count'.format(unique_attr)]
         model_to_delete = Model.objects.filter(name=name)[count - 1:]
         for model in model_to_delete:
             model.delete()

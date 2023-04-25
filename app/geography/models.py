@@ -6,8 +6,8 @@ class Country(models.Model):
     alternate_name = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)
 
     class Meta:
-        verbose_name_plural = "Countries"
+        verbose_name_plural = 'Countries'
         ordering = ('-name',)

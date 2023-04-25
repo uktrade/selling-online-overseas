@@ -13,11 +13,11 @@ class UserBehavior(TaskSet):
 
     @task(1)
     def start_page(self):
-        self.client.get("/markets")
+        self.client.get('/markets')
 
     @task(5)
     def search_page(self):
-        self.client.get("/markets/filter")
+        self.client.get('/markets/filter')
 
     @task(10)
     def search_categories(self):
@@ -44,7 +44,7 @@ class UserBehavior(TaskSet):
         category_filter = 'product_category={0}'.format('&product_category='.join(categories))
         country_filter = 'operating_countries={0}'.format('&operating_countries='.join(countries))
 
-        url = "{0}?{1}&{2}".format(base_url, category_filter, country_filter)
+        url = '{0}?{1}&{2}'.format(base_url, category_filter, country_filter)
         self.client.get(url, name=base_url)
 
     @task(3)
@@ -60,11 +60,11 @@ class UserBehavior(TaskSet):
         max_delay = 500
 
         search_term = random.choice(options)
-        query = ""
+        query = ''
 
         for letter in search_term:
             query += letter
-            self.client.get("{0}?q={1}".format(base_url, query), name=base_url)
+            self.client.get('{0}?q={1}'.format(base_url, query), name=base_url)
             delay = random.randint(min_delay, max_delay) / 1000.0
             time.sleep(delay)
 

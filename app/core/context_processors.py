@@ -1,4 +1,3 @@
-from directory_constants import urls
 from django.conf import settings
 
 

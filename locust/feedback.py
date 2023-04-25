@@ -5,7 +5,7 @@ class UserBehavior(TaskSet):
 
     @task(1)
     def search_page(self):
-        self.client.get("/feedback/e_navigator")
+        self.client.get('/feedback/e_navigator')
 
 
 class WebsiteUser(HttpLocust):

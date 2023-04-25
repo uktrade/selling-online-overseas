@@ -1,4 +1,3 @@
-from django.contrib.admin import widgets
 from django import forms
 from django.contrib import admin
 from django.conf.urls import url
@@ -158,8 +157,8 @@ class MarketAdmin(VersionAdmin):
         publish_view = self.admin_site.admin_view(self.publish_view)
         unpublish_view = self.admin_site.admin_view(self.unpublish_view)
         custom_urls = [
-            url(r'^(?P<pk>[0-9]+)/publish/$', publish_view, name="publish_market"),
-            url(r'^(?P<pk>[0-9]+)/unpublish/$', unpublish_view, name="unpublish_market"),
+            url(r'^(?P<pk>[0-9]+)/publish/$', publish_view, name='publish_market'),
+            url(r'^(?P<pk>[0-9]+)/unpublish/$', unpublish_view, name='unpublish_market'),
         ]
         return custom_urls + urls
 
@@ -176,9 +175,9 @@ class MarketAdmin(VersionAdmin):
             market = get_object_or_404(Market, pk=pk)
             market.validate_for_publishing()
             market.publish(request.user)
-            self.message_user(request, "Market published.", level=messages.SUCCESS)
+            self.message_user(request, 'Market published.', level=messages.SUCCESS)
         except ValidationError as errors:
-            self.message_user(request, "Failed to publish Market.", level=messages.ERROR)
+            self.message_user(request, 'Failed to publish Market.', level=messages.ERROR)
             for error in errors:
                 self.message_user(request, error, level=messages.ERROR)
 
@@ -195,7 +194,7 @@ class MarketAdmin(VersionAdmin):
 
         market = get_object_or_404(Market, pk=pk)
         market.unpublish(request.user)
-        self.message_user(request, "Market unpublished.", level=messages.SUCCESS)
+        self.message_user(request, 'Market unpublished.', level=messages.SUCCESS)
 
         return HttpResponseRedirect(reverse('admin:markets_market_change', args=[pk]))
 

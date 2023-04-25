@@ -50,10 +50,6 @@ DJANGO_WEBSERVER := \
 
 PYTEST := pytest ./app -v --ignore=node_modules --cov=./app --cov-config=.coveragerc $(ARGUMENTS)
 COLLECT_STATIC := python ./app/manage.py collectstatic --noinput
-CODECOV := \
-	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
-	   codecov --token=$$CODECOV_REPO_TOKEN ;\
-	fi
 
 webserver:
 	$(DEBUG_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
@@ -88,7 +84,7 @@ pytest:
 	$(DEBUG_SET_ENV_VARS) && $(PYTEST)
 
 circleci_test:
-	$(COLLECT_STATIC) && $(PYTEST) && $(CODECOV)
+	$(COLLECT_STATIC) && $(PYTEST)
 
 deploy:
 	docker-compose pull
