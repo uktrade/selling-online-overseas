@@ -13,7 +13,7 @@ class TestModel1(models.Model):
     symbol = models.CharField(max_length=1, blank=True, null=True)
 
     def __str__(self):
-        return "{0}".format(self.name, self.symbol)
+        return '{0}'.format(self.name, self.symbol)
 
 
 class TestModel2(models.Model):
@@ -21,4 +21,4 @@ class TestModel2(models.Model):
     other_model = models.ManyToManyField(TestModel1)
 
     def __str__(self):
-        return "{0}".format(self.name)
+        return '{0}'.format(self.name)

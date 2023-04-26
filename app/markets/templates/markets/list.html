@@ -27,11 +27,11 @@
       </p>
     </div>
   </section>
-  <section class="market-list-search-section background-stone-30">
+  <section class="market-list-search-section">
     <div class="container">
-      <h1 class="market-list-count">
-        <strong>{{ market_list.count }} marketplace{{market_list|pluralize}} have been found</strong>
-      </h1>
+      <h5 class="market-list-count">
+        {{ market_list.count }} marketplace{{market_list|pluralize}} have been found
+      </h5>
       {% include 'markets/includes/search_form.html' %}
     </div>
   </section>
@@ -54,7 +54,7 @@
     {% if pagination.paginator.num_pages > 1 %}
     <nav class="pagination">
         {% if pagination.has_previous %}
-            <a class="button-ghost-blue pagination-previous" href="{{ url }}&{{ page_param_name }}={{ pagination.previous_page_number}}">Previous</a>
+            <a class="button secondary-button pagination-previous" href="{{ url }}&{{ page_param_name }}={{ pagination.previous_page_number}}">Previous</a>
         {% endif %}
             <ol class="{{ pagination.has_previous|yesno:'has-previous ,' }}{{ pagination.has_next|yesno:'has-next,' }}">
                 {% if pagination.paginator.num_pages <= 6 %}
@@ -83,7 +83,7 @@
                 {% endif %}
             </ol>
         {% if pagination.has_next %}
-            <a class="button-ghost-blue pagination-next" href="{{ url }}&{{ page_param_name }}={{ pagination.next_page_number }}">Next</a>
+            <a class="button secondary-button pagination-next" href="{{ url }}&{{ page_param_name }}={{ pagination.next_page_number }}">Next</a>
         {% endif %}
     </nav>
 {% endif %}

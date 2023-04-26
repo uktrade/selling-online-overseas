@@ -16,7 +16,7 @@ class MarketModelTests(TestCase):
         self.assertEqual(len(markets), 0)
 
         # Add one
-        name = "Amazon"
+        name = 'Amazon'
         market = create_market(name=name)
         self.assertEqual(name, str(market))
 
@@ -32,7 +32,7 @@ class MarketModelTests(TestCase):
         self.assertEqual(len(published_markets), 0)
 
         # Add a market, but don't publish yet
-        name = "Amazon"
+        name = 'Amazon'
         market = create_market(name=name)
         self.assertEqual(name, str(market))
 
@@ -53,7 +53,7 @@ class MarketModelTests(TestCase):
 
     def test_unpublish_model(self):
         # Add a market, and publish it
-        name = "Amazon"
+        name = 'Amazon'
         market = create_market(name=name)
         self.assertEqual(name, str(market))
         market.publish()
@@ -114,15 +114,15 @@ class MarketModelTests(TestCase):
         self.assertEqual(market.special_terms, known_phrase)
 
         # Add some special terms to the actual field
-        market.dit_special_terms = "Some special terms"
-        self.assertEqual(market.special_terms, "Some special terms")
+        market.dit_special_terms = 'Some special terms'
+        self.assertEqual(market.special_terms, 'Some special terms')
 
         # Add some empty special terms, and check that it ignores it, and uses the predetermined phrase again
-        market.dit_special_terms = "     "
+        market.dit_special_terms = '     '
         self.assertEqual(market.special_terms, known_phrase)
 
         # The special terms also supports HTML, check that it strips the HTML and still detects empty special terms
-        market.dit_special_terms = " <p>  <i> &nbsp; </i> \r\n \n </p>  "
+        market.dit_special_terms = ' <p>  <i> &nbsp; </i> \r\n \n </p>  '
         self.assertEqual(market.special_terms, known_phrase)
 
     def test_format_float(self):

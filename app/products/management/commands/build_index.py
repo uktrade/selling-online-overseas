@@ -1,14 +1,11 @@
 import csv
 import os
-import argparse
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from whoosh.index import create_in
 from whoosh.fields import Schema, TEXT, ID
 from whoosh.analysis import StemmingAnalyzer
-
-from ...models import Category
 
 
 class Command(BaseCommand):

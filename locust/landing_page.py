@@ -5,7 +5,7 @@ class UserBehavior(TaskSet):
 
     @task(1)
     def search_page(self):
-        self.client.get("/markets")
+        self.client.get('/markets')
 
 
 class WebsiteUser(HttpLocust):

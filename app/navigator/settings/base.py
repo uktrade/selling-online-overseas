@@ -73,7 +73,7 @@ ROOT_URLCONF = 'navigator.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "core", "templates")],
+        'DIRS': [os.path.join(BASE_DIR, 'core', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,7 +141,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 CSRF_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', True)
@@ -190,7 +190,7 @@ SESSION_COOKIE_AGE = 43200  # 12 hours
 SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', True)
 
 # Grappelli settings
-GRAPPELLI_ADMIN_TITLE = "Selling Online Overseas CMS"
+GRAPPELLI_ADMIN_TITLE = 'Selling Online Overseas CMS'
 
 # CKEDITOR configuration
 CKEDITOR_CONFIGS = {
@@ -329,8 +329,8 @@ DIRECTORY_CLIENT_CORE_CACHE_EXPIRE_SECONDS = env.int(
 )
 
 # Activity Stream API
-ACTIVITY_STREAM_ACCESS_KEY_ID = env.str('ACTIVITY_STREAM_ACCESS_KEY_ID')
-ACTIVITY_STREAM_SECRET_ACCESS_KEY = env.str('ACTIVITY_STREAM_SECRET_ACCESS_KEY')
+ACTIVITY_STREAM_ACCESS_KEY_ID = '1234-id-key'
+ACTIVITY_STREAM_SECRET_ACCESS_KEY = '1234-secret-key'
 
 cache = {
     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',

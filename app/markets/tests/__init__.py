@@ -47,13 +47,13 @@ def get_market_data(**variable_data):
     """
 
     if 'name' not in variable_data:
-        variable_data['name'] = "Amazon"
+        variable_data['name'] = 'Amazon'
 
     if 'e_marketplace_description' not in variable_data:
-        variable_data['e_marketplace_description'] = "Lorem Ipsum"
+        variable_data['e_marketplace_description'] = 'Lorem Ipsum'
 
     if 'web_address' not in variable_data:
-        variable_data['web_address'] = "example.com"
+        variable_data['web_address'] = 'example.com'
 
     if 'one_off_registration_fee' not in variable_data:
         variable_data['one_off_registration_fee'] = 0
@@ -96,5 +96,5 @@ def create_category(name):
 
 
 def load_sample_png():
-    f = open("{}/png/sample.png".format(CURRENT_DIRECTORY), "rb")
+    f = open('{}/png/sample.png'.format(CURRENT_DIRECTORY), 'rb')
     return f

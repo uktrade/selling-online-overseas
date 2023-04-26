@@ -26,14 +26,11 @@ certifi==2022.12.7
     # via requests
 chardet==3.0.4
     # via requests
-codecov==2.1.9
-    # via -r requirements_test.in
 contextlib2==0.5.4
     # via -r requirements.in
 coverage==5.2.1
     # via
     #   -r requirements_test.in
-    #   codecov
     #   pytest-cov
 directory-client-core==6.2.0
     # via
@@ -186,7 +183,6 @@ raven==6.10.0
 requests==2.25.1
     # via
     #   -r requirements.in
-    #   codecov
     #   directory-client-core
     #   docker-py
     #   requests-mock

@@ -26,9 +26,9 @@ class HomepageView(TemplateView):
     """
 
     template_name = 'markets/homepage.html'
-    comment_placeholder = "We are sorry to hear that. Would you tell us why?"
-    submit_wording = "Send feedback"
-    satisfied_wording = "Was this service useful?"
+    comment_placeholder = 'We are sorry to hear that. Would you tell us why?'
+    submit_wording = 'Send feedback'
+    satisfied_wording = 'Was this service useful?'
 
     @cached_property
     def page(self):
@@ -149,10 +149,10 @@ class MarketDetailView(TemplateView):
     The simple view for the details page for individual Markets
     """
 
-    satisfied_wording = "Was this page useful?"
+    satisfied_wording = 'Was this page useful?'
     template_name = 'markets/detail.html'
-    comment_placeholder = "We are sorry to hear that. Would you tell us why?"
-    submit_wording = "Send feedback"
+    comment_placeholder = 'We are sorry to hear that. Would you tell us why?'
+    submit_wording = 'Send feedback'
 
     def get_context_data(self, *args, **kwargs):
         """
