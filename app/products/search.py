@@ -11,7 +11,7 @@ def perform_category_query(query_words):
 
     indexdir = settings.WHOOSH_INDEX_DIR
     ix = open_dir(indexdir)
-    query = QueryParser("sub_category", ix.schema).parse(query_words)
+    query = QueryParser('sub_category', ix.schema).parse(query_words)
 
     categories = {}
     suggestion = None

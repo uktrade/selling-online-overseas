@@ -1,7 +1,9 @@
+@import '../reskin-styles/fonts/main.scss';;
+
 body {
   @extend %font-base;
   color: $grey;
-  font-family: $brand-font-family;
+  font-family: $main-text-font;
   line-height: 22px;
   margin: 0;
   padding: 0;

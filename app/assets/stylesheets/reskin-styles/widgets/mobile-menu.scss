@@ -1,0 +1,28 @@
+@import '../colors/colors.scss';
+
+.menu{
+    background-color: $color-footer!important;
+
+    .js-mobile-button{
+        background-color: $color-footer!important;
+
+    }
+}
+
+.great-header .main-nav.mobile{
+    background-color: $color-footer!important;
+
+    li:not(:last-child) {
+    border-bottom: 1px solid #635a7f;
+}
+
+  a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+}

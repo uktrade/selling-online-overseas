@@ -1,0 +1,47 @@
+@import "../sizes/sizes.scss";
+.great-header-search-container {
+  max-width: 1230px;
+  //this is just an override of the gov styles
+  @media only screen and (max-width: 420px) {
+    margin: 0;
+  }
+}
+
+.great-header .menu .container {
+  @media only screen and (max-width: $mobile-size) {
+    padding: 15px 0;
+  }
+}
+
+.great-domestic-international-links,
+.great-domestic-international-links a,
+.great-global-header-footer .great-global-header .domestic {
+  height: 40px;
+}
+
+.great-header .menu .container,
+.great-sub-header .menu .container {
+  max-width: $content-max-width;
+}
+
+div#great-global-header {
+  max-width: $content-max-width;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  .container {
+    margin: 0;
+  }
+}
+
+.great-header .link-heading,
+.great-sub-header .link-heading,
+a#header-sign-in-link {
+  font-size: 20px !important;
+}
+
+#great-domestic-header > .menu {
+  padding: 15px 0;
+}

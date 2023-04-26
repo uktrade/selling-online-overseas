@@ -5,7 +5,6 @@ from django.test import TestCase
 from django.core import management
 from django.conf import settings
 
-from ..models import Category
 from ..search import perform_category_query
 
 

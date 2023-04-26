@@ -22,7 +22,7 @@ def get_actions_replacer(orig_func):
         # Get the app label and model name to form the permission name
         app_label = self.model._meta.app_label
         model_name = self.model._meta.model_name
-        perm = "%s.delete_%s" % (app_label, model_name)
+        perm = '%s.delete_%s' % (app_label, model_name)
         # If the user does not have the specific delete perm, remove the action
         if not request.user.has_perm(perm):
             if 'delete_selected' in actions:

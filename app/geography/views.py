@@ -19,4 +19,4 @@ def query_countries(request):
 
     country_names = [country.name for country in countries]
 
-    return JsonResponse({"countries": country_names})
+    return JsonResponse({'countries': country_names})

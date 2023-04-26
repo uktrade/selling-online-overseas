@@ -1,4 +1,5 @@
 @import 'node_modules/govuk_frontend_toolkit/stylesheets/colours';
+@import './reskin-styles/fonts/main.scss';
 
 $base-spacing-unit: 20px;
 $half-spacing-unit: $base-spacing-unit / 2;
@@ -6,7 +7,7 @@ $half-spacing-unit: $base-spacing-unit / 2;
 $image-path: '/selling-online-overseas/static/images/';
 
 // FONTS
-$brand-font-family: 'Roboto', arial, helvetica, sans-serif;
+$brand-font-family: $main-text-font;
 
 // BRAND COLOURS
 $grey: #adb0be;
@@ -36,7 +37,7 @@ $lighter-grey-opacity: rgba(220, 224, 223, .5);
 $transparent-background: rgba(0, 0, 0, .65);
 $dark-navy: #160d37;
 $dark-blue: #132965;
-$active-blue: #006ccc;
+$active-blue: #1D70B8;
 $bright-grey-opacity: rgba(250, 250, 250, .9);
 $light-aqua: #8ae2fb;
 $gradient-start: rgba(0, 0, 0, 1);

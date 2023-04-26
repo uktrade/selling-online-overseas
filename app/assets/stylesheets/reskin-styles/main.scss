@@ -1,0 +1,20 @@
+@import "./borders/main.scss";
+@import "./colors/colors.scss";
+@import "./fonts/main.scss";
+@import "./sizes/sizes.scss";
+@import "./widgets/mains.scss";
+
+.container, .menu .container {
+  @media only screen and (max-width: $mobile-size) {
+    margin: 0 15px;
+  }
+
+  max-width: $content-max-width;
+}
+
+
+.menu .container {
+@media only screen and (max-width: $mobile-size) {
+    margin: 0 15px!important;
+  }
+}

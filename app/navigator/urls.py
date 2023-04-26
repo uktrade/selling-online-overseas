@@ -17,9 +17,9 @@ urlpatterns_unprefixed = [
     url(r'^admin/login/$', RedirectView.as_view(url=reverse_lazy('authbroker:login'), query_string=True)),
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomepageView.as_view(), name='home'),
-    url(r'^markets/', include('markets.urls'), name="markets"),
-    url(r'^products/', include('products.urls'), name="products"),
-    url(r'^geography/', include('geography.urls'), name="geography"),
+    url(r'^markets/', include('markets.urls'), name='markets'),
+    url(r'^products/', include('products.urls'), name='products'),
+    url(r'^geography/', include('geography.urls'), name='geography'),
     url(r'^activity-stream/v1/', ActivityStreamViewSet.as_view({'get': 'list'}), name='activity-stream'),
 ]
 

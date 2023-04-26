@@ -29,14 +29,14 @@ def query_categories(request):
 
     for category, sub_categories in ordered_categories.items():
         if category == 'Mature':
-            categories.append([category, ""])
+            categories.append([category, ''])
         else:
-            categories.append([category, Truncator(", ".join(sub_categories)).words(8)])
+            categories.append([category, Truncator(', '.join(sub_categories)).words(8)])
 
     resp = {
-        "query": query_words,
-        "categories": categories,
-        "suggestion": suggestion
+        'query': query_words,
+        'categories': categories,
+        'suggestion': suggestion
     }
 
     return JsonResponse(resp)

@@ -1,3 +1,4 @@
+@import '../reskin-styles/colors/colors.scss';
 .hero-section {
     h1 {
       @include heading-hero-mob;
@@ -75,17 +76,36 @@
             background-repeat: no-repeat;
             height: 200px;
         }
+        .card-inner{
+            p{
+                padding-left:0;
+                padding-right: 0;
+            }
+        }
     }
 
     h2.heading-large {
         line-height: 1.3em;
+        font-size: 36px;
+                              @media only screen and (max-width: $mobile-size) {
+ font-size: 28px;
+ &.page-title{
+    font-size: 36px;
+ }
+}
+    }
+    h2 + p {
+        margin-top: 20px
     }
 
     h3.heading-large {
-        font-size: 19px;
+        font-size: 28px;
         font-weight: bold;
         margin-bottom: 0.5em;
         font-family: $brand-font-alternative;
+        @media only screen and (max-width: $mobile-size) {
+ font-size: 24px;
+}
     }
 
 
@@ -95,6 +115,7 @@
 }
 
 .how-can-we-help-you-online {
+    border-top: 2px solid $color-grey-background;
     .help-benefit {
         .inner {
             margin-bottom: 0;
@@ -103,6 +124,12 @@
     }
 }
 .how-can-we-help-you {
+
+    .margin-top-60-l{
+      @media only screen and (max-width: $mobile-size) {
+        margin-top: 30px;
+    }
+}
     .card {
         .card-inner {
             padding: 15px 0 30px;
@@ -114,6 +141,7 @@
 }
 
 .random-markets {
+    background-color: $color-grey-background ;
     .card .card-image {
         background-size: auto;
     }
@@ -138,10 +166,21 @@
 
         h2.heading-large {
             margin-bottom: 0;
+ 
+        }
+
+        h3{
+            margin:0
         }
 
         h3.heading-large {
-            font-size: $font-size-l;
+            font-size: 28px;
+
+            
+        }
+
+        h3 + p{
+            margin-top:20px
         }
 
         .column-third-l:last-child {
