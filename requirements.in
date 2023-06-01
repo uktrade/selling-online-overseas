@@ -39,3 +39,4 @@ beautifulsoup4==4.6.0
 djangorestframework>=3.11.2
 uk-postcode-utils==1.0
 pillow==9.3.0
+sqlparse==0.4.4
