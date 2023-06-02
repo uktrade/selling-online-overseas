@@ -22,7 +22,7 @@ botocore==1.10.84
     #   s3transfer
 certifi==2022.12.7
     # via requests
-chardet==3.0.4
+charset-normalizer==3.1.0
     # via requests
 contextlib2==0.5.4
     # via -r requirements.in
@@ -137,7 +137,7 @@ raven==6.10.0
     # via
     #   -r requirements.in
     #   django-staff-sso-client
-requests==2.25.1
+requests==2.31.0
     # via
     #   -r requirements.in
     #   directory-client-core
