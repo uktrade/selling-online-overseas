@@ -42,8 +42,11 @@ jobs:
           node-version: "6.10.3"
       - run: node --version
 
+      - run: sudo apt-get update
       - browser-tools/install-chrome:
           chrome-version: "114.0.5735.90"
+          
+      - browser-tools/install-chrome
 
       - browser-tools/install-chromedriver
 
