@@ -1,28 +1,40 @@
-<div class="page-header"
-    id="hero">
-     <div class="inner-header">
-  <div >
-      <h1>{{ title}}</h1>
-      <p>{{ text }}</p>
-  </div>
-  <div class="image-container">
-  </div>
+<div class="great-container govuk-!-margin-top-9"> 
+    <div class="govuk-notification-banner"
+         role="region"
+         aria-labelledby="govuk-notification-banner-title"
+         data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title"
+                id="govuk-notification-banner-title">Important</h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+                Our digital service, Selling Online Overseas, is closing down on Wednesday 1 November 2023. 
+            </p>
+            <p>
+              You will still be able to benefit from DBT support to learn about international marketplaces, access preferential terms, and get connected directly to dedicated account managers at our 54 partner marketplaces.
+            </p>  
+        </div>
+    </div>
 </div>
-<div class="search-bar container">
-   {% include 'markets/includes/search_form.html' %}
+<div class="page-header" id="hero">
+    <div class="inner-header">
+        <div>
+            <h1>{{ title }}</h1>
+            <p>{{ text }}</p>
+        </div>
+        <div class="image-container"></div>
+    </div>
+    <div class="search-bar container">{% include 'markets/includes/search_form.html' %}</div>
 </div>
-</div>
- <section class="breadcrumbs-section narrow-section">
-      <div class="container">
+<section class="breadcrumbs-section narrow-section">
+    <div class="container">
         <p class="breadcrumbs">
             <span class="label visually-hidden">You are here:</span>
             <a href="{{ services_urls.exred }}">great.gov.uk</a>
             <span class="separator">,</span>
-            <span class="current">
-              Selling Online Overseas
-            </span>
+            <span class="current">Selling Online Overseas</span>
         </p>
     </div>
-    </section>
-    <div class="mobile-image-container">
-  </div>
+</section>
+<div class="mobile-image-container"></div>

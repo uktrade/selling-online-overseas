@@ -18,3 +18,23 @@
     margin: 0 15px!important;
   }
 }
+
+
+.great-container {
+  max-width: 1230px;
+  margin: auto;
+  padding: 0 15px;
+
+  @media (min-width: 1025px) {
+    padding: 0 30px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 0;
+  }
+}
+
+.govuk-notification-banner__content>* {
+    box-sizing: border-box;
+    max-width: none;
+}
