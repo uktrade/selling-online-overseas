@@ -39,7 +39,7 @@ jobs:
 
       - node/install:
           install-yarn: true
-          node-version: "6.10.3"
+          node-version: "10.24.1"
       - run: node --version
 
       - run: sudo apt-get update
@@ -55,7 +55,7 @@ jobs:
             command: |
                 sudo apt update
                 sudo apt-get install nodejs npm
-                npm install -g npm@2.15.5
+                npm install -g npm@6.14.12
                 npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
