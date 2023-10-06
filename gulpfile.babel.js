@@ -12,13 +12,8 @@ import loadPlugins from 'gulp-load-plugins';
 import karma from 'karma';
 
 const plugins = loadPlugins(),
-      protractor = plugins.protractor.protractor,
-      webdriver_standalone = plugins.protractor.webdriver_standalone,
-      webdriver_update = plugins.protractor.webdriver_update,
       Server = karma.Server;
 
-gulp.task('webdriver_update', webdriver_update);
-gulp.task('webdriver_standalone', webdriver_standalone);
 
 // set debugMode to true to use non uglified and compressed js versions
 let debugMode = false ? { mangle: false, compress: false, output: { beautify: true } } : null;
@@ -98,16 +93,6 @@ gulp.task('lint',
   ['lint:sass', 'lint:js']
 );
 
-gulp.task('protractor:e2e', (callback) => gulp
-    .src(['app/assets/test/e2e/specs/*-spec.js'])
-    .pipe(protractor({
-        'configFile': 'app/assets/test/e2e/conf.js',
-    })).on('error', function(e) {
-        console.log(e);
-    }).on('end', function (callback) {
-        callback;
-    })
-);
 
 
 gulp.task('unit-tests', () => {
@@ -158,6 +143,5 @@ gulp.task('testfull',
     [
      'lint',
      'unit-tests',
-     'protractor:e2e'
     ]
 );
