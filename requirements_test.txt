@@ -14,7 +14,7 @@ attrs==20.1.0
     # via
     #   jsonschema
     #   pytest
-beautifulsoup4==4.6.0
+beautifulsoup4==4.11.2
     # via
     #   -r requirements.in
     #   directory-components
@@ -58,8 +58,10 @@ django==4.1.10
     #   directory-constants
     #   django-admin-ip-restrictor
     #   django-appconf
+    #   django-extensions
     #   django-reversion
     #   django-staff-sso-client
+    #   django-storages
     #   django-thumber
     #   djangorestframework
     #   easy-thumbnails
@@ -74,7 +76,7 @@ django-ckeditor==6.1.0
     # via -r requirements.in
 django-environ==0.4.5
     # via -r requirements.in
-django-extensions==2.1.6
+django-extensions==3.2.3
     # via
     #   -r requirements.in
     #   -r requirements_test.in
@@ -86,11 +88,11 @@ django-ipware==2.1.0
     # via django-admin-ip-restrictor
 django-js-asset==1.2.2
     # via django-ckeditor
-django-reversion==2.0.8
+django-reversion==5.0.6
     # via -r requirements.in
 django-staff-sso-client==4.2.1
     # via -r requirements.in
-django-storages==1.5.2
+django-storages==1.14.2
     # via -r requirements.in
 django-thumber==3.0.0
     # via -r requirements.in
@@ -204,7 +206,6 @@ sigauth==5.2.0
 six==1.12.0
     # via
     #   -r requirements.in
-    #   django-extensions
     #   docker-py
     #   freezegun
     #   jsonschema
@@ -213,6 +214,8 @@ six==1.12.0
     #   python-dateutil
     #   requests-mock
     #   w3lib
+soupsieve==2.5
+    # via beautifulsoup4
 sqlparse==0.4.4
     # via
     #   -r requirements.in

@@ -9,10 +9,10 @@ django-ckeditor==6.1.0
 django-environ==0.4.5
 django-grappelli==2.10.4
 django-image-cropping==1.5.0
-django-reversion==2.0.8
-django-storages==1.5.2
+django-reversion==5.0.6
+django-storages==1.14.2
 django-thumber==3.0.0
-django_extensions==2.1.6
+django_extensions==3.2.3
 docutils==0.13.1
 docker-py==1.2.1
 easy-thumbnails==2.8.5
@@ -35,7 +35,7 @@ django-staff-sso-client==4.2.1
 directory-cms-client==12.3.2
 sigauth==5.2.0
 markdown2==2.4.0
-beautifulsoup4==4.6.0
+beautifulsoup4==4.11.2
 djangorestframework==3.14.0
 uk-postcode-utils==1.0
 pillow==9.3.0
