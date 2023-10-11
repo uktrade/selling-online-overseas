@@ -44,7 +44,7 @@ directory-sso-api-client==7.2.3
     # via -r requirements.in
 dj-database-url==0.4.1
     # via -r requirements.in
-django==4.1.10
+django==3.2.22
     # via
     #   -r requirements.in
     #   directory-client-core
@@ -60,7 +60,7 @@ django==4.1.10
     #   djangorestframework
     #   easy-thumbnails
     #   sigauth
-django-admin-ip-restrictor==1.0.0
+django-admin-ip-restrictor==2.2.0
     # via -r requirements.in
 django-appconf==1.0.5
     # via
@@ -138,7 +138,9 @@ python-dateutil==2.8.1
     #   -r requirements.in
     #   botocore
 pytz==2020.1
-    # via djangorestframework
+    # via
+    #   django
+    #   djangorestframework
 raven==6.10.0
     # via -r requirements.in
 requests==2.31.0
