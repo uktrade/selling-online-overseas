@@ -8,6 +8,8 @@
 
 appdirs==1.4.3
     # via -r requirements.in
+asgiref==3.7.2
+    # via django
 attrs==20.1.0
     # via
     #   jsonschema
@@ -34,21 +36,21 @@ coverage==5.2.1
     # via
     #   -r requirements_test.in
     #   pytest-cov
-directory-client-core==6.2.0
+directory-client-core==7.2.5
     # via
     #   directory-cms-client
     #   directory-sso-api-client
-directory-cms-client==11.0.0
+directory-cms-client==12.3.2
     # via -r requirements.in
-directory-components==39.0.3
+directory-components==39.1.4
     # via -r requirements.in
-directory-constants==23.0.0
+directory-constants==23.1.1
     # via directory-components
-directory-sso-api-client==6.3.0
+directory-sso-api-client==7.2.3
     # via -r requirements.in
 dj-database-url==0.4.1
     # via -r requirements.in
-django==2.2.28
+django==4.1.10
     # via
     #   -r requirements.in
     #   directory-client-core
@@ -64,7 +66,7 @@ django==2.2.28
     #   sigauth
 django-admin-ip-restrictor==1.0.0
     # via -r requirements.in
-django-appconf==1.0.4
+django-appconf==1.0.5
     # via
     #   -r requirements.in
     #   django-image-cropping
@@ -86,13 +88,13 @@ django-js-asset==1.2.2
     # via django-ckeditor
 django-reversion==2.0.8
     # via -r requirements.in
-django-staff-sso-client==0.4.0
+django-staff-sso-client==4.2.1
     # via -r requirements.in
 django-storages==1.5.2
     # via -r requirements.in
-django-thumber==2.0.0
+django-thumber==3.0.0
     # via -r requirements.in
-djangorestframework==3.12.2
+djangorestframework==3.14.0
     # via
     #   -r requirements.in
     #   sigauth
@@ -102,7 +104,7 @@ docutils==0.13.1
     # via
     #   -r requirements.in
     #   botocore
-easy-thumbnails==2.7.1
+easy-thumbnails==2.8.5
     # via -r requirements.in
 factory-boy==3.0.1
     # via -r requirements_test.in
@@ -127,11 +129,11 @@ markdown2==2.4.0
     # via -r requirements.in
 mohawk==1.1.0
     # via sigauth
-monotonic==1.5
+monotonic==1.6
     # via directory-client-core
 more-itertools==8.4.0
     # via pytest
-oauthlib==3.1.0
+oauthlib==3.2.2
     # via requests-oauthlib
 packaging==16.8
     # via
@@ -156,7 +158,7 @@ pyparsing==2.2.0
     # via
     #   -r requirements.in
     #   packaging
-pyrsistent==0.16.0
+pyrsistent==0.19.3
     # via jsonschema
 pytest==6.0.1
     # via
@@ -177,11 +179,9 @@ python-dateutil==2.8.1
     #   faker
     #   freezegun
 pytz==2020.1
-    # via django
+    # via djangorestframework
 raven==6.10.0
-    # via
-    #   -r requirements.in
-    #   django-staff-sso-client
+    # via -r requirements.in
 requests==2.31.0
     # via
     #   -r requirements.in
@@ -191,13 +191,13 @@ requests==2.31.0
     #   requests-oauthlib
 requests-mock==1.8.0
     # via -r requirements_test.in
-requests-oauthlib==1.3.0
+requests-oauthlib==1.3.1
     # via django-staff-sso-client
 s3transfer==0.1.10
     # via
     #   -r requirements.in
     #   boto3
-sigauth==4.2.0
+sigauth==5.2.0
     # via
     #   -r requirements.in
     #   directory-client-core
@@ -210,7 +210,6 @@ six==1.12.0
     #   jsonschema
     #   mohawk
     #   packaging
-    #   pyrsistent
     #   python-dateutil
     #   requests-mock
     #   w3lib
@@ -224,6 +223,8 @@ text-unidecode==1.3
     # via faker
 toml==0.10.1
     # via pytest
+typing-extensions==4.8.0
+    # via asgiref
 uk-postcode-utils==1.0
     # via -r requirements.in
 urllib3==1.26.5
