@@ -111,7 +111,7 @@ docutils==0.13.1
     # via
     #   -r requirements.in
     #   botocore
-easy-thumbnails==2.7.1
+easy-thumbnails==2.8.5
     # via -r requirements.in
 factory-boy==3.0.1
     # via -r requirements_test.in
