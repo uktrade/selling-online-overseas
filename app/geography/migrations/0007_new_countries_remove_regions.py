@@ -19,7 +19,7 @@ map_new_countries_to_old = {
 
 
 def load_fixture(apps, schema_editor):
-    
+
     if connections.databases['default']['NAME'][:4] == 'test':
         return
 
@@ -52,13 +52,12 @@ def load_fixture(apps, schema_editor):
 
             # Set the country's alternate name
             country.alternate_name = country_alternate_name
-            
             country.save()
    
     # Special migration for 'Global' country, all markets linked to this, to ALL new individual countries
     all_new = Country.objects.filter(name__in=new_country_names)
     Market = apps.get_model('markets', 'Market')
-  
+
     markets = Market.objects.filter(countries_served=Country.objects.filter(name='Global')[0])
     for market in markets:
         market.countries_served.set(all_new)

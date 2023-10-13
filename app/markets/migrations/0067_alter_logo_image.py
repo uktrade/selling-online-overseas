@@ -13,6 +13,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='logo',
             name='image',
-            field=models.ImageField(help_text='After choosing an image to upload click "Save" to access the                                                    "Cropping" tool and edit the image', null=True, upload_to=''),
+            field=models.ImageField(
+                help_text='After choosing an image to upload click "Save" to access the "Cropping" tool and edit the image', 
+                null=True,
+                upload_to=''
+            ),
         ),
     ]
