@@ -4,19 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('markets', '0066_auto_20210428_0912'),
+        ("markets", "0066_auto_20210428_0912"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='logo',
-            name='image',
+            model_name="logo",
+            name="image",
             field=models.ImageField(
-                help_text='After choosing an image to upload click "Save" to access the "Cropping" tool and edit the image', 
+                help_text='After choosing an image to upload click "Save"'
+                          ' to access the "Cropping" tool and edit the image',
                 null=True,
-                upload_to=''
+                upload_to="",
             ),
         ),
     ]

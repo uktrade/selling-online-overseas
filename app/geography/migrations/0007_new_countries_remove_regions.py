@@ -53,7 +53,7 @@ def load_fixture(apps, schema_editor):
             # Set the country's alternate name
             country.alternate_name = country_alternate_name
             country.save()
-   
+
     # Special migration for 'Global' country, all markets linked to this, to ALL new individual countries
     all_new = Country.objects.filter(name__in=new_country_names)
     Market = apps.get_model('markets', 'Market')
