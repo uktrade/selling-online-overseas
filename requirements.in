@@ -2,7 +2,7 @@ Django==3.2.18
 Whoosh==2.7.4
 appdirs== 1.4.3
 beautifulsoup4
-boto3==1.7.31
+boto3==1.28.63
 certifi==2023.7.22
 contextlib2==0.5.4
 directory-client-core==6.3.0
@@ -39,7 +39,7 @@ pytest-django==3.9.0
 python-dateutil==2.8.1
 raven==6.10.0
 requests==2.31.0
-s3transfer==0.1.10
+s3transfer==0.7.0
 sigauth==4.3.0
 six==1.12.0
 uk-postcode-utils==1.0
