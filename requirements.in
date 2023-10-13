@@ -27,7 +27,7 @@ django-thumber==3.0.1
 djangorestframework==3.14.0
 docker-py==1.2.1
 docutils==0.13.1
-easy-thumbnails==2.8.5
+easy-thumbnails==2.7.1
 gunicorn==19.6.0
 jmespath==0.9.1
 markdown2==2.4.0
