@@ -345,3 +345,5 @@ CACHES = {
 # Flag for loading magna header
 MAGNA_HEADER = env.bool('MAGNA_HEADER', False)
 DIRECTORY_CONSTANTS_URL_GREAT_MAGNA = env.str('DIRECTORY_CONSTANTS_URL_GREAT_MAGNA', 'https://great.gov.uk')
+
+THUMBNAIL_DEBUG = env.bool('HUMBNAIL_DEBUG', False)
