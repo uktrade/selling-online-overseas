@@ -346,4 +346,5 @@ CACHES = {
 MAGNA_HEADER = env.bool('MAGNA_HEADER', False)
 DIRECTORY_CONSTANTS_URL_GREAT_MAGNA = env.str('DIRECTORY_CONSTANTS_URL_GREAT_MAGNA', 'https://great.gov.uk')
 
-THUMBNAIL_DEBUG = env.bool('HUMBNAIL_DEBUG', False)
+# set to True to debug easy thumbnail issues i.e. thumbnails not displaying
+THUMBNAIL_DEBUG = env.bool('THUMBNAIL_DEBUG', False)
