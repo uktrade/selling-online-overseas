@@ -159,7 +159,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'fixstatic'),
 )
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media file storage
 MEDIA_URL = '/selling-online-overseas/media/'
@@ -345,3 +345,6 @@ CACHES = {
 # Flag for loading magna header
 MAGNA_HEADER = env.bool('MAGNA_HEADER', False)
 DIRECTORY_CONSTANTS_URL_GREAT_MAGNA = env.str('DIRECTORY_CONSTANTS_URL_GREAT_MAGNA', 'https://great.gov.uk')
+
+# set to True to debug easy thumbnail issues i.e. thumbnails not displaying
+THUMBNAIL_DEBUG = env.bool('THUMBNAIL_DEBUG', False)

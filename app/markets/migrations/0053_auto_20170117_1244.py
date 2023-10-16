@@ -29,13 +29,13 @@ def migrate_translations(apps, schema_editor):
             if getattr(market, item[0], False):
                 requirements.append(item[1])
 
-        market.translation_requirements = requirements
+        market.translation_requirements.set(requirements)
         market.translation_notes = market.translation_verbal_notes
         market.save()
 
         try:
             published_market = PublishedMarket.objects.get(pk=market.pk)
-            published_market.translation_requirements = requirements
+            published_market.translation_requirements.set(requirements)
             published_market.translation_notes = market.translation_verbal_notes
             published_market.save()
         except PublishedMarket.DoesNotExist:
@@ -65,13 +65,13 @@ def migrate_setup(apps, schema_editor):
             if getattr(market, item[0], False):
                 requirements.append(item[1])
 
-        market.setup_requirements = requirements
+        market.setup_requirements.set(requirements)
         market.setup_notes = market.local_incorporation_needed_notes
         market.save()
 
         try:
             published_market = PublishedMarket.objects.get(pk=market.pk)
-            published_market.setup_requirements = requirements
+            published_market.setup_requirements.set(requirements)
             published_market.setup_notes = market.setup_notes
             published_market.save()
         except PublishedMarket.DoesNotExist:
