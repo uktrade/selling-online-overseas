@@ -236,7 +236,7 @@ typing-extensions==4.8.0
     # via asgiref
 uk-postcode-utils==1.0
     # via -r requirements.in
-urllib3==1.26.17
+urllib3==1.26.18
     # via
     #   -r requirements.in
     #   botocore
