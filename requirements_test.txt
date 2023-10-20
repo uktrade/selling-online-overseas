@@ -53,7 +53,7 @@ directory-sso-api-client==6.3.0
     # via -r requirements.in
 dj-database-url==0.4.1
     # via -r requirements.in
-django==3.2.19
+django==3.2.20
     # via
     #   -r requirements.in
     #   directory-client-core
