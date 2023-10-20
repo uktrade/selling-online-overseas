@@ -1,4 +1,4 @@
-Django==3.2.18
+Django==3.2.19
 Whoosh==2.7.4
 appdirs== 1.4.3
 beautifulsoup4
@@ -31,7 +31,7 @@ easy-thumbnails==2.8.5
 gunicorn==19.6.0
 jmespath==0.9.1
 markdown2==2.4.0
-packaging==16.8
+packaging==19.0
 pyparsing==2.2.0
 sqlparse==0.4.4
 psycopg2==2.9.* --no-binary psycopg2
@@ -43,5 +43,6 @@ s3transfer==0.7.0
 sigauth==4.3.0
 six==1.12.0
 uk-postcode-utils==1.0
-urllib3==1.26.5
+urllib3==1.26.17
 whitenoise==6.6.0
+pillow==10.0.1
