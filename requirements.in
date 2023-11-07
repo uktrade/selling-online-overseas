@@ -16,7 +16,7 @@ django-appconf==1.0.4
 django-ckeditor==6.1.0
 django-environ==0.4.5
 django-extensions==2.1.6
-django-grappelli==2.10.4
+django-grappelli==2.15.2
 django-image-cropping==1.5.0
 django-ipware==2.1.0
 django-js-asset==1.2.2

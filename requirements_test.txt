@@ -82,7 +82,7 @@ django-extensions==2.1.6
     # via
     #   -r requirements.in
     #   -r requirements_test.in
-django-grappelli==2.10.4
+django-grappelli==2.15.2
     # via -r requirements.in
 django-image-cropping==1.5.0
     # via -r requirements.in
