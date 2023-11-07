@@ -43,6 +43,6 @@ s3transfer==0.7.0
 sigauth==4.3.0
 six==1.12.0
 uk-postcode-utils==1.0
-urllib3==1.26.17
+urllib3==1.26.18
 whitenoise==6.6.0
 pillow==10.0.1
